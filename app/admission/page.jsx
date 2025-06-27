@@ -9,38 +9,54 @@ import PageLinks from "@/components/common/PageLinks";
 import Image from "next/image";
 import Link from "next/link";
 
-const placementCards = [
+const admissionCards = [
   {
-    title: "Placement Objectives",
+    title: "Online Application",
     description:
-      "Discover our strategic goals for student career success and industry alignment.",
-    link: "/placements/objectives",
+      "Begin your journey with a streamlined, online application process designed for convenience and clarity.",
+    link: "/admission/online-application",
     image:
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80",
   },
   {
-    title: "Placement Overview",
+    title: "Admission Process",
     description:
-      "See how we connect students with top employers through our comprehensive programs.",
-    link: "/placements/overview",
+      "Understand each step from application to acceptance in our well-structured admission process.",
+    link: "/admission/admission-process",
     image:
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1558021212-51b6ecfa0db9?auto=format&fit=crop&w=800&q=80",
   },
   {
-    title: "Why Recruit CSEI Students",
+    title: "International Students",
     description:
-      "Learn what makes our graduates stand out in the competitive job market.",
-    link: "/placements/why-csei",
+      "Support and resources tailored for students joining us from around the world.",
+    link: "/admission/international-students",
     image:
-      "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80",
   },
   {
-    title: "Our Services",
+    title: "Tuition and Fees",
     description:
-      "Explore the range of placement services we offer to students and recruiters.",
-    link: "/placements/services",
+      "Explore transparent fee structures and payment options suited to every program.",
+    link: "/admission/tuition-and-fees",
     image:
-      "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "Financial Aid & Scholarships",
+    description:
+      "Unlock your potential with our merit-based and need-based financial support programs.",
+    link: "/admission/financial-aid-scholarships",
+    image:
+      "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "Student Voice",
+    description:
+      "Hear directly from our students about life, learning, and growth at CSEI.",
+    link: "/admission/student-voice",
+    image:
+      "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
@@ -61,16 +77,16 @@ export default function Page() {
           <div className="container">
             <div className="row justify-center text-center mb-60">
               <div className="col-auto" data-aos="fade-up">
-                <h1 className="text-40 fw-700 mb-20">Placement Programs</h1>
+                <h1 className="text-40 fw-700 mb-20">Admissions at CSEI</h1>
                 <p className="text-16 max-w-600 mx-auto">
-                  Bridging academic excellence with career success through our
-                  comprehensive placement initiatives.
+                  Navigate your path to excellence with our detailed admission
+                  process, international support, and financial options.
                 </p>
               </div>
             </div>
 
             <div className="row y-gap-50">
-              {placementCards.map((card, index) => (
+              {admissionCards.map((card, index) => (
                 <div
                   className="col-lg-6 col-md-6"
                   key={index}
