@@ -9,38 +9,78 @@ import PageLinks from "@/components/common/PageLinks";
 import Image from "next/image";
 import Link from "next/link";
 
-const placementCards = [
+const academicCards = [
   {
-    title: "Placement Objectives",
+    title: "School of Computing",
     description:
-      "Discover our strategic goals for student career success and industry alignment.",
-    link: "/placements/objectives",
+      "Explore modern programs in computer science, software engineering, and emerging tech fields.",
+    link: "/academics/schools/computing",
     image:
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=800&q=80",
   },
   {
-    title: "Placement Overview",
+    title: "School of Health Sciences",
     description:
-      "See how we connect students with top employers through our comprehensive programs.",
-    link: "/placements/overview",
+      "Train in healthcare, nursing, public health, and medical technology with hands-on experience.",
+    link: "/academics/health-sciences",
     image:
-      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=800&q=80",
   },
   {
-    title: "Why Recruit CSEI Students",
+    title: "School of Culinary Arts",
     description:
-      "Learn what makes our graduates stand out in the competitive job market.",
-    link: "/placements/why-csei",
+      "Pursue excellence in culinary techniques, food safety, and hospitality services.",
+    link: "/academics/culinary-arts",
     image:
-      "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=800&q=80",
   },
   {
-    title: "Our Services",
+    title: "School of Business",
     description:
-      "Explore the range of placement services we offer to students and recruiters.",
-    link: "/placements/services",
+      "Master entrepreneurship, finance, and global strategy with real-world applications.",
+    link: "/academics/business",
     image:
-      "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "Scholarships",
+    description:
+      "Discover available scholarships, eligibility criteria, and how to apply for financial aid.",
+    link: "/academics/scholarships",
+    image:
+      "https://images.unsplash.com/photo-1580894908361-967195033215?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "Introduction & Why CSEI",
+    description:
+      "Learn about our academic philosophy and why students choose CSEI for their education.",
+    link: "/academics/introduction",
+    image:
+      "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "News & Updates",
+    description:
+      "Stay informed with the latest announcements, academic changes, and student news.",
+    link: "/academics/news",
+    image:
+      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "Academic Support",
+    description:
+      "Get access to tutoring, mentoring, and support resources to succeed in your studies.",
+    link: "/academics/support",
+    image:
+      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "Academic Calendar",
+    description:
+      "View important academic dates, holidays, exam schedules, and registration deadlines.",
+    link: "/academics/calendar",
+    image:
+      "https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
@@ -57,20 +97,22 @@ export default function Page() {
       <div className="content-wrapper js-content-wrapper overflow-hidden">
         <PageLinks />
 
-        <section className="layout-pt-lg layout-pb-lg bg-[#160643] text-dark-1">
+        <section className="layout-pt-lg layout-pb-lg bg-[#F9FAFB] text-[#160643]">
           <div className="container">
             <div className="row justify-center text-center mb-60">
               <div className="col-auto" data-aos="fade-up">
-                <h1 className="text-40 fw-700 mb-20">Placement Programs</h1>
+                <h1 className="text-40 fw-700 mb-20">
+                  Explore Our Academic Areas
+                </h1>
                 <p className="text-16 max-w-600 mx-auto">
-                  Bridging academic excellence with career success through our
-                  comprehensive placement initiatives.
+                  Navigate through all schools, resources, and essential
+                  academic support at CSEI.
                 </p>
               </div>
             </div>
 
             <div className="row y-gap-50">
-              {placementCards.map((card, index) => (
+              {academicCards.map((card, index) => (
                 <div
                   className="col-lg-6 col-md-6"
                   key={index}

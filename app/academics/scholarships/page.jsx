@@ -20,43 +20,36 @@ export default function Page() {
       <div className="content-wrapper js-content-wrapper">
         <PageLinks />
 
-        <section className="layout-pt-lg layout-pb-lg bg-[#160643] text-white">
+        <section className="layout-pt-lg layout-pb-lg bg-[#160643] text-dark-1">
           <div className="container">
             <div className="row justify-center text-center mb-60">
               <div className="col-auto" data-aos="fade-up">
-                <h1 className="text-40 fw-700 mb-20">Internships Overview</h1>
+                <h1 className="text-40 fw-700 mb-20">Scholarships</h1>
                 <p className="text-16 max-w-600 mx-auto">
-                  Bridging theory and practice—our internships give students
-                  real-world experience in top companies across various
-                  industries.
+                  Where passion meets precision — our culinary programs equip
+                  students with world-class cooking techniques and hospitality
+                  knowledge.
                 </p>
               </div>
             </div>
 
             <div className="row y-gap-40 justify-center">
               <div className="col-lg-10" data-aos="fade-up">
-                <h3 className="text-24 fw-600 mb-20">Key Highlights:</h3>
+                <h3 className="text-24 fw-600 mb-20">Programs Offered:</h3>
                 <ul className="list-disc pl-20 text-16 leading-8">
-                  <li>
-                    Industry placements aligned with each student's major.
-                  </li>
-                  <li>
-                    Hands-on exposure to corporate processes and team
-                    environments.
-                  </li>
-                  <li>
-                    Resume-boosting experience and networking opportunities.
-                  </li>
-                  <li>Supervised training and performance evaluation.</li>
+                  <li>Professional Diploma in Culinary Arts</li>
+                  <li>Workshops with international chefs and food experts</li>
+                  <li>Modern kitchen labs and practical sessions</li>
+                  <li>Industry internships in top hotels and restaurants</li>
                 </ul>
               </div>
 
               <div className="col-lg-10 mt-40" data-aos="fade-up">
-                <h3 className="text-24 fw-600 mb-20">Eligibility:</h3>
+                <h3 className="text-24 fw-600 mb-20">Career Opportunities:</h3>
                 <p className="text-16">
-                  Open to students enrolled in diploma or professional
-                  certificate programs at CSEI Academy who have completed a
-                  minimum of one academic semester.
+                  Graduates pursue careers as executive chefs, pastry artists,
+                  kitchen managers, and hospitality entrepreneurs across global
+                  culinary markets.
                 </p>
               </div>
             </div>

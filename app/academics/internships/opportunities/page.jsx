@@ -24,11 +24,12 @@ export default function Page() {
           <div className="container">
             <div className="row justify-center text-center mb-60">
               <div className="col-auto" data-aos="fade-up">
-                <h1 className="text-40 fw-700 mb-20">Internship Objectives</h1>
+                <h1 className="text-40 fw-700 mb-20">
+                  Internship Opportunities
+                </h1>
                 <p className="text-16 max-w-600 mx-auto">
-                  Empowering students with professional skills, workplace
-                  exposure, and industry insight through structured internship
-                  experiences.
+                  Discover a diverse range of internship opportunities across
+                  industries that shape future careers.
                 </p>
               </div>
             </div>
@@ -41,26 +42,28 @@ export default function Page() {
               >
                 <ul className="list-disc text-white text-16 leading-loose pl-20">
                   <li>
-                    Bridge the gap between academic theory and industry
-                    practice.
+                    Opportunities with leading hospitals, clinics, and
+                    healthcare organizations.
                   </li>
                   <li>
-                    Equip students with real-world skills and workplace ethics.
+                    Internships with top accounting firms and financial service
+                    providers.
                   </li>
                   <li>
-                    Develop communication, teamwork, and problem-solving
-                    competencies.
+                    Collaborations with IT companies for hands-on tech and
+                    software experience.
                   </li>
                   <li>
-                    Foster professional networks that aid career advancement.
+                    Education sector training with schools, early childhood
+                    centers, and institutions.
                   </li>
                   <li>
-                    Enable students to explore career options and industries
-                    aligned with their field of study.
+                    Business and admin roles in logistics, marketing, and HR
+                    departments.
                   </li>
                   <li>
-                    Enhance resume value through verifiable professional
-                    experiences.
+                    Flexible virtual or hybrid internships for remote
+                    skill-building.
                   </li>
                 </ul>
               </div>
