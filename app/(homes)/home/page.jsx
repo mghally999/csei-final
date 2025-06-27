@@ -15,9 +15,9 @@ import Preloader from "@/components/common/Preloader";
 import Header from "@/components/layout/headers/Header";
 export const metadata = {
   title:
-    "Home-2 || Educrat - Professional LMS Online Education Course NextJS Template",
+    "Home-2 || CSEI - Professional LMS Online Education Course NextJS Template",
   description:
-    "Elevate your e-learning content with Educrat, the most impressive LMS template for online courses, education and LMS platforms.",
+    "Elevate your e-learning content with CSEI, the most impressive LMS template for online courses, education and LMS platforms.",
 };
 export default function page() {
   return (

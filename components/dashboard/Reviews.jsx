@@ -80,9 +80,7 @@ export default function Reviews() {
       <footer className="footer -dashboard py-30">
         <div className="row items-center justify-between">
           <div className="col-auto">
-            <div className="text-13 lh-1">
-              © 2022 Educrat. All Right Reserved.
-            </div>
+            <div className="text-13 lh-1">© 2022 CSEI. All Right Reserved.</div>
           </div>
 
           <div className="col-auto">

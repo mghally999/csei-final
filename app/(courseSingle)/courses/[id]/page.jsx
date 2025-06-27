@@ -9,9 +9,9 @@ import React from "react";
 
 export const metadata = {
   title:
-    "Couese-single-1 || Educrat - Professional LMS Online Education Course NextJS Template",
+    "Couese-single-1 || CSEI - Professional LMS Online Education Course NextJS Template",
   description:
-    "Elevate your e-learning content with Educrat, the most impressive LMS template for online courses, education and LMS platforms.",
+    "Elevate your e-learning content with CSEI, the most impressive LMS template for online courses, education and LMS platforms.",
 };
 
 export default async function page(props) {

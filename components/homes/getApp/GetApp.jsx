@@ -37,8 +37,8 @@ export default function GetApp() {
                 data-aos="fade-up"
                 data-aos-duration={600}
               >
-                Take classes on the go with the educrat app. Stream or download
-                to watch on the plane, the subway, or wherever you learn best.
+                Take classes on the go with the CSEI app. Stream or download to
+                watch on the plane, the subway, or wherever you learn best.
               </p>
               <div className="app-content__buttons">
                 <Link href="#">

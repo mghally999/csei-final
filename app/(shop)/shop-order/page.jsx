@@ -1,33 +1,30 @@
+import PageLinks from "@/components/common/PageLinks";
+import Preloader from "@/components/common/Preloader";
 
-import PageLinks from '@/components/common/PageLinks'
-import Preloader from '@/components/common/Preloader'
+import FooterOne from "@/components/layout/footers/FooterOne";
+import Header from "@/components/layout/headers/Header";
 
-import FooterOne from '@/components/layout/footers/FooterOne'
-import Header from '@/components/layout/headers/Header'
-
-import ShopOrder from '@/components/shop/ShopOrder'
-import React from 'react'
+import ShopOrder from "@/components/shop/ShopOrder";
+import React from "react";
 export const metadata = {
-  title: 'Shop-order || Educrat - Professional LMS Online Education Course NextJS Template',
+  title:
+    "Shop-order || CSEI - Professional LMS Online Education Course NextJS Template",
   description:
-    'Elevate your e-learning content with Educrat, the most impressive LMS template for online courses, education and LMS platforms.',
-  
-}
+    "Elevate your e-learning content with CSEI, the most impressive LMS template for online courses, education and LMS platforms.",
+};
 export default function page() {
   return (
     <div className="main-content  ">
-      <Preloader/>
+      <Preloader />
 
-        <Header/>
-        <div className="content-wrapper js-content-wrapper overflow-hidden">
-            <PageLinks/>
+      <Header />
+      <div className="content-wrapper js-content-wrapper overflow-hidden">
+        <PageLinks />
 
-            <ShopOrder/>
-            
-            <FooterOne/>
-        </div>
+        <ShopOrder />
 
+        <FooterOne />
+      </div>
     </div>
-  )
+  );
 }
-

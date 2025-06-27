@@ -79,7 +79,7 @@ export const menuList = [
           },
           {
             label: "Admission Process",
-            href: "/admission/process",
+            href: "/admission/admission-process",
           },
         ],
       },
@@ -96,7 +96,7 @@ export const menuList = [
           },
           {
             label: "Financial Aid & Scholarships",
-            href: "/admission/scholarships",
+            href: "/admission/financial-aid-scholarships",
           },
         ],
       },
