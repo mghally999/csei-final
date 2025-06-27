@@ -20,11 +20,13 @@ export default function Page() {
       <div className="content-wrapper js-content-wrapper">
         <PageLinks />
 
-        <section className="layout-pt-lg layout-pb-lg bg-[#160643] text-white">
+        <section className="layout-pt-lg layout-pb-lg bg-[#160643] text-dark-1">
           <div className="container">
             <div className="row justify-center text-center mb-60">
               <div className="col-auto" data-aos="fade-up">
-                <h1 className="text-40 fw-700 mb-20">Internships Overview</h1>
+                <h1 className="text-40 fw-700 mb-20">
+                  Introduction Overview & Why CSEI
+                </h1>
                 <p className="text-16 max-w-600 mx-auto">
                   Bridging theory and practice—our internships give students
                   real-world experience in top companies across various

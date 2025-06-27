@@ -1,64 +1,70 @@
-// app/academics/calendar/page.jsx
+"use client";
 
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Header from "@/components/layout/headers/Header";
+import FooterOne from "@/components/layout/footers/FooterOne";
+import Preloader from "@/components/common/Preloader";
+import PageLinks from "@/components/common/PageLinks";
 
-const CalendarPage = () => {
+export default function Page() {
+  useEffect(() => {
+    AOS.init({ duration: 800 });
+  }, []);
+
   return (
-    <div className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold text-brown-800 mb-6">
-        Academic Calendar
-      </h1>
-      <p className="text-lg text-gray-700 mb-8">
-        Stay up to date with important academic dates including semester
-        timelines, holidays, exam periods, and deadlines.
-      </p>
+    <div className="main-content">
+      <Preloader />
+      <Header />
+      <div className="content-wrapper js-content-wrapper">
+        <PageLinks />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="bg-white border rounded-lg p-6 shadow">
-          <h2 className="text-2xl font-semibold text-brown-700 mb-2">
-            📅 Semester Dates
-          </h2>
-          <ul className="list-disc list-inside text-gray-600">
-            <li>Fall Semester: Sep 1 – Dec 15</li>
-            <li>Spring Semester: Jan 5 – Apr 20</li>
-            <li>Summer Term: May 15 – Aug 1</li>
-          </ul>
-        </div>
+        <section className="layout-pt-lg layout-pb-lg bg-[#160643] text-dark-1">
+          <div className="container">
+            <div className="row justify-center text-center mb-60">
+              <div className="col-auto" data-aos="fade-up">
+                <h1 className="text-40 fw-700 mb-20">Calendar</h1>
+                <p className="text-16 max-w-600 mx-auto">
+                  Bridging theory and practice—our internships give students
+                  real-world experience in top companies across various
+                  industries.
+                </p>
+              </div>
+            </div>
 
-        <div className="bg-white border rounded-lg p-6 shadow">
-          <h2 className="text-2xl font-semibold text-brown-700 mb-2">
-            🎓 Exam Periods
-          </h2>
-          <ul className="list-disc list-inside text-gray-600">
-            <li>Midterms: Week 7–8 of each semester</li>
-            <li>Final Exams: Last 2 weeks of semester</li>
-          </ul>
-        </div>
+            <div className="row y-gap-40 justify-center">
+              <div className="col-lg-10" data-aos="fade-up">
+                <h3 className="text-24 fw-600 mb-20">Key Highlights:</h3>
+                <ul className="list-disc pl-20 text-16 leading-8">
+                  <li>
+                    Industry placements aligned with each student's major.
+                  </li>
+                  <li>
+                    Hands-on exposure to corporate processes and team
+                    environments.
+                  </li>
+                  <li>
+                    Resume-boosting experience and networking opportunities.
+                  </li>
+                  <li>Supervised training and performance evaluation.</li>
+                </ul>
+              </div>
 
-        <div className="bg-white border rounded-lg p-6 shadow">
-          <h2 className="text-2xl font-semibold text-brown-700 mb-2">
-            🏖️ Holidays
-          </h2>
-          <ul className="list-disc list-inside text-gray-600">
-            <li>National Day – Dec 2</li>
-            <li>Winter Break – Dec 20 to Jan 3</li>
-            <li>Eid Holidays – Variable Dates</li>
-          </ul>
-        </div>
+              <div className="col-lg-10 mt-40" data-aos="fade-up">
+                <h3 className="text-24 fw-600 mb-20">Eligibility:</h3>
+                <p className="text-16">
+                  Open to students enrolled in diploma or professional
+                  certificate programs at CSEI Academy who have completed a
+                  minimum of one academic semester.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <div className="bg-white border rounded-lg p-6 shadow">
-          <h2 className="text-2xl font-semibold text-brown-700 mb-2">
-            📝 Registration Deadlines
-          </h2>
-          <ul className="list-disc list-inside text-gray-600">
-            <li>Fall Enrollment: Aug 15</li>
-            <li>Spring Enrollment: Dec 20</li>
-            <li>Summer Courses: May 1</li>
-          </ul>
-        </div>
+        <FooterOne />
       </div>
     </div>
   );
-};
-
-export default CalendarPage;
+}

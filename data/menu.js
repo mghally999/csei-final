@@ -17,32 +17,32 @@ export const menuList = [
         links: [
           {
             label: "School of Computing",
-            href: "/academics/computing",
+            href: "/academics/schools/computing",
           },
           {
             label: "School of Health Sciences",
-            href: "/academics/health-sciences",
+            href: "/academics/schools/health-sciences",
           },
           {
             label: "School of Culinary Arts",
-            href: "/academics/culinary-arts",
+            href: "/academics/schools/culinary-arts",
           },
           {
             label: "School of Business",
-            href: "/academics/business",
+            href: "/academics/schools/business",
           },
         ],
       },
       {
-        title: "Internships",
+        title: "Internships & Opportunities",
         links: [
           {
-            label: "Introduction",
-            href: "/academics/internships/introduction",
+            label: "Introduction & Why CSEI",
+            href: "/academics/intro-why",
           },
           {
-            label: "Why Internships",
-            href: "/academics/internships/why",
+            label: "Scholarships",
+            href: "/academics/scholarships",
           },
         ],
       },

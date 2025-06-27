@@ -22,7 +22,7 @@ const academicCards = [
     title: "School of Health Sciences",
     description:
       "Train in healthcare, nursing, public health, and medical technology with hands-on experience.",
-    link: "/academics/health-sciences",
+    link: "/academics/schools/health-sciences",
     image:
       "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=800&q=80",
   },
@@ -30,7 +30,7 @@ const academicCards = [
     title: "School of Culinary Arts",
     description:
       "Pursue excellence in culinary techniques, food safety, and hospitality services.",
-    link: "/academics/culinary-arts",
+    link: "/academics/schools/culinary-arts",
     image:
       "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=800&q=80",
   },
@@ -38,7 +38,7 @@ const academicCards = [
     title: "School of Business",
     description:
       "Master entrepreneurship, finance, and global strategy with real-world applications.",
-    link: "/academics/business",
+    link: "/academics/schools/business",
     image:
       "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=800&q=80",
   },
@@ -54,7 +54,7 @@ const academicCards = [
     title: "Introduction & Why CSEI",
     description:
       "Learn about our academic philosophy and why students choose CSEI for their education.",
-    link: "/academics/introduction",
+    link: "/academics/intro-why",
     image:
       "https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=800&q=80",
   },
