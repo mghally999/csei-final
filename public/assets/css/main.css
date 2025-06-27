@@ -1336,7 +1336,8 @@ button:focus {
 }
 
 .button.-underline:hover {
-  text-decoration: underline;
+  text-decoration: none;
+  color: #e05500 !important;
 }
 
 .button.-white {
@@ -1345,8 +1346,7 @@ button:focus {
 }
 
 .button.-white:hover {
-  background-color: transparent !important;
-  color: var(--color-white) !important;
+  color: #e05500 !important;
 }
 
 .button.-outline-white {
@@ -16040,3 +16040,11 @@ table.table td {
 .submenu {
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
+
+/* @media (max-width: 1024px) {
+  .header-right {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+} */

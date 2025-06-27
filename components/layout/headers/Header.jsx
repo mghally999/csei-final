@@ -57,10 +57,6 @@ export default function Header() {
                     />{" "}
                   </div>
                 </div>
-
-                <div className="d-flex items-center text-white text-13 sm:d-none">
-                  English <i className="icon-chevron-down text-9 ml-10"></i>
-                </div>
               </div>
             </div>
           </div>
@@ -108,17 +104,10 @@ export default function Header() {
                 activeMobileMenu={activeMobileMenu}
                 setActiveMobileMenu={setActiveMobileMenu}
               />
-              <div className="header-right__icons text-white d-flex items-center gap-x-4">
-                <SearchToggle />
-                <CartToggle
-                  parentClassess={"relative"}
-                  allClasses={"d-flex items-center text-white"}
-                />
-              </div>
 
               <div className="d-none xl:d-block">
                 <button
-                  className="text-white items-center"
+                  className="text-dark-1 items-center"
                   onClick={() => setActiveMobileMenu(true)}
                   data-el-toggle=".js-mobile-menu-toggle"
                 >
@@ -126,7 +115,7 @@ export default function Header() {
                 </button>
               </div>
 
-              <div className="header-right__buttons d-flex items-center gap-x-4 md:d-none">
+              <div className="header-right__buttons d-flex items-center gap-x-4 md:d-none ml-10">
                 <Link href="/login" className="button -underline text-dark-1">
                   Log in
                 </Link>

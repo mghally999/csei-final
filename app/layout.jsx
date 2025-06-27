@@ -29,7 +29,12 @@ export default function RootLayout({ children }) {
   }, []);
   return (
     <html lang="en" className="">
-      <head></head>
+      <head>
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
+        <meta name="theme-color" content="#ffffff" />
+        <title>CSEI Academy</title>
+      </head>
       <body>
         <Context> {children}</Context>
       </body>
