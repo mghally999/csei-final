@@ -35,9 +35,9 @@ export default function Page() {
         <section className="py-20 bg-white">
           <Brief />
         </section>
-        <section className="py-20 bg-[#160643] text-white">
+        {/* <section className="py-20 bg-[#160643] text-white">
           <Milestones />
-        </section>
+        </section> */}
         <section className="py-20 bg-white">
           <AboutCSEI />
         </section>
@@ -50,14 +50,14 @@ export default function Page() {
         <section className="py-20 bg-white">
           <OrganizationStructure />
         </section>
-        <section className="py-20 bg-[#160643] text-white">
+        {/* <section className="py-20 bg-[#160643] text-white">
           <IndustryPartners />
-        </section>
+        </section> */}
 
         {/* Extra Sections */}
-        <section className="py-20 bg-white">
+        {/* <section className="py-20 bg-white">
           <WhyCourse />
-        </section>
+        </section> */}
         {/* <section className="py-20 bg-[#160643] text-white">
           <TestimonialsOne />
         </section> */}

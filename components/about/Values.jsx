@@ -2,40 +2,31 @@ import React from "react";
 
 const values = [
   {
-    icon: "icon-star",
-    title: "Excellence",
-    description:
-      "We pursue the highest standards in education, service, and performance.",
-  },
-  {
-    icon: "icon-handshake",
-    title: "Integrity",
-    description:
-      "We act with honesty, fairness, and accountability in everything we do.",
-  },
-  {
-    icon: "icon-users",
-    title: "Inclusivity",
-    description:
-      "We value diversity and foster a respectful, supportive environment for all.",
-  },
-  {
-    icon: "icon-lightbulb",
-    title: "Innovation",
-    description:
-      "We embrace new ideas, technologies, and teaching methods to enhance learning.",
-  },
-  {
-    icon: "icon-heart",
     title: "Empowerment",
-    description:
-      "We inspire students to reach their full potential and impact their communities.",
+    description: "Ignite every student’s potential.",
   },
   {
-    icon: "icon-globe",
-    title: "Global Perspective",
+    title: "Inclusivity",
+    description: "Emphasis on diversity, belonging, and equal opportunity.",
+  },
+  {
+    title: "Support & Mentorship",
     description:
-      "We prepare learners to thrive in a connected, multicultural world.",
+      "Prioritizing personalized guidance and holistic student development.",
+  },
+  {
+    title: "Excellence",
+    description: "Dedication to novelty, quality and rigor.",
+  },
+  {
+    title: "Leadership",
+    description:
+      "Focus on cultivating changemakers who drive positive change globally.",
+  },
+  {
+    title: "Community & Collaboration",
+    description:
+      "Building a shared environment where growth is nurtured together.",
   },
 ];
 
@@ -61,11 +52,8 @@ export default function Values() {
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
-              <div className="stepCard -type-1 -stepCard-hover">
-                <div className="stepCard__content">
-                  <div className="stepCard__icon text-white">
-                    <i className={`${item.icon}`}></i>
-                  </div>
+              <div className="stepCard -type-1 -stepCard-hover h-[300px] flex flex-col justify-between">
+                <div className="stepCard__content grow">
                   <h4 className="stepCard__title text-white">{item.title}</h4>
                   <p className="stepCard__text text-white">
                     {item.description}

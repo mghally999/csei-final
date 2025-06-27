@@ -6400,12 +6400,13 @@ h6 {
 .stepCard.-type-1 .stepCard__content {
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 8px;
-  padding: 60px;
+  padding: 30px;
   padding-bottom: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  height: 200px;
 }
 
 .stepCard.-type-1 .stepCard__title {
@@ -16040,11 +16041,3 @@ table.table td {
 .submenu {
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
-
-/* @media (max-width: 1024px) {
-  .header-right {
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 1rem;
-  }
-} */

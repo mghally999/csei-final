@@ -16,23 +16,40 @@ export default function Mission() {
   return (
     <section className="mission-section layout-pt-lg layout-pb-lg bg-white text-[#1B0C4D]">
       <div className="container">
+        {/* Title */}
         <div className="row justify-center text-center mb-10">
           <div className="col-xl-8 col-lg-10">
             <h2 className="text-[36px] font-extrabold" data-aos="fade-up">
               Our Mission
             </h2>
+          </div>
+        </div>
+
+        {/* Full Paragraph from Screenshot */}
+        <div className="row justify-center mb-10">
+          <div className="col-xl-10">
             <p
-              className="mt-4 text-lg text-[#1B0C4D]/80 leading-relaxed"
+              className="text-lg text-[#1B0C4D]/90 leading-loose text-center"
               data-aos="fade-up"
               data-aos-delay="100"
             >
-              To empower individuals through accessible, high-quality education
-              that equips them with the skills and knowledge needed to thrive in
-              their careers and contribute meaningfully to society.
+              At CSEI Academy in Dubai, our mission is to ignite every student’s
+              potential through affordable, internationally recognized education
+              and an inclusive campus environment. Our dedicated staff actively
+              support, mentor, and inspire students from all backgrounds,
+              ensuring every student feels valued and empowered throughout their
+              journey.
+              <br />
+              <br />
+              By blending hands-on learning with strong academic foundations and
+              connecting students to real-world opportunities, we prepare future
+              leaders to thrive and make a meaningful impact, both locally and
+              globally.
             </p>
           </div>
         </div>
 
+        {/* Mission Cards */}
         <div className="row justify-center gap-y-6">
           {missionPoints.map((item, i) => (
             <div

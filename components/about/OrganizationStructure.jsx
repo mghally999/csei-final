@@ -6,25 +6,29 @@ const structureItems = [
     title: "Board of Directors",
     description:
       "Our governing body provides strategic leadership and oversight, ensuring alignment with our mission and values.",
-    icon: "/assets/img/structure/board.svg",
+    image:
+      "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=60&h=60&q=80",
   },
   {
     title: "Academic Advisory Council",
     description:
       "A team of academic experts guiding the curriculum, assessments, and quality of education across all programs.",
-    icon: "/assets/img/structure/advisory.svg",
+    image:
+      "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=60&h=60&q=80",
   },
   {
     title: "Operations & Student Support",
     description:
       "Responsible for smooth daily functioning, student services, and ensuring an exceptional learner experience.",
-    icon: "/assets/img/structure/operations.svg",
+    image:
+      "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=60&h=60&q=80",
   },
   {
     title: "Marketing & Partnerships",
     description:
       "Focused on global outreach, partnerships, and building a strong brand presence in education.",
-    icon: "/assets/img/structure/marketing.svg",
+    image:
+      "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=60&h=60&q=80",
   },
 ];
 
@@ -53,10 +57,11 @@ export default function Structure() {
               <div className="d-flex items-center">
                 <div className="mr-30">
                   <Image
-                    src={item.icon}
+                    src={item.image}
                     alt={`${item.title} Icon`}
                     width={60}
                     height={60}
+                    className="rounded-full object-cover"
                   />
                 </div>
                 <div>

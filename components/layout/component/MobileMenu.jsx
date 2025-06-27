@@ -1,11 +1,9 @@
 "use client";
 
 import MobileFooter from "./MobileFooter";
-
 import { menuList } from "../../../data/menu";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
@@ -74,27 +72,47 @@ export default function MobileMenu({ setActiveMobileMenu, activeMobileMenu }) {
           <div className="mobileMenu text-dark-1">
             {menuList.map((elm, i) => (
               <div key={i} className="submenuOne">
-                <div
-                  className="title"
-                  onClick={() =>
-                    setMenuNesting((pre) =>
-                      pre[0] === elm.title ? [] : [elm.title]
-                    )
-                  }
-                >
-                  <span
-                    className={
-                      elm.title === menuItem ? "activeMenu" : "inActiveMenu"
-                    }
-                  >
-                    {elm.title}
-                  </span>
+                <div className="title flex items-center justify-between">
+                  {elm.href ? (
+                    <Link
+                      href={elm.href}
+                      className={
+                        elm.title === menuItem
+                          ? "activeMenu w-full"
+                          : "inActiveMenu w-full"
+                      }
+                      onClick={() => setActiveMobileMenu(false)}
+                    >
+                      {elm.title}
+                    </Link>
+                  ) : (
+                    <span
+                      className={
+                        elm.title === menuItem
+                          ? "activeMenu w-full"
+                          : "inActiveMenu w-full"
+                      }
+                      onClick={() =>
+                        setMenuNesting((pre) =>
+                          pre[0] === elm.title ? [] : [elm.title]
+                        )
+                      }
+                    >
+                      {elm.title}
+                    </span>
+                  )}
+
                   {elm.links && (
                     <i
                       className={
                         menuNesting[0] === elm.title
                           ? "icon-chevron-right text-13 ml-10 active"
                           : "icon-chevron-right text-13 ml-10"
+                      }
+                      onClick={() =>
+                        setMenuNesting((pre) =>
+                          pre[0] === elm.title ? [] : [elm.title]
+                        )
                       }
                     ></i>
                   )}
@@ -118,6 +136,7 @@ export default function MobileMenu({ setActiveMobileMenu, activeMobileMenu }) {
                               : "link inActiveMenu"
                           }
                           href={itm.href}
+                          onClick={() => setActiveMobileMenu(false)}
                         >
                           {itm.label}
                         </Link>
@@ -125,21 +144,19 @@ export default function MobileMenu({ setActiveMobileMenu, activeMobileMenu }) {
 
                       {itm.links && (
                         <div className="submenuTwo">
-                          <div
-                            className="title"
-                            onClick={() =>
-                              setMenuNesting((pre) =>
-                                pre[1] === itm.title
-                                  ? [pre[0]]
-                                  : [pre[0], itm.title]
-                              )
-                            }
-                          >
+                          <div className="title flex items-center justify-between">
                             <span
                               className={
                                 itm.title === submenu
-                                  ? "activeMenu"
-                                  : "inActiveMenu"
+                                  ? "activeMenu w-full"
+                                  : "inActiveMenu w-full"
+                              }
+                              onClick={() =>
+                                setMenuNesting((pre) =>
+                                  pre[1] === itm.title
+                                    ? [pre[0]]
+                                    : [pre[0], itm.title]
+                                )
                               }
                             >
                               {itm.title}
@@ -150,8 +167,16 @@ export default function MobileMenu({ setActiveMobileMenu, activeMobileMenu }) {
                                   ? "icon-chevron-right text-13 ml-10 active"
                                   : "icon-chevron-right text-13 ml-10"
                               }
+                              onClick={() =>
+                                setMenuNesting((pre) =>
+                                  pre[1] === itm.title
+                                    ? [pre[0]]
+                                    : [pre[0], itm.title]
+                                )
+                              }
                             ></i>
                           </div>
+
                           <div
                             className={
                               menuNesting[1] === itm.title
@@ -168,6 +193,7 @@ export default function MobileMenu({ setActiveMobileMenu, activeMobileMenu }) {
                                     : "link inActiveMenu"
                                 }
                                 href={itm2.href}
+                                onClick={() => setActiveMobileMenu(false)}
                               >
                                 {itm2.label}
                               </Link>

@@ -8,11 +8,15 @@ export default function Brief() {
           <div className="col-xl-8 col-lg-9 col-md-10">
             <h2 className="sectionTitle__title">CSEI at a Glance</h2>
             <p className="sectionTitle__text mt-20">
-              The Centre for Skills and Executive Intelligence (CSEI) is a
-              forward-thinking educational institute committed to empowering
-              learners with practical knowledge, industry-relevant skills, and
-              globally recognized qualifications. We specialize in bridging the
-              gap between academic theory and real-world application.
+              At CSEI Academy, we are proud to offer UK Ofqual-recognized and
+              KHDA-approved programs with hands-on learning to help you thrive
+              in IT, Healthcare, Tourism, Culinary Arts, and Business. Our
+              flexible courses are designed around your life, supporting working
+              professionals and students seeking placements. With strong
+              industry connections and direct pathways to UK Bachelor’s degrees,
+              we open doors to global opportunities. Join a community where your
+              success comes first, and let us help you build the confidence,
+              skills, and experience for a bright tomorrow.
             </p>
           </div>
         </div>
