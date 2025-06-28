@@ -57,8 +57,8 @@ export default function Structure() {
               <div className="d-flex items-center">
                 <div className="mr-30">
                   <Image
-                    src={item.image}
-                    alt={`${item.title} Icon`}
+                    src={item?.image}
+                    alt={`${item?.title} Icon`}
                     width={60}
                     height={60}
                     className="rounded-full object-cover"

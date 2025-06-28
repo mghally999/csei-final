@@ -19,12 +19,52 @@ const lifeWithCSEICards = [
       "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80",
   },
   {
+    title: "Campus Life",
+    description:
+      "A vibrant campus full of academic, social, and cultural experiences that shape future leaders.",
+    link: "/life-with-csei/campus-life",
+    image:
+      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "Events & Activities",
+    description:
+      "From academic workshops to cultural festivals, explore life beyond the classroom.",
+    link: "/life-with-csei/events",
+    image:
+      "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=800&q=80",
+  },
+  {
     title: "Student Clubs",
     description:
       "Join vibrant student-led clubs that cultivate leadership, innovation, and community engagement.",
     link: "/life-with-csei/student-clubs",
     image:
       "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "Our Core Values",
+    description:
+      "Integrity, inclusiveness, and respect guide every part of the CSEI student journey.",
+    link: "/life-with-csei/core-values",
+    image:
+      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "Facilities",
+    description:
+      "Modern labs, quiet study zones, and vibrant lounges foster productivity and well-being.",
+    link: "/life-with-csei/facilities",
+    image:
+      "https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "Student Testimonials",
+    description:
+      "Hear directly from CSEI students about how the academy transformed their journeys.",
+    link: "/life-with-csei/testimonials",
+    image:
+      "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80",
   },
   {
     title: "Accommodation",
@@ -48,7 +88,7 @@ const lifeWithCSEICards = [
       "Stay connected with fellow graduates through events, mentorships, and job opportunities.",
     link: "/life-with-csei/alumni-network",
     image:
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
   },
   {
     title: "Student Portal",
@@ -56,7 +96,7 @@ const lifeWithCSEICards = [
       "Access your academic resources, schedules, and grades in one secure portal.",
     link: "/life-with-csei/student-portal",
     image:
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
   },
   {
     title: "Mentoring Support",
@@ -69,10 +109,18 @@ const lifeWithCSEICards = [
   {
     title: "LMS & Academic Systems",
     description:
-      "Seamlessly access learning materials, submit assignments, and track progress through our advanced LMS.",
-    link: "/life-with-csei/lms-portal",
+      "Access learning materials, submit assignments, and track progress with our LMS.",
+    link: "/life-with-csei/lms",
     image:
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "Student Experience",
+    description:
+      "Dive into the full CSEI student journey—engaging, enriching, and empowering.",
+    link: "/life-with-csei/student-experience",
+    image:
+      "https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
@@ -85,7 +133,6 @@ export default function Page() {
     <div className="main-content">
       <Preloader />
       <Header />
-
       <div className="content-wrapper js-content-wrapper overflow-hidden">
         <PageLinks />
 

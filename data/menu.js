@@ -212,7 +212,7 @@ export const menuList = [
     links: [
       {
         title: "Overview",
-        href: "/life-with-csei",
+        href: "/life-with-csei/overview",
       },
       {
         title: "Campus Life",
@@ -235,12 +235,36 @@ export const menuList = [
         href: "/life-with-csei/facilities",
       },
       {
-        title: "Gallery",
-        href: "/life-with-csei/gallery",
-      },
-      {
         title: "Student Testimonials",
         href: "/life-with-csei/testimonials",
+      },
+      {
+        title: "Accommodation",
+        href: "/life-with-csei/accommodation",
+      },
+      {
+        title: "Transportation",
+        href: "/life-with-csei/transportation",
+      },
+      {
+        title: "Alumni Network",
+        href: "/life-with-csei/alumni-network",
+      },
+      {
+        title: "Student Portal",
+        href: "/life-with-csei/student-portal",
+      },
+      {
+        title: "LMS (Learning Management System)",
+        href: "/life-with-csei/lms",
+      },
+      {
+        title: "Mentoring Support",
+        href: "/life-with-csei/mentoring-support",
+      },
+      {
+        title: "Student Experience",
+        href: "/life-with-csei/student-experience",
       },
     ],
   },
