@@ -65,14 +65,16 @@ export default function HomeHero() {
               data-aos-delay="500"
             >
               <h1 className="mainSlider__title text-white">
-                Experience Excellence at CSEI Academy
-                {/* <span className="text-green-1 underline">Web Design</span> */}
+                Accredited UK Diplomas and KHDA Approved Programmes
               </h1>
               <p className="mainSlider__text text-white">
-                More than 6.500 online courses
+                Healthcare, Tourism, Business, IT and Culinary Arts
               </p>
-
-              <div className="mainSlider__form">
+              <p className="text-16 text-white mt-10">
+                CSEI Academy is proudly accredited by globally recognized
+                institutions.
+              </p>
+              {/* <div className="mainSlider__form">
                 <input
                   required
                   type="text"
@@ -86,22 +88,9 @@ export default function HomeHero() {
                   <i className="icon icon-search mr-15"></i>
                   Search
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
-        </div>
-        <div className="row y-gap-20 justify-center mainSlider__items">
-          {featureTwo.map((elm, i) => (
-            <div key={i} className="col-xl-3 col-md-4 col-sm-6">
-              <div className="mainSlider-item text-center">
-                <Image width={50} height={50} src={elm.imgSrc} alt="icon" />
-                <h4 className="text-20 fw-500 lh-18 text-white mt-8">
-                  {elm.title}
-                </h4>
-                <p className="text-15 text-white">{elm.description}</p>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
 

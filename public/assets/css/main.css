@@ -1880,13 +1880,14 @@ button:focus {
 }
 
 .button.-green-1 {
-  background-color: var(--color-green-1);
-  border: 2px solid var(--color-green-1);
+  color: #e05500 !important;
+  background-color: #04044e;
+  border: 2px solid #e05500 !important;
 }
 
 .button.-green-1:hover {
-  background-color: transparent !important;
-  color: var(--color-green-1) !important;
+  background-color: #e05500 !important;
+  color: #ffffff !important;
 }
 
 .button.-outline-green-1 {
@@ -3502,7 +3503,7 @@ h6 {
 }
 
 .about-content__title span {
-  color: #6440fb;
+  color: #e05500;
 }
 
 .about-content__text {
@@ -4189,6 +4190,7 @@ h6 {
   line-height: 16px;
   font-weight: 400;
   color: var(--color-light-1);
+  border: 1px solid #04044e;
 }
 
 .footer.-type-1
@@ -4224,7 +4226,7 @@ h6 {
   line-height: 16px;
   color: white;
   padding: 12px 24px;
-  background-color: #6440fb;
+  background-color: #04044e;
   border-radius: 100px;
 }
 
@@ -4291,7 +4293,7 @@ h6 {
 
 .footer.-type-1.-green-links .footer-columns a:hover {
   text-decoration: underline;
-  color: var(--color-green-1) !important;
+  color: #e05500 !important;
 }
 
 .footer.-type-4 .footer-header-socials__list {
@@ -6728,6 +6730,7 @@ h6 {
 
 .mainSlider.-type-1 .mainSlider__content {
   padding-top: 260px;
+  padding-bottom: 260px;
 }
 
 @media (max-width: 991px) {
@@ -15034,7 +15037,7 @@ h6 {
 }
 
 .-featureCard-hover:hover .featureCard__content {
-  background-color: var(--color-dark-1) !important;
+  background-color: #04044e !important;
 }
 
 .-featureCard-hover:hover .featureCard__title,

@@ -38,7 +38,7 @@ export default function AboutCSEI() {
           {/* RIGHT SIDE - IMAGE */}
           <div className="col-lg-6" data-aos="fade-left">
             <Image
-              src="/assets/img/about/csei-building3.jpg"
+              src="/assets/img/about/csei-building4.jpeg"
               alt="About CSEI Academy"
               width={520}
               height={480}

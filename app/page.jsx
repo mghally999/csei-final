@@ -36,10 +36,11 @@ export default function HomePage() {
         <Courses />
         <TestimonialsOne />
         <FeaturesOne />
-        <WhyCourse />
+        {/* <WhyCourse /> */}
         <Instructors />
         <GetApp />
-        <Blog />
+        {/* <Blog /> */}
+        <Brands />
         <Join />
         <FooterOne />
       </div>

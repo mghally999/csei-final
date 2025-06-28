@@ -10,23 +10,25 @@ export default function FooterOne() {
     e.preventDefault();
   };
   return (
-    <footer className="footer -type-1 bg-dark-1 -green-links">
+    <footer className="footer -type-1 bg-white -green-links">
       <div className="container">
         <div className="footer-header">
           <div className="row y-gap-20 justify-between items-center">
             <div className="col-auto">
               <div className="footer-header__logo">
-                <Image
-                  width={140}
-                  height={50}
-                  src="/assets/img/general/logo.png"
-                  alt="logo"
-                />
+                <Link href="/" className="d-flex items-center">
+                  <Image
+                    width={140}
+                    height={40}
+                    src="/assets/img/general/logo.png"
+                    alt="logo"
+                  />
+                </Link>
               </div>
             </div>
             <div className="col-auto">
               <div className="footer-header-socials">
-                <div className="footer-header-socials__title text-white">
+                <div className="footer-header-socials__title text-dark-1">
                   Follow us on social media
                 </div>
                 <div className="footer-header-socials__list">
@@ -40,14 +42,14 @@ export default function FooterOne() {
         <div className="footer-columns">
           <div className="row y-gap-30">
             <FooterLinks
-              allClasses={"text-17 fw-500 text-white uppercase mb-25"}
+              allClasses={"text-17 fw-500 text-dark-1 uppercase mb-25"}
             />
 
             <div className="col-xl-4 col-lg-4 col-md-6">
-              <div className="text-17 fw-500 text-white uppercase mb-25">
+              <div className="text-17 fw-500 text-dark-1 uppercase mb-25">
                 GET IN TOUCH
               </div>
-              <div className="footer-columns-form">
+              <div className="text-dark-1 footer-columns-form">
                 <div>We don’t send spam so don’t worry.</div>
                 <form onSubmit={handleSubmit}>
                   <div className="form-group">

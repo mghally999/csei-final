@@ -31,7 +31,7 @@ export default function Header() {
         scrollPosition > 40 ? "bg-dark-1" : ""
       } `}
     >
-      <div className="d-flex items-center py-10 bg-custom-navyblue">
+      <div className="d-flex items-center py-2 bg-custom-navyblue">
         <div className="container">
           <div className="row y-gap-5 justify-between items-center">
             <div className="col-auto">
@@ -63,7 +63,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="container py-10">
+      <div className="container py-4">
         <div className="row justify-center items-center flex-nowrap overflow-x-auto">
           {/* Logo */}
           <div className="col-auto flex items-center flex-nowrap">
@@ -93,12 +93,12 @@ export default function Header() {
               </div>
             </div>
             {/* Orange Separator */}
-            <div className="mx-30 h-40 w-1 bg-[#f60] rounded-full xl:mx-20 lg:mx-10"></div>
+            <div className="mx-10 h-32 w-1 bg-[#f60] rounded-full"></div>
           </div>
 
           {/* Right side (Menu, Search, Cart, Log in, Sign up) */}
           <div className="col-auto flex items-center justify-end flex-nowrap">
-            <div className="header-right d-flex items-center gap-x-6">
+            <div className="header-right d-flex items-center gap-x-3">
               <Menu allClasses={"menu__nav text-white -is-active"} />
               <MobileMenu
                 activeMobileMenu={activeMobileMenu}
@@ -115,7 +115,7 @@ export default function Header() {
                 </button>
               </div>
 
-              <div className="header-right__buttons d-flex items-center gap-x-4 md:d-none ml-10">
+              <div className="header-right__buttons d-flex items-center gap-x-2 md:d-none ml-10">
                 <Link href="/login" className="button -underline text-dark-1">
                   Log in
                 </Link>

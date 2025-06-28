@@ -8,6 +8,152 @@ export const menuList = [
     href: "/about",
   },
   {
+    title: "Programs",
+    href: "/programs",
+    mega: true,
+    links: [
+      {
+        title: "School of Computing",
+        links: [
+          {
+            label: "Information Technology",
+            href: "/programs/information-technology",
+          },
+        ],
+      },
+      {
+        title: "School of Health Science",
+        links: [
+          {
+            title: "Health & Social Care Management",
+            links: [
+              {
+                label: "Level 3",
+                href: "/programs/health-social-care/university-progression/level-3",
+              },
+              {
+                label: "Level 4",
+                href: "/programs/health-social-care/level-4",
+              },
+              {
+                label: "Level 5",
+                href: "/programs/health-social-care/level-5",
+              },
+            ],
+          },
+          {
+            title: "Professional Courses",
+            links: [
+              {
+                label: "Health and Social Care Management",
+                href: "/programs/health-social-care/professional-courses/health-social-care-management",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "School of Culinary Arts & Tourism",
+        links: [
+          {
+            title: "Tourism & Hospitality",
+            links: [
+              {
+                label: "Level 4",
+                href: "/programs/tourism-hospitality/level-4",
+              },
+              {
+                label: "Level 5",
+                href: "/programs/tourism-hospitality/level-5",
+              },
+              {
+                label: "Level 6",
+                href: "/programs/tourism-hospitality/level-6",
+              },
+              {
+                label: "Level 7",
+                href: "/programs/tourism-hospitality/level-7",
+              },
+            ],
+          },
+          {
+            title: "Professional Courses",
+            links: [
+              {
+                label: "Culinary Arts Professional",
+                href: "/programs/tourism-hospitality/professional-courses/culinary-arts",
+              },
+              {
+                label: "Training Diploma in Housekeeping",
+                href: "/programs/tourism-hospitality/professional-courses/housekeeping",
+              },
+              {
+                label: "Human Resource Management in Hospitality & Tourism",
+                href: "/programs/tourism-hospitality/professional-courses/hr-management",
+              },
+              {
+                label: "Food Safety & Sanitation",
+                href: "/programs/tourism-hospitality/professional-courses/food-safety",
+              },
+              {
+                label: "Food & Beverage Service Training",
+                href: "/programs/tourism-hospitality/professional-courses/food-beverage",
+              },
+              {
+                label: "Front Desk Operations",
+                href: "/programs/tourism-hospitality/professional-courses/front-desk-operations",
+              },
+              {
+                label: "Barista Professional / Basic / Advance",
+                href: "/programs/tourism-hospitality/professional-courses/barista-basic-advance",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "School of Business",
+        links: [
+          {
+            title: "Business Management",
+            links: [
+              {
+                label: "Level 3",
+                href: "/programs/business-management/level-3",
+              },
+              {
+                label: "Level 4",
+                href: "/programs/business-management/level-4",
+              },
+              {
+                label: "Level 5",
+                href: "/programs/business-management/level-5",
+              },
+            ],
+          },
+          {
+            title: "Accounting & Finance",
+            links: [
+              {
+                label: "Level 7",
+                href: "/programs/health-social-care/professional-courses/level-7",
+              },
+            ],
+          },
+          {
+            title: "Strategic Management & Leadership",
+            links: [
+              {
+                label: "Level 7",
+                href: "/programs/health-social-care/professional-courses/level-7",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
     title: "Academics",
     href: "/academics",
     mega: true,
@@ -92,7 +238,7 @@ export const menuList = [
           },
           {
             label: "Tuition and Fees",
-            href: "/admission/tuition-and-fees",
+            href: "/admission//tuition-and-fees",
           },
           {
             label: "Financial Aid & Scholarships",
@@ -115,7 +261,6 @@ export const menuList = [
     title: "Life With CSEI",
     href: "/life-with-csei",
   },
-
   {
     title: "Placements",
     href: "/placements",
@@ -166,7 +311,14 @@ export const menuList = [
       },
     ],
   },
-
+  {
+    title: "Contact",
+    href: "/contact-2",
+  },
+  {
+    title: "News",
+    href: "/news",
+  },
   // {
   //   title: "Courses",
   //   mega: true,

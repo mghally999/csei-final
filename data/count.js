@@ -2,21 +2,21 @@ export const counters = [
   {
     id: 1,
     number: "350,000+",
-    title: "Students worldwide",
+    title: "Employability Ratio",
   },
   {
     id: 2,
     number: "496,000+",
-    title: "Total course views",
+    title: "Total Course Views",
   },
   {
     id: 3,
     number: "19,000+",
-    title: "Five-star course reviews",
+    title: "Student Satisfaction",
   },
   {
     id: 4,
     number: "987,000+",
-    title: "Students community",
+    title: "NO. Of Partners",
   },
 ];

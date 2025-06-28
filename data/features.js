@@ -1,19 +1,27 @@
 export const featureOne = [
   {
     id: 1,
-    title: "Hand-picked authors",
+    title: "Academic Support",
   },
   {
     id: 2,
-    title: "Easy to follow curriculum",
+    title: "Professional Development",
   },
   {
     id: 3,
-    title: "Free courses",
+    title: "Student Support in Migration",
   },
   {
     id: 4,
-    title: "Money-back guarantee",
+    title: "Accommodation and Transport Facilities",
+  },
+  {
+    id: 5,
+    title: "Placement Guidance",
+  },
+  {
+    id: 6,
+    title: "Counselling and Mentoring",
   },
 ];
 
