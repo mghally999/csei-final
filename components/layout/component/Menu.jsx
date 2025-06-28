@@ -13,11 +13,12 @@ export default function Menu({ allClasses, headerPosition }) {
 
   useEffect(() => {
     menuList.forEach((elm) => {
-      elm?.links?.forEach((elm2) => {
+      const links = elm.links || elm.dropdown || [];
+      links.forEach((elm2) => {
         if (elm2.href?.split("/")[1] == pathname.split("/")[1]) {
           setMenuItem(elm.title);
         } else {
-          elm2?.links?.map((elm3) => {
+          elm2?.links?.forEach((elm3) => {
             if (elm3.href?.split("/")[1] == pathname.split("/")[1]) {
               setMenuItem(elm.title);
               setSubmenu(elm2.title);
@@ -33,20 +34,13 @@ export default function Menu({ allClasses, headerPosition }) {
     return pathname.startsWith(href);
   };
 
-  const noDropdownTitles = [
-    "Home",
-    "Student Life",
-    "Life With CSEI",
-    "About Us",
-  ];
-
-  const singleDropdownTitles = ["Academics", "Admission"];
+  const noDropdownTitles = ["Home", "Student Life", "About Us"];
+  const singleDropdownTitles = ["Academics", "Admission", "Life With CSEI"];
 
   const renderNestedLinks = (links) => (
     <ul className="mega__list whitespace-nowrap min-w-[200px] text-gray-900">
       {links.map((item, index) => {
         const isParent = !item.href && item.links?.length > 0;
-
         return (
           <li
             key={index}
@@ -67,7 +61,6 @@ export default function Menu({ allClasses, headerPosition }) {
                   {item.label || item.title}
                 </span>
               )}
-
               {isParent && (
                 <i className="icon-chevron-down text-10 ml-4 text-gray-600 ml-10 cursor-pointer" />
               )}
@@ -77,7 +70,6 @@ export default function Menu({ allClasses, headerPosition }) {
               <ul className="submenu absolute top-0 left-full min-w-[220px] bg-white text-gray-800 shadow-md border rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                 {item.links.map((sub, subIndex) => {
                   const isSubParent = !sub.href && sub.links?.length > 0;
-
                   return (
                     <li
                       key={subIndex}
@@ -148,10 +140,10 @@ export default function Menu({ allClasses, headerPosition }) {
         <div className="menu js-navList">
           <ul className={allClasses || ""}>
             {menuList.map((menu, index) => {
+              const links = menu.links || menu.dropdown || [];
               const hasDropdown =
                 !noDropdownTitles.includes(menu.title) &&
-                (menu.mega || menu.links?.length);
-
+                (menu.mega || links.length);
               const isSingleDropdown = singleDropdownTitles.includes(
                 menu.title
               );
@@ -186,72 +178,26 @@ export default function Menu({ allClasses, headerPosition }) {
                               {menu.title}
                             </Link>
                           </div>
-
-                          {menu.links.map((section, sectionIndex) => (
-                            <React.Fragment key={sectionIndex}>
-                              {section.href ? (
-                                <li
-                                  className={
-                                    isActive(section.href)
-                                      ? "activeMenu"
-                                      : "inActiveMenu"
-                                  }
-                                >
-                                  <Link href={section.href}>
-                                    {section.label || section.title}
-                                  </Link>
-                                </li>
-                              ) : (
-                                <>
-                                  <li className="menu-item-has-children">
-                                    <Link
-                                      href="#"
-                                      className={
-                                        submenu === section.title
-                                          ? "activeMenu"
-                                          : "inActiveMenu"
-                                      }
-                                    >
-                                      {section.title}
-                                      <div className="icon-chevron-right text-11"></div>
-                                    </Link>
-
-                                    <ul className="subnav">
-                                      <div className="menu__backButton js-nav-list-back">
-                                        <Link href="#">
-                                          <i className="icon-chevron-left text-13 mr-10"></i>{" "}
-                                          {section.title}
-                                        </Link>
-                                      </div>
-
-                                      {section.links.map((item, itemIndex) => (
-                                        <li
-                                          key={itemIndex}
-                                          className={
-                                            isActive(item.href)
-                                              ? "activeMenu"
-                                              : "inActiveMenu"
-                                          }
-                                        >
-                                          <Link href={item.href}>
-                                            {item.label}
-                                          </Link>
-                                        </li>
-                                      ))}
-                                    </ul>
-                                  </li>
-                                </>
-                              )}
-                            </React.Fragment>
+                          {links.map((section, sectionIndex) => (
+                            <li
+                              key={sectionIndex}
+                              className={
+                                isActive(section.href)
+                                  ? "activeMenu"
+                                  : "inActiveMenu"
+                              }
+                            >
+                              <Link href={section.href}>
+                                {section.label || section.title}
+                              </Link>
+                            </li>
                           ))}
                         </div>
                       ) : (
-                        <div
-                          className={`mega absolute top-full left-0 w-full bg-white shadow z-50 transition-all duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible`}
-                        >
+                        <div className="mega absolute top-full left-0 w-full bg-white shadow z-50 transition-all duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible">
                           <div className="mega__menu content-center-wrapper">
                             <div className="row x-gap-40 justify-center">
-                              {menu.links.map((col, colIndex) => (
+                              {links.map((col, colIndex) => (
                                 <div
                                   className="col relative group"
                                   key={colIndex}

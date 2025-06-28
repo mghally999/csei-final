@@ -206,8 +206,6 @@ export default function Courses() {
           })}
         </div>
       </section>
-
-      <FooterOne />
     </>
   );
 }

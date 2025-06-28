@@ -156,110 +156,93 @@ export const menuList = [
   {
     title: "Academics",
     href: "/academics",
-    mega: true,
+    mega: false,
     links: [
       {
-        title: "Our Schools",
-        links: [
-          {
-            label: "School of Computing",
-            href: "/academics/schools/computing",
-          },
-          {
-            label: "School of Health Sciences",
-            href: "/academics/schools/health-sciences",
-          },
-          {
-            label: "School of Culinary Arts",
-            href: "/academics/schools/culinary-arts",
-          },
-          {
-            label: "School of Business",
-            href: "/academics/schools/business",
-          },
-        ],
+        label: "School of Computing",
+        href: "/academics/schools/computing",
       },
       {
-        title: "Internships & Opportunities",
-        links: [
-          {
-            label: "Introduction & Why CSEI",
-            href: "/academics/intro-why",
-          },
-          {
-            label: "Scholarships",
-            href: "/academics/scholarships",
-          },
-        ],
+        label: "School of Health Sciences",
+        href: "/academics/schools/health-sciences",
       },
       {
-        title: "Resources & Support",
-        links: [
-          {
-            label: "News",
-            href: "/academics/news",
-          },
-          {
-            label: "Academic Support",
-            href: "/academics/support",
-          },
-          {
-            label: "Academic Calendar",
-            href: "/academics/calendar",
-          },
-        ],
+        label: "School of Culinary Arts",
+        href: "/academics/schools/culinary-arts",
+      },
+      {
+        label: "School of Business",
+        href: "/academics/schools/business",
       },
     ],
   },
   {
     title: "Admission",
     href: "/admission",
-    mega: true,
-    links: [
+    dropdown: [
       {
-        title: "Start Your Journey",
-        links: [
-          {
-            label: "Online Application",
-            href: "/admission/apply-now",
-          },
-          {
-            label: "Admission Process",
-            href: "/admission/admission-process",
-          },
-        ],
+        label: "Apply Now",
+        href: "/admission/apply-now",
       },
       {
-        title: "International & Financials",
-        links: [
-          {
-            label: "International Students",
-            href: "/admission/international-students",
-          },
-          {
-            label: "Tuition and Fees",
-            href: "/admission//tuition-and-fees",
-          },
-          {
-            label: "Financial Aid & Scholarships",
-            href: "/admission/financial-aid-scholarships",
-          },
-        ],
+        label: "Admission Process",
+        href: "/admission/admission-process",
       },
       {
-        title: "Student Experience",
-        links: [
-          {
-            label: "Student Voice",
-            href: "/admission/student-voice",
-          },
-        ],
+        label: "International Students",
+        href: "/admission/international-students",
+      },
+      {
+        label: "Tuition and Fees",
+        href: "/admission/tuition-and-fees",
+      },
+      {
+        label: "Financial Aid & Scholarships",
+        href: "/admission/financial-aid-scholarships",
+      },
+      {
+        label: "Student Voice",
+        href: "/admission/student-voice",
       },
     ],
   },
   {
     title: "Life With CSEI",
     href: "/life-with-csei",
+    links: [
+      {
+        title: "Overview",
+        href: "/life-with-csei",
+      },
+      {
+        title: "Campus Life",
+        href: "/life-with-csei/campus-life",
+      },
+      {
+        title: "Events & Activities",
+        href: "/life-with-csei/events",
+      },
+      {
+        title: "Student Clubs",
+        href: "/life-with-csei/student-clubs",
+      },
+      {
+        title: "Our Core Values",
+        href: "/life-with-csei/core-values",
+      },
+      {
+        title: "Facilities",
+        href: "/life-with-csei/facilities",
+      },
+      {
+        title: "Gallery",
+        href: "/life-with-csei/gallery",
+      },
+      {
+        title: "Student Testimonials",
+        href: "/life-with-csei/testimonials",
+      },
+    ],
   },
   {
     title: "Placements",
