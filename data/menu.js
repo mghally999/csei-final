@@ -221,7 +221,7 @@ export const menuList = [
         links: [
           {
             label: "Online Application",
-            href: "/admission/online-application",
+            href: "/admission/apply-now",
           },
           {
             label: "Admission Process",
@@ -315,10 +315,10 @@ export const menuList = [
     title: "Contact",
     href: "/contact-2",
   },
-  {
-    title: "News",
-    href: "/news",
-  },
+  // {
+  //   title: "News",
+  //   href: "/news",
+  // },
   // {
   //   title: "Courses",
   //   mega: true,

@@ -18,14 +18,14 @@ export default function AboutCSEI() {
             <h2 className="text-30 fw-700 text-[#160643] mb-30">
               About CSEI Academy
             </h2>
-            <p className="text-16 mb-20">
+            <p className="text-16 mb-20 custom-styling">
               CSEI Academy is a dynamic and future-focused institution committed
               to delivering internationally recognized education and
               professional training programs. We empower students and
               professionals with the knowledge, skills, and credentials needed
               to thrive in a competitive global environment.
             </p>
-            <p className="text-16">
+            <p className="text-16 custom-styling">
               With a strong emphasis on academic excellence, innovation, and
               industry alignment, our programs are tailored to meet the evolving
               demands of the modern workforce. Whether you're pursuing higher

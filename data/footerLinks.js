@@ -5,8 +5,8 @@ export const footerLinks = [
       { href: "/about", label: "Why CSEI Academy" },
       { href: "/about", label: "Leadership" },
       { href: "/academics", label: "Academics" },
-      { href: "/about", label: "Accreditations" },
-      { href: "/placements/book", label: "Partner With Us" },
+      { href: "/about", label: "Accreditations & Partners" },
+      { href: "/placements/", label: "Partner With Us" },
     ],
   },
   {

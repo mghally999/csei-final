@@ -2,52 +2,33 @@ export const topCategories = [
   {
     id: 1,
     iconSrc: "/assets/img/featureCards/1.svg",
-    title: "Design Creative",
+    title: "Certificates",
     text: "573+ Courses",
   },
   {
     id: 2,
     iconSrc: "/assets/img/featureCards/2.svg",
-    title: "Sales Marketing",
+    title: "Diplomas",
     text: "565+ Courses",
   },
   {
     id: 3,
     iconSrc: "/assets/img/featureCards/3.svg",
-    title: "Development IT",
+    title: "Bachelors",
     text: "126+ Courses",
   },
   {
     id: 4,
     iconSrc: "/assets/img/featureCards/4.svg",
-    title: "Engineering Architecture",
+    title: "Professional",
     text: "35+ Courses",
   },
   {
     id: 5,
     iconSrc: "/assets/img/featureCards/5.svg",
-    title: "Personal Development",
+    title: "Professional",
     text: "908+ Courses",
   },
-  {
-    id: 6,
-    iconSrc: "/assets/img/featureCards/6.svg",
-    title: "Finance Accounting",
-    text: "129+ Courses",
-  },
-  {
-    id: 7,
-    iconSrc: "/assets/img/featureCards/3.svg",
-    title: "Development IT",
-    text: "126+ Courses",
-  },
-
-  // {
-  //   id:7 ,
-  //   iconSrc: "/assets/img/featureCards/4.svg",
-  //   title: "Engineering Architecture",
-  //   text: "35+ Courses",
-  // },
 ];
 
 export const topCategoriesTwo = [
@@ -285,12 +266,6 @@ export const topCatagoriesSix = [
     icon: "icon-tools text-40",
     title: "Personal Development",
     courses: 908,
-  },
-  {
-    id: 6,
-    icon: "icon-person-2 text-40",
-    title: "Finance Accounting",
-    courses: 129,
   },
 ];
 

@@ -23,6 +23,19 @@ export default function FooterOne() {
                     src="/assets/img/general/logo.png"
                     alt="logo"
                   />
+                  <span
+                    className="text-[24px] leading-none"
+                    style={{
+                      fontWeight: 900,
+                      color: "#E05500",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.5px",
+                      fontSize: "20px",
+                      marginRight: "10px",
+                    }}
+                  >
+                    CSEI Academy
+                  </span>
                 </Link>
               </div>
             </div>

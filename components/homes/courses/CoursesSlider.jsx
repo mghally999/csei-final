@@ -43,7 +43,7 @@ export default function CoursesSlider() {
             data-aos-offset="80"
             data-aos-duration={800}
           >
-            <div className="swiper-wrapper">
+            <div className="d-flex justify-center items-center swiper-wrapper">
               <Swiper
                 // {...setting}
                 modules={[Navigation, Pagination]}

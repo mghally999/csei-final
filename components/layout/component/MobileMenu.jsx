@@ -184,20 +184,22 @@ export default function MobileMenu({ setActiveMobileMenu, activeMobileMenu }) {
                                 : "toggle"
                             }
                           >
-                            {itm.links.map((itm2, index3) => (
-                              <Link
-                                key={index3}
-                                className={
-                                  pathname === itm2.href
-                                    ? "activeMenu link"
-                                    : "link inActiveMenu"
-                                }
-                                href={itm2.href}
-                                onClick={() => setActiveMobileMenu(false)}
-                              >
-                                {itm2.label}
-                              </Link>
-                            ))}
+                            {itm.links.map((itm2, index3) =>
+                              itm2.href ? (
+                                <Link
+                                  key={index3}
+                                  className={
+                                    pathname === itm2.href
+                                      ? "activeMenu link"
+                                      : "link inActiveMenu"
+                                  }
+                                  href={itm2.href}
+                                  onClick={() => setActiveMobileMenu(false)}
+                                >
+                                  {itm2.label}
+                                </Link>
+                              ) : null
+                            )}
                           </div>
                         </div>
                       )}
