@@ -26,10 +26,10 @@ export const footerLinks = [
     title: "Academy Life",
     links: [
       { href: "/dashboard", label: "LMS" },
-      {
-        href: "/admission/financial-aid-scholarships",
-        label: "Student Policies",
-      },
+      // {
+      //   href: "/admission/financial-aid-scholarships",
+      //   label: "Student Policies",
+      // },
       { href: "/life-with-csei", label: "Facilities" },
       { href: "/dashboard", label: "Student Portal" },
       { href: "/admission/student-voice", label: "Student Voice" },

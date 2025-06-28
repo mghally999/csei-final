@@ -14,6 +14,7 @@ import FooterOne from "@/components/layout/footers/FooterOne";
 import About from "@/components/about/About";
 import StudentPortal from "./StudentPortal";
 import Alumni from "./Alumni";
+import Values from "@/components/about/Values";
 
 export default function LifeWithCSEIPage() {
   return (
@@ -24,7 +25,7 @@ export default function LifeWithCSEIPage() {
       <div className="content-wrapper js-content-wrapper overflow-hidden">
         <PageLinks />
         <About />
-        <StepsOne />
+        <Values />
         <LearningJourney />
         <LearningPathSix />
 

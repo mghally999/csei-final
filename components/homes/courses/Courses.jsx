@@ -13,6 +13,7 @@ import Image from "next/image";
 const categories = [
   "All Categories",
   "Health & Social Care",
+  "Business & Management",
   "Travel & Tourism",
   "Culinary Arts",
   "Information Technology",
@@ -41,6 +42,12 @@ export default function Courses() {
         case "Health & Social Care":
           filteredData = enhancedPrograms.filter(
             (program) => program.school === "School of Health Science"
+          );
+          break;
+
+        case "Business & Management":
+          filteredData = enhancedPrograms.filter(
+            (program) => program.school === "School of Business"
           );
           break;
 
@@ -290,7 +297,6 @@ export default function Courses() {
           ))}
         </div>
       </section>
-      <FooterOne />
     </>
   );
 }

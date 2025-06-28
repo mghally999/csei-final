@@ -64,16 +64,16 @@ export default function HomeHero() {
               data-aos="fade-up"
               data-aos-delay="500"
             >
-              <h1 className="mainSlider__title text-white">
+              {/* <h1 className="mainSlider__title text-white">
                 Accredited UK Diplomas and KHDA Approved Programmes
-              </h1>
-              <p className="mainSlider__text text-white">
+              </h1> */}
+              {/* <p className="mainSlider__text text-white">
                 Healthcare, Tourism, Business, IT and Culinary Arts
               </p>
               <p className="text-16 text-white mt-10">
                 CSEI Academy is proudly accredited by globally recognized
                 institutions.
-              </p>
+              </p> */}
               {/* <div className="mainSlider__form">
                 <input
                   required

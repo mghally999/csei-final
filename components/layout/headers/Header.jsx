@@ -46,19 +46,6 @@ export default function Header() {
                 </div>
               </div>
             </div>
-
-            <div className="col-auto">
-              <div className="d-flex x-gap-30 y-gap-10">
-                <div className="text-white">
-                  <div className="d-flex x-gap-20 items-center text-white">
-                    <Socials
-                      componentsClass="text-white hover:text-orange-500 mr-4"
-                      textSize="text-11"
-                    />{" "}
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -115,7 +102,7 @@ export default function Header() {
                 </button>
               </div>
 
-              <div className="header-right__buttons d-flex items-center gap-x-2 md:d-none ml-10">
+              {/* <div className="header-right__buttons d-flex items-center gap-x-2 md:d-none ml-10">
                 <Link href="/login" className="button -underline text-dark-1">
                   Log in
                 </Link>
@@ -125,7 +112,7 @@ export default function Header() {
                 >
                   Sign up
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
