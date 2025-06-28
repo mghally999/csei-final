@@ -25,7 +25,7 @@ const CategoriesHomeOne = () => {
                 className="col-6 col-sm-4 col-md-3 col-lg-2 d-flex justify-content-center"
               >
                 <div
-                  className="featureCard -type-1 -featureCard-hover linkCustomTwo text-center"
+                  className="featureCard -type-1 -featureCard-hover text-center"
                   data-aos="fade-left"
                   data-aos-duration={(i + 1) * 350}
                 >
