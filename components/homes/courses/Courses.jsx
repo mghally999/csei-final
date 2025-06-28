@@ -22,10 +22,13 @@ export default function Courses() {
   const [filtered, setFiltered] = useState([]);
   const [category, setCategory] = useState("All Categories");
 
-  // Enhance programs data with professional flag
+  // Enhance programs data with required fields
   const enhancedPrograms = programs.map((program) => ({
     ...program,
     professional: program.href.includes("/professional-courses/"),
+    // Ensure required fields have fallbacks
+    duration: program.duration || "Duration not specified",
+    level: program.level || "Level not specified",
   }));
 
   useEffect(() => {
@@ -153,6 +156,35 @@ export default function Courses() {
                       {course.title}
                     </Link>
                   </div>
+
+                  {/* Guaranteed course details section */}
+                  <div className="row x-gap-10 y-gap-10 items-center pt-10">
+                    <div className="col-auto">
+                      <div className="d-flex items-center">
+                        <Image
+                          width={16}
+                          height={17}
+                          className="mr-8"
+                          src="/assets/img/coursesCards/icons/2.svg"
+                          alt="duration"
+                        />
+                        <div className="text-14 lh-1">{course.duration}</div>
+                      </div>
+                    </div>
+
+                    <div className="col-auto">
+                      <div className="d-flex items-center">
+                        <Image
+                          width={16}
+                          height={17}
+                          className="mr-8"
+                          src="/assets/img/coursesCards/icons/3.svg"
+                          alt="level"
+                        />
+                        <div className="text-14 lh-1">{course.level}</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -195,11 +227,7 @@ export default function Courses() {
                           src="/assets/img/coursesCards/icons/2.svg"
                           alt="icon"
                         />
-                        <div className="text-14 lh-1">
-                          {`${Math.floor(course.duration / 60)}h ${Math.floor(
-                            course.duration % 60
-                          )}m`}
-                        </div>
+                        <div className="text-14 lh-1">{course.duration}</div>
                       </div>
                     </div>
 
@@ -223,17 +251,6 @@ export default function Courses() {
                   </p>
 
                   <div className="row y-gap-15 pt-15">
-                    <div className="col-12">
-                      <div className="d-flex items-center">
-                        <div className="size-20 d-flex items-center justify-center rounded-full border-light">
-                          <div className="icon-check text-6"></div>
-                        </div>
-                        <div className="ml-10">
-                          Comprehensive curriculum covering all key aspects
-                        </div>
-                      </div>
-                    </div>
-
                     <div className="col-12">
                       <div className="d-flex items-center">
                         <div className="size-20 d-flex items-center justify-center rounded-full border-light">

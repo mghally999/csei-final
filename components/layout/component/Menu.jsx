@@ -1,5 +1,3 @@
-// ✅ Updated Menu.jsx with support for 3-level nesting and hover reveal
-
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -10,53 +8,24 @@ import { usePathname } from "next/navigation";
 
 export default function Menu({ allClasses, headerPosition }) {
   const [menuItem, setMenuItem] = useState("");
+  const [submenu, setSubmenu] = useState("");
   const pathname = usePathname();
 
-  const matchMenuItem = () => {
-    const flattenedItems = [];
-
-    const flattenMenu = (items, topTitle) => {
-      for (const item of items) {
-        if (item.href) {
-          flattenedItems.push({ href: item.href, topTitle });
-        }
-        if (item.links?.length) {
-          flattenMenu(item.links, topTitle);
-        }
-      }
-    };
-
-    // Loop through all top-level menus
-    for (const menu of menuList) {
-      if (menu.href) {
-        // Include direct hrefs on top-level items
-        flattenedItems.push({ href: menu.href, topTitle: menu.title });
-      }
-      if (menu.links?.length) {
-        flattenMenu(menu.links, menu.title);
-      }
-    }
-
-    // Find the best match based on the longest href that matches the path
-    let matchedItem = null;
-    for (const item of flattenedItems) {
-      if (pathname.startsWith(item.href)) {
-        // Prefer the longest match to avoid false positives
-        if (!matchedItem || item.href.length > matchedItem.href.length) {
-          matchedItem = item;
-        }
-      }
-    }
-
-    if (matchedItem) {
-      setMenuItem(matchedItem.topTitle);
-    } else {
-      setMenuItem("");
-    }
-  };
-
   useEffect(() => {
-    if (pathname) matchMenuItem();
+    menuList.forEach((elm) => {
+      elm?.links?.forEach((elm2) => {
+        if (elm2.href?.split("/")[1] == pathname.split("/")[1]) {
+          setMenuItem(elm.title);
+        } else {
+          elm2?.links?.map((elm3) => {
+            if (elm3.href?.split("/")[1] == pathname.split("/")[1]) {
+              setMenuItem(elm.title);
+              setSubmenu(elm2.title);
+            }
+          });
+        }
+      });
+    });
   }, [pathname]);
 
   const isActive = (href) => {
@@ -70,6 +39,8 @@ export default function Menu({ allClasses, headerPosition }) {
     "Life With CSEI",
     "About Us",
   ];
+
+  const singleDropdownTitles = ["Academics", "Admission"];
 
   const renderNestedLinks = (links) => (
     <ul className="mega__list whitespace-nowrap min-w-[200px] text-gray-900">
@@ -181,13 +152,16 @@ export default function Menu({ allClasses, headerPosition }) {
                 !noDropdownTitles.includes(menu.title) &&
                 (menu.mega || menu.links?.length);
 
+              const isSingleDropdown = singleDropdownTitles.includes(
+                menu.title
+              );
               const topHref = menu.href || "#";
 
               return (
                 <li
                   key={index}
                   className={`${hasDropdown ? "menu-item-has-children" : ""} ${
-                    menu.mega ? "-has-mega-menu" : ""
+                    menu.mega && !isSingleDropdown ? "-has-mega-menu" : ""
                   }`}
                 >
                   <Link
@@ -203,33 +177,107 @@ export default function Menu({ allClasses, headerPosition }) {
                   </Link>
 
                   {hasDropdown && (
-                    <div
-                      className={`mega absolute top-full left-0 w-full bg-white shadow z-50 transition-all duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible`}
-                    >
-                      <div className="mega__menu content-center-wrapper">
-                        <div className="row x-gap-40 justify-center">
-                          {menu.links.map((col, colIndex) => (
-                            <div className="col relative group" key={colIndex}>
-                              {col.href ? (
-                                <Link
-                                  href={col.href}
-                                  className="text-17 fw-500 mb-20 text-gray-900 hover:text-primary transition block"
+                    <>
+                      {isSingleDropdown ? (
+                        <div className="subnav">
+                          <div className="menu__backButton js-nav-list-back">
+                            <Link href="#">
+                              <i className="icon-chevron-left text-13 mr-10"></i>{" "}
+                              {menu.title}
+                            </Link>
+                          </div>
+
+                          {menu.links.map((section, sectionIndex) => (
+                            <React.Fragment key={sectionIndex}>
+                              {section.href ? (
+                                <li
+                                  className={
+                                    isActive(section.href)
+                                      ? "activeMenu"
+                                      : "inActiveMenu"
+                                  }
                                 >
-                                  {col.title || col.label}
-                                </Link>
+                                  <Link href={section.href}>
+                                    {section.label || section.title}
+                                  </Link>
+                                </li>
                               ) : (
-                                <h4 className="text-17 fw-500 mb-20 text-gray-900">
-                                  {col.title || col.label}
-                                </h4>
+                                <>
+                                  <li className="menu-item-has-children">
+                                    <Link
+                                      href="#"
+                                      className={
+                                        submenu === section.title
+                                          ? "activeMenu"
+                                          : "inActiveMenu"
+                                      }
+                                    >
+                                      {section.title}
+                                      <div className="icon-chevron-right text-11"></div>
+                                    </Link>
+
+                                    <ul className="subnav">
+                                      <div className="menu__backButton js-nav-list-back">
+                                        <Link href="#">
+                                          <i className="icon-chevron-left text-13 mr-10"></i>{" "}
+                                          {section.title}
+                                        </Link>
+                                      </div>
+
+                                      {section.links.map((item, itemIndex) => (
+                                        <li
+                                          key={itemIndex}
+                                          className={
+                                            isActive(item.href)
+                                              ? "activeMenu"
+                                              : "inActiveMenu"
+                                          }
+                                        >
+                                          <Link href={item.href}>
+                                            {item.label}
+                                          </Link>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </li>
+                                </>
                               )}
-                              {col.links &&
-                                col.links.length > 0 &&
-                                renderNestedLinks(col.links)}
-                            </div>
+                            </React.Fragment>
                           ))}
                         </div>
-                      </div>
-                    </div>
+                      ) : (
+                        <div
+                          className={`mega absolute top-full left-0 w-full bg-white shadow z-50 transition-all duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible`}
+                        >
+                          <div className="mega__menu content-center-wrapper">
+                            <div className="row x-gap-40 justify-center">
+                              {menu.links.map((col, colIndex) => (
+                                <div
+                                  className="col relative group"
+                                  key={colIndex}
+                                >
+                                  {col.href ? (
+                                    <Link
+                                      href={col.href}
+                                      className="text-17 fw-500 mb-20 text-gray-900 hover:text-primary transition block"
+                                    >
+                                      {col.title || col.label}
+                                    </Link>
+                                  ) : (
+                                    <h4 className="text-17 fw-500 mb-20 text-gray-900">
+                                      {col.title || col.label}
+                                    </h4>
+                                  )}
+                                  {col.links &&
+                                    col.links.length > 0 &&
+                                    renderNestedLinks(col.links)}
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </>
                   )}
                 </li>
               );
