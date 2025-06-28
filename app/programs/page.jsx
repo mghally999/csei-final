@@ -711,7 +711,7 @@ export default function CourseListOne() {
                             {(i % 4 === 0 || elm.popular) && <div></div>}
                             {elm.professional && (
                               <div>
-                                <div className="px-15 rounded-200 bg-blue-1">
+                                <div className="px-15 rounded-200 bg-custom-navyblue">
                                   <span className="text-11 lh-1 uppercase fw-500 text-white">
                                     PROFESSIONAL
                                   </span>

@@ -3,7 +3,7 @@ export const schoolAchievement = [
     id: 1,
     imageSrc: "/assets/img/home-3/achieve/1.svg",
     title: "350,000+",
-    text: "Employability Ratio",
+    text: "Students worldwide",
   },
   {
     id: 2,

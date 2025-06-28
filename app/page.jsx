@@ -31,12 +31,10 @@ export default function HomePage() {
 
       <div className="content-wrapper  js-content-wrapper overflow-hidden">
         <HomeHero />
-        <Brands />
         <Categories />
         <Courses />
         <TestimonialsOne />
         <FeaturesOne />
-        {/* <WhyCourse /> */}
         <Instructors />
         <GetApp />
         {/* <Blog /> */}
