@@ -3,9 +3,6 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Header from "@/components/layout/headers/Header";
-import FooterOne from "@/components/layout/footers/FooterOne";
-import Preloader from "@/components/common/Preloader";
 import PageLinks from "@/components/common/PageLinks";
 
 export default function StudentValuesPage() {

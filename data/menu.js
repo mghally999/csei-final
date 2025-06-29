@@ -248,7 +248,7 @@ export const menuList = [
       },
       {
         title: "Alumni Network",
-        href: "/life-with-csei/alumni-network",
+        href: "/life-with-csei/alumni",
       },
       {
         title: "Student Portal",
@@ -260,7 +260,7 @@ export const menuList = [
       },
       {
         title: "Mentoring Support",
-        href: "/life-with-csei/mentoring-support",
+        href: "/life-with-csei/mentoring",
       },
       {
         title: "Student Experience",
