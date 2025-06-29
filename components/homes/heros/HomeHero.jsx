@@ -74,7 +74,7 @@ export default function HomeHero() {
                 CSEI Academy is proudly accredited by globally recognized
                 institutions.
               </p>
-              <div className="mainSlider__form">
+              {/* <div className="mainSlider__form">
                 <input
                   required
                   type="text"
@@ -88,7 +88,7 @@ export default function HomeHero() {
                   <i className="icon icon-search mr-15"></i>
                   Search
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

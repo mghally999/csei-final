@@ -18,13 +18,11 @@ export default async function page(props) {
   const params = await props.params;
   <Preloader />;
   return (
-    <div className="main-content  ">
-      <Header />
+    <div className="main-content">
       <div className="content-wrapper  js-content-wrapper ">
         <PageLinks />
         <CourseDetailsOne id={params.id} />
         <CourseSlider />
-        <FooterOne />
       </div>
     </div>
   );

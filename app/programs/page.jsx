@@ -200,11 +200,6 @@ export default function CourseListOne() {
 
   return (
     <>
-      <div className="main-content">
-        <Preloader />
-      </div>
-
-      <Header />
       <section className="page-header -type-1">
         <div className="container">
           <div className="page-header__content">
@@ -213,7 +208,7 @@ export default function CourseListOne() {
                 <div>
                   <h1 className="page-header__title">CSEI ACADEMY</h1>
                 </div>
-                <div className="d-flex flex-wrap x-gap-20 y-gap-10 pt-15">
+                <div className="d-flex flex-wrap x-gap-20 y-gap-10 pt-15 custom-flex-margin">
                   {[
                     "All",
                     ...new Set(enhancedPrograms.map((p) => p.school)),

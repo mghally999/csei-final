@@ -15,9 +15,6 @@ export default function ClubsAndExperiences() {
 
   return (
     <div className="main-content">
-      <Preloader />
-      <Header />
-
       <div className="content-wrapper js-content-wrapper overflow-hidden">
         <PageLinks />
 
@@ -52,8 +49,6 @@ export default function ClubsAndExperiences() {
             </div>
           </div>
         </section>
-
-        <FooterOne />
       </div>
     </div>
   );

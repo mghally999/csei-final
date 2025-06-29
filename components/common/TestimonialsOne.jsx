@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // import 'swiper/swiper.min.css';
 import { testimonials } from "../../data/tesimonials";
 import { counters } from "../../data/count";
+import Link from "next/link";
 // SwiperCore.use([Pagination]);
 
 export default function TestimonialsOne() {
@@ -106,7 +107,7 @@ export default function TestimonialsOne() {
           </div>
         </div>
 
-        <div className="row y-gap-30  counter__row">
+        <div className="row y-gap-30 counter__row">
           {counters.map((elm, i) => (
             <div
               key={i}
@@ -114,10 +115,16 @@ export default function TestimonialsOne() {
               data-aos="fade-left"
               data-aos-duration={(i + 1) * 350}
             >
-              <div className="counter -type-1">
-                <div className="counter__number">{elm.number}</div>
-                <div className="counter__title">{elm.title}</div>
-              </div>
+              <Link href="/placements" className="block cursor-pointer group">
+                <div className="counter -type-1 transition duration-300 group-hover:scale-[1.03]">
+                  <div className="counter__number text-white group-hover:text-yellow-300">
+                    {elm.number}
+                  </div>
+                  <div className="counter__title text-white group-hover:text-yellow-300">
+                    {elm.title}
+                  </div>
+                </div>
+              </Link>
             </div>
           ))}
         </div>

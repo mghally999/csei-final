@@ -17,14 +17,9 @@ export const metadata = {
 export default function page() {
   return (
     <main className="main-content">
-      <Preloader />
-      <Header />
       <div className="content-wrapper  js-content-wrapper overflow-hidden">
         <PageLinks />
-
         <Instractors />
-
-        <FooterOne />
       </div>
     </main>
   );

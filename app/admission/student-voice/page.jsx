@@ -16,9 +16,6 @@ export default function PlacementObjectives() {
 
   return (
     <div className="main-content">
-      <Preloader />
-      <Header />
-
       <div className="content-wrapper js-content-wrapper overflow-hidden">
         <PageLinks />
 
@@ -54,8 +51,6 @@ export default function PlacementObjectives() {
             </div>
           </div>
         </section>
-
-        <FooterOne />
       </div>
     </div>
   );

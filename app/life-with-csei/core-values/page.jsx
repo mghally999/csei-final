@@ -38,9 +38,6 @@ export default function StudentValuesPage() {
 
   return (
     <div className="main-content">
-      <Preloader />
-      <Header />
-
       <div className="content-wrapper js-content-wrapper">
         <PageLinks />
 
@@ -79,8 +76,6 @@ export default function StudentValuesPage() {
             </div>
           </div>
         </section>
-
-        <FooterOne />
       </div>
     </div>
   );

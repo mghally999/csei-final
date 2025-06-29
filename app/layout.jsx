@@ -1,5 +1,5 @@
 "use client";
-// import "bootstrap/dist/css/bootstrap.min.css";
+
 import "../public/assets/sass/styles.scss";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -11,15 +11,13 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 import Context from "@/context/Context";
 
+// Global Components
+import Preloader from "@/components/common/Preloader";
+import Header from "@/components/layout/headers/Header";
+import FooterOne from "@/components/layout/footers/FooterOne";
+
 export default function RootLayout({ children }) {
   useEffect(() => {
-    // if (typeof window !== "undefined") {
-    //   // Import the script only on the client side
-    //   import("bootstrap/dist/js/bootstrap.esm").then(() => {
-    //     // Module is imported, you can access any exported functionality if
-    //   });
-    // }
-
     AOS.init({
       duration: 700,
       offset: 120,
@@ -27,8 +25,9 @@ export default function RootLayout({ children }) {
       once: true,
     });
   }, []);
+
   return (
-    <html lang="en" className="">
+    <html lang="en">
       <head>
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/favicon.png" />
@@ -36,7 +35,16 @@ export default function RootLayout({ children }) {
         <title>CSEI Academy</title>
       </head>
       <body>
-        <Context> {children}</Context>
+        <Context>
+          <div className="main-content">
+            <Preloader />
+            <Header />
+            <div className="content-wrapper js-content-wrapper overflow-hidden">
+              {children}
+            </div>
+            <FooterOne />
+          </div>
+        </Context>
       </body>
     </html>
   );

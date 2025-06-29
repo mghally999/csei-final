@@ -29,7 +29,7 @@ export const menuList = [
             links: [
               {
                 label: "Level 3",
-                href: "/programs/health-social-care/university-progression/level-3",
+                href: "/programs/health-social-care/level-3",
               },
               {
                 label: "Level 4",
@@ -135,8 +135,8 @@ export const menuList = [
             title: "Accounting & Finance",
             links: [
               {
-                label: "Level 7",
-                href: "/programs/health-social-care/professional-courses/level-7",
+                label: "Level 5",
+                href: "/programs/accounting-finance/level-5",
               },
             ],
           },
@@ -145,7 +145,7 @@ export const menuList = [
             links: [
               {
                 label: "Level 7",
-                href: "/programs/health-social-care/professional-courses/level-7",
+                href: "/programs/strategic-management/level-7",
               },
             ],
           },
@@ -320,7 +320,7 @@ export const menuList = [
   },
   {
     title: "Contact",
-    href: "/contact-2",
+    href: "/contact",
   },
   // {
   //   title: "News",

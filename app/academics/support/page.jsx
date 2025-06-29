@@ -15,8 +15,6 @@ export default function Page() {
 
   return (
     <div className="main-content">
-      <Preloader />
-      <Header />
       <div className="content-wrapper js-content-wrapper">
         <PageLinks />
 
@@ -55,8 +53,6 @@ export default function Page() {
             </div>
           </div>
         </section>
-
-        <FooterOne />
       </div>
     </div>
   );

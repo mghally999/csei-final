@@ -14,13 +14,10 @@ export const metadata = {
 export default async function page(props) {
   const params = await props.params;
   return (
-    <div className="main-content  ">
-      <Preloader />
-      <Header />
+    <div className="main-content">
       <div className="content-wrapper  js-content-wrapper overflow-hidden">
         <PageLinks />
         <InstractorSingle id={params.id} />
-        <FooterOne />
       </div>
     </div>
   );

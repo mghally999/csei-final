@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 export default function NotFound() {
   return (
     <section className="no-page layout-pt-lg layout-pb-lg bg-beige-1">
@@ -28,9 +29,11 @@ export default function NotFound() {
                 The page you're looking for isn't available. Try to search again
                 <br /> or use the go to.
               </div>
-              <button className="button -md -purple-1 text-white mt-20">
-                Go Back To Homepage
-              </button>
+              <Link href="/">
+                <button className="button -md -purple-1 text-white mt-20">
+                  Go Back To Homepage
+                </button>
+              </Link>
             </div>
           </div>
         </div>

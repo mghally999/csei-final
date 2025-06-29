@@ -16,9 +16,6 @@ export default function PlacementOverview() {
 
   return (
     <div className="main-content">
-      <Preloader />
-      <Header />
-
       <div className="content-wrapper js-content-wrapper overflow-hidden">
         <PageLinks />
 
@@ -53,8 +50,6 @@ export default function PlacementOverview() {
             </div>
           </div>
         </section>
-
-        <FooterOne />
       </div>
     </div>
   );
