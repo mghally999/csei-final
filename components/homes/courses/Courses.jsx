@@ -71,7 +71,7 @@ export default function Courses() {
   }, [category]);
 
   return (
-    <section className="layout-pt-lg layout-pb-lg">
+    <section className="layout-pt-lg layout-pb-lg bg-custom-navyblue">
       <div className="row justify-center text-center">
         <div className="col-auto">
           <div className="sectionTitle">
@@ -124,8 +124,8 @@ export default function Courses() {
                   </div>
                   {course.professional && (
                     <div className="d-flex justify-between py-10 px-10 absolute-full-center z-3">
-                      <div className="px-15 rounded-200 bg-custom-navyblue">
-                        <span className="text-11 lh-1 uppercase fw-500 text-white">
+                      <div className="px-15 rounded-200">
+                        <span className="text-11 lh-1 uppercase fw-900 text-dark">
                           PROFESSIONAL
                         </span>
                       </div>

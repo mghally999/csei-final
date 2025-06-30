@@ -22,31 +22,57 @@ export default function Header() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   return (
     <header
       className={`header -type-5 js-header ${
         scrollPosition > 40 ? "bg-dark-1" : ""
-      } `}
+      }`}
     >
+      {/* Top Links Bar - Dark Blue */}
       <div className="d-flex items-center py-2 bg-custom-navyblue">
         <div className="container">
           <div className="row y-gap-5 justify-between items-center">
             <div className="col-auto">
               <div className="d-flex x-gap-40 y-gap-10 items-center">
-                <div className="d-flex items-center text-white md:d-none">
-                  <div className="icon-email mr-10"></div>
-                  <div className="text13 lh-1">(+971)543185454</div>
-                </div>
-                <div className="d-flex items-center text-white">
-                  <div className="icon-email mr-10"></div>
-                  <div className="text13 lh-1">admission@cseiacademy.ae</div>
-                </div>
+                <div className="d-flex items-center text-white md:d-none"></div>
+                <div className="d-flex items-center text-white"></div>
+              </div>
+            </div>
+
+            {/* Top Links Section */}
+            <div className="col-auto">
+              <div className="d-flex x-gap-20 items-center">
+                <Link
+                  href="/life-with-csei/lms"
+                  className="text-white text13 lh-1 hover:text-orange-1"
+                >
+                  LMS
+                </Link>
+                <span className="text-white mx-10">|</span>
+                <Link
+                  href="/life-with-csei/alumni"
+                  className="text-white text13 lh-1 hover:text-orange-1"
+                >
+                  Alumni
+                </Link>
+                <span className="text-white mx-10">|</span>
+                <Link
+                  href="/life-with-csei/student-portal"
+                  className="text-white text13 lh-1 hover:text-orange-1"
+                >
+                  Student Portal
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </div>
 
+      {/* Border Separator - Exactly like Manipal */}
+      <div className="border-b border-gray-300 w-full"></div>
+
+      {/* Main Header Section - With your existing menu */}
       <div className="container py-4">
         <div className="row justify-center items-center flex-nowrap overflow-x-auto">
           {/* Logo */}
@@ -80,7 +106,7 @@ export default function Header() {
             <div className="mx-10 h-32 w-1 bg-[#f60] rounded-full"></div>
           </div>
 
-          {/* Right side (Menu, Search, Cart, Log in, Sign up) */}
+          {/* Right side (Menu) */}
           <div className="col-auto flex items-center justify-end flex-nowrap">
             <div className="header-right d-flex items-center gap-x-3">
               <Menu allClasses={"menu__nav text-white -is-active"} />
@@ -88,6 +114,14 @@ export default function Header() {
                 activeMobileMenu={activeMobileMenu}
                 setActiveMobileMenu={setActiveMobileMenu}
               />
+
+              {/* Additional buttons like Manipal (optional) */}
+              {/* <div className="d-flex x-gap-15 items-center">
+                  <button className="text-dark-1 hover:text-orange-1"></button>
+                  <button className="bg-orange-1 text-white px-4 py-2 rounded hover:bg-orange-600 transition">
+                    Download Brochure
+                  </button>
+                </div> */}
 
               <div className="d-none xl:d-block">
                 <button
@@ -98,18 +132,6 @@ export default function Header() {
                   <i className="text-11 icon icon-mobile-menu"></i>
                 </button>
               </div>
-
-              {/* <div className="header-right__buttons d-flex items-center gap-x-2 md:d-none ml-10">
-                <Link href="/login" className="button -underline text-dark-1">
-                  Log in
-                </Link>
-                <Link
-                  href="/signup"
-                  className="button px-25 h-50 -white text-dark-1 -rounded"
-                >
-                  Sign up
-                </Link>
-              </div> */}
             </div>
           </div>
         </div>

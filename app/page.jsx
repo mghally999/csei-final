@@ -4,6 +4,7 @@ import Courses from "@/components/homes/courses/Courses";
 import TestimonialsOne from "@/components/common/TestimonialsOne";
 import FeaturesOne from "@/components/homes/features/FeaturesOne";
 import GetApp from "@/components/homes/getApp/GetApp";
+import FeaturesSection from "@/components/FeaturesSection";
 import Brands from "@/components/common/Brands";
 import Join from "@/components/homes/join/Join";
 
@@ -16,6 +17,7 @@ export default function HomePage() {
       <TestimonialsOne />
       <FeaturesOne />
       <GetApp />
+      <FeaturesSection />
       <Brands />
       <Join />
     </>

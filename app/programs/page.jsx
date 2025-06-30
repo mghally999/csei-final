@@ -707,7 +707,7 @@ export default function CourseListOne() {
                             {elm.professional && (
                               <div>
                                 <div className="px-15 rounded-200 bg-custom-navyblue">
-                                  <span className="text-11 lh-1 uppercase fw-500 text-white">
+                                  <span className="text-11 lh-1 uppercase fw-900 text-dark">
                                     PROFESSIONAL
                                   </span>
                                 </div>

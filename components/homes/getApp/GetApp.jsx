@@ -13,10 +13,10 @@ export default function GetApp() {
               data-aos-duration={400}
             >
               <Image
-                width={700}
-                height={500}
-                style={{ height: "100%", width: "100%" }}
-                src="/assets/img/app/1.png"
+                width={600}
+                height={400}
+                // style={{ height: "100%", width: "100%" }}
+                src="/assets/img/app/website-mobile-app.png"
                 alt="image"
               />
             </div>
@@ -29,17 +29,10 @@ export default function GetApp() {
                 data-aos="fade-up"
                 data-aos-duration={500}
               >
-                Learn From
-                <br /> <span>Anywhere</span>
+                <span>Engage </span>
+                <span>Create </span>
+                <span>Transform</span>
               </h2>
-              <p
-                className="app-content__text"
-                data-aos="fade-up"
-                data-aos-duration={600}
-              >
-                Take classes on the go with the CSEI app. Stream or download to
-                watch on the plane, the subway, or wherever you learn best.
-              </p>
               <div className="app-content__buttons">
                 <Link href="#">
                   <Image

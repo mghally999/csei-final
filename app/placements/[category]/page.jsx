@@ -30,21 +30,6 @@ export default function PlacementDetailPage({ params }) {
                 <p className="text-16 text-[#160643] mb-20 leading-relaxed">
                   {card.description}
                 </p>
-                {card.keywords?.length > 0 && (
-                  <div className="mt-30">
-                    <h4 className="text-18 fw-600 mb-15">Key Features:</h4>
-                    <div className="d-flex flex-wrap gap-2">
-                      {card.keywords.map((keyword, idx) => (
-                        <span
-                          key={idx}
-                          className="px-15 py-5 bg-blue-1 rounded-100 text-12 fw-500 text-blue-8"
-                        >
-                          {keyword}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
               </div>
 
               <div className="col-lg-6" data-aos="fade-right">

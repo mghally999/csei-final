@@ -2,9 +2,9 @@
 export const placementCards = [
   {
     id: "objectives",
-    title: "CSEI Career Development Strategy | 95% Placement Success Rate",
+    title: "Foster Career-Ready Graduates:",
     description:
-      "CSEI Academy's proven career development framework delivers exceptional placement outcomes, with 95% of graduates securing employment within 6 months. Our strategic approach combines industry-aligned competency mapping, employer advisory boards, and outcome-driven training programs.",
+      "At CSEI, we associate with faculty, industry experts and alumni to groom every individual student not just for jobs, but for long-term career success in evolving markets. We ensure equal opportunity and exposure for all students from CSEI, while encouraging diverse career interests across industries and roles.",
     link: "/placements/objectives",
     image: {
       url: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
@@ -19,9 +19,14 @@ export const placementCards = [
   },
   {
     id: "overview",
-    title: "CSEI Recruitment Process | Industry-Leading Placement Program",
-    description:
-      "Our award-winning campus recruitment program connects Fortune 500 companies with top CSEI talent. Featuring 300+ corporate partners and structured internship-to-placement pathways.",
+    title: "Briefing",
+    description: `
+    CSEI Institutes is a centre for academic excellence, committed to empowering individuals through quality education and skill development. 
+    
+    Established with the vision to nurture talent and inspire lifelong learning, CSEI offers a diverse range of programs designed to meet the evolving needs of students, professionals, and industries.
+    
+    Our experienced faculty, modern infrastructure, and industry-relevant curriculum ensure that every learner receives a well-rounded education that opens doors to global opportunities.
+    `,
     link: "/placements/overview",
     image: {
       url: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80",
@@ -36,9 +41,10 @@ export const placementCards = [
   },
   {
     id: "why-csei",
-    title: "Why Hire CSEI Graduates? | Certified Industry-Ready Professionals",
-    description:
-      "CSEI graduates demonstrate 92% employer satisfaction with technical proficiency and workplace readiness. Our competency-based curriculum produces professionals with both expertise and soft skills.",
+    title: "Why Recruit CSEI Students?",
+    description: `
+    CSEI students represent a blend of academic excellence, practical experience, vocational theory classes and a positive attitude towards learning and growth. They undergo Precise coursework and continuous assessments that ensure they are not only theoretically trained but also capable of solving real-world problems. In addition to expertise, our students are trained in soft skills such as communication, teamwork, and adaptability, preparing them to contribute effectively in a professional environment. We at CSEI follow a culture that encourages innovation, critical thinking, and ethical responsibility, our students bring fresh perspectives, a strong work ethic, and the potential to grow within our organization. 
+    `,
     link: "/placements/why-csei",
     image: {
       url: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80",
@@ -56,20 +62,18 @@ export const placementCards = [
     ],
   },
   {
-    id: "services",
-    title: "CSEI Career Support | End-to-End Placement Services",
-    description:
-      "Our comprehensive career support delivers 85% direct placement through resume engineering, interview simulations, and exclusive recruitment events with personalized coaching.",
+    title: "Our Services",
     link: "/placements/services",
     image: {
-      url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-      alt: "Career advisor conducting mock interview with student",
+      url: "/assets/img/placements/services.png",
+      alt: "Services",
     },
-    keywords: ["placement services", "career support", "interview preparation"],
-    stats: [
-      "85% direct placement",
-      "40+ annual events",
-      "AI resume optimization",
+    description: [
+      "<strong>Placement Training:</strong> Soft skills training, aptitude test preparation, resume writing workshops, mock interviews, and group discussion sessions to enhance employability.",
+      "<strong>Internship Opportunities:</strong> Assisting students in securing internships that provide practical exposure and build professional experience.",
+      "<strong>Career Guidance Counselling:</strong> One-on-one or group counselling sessions to help students choose suitable career paths based on their strengths and interests.",
+      "<strong>Alumni Network Support:</strong> Engagement with alumni for mentoring, networking, and job referrals.",
+      "<strong>Corporate Tie-Ups:</strong> Building and maintaining relationships with various industries and organizations to create more placement opportunities.",
     ],
   },
   {

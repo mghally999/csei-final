@@ -4357,7 +4357,6 @@ h6 {
 
 .bg-custom-navyblue {
   background-color: #04044e;
-  padding: 30px !important;
 }
 
 .qualification-badge {
@@ -6628,11 +6627,11 @@ h6 {
   font-size: 30px;
   line-height: 34px;
   font-weight: 700;
-  color: var(--color-dark-1);
+  color: #ffffff;
 }
 
 .sectionTitle__text {
-  color: var(--color-light-1);
+  color: #b3b6cc;
   font-weight: 900;
   line-height: 2;
   font-size: 16px;
