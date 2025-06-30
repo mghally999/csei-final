@@ -1,6 +1,5 @@
 import CategoriesEight from "@/components/homes/categories/CategoriesEight";
 import CoursesEight from "@/components/homes/courses/CoursesEight";
-import HeroEight from "@/components/homes/heros/HeroEight";
 import HeaderEight from "@/components/layout/headers/HeaderEight";
 
 import React from "react";
@@ -31,7 +30,6 @@ export default function page() {
 
       <HeaderEight />
       <div className="content-wrapper  js-content-wrapper overflow-hidden">
-        <HeroEight />
         <CategoriesEight />
         <CoursesEight />
         <WhyCourse />

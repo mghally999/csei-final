@@ -11,7 +11,6 @@ import Brands from "@/components/common/Brands";
 import CategoriesSeven from "@/components/homes/categories/CategoriesSeven";
 import CoursesSeven from "@/components/homes/courses/CoursesSeven";
 import EventsSeven from "@/components/homes/events/EventsSeven";
-import HeroSeven from "@/components/homes/heros/HeroSeven";
 import InstractorSeven from "@/components/homes/instractors/InstractorSeven";
 import Pricing from "@/components/common/Pricing";
 import Testimonials from "@/components/homes/testimonials/Testimonials";
@@ -33,7 +32,6 @@ export default function page() {
       <Preloader />
       <HeaderSeven />
       <div className="content-wrapper  js-content-wrapper overflow-hidden">
-        <HeroSeven />
         <CoursesSeven />
         <InstractorSeven />
         <FindCourse />

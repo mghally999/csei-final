@@ -1,5 +1,4 @@
 import LearningPathSix from "@/components/common/LearningPathSix";
-import HeroSix from "@/components/homes/heros/HeroSix";
 import HeaderSix from "@/components/layout/headers/HeaderSix";
 import CoursesSix from "@/components/homes/courses/CoursesSix";
 import React from "react";
@@ -28,7 +27,6 @@ export default function page() {
       <Preloader />
       <HeaderSix />
       <div className="content-wrapper  js-content-wrapper overflow-hidden">
-        <HeroSix />
         <LearningPathSix />
         <CoursesSix />
         <Teachers />

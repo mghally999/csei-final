@@ -1,6 +1,5 @@
 import React from "react";
 import HeaderThree from "@/components/layout/headers/HeaderThree";
-import HeroThree from "@/components/homes/heros/HeroThree";
 import Features from "@/components/homes/features/Features";
 import CategoriesThree from "@/components/homes/categories/CategoriesThree";
 import CoursesSlider from "@/components/homes/courses/CoursesSlider";
@@ -28,7 +27,6 @@ export default function page() {
       <Preloader />
       <HeaderThree />
       <div className="content-wrapper  js-content-wrapper overflow-hidden">
-        <HeroThree />
         <Features />
         <CategoriesThree />
         <CoursesSlider />

@@ -1,5 +1,4 @@
 import BrandsTwo from "@/components/homes/brands/BrandsTwo";
-import HeroFive from "@/components/homes/heros/HeroFive";
 import HeaderFive from "@/components/layout/headers/HeaderFive";
 import CoursesFive from "@/components/homes/courses/CoursesFive";
 import React from "react";
@@ -28,7 +27,6 @@ export default function page() {
       <Preloader />
       <HeaderFive />
       <div className="content-wrapper  js-content-wrapper overflow-hidden">
-        <HeroFive />
         <BrandsTwo />
         <CoursesFive />
         <CategoriesFive />

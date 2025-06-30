@@ -71,14 +71,14 @@ export default function Courses() {
   }, [category]);
 
   return (
-    <section className="layout-pt-lg layout-pb-lg bg-custom-navyblue">
+    <section className="layout-pt-lg layout-pb-lg bg-custom-navyblue text-white">
       <div className="row justify-center text-center">
         <div className="col-auto">
           <div className="sectionTitle">
-            <h2 className="sectionTitle__title sm:text-24">
+            <h2 className="sectionTitle__title sm:text-24 text-white">
               Trending Programs for September Intake 2025
             </h2>
-            <p className="sectionTitle__text">
+            <p className="sectionTitle__text text-white">
               Explore our most popular programs across various disciplines
             </p>
           </div>
@@ -90,7 +90,7 @@ export default function Courses() {
           <div onClick={() => setCategory(cat)} key={i}>
             <button
               className={`tabs__button px-15 py-8 rounded-8 js-tabs-button ${
-                category === cat ? "tabActive" : ""
+                category === cat ? "tabActive bg-white text-dark" : "text-white"
               }`}
               type="button"
             >
@@ -110,7 +110,7 @@ export default function Courses() {
           const levelLabel = getLevelLabel(course.level);
           return (
             <div key={index} className="col-xl-3 col-lg-4 col-md-6">
-              <div className="coursesCard -type-1">
+              <div className="coursesCard -type-1 text-white">
                 <div className="relative">
                   <div className="coursesCard__image overflow-hidden rounded-8">
                     <Image
@@ -125,7 +125,7 @@ export default function Courses() {
                   {course.professional && (
                     <div className="d-flex justify-between py-10 px-10 absolute-full-center z-3">
                       <div className="px-15 rounded-200">
-                        <span className="text-11 lh-1 uppercase fw-900 text-dark">
+                        <span className="text-11 lh-1 uppercase fw-900 text-white">
                           PROFESSIONAL
                         </span>
                       </div>
@@ -134,12 +134,15 @@ export default function Courses() {
                 </div>
 
                 <div className="h-100 pt-15">
-                  <div className="text-14 lh-1 text-dark-1 fw-500 mb-10">
+                  <div className="text-14 lh-1 fw-500 mb-10 text-white">
                     {course.school}
                   </div>
 
-                  <div className="text-17 lh-15 fw-500 text-dark-1">
-                    <Link className="linkCustom" href={course.href}>
+                  <div className="text-17 lh-15 fw-500 text-white">
+                    <Link
+                      className="linkCustom text-white hover:underline"
+                      href={course.href}
+                    >
                       {course.category}
                     </Link>
                   </div>
@@ -154,7 +157,9 @@ export default function Courses() {
                           src="/assets/img/coursesCards/icons/2.svg"
                           alt="duration"
                         />
-                        <div className="text-14 lh-1">{course.duration}</div>
+                        <div className="text-14 lh-1 text-white">
+                          {course.duration}
+                        </div>
                       </div>
                     </div>
 
@@ -167,7 +172,9 @@ export default function Courses() {
                           src="/assets/img/coursesCards/icons/3.svg"
                           alt="level"
                         />
-                        <div className="text-14 lh-1">{levelLabel}</div>
+                        <div className="text-14 lh-1 text-white">
+                          {levelLabel}
+                        </div>
                       </div>
                     </div>
                   </div>

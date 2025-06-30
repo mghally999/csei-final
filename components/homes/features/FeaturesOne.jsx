@@ -6,18 +6,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 export default function LearnNewSkill() {
   return (
-    <section className="layout-pt-lg layout-pb-lg bg-beige-1">
+    <section className="layout-pt-lg layout-pb-lg bg-custom-navyblue">
       <div className="container">
         <div className="row y-gap-30 justify-between items-center">
           <div className="col-xl-5 col-lg-6 col-md-10 order-2 order-lg-1">
             <div className="about-content">
               <h2
-                className="about-content__title customSized"
+                className="about-content__title customSized text-white"
                 data-aos="fade-up"
               >
                 Why <span> CSEI Academy </span>?
               </h2>
-              <p className="about-content__text" data-aos="fade-up">
+              <p
+                className="about-content__text text-white fw-700"
+                data-aos="fade-up"
+              >
                 Use the list below to bring attention to your product’s key
                 <br /> differentiator.
               </p>
@@ -40,13 +43,18 @@ export default function LearnNewSkill() {
                         <FontAwesomeIcon icon={faCheck} />
                       </span>
                     </div>
-                    <div className="about-content-list__title">{elm.title}</div>
+                    <div className="about-content-list__title text-white">
+                      {elm.title}
+                    </div>
                   </div>
                 ))}
               </div>
 
               <div className="d-inline-block mt-30">
-                <Link href="/signup" className="button -md -dark-1 text-white">
+                <Link
+                  href="/admission"
+                  className="button -md text-white fw-700 bg-custom-orange"
+                >
                   Apply Now
                 </Link>
               </div>

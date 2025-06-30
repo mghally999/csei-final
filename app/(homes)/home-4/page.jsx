@@ -1,6 +1,5 @@
 import React from "react";
 import HeaderFour from "@/components/layout/headers/HeaderFour";
-import HeroFour from "@/components/homes/heros/HeroFour";
 import Brands from "@/components/common/Brands";
 
 import CategoriesFour from "@/components/homes/categories/CategoriesFour";
@@ -30,7 +29,6 @@ export default function page() {
         <HeaderFour />
       </div>
       <div className="content-wrapper  js-content-wrapper overflow-hidden">
-        <HeroFour />
         <Brands />
         <CategoriesFour />
         <CoursesFour />

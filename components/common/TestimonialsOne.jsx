@@ -12,12 +12,12 @@ import Link from "next/link";
 
 export default function TestimonialsOne() {
   return (
-    <section className="layout-pt-lg mt-80 layout-pb-lg bg-purple-1">
+    <section className="layout-pt-lg mt-80 layout-pb-lg bg-white">
       <div className="container ">
         <div className="row justify-center text-center">
           <div className="col-auto">
             <div className="sectionTitle ">
-              <h2 className="sectionTitle__title text-green-1">
+              <h2 className="sectionTitle__title text-black">
                 What People Say
               </h2>
 
@@ -95,13 +95,20 @@ export default function TestimonialsOne() {
 
           <div className="d-flex x-gap-20 items-center justify-end pt-60 lg:pt-40">
             <div className="col-auto">
-              <button className="button -outline-white text-white size-50 rounded-full d-flex justify-center items-center js-prev">
+              <button
+                className="-outline-white text-white size-50 rounded-full d-flex justify-center items-center  js-prev"
+                style={{ backgroundColor: "#e05500" }}
+              >
                 <i className="icon icon-arrow-left text-24"></i>
               </button>
             </div>
             <div className="col-auto">
-              <button className="button -outline-white text-white size-50 rounded-full d-flex justify-center items-center js-next">
+              <button
+                className="-outline-white text-white size-50 rounded-full d-flex justify-center items-center js-next"
+                style={{ backgroundColor: "#e05500" }}
+              >
                 <i className="icon icon-arrow-right text-24"></i>
+                {/* button content here */}
               </button>
             </div>
           </div>
