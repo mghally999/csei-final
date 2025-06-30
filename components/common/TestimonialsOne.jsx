@@ -124,10 +124,10 @@ export default function TestimonialsOne() {
             >
               <Link href="/placements" className="block cursor-pointer group">
                 <div className="counter -type-1 transition duration-300 group-hover:scale-[1.03]">
-                  <div className="counter__number text-white group-hover:text-yellow-300">
+                  <div className="counter__number text-white group-hover:text-yellow-300 text-black">
                     {elm.number}
                   </div>
-                  <div className="counter__title text-white group-hover:text-yellow-300">
+                  <div className="counter__title text-white group-hover:text-yellow-300 text-black">
                     {elm.title}
                   </div>
                 </div>

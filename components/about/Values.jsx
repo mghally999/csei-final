@@ -32,7 +32,7 @@ const values = [
 
 export default function Values() {
   return (
-    <section className="layout-pt-md layout-pb-md bg-purple-1">
+    <section className="layout-pt-md layout-pb-md bg-custom-navyblue">
       <div className="container">
         <div className="row justify-center text-center">
           <div className="col-xl-8 col-lg-9 col-md-10">

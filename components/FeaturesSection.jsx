@@ -237,6 +237,7 @@ export default function FeaturesSection() {
         .box p {
           font-size: 16px;
           line-height: 1.6;
+          min-height: 250px;
           margin-bottom: 25px;
           color: #666;
           transition: all 0.3s ease;

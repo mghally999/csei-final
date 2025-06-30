@@ -6,8 +6,8 @@ export default function Brief() {
       <div className="container">
         <div className="row justify-center text-center">
           <div className="col-xl-8 col-lg-9 col-md-10">
-            <h2 className="sectionTitle__title">CSEI at a Glance</h2>
-            <p className="sectionTitle__text mt-20">
+            <h2 className="sectionTitle__title text-black">CSEI at a Glance</h2>
+            <p className="sectionTitle__text mt-20 text-blackfw-500">
               At CSEI Academy, we are proud to offer UK Ofqual-recognized and
               KHDA-approved programs with hands-on learning to help you thrive
               in IT, Healthcare, Tourism, Culinary Arts, and Business. Our

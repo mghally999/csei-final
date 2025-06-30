@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { motion } from "framer-motion";
 
 export default function Mission() {
   const missionPoints = [
@@ -13,63 +14,100 @@ export default function Mission() {
     "Ensure equal opportunities for all learners",
   ];
 
-  return (
-    <section className="mission-section layout-pt-lg layout-pb-lg bg-white text-[#1B0C4D]">
-      <div className="container">
-        {/* Title */}
-        <div className="row justify-center text-center mb-10">
-          <div className="col-xl-8 col-lg-10">
-            <h2 className="text-[36px] font-extrabold" data-aos="fade-up">
-              Our Mission
-            </h2>
-          </div>
-        </div>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 },
+    },
+  };
 
-        {/* Full Paragraph from Screenshot */}
-        <div className="row justify-center mb-10">
-          <div className="col-xl-10">
-            <p
-              className="text-lg text-[#1B0C4D]/90 leading-loose text-center"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              At CSEI Academy in Dubai, our mission is to ignite every student’s
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  };
+
+  return (
+    <section className="mission-section relative py-24 md:py-32 bg-gradient-to-b from-[#f3f5ff] to-[#e6ecff] overflow-hidden">
+      {/* Decorative Background Effects */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute -top-32 -left-32 w-96 h-96 bg-purple-300 rounded-full blur-[120px] opacity-40"></div>
+        <div className="absolute bottom-0 -right-40 w-[500px] h-[500px] bg-blue-300 rounded-full blur-[150px] opacity-30"></div>
+      </div>
+
+      <div className="container mx-auto px-6 max-w-5xl relative z-10">
+        {/* Title and Intro */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-extrabold text-[#1B0C4D] leading-snug">
+            Our{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+              Mission
+            </span>
+          </h2>
+          <div
+            className="max-w-4xl mx-auto mt-6 text-[#1B0C4D]/90 text-lg md:text-xl font-medium leading-relaxed md:leading-loose"
+            style={{
+              fontSize: "15px",
+              fontWeight: "500",
+              marginBottom: "15px",
+            }}
+          >
+            <p>
+              At CSEI Academy in Dubai, our mission is to ignite every student's
               potential through affordable, internationally recognized education
-              and an inclusive campus environment. Our dedicated staff actively
-              support, mentor, and inspire students from all backgrounds,
-              ensuring every student feels valued and empowered throughout their
-              journey.
-              <br />
-              <br />
-              By blending hands-on learning with strong academic foundations and
-              connecting students to real-world opportunities, we prepare future
-              leaders to thrive and make a meaningful impact, both locally and
+              and an inclusive campus environment. Our dedicated staff support,
+              mentor, and inspire learners from diverse backgrounds.
+            </p>
+            <p className="mt-4">
+              Through hands-on learning and real-world exposure, we equip future
+              leaders to thrive and create lasting impact—both locally and
               globally.
             </p>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Mission Cards */}
-        <div className="row justify-center gap-y-6">
-          {missionPoints.map((item, i) => (
-            <div
-              className="col-md-6"
+        {/* Flex List of Mission Points (No Numbers) */}
+        <motion.ul
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex flex-col gap-6"
+        >
+          {missionPoints.map((point, i) => (
+            <motion.li
               key={i}
-              data-aos={i % 2 === 0 ? "fade-right" : "fade-left"}
-              data-aos-delay={i * 100 + 200}
+              variants={itemVariants}
+              whileHover={{ scale: 1.02 }}
+              className="flex items-start p-6 rounded-xl bg-white/70 border border-blue-200 backdrop-blur-md shadow-md transition-all duration-300"
             >
-              <div
-                className={`mission-card p-6 rounded-2xl text-center h-full transition-all duration-300 ${
-                  i % 2 === 0
-                    ? "bg-white text-[#1B0C4D] border border-[#1B0C4D]"
-                    : "bg-[#1B0C4D] text-white"
-                } hover:scale-[1.03] hover:shadow-lg`}
+              <p
+                className="text-lg md:text-xl font-semibold text-[#1B0C4D] leading-snug"
+                style={{
+                  display: "flex",
+                  justifyContent: "left",
+                  alignItems: "left",
+                  fontWeight: "bold",
+                  fontSize: "20px",
+                  marginBottom: "15px",
+                  marginTop: "20px",
+                }}
               >
-                <p className="text-lg font-medium leading-relaxed">{item}</p>
-              </div>
-            </div>
+                {point}
+              </p>
+            </motion.li>
           ))}
-        </div>
+        </motion.ul>
       </div>
     </section>
   );

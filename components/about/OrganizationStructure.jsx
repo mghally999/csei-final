@@ -6,29 +6,29 @@ const structureItems = [
     title: "Board of Directors",
     description:
       "Our governing body provides strategic leadership and oversight, ensuring alignment with our mission and values.",
-    // image:
-    //   "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=60&h=60&q=80",
+    image:
+      "https://plus.unsplash.com/premium_photo-1682432517956-9c3c4f26ec0b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     title: "Academic Advisory Council",
     description:
       "A team of academic experts guiding the curriculum, assessments, and quality of education across all programs.",
-    // image:
-    //   "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=60&h=60&q=80",
+    image:
+      "https://plus.unsplash.com/premium_photo-1682432517956-9c3c4f26ec0b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     title: "Operations & Student Support",
     description:
       "Responsible for smooth daily functioning, student services, and ensuring an exceptional learner experience.",
-    // image:
-    //   "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=60&h=60&q=80",
+    image:
+      "https://plus.unsplash.com/premium_photo-1682432517956-9c3c4f26ec0b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     title: "Marketing & Partnerships",
     description:
       "Focused on global outreach, partnerships, and building a strong brand presence in education.",
-    // image:
-    //   "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=60&h=60&q=80",
+    image:
+      "https://plus.unsplash.com/premium_photo-1682432517956-9c3c4f26ec0b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
 

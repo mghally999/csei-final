@@ -23,12 +23,6 @@ export const topCategories = [
     title: "Professional",
     text: "35+ Courses",
   },
-  {
-    id: 5,
-    iconSrc: "/assets/img/featureCards/5.svg",
-    title: "Professional",
-    text: "908+ Courses",
-  },
 ];
 
 export const topCategoriesTwo = [
