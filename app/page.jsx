@@ -1,4 +1,4 @@
-import HomeHero from "@/components/homes/heros/HomeHero";
+import Home from "@/components/homes/heros/Home";
 import Categories from "@/components/homes/categories/Categories";
 import Courses from "@/components/homes/courses/Courses";
 import TestimonialsOne from "@/components/common/TestimonialsOne";
@@ -10,7 +10,7 @@ import Join from "@/components/homes/join/Join";
 export default function HomePage() {
   return (
     <>
-      <HomeHero />
+      <Home />
       <Categories />
       <Courses />
       <TestimonialsOne />

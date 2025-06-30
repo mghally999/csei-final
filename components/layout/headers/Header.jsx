@@ -1,13 +1,10 @@
 "use client";
 
-import SearchToggle from "../component/SearchToggle";
-import CartToggle from "../component/CartToggle";
 import MobileMenu from "../component/MobileMenu";
 import Menu from "../component/Menu";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import Socials from "@/components/common/Socials";
 
 export default function Header() {
   const [activeMobileMenu, setActiveMobileMenu] = useState(false);

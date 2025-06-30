@@ -1,60 +1,61 @@
 "use client";
-import Image from "next/image";
-import { Navigation, Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
 
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import React from "react";
-import { featureTwo } from "../../../data/features";
-import { slidesData } from "../../../data/hero";
+import { slidesData } from "@/data/home/home";
 import { useRouter } from "next/navigation";
-export default function HeroTwo() {
+
+export default function Home() {
   const router = useRouter();
 
   return (
     <section className="mainSlider -type-1 js-mainSlider customizedHeroBackground">
       <div className="swiper-wrapper-two">
         <Swiper
-          // {...setting}
-
-          modules={[Navigation, Pagination]}
+          modules={[Navigation, Pagination, Autoplay]}
+          autoplay={{
+            // delay: 4000, // ✅ 3 seconds
+            disableOnInteraction: false,
+          }}
           navigation={{
             nextEl: ".hero-slider-next",
             prevEl: ".hero-slider-prev",
           }}
+          pagination={{ clickable: true }}
           spaceBetween={0}
           style={{ maxWidth: "100vw", height: "100%" }}
           slidesPerView={1}
           breakpoints={{
-            // when window width is >= 576px
-            450: {
-              slidesPerView: 1,
-            },
-            // when window width is >= 768px
-            768: {
-              slidesPerView: 1,
-            },
-            1200: {
-              // when window width is >= 992px
-              slidesPerView: 1,
-            },
+            450: { slidesPerView: 1 },
+            768: { slidesPerView: 1 },
+            1200: { slidesPerView: 1 },
           }}
           speed={1200}
         >
           {slidesData.map((item, i) => (
             <SwiperSlide key={i}>
-              <div className="swiper-slide hightFull">
-                <div className="mainSlider__bg">
+              <div className="swiper-slide hightFull relative">
+                <div className="mainSlider__bg relative">
+                  {/* ✅ Background Image */}
                   <div
-                    className="bg-image js-lazy customedBg"
-                    style={{ backgroundImage: `url(${item.bgImage})` }}
+                    className="bg-image js-lazy customedBg absolute inset-0 z-0"
+                    style={{
+                      backgroundImage: `url(${item.bgImage})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
                   ></div>
+
+                  {/* ✅ Black Overlay */}
+                  <div className="absolute inset-0 bg-black/60 z-10"></div>
                 </div>
               </div>
             </SwiperSlide>
-            // 140,90
           ))}
         </Swiper>
       </div>
@@ -68,21 +69,22 @@ export default function HeroTwo() {
               data-aos-delay="500"
             >
               <h1 className="mainSlider__title text-white">
-                Experience Excellence at CSEI Academy
-                <span className="text-green-1 underline">Web Design</span>
+                Accredited UK Diplomas and KHDA Approved Programmes
               </h1>
-
-              <p className="mainSlider__text text-white">
-                More than 6.500 online courses
+              <p className="mainSlider__text text-black-1">
+                Healthcare, Tourism, Business, IT and Culinary Arts
               </p>
-
-              <div className="mainSlider__form">
+              <p className="mainSlider__text text-black-1 mt-10">
+                CSEI Academy is proudly accredited by globally recognized
+                institutions.
+              </p>
+              {/* Optional search form */}
+              {/* <div className="mainSlider__form">
                 <input
                   required
                   type="text"
                   placeholder="What do you want to learn today?"
                 />
-
                 <button
                   className="button -md -purple-1 text-white"
                   onClick={() => router.push("/courses-list-1")}
@@ -90,23 +92,9 @@ export default function HeroTwo() {
                   <i className="icon icon-search mr-15"></i>
                   Search
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
-        </div>
-
-        <div className="row y-gap-20 justify-center mainSlider__items">
-          {featureTwo.map((elm, i) => (
-            <div key={i} className="col-xl-3 col-md-4 col-sm-6">
-              <div className="mainSlider-item text-center">
-                <Image width={50} height={50} src={elm.imgSrc} alt="icon" />
-                <h4 className="text-20 fw-500 lh-18 text-white mt-8">
-                  {elm.title}
-                </h4>
-                <p className="text-15 text-white">{elm.description}</p>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
 
