@@ -3595,7 +3595,7 @@ h6 {
 }
 
 .app-content__title span {
-  color: #6440fb;
+  color: #04044e;
 }
 
 .app-content__text {
@@ -6525,7 +6525,7 @@ h6 {
 
 .testimonials.-type-1 .testimonials__content {
   border-radius: 8px;
-  background-color: #e05500;
+  background-color: #000000;
   padding: 30px;
   padding-bottom: 20px;
   color: #ffffff;
@@ -6535,7 +6535,7 @@ h6 {
   font-size: 18px;
   line-height: 36px;
   font-weight: bold;
-  color: #000000;
+  color: #ffffff;
 }
 
 .testimonials.-type-1 .testimonials__text {
@@ -6543,7 +6543,7 @@ h6 {
   font-size: 15px;
   line-height: 30px;
   font-weight: 900;
-  color: #000000;
+  color: #ffffff;
 }
 
 .testimonials.-type-1 .testimonials-footer {

@@ -5,7 +5,12 @@ import Image from "next/image";
 export default function FeaturesSection() {
   return (
     <div className="features" id="features">
-      <h2 className="main-title">Features</h2>
+      <div className="sectionTitle">
+        <h2 className="sectionTitle__title text-black">Features</h2>
+        <p className="sectionTitle__text text-gray-500">
+          Discover what makes us different
+        </p>
+      </div>
       <div className="container">
         {/* Quality Box */}
         <div className="box quality">

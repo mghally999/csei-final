@@ -97,7 +97,7 @@ export default function TestimonialsOne() {
             <div className="col-auto">
               <button
                 className="-outline-white text-white size-50 rounded-full d-flex justify-center items-center  js-prev"
-                style={{ backgroundColor: "#e05500" }}
+                style={{ backgroundColor: "#000000" }}
               >
                 <i className="icon icon-arrow-left text-24"></i>
               </button>
@@ -105,7 +105,7 @@ export default function TestimonialsOne() {
             <div className="col-auto">
               <button
                 className="-outline-white text-white size-50 rounded-full d-flex justify-center items-center js-next"
-                style={{ backgroundColor: "#e05500" }}
+                style={{ backgroundColor: "#000000" }}
               >
                 <i className="icon icon-arrow-right text-24"></i>
                 {/* button content here */}

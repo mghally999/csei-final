@@ -29,9 +29,9 @@ export default function GetApp() {
                 data-aos="fade-up"
                 data-aos-duration={500}
               >
-                <span>Engage </span>
-                <span>Create </span>
-                <span>Transform</span>
+                <span>Engage, </span>
+                <span>Create, </span>
+                <span>Transform.</span>
               </h2>
               <div className="app-content__buttons">
                 <Link href="#">
