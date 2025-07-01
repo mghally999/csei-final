@@ -1253,6 +1253,7 @@ a {
 a:hover {
   text-decoration: none;
   color: #e26933 !important;
+  font-weight: bold !important;
 }
 
 a,
@@ -4374,6 +4375,10 @@ h6 {
 
 .bg-custom-orange {
   background-color: #e05500;
+}
+
+.custom-cursor {
+  cursor: pointer !important;
 }
 
 .qualification-badge {

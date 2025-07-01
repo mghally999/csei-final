@@ -5,6 +5,7 @@ import Link from "next/link";
 import MobileFooter from "./MobileFooter";
 import { menuList } from "@/data/menu";
 import { usePathname } from "next/navigation";
+import MegaMenuItem from "@/components/MegaMenuItem";
 
 export default function Menu({ allClasses, headerPosition }) {
   const pathname = usePathname();
@@ -50,37 +51,44 @@ export default function Menu({ allClasses, headerPosition }) {
         const label = item.label || item.title || "Unnamed";
 
         return (
-          <li key={i} className="group relative px-10 py-2 text-dark-1">
+          <li key={i} className="group relative px-10 py-2 hover:bg-gray-50">
+            {/* Label or Link */}
             {item.href ? (
               <Link
                 href={item.href}
-                className={`block fw-600 text-sm hover:text-primary ${
-                  isActive(item.href) ? "activeMenu" : ""
+                className={`block fw-600 text-sm text-black ${
+                  isActive(item.href) ? "border-b border-black" : ""
                 }`}
               >
                 {label}
               </Link>
             ) : (
-              <span className="block fw-600 text-md text-gray-900">
+              <span className="block fw-600 text-sm text-black cursor-default">
                 {label}
+                {isParent && (
+                  <i className="icon-chevron-right text-13 ml-2 text-black"></i>
+                )}
               </span>
             )}
 
+            {/* Nested Submenu */}
             {isParent && (
-              <ul className="submenu absolute top-0 left-full min-w-[220px] bg-white shadow-md border rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible z-50 transition">
-                {item.links.map((child, j) => (
-                  <li key={j} className="px-3 py-2 hover:bg-gray-100">
-                    <Link
-                      href={child.href}
-                      className={`text-sm hover:text-primary ${
-                        isActive(child.href) ? "activeMenu" : ""
-                      }`}
-                    >
-                      {child.label || child.title || "Unnamed"}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <div className="absolute left-full top-0 z-50 hidden group-hover:block">
+                <ul className="bg-dark border border-gray-300 shadow-md rounded w-[240px] ml-2">
+                  {item.links.map((child, j) => (
+                    <li key={j} className="px-4 py-2 hover:bg-gray-100">
+                      <Link
+                        href={child.href}
+                        className={`text-sm text-black ${
+                          isActive(child.href) ? "font-bold" : ""
+                        }`}
+                      >
+                        {child.label || child.title || "Unnamed"}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             )}
           </li>
         );
@@ -96,11 +104,11 @@ export default function Menu({ allClasses, headerPosition }) {
         <div className="mobile-bg js-mobile-bg" />
 
         {/* Mobile login links */}
-        <div className="d-none xl:d-flex items-center px-20 py-20 border-bottom-light">
-          <Link href="/login" className="text-dark-1">
+        <div className="d-none xl:d-flex items-center px-20 py-20 border-b border-gray-200">
+          <Link href="/login" className="text-black">
             Log in
           </Link>
-          <Link href="/signup" className="text-dark-1 ml-30">
+          <Link href="/signup" className="text-black ml-30">
             Sign Up
           </Link>
         </div>
@@ -120,19 +128,19 @@ export default function Menu({ allClasses, headerPosition }) {
               return (
                 <li
                   key={index}
-                  className={`${hasDropdown ? "menu-item-has-children" : ""} ${
-                    menu.mega && !isSingleDropdown ? "-has-mega-menu" : ""
-                  }`}
+                  className={`relative group ${
+                    hasDropdown ? "menu-item-has-children" : ""
+                  } ${menu.mega && !isSingleDropdown ? "-has-mega-menu" : ""}`}
                 >
                   <Link
                     href={menu.href || "#"}
-                    className={`block hover:text-primary transition ${
-                      activeMenu === title ? "activeMenu" : ""
+                    className={`block text-black ${
+                      activeMenu === title ? "border-b border-black" : ""
                     }`}
                   >
                     {title}
                     {hasDropdown && (
-                      <i className="icon-chevron-right text-13 ml-10"></i>
+                      <i className="icon-chevron-right text-13 ml-10 text-black"></i>
                     )}
                   </Link>
 
@@ -140,8 +148,8 @@ export default function Menu({ allClasses, headerPosition }) {
                     (isSingleDropdown ? (
                       <div className="subnav">
                         <div className="menu__backButton js-nav-list-back">
-                          <Link href="#">
-                            <i className="icon-chevron-left text-13 mr-10"></i>
+                          <Link href="#" className="text-black">
+                            <i className="icon-chevron-left text-13 mr-10 text-black"></i>
                             {title}
                           </Link>
                         </div>
@@ -150,10 +158,8 @@ export default function Menu({ allClasses, headerPosition }) {
                             <li key={i}>
                               <Link
                                 href={section.href}
-                                className={`${
-                                  isActive(section.href)
-                                    ? "activeMenu"
-                                    : "inActiveMenu"
+                                className={`text-black ${
+                                  isActive(section.href) ? "font-bold" : ""
                                 }`}
                               >
                                 {section.label || section.title || "Unnamed"}
@@ -163,27 +169,19 @@ export default function Menu({ allClasses, headerPosition }) {
                         </ul>
                       </div>
                     ) : (
-                      <div className="mega absolute top-full left-0 w-full bg-white shadow z-50 transition-all duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible">
-                        <div className="mega__menu content-center-wrapper">
+                      <div
+                        className="mega absolute top-full left-0 w-full bg-dark shadow-lg z-50 
+                                  transition-all duration-300 max-h-0 overflow-hidden opacity-0 invisible 
+                                  group-hover:max-h-[1000px] group-hover:opacity-100 group-hover:visible"
+                      >
+                        <div className="mega__menu content-center-wrapper py-8">
                           <div className="row x-gap-40 justify-center">
-                            {links.map((col, i) => (
-                              <div key={i} className="col relative group">
-                                {col.href ? (
-                                  <Link
-                                    href={col.href}
-                                    className="text-17 fw-500 mb-20 block text-gray-900 hover:text-primary"
-                                  >
-                                    {col.title || col.label || "Unnamed"}
-                                  </Link>
-                                ) : (
-                                  <h4 className="text-17 fw-500 mb-20 text-gray-900">
-                                    {col.title || col.label || "Unnamed"}
-                                  </h4>
-                                )}
-                                {col.links &&
-                                  col.links.length > 0 &&
-                                  renderNestedLinks(col.links)}
-                              </div>
+                            {links.map((section, i) => (
+                              <MegaMenuItem
+                                key={i}
+                                section={section}
+                                pathname={pathname}
+                              />
                             ))}
                           </div>
                         </div>
@@ -202,8 +200,8 @@ export default function Menu({ allClasses, headerPosition }) {
         className="header-menu-close"
         data-el-toggle=".js-mobile-menu-toggle"
       >
-        <div className="size-40 d-flex items-center justify-center rounded-full bg-white">
-          <div className="icon-close text-dark-1 text-16"></div>
+        <div className="size-40 d-flex items-center justify-center rounded-full bg-dark">
+          <div className="icon-close text-black text-16"></div>
         </div>
       </div>
 

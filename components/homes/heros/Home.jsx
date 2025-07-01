@@ -24,7 +24,7 @@ export default function HomeHeroSlider() {
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         autoplay={{
-          delay: 10000, // 10-second transitions
+          delay: 10000,
           disableOnInteraction: false,
         }}
         navigation={{
@@ -34,7 +34,7 @@ export default function HomeHeroSlider() {
         pagination={{
           clickable: true,
           el: ".swiper-pagination",
-          bulletClass: "custom-bullet", // Custom class for bullets
+          bulletClass: "custom-bullet",
           bulletActiveClass: "custom-bullet-active",
         }}
         style={{ width: "100%", height: "100vh" }}
@@ -79,12 +79,15 @@ export default function HomeHeroSlider() {
                 }}
               />
 
-              {/* Content Box - Perfectly Centered */}
+              {/* Content Box */}
               <div
                 style={{
-                  position: "relative",
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
                   width: "90%",
-                  maxWidth: "600px",
+                  maxWidth: "750px",
                   zIndex: 3,
                   color: "white",
                   textAlign: "center",
@@ -92,7 +95,9 @@ export default function HomeHeroSlider() {
                   padding: "clamp(20px, 4vw, 40px)",
                   borderRadius: "12px",
                   backdropFilter: "blur(4px)",
-                  margin: "0 auto",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
                 }}
               >
                 <h1
@@ -103,21 +108,37 @@ export default function HomeHeroSlider() {
                     lineHeight: 1.2,
                     color: "#ffffff",
                     textShadow: "0 2px 4px rgba(0,0,0,0.3)",
+                    width: "100%",
                   }}
                 >
                   {item.title}
                 </h1>
-                <p
+
+                <div
                   style={{
-                    fontSize: "clamp(1rem, 2.5vw, 1.5rem)",
+                    width: "100%",
                     marginBottom: "1.5rem",
-                    color: "rgba(255,255,255,0.95)",
-                    fontWeight: "600",
-                    lineHeight: 1.4,
+                    display: "flex",
+                    justifyContent: "center",
                   }}
                 >
-                  {item.subtitle}
-                </p>
+                  {typeof item.subtitle === "string" ? (
+                    <p
+                      style={{
+                        fontSize: "clamp(1rem, 2.5vw, 1.5rem)",
+                        color: "rgba(255,255,255,0.95)",
+                        fontWeight: "600",
+                        lineHeight: 1.4,
+                        margin: 0,
+                      }}
+                    >
+                      {item.subtitle}
+                    </p>
+                  ) : (
+                    item.subtitle
+                  )}
+                </div>
+
                 {item.description && (
                   <p
                     style={{
@@ -126,14 +147,16 @@ export default function HomeHeroSlider() {
                       color: "rgba(255,255,255,0.85)",
                       lineHeight: 1.6,
                       fontWeight: "500",
+                      width: "100%",
                     }}
                   >
                     {item.description}
                   </p>
                 )}
-                {item.buttonText && (
+
+                {item.ctaText && (
                   <button
-                    onClick={() => router.push(item.buttonLink)}
+                    onClick={() => router.push(item.ctaLink)}
                     style={{
                       padding: "clamp(12px, 2vw, 16px) clamp(24px, 4vw, 32px)",
                       backgroundColor: "#f97316",
@@ -145,13 +168,9 @@ export default function HomeHeroSlider() {
                       fontWeight: "700",
                       transition: "all 0.3s ease",
                       boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-                      ":hover": {
-                        transform: "translateY(-2px)",
-                        boxShadow: "0 6px 12px rgba(0,0,0,0.2)",
-                      },
                     }}
                   >
-                    {item.buttonText}
+                    {item.ctaText}
                   </button>
                 )}
               </div>
@@ -160,7 +179,7 @@ export default function HomeHeroSlider() {
         ))}
       </Swiper>
 
-      {/* Custom Black Bullet Points */}
+      {/* Custom Bullet Points */}
       <style jsx global>{`
         .custom-bullet {
           width: 12px;
@@ -186,7 +205,7 @@ export default function HomeHeroSlider() {
         }}
       />
 
-      {/* Navigation Arrows */}
+      {/* Arrows */}
       <button
         className="hero-slider-prev"
         style={{
@@ -206,14 +225,6 @@ export default function HomeHeroSlider() {
           justifyContent: "center",
           cursor: "pointer",
           opacity: "0.9",
-          transition: "all 0.3s ease",
-          "@media (max-width: 768px)": {
-            width: "40px",
-            height: "40px",
-          },
-          ":hover": {
-            backgroundColor: "rgba(0,0,0,0.9)",
-          },
         }}
       >
         <i className="icon icon-arrow-left" style={{ fontSize: "20px" }}></i>
@@ -238,14 +249,6 @@ export default function HomeHeroSlider() {
           justifyContent: "center",
           cursor: "pointer",
           opacity: "0.9",
-          transition: "all 0.3s ease",
-          "@media (max-width: 768px)": {
-            width: "40px",
-            height: "40px",
-          },
-          ":hover": {
-            backgroundColor: "rgba(0,0,0,0.9)",
-          },
         }}
       >
         <i className="icon icon-arrow-right" style={{ fontSize: "20px" }}></i>

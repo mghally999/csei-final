@@ -3,7 +3,40 @@ export const slidesData = [
     id: 1,
     bgImage: "/assets/img/home/september-intake-1.png",
     title: "Accredited UK Diplomas and KHDA Approved Programmes",
-    subtitle: "Healthcare, Tourism, Business, IT and Culinary Arts",
+    subtitle: (
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 1fr)",
+          gap: "10px",
+          width: "100%",
+          maxWidth: "500px",
+          margin: "0 auto",
+        }}
+      >
+        {["Healthcare", "Tourism", "Business", "IT", "Culinary Arts"].map(
+          (item, index) => (
+            <div
+              key={index}
+              style={{
+                backgroundColor: "rgba(255,255,255,0.2)",
+                padding: "8px 4px",
+                borderRadius: "20px",
+                fontSize: "0.9rem",
+                fontWeight: "600",
+                backdropFilter: "blur(4px)",
+                textAlign: "center",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+              }}
+            >
+              {item}
+            </div>
+          )
+        )}
+      </div>
+    ),
     description:
       "CSEI Academy is proudly accredited by globally recognized institutions.",
     ctaText: "Explore Programs",
