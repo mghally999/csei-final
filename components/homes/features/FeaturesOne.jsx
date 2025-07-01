@@ -17,13 +17,13 @@ export default function LearnNewSkill() {
               >
                 Why <span> CSEI Academy </span>?
               </h2>
-              <p
+              {/* <p
                 className="about-content__text text-white fw-700"
                 data-aos="fade-up"
               >
                 Use the list below to bring attention to your product’s key
                 <br /> differentiator.
-              </p>
+              </p> */}
               <div className="y-gap-20 pt-30">
                 {featureOne.map((elm, i) => (
                   <div
@@ -35,8 +35,8 @@ export default function LearnNewSkill() {
                       <span
                         className="text-white"
                         style={{
-                          fontSize: "10px",
-                          fontWeight: "300",
+                          fontSize: "13px",
+                          fontWeight: "400",
                         }}
                         aria-hidden="true"
                       >

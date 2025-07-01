@@ -1,24 +1,12 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import {
-  duration,
-  instractorNames,
-  languages,
-  levels,
-  prices,
-  rating,
-  sortingOptions,
-} from "@/data/courses";
+import { prices } from "@/data/courses";
 import React, { useState, useEffect } from "react";
-import Star from "../../components/common/Star";
 import Image from "next/image";
 import Link from "next/link";
 import { useContextElement } from "@/context/Context";
 import PaginationTwo from "../../components/common/PaginationTwo";
-import Preloader from "@/components/common/Preloader";
-import Header from "@/components/layout/headers/Header";
-import FooterOne from "@/components/layout/footers/FooterOne";
 import { programs } from "@/data/programs";
 
 export default function CourseListOne() {
@@ -862,7 +850,6 @@ export default function CourseListOne() {
           </div>
         </div>
       </section>
-      <FooterOne />
     </>
   );
 }

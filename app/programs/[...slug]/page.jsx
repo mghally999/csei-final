@@ -13,8 +13,6 @@ import AssessmentVerification from "@/components/programs/AssessmentVerification
 import CareerOpportunities from "@/components/programs/CareerOpportunities";
 import UniversityProgression from "@/components/programs/UniversityProgression";
 
-import Preloader from "@/components/common/Preloader";
-import Header from "@/components/layout/headers/Header";
 import FooterOne from "@/components/layout/footers/FooterOne";
 import ModalVideoComponent from "@/components/common/ModalVideo";
 
@@ -99,18 +97,10 @@ export default function Page() {
                   <Image
                     width={690}
                     height={342}
-                    className="w-1/1"
+                    className="w-1/1 course-img"
                     src={pageItem.imageSrc}
                     alt="Course Image"
                   />
-                  <div className="absolute-full-center d-flex justify-center items-center">
-                    <div
-                      onClick={() => setIsOpen(true)}
-                      className="d-flex justify-center items-center size-60 rounded-full bg-white cursor-pointer"
-                    >
-                      <div className="icon-play text-18" />
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
