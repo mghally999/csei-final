@@ -1,60 +1,38 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 
-import Overview from "@/components/programs/Overview";
-import WhyCSEI from "@/components/programs/WhyCSEI";
-import EntryRequirements from "@/components/programs/EntryRequirements";
-import QualificationStructure from "@/components/programs/QualificationStructure";
-import AllUnits from "@/components/programs/AllUnits";
-import AssessmentVerification from "@/components/programs/AssessmentVerification";
-import CareerOpportunities from "@/components/programs/CareerOpportunities";
-import UniversityProgression from "@/components/programs/UniversityProgression";
-
-import FooterOne from "@/components/layout/footers/FooterOne";
+import StickyTabsSection from "@/components/StickyTabsSection";
 import ModalVideoComponent from "@/components/common/ModalVideo";
 
 import allPrograms from "@/data/programs/allPrograms";
 
-const menuItems = [
-  { id: 1, text: "Overview" },
-  { id: 2, text: "Why CSEI?" },
-  { id: 3, text: "Entry Requirements" },
-  { id: 4, text: "Qualification Structure" },
-  { id: 5, text: "Qualification Units" },
-  { id: 6, text: "Assessment and Verification" },
-  { id: 7, text: "Career Opportunities" },
-  { id: 8, text: "University Progression" },
-];
-
 export default function Page() {
-  const { slug } = useParams(); // e.g. ["health-social-care", "level-4"]
+  const { slug } = useParams();
   const [pageItem, setPageItem] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState(1);
 
   useEffect(() => {
     if (slug && Array.isArray(slug)) {
       const category = slug[0];
       const level =
-        slug.length === 3 ? `${slug[1]}/${slug[2]}` : slug[1] || "default"; // default fallback
-
+        slug.length === 3 ? `${slug[1]}/${slug[2]}` : slug[1] || "default";
       const program = allPrograms.find(
         (item) => item.category === category && item.level === level
       );
-
       setPageItem(program || null);
     }
   }, [slug]);
 
-  if (!pageItem)
+  if (!pageItem) {
     return (
       <div className="min-h-screen flex items-center justify-center text-red-600 text-lg font-semibold">
         Program not found.
       </div>
     );
+  }
 
   return (
     <>
@@ -69,12 +47,12 @@ export default function Page() {
               <div className="col-xl-6 col-lg-6 d-flex flex-column justify-center">
                 <div className="d-flex x-gap-15 y-gap-10 pb-20">
                   <div>
-                    <div className="badge px-15 py-8 text-11 bg-green-1 text-dark-1 fw-400">
+                    <div className="badge px-15 py-8 text-11 bg-black text-white fw-600">
                       {pageItem.category.toUpperCase()}
                     </div>
                   </div>
                   <div>
-                    <div className="badge px-15 py-8 text-11 bg-purple-1 text-white fw-400">
+                    <div className="badge px-15 py-8 text-11 bg-black text-white fw-600">
                       {pageItem.level.toUpperCase().replaceAll("-", " ")}
                     </div>
                   </div>
@@ -108,64 +86,8 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Tab Section */}
-      <section className="layout-pt-lg layout-pb-md">
-        <div className="container">
-          <div className="tabs -side js-tabs">
-            <div className="row y-gap-40">
-              <div className="col-lg-4">
-                <div className="tabs__controls y-gap-5 js-tabs-controls">
-                  {menuItems.map((item) => (
-                    <button
-                      key={item.id}
-                      onClick={() => setActiveTab(item.id)}
-                      className={`tabs__button text-18 fw-500 js-tabs-button ${
-                        activeTab === item.id ? "is-active" : ""
-                      }`}
-                      type="button"
-                    >
-                      {item.text}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="col-lg-8">
-                <div className="tabs__content js-tabs-content space-y-12 text-gray-800">
-                  {activeTab === 1 && <Overview data={pageItem.overview} />}
-                  {activeTab === 2 && <WhyCSEI data={pageItem.whyCSEI} />}
-                  {activeTab === 3 && (
-                    <EntryRequirements data={pageItem.entryRequirements} />
-                  )}
-                  {activeTab === 4 && (
-                    <QualificationStructure
-                      data={pageItem.qualificationStructureText}
-                    />
-                  )}
-                  {activeTab === 5 && (
-                    <AllUnits data={pageItem.qualificationUnits} />
-                  )}
-                  {activeTab === 6 && (
-                    <AssessmentVerification
-                      data={pageItem.assessmentVerification}
-                    />
-                  )}
-                  {activeTab === 7 && (
-                    <CareerOpportunities data={pageItem.careerOpportunities} />
-                  )}
-                  {activeTab === 8 && (
-                    <UniversityProgression
-                      data={pageItem.universityProgression}
-                    />
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <FooterOne />
+      {/* Sticky Tabs Section */}
+      <StickyTabsSection program={pageItem} />
 
       <ModalVideoComponent
         videoId="LlCwHnp3kL4"

@@ -62,7 +62,7 @@ export default function AboutCSEI() {
         }
 
         .sectionTitle__text {
-          text-align: left;
+          text-align: justify !important;
           word-spacing: normal;
           letter-spacing: normal;
           line-height: 1.8;

@@ -52,7 +52,7 @@ export default function AdmissionLayout({
               <h2 className="text-2xl font-semibold mb-6 text-[#160643] border-b pb-2">
                 Important Dates
               </h2>
-              <div className="space-y-4">
+              <div className="space-y-10">
                 {timeline.map((event, index) => (
                   <div
                     key={index}

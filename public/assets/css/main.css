@@ -6667,6 +6667,22 @@ h6 {
   text-align: justify !important;
 }
 
+.tab-section-heading {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.tab-section-paragraph {
+  font-size: 18px;
+  font-weight: 500;
+  color: #3a3a55;
+  line-height: 1.8;
+  text-align: center;
+}
+
 .text-heading {
   font-size: 30px;
   font-weight: 700;
@@ -7022,7 +7038,7 @@ h6 {
 }
 
 .pagination.-buttons .pagination__button:hover {
-  background-color: var(--color-purple-1);
+  background-color: #04044e;
   color: white;
 }
 
@@ -8117,6 +8133,10 @@ h6 {
   position: relative;
   padding-left: 22px;
   display: block !important;
+}
+
+.custom-margin {
+  margin-bottom: 15px !important;
 }
 
 .tabs.-side .tabs__controls .tabs__button::before {

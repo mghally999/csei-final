@@ -1,4 +1,4 @@
-const AllUnits = ({ data }) => {
+export const AllUnits = ({ data }) => {
   if (!data || !Array.isArray(data)) return null;
 
   return (
