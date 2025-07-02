@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { placementCards } from "@/data/placements/placements";
-import PageLinks from "@/components/common/PageLinks";
 
 export async function generateStaticParams() {
   return placementCards.map((card) => ({

@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { brands } from "../../data/brands"; // Make sure your logos are updated here
+import { brands } from "../../../data/brands"; // Make sure your logos are updated here
 
 const Brands = ({ backgroundColorComponent, brandsTwo }) => {
   return (

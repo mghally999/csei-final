@@ -84,7 +84,7 @@ export default function CardGridLayout({
 
                           <Link
                             href={card.link}
-                            className="inline-block bg-[#160643] text-white text-14 fw-600 px-20 py-10 rounded-full hover:bg-[#1F2A64] transition"
+                            className="inline-block bg-[#160643] text-black text-14 fw-600 px-20 py-10 rounded-full hover:bg-[#1F2A64] transition"
                             aria-label={`Learn more about ${card.title}`}
                           >
                             Learn More

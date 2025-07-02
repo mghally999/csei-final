@@ -1,7 +1,7 @@
 export const counters = [
   {
     id: 1,
-    number: "350,000+",
+    number: "80%",
     title: "Employability Ratio",
   },
   {

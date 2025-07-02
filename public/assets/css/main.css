@@ -4508,6 +4508,7 @@ h6 {
   .header .header-menu .menu__nav li.menu-item-has-children a {
     display: flex;
     align-items: center;
+    white-space: nowrap;
   }
 
   .header .header-menu .menu__nav li.menu-item-has-children a:hover {
@@ -8137,6 +8138,10 @@ h6 {
 
 .custom-margin {
   margin-bottom: 15px !important;
+}
+
+.custom-padding {
+  padding-top: 200px !important;
 }
 
 .tabs.-side .tabs__controls .tabs__button::before {
@@ -14291,7 +14296,7 @@ h6 {
 }
 
 .layout-pt-lg {
-  padding-top: 120px;
+  padding-top: 200px;
 }
 
 .layout-pb-lg {

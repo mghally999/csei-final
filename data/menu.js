@@ -271,50 +271,38 @@ export const menuList = [
   {
     title: "Placements",
     href: "/placements",
-    mega: true,
     links: [
       {
-        title: "Overview & Objective",
-        links: [
-          {
-            label: "Objective",
-            href: "/placements/objectives",
-          },
-          {
-            label: "Overview & Briefing",
-            href: "/placements/overview",
-          },
-        ],
+        title: "Objective",
+        href: "/placements/objectives",
       },
       {
-        title: "Why Choose CSEI",
-        links: [
-          {
-            label: "Why Recruit CSEI Students",
-            href: "/placements/why-csei",
-          },
-          {
-            label: "Our Services",
-            href: "/placements/services",
-          },
-        ],
+        title: "Overview & Briefing",
+        href: "/placements/overview",
       },
       {
-        title: "Highlights & Partners",
-        links: [
-          {
-            label: "Placement Highlights",
-            href: "/placements/highlights",
-          },
-          {
-            label: "Our Industry Partners",
-            href: "/placements/partners",
-          },
-          {
-            label: "Partner With Us / Book",
-            href: "/placements/book",
-          },
-        ],
+        title: "Why Recruit CSEI Students",
+        href: "/placements/why-csei",
+      },
+      {
+        title: "Our Services",
+        href: "/placements/services",
+      },
+      {
+        title: "Student Satisfaction",
+        href: "/placements/highlights/student-satisfaction",
+      },
+      {
+        title: "Opportunities Generated",
+        href: "/placements/highlights/opportunities-generated",
+      },
+      {
+        title: "Our Industry Partners",
+        href: "/placements/partners",
+      },
+      {
+        title: "Partner With Us / Book",
+        href: "/placements/book",
       },
     ],
   },

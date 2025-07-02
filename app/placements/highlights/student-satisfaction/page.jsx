@@ -1,6 +1,6 @@
 "use client";
 
-export default function ServicesPage() {
+export default function StudentSatisfaction() {
   return (
     <div className="main-content">
       <div className="content-wrapper js-content-wrapper overflow-hidden">
@@ -17,7 +17,7 @@ export default function ServicesPage() {
                     marginBottom: "30px",
                   }}
                 >
-                  Our Services
+                  Common Satisfaction Factors
                 </h2>
                 <ul
                   style={{
@@ -29,29 +29,22 @@ export default function ServicesPage() {
                   }}
                 >
                   <li style={{ marginBottom: "22px" }}>
-                    <strong>Placement Training:</strong> Soft skills training,
-                    aptitude test preparation, resume writing workshops, mock
-                    interviews, and group discussion sessions to enhance
-                    employability.
+                    Good support from the placement team
                   </li>
                   <li style={{ marginBottom: "22px" }}>
-                    <strong>Internship Opportunities:</strong> Assistance in
-                    securing internships that provide practical exposure and
-                    build professional experience.
+                    Availability of reputed recruiters
                   </li>
                   <li style={{ marginBottom: "22px" }}>
-                    <strong>Career Guidance Counselling:</strong> One-on-one or
-                    group counselling sessions to help students choose suitable
-                    career paths based on their strengths and interests.
+                    Adequate training and preparation sessions
                   </li>
                   <li style={{ marginBottom: "22px" }}>
-                    <strong>Alumni Network Support:</strong> Engagement with
-                    alumni for mentoring, networking, and job referrals.
+                    Limited job role variety in certain departments
                   </li>
-                  <li>
-                    <strong>Corporate Tie-Ups:</strong> Building and maintaining
-                    relationships with various industries and organizations to
-                    create more placement opportunities.
+                  <li style={{ marginBottom: "22px" }}>
+                    Expectations of higher salary packages
+                  </li>
+                  <li style={{ marginBottom: "22px" }}>
+                    Desire for more industry-specific placement opportunities
                   </li>
                 </ul>
               </div>
@@ -59,8 +52,8 @@ export default function ServicesPage() {
               {/* Right Column: Image */}
               <div className="col-lg-6" data-aos="fade-left">
                 <img
-                  src="https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="Services"
+                  src="/assets/images/satisfaction.jpg"
+                  alt="Satisfaction"
                   className="rounded-16 w-full"
                   width="520"
                   height="480"

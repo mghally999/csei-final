@@ -1,7 +1,7 @@
 // components/placements/Placements.jsx
 "use client";
 import React from "react";
-import PlacementsCard from "../../components/PlacementCards";
+import PlacementsCard from "../PlacementCards";
 import { motion } from "framer-motion";
 
 const Placements = () => {

@@ -147,7 +147,7 @@ export default function StickyTabsSection({ program }) {
           width: 100%;
           text-align: left;
           padding: 0.75rem 1rem;
-          margin-bottom: 18rem;
+          margin-bottom: 15rem;
           background-color: #f3f4f6;
           border-radius: 0.375rem;
           font-weight: 600;

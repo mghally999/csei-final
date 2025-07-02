@@ -42,7 +42,12 @@ export default function Menu({ allClasses, headerPosition }) {
   const isActive = (href) => pathname.startsWith(href);
 
   const noDropdownTitles = ["Home", "Student Life", "About Us"];
-  const singleDropdownTitles = ["Academics", "Admission", "Life With CSEI"];
+  const singleDropdownTitles = [
+    "Academics",
+    "Admission",
+    "Life With CSEI",
+    "Placements",
+  ];
 
   const renderNestedLinks = (links) => (
     <ul className="mega__list min-w-[200px] whitespace-nowrap">

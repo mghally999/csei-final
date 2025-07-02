@@ -65,8 +65,8 @@ export const placementCards = [
     title: "Our Services",
     link: "/placements/services",
     image: {
-      url: "/assets/img/placements/services.png",
-      alt: "Services",
+      url: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+      alt: "Career guidance at CSEI",
     },
     description: [
       "<strong>Placement Training:</strong> Soft skills training, aptitude test preparation, resume writing workshops, mock interviews, and group discussion sessions to enhance employability.",
