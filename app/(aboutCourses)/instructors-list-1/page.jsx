@@ -18,7 +18,6 @@ export default function page() {
   return (
     <main className="main-content">
       <div className="content-wrapper  js-content-wrapper overflow-hidden">
-        <PageLinks />
         <Instractors />
       </div>
     </main>

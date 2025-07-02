@@ -17,7 +17,6 @@ export default function page() {
 
       <Header />
       <div className="content-wrapper js-content-wrapper overflow-hidden">
-        <PageLinks />
         <EventsOne />
         <FooterOne />
       </div>

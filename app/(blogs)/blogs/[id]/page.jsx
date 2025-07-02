@@ -19,8 +19,6 @@ export default async function page(props) {
   return (
     <div className="main-content  ">
       <div className="content-wrapper js-content-wrapper overflow-hidden">
-        <PageLinks />
-
         <BlogDetails id={params.id} />
 
         <RelatedBlogs />

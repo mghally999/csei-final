@@ -38,7 +38,9 @@ export default function Structure() {
       <div className="container">
         <div className="row justify-center text-center">
           <div className="col-xl-8 col-lg-9 col-md-10">
-            <h2 className="sectionTitle__title">Organization Structure</h2>
+            <h2 className="sectionTitle__title text-black">
+              Organization Structure
+            </h2>
             <p className="sectionTitle__text mt-20">
               The backbone of CSEI – a dynamic team dedicated to quality,
               innovation, and student success.

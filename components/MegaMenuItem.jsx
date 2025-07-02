@@ -1,21 +1,45 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 export default function MegaMenuItem({ section, pathname }) {
   const [hoveredTitle, setHoveredTitle] = useState(null);
+  const [clickedTitle, setClickedTitle] = useState(null);
+  const dropdownRef = useRef(null);
   const isActive = (href) => pathname.startsWith(href);
 
   const brandColors = {
-    primary: "#000000", // Brand black
-    secondary: "#1e40af", // Optional darker blue
-    accent: "#f59e0b", // Amber
-    dark: "#1f2937", // Dark gray
-    light: "#f3f4f6", // Light gray
+    primary: "#000000",
+    secondary: "#1e40af",
+    accent: "#f59e0b",
+    dark: "#1f2937",
+    light: "#f3f4f6",
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setClickedTitle(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleTitleClick = (label) => {
+    setClickedTitle(clickedTitle === label ? null : label);
+    setHoveredTitle(null);
   };
 
   return (
-    <div className="col relative px-5 text-black cursor-pointer">
+    <div
+      className="col relative px-5 text-black cursor-pointer"
+      ref={dropdownRef}
+    >
       {/* Main Section Title */}
       <h4
         className="text-md font-bold mb-4 transition-colors duration-200 hover:text-[#2563eb]"
@@ -42,25 +66,33 @@ export default function MegaMenuItem({ section, pathname }) {
                 className={`block text-md font-medium transition-all duration-300 ${
                   isActive(item.href)
                     ? "text-[#2563eb]"
-                    : "text-gray-800 hover:text-[#2563eb]"
+                    : "text-gray-800 hover:text-[#2563eb] custom-cursor"
                 }`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (isParent) {
+                    handleTitleClick(label);
+                  }
+                }}
               >
                 {label}
                 {isParent && (
-                  <span className="ml-2 text-black opacity-70 group-hover:opacity-100 transition-opacity">
+                  <span className="ml-10 text-black opacity-70 group-hover:opacity-100 transition-opacity">
                     <i className="icon-chevron-down text-xs"></i>
                   </span>
                 )}
               </span>
               <span
                 className={`absolute bottom-0 left-0 h-0.5 bg-[#2563eb] transition-all duration-300 ${
-                  hoveredTitle === label ? "w-full" : "w-0"
+                  hoveredTitle === label || clickedTitle === label
+                    ? "w-full"
+                    : "w-0"
                 }`}
               />
             </div>
 
             {/* Nested Dropdown */}
-            {isParent && hoveredTitle === label && (
+            {isParent && (hoveredTitle === label || clickedTitle === label) && (
               <ul
                 className="absolute top-0 left-full ml-2 bg-white border border-gray-200 shadow-xl rounded-md w-[220px] z-50 overflow-hidden"
                 style={{ animation: "slideIn 0.2s ease-out forwards" }}
@@ -89,6 +121,10 @@ export default function MegaMenuItem({ section, pathname }) {
                           ? "text-white font-semibold"
                           : "text-gray-700 hover:text-white"
                       }`}
+                      onClick={() => {
+                        setClickedTitle(null);
+                        setHoveredTitle(null);
+                      }}
                     >
                       {lvl.label || lvl.title}
                     </Link>

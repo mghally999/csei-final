@@ -17,7 +17,6 @@ export default function page() {
   return (
     <div className="main-content  ">
       <div className="content-wrapper js-content-wrapper overflow-hidden">
-        <PageLinks />
         <BlogsTwo />
       </div>
     </div>

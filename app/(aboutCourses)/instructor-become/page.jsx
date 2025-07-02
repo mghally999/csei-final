@@ -15,7 +15,6 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <PageLinks />
       <PageHeading />
       <section className="layout-pb-lg">
         <div className="container">

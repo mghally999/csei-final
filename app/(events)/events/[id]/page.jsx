@@ -19,8 +19,6 @@ export default async function page(props) {
 
       <Header />
       <div className="content-wrapper js-content-wrapper overflow-hidden">
-        <PageLinks />
-
         <EventDetails id={params.id} />
 
         <FooterOne />

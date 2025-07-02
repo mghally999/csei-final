@@ -243,7 +243,7 @@ export default function CourseListOne() {
         </div>
       </section>
 
-      <section className="layout-pt-md layout-pb-lg">
+      <section className="custom-layout-padding">
         <div className="container">
           <div className="row y-gap-50">
             <div className="col-xl-3 col-lg-4 lg:d-none">
@@ -695,7 +695,7 @@ export default function CourseListOne() {
                             {elm.professional && (
                               <div>
                                 <div className="px-15 rounded-200 bg-custom-navyblue">
-                                  <span className="text-11 lh-1 uppercase fw-900 text-dark">
+                                  <span className="text-11 lh-1 uppercase fw-900 text-white">
                                     PROFESSIONAL
                                   </span>
                                 </div>

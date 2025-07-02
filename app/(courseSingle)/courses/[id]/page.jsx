@@ -21,7 +21,6 @@ export default async function page(props) {
     <div className="main-content  ">
       <Header />
       <div className="content-wrapper  js-content-wrapper ">
-        <PageLinks />
         <CourseDetailsOne id={params.id} />
         <CourseSlider />
         <FooterOne />

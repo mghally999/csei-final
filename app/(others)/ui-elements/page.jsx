@@ -28,7 +28,6 @@ export default function page() {
 
       <Header />
       <div className="content-wrapper js-content-wrapper overflow-hidden">
-        <PageLinks />
         <PageHeading />
         <section className="layout-pb-lg">
           <div className="container">

@@ -27,8 +27,6 @@ export default function CardGridLayout({
   return (
     <div className={`main-content ${className}`}>
       <div className="content-wrapper js-content-wrapper overflow-hidden">
-        {showPageLinks && <PageLinks />}
-
         <section
           className={`layout-pt-lg layout-pb-lg ${bgColor} ${textColor}`}
         >

@@ -6,20 +6,18 @@ import FeaturesOne from "@/components/homes/features/FeaturesOne";
 import GetApp from "@/components/homes/getApp/GetApp";
 import FeaturesSection from "@/components/FeaturesSection";
 import Brands from "@/components/common/Brands";
-import Join from "@/components/homes/join/Join";
 
 export default function HomePage() {
   return (
     <>
       <Home />
+      <FeaturesOne />
+      <FeaturesSection />
       <Categories />
       <Courses />
       <TestimonialsOne />
-      <FeaturesOne />
       <GetApp />
-      <FeaturesSection />
       <Brands />
-      {/* <Join /> */}
     </>
   );
 }

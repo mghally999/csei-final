@@ -16,7 +16,6 @@ export default async function page(props) {
   return (
     <div className="main-content">
       <div className="content-wrapper  js-content-wrapper overflow-hidden">
-        <PageLinks />
         <InstractorSingle id={params.id} />
       </div>
     </div>

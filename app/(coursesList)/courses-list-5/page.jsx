@@ -19,7 +19,6 @@ export default function page() {
       <Preloader />
       <Header />
       <div className="content-wrapper  js-content-wrapper overflow-hidden">
-        <PageLinks />
         <CourseListFive />
         <FooterOne />
       </div>

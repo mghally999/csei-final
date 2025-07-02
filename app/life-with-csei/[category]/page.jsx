@@ -16,8 +16,6 @@ export default function LifeWithCSEIDetailPage({ params }) {
   return (
     <div className="main-content">
       <div className="content-wrapper js-content-wrapper overflow-hidden">
-        <PageLinks />
-
         <section className="layout-pt-lg layout-pb-md bg-[#F5F9FF]">
           <div className="container">
             <div className="row y-gap-40 items-center">

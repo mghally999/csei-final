@@ -22,7 +22,6 @@ export default async function page(props) {
       <Preloader />
       <Header />
       <div className="content-wrapper  js-content-wrapper">
-        <PageLinks />
         <CourseDetailsFive id={params.id} />
         <CourseSlider />
         <FooterOne />

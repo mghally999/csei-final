@@ -20,8 +20,6 @@ export default async function page(props) {
 
       <Header />
       <div className="content-wrapper js-content-wrapper overflow-hidden">
-        <PageLinks />
-
         <ProductDetails id={params.id} />
         <RelatedProducts />
 
