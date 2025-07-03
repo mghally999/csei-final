@@ -66,7 +66,7 @@ export default function StickyTabsSection({ program }) {
       const lastSectionRect = lastSectionRef.current.getBoundingClientRect();
 
       setIsSticky(wrapperRect.top <= 120);
-      setLimitReached(lastSectionRect.bottom <= sidebarHeight + 160);
+      setLimitReached(lastSectionRect.bottom <= sidebarHeight + 60);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -77,7 +77,7 @@ export default function StickyTabsSection({ program }) {
   const handleClick = (id) => {
     const el = sectionRefs.current[id - 1];
     if (el) {
-      const offset = 140;
+      const offset = 180;
       const y = el.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
