@@ -1,4 +1,4 @@
-import { admissionCards } from "@/data/admissions/admissions";
+import { admissionBriefs } from "@/data/admissions/admission-briefs";
 import CardGridLayout from "@/components/CardGridLayout";
 
 export const metadata = {
@@ -12,7 +12,7 @@ export default function Page() {
     <CardGridLayout
       title="Admissions at CSEI"
       description="Navigate your path to excellence with our detailed admission process, international support, and financial options."
-      cards={admissionCards.map((card) => ({
+      cards={admissionBriefs.map((card) => ({
         ...card,
         link: card.link.replace("/admissions/", "/admission/"),
       }))}

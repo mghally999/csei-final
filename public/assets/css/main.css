@@ -1253,7 +1253,6 @@ a {
 a:hover {
   text-decoration: none;
   color: #e26933 !important;
-  font-weight: bold !important;
 }
 
 a,
@@ -4389,7 +4388,7 @@ h6 {
 /* globals.css or inside Tailwind config if you're using custom themes */
 .activeMenu {
   color: #e26933; /* orange or primary color */
-  font-weight: 600;
+  font-weight: 600 !important;
 }
 
 .inActiveMenu {
@@ -4525,6 +4524,7 @@ h6 {
   }
   .header .header-menu .menu__nav > li {
     padding: 17px 0;
+    font-weight: bold !important;
   }
   .header .header-menu .menu__nav > li:hover > a {
     color: var(--color-green-1);
@@ -14295,13 +14295,9 @@ h6 {
   padding-bottom: 60px;
 }
 
-.layout-pt-lg {
-  padding-top: 200px;
-}
-
 .layout-pb-lg {
-  padding-top: 200px;
-  padding-bottom: 120px;
+  padding-top: 215px !important;
+  padding-bottom: 120px !important;
 }
 
 .layout-pt-xl {

@@ -277,7 +277,7 @@ export const menuList = [
         href: "/placements/objectives",
       },
       {
-        title: "Overview & Briefing",
+        title: "Briefing",
         href: "/placements/overview",
       },
       {
@@ -307,8 +307,8 @@ export const menuList = [
     ],
   },
   {
-    title: "Contact",
-    href: "/contact",
+    title: "Contact Us",
+    href: "/contact-us",
   },
   // {
   //   title: "News",

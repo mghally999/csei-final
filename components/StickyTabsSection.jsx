@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
-
 import Overview from "@/components/programs/Overview";
 import { WhyCSEI } from "@/components/programs/WhyCSEI";
 import { EntryRequirements } from "@/components/programs/EntryRequirements";
@@ -24,24 +23,30 @@ const menuItems = [
 
 export default function StickyTabsSection({ program }) {
   const [activeTab, setActiveTab] = useState(1);
-  const sectionRefs = useRef([]);
+  const [isSticky, setIsSticky] = useState(false);
+  const [limitReached, setLimitReached] = useState(false);
 
+  const sectionRefs = useRef([]);
+  const wrapperRef = useRef(null);
+  const sidebarRef = useRef(null);
+  const lastSectionRef = useRef(null);
+
+  // Scrollspy (Tab highlight) fix
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = Number(entry.target.getAttribute("data-section-id"));
-            setActiveTab(id);
-          }
-        });
-      },
-      {
-        root: null,
-        rootMargin: "0px 0px -60% 0px",
-        threshold: 0.3,
-      }
-    );
+    const options = {
+      root: null,
+      rootMargin: "-150px 0px -10% 0px", // let the last section trigger earlier
+      threshold: 0.25,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = Number(entry.target.getAttribute("data-section-id"));
+          setActiveTab(id);
+        }
+      });
+    }, options);
 
     sectionRefs.current.forEach((ref) => {
       if (ref) observer.observe(ref);
@@ -50,10 +55,31 @@ export default function StickyTabsSection({ program }) {
     return () => observer.disconnect();
   }, []);
 
+  // Sticky sidebar + stop before footer
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!wrapperRef.current || !sidebarRef.current || !lastSectionRef.current)
+        return;
+
+      const wrapperRect = wrapperRef.current.getBoundingClientRect();
+      const sidebarHeight = sidebarRef.current.offsetHeight;
+      const lastSectionRect = lastSectionRef.current.getBoundingClientRect();
+
+      setIsSticky(wrapperRect.top <= 120);
+      setLimitReached(lastSectionRect.bottom <= sidebarHeight + 160);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Scroll to section on click
   const handleClick = (id) => {
     const el = sectionRefs.current[id - 1];
     if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      const offset = 140;
+      const y = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
 
@@ -85,31 +111,39 @@ export default function StickyTabsSection({ program }) {
   ];
 
   return (
-    <section className="sticky-section">
+    <section className="sticky-section" ref={wrapperRef}>
       <div className="container-layout">
-        {/* Sticky Sidebar */}
-        <aside className="sidebar">
-          {menuItems.map(({ id, text }) => (
-            <button
-              key={id}
-              onClick={() => handleClick(id)}
-              className={`tab-button ${activeTab === id ? "active" : ""}`}
-            >
-              {text}
-            </button>
-          ))}
-        </aside>
+        {/* Sidebar */}
+        <div className="sidebar-wrapper">
+          <aside
+            ref={sidebarRef}
+            className={`sidebar ${isSticky ? "sticky" : ""} ${
+              limitReached ? "stopped" : ""
+            }`}
+          >
+            {menuItems.map(({ id, text }) => (
+              <button
+                key={id}
+                onClick={() => handleClick(id)}
+                className={`tab-button ${activeTab === id ? "active" : ""}`}
+              >
+                {text}
+              </button>
+            ))}
+          </aside>
+        </div>
 
-        {/* Main Content */}
+        {/* Content */}
         <div className="content">
           {sections.map(({ id, Component, data }) => (
             <div
               key={id}
-              ref={(el) => (sectionRefs.current[id - 1] = el)}
+              ref={(el) => {
+                sectionRefs.current[id - 1] = el;
+                if (id === 8) lastSectionRef.current = el;
+              }}
               data-section-id={id}
-              className={`content-section ${
-                activeTab === id ? "highlight" : ""
-              }`}
+              className="content-section"
             >
               <Component data={data} />
             </div>
@@ -124,46 +158,61 @@ export default function StickyTabsSection({ program }) {
 
         .container-layout {
           display: flex;
-          max-width: 1200px;
+          max-width: 1280px;
           margin: 0 auto;
           gap: 2rem;
         }
 
+        .sidebar-wrapper {
+          width: 260px;
+          flex-shrink: 0;
+        }
+
         .sidebar {
-          width: 250px;
-          position: sticky;
-          top: 120px;
-          align-self: flex-start;
-          background: #ffffff;
+          width: 260px;
           padding: 1rem;
-          border-radius: 0.75rem;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+          background: #fff;
+          border-radius: 12px;
           border: 1px solid #e5e7eb;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+          transition: all 0.3s ease;
           height: max-content;
+        }
+
+        .sidebar.sticky {
+          position: fixed;
+          top: 180px;
+          z-index: 20;
+        }
+
+        .sidebar.stopped {
+          position: absolute;
+          top: auto;
+          bottom: 0;
         }
 
         .tab-button {
           display: block;
           width: 100%;
-          text-align: left;
           padding: 0.75rem 1rem;
-          margin-bottom: 15rem;
-          background-color: #f3f4f6;
-          border-radius: 0.375rem;
-          font-weight: 600;
+          text-align: left;
+          margin-bottom: 1rem;
+          background: #f9fafb;
           color: #1f2937;
-          transition: all 0.2s ease;
+          border-radius: 6px;
+          font-weight: 500;
           border: none;
           cursor: pointer;
-        }
-
-        .tab-button.active {
-          background-color: #000;
-          color: #fff;
+          transition: 0.2s ease;
         }
 
         .tab-button:hover {
-          background-color: #e5e7eb;
+          background: #e5e7eb;
+        }
+
+        .tab-button.active {
+          background: #000;
+          color: #fff;
         }
 
         .content {
@@ -171,31 +220,27 @@ export default function StickyTabsSection({ program }) {
         }
 
         .content-section {
-          margin-bottom: 5rem;
           scroll-margin-top: 140px;
-          transition: border-left 0.3s ease;
-          padding-left: 1rem;
-          border-left: 4px solid transparent;
+          margin-bottom: 5rem;
+          min-height: 400px;
         }
 
-        .content-section.highlight {
-          border-left: 4px solid #1e40af;
-          background: #f9fafb;
-          border-radius: 0.5rem;
-        }
-
-        @media (max-width: 1280px) {
-          .sidebar {
-            display: none;
-          }
-
+        @media (max-width: 1024px) {
           .container-layout {
             flex-direction: column;
           }
 
-          .content {
-            margin-left: 0;
+          .sidebar-wrapper {
+            display: none;
           }
+
+               .content-section {
+          scroll-margin-top: 140px;
+          margin-bottom: 5rem;
+        }
+
+        .content-section:last-child {
+          min-height: calc(100vh - 200px);
         }
       `}</style>
     </section>
