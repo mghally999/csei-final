@@ -9,20 +9,37 @@ export default function MegaMenuItem({ section, pathname, handleLinkClick }) {
     return links.map((item, i) => {
       const label = item.label || item.title || "Unnamed";
 
-      // If this item has nested links, recurse
       if (item.links && item.links.length > 0) {
         return (
-          <React.Fragment key={i}>{renderLinks(item.links)}</React.Fragment>
+          <div key={i} className="mb-6">
+            <div className="text-sm font-semibold text-black mb-2 border-b border-gray-200 pb-1">
+              {label}
+            </div>
+            <ul>
+              {item.links.map((child, j) => (
+                <li key={j} className="mb-2 custom-li">
+                  <a
+                    href={child.href}
+                    onClick={(e) => handleLinkClick(e, child.href)}
+                    className={`text-sm text-black hover:text-blue-600 transition duration-200 ${
+                      isActive(child.href) ? "font-bold" : ""
+                    }`}
+                  >
+                    {child.label || child.title || "Unnamed"}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         );
       }
 
-      // Otherwise, it's a final clickable item
       return (
-        <li key={i} className="mb-5 custom-li fw-600">
+        <li key={i} className="mb-5">
           <a
             href={item.href}
             onClick={(e) => handleLinkClick(e, item.href)}
-            className={`text-sm text-black ${
+            className={`text-sm text-black hover:text-blue-600 transition duration-200 ${
               isActive(item.href) ? "font-bold" : ""
             }`}
           >
@@ -34,25 +51,33 @@ export default function MegaMenuItem({ section, pathname, handleLinkClick }) {
   };
 
   return (
-    <div className="col-auto">
-      <div className="mega__title">
+    <div
+      className="px-6"
+      style={{
+        flex: 1,
+        minWidth: "0", // avoid overflow
+        maxWidth: "100%",
+      }}
+    >
+      <div className="mb-4">
         {section.href ? (
           <a
             href={section.href}
             onClick={(e) => handleLinkClick(e, section.href)}
-            className={`text-black fw-500 ${
+            className={`text-base font-semibold text-black ${
               isActive(section.href) ? "border-b border-black" : ""
             }`}
           >
             {section.title || section.label || "Untitled"}
           </a>
         ) : (
-          <span className="text-black fw-900">
+          <span className="text-base font-bold text-black">
             {section.title || section.label || "Untitled"}
           </span>
         )}
       </div>
-      <ul className="mt-10">{renderLinks(section.links)}</ul>
+
+      <div>{renderLinks(section.links)}</div>
     </div>
   );
 }

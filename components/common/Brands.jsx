@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { brands } from "../../data/brands"; // Make sure your logos are updated here
+import { brands } from "../../data/brands";
 
 const Brands = ({ backgroundColorComponent, brandsTwo }) => {
   return (
@@ -22,28 +22,45 @@ const Brands = ({ backgroundColorComponent, brandsTwo }) => {
           </div>
         </div>
 
-        <div className="row y-gap-30 justify-between sm:justify-start items-center pt-60 md:pt-50">
-          {brands.map((logo, i) => (
-            <div
-              data-aos="fade-up"
-              data-aos-duration={300}
-              key={i}
-              className="col-lg-auto col-md-3 col-sm-4 col-6"
-            >
-              <div className="d-flex justify-center items-center px-4">
+        <div
+          className="overflow-x-auto hide-scrollbar py-8"
+          data-aos="fade-up"
+          data-aos-duration={300}
+        >
+          <div className="row justify-between sm:justify-start items-center pt-60 md:pt-50 flex flex-nowrap gap-6 px-4 items-center min-w-max">
+            {brands.map((logo, i) => (
+              <div
+                key={i}
+                className="flex-shrink-0"
+                style={{ width: "150px", height: "150px" }}
+              >
                 <Image
-                  className="w-1/1"
                   src={logo}
                   alt={`Accreditation logo ${i + 1}`}
-                  width={140}
-                  height={90}
-                  style={{ objectFit: "contain" }}
+                  width={80}
+                  height={50}
+                  style={{
+                    objectFit: "contain",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  className="transition-transform duration-300 hover:scale-110"
                 />
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
   );
 };

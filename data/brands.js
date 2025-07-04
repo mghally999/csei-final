@@ -1,8 +1,8 @@
 export const brands = [
-  "/assets/img/clients/1.svg",
-  "/assets/img/clients/2.svg",
-  "/assets/img/clients/3.svg",
-  "/assets/img/clients/4.svg",
-  "/assets/img/clients/5.svg",
-  "/assets/img/clients/6.svg",
+  "/assets/img/clients/accreditation-1-removebg-preview.png",
+  "/assets/img/clients/accreditation-2-removebg-preview.png",
+  "/assets/img/clients/accreditation-3-removebg-preview.png",
+  "/assets/img/clients/accreditation-4.png",
+  "/assets/img/clients/accreditation-5.png",
+  "/assets/img/clients/accreditation-6.png",
 ];

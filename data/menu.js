@@ -13,46 +13,6 @@ export const menuList = [
     mega: true,
     links: [
       {
-        title: "School of Computing",
-        links: [
-          {
-            label: "Information Technology",
-            href: "/programs/information-technology",
-          },
-        ],
-      },
-      {
-        title: "School of Health Science",
-        links: [
-          {
-            title: "Health & Social Care Management",
-            links: [
-              {
-                label: "Level 3",
-                href: "/programs/health-social-care/level-3",
-              },
-              {
-                label: "Level 4",
-                href: "/programs/health-social-care/level-4",
-              },
-              {
-                label: "Level 5",
-                href: "/programs/health-social-care/level-5",
-              },
-            ],
-          },
-          {
-            title: "Professional Courses",
-            links: [
-              {
-                label: "Health and Social Care Management",
-                href: "/programs/health-social-care/professional-courses/health-social-care-management",
-              },
-            ],
-          },
-        ],
-      },
-      {
         title: "School of Culinary Arts & Tourism",
         links: [
           {
@@ -148,6 +108,46 @@ export const menuList = [
                 href: "/programs/strategic-management/level-7",
               },
             ],
+          },
+        ],
+      },
+      {
+        title: "School of Health Science",
+        links: [
+          {
+            title: "Health & Social Care Management",
+            links: [
+              {
+                label: "Level 3",
+                href: "/programs/health-social-care/level-3",
+              },
+              {
+                label: "Level 4",
+                href: "/programs/health-social-care/level-4",
+              },
+              {
+                label: "Level 5",
+                href: "/programs/health-social-care/level-5",
+              },
+            ],
+          },
+          {
+            title: "Professional Courses",
+            links: [
+              {
+                label: "Health and Social Care Management",
+                href: "/programs/health-social-care/professional-courses/health-social-care-management",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "School of Computing",
+        links: [
+          {
+            label: "Information Technology",
+            href: "/programs/information-technology",
           },
         ],
       },

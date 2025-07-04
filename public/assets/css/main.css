@@ -4519,7 +4519,7 @@ h6 {
   .header .header-menu .menu__nav li.menu-item-has-children a {
     display: flex;
     align-items: center;
-    white-space: nowrap;
+    /* white-space: nowrap; */
   }
 
   .header .header-menu .menu__nav li.menu-item-has-children a:hover {
