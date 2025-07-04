@@ -6,7 +6,6 @@ import FeaturesOne from "@/components/homes/features/FeaturesOne";
 import GetApp from "@/components/homes/getApp/GetApp";
 import FeaturesSection from "@/components/FeaturesSection";
 import Brands from "@/components/common/Brands";
-import LeadForm from "@/components/common/LeadForm";
 
 export default function HomePage() {
   return (
@@ -16,7 +15,6 @@ export default function HomePage() {
       <FeaturesSection />
       <Categories />
       <Courses />
-      <LeadForm />
       <TestimonialsOne />
       <GetApp />
       <Brands />

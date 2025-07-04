@@ -146,8 +146,17 @@ export const menuList = [
         title: "School of Computing",
         links: [
           {
-            label: "Information Technology",
-            href: "/programs/information-technology",
+            title: "Information Technology",
+            links: [
+              {
+                label: "Level 4",
+                href: "/programs/information-technology/level-4",
+              },
+              {
+                label: "Level 5",
+                href: "/programs/information-technology/level-5",
+              },
+            ],
           },
         ],
       },

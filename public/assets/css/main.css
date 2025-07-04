@@ -4376,8 +4376,14 @@ h6 {
 
 .custom-li {
   border-bottom: 1px solid #ddd !important;
-  padding-bottom: 10px !important;
+  padding-bottom: 5px !important;
   font-weight: 500 !important;
+  padding-right: 10px !important;
+  padding-left: 10px !important;
+}
+
+.custom-li:hover {
+  background: #ddd !important;
 }
 
 .min-h-screen {

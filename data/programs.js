@@ -1,6 +1,38 @@
 export const programs = [
   {
     id: 1,
+    title: "Information Technology - Level 4",
+    href: "/programs/information-technology/level-4",
+    school: "School of Computing",
+    category: "Information Technology",
+    authorName: "CSEI Instructor",
+    rating: 4.5,
+    paid: true,
+    level: "Level 4",
+    duration: 120,
+    imageSrc: "/assets/img/coursesCards/information-technology.png",
+    discountedPrice: 49.99,
+    lessonCount: 12,
+    popular: true,
+  },
+  {
+    id: 2,
+    title: "Information Technology - Level 5",
+    href: "/programs/information-technology/level-5",
+    school: "School of Computing",
+    category: "Information Technology",
+    authorName: "CSEI Instructor",
+    rating: 4.5,
+    paid: true,
+    level: "Level 5",
+    duration: 120,
+    imageSrc: "/assets/img/coursesCards/information-technology.png",
+    discountedPrice: 49.99,
+    lessonCount: 12,
+    popular: false,
+  },
+  {
+    id: 3,
     title: "Information Technology",
     href: "/programs/information-technology",
     school: "School of Computing",
@@ -16,7 +48,7 @@ export const programs = [
     popular: false,
   },
   {
-    id: 2,
+    id: 4,
     title: "Level 3",
     href: "/programs/health-social-care/level-3",
     school: "School of Health Science",
@@ -32,7 +64,7 @@ export const programs = [
     popular: false,
   },
   {
-    id: 3,
+    id: 5,
     title: "Level 4",
     href: "/programs/health-social-care/level-4",
     school: "School of Health Science",
@@ -48,7 +80,7 @@ export const programs = [
     popular: true,
   },
   {
-    id: 4,
+    id: 6,
     title: "Level 5",
     href: "/programs/health-social-care/level-5",
     school: "School of Health Science",
@@ -64,7 +96,7 @@ export const programs = [
     popular: false,
   },
   {
-    id: 5,
+    id: 7,
     title: "Health and Social Care Management",
     href: "/programs/health-social-care/professional-courses/health-social-care-management",
     school: "School of Health Science",
@@ -80,7 +112,7 @@ export const programs = [
     popular: false,
   },
   {
-    id: 6,
+    id: 8,
     title: "Level 4",
     href: "/programs/tourism-hospitality/level-4",
     school: "School of Culinary Arts & Tourism",
@@ -96,7 +128,7 @@ export const programs = [
     popular: true,
   },
   {
-    id: 7,
+    id: 9,
     title: "Level 5",
     href: "/programs/tourism-hospitality/level-5",
     school: "School of Culinary Arts & Tourism",
@@ -112,7 +144,7 @@ export const programs = [
     popular: false,
   },
   {
-    id: 8,
+    id: 10,
     title: "Level 6",
     href: "/programs/tourism-hospitality/level-6",
     school: "School of Culinary Arts & Tourism",
@@ -128,7 +160,7 @@ export const programs = [
     popular: false,
   },
   {
-    id: 9,
+    id: 11,
     title: "Level 7",
     href: "/programs/tourism-hospitality/level-7",
     school: "School of Culinary Arts & Tourism",
@@ -144,7 +176,7 @@ export const programs = [
     popular: true,
   },
   {
-    id: 10,
+    id: 12,
     title: "Culinary Arts Professional",
     href: "/programs/tourism-hospitality/professional-courses/culinary-arts",
     school: "School of Culinary Arts & Tourism",
@@ -160,7 +192,7 @@ export const programs = [
     popular: false,
   },
   {
-    id: 11,
+    id: 13,
     title: "Training Diploma in Housekeeping",
     href: "/programs/tourism-hospitality/professional-courses/housekeeping",
     school: "School of Culinary Arts & Tourism",
@@ -176,7 +208,7 @@ export const programs = [
     popular: false,
   },
   {
-    id: 12,
+    id: 14,
     title: "Human Resource Management in Hospitality & Tourism",
     href: "/programs/tourism-hospitality/professional-courses/hr-management",
     school: "School of Culinary Arts & Tourism",
@@ -192,7 +224,7 @@ export const programs = [
     popular: true,
   },
   {
-    id: 13,
+    id: 15,
     title: "Food Safety & Sanitation",
     href: "/programs/tourism-hospitality/professional-courses/food-safety",
     school: "School of Culinary Arts & Tourism",
@@ -208,7 +240,7 @@ export const programs = [
     popular: false,
   },
   {
-    id: 14,
+    id: 16,
     title: "Food & Beverage Service Training",
     href: "/programs/tourism-hospitality/professional-courses/food-beverage",
     school: "School of Culinary Arts & Tourism",
@@ -224,7 +256,7 @@ export const programs = [
     popular: false,
   },
   {
-    id: 15,
+    id: 17,
     title: "Front Desk Operations",
     href: "/programs/tourism-hospitality/professional-courses/front-desk-operations",
     school: "School of Culinary Arts & Tourism",
@@ -240,7 +272,7 @@ export const programs = [
     popular: true,
   },
   {
-    id: 16,
+    id: 18,
     title: "Barista Professional / Basic / Advance",
     href: "/programs/tourism-hospitality/professional-courses/barista-basic-advance",
     school: "School of Culinary Arts & Tourism",
@@ -256,7 +288,7 @@ export const programs = [
     popular: false,
   },
   {
-    id: 17,
+    id: 19,
     title: "Level 3",
     href: "/programs/business-management/level-3",
     school: "School of Business",
@@ -272,7 +304,7 @@ export const programs = [
     popular: false,
   },
   {
-    id: 18,
+    id: 20,
     title: "Level 4",
     href: "/programs/business-management/level-4",
     school: "School of Business",
@@ -288,7 +320,7 @@ export const programs = [
     popular: true,
   },
   {
-    id: 19,
+    id: 21,
     title: "Level 5",
     href: "/programs/business-management/level-5",
     school: "School of Business",
@@ -304,7 +336,7 @@ export const programs = [
     popular: false,
   },
   {
-    id: 20,
+    id: 22,
     title: "Level 7",
     href: "/programs/health-social-care/professional-courses/level-7",
     school: "School of Business",
@@ -320,7 +352,7 @@ export const programs = [
     popular: false,
   },
   {
-    id: 21,
+    id: 23,
     title: "Level 7",
     href: "/programs/health-social-care/professional-courses/level-7",
     school: "School of Business",
