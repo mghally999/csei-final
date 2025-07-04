@@ -125,7 +125,7 @@ export default function Header() {
                     color: "white",
                     padding: "0.5rem 1.25rem",
                     borderRadius: "8px",
-                    fontWeight: "500",
+                    fontWeight: "800",
                     transition: "background-color 0.3s ease",
                   }}
                   onMouseEnter={(e) =>

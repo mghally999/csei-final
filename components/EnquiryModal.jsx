@@ -62,6 +62,7 @@ export default function EnquiryModal({ isOpen, onClose }) {
           max-width: 720px;
           padding: 1rem;
           animation: fadeIn 0.3s ease-out forwards;
+          margin-top: 100px;
         }
 
         .modal-close-button {
