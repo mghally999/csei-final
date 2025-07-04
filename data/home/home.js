@@ -2,7 +2,7 @@ export const slidesData = [
   {
     id: 1,
     bgImage: "/assets/img/home/september-intake-1.png",
-    title: "Accredited UK Diplomas and KHDA Approved Programmes",
+    title: "September Intake",
     subtitle: (
       <div
         style={{

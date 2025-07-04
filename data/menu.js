@@ -1,8 +1,8 @@
 export const menuList = [
-  {
-    title: "Home",
-    href: "/",
-  },
+  // {
+  //   title: "Home",
+  //   href: "/",
+  // },
   {
     title: "About Us",
     href: "/about",
@@ -177,7 +177,7 @@ export const menuList = [
     ],
   },
   {
-    title: "Admission",
+    title: "Apply Now",
     href: "/admission",
     dropdown: [
       {
