@@ -9,6 +9,7 @@ import "swiper/css/pagination";
 import { slidesData } from "@/data/home/home";
 import { useState } from "react";
 import EnquiryModal from "@/components/EnquiryModal";
+import HeroSliderModal from "@/components/ HeroSliderModal";
 
 export default function HomeHeroSlider() {
   const [showModal, setShowModal] = useState(false);
@@ -197,7 +198,7 @@ export default function HomeHeroSlider() {
         onClick={() => setShowModal(true)}
         style={{
           position: "fixed",
-          top: "30%",
+          top: "35%",
           right: "20px",
           zIndex: 9999,
           backgroundColor: "#2563eb",
@@ -251,7 +252,7 @@ export default function HomeHeroSlider() {
       </a>
 
       {/* Enquiry Modal */}
-      <EnquiryModal isOpen={showModal} onClose={() => setShowModal(false)} />
+      <HeroSliderModal isOpen={showModal} onClose={() => setShowModal(false)} />
     </section>
   );
 }

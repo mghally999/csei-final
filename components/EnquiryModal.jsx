@@ -92,6 +92,36 @@ export default function EnquiryModal({ isOpen, onClose }) {
             transform: translateY(0);
           }
         }
+
+        /* Phones (max-width: 767px) */
+        @media (max-width: 767px) {
+          .modal-container {
+            max-width: 90%;
+            margin-top: 80px;
+            padding: 1rem 0.75rem;
+          }
+
+          .modal-close-button {
+            top: -30px;
+            right: 0;
+            font-size: 1.75rem;
+          }
+        }
+
+        /* Tablets (768px to 991px) */
+        @media (min-width: 768px) and (max-width: 991px) {
+          .modal-container {
+            max-width: 80%;
+            margin-top: 90px;
+            padding: 1.25rem;
+          }
+
+          .modal-close-button {
+            top: -35px;
+            right: -5px;
+            font-size: 1.85rem;
+          }
+        }
       `}</style>
     </div>
   );

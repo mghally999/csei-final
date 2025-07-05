@@ -4,8 +4,6 @@ import React, { useState } from "react";
 import { locationData } from "@/data/officeLocation";
 import Preloader from "@/components/common/Preloader";
 import Header from "@/components/layout/headers/Header";
-import FooterOne from "@/components/layout/footers/FooterOne";
-import Faq from "@/components/common/Faq";
 
 export default function ContactTwo() {
   const [activeTab, setActiveTab] = useState(1);
@@ -127,7 +125,7 @@ export default function ContactTwo() {
                           <div className="col-12">
                             <button
                               type="submit"
-                              className="button -sm -purple-1 text-white w-100"
+                              className="button -sm bg-black text-white w-100"
                             >
                               {activeTab === 1
                                 ? "Send Message"
@@ -167,9 +165,6 @@ export default function ContactTwo() {
             </div>
           </div>
         </section>
-
-        <Faq />
-        <FooterOne />
       </div>
     </div>
   );

@@ -8117,12 +8117,13 @@ h6 {
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: var(--color-purple-1);
+  background-color: #e26933 !important;
   opacity: 0;
 }
 
 .tabs.-active-purple-2 .tabs__controls .tabs__button.is-active {
-  color: var(--color-purple-1) !important;
+  color: #000000 !important;
+  font-weight: bold !important;
 }
 
 .tabs.-active-purple-2 .tabs__controls .tabs__button.is-active::after {

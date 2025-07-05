@@ -5,14 +5,39 @@ import Link from "next/link";
 import Socials from "@/components/common/Socials";
 import FooterLinks from "../component/FooterLinks";
 import Links from "../component/Links";
+
 export default function FooterOne() {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
   return (
     <footer className="footer -type-1 bg-white -green-links">
       <div className="container">
-        <div className="footer-header">
+        {/* 1. Footer Columns + Links First */}
+        <div className="footer-columns">
+          <div className="row y-gap-30">
+            <FooterLinks allClasses="text-17 fw-500 text-dark-1 uppercase mb-25" />
+
+            <div className="col-xl-4 col-lg-4 col-md-6">
+              <div className="text-17 fw-500 text-dark-1 uppercase mb-25">
+                GET IN TOUCH
+              </div>
+              <div className="text-dark-1 footer-columns-form">
+                <div>We don’t send spam so don’t worry.</div>
+                <form onSubmit={handleSubmit}>
+                  <div className="form-group">
+                    <input required type="text" placeholder="Email..." />
+                    <button type="submit">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 2. Footer Header with Logo (Moved Beneath Links) */}
+        <div className="footer-header mt-40">
           <div className="row y-gap-20 justify-between items-center">
             <div className="col-auto">
               <div className="footer-header__logo">
@@ -39,6 +64,7 @@ export default function FooterOne() {
                 </Link>
               </div>
             </div>
+
             <div className="col-auto">
               <div className="footer-header-socials">
                 <div className="footer-header-socials__title text-dark-1">
@@ -52,30 +78,8 @@ export default function FooterOne() {
           </div>
         </div>
 
-        <div className="footer-columns">
-          <div className="row y-gap-30">
-            <FooterLinks
-              allClasses={"text-17 fw-500 text-dark-1 uppercase mb-25"}
-            />
-
-            <div className="col-xl-4 col-lg-4 col-md-6">
-              <div className="text-17 fw-500 text-dark-1 uppercase mb-25">
-                GET IN TOUCH
-              </div>
-              <div className="text-dark-1 footer-columns-form">
-                <div>We don’t send spam so don’t worry.</div>
-                <form onSubmit={handleSubmit}>
-                  <div className="form-group">
-                    <input required type="text" placeholder="Email..." />
-                    <button type="submit">Submit</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="py-30 border-top-light-15">
+        {/* 3. Footer Bottom Bar */}
+        <div className="py-30 border-top-light-15 mt-30">
           <div className="row justify-between items-center y-gap-20">
             <div className="col-auto">
               <div className="d-flex items-center h-100 text-white">
@@ -89,16 +93,6 @@ export default function FooterOne() {
                   <div className="d-flex x-gap-15 text-white">
                     <Links />
                   </div>
-                </div>
-
-                <div>
-                  <Link
-                    href="#"
-                    className="button px-30 h-50 -dark-6 rounded-200 text-white"
-                  >
-                    <i className="icon-worldwide text-20 mr-15"></i>
-                    <span className="text-15">English</span>
-                  </Link>
                 </div>
               </div>
             </div>

@@ -75,10 +75,10 @@ export default function Courses() {
       <div className="row justify-center text-center">
         <div className="col-auto">
           <div className="sectionTitle">
-            <h2 className="sectionTitle__title sm:text-24 text-white">
+            <h2 className="sectionTitle__title text-2xl sm:text-3xl md:text-4xl lg:text-[42px] text-white leading-tight">
               Trending Programs for September Intake 2025
             </h2>
-            <p className="sectionTitle__text text-white">
+            <p className="sectionTitle__text text-sm sm:text-base md:text-lg text-white mt-2 sm:mt-3 md:mt-4">
               Explore our most popular programs across various disciplines
             </p>
           </div>
@@ -143,7 +143,7 @@ export default function Courses() {
                       className="linkCustom text-white hover:underline"
                       href={course.href}
                     >
-                      {course.category}
+                      {course.category} - {course.level}
                     </Link>
                   </div>
 
