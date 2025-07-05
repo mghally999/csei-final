@@ -70,6 +70,9 @@ export default function Courses() {
     }
   }, [category]);
 
+  const getDisplayTitle = (program) =>
+    program.credentialTitle || `${program.title} - ${program.level}`;
+
   return (
     <section className="layout-pt-lg layout-pb-lg bg-custom-navyblue text-white">
       <div className="row justify-center text-center">
@@ -108,6 +111,8 @@ export default function Courses() {
       >
         {filtered.map((course, index) => {
           const levelLabel = getLevelLabel(course.level);
+          const displayTitle = getDisplayTitle(course);
+
           return (
             <div key={index} className="col-xl-3 col-lg-4 col-md-6">
               <div className="coursesCard -type-1 text-white">
@@ -125,7 +130,7 @@ export default function Courses() {
                   {course.professional && (
                     <div className="d-flex justify-between py-10 px-10 absolute-full-center z-3">
                       <div className="px-15 rounded-200">
-                        <span className="text-11 lh-1 uppercase fw-900 text-white">
+                        <span className="enhanced-badge text-11 lh-1 uppercase fw-900 text-white">
                           PROFESSIONAL
                         </span>
                       </div>
@@ -143,7 +148,7 @@ export default function Courses() {
                       className="linkCustom text-white hover:underline"
                       href={course.href}
                     >
-                      {course.category} - {course.level}
+                      {displayTitle}
                     </Link>
                   </div>
 

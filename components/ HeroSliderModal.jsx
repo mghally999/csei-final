@@ -1,10 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { programs } from "@/data/programs"; // Make sure this path is valid
+import { getGroupedPrograms } from "@/utils/getProgramGroups";
 
 export default function HeroSliderModal({ isOpen, onClose }) {
-  const [programList, setProgramList] = useState([]);
+  const [programList, setProgramList] = useState({
+    professionalPrograms: [],
+    regularPrograms: [],
+  });
 
   useEffect(() => {
     const handleEsc = (e) => {
@@ -14,7 +17,7 @@ export default function HeroSliderModal({ isOpen, onClose }) {
     if (isOpen) {
       document.body.style.overflow = "hidden";
       window.addEventListener("keydown", handleEsc);
-      setProgramList(programs); // ✅ Fetch on open
+      setProgramList(getGroupedPrograms());
     }
 
     return () => {
@@ -24,6 +27,11 @@ export default function HeroSliderModal({ isOpen, onClose }) {
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
+
+  const { professionalPrograms, regularPrograms } = programList;
+
+  const getLabel = (program) =>
+    program.credentialTitle || `${program.title} - ${program.level}`;
 
   return (
     <div className="hero-slider-modal-overlay">
@@ -47,14 +55,26 @@ export default function HeroSliderModal({ isOpen, onClose }) {
 
           <select required>
             <option value="">Select Course *</option>
-            {programList.map((program) => (
-              <option
-                key={program.id}
-                value={`${program.title} - ${program.category}`}
-              >
-                {program.title} - {program.category}
-              </option>
-            ))}
+
+            {regularPrograms.length > 0 && (
+              <optgroup label="Programs">
+                {regularPrograms.map((program) => (
+                  <option key={program.id} value={getLabel(program)}>
+                    {getLabel(program)}
+                  </option>
+                ))}
+              </optgroup>
+            )}
+
+            {professionalPrograms.length > 0 && (
+              <optgroup label="Professional Courses">
+                {professionalPrograms.map((program) => (
+                  <option key={program.id} value={getLabel(program)}>
+                    {getLabel(program)}
+                  </option>
+                ))}
+              </optgroup>
+            )}
           </select>
 
           <button type="submit">Submit Enquiry</button>
@@ -65,6 +85,7 @@ export default function HeroSliderModal({ isOpen, onClose }) {
         </p>
       </div>
 
+      {/* Modal Styles */}
       <style jsx>{`
         .hero-slider-modal-overlay {
           position: fixed;

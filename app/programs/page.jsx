@@ -22,7 +22,7 @@ export default function CourseListOne() {
   const [coursesData, setCoursesData] = useState(() => {
     return enhancedPrograms.map((program) => ({
       id: program.id,
-      title: program.title,
+      title: program.credentialTitle || program.title,
       href: program.href,
       category: program.category || program.school,
       authorName: program.authorName,

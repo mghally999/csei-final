@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { testimonials } from "../../data/tesimonials";
 import { counters } from "../../data/count";
 import Link from "next/link";
+// SwiperCore.use([Pagination]);
 
 export default function TestimonialsOne() {
   return (
@@ -17,7 +18,7 @@ export default function TestimonialsOne() {
           <div className="col-auto">
             <div className="sectionTitle ">
               <h2 className="sectionTitle__title text-black">
-                What Students Say
+                What People Say
               </h2>
 
               <p className="sectionTitle__text text-white">

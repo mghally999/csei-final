@@ -4416,8 +4416,9 @@ h6 {
 
 .enhanced-badge {
   background: #000000 !important;
-  font-size: 17.5px !important;
-  width: fit-content !important;
+  font-weight: bold !important;
+  padding: 10px !important;
+  border-radius: 8px !important;
 }
 
 .header__explore > a {
