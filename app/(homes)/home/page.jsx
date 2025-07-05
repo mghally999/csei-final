@@ -3,7 +3,7 @@
 "use client";
 
 import { useState } from "react";
-import HomeHeroSlider from "@/components/homes/heros/HomeHeroSlider";
+import HomeHeroSlider from "@/components/homes/heros/Home";
 import Categories from "@/components/homes/categories/Categories";
 import Courses from "@/components/homes/courses/Courses";
 import TestimonialsOne from "@/components/common/TestimonialsOne";

@@ -8,8 +8,7 @@ import "swiper/css/pagination";
 
 import { slidesData } from "@/data/home/home";
 import { useState } from "react";
-import EnquiryModal from "@/components/EnquiryModal";
-import HeroSliderModal from "@/components/ HeroSliderModal";
+import HeroSliderModal from "@/components/HeroSliderModal";
 
 export default function HomeHeroSlider() {
   const [showModal, setShowModal] = useState(false);
