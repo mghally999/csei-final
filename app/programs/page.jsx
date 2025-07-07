@@ -710,7 +710,7 @@ export default function CourseListOne() {
                           </div>
                           <div className="text-17 lh-15 fw-500 text-dark-1">
                             <Link className="linkCustom" href={elm.href}>
-                              {elm.title}
+                              {elm.title} - {elm.level}
                             </Link>
                           </div>
                         </div>

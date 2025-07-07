@@ -9,9 +9,11 @@ import "swiper/css/pagination";
 import { slidesData } from "@/data/home/home";
 import { useState } from "react";
 import HeroSliderModal from "@/components/HeroSliderModal";
+import Link from "next/link";
 
 export default function HomeHeroSlider() {
   const [showModal, setShowModal] = useState(false);
+  const [hover, setHover] = useState(false);
 
   return (
     <section
@@ -126,11 +128,11 @@ export default function HomeHeroSlider() {
                   </p>
                 )}
                 {item.ctaText && (
-                  <button
-                    onClick={() => setShowModal(true)}
+                  <Link
+                    href="/programs"
                     style={{
                       padding: "clamp(12px, 2vw, 16px) clamp(24px, 4vw, 32px)",
-                      backgroundColor: "#f97316",
+                      backgroundColor: hover ? "#000" : "#f97316",
                       color: "#fff",
                       borderRadius: "8px",
                       fontWeight: "700",
@@ -138,10 +140,13 @@ export default function HomeHeroSlider() {
                       fontSize: "clamp(1rem, 2vw, 1.2rem)",
                       border: "none",
                       boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                      transition: "background-color 0.3s ease",
                     }}
+                    onMouseEnter={() => setHover(true)}
+                    onMouseLeave={() => setHover(false)}
                   >
                     {item.ctaText}
-                  </button>
+                  </Link>
                 )}
               </div>
             </div>
@@ -215,7 +220,7 @@ export default function HomeHeroSlider() {
       </button>
 
       {/* ✅ Floating WhatsApp CTA */}
-      <a
+      <Link
         href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`}
         target="_blank"
         rel="noopener noreferrer"
@@ -238,7 +243,6 @@ export default function HomeHeroSlider() {
           textDecoration: "none",
         }}
       >
-        <span>Chat on WhatsApp</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="20"
@@ -248,7 +252,7 @@ export default function HomeHeroSlider() {
         >
           <path d="M380.9 97.1C339-5.9 226.9-26.5 149.1 41.5 70.4 108.6 56.3 231 128.3 301.9c25 24.4 47.8 41.1 82.3 54.1 44.3 17.1 84.4 15.2 124.1-5.3 31.2-16.2 57.3-44.8 68.2-82.8 9.5-33.1 3.6-72.8-22-116.8zM215.9 461.2c-19.8-2.3-39.2-7.7-57.6-15.7l-96.6 25.5 25.8-94.6c-39.3-59.1-38.8-138.8 1.2-198.8 37.4-56.1 98.7-92.6 168.2-94.3 65.5-1.6 127.4 35.1 163.2 90.7 45.8 72.2 33.2 171.3-34.2 230.1-49.7 42.5-121.4 61.8-195.4 56.1z" />
         </svg>
-      </a>
+      </Link>
 
       {/* Enquiry Modal */}
       <HeroSliderModal isOpen={showModal} onClose={() => setShowModal(false)} />

@@ -54,8 +54,9 @@ export default function Menu({
     window.location.href = href;
   };
 
-  const noDropdownTitles = ["Home", "Student Life", "About Us"];
+  const noDropdownTitles = ["Home", "Student Life"];
   const singleDropdownTitles = [
+    "About Us",
     "Academics",
     "Apply Now",
     "Life With CSEI",

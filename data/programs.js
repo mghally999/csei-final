@@ -212,7 +212,7 @@ export const programs = [
     category: "Business Management",
     level: "Level 3",
     duration: 120,
-    imageSrc: "/assets/img/coursesCards/1.png",
+    imageSrc: "/assets/img/coursesCards/business-management.jpg",
     professional: false,
   },
   {
@@ -223,7 +223,7 @@ export const programs = [
     category: "Business Management",
     level: "Level 4",
     duration: 120,
-    imageSrc: "/assets/img/coursesCards/1.png",
+    imageSrc: "/assets/img/coursesCards/business-management-1.jpg",
     professional: false,
   },
   {
@@ -234,18 +234,18 @@ export const programs = [
     category: "Business Management",
     level: "Level 5",
     duration: 120,
-    imageSrc: "/assets/img/coursesCards/1.png",
+    imageSrc: "/assets/img/coursesCards/business-management-2.jpg",
     professional: false,
   },
   {
     id: 21,
     title: "Strategic Management & Leadership",
-    href: "/programs/strategic-management/level-7",
+    href: "/programs/strategic-management/professional-courses/level-7",
     school: "School of Business",
     category: "Accounting & Finance",
     level: "Level 7",
     duration: 120,
-    imageSrc: "/assets/img/coursesCards/1.png",
+    imageSrc: "/assets/img/coursesCards/business-management-3.jpg",
     professional: true,
   },
   {
@@ -256,7 +256,7 @@ export const programs = [
     category: "Strategic Management & Leadership",
     level: "Level 7",
     duration: 120,
-    imageSrc: "/assets/img/coursesCards/1.png",
+    imageSrc: "/assets/img/coursesCards/business-management-4.jpg",
     professional: true,
   },
 ];

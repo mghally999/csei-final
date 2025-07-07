@@ -6,7 +6,38 @@ export const menuList = [
   {
     title: "About Us",
     href: "/about",
+    dropdown: [
+      {
+        label: "Who We Are",
+        href: "/about/who-we-are",
+      },
+      {
+        label: "Our Vision",
+        href: "/about/our-vision",
+      },
+      {
+        label: "Our Mission",
+        href: "/about/our-mission",
+      },
+      {
+        label: "Message from the Director",
+        href: "/about/message-from-director",
+      },
+      {
+        label: "Our Objectives",
+        href: "/about/our-objectives",
+      },
+      {
+        label: "Our Values",
+        href: "/about/our-values",
+      },
+      {
+        label: "Why CSEI?",
+        href: "/about/why-csei",
+      },
+    ],
   },
+
   {
     title: "Programs",
     href: "/programs",
