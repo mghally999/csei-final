@@ -8,8 +8,43 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 export default function LearnNewSkill() {
   return (
-    <section className="layout-pt-lg layout-pb-lg bg-custom-navyblue">
-      <div className="container">
+    <section
+      className="layout-pt-lg layout-pb-lg relative overflow-hidden"
+      style={{
+        position: "relative",
+        isolation: "isolate",
+      }}
+    >
+      {/* Dark Overlay */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(0, 0, 0, 0.7)",
+          zIndex: -1,
+        }}
+      />
+
+      {/* Background with reduced opacity */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundImage: "url(/assets/img/home/csei-home.jpeg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.3,
+          zIndex: -2,
+        }}
+      />
+
+      <div className="container relative z-10">
         <div className="row y-gap-30 justify-between items-center">
           {/* Left Column: Text */}
           <div className="col-xl-5 col-lg-6 col-md-10 order-2 order-lg-1">
@@ -18,7 +53,7 @@ export default function LearnNewSkill() {
                 className="about-content__title customSized text-white"
                 data-aos="fade-up"
               >
-                Why <span> CSEI Academy </span>?
+                Why <span className="text-custom-orange"> CSEI Academy </span>?
               </h2>
 
               {/* Features with vertical line */}
@@ -37,7 +72,7 @@ export default function LearnNewSkill() {
               <div className="d-inline-block mt-30">
                 <Link
                   href="/admission"
-                  className="button -md text-white fw-700 bg-custom-orange"
+                  className="button -md text-white fw-700 bg-custom-orange hover:bg-custom-orange-dark transition-all duration-300"
                 >
                   Apply Now
                 </Link>
@@ -50,20 +85,48 @@ export default function LearnNewSkill() {
             className="col-xl-5 col-lg-6 order-1 order-lg-2"
             data-aos="fade-up"
           >
-            <div className="about-image">
-              <Image
-                width={750}
-                height={850}
-                style={{ height: "100%", width: "100%" }}
-                src="/assets/img/about/1.png"
-                alt="image"
-              />
+            <div className="about-image relative rounded-lg overflow-hidden shadow-xl">
+              <div className="relative w-full h-full">
+                <Image
+                  width={750}
+                  height={850}
+                  style={{
+                    height: "100%",
+                    width: "100%",
+                    objectFit: "cover",
+                    // filter: "brightness(0.7)",
+                  }}
+                  src="/assets/img/about/1.jpg"
+                  alt="About CSEI Academy"
+                  className="hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black opacity-50"></div>
+                <div className="absolute inset-0 bg-black opacity-30"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <style jsx>{`
+        .menu-link {
+          display: block;
+          padding: 10px 16px;
+          color: black;
+          font-weight: normal;
+          border-radius: 6px;
+          transition: all 0.3s;
+        }
+
+        .menu-link.active {
+          color: #e05500 !important;
+          font-weight: 900 !important;
+        }
+
+        .sub-link.active {
+          color: #e05500 !important;
+          font-weight: 900 !important;
+        }
         .feature-list-wrapper {
           position: relative;
           margin-top: 30px;
@@ -101,12 +164,19 @@ export default function LearnNewSkill() {
           justify-content: center;
           font-size: 12px;
           position: relative;
+          flex-shrink: 0;
         }
 
         .feature-text {
           color: white;
           font-size: 15px;
           font-weight: 500;
+          line-height: 1.5;
+        }
+
+        .about-content__title span {
+          color: #e05500;
+          font-weight: 700;
         }
       `}</style>
     </section>

@@ -14,6 +14,7 @@ import Brands from "@/components/common/Brands";
 import EnquiryModal from "@/components/EnquiryModal";
 import Header from "@/components/layout/headers/Header";
 import FooterOne from "@/components/layout/footers/FooterOne";
+import MilestoneGrid from "@/components/StatsShowCase";
 
 export default function HomePage() {
   const [showModal, setShowModal] = useState(false);
@@ -28,6 +29,7 @@ export default function HomePage() {
       <Categories />
       <Courses />
       <TestimonialsOne />
+      <MilestoneGrid />
       <GetApp />
       <Brands />
 

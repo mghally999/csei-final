@@ -7,7 +7,7 @@ export const slidesData = [
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
+          gridTemplateColumns: "repeat(5, 1fr)",
           gap: "10px",
           width: "100%",
           maxWidth: "500px",
@@ -29,6 +29,7 @@ export const slidesData = [
                 whiteSpace: "nowrap",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
+                width: "100px",
               }}
             >
               {item}

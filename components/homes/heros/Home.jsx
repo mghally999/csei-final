@@ -2,6 +2,7 @@
 
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { FaWhatsapp } from "react-icons/fa";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -33,9 +34,12 @@ export default function HomeHeroSlider() {
         }}
         pagination={{
           clickable: true,
-          el: ".swiper-pagination",
+          el: ".hero-slider-pagination",
           bulletClass: "custom-bullet",
           bulletActiveClass: "custom-bullet-active",
+          renderBullet: (index, className) => {
+            return `<span class="${className}"></span>`;
+          },
         }}
         style={{ width: "100%", height: "100vh" }}
       >
@@ -51,6 +55,7 @@ export default function HomeHeroSlider() {
                 alignItems: "center",
               }}
             >
+              {/* Background Image */}
               <div
                 style={{
                   position: "absolute",
@@ -64,6 +69,7 @@ export default function HomeHeroSlider() {
                   zIndex: 1,
                 }}
               />
+              {/* Overlay */}
               <div
                 style={{
                   position: "absolute",
@@ -75,7 +81,7 @@ export default function HomeHeroSlider() {
                   zIndex: 2,
                 }}
               />
-
+              {/* Content */}
               <div
                 style={{
                   position: "absolute",
@@ -106,7 +112,7 @@ export default function HomeHeroSlider() {
                 >
                   {item.title}
                 </h1>
-                <p
+                <div
                   style={{
                     fontSize: "clamp(1rem, 2.5vw, 1.5rem)",
                     color: "rgba(255,255,255,0.95)",
@@ -115,9 +121,9 @@ export default function HomeHeroSlider() {
                   }}
                 >
                   {item.subtitle}
-                </p>
+                </div>
                 {item.description && (
-                  <p
+                  <div
                     style={{
                       fontSize: "clamp(0.9rem, 2vw, 1.1rem)",
                       color: "rgba(255,255,255,0.85)",
@@ -125,7 +131,7 @@ export default function HomeHeroSlider() {
                     }}
                   >
                     {item.description}
-                  </p>
+                  </div>
                 )}
                 {item.ctaText && (
                   <Link
@@ -154,15 +160,46 @@ export default function HomeHeroSlider() {
         ))}
       </Swiper>
 
+      {/* Custom Pagination Bullets */}
+      <div
+        className="hero-slider-pagination"
+        style={{
+          position: "absolute",
+          bottom: "30px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          zIndex: 10,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "10px",
+        }}
+      />
+
+      {/* Navigation Arrows */}
+      <button className="hero-slider-prev" style={arrowStyle("left")}>
+        <i className="icon icon-arrow-left" />
+      </button>
+      <button className="hero-slider-next" style={arrowStyle("right")}>
+        <i className="icon icon-arrow-right" />
+      </button>
+
+      {/* Enquiry Modal */}
+      <HeroSliderModal isOpen={showModal} onClose={() => setShowModal(false)} />
+
+      {/* Global Styling */}
       <style jsx global>{`
         .custom-bullet {
           width: 12px;
           height: 12px;
-          background: #000 !important;
+          background: rgba(255, 255, 255, 0.5) !important;
+          border-radius: 50%;
           margin: 0 6px !important;
+          cursor: pointer;
+          transition: all 0.3s ease;
         }
         .custom-bullet-active {
-          background: #000 !important;
+          background: #fff !important;
           transform: scale(1.2);
         }
         @keyframes floatY {
@@ -177,89 +214,9 @@ export default function HomeHeroSlider() {
           }
         }
       `}</style>
-
-      <div
-        className="swiper-pagination"
-        style={{
-          position: "absolute",
-          bottom: "20px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          zIndex: 10,
-        }}
-      />
-
-      {/* Arrows */}
-      <button className="hero-slider-prev" style={arrowStyle("left")}>
-        <i className="icon icon-arrow-left" />
-      </button>
-      <button className="hero-slider-next" style={arrowStyle("right")}>
-        <i className="icon icon-arrow-right" />
-      </button>
-
-      {/* Floating Enquiry Button */}
-      <button
-        onClick={() => setShowModal(true)}
-        style={{
-          position: "fixed",
-          top: "35%",
-          right: "20px",
-          zIndex: 9999,
-          backgroundColor: "#2563eb",
-          color: "white",
-          padding: "14px 20px",
-          borderRadius: "50px",
-          fontWeight: "600",
-          fontSize: "1rem",
-          border: "none",
-          cursor: "pointer",
-          animation: "floatY 3s ease-in-out infinite",
-        }}
-      >
-        Quick Enquiry
-      </button>
-
-      {/* ✅ Floating WhatsApp CTA */}
-      <Link
-        href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          position: "fixed",
-          bottom: "65px",
-          left: "20px",
-          zIndex: 9999,
-          backgroundColor: "#25D366",
-          color: "white",
-          padding: "12px 18px",
-          borderRadius: "50px",
-          fontWeight: "600",
-          fontSize: "1rem",
-          border: "none",
-          boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
-          display: "flex",
-          alignItems: "center",
-          gap: "8px",
-          textDecoration: "none",
-        }}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="20"
-          width="20"
-          viewBox="0 0 448 512"
-          fill="white"
-        >
-          <path d="M380.9 97.1C339-5.9 226.9-26.5 149.1 41.5 70.4 108.6 56.3 231 128.3 301.9c25 24.4 47.8 41.1 82.3 54.1 44.3 17.1 84.4 15.2 124.1-5.3 31.2-16.2 57.3-44.8 68.2-82.8 9.5-33.1 3.6-72.8-22-116.8zM215.9 461.2c-19.8-2.3-39.2-7.7-57.6-15.7l-96.6 25.5 25.8-94.6c-39.3-59.1-38.8-138.8 1.2-198.8 37.4-56.1 98.7-92.6 168.2-94.3 65.5-1.6 127.4 35.1 163.2 90.7 45.8 72.2 33.2 171.3-34.2 230.1-49.7 42.5-121.4 61.8-195.4 56.1z" />
-        </svg>
-      </Link>
-
-      {/* Enquiry Modal */}
-      <HeroSliderModal isOpen={showModal} onClose={() => setShowModal(false)} />
     </section>
   );
 }
-
 const arrowStyle = (side) => ({
   position: "absolute",
   top: "50%",

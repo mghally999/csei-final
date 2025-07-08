@@ -1,11 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import MobileFooter from "./MobileFooter";
 import { menuList } from "@/data/menu";
-import { usePathname } from "next/navigation";
 import MegaMenuItem from "@/components/MegaMenuItem";
 
 export default function Menu({
@@ -14,43 +12,50 @@ export default function Menu({
   setActiveMobileMenu,
 }) {
   const pathname = usePathname();
-  const router = useRouter();
   const [activeMenu, setActiveMenu] = useState("");
+  const [activeHref, setActiveHref] = useState("");
 
   useEffect(() => {
-    const pathSection = pathname.split("/")[1];
+    let bestMatchHref = "";
+    let bestMatchMenu = "";
 
-    const findMatch = (items, parentTitle) => {
+    const matchDeep = (items, parentTitle) => {
       for (const item of items) {
-        if (item.href && item.href.split("/")[1] === pathSection) {
-          setActiveMenu(parentTitle);
-          return true;
+        if (item.href && pathname.startsWith(item.href)) {
+          if (item.href.length > bestMatchHref.length) {
+            bestMatchHref = item.href;
+            bestMatchMenu = parentTitle;
+          }
         }
-
         if (item.links && item.links.length > 0) {
-          if (findMatch(item.links, parentTitle)) return true;
+          matchDeep(item.links, parentTitle);
         }
       }
-      return false;
     };
 
-    for (const menu of menuList) {
-      if (menu.href && menu.href.split("/")[1] === pathSection) {
-        setActiveMenu(menu.title || menu.label || "Untitled");
-        break;
+    menuList.forEach((menu) => {
+      const title = menu.title || menu.label || "Untitled";
+      const links = menu.links || menu.dropdown || [];
+
+      if (menu.href && pathname.startsWith(menu.href)) {
+        if (menu.href.length > bestMatchHref.length) {
+          bestMatchHref = menu.href;
+          bestMatchMenu = title;
+        }
       }
 
-      const links = menu.links || menu.dropdown || [];
-      if (findMatch(links, menu.title || menu.label || "Untitled")) break;
-    }
-  }, [pathname]);
+      if (links.length > 0) {
+        matchDeep(links, title);
+      }
+    });
 
-  const isActive = (href) => pathname.startsWith(href);
+    setActiveMenu(bestMatchMenu);
+    setActiveHref(bestMatchHref);
+  }, [pathname]);
 
   const handleLinkClick = (e, href) => {
     e.preventDefault();
     setActiveMobileMenu(false);
-    // Force a full page refresh
     window.location.href = href;
   };
 
@@ -63,60 +68,6 @@ export default function Menu({
     "Placements",
   ];
 
-  const renderNestedLinks = (links) => (
-    <ul className="mega__list min-w-[200px] whitespace-nowrap">
-      {links.map((item, i) => {
-        const isParent = !item.href && item.links?.length > 0;
-        const label = item.label || item.title || "Unnamed";
-
-        return (
-          <li key={i} className="group relative px-10 py-2 hover:bg-gray-50">
-            {/* Label or Link */}
-            {item.href ? (
-              <a
-                href={item.href}
-                onClick={(e) => handleLinkClick(e, item.href)}
-                className={`block fw-600 text-sm text-black ${
-                  isActive(item.href) ? "border-b border-black" : ""
-                }`}
-              >
-                {label}
-              </a>
-            ) : (
-              <span className="block fw-600 text-sm text-black cursor-default">
-                {label}
-                {isParent && (
-                  <i className="icon-chevron-right text-13 ml-2 text-black"></i>
-                )}
-              </span>
-            )}
-
-            {/* Nested Submenu */}
-            {isParent && (
-              <div className="absolute left-full top-0 z-50 hidden group-hover:block">
-                <ul className="bg-dark border border-gray-300 shadow-md rounded w-[240px] ml-2">
-                  {item.links.map((child, j) => (
-                    <li key={j} className="px-4 py-2 hover:bg-gray-100">
-                      <a
-                        href={child.href}
-                        onClick={(e) => handleLinkClick(e, child.href)}
-                        className={`text-sm text-black ${
-                          isActive(child.href) ? "font-bold" : ""
-                        }`}
-                      >
-                        {child.label || child.title || "Unnamed"}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </li>
-        );
-      })}
-    </ul>
-  );
-
   return (
     <div
       className={`header-menu js-mobile-menu-toggle ${headerPosition || ""}`}
@@ -124,19 +75,18 @@ export default function Menu({
       <div className="header-menu__content">
         <div className="mobile-bg js-mobile-bg" />
 
-        {/* Mobile login links */}
         <div className="d-none xl:d-flex items-center px-20 py-20 border-b border-gray-200">
           <a
             href="/login"
             onClick={(e) => handleLinkClick(e, "/login")}
-            className="text-black"
+            style={{ color: "black" }}
           >
             Log in
           </a>
           <a
             href="/signup"
             onClick={(e) => handleLinkClick(e, "/signup")}
-            className="text-black ml-30"
+            style={{ color: "black", marginLeft: 30 }}
           >
             Sign Up
           </a>
@@ -145,14 +95,13 @@ export default function Menu({
         <div className="menu js-navList">
           <ul className={allClasses || ""}>
             {menuList.map((menu, index) => {
+              const title = menu.title || menu.label || "Untitled";
               const links = menu.links || menu.dropdown || [];
               const hasDropdown =
-                !noDropdownTitles.includes(menu.title) &&
-                (menu.mega || (Array.isArray(links) && links.length > 0));
-              const isSingleDropdown = singleDropdownTitles.includes(
-                menu.title
-              );
-              const title = menu.title || menu.label || "Untitled";
+                !noDropdownTitles.includes(title) &&
+                (menu.mega || links.length > 0);
+              const isSingleDropdown = singleDropdownTitles.includes(title);
+              const isActiveParent = activeMenu === title;
 
               return (
                 <li
@@ -164,9 +113,14 @@ export default function Menu({
                   <a
                     href={menu.href || "#"}
                     onClick={(e) => handleLinkClick(e, menu.href || "#")}
-                    className={`block text-black ${
-                      activeMenu === title ? "border-b border-black" : ""
-                    }`}
+                    style={{
+                      display: "block",
+                      padding: "10px 16px",
+                      color: isActiveParent ? "#e05500 !important" : "black",
+                      fontWeight: isActiveParent ? 900 : "normal",
+                      borderRadius: "6px",
+                      transition: "all 0.3s",
+                    }}
                   >
                     {title}
                     {hasDropdown && (
@@ -181,36 +135,39 @@ export default function Menu({
                           <a
                             href="#"
                             onClick={(e) => handleLinkClick(e, "#")}
-                            className="text-black"
+                            style={{ color: "black" }}
                           >
                             <i className="icon-chevron-left text-13 mr-10 text-black"></i>
                             {title}
                           </a>
                         </div>
                         <ul>
-                          {links.map((section, i) => (
+                          {links.map((link, i) => (
                             <li key={i}>
                               <a
-                                href={section.href}
-                                onClick={(e) =>
-                                  handleLinkClick(e, section.href)
-                                }
-                                className={`text-black ${
-                                  isActive(section.href) ? "font-bold" : ""
-                                }`}
+                                href={link.href}
+                                onClick={(e) => handleLinkClick(e, link.href)}
+                                style={{
+                                  display: "block",
+                                  padding: "8px 12px",
+                                  color:
+                                    activeHref === link.href
+                                      ? "#e05500"
+                                      : "black",
+                                  fontWeight:
+                                    activeHref === link.href ? 900 : "normal",
+                                  borderRadius: "4px",
+                                  transition: "all 0.3s",
+                                }}
                               >
-                                {section.label || section.title || "Unnamed"}
+                                {link.label || link.title || "Unnamed"}
                               </a>
                             </li>
                           ))}
                         </ul>
                       </div>
                     ) : (
-                      <div
-                        className="mega absolute top-full left-0 w-full bg-dark shadow-lg z-50 
-                                  transition-all duration-300 max-h-0 overflow-hidden opacity-0 invisible 
-                                  group-hover:max-h-[1000px] group-hover:opacity-100 group-hover:visible"
-                      >
+                      <div className="mega absolute top-full left-0 w-full bg-dark shadow-lg z-50 transition-all duration-300 max-h-0 overflow-hidden opacity-0 invisible group-hover:max-h-[1000px] group-hover:opacity-100 group-hover:visible">
                         <div className="mega__menu content-center-wrapper py-8">
                           <div className="row x-gap-40 justify-center">
                             {links.map((section, i) => (

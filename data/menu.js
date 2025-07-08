@@ -12,10 +12,6 @@ export const menuList = [
         href: "/about/who-we-are",
       },
       {
-        label: "Our Vision",
-        href: "/about/our-vision",
-      },
-      {
         label: "Our Mission",
         href: "/about/our-mission",
       },

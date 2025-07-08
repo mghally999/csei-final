@@ -9,7 +9,7 @@ export const featureOne = [
   },
   {
     id: 3,
-    title: "Student Support in Migration",
+    title: "Academic Mentoring",
   },
   {
     id: 4,
@@ -17,11 +17,11 @@ export const featureOne = [
   },
   {
     id: 5,
-    title: "Placement Guidance",
+    title: "Student Support in Migration",
   },
   {
     id: 6,
-    title: "Counselling and Mentoring",
+    title: "Student Services",
   },
 ];
 

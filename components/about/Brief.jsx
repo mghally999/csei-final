@@ -48,6 +48,7 @@ export default function Brief() {
           position: relative;
           z-index: 2;
           max-width: 900px;
+          margin-top: 100px !important;
         }
 
         .sectionTitle__title {

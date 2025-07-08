@@ -10,15 +10,6 @@ const aboutPagesData = [
     ],
   },
   {
-    slug: "our-vision",
-    title: "Our Vision",
-    image:
-      "https://images.unsplash.com/photo-1612832021024-bd4b47d82926?auto=format&fit=crop&w=2070&q=80",
-    content: [
-      "To be a premier provider of quality education that empowers learners to achieve academic excellence, personal growth, and career readiness in a globally competitive environment.",
-    ],
-  },
-  {
     slug: "our-mission",
     title: "Our Mission",
     image:

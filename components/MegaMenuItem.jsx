@@ -21,11 +21,20 @@ export default function MegaMenuItem({ section, pathname, handleLinkClick }) {
                   <a
                     href={child.href}
                     onClick={(e) => handleLinkClick(e, child.href)}
-                    className={`text-sm text-black hover:text-blue-600 transition duration-200 ${
-                      isActive(child.href) ? "font-bold" : ""
-                    }`}
+                    style={{
+                      color: pathname.startsWith(child.href)
+                        ? "#e05500"
+                        : "black",
+                      fontWeight: pathname.startsWith(child.href)
+                        ? "900"
+                        : "normal",
+                      padding: "6px 10px",
+                      display: "inline-block",
+                      borderRadius: "4px",
+                      transition: "all 0.3s",
+                    }}
                   >
-                    {child.label || child.title || "Unnamed"}
+                    {child.title || child.label || "Untitled"}
                   </a>
                 </li>
               ))}
@@ -39,9 +48,13 @@ export default function MegaMenuItem({ section, pathname, handleLinkClick }) {
           <a
             href={item.href}
             onClick={(e) => handleLinkClick(e, item.href)}
-            className={`text-sm text-black hover:text-blue-600 transition duration-200 ${
-              isActive(item.href) ? "font-bold" : ""
-            }`}
+            style={{
+              color: isActive(item.href) ? "#e05500" : "black",
+              fontWeight: isActive(item.href) ? "900" : "normal",
+              padding: "6px 0",
+              display: "inline-block",
+              transition: "all 0.3s",
+            }}
           >
             {label}
           </a>
@@ -55,7 +68,7 @@ export default function MegaMenuItem({ section, pathname, handleLinkClick }) {
       className="px-6"
       style={{
         flex: 1,
-        minWidth: "0", // avoid overflow
+        minWidth: "0",
         maxWidth: "100%",
       }}
     >
@@ -64,9 +77,10 @@ export default function MegaMenuItem({ section, pathname, handleLinkClick }) {
           <a
             href={section.href}
             onClick={(e) => handleLinkClick(e, section.href)}
-            className={`text-base font-semibold text-black ${
-              isActive(section.href) ? "border-b border-black" : ""
-            }`}
+            style={{
+              color: pathname.startsWith(section.href) ? "#e05500" : "black",
+              fontWeight: pathname.startsWith(section.href) ? "900" : "600",
+            }}
           >
             {section.title || section.label || "Untitled"}
           </a>
