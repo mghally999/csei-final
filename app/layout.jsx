@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
   const phoneLink = `tel:+${whatsappNumber}`;
   const telegramLink = "https://t.me/cseiacademy";
   const emailLink = "mailto:admission@cseiacademy.ae";
-  const instagramLink = "https://instagram.com/cseiacademy"; // optional
+  const instagramLink = "https://www.instagram.com/cseiacademydubaifz/"; // optional
 
   return (
     <html lang="en">
@@ -95,14 +95,13 @@ export default function RootLayout({ children }) {
               }}
             >
               <FaWhatsapp size={30} />
-              Chat
             </Link>
 
             {/* 🔹 Right-Center Floating Social Bar */}
             <div
               style={{
                 position: "fixed",
-                top: "65%",
+                top: "75%",
                 right: "20px",
                 transform: "translateY(-50%)",
                 zIndex: 9999,
