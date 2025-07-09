@@ -21,29 +21,14 @@ export default function Page() {
     <div className="main-content">
       <div className="content-wrapper js-content-wrapper overflow-hidden">
         {/* Sections — Alternating background colors */}
-        <section className="py-20 bg-white">
-          <Brief />
-        </section>
-        <section className="py-20 bg-white">
-          <AboutCSEI />
-        </section>
-        <section className="py-20 bg-[#160643] text-white">
-          <Mission />
-        </section>
-        <section className="py-20 bg-white">
-          <Values />
-        </section>
-        <section className="py-20 bg-white">
-          <OrganizationStructure />
-        </section>
-        <section className="py-20 bg-white">
-          <Leadership />
-        </section>
-        <section className="py-20 bg-white">
-          <Brands />
-        </section>
+        <Brief />
+        <AboutCSEI />
+        <Mission />
+        <Values />
+        <OrganizationStructure />
+        <Leadership />
+        <Brands />
       </div>
-      <FooterOne />
     </div>
   );
 }

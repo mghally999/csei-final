@@ -4,38 +4,68 @@ export const slidesData = [
     bgImage: "/assets/img/home/september-intake-1.png",
     title: "September Intake 2025",
     subtitle: (
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(5, 1fr)",
-          gap: "10px",
-          width: "100%",
-          maxWidth: "500px",
-          margin: "0 auto",
-        }}
-      >
+      <div className="category-grid-container">
         {["Healthcare", "Tourism", "Business", "IT", "Culinary Arts"].map(
           (item, index) => (
-            <div
-              key={index}
-              style={{
-                backgroundColor: "rgba(255,255,255,0.2)",
-                padding: "8px 4px",
-                borderRadius: "20px",
-                fontSize: "0.9rem",
-                fontWeight: "600",
-                backdropFilter: "blur(4px)",
-                textAlign: "center",
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                width: "100px",
-              }}
-            >
+            <div key={index} className="category-chip">
               {item}
             </div>
           )
         )}
+        <style jsx>{`
+          .category-grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 0 10px;
+          }
+
+          .category-chip {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 8px 5px;
+            border-radius: 20px;
+            font-size: clamp(0.7rem, 2vw, 0.9rem);
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+            box-sizing: border-box;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+          }
+
+          @media (max-width: 768px) {
+            .category-grid-container {
+              grid-template-columns: repeat(3, 1fr);
+              max-width: 400px;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .category-grid-container {
+              grid-template-columns: repeat(2, 1fr);
+              gap: 8px;
+            }
+
+            .category-chip {
+              padding: 6px 4px;
+              font-size: 0.75rem;
+            }
+          }
+
+          @media (max-width: 360px) {
+            .category-grid-container {
+              grid-template-columns: 1fr;
+              max-width: 200px;
+            }
+          }
+        `}</style>
       </div>
     ),
     description:

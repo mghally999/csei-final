@@ -47,7 +47,7 @@ export default function Page() {
             />
           </div>
           <div className="container">
-            <div className="page-header__content pt-80 pb-90">
+            <div className="page-header__content">
               <div className="row y-gap-30 justify-center align-center custom-flex-margin">
                 <div className="col-xl-6 col-lg-6 d-flex flex-column justify-center">
                   <div className="d-flex x-gap-15 y-gap-10 pb-20">

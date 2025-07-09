@@ -11,37 +11,6 @@ export default function FooterOne() {
     e.preventDefault();
   };
 
-  // Inline styles objects
-  const accreditationContainerStyle = {
-    marginTop: "160px",
-    padding: "80px 0",
-    borderTop: "1px solid rgba(0, 0, 0, 0.15)",
-  };
-
-  const logosWrapperStyle = {
-    display: "flex",
-    justifyContent: "center",
-    gap: "32px",
-    flexWrap: "wrap",
-  };
-
-  const logoContainerStyle = {
-    backgroundColor: "white",
-    padding: "12px",
-    borderRadius: "8px",
-    width: "200px",
-    height: "130px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
-  };
-
-  const logoImageStyle = {
-    objectFit: "cover",
-    height: "100%",
-  };
-
   return (
     <footer className="footer -type-1 bg-white -green-links">
       <div className="container">
@@ -67,56 +36,56 @@ export default function FooterOne() {
           </div>
         </div>
 
-        {/* Accreditation Logos Section with inline styles */}
-        <div style={accreditationContainerStyle}>
-          <div style={logosWrapperStyle}>
-            <div style={logoContainerStyle}>
-              <Image
-                src="/assets/img/logos/OTHM-logo.png"
-                alt="OTHM Accredited"
-                width={180}
-                height={90}
-                style={logoImageStyle}
-              />
-            </div>
-            <div style={logoContainerStyle}>
-              <Image
-                src="/assets/img/logos/KHDA-logo.png"
-                alt="KHDA Accredited"
-                width={180}
-                height={90}
-                style={logoImageStyle}
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* 2. Footer Header with Logo */}
+        {/* 2. Footer Header with Logo and Accreditation Logos */}
         <div className="footer-header mt-40">
           <div className="row y-gap-20 justify-between items-center">
             <div className="col-auto">
-              <div className="footer-header__logo">
-                <Link href="/" className="d-flex items-center">
-                  <Image
-                    width={140}
-                    height={40}
-                    src="/assets/img/general/logo.png"
-                    alt="logo"
-                  />
-                  <span
-                    className="text-[24px] leading-none"
-                    style={{
-                      fontWeight: 900,
-                      color: "#E05500",
-                      textTransform: "uppercase",
-                      letterSpacing: "0.5px",
-                      fontSize: "20px",
-                      marginRight: "10px",
-                    }}
-                  >
-                    CSEI Academy
-                  </span>
-                </Link>
+              <div className="footer-logo-container">
+                <div className="footer-header__logo">
+                  <Link href="/" className="d-flex items-center">
+                    <Image
+                      width={140}
+                      height={40}
+                      src="/assets/img/general/logo.png"
+                      alt="logo"
+                    />
+                    <span
+                      className="text-[24px] leading-none"
+                      style={{
+                        fontWeight: 900,
+                        color: "#E05500",
+                        textTransform: "uppercase",
+                        letterSpacing: "0.5px",
+                        fontSize: "20px",
+                        marginRight: "10px",
+                      }}
+                    >
+                      CSEI Academy
+                    </span>
+                  </Link>
+                </div>
+
+                {/* Accreditation Logos - Updated with larger size and spacing */}
+                <div className="footer-accreditation-logos">
+                  <div className="footer-logo-item">
+                    <Image
+                      src="/assets/img/logos/OTHM-logo.png"
+                      alt="OTHM Accredited"
+                      width={180}
+                      height={90}
+                      className="footer-logo-img"
+                    />
+                  </div>
+                  <div className="footer-logo-item">
+                    <Image
+                      src="/assets/img/logos/KHDA-logo.png"
+                      alt="KHDA Accredited"
+                      width={180}
+                      height={90}
+                      className="footer-logo-img"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -153,6 +122,99 @@ export default function FooterOne() {
             </div>
           </div>
         </div>
+
+        {/* Global Styles */}
+        <style jsx>{`
+          .footer-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 40px; /* Increased gap */
+            flex-wrap: wrap;
+          }
+
+          .footer-accreditation-logos {
+            display: flex;
+            gap: 30px; /* Increased gap between logos */
+            align-items: center;
+            flex-grow: 1; /* Allow to fill available space */
+            justify-content: space-between; /* Spread logos evenly */
+          }
+
+          .footer-logo-item {
+            background-color: white;
+            padding: 12px; /* Increased padding */
+            border-radius: 8px;
+            width: 220px; /* Increased width */
+            height: 110px; /* Increased height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            flex: 1; /* Allow items to grow */
+            max-width: 240px; /* Maximum size */
+            margin: 0 10px; /* Additional spacing */
+          }
+
+          .footer-logo-img {
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+          }
+
+          @media (max-width: 1200px) {
+            .footer-logo-item {
+              width: 200px;
+              height: 100px;
+            }
+          }
+
+          @media (max-width: 1024px) {
+            .footer-logo-container {
+              flex-direction: column;
+              align-items: flex-start;
+              gap: 30px;
+            }
+
+            .footer-accreditation-logos {
+              width: 100%;
+              margin-top: 20px;
+              gap: 20px;
+            }
+          }
+
+          @media (max-width: 768px) {
+            .footer-logo-item {
+              width: 180px;
+              height: 90px;
+              padding: 10px;
+            }
+          }
+
+          @media (max-width: 600px) {
+            .footer-accreditation-logos {
+              flex-direction: column;
+              gap: 15px;
+            }
+
+            .footer-logo-item {
+              width: 160px;
+              height: 80px;
+              margin: 0;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .footer-logo-container {
+              align-items: center;
+              text-align: center;
+            }
+
+            .footer-logo-item {
+              width: 140px;
+              height: 70px;
+            }
+          }
+        `}</style>
       </div>
     </footer>
   );

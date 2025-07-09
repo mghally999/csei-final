@@ -190,29 +190,29 @@ export const menuList = [
       },
     ],
   },
-  {
-    title: "Academics",
-    href: "/academics",
-    mega: false,
-    links: [
-      {
-        label: "School of Computing",
-        href: "/academics/schools/computing",
-      },
-      {
-        label: "School of Health Sciences",
-        href: "/academics/schools/health-sciences",
-      },
-      {
-        label: "School of Culinary Arts",
-        href: "/academics/schools/culinary-arts",
-      },
-      {
-        label: "School of Business",
-        href: "/academics/schools/business",
-      },
-    ],
-  },
+  // {
+  //   title: "Academics",
+  //   href: "/academics",
+  //   mega: false,
+  //   links: [
+  //     {
+  //       label: "School of Computing",
+  //       href: "/academics/schools/computing",
+  //     },
+  //     {
+  //       label: "School of Health Sciences",
+  //       href: "/academics/schools/health-sciences",
+  //     },
+  //     {
+  //       label: "School of Culinary Arts",
+  //       href: "/academics/schools/culinary-arts",
+  //     },
+  //     {
+  //       label: "School of Business",
+  //       href: "/academics/schools/business",
+  //     },
+  //   ],
+  // },
   {
     title: "Apply Now",
     href: "/admission",
@@ -347,10 +347,10 @@ export const menuList = [
     title: "Contact Us",
     href: "/contact-us",
   },
-  // {
-  //   title: "News",
-  //   href: "/news",
-  // },
+  {
+    title: "News",
+    href: "/news",
+  },
   // {
   //   title: "Courses",
   //   mega: true,

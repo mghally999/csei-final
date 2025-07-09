@@ -7,27 +7,24 @@ import { motion } from "framer-motion";
 const leadershipTeam = [
   {
     id: 1,
-    name: "Dr. Sarah Johnson",
-    position: "Academic Director",
+    name: "Mr Roshan",
+    position: "General Manager",
     bio: "With over 15 years in higher education, Dr. Johnson leads our academic strategy with a focus on innovative learning methodologies.",
-    image:
-      "https://plus.unsplash.com/premium_photo-1713296255442-e9338f42aad8?q=80&w=844&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "/assets/img/leadership/Mr-Roshan.jpeg",
   },
   {
     id: 2,
-    name: "Michael Chen",
-    position: "Operations Director",
+    name: "Mr Roshan",
+    position: "General Manager",
     bio: "Michael brings 12 years of operational excellence, ensuring smooth campus operations and student support services.",
-    image:
-      "https://plus.unsplash.com/premium_photo-1713296255442-e9338f42aad8?q=80&w=844&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "/assets/img/leadership/Mr-Roshan.jpeg",
   },
   {
     id: 3,
-    name: "Aisha Al-Mansoori",
-    position: "Industry Partnerships",
-    bio: "Aisha connects our students with top employers through her extensive network in Dubai's business community.",
-    image:
-      "https://plus.unsplash.com/premium_photo-1713296255442-e9338f42aad8?q=80&w=844&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    name: "Mr Roshan",
+    position: "General Manager",
+    bio: "Michael brings 12 years of operational excellence, ensuring smooth campus operations and student support services.",
+    image: "/assets/img/leadership/Mr-Roshan.jpeg",
   },
 ];
 
@@ -71,9 +68,15 @@ export default function Leadership() {
                     <Image
                       src={member.image}
                       alt={member.name}
-                      width={96}
-                      height={96}
-                      className="object-cover"
+                      width={500}
+                      height={500}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        borderRadius: "10px",
+                      }}
+                      priority
                     />
                     <span className="absolute bottom-1 right-1 bg-blue-500 text-white text-[10px] px-1 rounded">
                       {member.position.split(" ")[0]}

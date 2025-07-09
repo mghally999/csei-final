@@ -12,7 +12,7 @@ import Link from "next/link";
 
 export default function TestimonialsOne() {
   return (
-    <section className="layout-pt-lg mt-80 layout-pb-lg bg-white">
+    <section className="layout-pb-lg bg-white">
       <div className="container ">
         <div className="row justify-center text-center">
           <div className="col-auto">

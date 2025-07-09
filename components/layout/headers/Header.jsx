@@ -185,14 +185,6 @@ export default function Header() {
               <div className="col-auto">
                 <div className="d-flex x-gap-20 items-center">
                   <Link
-                    href="https://cs-medical-college.netlify.app"
-                    target="_blank"
-                    className="text-white text13 lh-1 hover:text-orange-1"
-                  >
-                    Medical College
-                  </Link>
-                  <span className="text-white mx-10">|</span>
-                  <Link
                     href="/life-with-csei/lms"
                     className="text-white text13 lh-1 hover:text-orange-1"
                   >

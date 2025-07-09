@@ -5,9 +5,11 @@ const aboutPagesData = [
     image:
       "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=2070&q=80",
     content: [
-      "At CSEI Academy, we are proud to offer UK Ofqual-recognized and KHDA-approved programs with hands-on learning to help you thrive in IT, Healthcare, Tourism, Culinary Arts, and Business. Our flexible courses are designed around your life, supporting working professionals and students seeking placements. With strong industry connections and direct pathways to UK Bachelor’s degrees",
+      "At CSEI Academy, we are proud to offer UK Ofqual-recognized and KHDA-approved programs with hands-on learning to help you thrive in IT, Healthcare, Tourism, Culinary Arts, and Business.",
+      "Our flexible courses are designed around your life, supporting working professionals and students seeking placements. With strong industry connections and direct pathways to UK Bachelor’s degrees",
       "With a strong emphasis on academic excellence, innovation, and industry alignment, our programs are tailored to meet the evolving demands of the modern workforce. Whether you're pursuing higher education, skill enhancement, or career advancement, CSEI provides a supportive and inclusive learning environment where success is nurtured.",
-      "We open doors to global opportunities. Join a community where your success comes first, and let us help you build the confidence, skills, and experience for a bright tomorrow.",
+      "We open doors to global opportunities.",
+      "Join a community where your success comes first, and let us help you build the confidence, skills, and experience for a bright tomorrow.",
     ],
   },
   {

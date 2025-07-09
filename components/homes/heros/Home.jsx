@@ -7,28 +7,15 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
 import { slidesData } from "@/data/home/home";
-import { useState } from "react";
 import HeroSliderModal from "@/components/HeroSliderModal";
-import Link from "next/link";
 
 export default function HomeHeroSlider() {
   const [showModal, setShowModal] = useState(false);
   const [hover, setHover] = useState(false);
-
-  // Logo container style
-  const logoContainerStyle = {
-    backgroundColor: "rgba(255, 255, 255, 0.9)",
-    padding: "8px",
-    borderRadius: "8px",
-    width: "200px",
-    height: "130px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    margin: "0 10px",
-  };
 
   return (
     <section
@@ -36,6 +23,7 @@ export default function HomeHeroSlider() {
       style={{
         position: "relative",
         height: "100vh",
+        minHeight: "600px",
         overflow: "hidden",
       }}
     >
@@ -55,7 +43,7 @@ export default function HomeHeroSlider() {
             return `<span class="${className}"></span>`;
           },
         }}
-        style={{ width: "100%", height: "100vh" }}
+        style={{ width: "100%", height: "100%" }}
       >
         {slidesData.map((item, i) => (
           <SwiperSlide key={i}>
@@ -64,6 +52,7 @@ export default function HomeHeroSlider() {
                 position: "relative",
                 width: "100%",
                 height: "100vh",
+                minHeight: "600px",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -97,6 +86,7 @@ export default function HomeHeroSlider() {
               />
               {/* Content */}
               <div
+                className="hero-content-container"
                 style={{
                   position: "absolute",
                   top: "60%",
@@ -122,6 +112,7 @@ export default function HomeHeroSlider() {
                     fontWeight: "800",
                     marginBottom: "1rem",
                     color: "#fff",
+                    lineHeight: "1.2",
                   }}
                 >
                   {item.title}
@@ -132,6 +123,7 @@ export default function HomeHeroSlider() {
                     color: "rgba(255,255,255,0.95)",
                     fontWeight: "600",
                     marginBottom: "1.2rem",
+                    lineHeight: "1.3",
                   }}
                 >
                   {item.subtitle}
@@ -142,6 +134,7 @@ export default function HomeHeroSlider() {
                       fontSize: "clamp(0.9rem, 2vw, 1.1rem)",
                       color: "rgba(255,255,255,0.85)",
                       marginBottom: "2rem",
+                      lineHeight: "1.5",
                     }}
                   >
                     {item.description}
@@ -151,6 +144,7 @@ export default function HomeHeroSlider() {
                   <>
                     <Link
                       href="/programs"
+                      className="hero-cta-button"
                       style={{
                         padding:
                           "clamp(12px, 2vw, 16px) clamp(24px, 4vw, 32px)",
@@ -164,46 +158,34 @@ export default function HomeHeroSlider() {
                         boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
                         transition: "background-color 0.3s ease",
                         marginBottom: "20px",
+                        textDecoration: "none",
+                        display: "inline-block",
                       }}
                       onMouseEnter={() => setHover(true)}
                       onMouseLeave={() => setHover(false)}
                     >
                       {item.ctaText}
                     </Link>
-                    {/* Accreditation Logos - Now inside each slide under the button */}
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        flexWrap: "wrap",
-                        gap: "10px",
-                        marginTop: "10px",
-                      }}
-                    >
-                      <div style={logoContainerStyle}>
+                    {/* Accreditation Logos */}
+                    <div className="responsive-logo-wrapper">
+                      <div className="responsive-logo-container">
                         <Image
                           src="/assets/img/logos/OTHM-logo.png"
                           alt="OTHM Accredited"
                           width={120}
                           height={50}
-                          style={{
-                            objectFit: "cover",
-                            height: "100%",
-                            width: "200px",
-                          }}
+                          className="responsive-logo-img"
+                          priority
                         />
                       </div>
-                      <div style={logoContainerStyle}>
+                      <div className="responsive-logo-container">
                         <Image
                           src="/assets/img/logos/KHDA-logo.png"
                           alt="KHDA Accredited"
                           width={120}
                           height={50}
-                          style={{
-                            objectFit: "cover",
-                            height: "100%",
-                            width: "200px",
-                          }}
+                          className="responsive-logo-img"
+                          priority
                         />
                       </div>
                     </div>
@@ -215,7 +197,7 @@ export default function HomeHeroSlider() {
         ))}
       </Swiper>
 
-      {/* Custom Pagination Bullets */}
+      {/* Pagination */}
       <div
         className="hero-slider-pagination"
         style={{
@@ -231,7 +213,7 @@ export default function HomeHeroSlider() {
         }}
       />
 
-      {/* Navigation Arrows */}
+      {/* Navigation */}
       <button className="hero-slider-prev" style={arrowStyle("left")}>
         <i className="icon icon-arrow-left" />
       </button>
@@ -239,10 +221,10 @@ export default function HomeHeroSlider() {
         <i className="icon icon-arrow-right" />
       </button>
 
-      {/* Enquiry Modal */}
+      {/* Modal */}
       <HeroSliderModal isOpen={showModal} onClose={() => setShowModal(false)} />
 
-      {/* Global Styling */}
+      {/* GLOBAL STYLES */}
       <style jsx global>{`
         .custom-bullet {
           width: 12px;
@@ -257,15 +239,106 @@ export default function HomeHeroSlider() {
           background: #fff !important;
           transform: scale(1.2);
         }
-        @keyframes floatY {
-          0% {
-            transform: translateY(0);
+
+        /* Wrapper that becomes column on phones */
+        .responsive-logo-wrapper {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 16px;
+          margin-top: 10px;
+          width: 100%;
+        }
+
+        /* Base logo container */
+        .responsive-logo-container {
+          background-color: rgba(255, 255, 255, 0.9);
+          padding: 8px;
+          border-radius: 8px;
+          width: 200px;
+          height: 130px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .responsive-logo-img {
+          object-fit: contain;
+          width: 100%;
+          height: 100%;
+        }
+
+        /* Tablet view */
+        @media (max-width: 1024px) {
+          .hero-content-container {
+            padding: 30px !important;
           }
-          50% {
-            transform: translateY(-10px);
+
+          .responsive-logo-container {
+            width: 160px;
+            height: 100px;
           }
-          100% {
-            transform: translateY(0);
+        }
+
+        /* Small tablet view */
+        @media (max-width: 768px) {
+          .hero-content-container {
+            width: 95% !important;
+            padding: 25px !important;
+          }
+
+          .responsive-logo-container {
+            width: 140px;
+            height: 90px;
+          }
+        }
+
+        /* Phone view: column layout */
+        @media (max-width: 640px) {
+          .hero-content-container {
+            top: 36% !important;
+            padding: 20px !important;
+            backdrop-filter: blur(2px);
+          }
+
+          .responsive-logo-wrapper {
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            display: flex;
+            flex-direction: row;
+          }
+
+          .responsive-logo-container {
+            width: 120px;
+            height: 80px;
+            padding: 6px;
+          }
+
+          .hero-cta-button {
+            width: 100%;
+            text-align: center;
+          }
+        }
+
+        /* Small phone view */
+        @media (max-width: 480px) {
+          .hero-content-container {
+            padding: 15px !important;
+          }
+
+          .responsive-logo-container {
+            width: 100px;
+            height: 70px;
+          }
+        }
+
+        /* Extra small phone view */
+        @media (max-width: 360px) {
+          .responsive-logo-container {
+            width: 90px;
+            height: 60px;
           }
         }
       `}</style>
@@ -290,4 +363,13 @@ const arrowStyle = (side) => ({
   justifyContent: "center",
   cursor: "pointer",
   opacity: "0.9",
+  transition: "opacity 0.3s ease",
+  "@media (max-width: 640px)": {
+    width: "35px",
+    height: "35px",
+    opacity: "0.8",
+  },
+  "&:hover": {
+    opacity: "1",
+  },
 });

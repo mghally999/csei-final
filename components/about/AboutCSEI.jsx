@@ -37,6 +37,7 @@ export default function AboutCSEI() {
           <div className="col-lg-6 ps-lg-10" data-aos="fade-left">
             <div className="ml-10">
               <Image
+                style={{ borderRadius: "10px" }}
                 src="/assets/img/about/csei-building4.jpeg"
                 alt="About CSEI Academy"
                 width={520}
@@ -50,7 +51,6 @@ export default function AboutCSEI() {
 
       <style jsx>{`
         .csei-section {
-          padding: 80px 0;
           background-color: #fff;
         }
 
