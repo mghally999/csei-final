@@ -39,17 +39,6 @@ export default function Page() {
         <section className="py-20 bg-white">
           <Leadership />
         </section>
-        {/* <section className="py-20 bg-[#160643] text-white">
-          <IndustryPartners />
-        </section> */}
-
-        {/* Extra Sections */}
-        {/* <section className="py-20 bg-white">
-          <WhyCourse />
-        </section> */}
-        <section className="py-20 bg-[#160643] text-white">
-          <TestimonialsOne />
-        </section>
         <section className="py-20 bg-white">
           <Brands />
         </section>

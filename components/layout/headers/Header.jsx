@@ -268,7 +268,7 @@ export default function Header() {
                 />
 
                 {/* Enquire Now Button */}
-                <button
+                {/* <button
                   onClick={() => setShowModal(true)}
                   className="enquire-button"
                   style={{
@@ -288,7 +288,7 @@ export default function Header() {
                   }
                 >
                   Enquire Now
-                </button>
+                </button> */}
 
                 <div className="mobile-menu-button d-none xl:d-block">
                   <button

@@ -6,9 +6,8 @@ const aboutPagesData = [
       "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=2070&q=80",
     content: [
       "At CSEI Academy, we are proud to offer UK Ofqual-recognized and KHDA-approved programs with hands-on learning to help you thrive in IT, Healthcare, Tourism, Culinary Arts, and Business. Our flexible courses are designed around your life, supporting working professionals and students seeking placements. With strong industry connections and direct pathways to UK Bachelor’s degrees",
-      "We open doors to global opportunities. Join a community where your success comes first, and let us help you build the confidence, skills, and experience for a bright tomorrow.",
-      "CSEI Academy is a dynamic and future-focused institution committed to delivering internationally recognized education and professional training programs. We empower students and professionals with the knowledge, skills, and credentials needed to thrive in a competitive global environment.",
       "With a strong emphasis on academic excellence, innovation, and industry alignment, our programs are tailored to meet the evolving demands of the modern workforce. Whether you're pursuing higher education, skill enhancement, or career advancement, CSEI provides a supportive and inclusive learning environment where success is nurtured.",
+      "We open doors to global opportunities. Join a community where your success comes first, and let us help you build the confidence, skills, and experience for a bright tomorrow.",
     ],
   },
   {
@@ -17,8 +16,13 @@ const aboutPagesData = [
     image:
       "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=2070&q=80",
     content: [
-      "At CSEI Academy in Dubai, our mission is to ignite every student's potential through affordable, internationally recognized education and an inclusive campus environment.",
-      "Through hands-on learning and real-world exposure, we equip future leaders to thrive and create lasting impact—both locally and globally..",
+      `At CSEI Academy in Dubai, our mission is to ignite every student’s potential through
+affordable, internationally recognized education and inclusive campus environment. Our
+dedicated staff actively support, mentor, and inspire students from all backgrounds,
+ensuring every student feels valued and empowered throughout their journey. By blending
+hands-on learning with strong academic foundations and connecting students to real-
+world opportunities, we prepare future leaders to thrive and make a meaningful impact,
+both locally and globally.`,
     ],
   },
   {

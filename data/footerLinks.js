@@ -6,7 +6,7 @@ export const footerLinks = [
       { href: "/about", label: "Leadership" },
       { href: "/academics", label: "Academics" },
       { href: "/about", label: "Accreditations" },
-      { href: "/about", label: "Industrial Partnerships" },
+      { href: "/about", label: "Industrial Partners" },
       { href: "/placements/", label: "Partner With Us" },
     ],
   },

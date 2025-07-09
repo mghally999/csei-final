@@ -15,14 +15,15 @@ export default function Mission() {
           <div className="col-lg-8" data-aos="fade-up">
             <h2 className="mission-heading text-center">Our Mission</h2>
             <p className="sectionTitle__text">
-              At CSEI Academy in Dubai, our mission is to ignite every student's
+              At CSEI Academy in Dubai, our mission is to ignite every student’s
               potential through affordable, internationally recognized education
-              and an inclusive campus environment.
-            </p>
-            <p className="sectionTitle__text">
-              Through hands-on learning and real-world exposure, we equip future
-              leaders to thrive and create lasting impact—both locally and
-              globally.
+              and inclusive campus environment. Our dedicated staff actively
+              support, mentor, and inspire students from all backgrounds,
+              ensuring every student feels valued and empowered throughout their
+              journey. By blending hands-on learning with strong academic
+              foundations and connecting students to real- world opportunities,
+              we prepare future leaders to thrive and make a meaningful impact,
+              both locally and globally.
             </p>
           </div>
         </div>

@@ -19,13 +19,13 @@ export const placementCards = [
   },
   {
     id: "overview",
-    title: "Briefing",
+    title: "Shaping Versatile Careers with CSEI Academy",
     description: `
     CSEI Institutes is a centre for academic excellence, committed to empowering individuals through quality education and skill development. 
     
     Established with the vision to nurture talent and inspire lifelong learning, CSEI offers a diverse range of programs designed to meet the evolving needs of students, professionals, and industries.
     
-    Our experienced faculty, modern infrastructure, and industry-relevant curriculum ensure that every learner receives a well-rounded education that opens doors to global opportunities.
+     Our experienced faculty, modern infrastructure, and industry-relevant curriculum ensure that every learner receives a well-rounded education that opens doors to global opportunities.
     `,
     link: "/placements/overview",
     image: {

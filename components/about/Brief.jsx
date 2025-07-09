@@ -10,13 +10,13 @@ export default function Brief() {
         <p className="brief-paragraph">
           At CSEI Academy, we are proud to offer UK Ofqual-recognized and
           KHDA-approved programs with hands-on learning to help you thrive in
-          IT, Healthcare, Tourism, Culinary Arts, and Business. Our flexible
-          courses are designed around your life, supporting working
+          IT, Healthcare, Tourism, Culinary Arts, and Business. <br /> Our
+          flexible courses are designed around your life, supporting working
           professionals and students seeking placements. With strong industry
           connections and direct pathways to UK Bachelor’s degrees, we open
-          doors to global opportunities. Join a community where your success
-          comes first, and let us help you build the confidence, skills, and
-          experience for a bright tomorrow.
+          doors to global opportunities. <br /> Join a community where your
+          success comes first, and let us help you build the confidence, skills,
+          and experience for a bright tomorrow.
         </p>
       </div>
 

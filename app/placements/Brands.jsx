@@ -12,9 +12,7 @@ const Brands = ({ backgroundColorComponent, brandsTwo }) => {
       <div className="container">
         <div className="row justify-center text-center">
           <div className="col-auto">
-            <h2 className="text-30 fw-700 text-dark-1">
-              Our Accreditation & Partners
-            </h2>
+            <h2 className="text-30 fw-700 text-dark-1">Industrial Partners</h2>
             <p className="text-16 text-dark-1 mt-10">
               CSEI Academy is proudly accredited by globally recognized
               institutions.

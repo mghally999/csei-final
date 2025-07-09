@@ -29,14 +29,6 @@ const leadershipTeam = [
     image:
       "https://plus.unsplash.com/premium_photo-1713296255442-e9338f42aad8?q=80&w=844&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
-  {
-    id: 4,
-    name: "Professor David Wilson",
-    position: "Head of Faculty",
-    bio: "With publications in top journals, Professor Wilson ensures our curriculum meets international standards.",
-    image:
-      "https://plus.unsplash.com/premium_photo-1713296255442-e9338f42aad8?q=80&w=844&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
 ];
 
 export default function Leadership() {

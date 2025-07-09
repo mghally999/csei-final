@@ -99,46 +99,6 @@ export const menuList = [
         ],
       },
       {
-        title: "School of Business",
-        links: [
-          {
-            title: "Business Management",
-            links: [
-              {
-                label: "Level 3",
-                href: "/programs/business-management/level-3",
-              },
-              {
-                label: "Level 4",
-                href: "/programs/business-management/level-4",
-              },
-              {
-                label: "Level 5",
-                href: "/programs/business-management/level-5",
-              },
-            ],
-          },
-          {
-            title: "Accounting & Finance",
-            links: [
-              {
-                label: "Level 5",
-                href: "/programs/accounting-finance/level-5",
-              },
-            ],
-          },
-          {
-            title: "Strategic Management & Leadership",
-            links: [
-              {
-                label: "Level 7",
-                href: "/programs/strategic-management/level-7",
-              },
-            ],
-          },
-        ],
-      },
-      {
         title: "School of Health Science",
         links: [
           {
@@ -169,6 +129,47 @@ export const menuList = [
           },
         ],
       },
+      {
+        title: "School of Business",
+        links: [
+          {
+            title: "Business Management",
+            links: [
+              {
+                label: "Level 3",
+                href: "/programs/business-management/level-3",
+              },
+              {
+                label: "Level 4",
+                href: "/programs/business-management/level-4",
+              },
+              {
+                label: "Level 5",
+                href: "/programs/business-management/level-5",
+              },
+            ],
+          },
+          // {
+          //   title: "Accounting & Finance",
+          //   links: [
+          //     {
+          //       label: "Level 5",
+          //       href: "/programs/accounting-finance/level-5",
+          //     },
+          //   ],
+          // },
+          // {
+          //   title: "Strategic Management & Leadership",
+          //   links: [
+          //     {
+          //       label: "Level 7",
+          //       href: "/programs/strategic-management/level-7",
+          //     },
+          //   ],
+          // },
+        ],
+      },
+
       {
         title: "School of Computing",
         links: [

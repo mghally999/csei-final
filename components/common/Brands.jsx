@@ -106,7 +106,7 @@ const Brands = ({ backgroundColorComponent, brandsTwo }) => {
       <div style={containerStyle}>
         {/* Header */}
         <div style={headerStyle}>
-          <h2 style={titleStyle}>Our Accreditation & Partners</h2>
+          <h2 style={titleStyle}>Industrial Partners</h2>
           <p style={subtitleStyle}>
             CSEI Academy is proudly accredited by globally recognized
             institutions.
