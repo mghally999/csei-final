@@ -23,24 +23,8 @@ export default function LearnNewSkill() {
           left: 0,
           width: "100%",
           height: "100%",
-          backgroundColor: "rgba(0, 0, 0, 0.7)",
+          backgroundColor: "#04044e",
           zIndex: -1,
-        }}
-      />
-
-      {/* Background with reduced opacity */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          backgroundImage: "url(/assets/img/home/csei-home.jpeg)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          opacity: 0.3,
-          zIndex: -2,
         }}
       />
 

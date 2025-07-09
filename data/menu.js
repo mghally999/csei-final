@@ -296,7 +296,7 @@ export const menuList = [
       },
       {
         title: "Mentoring Support",
-        href: "/life-with-csei/mentoring",
+        href: "/life-with-csei/mentoring-support",
       },
       {
         title: "Student Experience",

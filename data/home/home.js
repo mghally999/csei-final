@@ -2,7 +2,7 @@ export const slidesData = [
   {
     id: 1,
     bgImage: "/assets/img/home/september-intake-1.png",
-    title: "September Intake",
+    title: "September Intake 2025",
     subtitle: (
       <div
         style={{

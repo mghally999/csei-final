@@ -1,67 +1,161 @@
 "use client";
 
-export default function OpportunitiesGenerated() {
-  return (
-    <div className="main-content">
-      <div className="content-wrapper js-content-wrapper overflow-hidden">
-        <section className="layout-pt-lg layout-pb-md bg-[#F5F9FF]">
-          <div className="container">
-            <div className="row y-gap-40 items-center">
-              {/* Left Column: Title + List */}
-              <div className="col-lg-6" data-aos="fade-up">
-                <h2
-                  style={{
-                    fontSize: "30px",
-                    fontWeight: "700",
-                    color: "#160643",
-                    marginBottom: "30px",
-                  }}
-                >
-                  Opportunities Generated
-                </h2>
-                <ul
-                  style={{
-                    listStyleType: "disc",
-                    paddingLeft: "1.5rem",
-                    fontSize: "16px",
-                    color: "#160643",
-                    lineHeight: "1.75rem",
-                  }}
-                >
-                  <li style={{ marginBottom: "22px" }}>
-                    <strong>Skill Development Programs:</strong> Workshops and
-                    certifications in trending domains like Health & Social
-                    Care, Culinary Arts, Tourism, and Digital Marketing.
-                  </li>
-                  <li style={{ marginBottom: "22px" }}>
-                    <strong>Customized Placement Support:</strong> Tailored
-                    training and job opportunities per department or interest.
-                  </li>
-                  <li style={{ marginBottom: "22px" }}>
-                    <strong>Data-Driven Decision Making:</strong> Feedback and
-                    placement statistics to improve strategies.
-                  </li>
-                  <li style={{ marginBottom: "22px" }}>
-                    <strong>Soft Skills & Personality Development:</strong>{" "}
-                    Communication, interview prep, and confidence-building
-                    sessions.
-                  </li>
-                </ul>
-              </div>
+import React from "react";
+import Image from "next/image";
 
-              {/* Right Column: Image */}
-              <div className="col-lg-6" data-aos="fade-left">
-                <img
-                  src="/assets/images/opportunities.jpg"
-                  alt="Opportunities"
-                  className="rounded-16 w-full"
-                  width="520"
-                  height="480"
-                />
-              </div>
+export default function OpportunitiesGeneratedSection() {
+  return (
+    <div
+      className="layout-pb-lg"
+      style={{
+        paddingTop: "80px",
+        backgroundColor: "#f8f9fa",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      <div className="container">
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            margin: "-15px",
+            alignItems: "center",
+          }}
+        >
+          {/* Image Column */}
+          <div
+            style={{
+              flex: "0 0 50%",
+              maxWidth: "50%",
+              padding: "15px",
+              position: "relative",
+              "@media (max-width: 992px)": {
+                flex: "0 0 100%",
+                maxWidth: "100%",
+              },
+            }}
+          >
+            <div
+              style={{
+                position: "relative",
+                borderRadius: "12px",
+                overflow: "hidden",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+                transition: "transform 0.3s ease",
+                ":hover": {
+                  transform: "translateY(-5px)",
+                },
+              }}
+            >
+              <Image
+                width={600}
+                height={400}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  display: "block",
+                  objectFit: "cover",
+                }}
+                src="/assets/images/opportunities.jpg"
+                alt="Opportunities at CSEI Academy"
+                priority
+              />
             </div>
           </div>
-        </section>
+
+          {/* Content Column */}
+          <div
+            style={{
+              flex: "0 0 50%",
+              maxWidth: "50%",
+              padding: "15px",
+              "@media (max-width: 992px)": {
+                flex: "0 0 100%",
+                maxWidth: "100%",
+              },
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "36px",
+                fontWeight: 700,
+                lineHeight: "1.3",
+                color: "#2d3748",
+                marginBottom: "30px",
+                position: "relative",
+                paddingBottom: "15px",
+              }}
+            >
+              Opportunities Generated
+            </h2>
+
+            <p
+              style={{
+                fontSize: "18px",
+                lineHeight: "1.7",
+                color: "#4a5568",
+                marginBottom: "40px",
+                fontWeight: 400,
+              }}
+            >
+              We provide comprehensive programs and support systems designed to
+              maximize student potential and employability through targeted
+              skill development and industry-aligned training.
+            </p>
+
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "20px",
+              }}
+            >
+              {[
+                "Skill Development Programs: Offer workshops and certifications in trending domains (e.g: Health and social care, Culinary arts, Tourism and hospitality and Digital Marketing, etc.) to improve student employability.",
+                "Customized Placement Support: Provide targeted training and job opportunities based on different departments or student interests.",
+                "Data-Driven Decision Making: Use feedback and placement statistics to improve strategies and align with industry trends.",
+                "Soft Skills & Personality Development: Introduce communication, interview prep, and confidence-building sessions to enhance readiness.",
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <div
+                    style={{
+                      marginRight: "15px",
+                      flexShrink: 0,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: "24px",
+                      height: "24px",
+                      backgroundColor: "#000000",
+                      borderRadius: "50%",
+                      color: "white",
+                      fontSize: "14px",
+                    }}
+                  >
+                    ✓
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "16px",
+                      lineHeight: "1.6",
+                      color: "#2d3748",
+                      fontWeight: 500,
+                    }}
+                  >
+                    {item}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

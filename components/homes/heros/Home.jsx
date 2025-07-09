@@ -6,6 +6,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Image from "next/image";
 
 import { slidesData } from "@/data/home/home";
 import { useState } from "react";
@@ -15,6 +16,19 @@ import Link from "next/link";
 export default function HomeHeroSlider() {
   const [showModal, setShowModal] = useState(false);
   const [hover, setHover] = useState(false);
+
+  // Logo container style
+  const logoContainerStyle = {
+    backgroundColor: "rgba(255, 255, 255, 0.9)",
+    padding: "8px",
+    borderRadius: "8px",
+    width: "200px",
+    height: "130px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: "0 10px",
+  };
 
   return (
     <section
@@ -85,7 +99,7 @@ export default function HomeHeroSlider() {
               <div
                 style={{
                   position: "absolute",
-                  top: "55%",
+                  top: "60%",
                   left: "50%",
                   transform: "translate(-50%, -50%)",
                   width: "90%",
@@ -134,25 +148,66 @@ export default function HomeHeroSlider() {
                   </div>
                 )}
                 {item.ctaText && (
-                  <Link
-                    href="/programs"
-                    style={{
-                      padding: "clamp(12px, 2vw, 16px) clamp(24px, 4vw, 32px)",
-                      backgroundColor: hover ? "#000" : "#f97316",
-                      color: "#fff",
-                      borderRadius: "8px",
-                      fontWeight: "700",
-                      cursor: "pointer",
-                      fontSize: "clamp(1rem, 2vw, 1.2rem)",
-                      border: "none",
-                      boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-                      transition: "background-color 0.3s ease",
-                    }}
-                    onMouseEnter={() => setHover(true)}
-                    onMouseLeave={() => setHover(false)}
-                  >
-                    {item.ctaText}
-                  </Link>
+                  <>
+                    <Link
+                      href="/programs"
+                      style={{
+                        padding:
+                          "clamp(12px, 2vw, 16px) clamp(24px, 4vw, 32px)",
+                        backgroundColor: hover ? "#000" : "#f97316",
+                        color: "#fff",
+                        borderRadius: "8px",
+                        fontWeight: "700",
+                        cursor: "pointer",
+                        fontSize: "clamp(1rem, 2vw, 1.2rem)",
+                        border: "none",
+                        boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                        transition: "background-color 0.3s ease",
+                        marginBottom: "20px",
+                      }}
+                      onMouseEnter={() => setHover(true)}
+                      onMouseLeave={() => setHover(false)}
+                    >
+                      {item.ctaText}
+                    </Link>
+                    {/* Accreditation Logos - Now inside each slide under the button */}
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        flexWrap: "wrap",
+                        gap: "10px",
+                        marginTop: "10px",
+                      }}
+                    >
+                      <div style={logoContainerStyle}>
+                        <Image
+                          src="/assets/img/logos/OTHM-logo.png"
+                          alt="OTHM Accredited"
+                          width={120}
+                          height={50}
+                          style={{
+                            objectFit: "cover",
+                            height: "100%",
+                            width: "200px",
+                          }}
+                        />
+                      </div>
+                      <div style={logoContainerStyle}>
+                        <Image
+                          src="/assets/img/logos/KHDA-logo.png"
+                          alt="KHDA Accredited"
+                          width={120}
+                          height={50}
+                          style={{
+                            objectFit: "cover",
+                            height: "100%",
+                            width: "200px",
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </>
                 )}
               </div>
             </div>
@@ -217,6 +272,7 @@ export default function HomeHeroSlider() {
     </section>
   );
 }
+
 const arrowStyle = (side) => ({
   position: "absolute",
   top: "50%",

@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 
-export default function StudentSatisfactionSection() {
+export default function StudentSupportSection() {
   return (
     <div
       className="layout-pb-lg"
@@ -30,7 +30,7 @@ export default function StudentSatisfactionSection() {
               maxWidth: "50%",
               padding: "15px",
               position: "relative",
-              "@media (max-width: 992px)": {
+              "@media (maxWidth: 992px)": {
                 flex: "0 0 100%",
                 maxWidth: "100%",
               },
@@ -58,8 +58,19 @@ export default function StudentSatisfactionSection() {
                   objectFit: "cover",
                 }}
                 src="https://images.unsplash.com/photo-1462536943532-57a629f6cc60?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Student Satisfaction at CSEI Academy"
+                alt="Student Support at CSEI Academy"
                 priority
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  //   background:
+                  //     "linear-gradient(135deg, rgba(102,51,153,0.3) 0%, rgba(75,0,130,0.3) 100%)",
+                }}
               />
             </div>
           </div>
@@ -70,7 +81,7 @@ export default function StudentSatisfactionSection() {
               flex: "0 0 50%",
               maxWidth: "50%",
               padding: "15px",
-              "@media (max-width: 992px)": {
+              "@media (maxWidth: 992px)": {
                 flex: "0 0 100%",
                 maxWidth: "100%",
               },
@@ -85,9 +96,20 @@ export default function StudentSatisfactionSection() {
                 marginBottom: "30px",
                 position: "relative",
                 paddingBottom: "15px",
+                ":after": {
+                  content: '""',
+                  position: "absolute",
+                  bottom: 0,
+                  left: 0,
+                  width: "80px",
+                  height: "4px",
+                  background:
+                    "linear-gradient(90deg, #663399 0%, #4b0082 100%)",
+                  borderRadius: "2px",
+                },
               }}
             >
-              Student Satisfaction
+              Our Student Support System
             </h2>
 
             <p
@@ -95,43 +117,33 @@ export default function StudentSatisfactionSection() {
                 fontSize: "18px",
                 lineHeight: "1.7",
                 color: "#4a5568",
-                marginBottom: "30px",
+                marginBottom: "40px",
                 fontWeight: 400,
               }}
             >
-              A recent analysis of student feedback reveals that{" "}
-              <strong>80% of students</strong> are satisfied with the placement
-              services provided by CSEI Placement Team. This includes
-              satisfaction with the quality of job offers, the recruitment
-              process, and the support provided by the placement team.
+              At CSEI Academy, we are dedicated to mentoring and supporting our
+              students every step of the way to help them unlock their full
+              potential as a newcomer in Dubai. Our support system provides
+              personalized guidance, career planning, and academic support
+              tailored to each student's unique needs.
             </p>
 
-            <h3
-              style={{
-                fontSize: "22px",
-                fontWeight: 600,
-                color: "#2d3748",
-                marginBottom: "20px",
-              }}
-            >
-              Common Satisfaction Factors:
-            </h3>
-
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
-                gap: "15px",
-                marginBottom: "30px",
+                gap: "20px",
               }}
             >
               {[
-                "Good support from the placement Team",
-                "Availability of reputed recruiters",
-                "Adequate training and preparation sessions",
+                "Personalized mentoring from experienced faculty and industry professionals",
+                "Career guidance and support to help students plan their future paths",
+                "Workshops and skill-building sessions to enhance academic and professional growth",
+                "Continuous encouragement fostering confidence and resilience",
+                "Access to industry connections and real-world opportunities for practical learning",
               ].map((item, index) => (
                 <div
-                  key={`positive-${index}`}
+                  key={index}
                   style={{
                     display: "flex",
                     alignItems: "flex-start",
@@ -141,18 +153,25 @@ export default function StudentSatisfactionSection() {
                     style={{
                       marginRight: "15px",
                       flexShrink: 0,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      width: "24px",
-                      height: "24px",
-                      backgroundColor: "#000000",
-                      borderRadius: "50%",
-                      color: "white",
-                      fontSize: "14px",
                     }}
                   >
-                    ✓
+                    <div
+                      style={{
+                        width: "32px",
+                        height: "32px",
+                        backgroundColor: "#000000",
+                        color: "white",
+                        borderRadius: "50%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: "16px",
+                        fontWeight: "bold",
+                        boxShadow: "0 4px 6px rgba(102, 51, 153, 0.3)",
+                      }}
+                    >
+                      ✓
+                    </div>
                   </div>
                   <div
                     style={{
@@ -160,7 +179,6 @@ export default function StudentSatisfactionSection() {
                       lineHeight: "1.6",
                       color: "#2d3748",
                       fontWeight: 500,
-                      flex: 1,
                     }}
                   >
                     {item}
@@ -169,68 +187,20 @@ export default function StudentSatisfactionSection() {
               ))}
             </div>
 
-            <h3
-              style={{
-                fontSize: "22px",
-                fontWeight: 600,
-                color: "#2d3748",
-                marginBottom: "20px",
-                fontStyle: "italic",
-              }}
-            >
-              Based on feedback from the remaining 20%:
-            </h3>
-
+            {/* Additional Decorative Elements */}
             <div
               style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "15px",
+                position: "absolute",
+                top: "-50px",
+                right: "-50px",
+                width: "200px",
+                height: "200px",
+                borderRadius: "50%",
+                background:
+                  "radial-gradient(circle, rgba(102,51,153,0.1) 0%, rgba(102,51,153,0) 70%)",
+                zIndex: 0,
               }}
-            >
-              {[
-                "Limited job role variety in certain departments",
-                "Expectations of higher salary packages",
-                "Desire for more industry-specific placement opportunities",
-              ].map((item, index) => (
-                <div
-                  key={`negative-${index}`}
-                  style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  <div
-                    style={{
-                      marginRight: "15px",
-                      flexShrink: 0,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      width: "24px",
-                      height: "24px",
-                      backgroundColor: "#e05500",
-                      borderRadius: "50%",
-                      color: "white",
-                      fontSize: "14px",
-                    }}
-                  >
-                    •
-                  </div>
-                  <div
-                    style={{
-                      fontSize: "16px",
-                      lineHeight: "1.6",
-                      color: "#2d3748",
-                      fontWeight: 500,
-                      flex: 1,
-                    }}
-                  >
-                    {item}
-                  </div>
-                </div>
-              ))}
-            </div>
+            />
           </div>
         </div>
       </div>

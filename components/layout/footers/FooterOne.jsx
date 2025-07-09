@@ -11,6 +11,37 @@ export default function FooterOne() {
     e.preventDefault();
   };
 
+  // Inline styles objects
+  const accreditationContainerStyle = {
+    marginTop: "160px",
+    padding: "80px 0",
+    borderTop: "1px solid rgba(0, 0, 0, 0.15)",
+  };
+
+  const logosWrapperStyle = {
+    display: "flex",
+    justifyContent: "center",
+    gap: "32px",
+    flexWrap: "wrap",
+  };
+
+  const logoContainerStyle = {
+    backgroundColor: "white",
+    padding: "12px",
+    borderRadius: "8px",
+    width: "200px",
+    height: "130px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
+  };
+
+  const logoImageStyle = {
+    objectFit: "cover",
+    height: "100%",
+  };
+
   return (
     <footer className="footer -type-1 bg-white -green-links">
       <div className="container">
@@ -24,7 +55,7 @@ export default function FooterOne() {
                 GET IN TOUCH
               </div>
               <div className="text-dark-1 footer-columns-form">
-                <div>We don’t send spam so don’t worry.</div>
+                <div>We don't send spam so don't worry.</div>
                 <form onSubmit={handleSubmit}>
                   <div className="form-group">
                     <input required type="text" placeholder="Email..." />
@@ -36,7 +67,31 @@ export default function FooterOne() {
           </div>
         </div>
 
-        {/* 2. Footer Header with Logo (Moved Beneath Links) */}
+        {/* Accreditation Logos Section with inline styles */}
+        <div style={accreditationContainerStyle}>
+          <div style={logosWrapperStyle}>
+            <div style={logoContainerStyle}>
+              <Image
+                src="/assets/img/logos/OTHM-logo.png"
+                alt="OTHM Accredited"
+                width={180}
+                height={90}
+                style={logoImageStyle}
+              />
+            </div>
+            <div style={logoContainerStyle}>
+              <Image
+                src="/assets/img/logos/KHDA-logo.png"
+                alt="KHDA Accredited"
+                width={180}
+                height={90}
+                style={logoImageStyle}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* 2. Footer Header with Logo */}
         <div className="footer-header mt-40">
           <div className="row y-gap-20 justify-between items-center">
             <div className="col-auto">

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 // Leadership team data
 const leadershipTeam = [
@@ -10,138 +10,98 @@ const leadershipTeam = [
     name: "Dr. Sarah Johnson",
     position: "Academic Director",
     bio: "With over 15 years in higher education, Dr. Johnson leads our academic strategy with a focus on innovative learning methodologies.",
-    image: "/images/about/leadership/sarah-johnson.jpg",
+    image:
+      "https://plus.unsplash.com/premium_photo-1713296255442-e9338f42aad8?q=80&w=844&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 2,
     name: "Michael Chen",
     position: "Operations Director",
     bio: "Michael brings 12 years of operational excellence, ensuring smooth campus operations and student support services.",
-    image: "/images/about/leadership/michael-chen.jpg",
+    image:
+      "https://plus.unsplash.com/premium_photo-1713296255442-e9338f42aad8?q=80&w=844&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 3,
     name: "Aisha Al-Mansoori",
     position: "Industry Partnerships",
     bio: "Aisha connects our students with top employers through her extensive network in Dubai's business community.",
-    image: "/images/about/leadership/aisha-mansoori.jpg",
+    image:
+      "https://plus.unsplash.com/premium_photo-1713296255442-e9338f42aad8?q=80&w=844&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 4,
     name: "Professor David Wilson",
     position: "Head of Faculty",
     bio: "With publications in top journals, Professor Wilson ensures our curriculum meets international standards.",
-    image: "/images/about/leadership/david-wilson.jpg",
+    image:
+      "https://plus.unsplash.com/premium_photo-1713296255442-e9338f42aad8?q=80&w=844&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: { duration: 0.4, ease: "easeOut" },
-  },
-};
-
 export default function Leadership() {
   return (
-    <section className="layout-pt-md layout-pb-md relative overflow-hidden">
-      {/* Decorative Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute -top-40 -left-40 w-[30rem] h-[30rem] bg-purple-200 rounded-full blur-[120px] opacity-20"></div>
-        <div className="absolute bottom-0 -right-40 w-[35rem] h-[35rem] bg-blue-200 rounded-full blur-[120px] opacity-20"></div>
-      </div>
-
+    <section className="layout-pt-md layout-pb-lg">
       <div className="container">
-        <div className="row justify-center">
+        {/* Title Section */}
+        <div className="row justify-center text-center">
           <div className="col-xl-8 col-lg-9 col-md-10">
-            {/* Title Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true, margin: "-50px" }}
-              className="text-center mb-12"
-            >
-              <h2 className="sectionTitle__title text-black mb-6">
-                Our <span className="text-blue-400">Leadership</span>
-              </h2>
+            <h2 className="sectionTitle__title text-black">
+              Our Leadership Team
+            </h2>
+            <p className="sectionTitle__text mt-20">
+              Meet the visionary team guiding CSEI Academy's strategic direction
+              and daily operations, committed to delivering exceptional
+              education in Dubai.
+            </p>
+          </div>
+        </div>
 
-              <p className="brief-paragraph text-white/80">
-                Meet the visionary team guiding CSEI Academy's strategic
-                direction and daily operations, committed to delivering
-                exceptional education in Dubai.
-              </p>
-            </motion.div>
-
-            {/* Leadership Grid */}
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 mt-12"
+        {/* Grid Section */}
+        <div className="row y-gap-40 pt-50">
+          {leadershipTeam.map((member, index) => (
+            <div
+              key={member.id}
+              className="col-lg-6 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
             >
-              {leadershipTeam.map((member) => (
-                <motion.div
-                  key={member.id}
-                  variants={itemVariants}
-                  whileHover={{
-                    y: -5,
-                    boxShadow: "0 10px 25px -5px rgba(99, 102, 241, 0.2)",
-                  }}
-                  className="flex flex-col items-center text-center bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-blue-400/30 transition-all duration-300"
-                >
-                  <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-white/10 mb-5">
+              <motion.div
+                whileHover={{
+                  y: -6,
+                  scale: 1.02,
+                  transition: { duration: 0.3, ease: "easeOut" },
+                }}
+                className="d-flex items-center bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300"
+              >
+                <div className="mr-30">
+                  <div className="relative w-24 h-24 rounded-md overflow-hidden border shadow-md">
                     <Image
                       src={member.image}
                       alt={member.name}
-                      fill
+                      width={96}
+                      height={96}
                       className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 33vw"
                     />
+                    <span className="absolute bottom-1 right-1 bg-blue-500 text-white text-[10px] px-1 rounded">
+                      {member.position.split(" ")[0]}
+                    </span>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-1">
-                    {member.name}
-                  </h3>
-                  <p className="text-blue-300 text-sm font-medium mb-3">
+                </div>
+                <div>
+                  <h4 className="text-20 fw-600 text-black">{member.name}</h4>
+                  <p className="text-blue-500 text-14 font-semibold mt-5 mb-2">
                     {member.position}
                   </p>
-                  <p className="brief-paragraph !text-left !text-white/70 !text-base !font-normal">
+                  <p className="text-15 text-black/80 leading-relaxed">
                     {member.bio}
                   </p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
+                </div>
+              </motion.div>
+            </div>
+          ))}
         </div>
       </div>
-
-      <style jsx>{`
-        .brief-paragraph {
-          font-size: 18px;
-          font-weight: 500;
-          color: #3a3a55;
-          line-height: 1.75;
-          letter-spacing: 0.2px;
-          text-align: center;
-        }
-
-        @media (min-width: 768px) {
-          .brief-paragraph {
-            font-size: 19px;
-          }
-        }
-      `}</style>
     </section>
   );
 }

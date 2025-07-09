@@ -124,7 +124,7 @@ export default function Menu({
                   >
                     {title}
                     {hasDropdown && (
-                      <i className="icon-chevron-right text-13 ml-10 text-black"></i>
+                      <i className="icon-chevron-down text-13 ml-10 text-black"></i>
                     )}
                   </a>
 
