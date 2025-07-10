@@ -36,7 +36,7 @@ export default function StudentValuesPage() {
   return (
     <div className="main-content">
       <div className="content-wrapper js-content-wrapper">
-        <section className="layout-pt-lg layout-pb-lg bg-[#F5F9FF] text-dark-1">
+        <section className="layout-pt-lg layout-pb-lg bg-[#F5F9FF] text-dark-1 custom-padding">
           <div className="container">
             <div className="row justify-center text-center mb-60">
               <div className="col-auto" data-aos="fade-up">

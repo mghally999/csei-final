@@ -253,7 +253,7 @@ export const menuList = [
       },
       {
         title: "Life Beyond the Classroom",
-        href: "/life-with-csei/events",
+        href: "/life-with-csei/life-beyond-classroom",
       },
       {
         title: "Students’ Value",
@@ -265,7 +265,7 @@ export const menuList = [
       },
       {
         title: "Academic Mentoring",
-        href: "/life-with-csei/mentoring-support",
+        href: "/life-with-csei/academic-mentoring",
       },
       {
         title: "Accommodation",

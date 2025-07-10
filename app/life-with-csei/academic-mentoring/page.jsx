@@ -2,11 +2,12 @@
 
 import React from "react";
 import Image from "next/image";
+import { FiArrowRight } from "react-icons/fi";
 
-export default function StudentSupportSection() {
+export default function AcademicMentoringSection() {
   return (
     <div
-      className="layout-pb-lg"
+      className="layout-pb-lg custom-padding"
       style={{
         paddingTop: "80px",
         backgroundColor: "#f8f9fa",
@@ -20,7 +21,7 @@ export default function StudentSupportSection() {
             display: "flex",
             flexWrap: "wrap",
             margin: "-15px",
-            alignItems: "center",
+            alignItems: "start",
           }}
         >
           {/* Image Column */}
@@ -30,10 +31,6 @@ export default function StudentSupportSection() {
               maxWidth: "50%",
               padding: "15px",
               position: "relative",
-              "@media (maxWidth: 992px)": {
-                flex: "0 0 100%",
-                maxWidth: "100%",
-              },
             }}
           >
             <div
@@ -43,9 +40,6 @@ export default function StudentSupportSection() {
                 overflow: "hidden",
                 boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
                 transition: "transform 0.3s ease",
-                ":hover": {
-                  transform: "translateY(-5px)",
-                },
               }}
             >
               <Image
@@ -57,8 +51,8 @@ export default function StudentSupportSection() {
                   display: "block",
                   objectFit: "cover",
                 }}
-                src="https://images.unsplash.com/photo-1462536943532-57a629f6cc60?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Student Support at CSEI Academy"
+                src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=2070&auto=format&fit=crop"
+                alt="Academic Mentoring"
                 priority
               />
               <div
@@ -68,8 +62,8 @@ export default function StudentSupportSection() {
                   left: 0,
                   width: "100%",
                   height: "100%",
-                  //   background:
-                  //     "linear-gradient(135deg, rgba(102,51,153,0.3) 0%, rgba(75,0,130,0.3) 100%)",
+                  background:
+                    "linear-gradient(135deg, rgba(15,29,86,0.2) 0%, rgba(58,90,203,0.2) 100%)",
                 }}
               />
             </div>
@@ -81,10 +75,7 @@ export default function StudentSupportSection() {
               flex: "0 0 50%",
               maxWidth: "50%",
               padding: "15px",
-              "@media (maxWidth: 992px)": {
-                flex: "0 0 100%",
-                maxWidth: "100%",
-              },
+              position: "relative",
             }}
           >
             <h2
@@ -92,24 +83,13 @@ export default function StudentSupportSection() {
                 fontSize: "36px",
                 fontWeight: 700,
                 lineHeight: "1.3",
-                color: "#2d3748",
+                color: "#0f1d56",
                 marginBottom: "30px",
                 position: "relative",
                 paddingBottom: "15px",
-                ":after": {
-                  content: '""',
-                  position: "absolute",
-                  bottom: 0,
-                  left: 0,
-                  width: "80px",
-                  height: "4px",
-                  background:
-                    "linear-gradient(90deg, #663399 0%, #4b0082 100%)",
-                  borderRadius: "2px",
-                },
               }}
             >
-              Our Student Support System
+              Academic Mentoring
             </h2>
 
             <p
@@ -117,15 +97,15 @@ export default function StudentSupportSection() {
                 fontSize: "18px",
                 lineHeight: "1.7",
                 color: "#4a5568",
-                marginBottom: "40px",
+                marginBottom: "30px",
                 fontWeight: 400,
               }}
             >
-              At CSEI Academy, we are dedicated to mentoring and supporting our
-              students every step of the way to help them unlock their full
-              potential as a newcomer in Dubai. Our support system provides
-              personalized guidance, career planning, and academic support
-              tailored to each student's unique needs.
+              Unlock your full potential with CSEI Academy’s Academic Mentoring
+              Program — customized to support, guide, and empower you every step
+              of the way. By joining mentoring sessions, you’ll gain valuable
+              skills, boost your confidence, and build a strong foundation for
+              academic and personal success.
             </p>
 
             <div
@@ -136,11 +116,11 @@ export default function StudentSupportSection() {
               }}
             >
               {[
-                "Personalized mentoring from experienced faculty and industry professionals",
-                "Career guidance and support to help students plan their future paths",
-                "Workshops and skill-building sessions to enhance academic and professional growth",
-                "Continuous encouragement fostering confidence and resilience",
-                "Access to industry connections and real-world opportunities for practical learning",
+                "Personalized academic coaching sessions.",
+                "Confidence-building and goal-setting strategies.",
+                "Time management and exam prep techniques.",
+                "Guidance for academic and career paths.",
+                "Support for overcoming study obstacles.",
               ].map((item, index) => (
                 <div
                   key={index}
@@ -149,17 +129,12 @@ export default function StudentSupportSection() {
                     alignItems: "flex-start",
                   }}
                 >
-                  <div
-                    style={{
-                      marginRight: "15px",
-                      flexShrink: 0,
-                    }}
-                  >
+                  <div style={{ marginRight: "15px", flexShrink: 0 }}>
                     <div
                       style={{
                         width: "32px",
                         height: "32px",
-                        backgroundColor: "#000000",
+                        backgroundColor: "#0f1d56",
                         color: "white",
                         borderRadius: "50%",
                         display: "flex",
@@ -167,7 +142,7 @@ export default function StudentSupportSection() {
                         justifyContent: "center",
                         fontSize: "16px",
                         fontWeight: "bold",
-                        boxShadow: "0 4px 6px rgba(102, 51, 153, 0.3)",
+                        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.3)",
                       }}
                     >
                       ✓
@@ -187,20 +162,68 @@ export default function StudentSupportSection() {
               ))}
             </div>
 
-            {/* Additional Decorative Elements */}
+            {/* Decorative Circle */}
             <div
               style={{
                 position: "absolute",
-                top: "-50px",
-                right: "-50px",
+                bottom: "-50px",
+                left: "-50px",
                 width: "200px",
                 height: "200px",
                 borderRadius: "50%",
                 background:
-                  "radial-gradient(circle, rgba(102,51,153,0.1) 0%, rgba(102,51,153,0) 70%)",
+                  "radial-gradient(circle, rgba(15,29,86,0.1) 0%, rgba(15,29,86,0) 70%)",
                 zIndex: 0,
               }}
             />
+          </div>
+        </div>
+
+        {/* Fully Centered CTA */}
+        <div
+          style={{
+            marginTop: "60px",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <div
+            style={{
+              padding: "24px 36px",
+              borderRadius: "12px",
+              background: "linear-gradient(90deg, #3a5acb 0%, #0f1d56 100%)",
+              color: "#fff",
+              textAlign: "center",
+              maxWidth: "700px",
+              width: "100%",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "20px",
+            }}
+          >
+            <div style={{ fontSize: "20px", fontWeight: 500 }}>
+              Book your mentoring session now through the student portal →
+            </div>
+            <a
+              href="/student-portal"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                backgroundColor: "#ffffff",
+                color: "#0f1d56",
+                padding: "12px 24px",
+                fontSize: "16px",
+                fontWeight: 600,
+                borderRadius: "8px",
+                boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
+                textDecoration: "none",
+              }}
+            >
+              Go to Student Portal{" "}
+              <FiArrowRight style={{ marginLeft: "10px" }} />
+            </a>
           </div>
         </div>
       </div>
