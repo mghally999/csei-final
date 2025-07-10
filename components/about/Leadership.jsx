@@ -7,21 +7,21 @@ import { motion } from "framer-motion";
 const leadershipTeam = [
   {
     id: 1,
-    name: "Mr Roshan",
+    name: "Mr Roshan Gautam",
     position: "General Manager",
     bio: "With over 15 years in higher education, Dr. Johnson leads our academic strategy with a focus on innovative learning methodologies.",
     image: "/assets/img/leadership/Mr-Roshan.jpeg",
   },
   {
     id: 2,
-    name: "Mr Roshan",
+    name: "Mr Roshan Gautam",
     position: "General Manager",
     bio: "Michael brings 12 years of operational excellence, ensuring smooth campus operations and student support services.",
     image: "/assets/img/leadership/Mr-Roshan.jpeg",
   },
   {
     id: 3,
-    name: "Mr Roshan",
+    name: "Mr Roshan Gautam",
     position: "General Manager",
     bio: "Michael brings 12 years of operational excellence, ensuring smooth campus operations and student support services.",
     image: "/assets/img/leadership/Mr-Roshan.jpeg",

@@ -4,7 +4,7 @@ export default function ServicesPage() {
   return (
     <div className="main-content">
       <div className="content-wrapper js-content-wrapper overflow-hidden">
-        <section className="layout-pt-lg layout-pb-md bg-[#F5F9FF]">
+        <section className="layout-pt-lg layout-pb-md bg-[#F5F9FF] custom-padding">
           <div className="container">
             <div className="row y-gap-40 items-center">
               {/* Left Column: Title + List */}

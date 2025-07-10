@@ -1,21 +1,37 @@
-import { lifeWithCSEICards } from "@/data/life-with-csei/life-with-csei";
-import CardGridLayout from "@/components/CardGridLayout";
+"use client";
+import React from "react";
 
-export default function LifeAtCSEI() {
-  const filteredCards = lifeWithCSEICards.filter(
-    (card) => card.id !== "core-values"
-  );
+// Section Components
+import LifeIntro from "@/components/LifeIntro";
+import LifeBeyondClassroom from "@/components/LifeBeyondClassroom";
+import CampusFacilities from "@/components/CampusFacilities";
+import AccommodationInfo from "@/components/AccommodationInfo";
+import TransportationDetails from "@/components/TransportationDetails";
+import AcademicMentoring from "@/components/AcademicMentoring";
+import StudentPortal from "@/components/StudentPortal";
+import LMSOverview from "@/components/LMSOverview";
+import AlumniNetwork from "@/components/AlumniNetwork";
+import AccreditationIntro from "@/components/AccreditationIntro";
+import ProgramSpecializations from "@/components/ProgramSpecializations";
 
+export default function Page() {
   return (
-    <CardGridLayout
-      title="Life at CSEI"
-      description="Experience our vibrant campus community with world-class facilities and comprehensive support services."
-      cards={filteredCards}
-      cta={{
-        text: "Ready to join our community?",
-        link: "/apply",
-        label: "Start Your Application",
-      }}
-    />
+    <div className="layout-pb-lg">
+      <div className="main-content">
+        <div className="content-wrapper js-content-wrapper overflow-hidden">
+          <AccreditationIntro />
+          <ProgramSpecializations />
+          <LifeIntro />
+          <LifeBeyondClassroom />
+          <CampusFacilities />
+          <AccommodationInfo />
+          <TransportationDetails />
+          <AlumniNetwork />
+          <AcademicMentoring />
+          <StudentPortal />
+          <LMSOverview />
+        </div>
+      </div>
+    </div>
   );
 }

@@ -21,8 +21,6 @@ export const programs = [
     imageSrc: "/assets/img/coursesCards/information-technology.png",
     professional: false,
   },
-
-  // School of Health Science
   {
     id: 3,
     title: "Health & Social Care Management",
@@ -224,38 +222,5 @@ export const programs = [
     duration: 120,
     imageSrc: "/assets/img/coursesCards/business-management-1.jpg",
     professional: false,
-  },
-  // {
-  //   id: 20,
-  //   title: "Accounting & Finance",
-  //   href: "/programs/business-management/level-5",
-  //   school: "School of Business",
-  //   category: "Business Management",
-  //   level: "Level 5",
-  //   duration: 120,
-  //   imageSrc: "/assets/img/coursesCards/business-management-2.jpg",
-  //   professional: false,
-  // },
-  // {
-  //   id: 21,
-  //   title: "Strategic Management & Leadership",
-  //   href: "/programs/strategic-management/professional-courses/level-7",
-  //   school: "School of Business",
-  //   category: "Accounting & Finance",
-  //   level: "Level 7",
-  //   duration: 120,
-  //   imageSrc: "/assets/img/coursesCards/business-management-3.jpg",
-  //   professional: true,
-  // },
-  {
-    id: 22,
-    title: "Health & Social Care Management",
-    href: "/programs/health-social-care/professional-courses/level-7",
-    school: "School of Business",
-    category: "Strategic Management & Leadership",
-    level: "Level 7",
-    duration: 120,
-    imageSrc: "/assets/img/coursesCards/business-management-4.jpg",
-    professional: true,
   },
 ];

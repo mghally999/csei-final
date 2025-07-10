@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { lifeWithCSEICards } from "@/data/life-with-csei/life-with-csei";
-import PageLinks from "@/components/common/PageLinks";
 
 export async function generateStaticParams() {
   return lifeWithCSEICards.map((card) => ({
@@ -16,7 +15,7 @@ export default function LifeWithCSEIDetailPage({ params }) {
   return (
     <div className="main-content">
       <div className="content-wrapper js-content-wrapper overflow-hidden">
-        <section className="layout-pt-lg layout-pb-md bg-[#F5F9FF]">
+        <section className="layout-pt-lg layout-pb-md bg-[#F5F9FF] custom-padding">
           <div className="container">
             <div className="row y-gap-40 items-center">
               <div className="col-lg-6" data-aos="fade-left">

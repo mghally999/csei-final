@@ -17,14 +17,13 @@ export default function FooterOne() {
         {/* 1. Footer Columns + Links First */}
         <div className="footer-columns">
           <div className="row y-gap-30">
-            <FooterLinks allClasses="text-17 fw-500 text-dark-1 uppercase mb-25" />
+            <FooterLinks allClasses="text-17 fw-500 text-white uppercase mb-25" />
 
             <div className="col-xl-4 col-lg-4 col-md-6">
-              <div className="text-17 fw-500 text-dark-1 uppercase mb-25">
+              <div className="text-17 fw-500 text-white uppercase mb-25">
                 GET IN TOUCH
               </div>
               <div className="text-dark-1 footer-columns-form">
-                <div>We don't send spam so don't worry.</div>
                 <form onSubmit={handleSubmit}>
                   <div className="form-group">
                     <input required type="text" placeholder="Email..." />

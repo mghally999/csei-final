@@ -166,6 +166,7 @@ export default function HomeHeroSlider() {
                     >
                       {item.ctaText}
                     </Link>
+
                     {/* Accreditation Logos */}
                     <div className="responsive-logo-wrapper">
                       <div className="responsive-logo-container">

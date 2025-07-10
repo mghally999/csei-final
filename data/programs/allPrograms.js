@@ -185,8 +185,7 @@ const allPrograms = [
     level: "level-4",
     professional: false,
     title: "OTHM Level 4 Diploma in Health and Social Care Management",
-    imageSrc:
-      "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageSrc: "/assets/img/coursesCards/health-science-2.png",
     duration: "1 Academic Year",
     qualificationStructure: "120 credits | 6 Mandatory Units",
     overview: [
@@ -246,8 +245,7 @@ const allPrograms = [
     level: "level-5",
     professional: false,
     title: "OTHM Level 5 Diploma in Health and Social Care Management",
-    imageSrc:
-      "https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageSrc: "/assets/img/coursesCards/health-science-3.jpg",
     duration: "1 Academic Year",
     qualificationStructure: "120 credits | 6 Mandatory Units",
     overview: [
@@ -307,8 +305,7 @@ const allPrograms = [
     level: "professional-courses/health-social-care-management",
     professional: true,
     title: "Professional Certificate in Health and Social Care Management",
-    imageSrc:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageSrc: "/assets/img/coursesCards/health-science-4.jpg",
     duration: "6 Months",
     qualificationStructure: "5 Core Modules",
     overview: [
@@ -366,8 +363,7 @@ const allPrograms = [
     level: "level-4",
     professional: false,
     title: "OTHM Level 4 Diploma in Tourism and Hospitality Management",
-    imageSrc:
-      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageSrc: "/assets/img/coursesCards/tourism-hospitality.jpg",
     duration: "1 Academic Year",
     qualificationStructure: "120 credits | 6 Mandatory Units",
     overview: [
@@ -427,8 +423,7 @@ const allPrograms = [
     level: "level-5",
     professional: false,
     title: "OTHM Level 5 Diploma in Tourism and Hospitality Management",
-    imageSrc:
-      "https://images.unsplash.com/photo-1531058020387-3be344556be6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageSrc: "/assets/img/coursesCards/tourism-hospitality-1.jpg",
     duration: "1 Academic Year",
     qualificationStructure: "120 credits | 6 Mandatory Units",
     overview: [
@@ -488,8 +483,7 @@ const allPrograms = [
     level: "level-6",
     professional: false,
     title: "OTHM Level 6 Diploma in Tourism and Hospitality Management",
-    imageSrc:
-      "https://images.unsplash.com/photo-1470114716159-e389f8712fda?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageSrc: "/assets/img/coursesCards/tourism-hospitality-2.jpg",
     duration: "1 Academic Year",
     qualificationStructure: "120 credits | 6 Mandatory Units",
     overview: [
@@ -550,8 +544,7 @@ const allPrograms = [
     professional: false,
     title:
       "OTHM Level 7 Diploma in Strategic Tourism and Hospitality Management",
-    imageSrc:
-      "https://images.unsplash.com/photo-1535392432937-a27c36ec07b5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageSrc: "/assets/img/coursesCards/tourism-hospitality-3.jpg",
     duration: "1 Academic Year",
     qualificationStructure: "120 credits | 6 Mandatory Units",
     overview: [
@@ -611,8 +604,7 @@ const allPrograms = [
     level: "professional-courses/culinary-arts",
     professional: true,
     title: "Professional Certificate in Culinary Arts",
-    imageSrc:
-      "https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageSrc: "/assets/img/coursesCards/culinary-arts.jpg",
     duration: "6 Months",
     qualificationStructure: "5 Intensive Modules",
     overview: [
@@ -670,8 +662,7 @@ const allPrograms = [
     level: "professional-courses/housekeeping",
     professional: true,
     title: "Professional Housekeeping Operations Certificate",
-    imageSrc:
-      "https://images.unsplash.com/photo-1583845112203-29329902330b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageSrc: "/assets/img/coursesCards/culinary-arts-1.jpg",
     duration: "3 Months",
     qualificationStructure: "4 Practical Modules",
     overview: [
@@ -728,8 +719,7 @@ const allPrograms = [
     level: "professional-courses/hr-management",
     professional: true,
     title: "Professional Certificate in Hospitality HR Management",
-    imageSrc:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageSrc: "/assets/img/coursesCards/culinary-arts-2.jpg",
     duration: "6 Months",
     qualificationStructure: "5 Specialized Modules",
     overview: [
@@ -787,8 +777,7 @@ const allPrograms = [
     level: "professional-courses/food-safety",
     professional: true,
     title: "Advanced Food Safety Certification",
-    imageSrc:
-      "https://images.unsplash.com/photo-1606787366850-de6330128bfc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageSrc: "/assets/img/coursesCards/culinary-arts-3.jpg",
     duration: "1 Month",
     qualificationStructure: "3 Intensive Modules",
     overview: [
@@ -842,8 +831,7 @@ const allPrograms = [
     level: "professional-courses/food-beverage",
     professional: true,
     title: "Professional Food & Beverage Service Certificate",
-    imageSrc:
-      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageSrc: "/assets/img/coursesCards/culinary-arts-3.jpg",
     duration: "3 Months",
     qualificationStructure: "4 Skill-Based Modules",
     overview: [
@@ -900,8 +888,7 @@ const allPrograms = [
     level: "professional-courses/front-desk-operations",
     professional: true,
     title: "Professional Front Desk Operations Certificate",
-    imageSrc:
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageSrc: "/assets/img/coursesCards/culinary-arts-5.jpg",
     duration: "3 Months",
     qualificationStructure: "4 Comprehensive Modules",
     overview: [
@@ -958,8 +945,7 @@ const allPrograms = [
     level: "professional-courses/barista-basic-advance",
     professional: true,
     title: "Professional Barista Training (Basic & Advanced)",
-    imageSrc:
-      "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageSrc: "/assets/img/coursesCards/culinary-arts-6.jpg",
     duration: "1–2 Months",
     qualificationStructure: "2 Progressive Levels",
     overview: [
@@ -1018,8 +1004,7 @@ const allPrograms = [
     level: "level-3",
     professional: false,
     title: "Level 3 Diploma in Business Management",
-    imageSrc:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageSrc: "/assets/img/coursesCards/business-management.jpg",
     duration: "1 Academic Year",
     qualificationStructure: "60 credits | 4 Core Units + 2 Optional",
     overview: [
@@ -1077,8 +1062,7 @@ const allPrograms = [
     level: "level-4",
     professional: false,
     title: "OTHM Level 4 Diploma in Business Management",
-    imageSrc:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageSrc: "/assets/img/coursesCards/business-management-1.jpg",
     duration: "1 Academic Year",
     qualificationStructure: "120 credits | 6 Mandatory Units",
     overview: [

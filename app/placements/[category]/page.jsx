@@ -17,7 +17,7 @@ export default function PlacementDetailPage({ params }) {
   return (
     <div className="main-content">
       <div className="content-wrapper js-content-wrapper overflow-hidden">
-        <section className="layout-pt-lg layout-pb-md bg-[#F5F9FF]">
+        <section className="layout-pt-lg layout-pb-md bg-[#F5F9FF] custom-padding">
           <div className="container">
             <div className="row y-gap-40 items-center">
               <div className="col-lg-6" data-aos="fade-left">

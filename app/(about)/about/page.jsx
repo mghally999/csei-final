@@ -20,7 +20,6 @@ export default function Page() {
   return (
     <div className="main-content">
       <div className="content-wrapper js-content-wrapper overflow-hidden">
-        {/* Sections — Alternating background colors */}
         <Brief />
         <AboutCSEI />
         <Mission />

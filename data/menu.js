@@ -248,23 +248,15 @@ export const menuList = [
     href: "/life-with-csei",
     links: [
       {
-        title: "Overview",
-        href: "/life-with-csei/overview",
-      },
-      {
         title: "Campus Life",
         href: "/life-with-csei/campus-life",
       },
       {
-        title: "Events & Activities",
+        title: "Life Beyond the Classroom",
         href: "/life-with-csei/events",
       },
       {
-        title: "Student Clubs",
-        href: "/life-with-csei/student-clubs",
-      },
-      {
-        title: "Our Core Values",
+        title: "Students’ Value",
         href: "/life-with-csei/core-values",
       },
       {
@@ -272,8 +264,8 @@ export const menuList = [
         href: "/life-with-csei/facilities",
       },
       {
-        title: "Student Testimonials",
-        href: "/life-with-csei/testimonials",
+        title: "Academic Mentoring",
+        href: "/life-with-csei/mentoring-support",
       },
       {
         title: "Accommodation",
@@ -284,24 +276,16 @@ export const menuList = [
         href: "/life-with-csei/transportation",
       },
       {
-        title: "Alumni Network",
-        href: "/life-with-csei/alumni",
-      },
-      {
         title: "Student Portal",
         href: "/life-with-csei/student-portal",
       },
       {
-        title: "LMS (Learning Management System)",
+        title: "LMS",
         href: "/life-with-csei/lms",
       },
       {
-        title: "Mentoring Support",
-        href: "/life-with-csei/mentoring-support",
-      },
-      {
-        title: "Student Experience",
-        href: "/life-with-csei/student-experience",
+        title: "CSEI Alumni Network",
+        href: "/life-with-csei/alumni",
       },
     ],
   },

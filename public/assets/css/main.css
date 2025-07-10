@@ -4088,7 +4088,7 @@ h6 {
 .footer.-type-1 {
   color: white;
   background: linear-gradient(
-    177deg,
+    359deg,
     #ffffff 0%,
     #dbeafe 25%,
     #86b3f7 50%,
@@ -14416,6 +14416,11 @@ h6 {
 .layout-pb-lg {
   padding-top: 100px !important;
   padding-bottom: 100px !important;
+}
+
+.custom-padding {
+  padding-top: 220px !important;
+  padding-bottom: 50px !important;
 }
 
 .layout-pt-xl {
