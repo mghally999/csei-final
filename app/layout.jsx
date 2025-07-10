@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
   const phoneLink = `tel:+${whatsappNumber}`;
   const telegramLink = "https://t.me/cseiacademy";
   const emailLink = "mailto:admission@cseiacademy.ae";
-  const instagramLink = "https://www.instagram.com/cseiacademydubaifz/"; // optional
+  const instagramLink = "https://www.instagram.com/cseiacademydubaifz/";
 
   return (
     <html lang="en">

@@ -3,7 +3,7 @@ import React from "react";
 
 const OrganizationStructure = () => {
   return (
-    <section className="layout-pt-lg layout-pb-lg bg-white">
+    <section className="layout-pt-lg layout-pb-lg bg-custom-grey">
       <div className="container">
         <div className="row justify-center text-center mb-50">
           <div className="col-auto">

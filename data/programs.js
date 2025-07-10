@@ -1,5 +1,4 @@
 export const programs = [
-  // School of Computing
   {
     id: 1,
     title: "Information Technology",

@@ -15,7 +15,7 @@ export const slidesData = [
         <style jsx>{`
           .category-grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
             gap: 10px;
             width: 100%;
             max-width: 500px;

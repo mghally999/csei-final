@@ -17,11 +17,21 @@ export default function Page() {
   useEffect(() => {
     if (slug && Array.isArray(slug)) {
       const category = slug[0];
-      const level =
+      const levelSlug =
         slug.length === 3 ? `${slug[1]}/${slug[2]}` : slug[1] || "default";
-      const program = allPrograms.find(
-        (item) => item.category === category && item.level === level
-      );
+
+      const program = allPrograms.find((item) => {
+        const normalizedItemLevel = item.level
+          ?.toLowerCase()
+          .replace(/\s+/g, "-");
+        const normalizedSlugLevel = levelSlug.toLowerCase();
+
+        return (
+          item.category.toLowerCase() === category.toLowerCase() &&
+          normalizedItemLevel === normalizedSlugLevel
+        );
+      });
+
       setPageItem(program || null);
     }
   }, [slug]);
@@ -36,19 +46,11 @@ export default function Page() {
 
   return (
     <>
-      {/* Main content container with consistent padding */}
-      <div className="layout-pt-md layout-pb-lg">
-        {/* Hero Section - now inside the padding container */}
-        <section className="page-header -type-5 bg-dark-1">
-          <div className="page-header__bg">
-            <div
-              className="bg-image js-lazy"
-              data-bg="img/event-single/bg.png"
-            />
-          </div>
+      <div className="layout-pb-lg">
+        <section className="page-header -type-5 bg-dark-1 layout-pb-lg">
           <div className="container">
             <div className="page-header__content">
-              <div className="row y-gap-30 justify-center align-center custom-flex-margin">
+              <div className="row y-gap-30 justify-center align-center">
                 <div className="col-xl-6 col-lg-6 d-flex flex-column justify-center">
                   <div className="d-flex x-gap-15 y-gap-10 pb-20">
                     <div>
@@ -86,45 +88,73 @@ export default function Page() {
                       marginTop: "50px",
                     }}
                   >
-                    <div
-                      className="bg-white rounded-lg shadow-md"
-                      style={{
-                        width: "220px",
-                        height: "150px",
-                        padding: "20px",
-                        display: "flex",
-                        alignItems: "center",
-                        borderRadius: "10px",
-                      }}
-                    >
-                      <Image
-                        src="/assets/img/logos/OTHM-logo.png"
-                        alt="OTHM Accredited"
-                        width={200}
-                        height={100}
-                        style={{ objectFit: "cover", maxHeight: "100%" }}
-                      />
-                    </div>
-
-                    <div
-                      className="bg-white rounded-lg shadow-md"
-                      style={{
-                        width: "220px",
-                        height: "150px",
-                        padding: "20px",
-                        display: "flex",
-                        alignItems: "center",
-                        borderRadius: "10px",
-                      }}
-                    >
-                      <Image
-                        src="/assets/img/logos/KHDA-logo.png"
-                        alt="KHDA Accredited"
-                        width={200}
-                        height={100}
-                        style={{ objectFit: "cover", maxHeight: "100%" }}
-                      />
-                    </div>
+                    {pageItem.professional ? (
+                      // Show only KHDA
+                      <div
+                        className="bg-white rounded-lg shadow-md"
+                        style={{
+                          width: "220px",
+                          height: "150px",
+                          padding: "20px",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          borderRadius: "10px",
+                        }}
+                      >
+                        <Image
+                          src="/assets/img/logos/KHDA-logo.png"
+                          alt="KHDA Accredited"
+                          width={200}
+                          height={100}
+                          style={{ objectFit: "cover", maxHeight: "100%" }}
+                        />
+                      </div>
+                    ) : (
+                      // Show both OTHM + KHDA
+                      <>
+                        <div
+                          className="bg-white rounded-lg shadow-md"
+                          style={{
+                            width: "220px",
+                            height: "150px",
+                            padding: "20px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            borderRadius: "10px",
+                          }}
+                        >
+                          <Image
+                            src="/assets/img/logos/OTHM-logo.png"
+                            alt="OTHM Accredited"
+                            width={200}
+                            height={100}
+                            style={{ objectFit: "cover", maxHeight: "100%" }}
+                          />
+                        </div>
+                        <div
+                          className="bg-white rounded-lg shadow-md"
+                          style={{
+                            width: "220px",
+                            height: "150px",
+                            padding: "20px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            borderRadius: "10px",
+                          }}
+                        >
+                          <Image
+                            src="/assets/img/logos/KHDA-logo.png"
+                            alt="KHDA Accredited"
+                            width={200}
+                            height={100}
+                            style={{ objectFit: "cover", maxHeight: "100%" }}
+                          />
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
 
@@ -144,7 +174,6 @@ export default function Page() {
           </div>
         </section>
 
-        {/* Sticky Tabs Section - now properly spaced */}
         <div className="container">
           <StickyTabsSection program={pageItem} />
         </div>

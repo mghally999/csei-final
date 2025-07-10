@@ -4087,6 +4087,14 @@ h6 {
 
 .footer.-type-1 {
   color: white;
+  background: linear-gradient(
+    177deg,
+    #ffffff 0%,
+    #dbeafe 25%,
+    #86b3f7 50%,
+    #3a5acb 75%,
+    #0f1d56 100%
+  ) !important;
 }
 
 .footer.-type-1.-dark {
@@ -4366,6 +4374,10 @@ h6 {
 
 .bg-custom-navyblue {
   background-color: #04044e;
+}
+
+.bg-custom-grey {
+  background-color: #eef2f6 !important;
 }
 
 .course-card {
@@ -14391,8 +14403,9 @@ h6 {
 }
 
 .layout-pb-md {
-  padding-top: 200px;
-  padding-bottom: 60px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background: #eef2f6;
 }
 
 .custom-layout-padding {

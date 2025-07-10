@@ -12,18 +12,14 @@ import Link from "next/link";
 
 export default function TestimonialsOne() {
   return (
-    <section className="layout-pb-lg bg-white">
+    <section className="layout-pb-lg bg-custom-grey">
       <div className="container ">
         <div className="row justify-center text-center">
           <div className="col-auto">
             <div className="sectionTitle ">
               <h2 className="sectionTitle__title text-black">
-                What People Say
+                What Students Say
               </h2>
-
-              <p className="sectionTitle__text text-white">
-                Lorem ipsum dolor sit amet, consectetur.
-              </p>
             </div>
           </div>
         </div>

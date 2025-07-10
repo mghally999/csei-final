@@ -30,7 +30,7 @@ const leadershipTeam = [
 
 export default function Leadership() {
   return (
-    <section className="layout-pt-md layout-pb-lg">
+    <section className="layout-pt-md layout-pb-lg bg-custom-grey">
       <div className="container">
         {/* Title Section */}
         <div className="row justify-center text-center">
@@ -51,7 +51,7 @@ export default function Leadership() {
           {leadershipTeam.map((member, index) => (
             <div
               key={member.id}
-              className="col-lg-6 col-md-6"
+              className="col-lg-4 col-md-6"
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
@@ -61,7 +61,8 @@ export default function Leadership() {
                   scale: 1.02,
                   transition: { duration: 0.3, ease: "easeOut" },
                 }}
-                className="d-flex items-center bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300"
+                className="d-flex items-center bg-custom-grey border border-[#ddd] rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300"
+                style={{ border: "1px solid #ddd" }}
               >
                 <div className="mr-30">
                   <div className="relative w-24 h-24 rounded-md overflow-hidden border shadow-md">

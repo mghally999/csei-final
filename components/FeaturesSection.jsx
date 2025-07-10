@@ -90,7 +90,7 @@ export default function FeaturesSection() {
           padding-top: var(--main-padding-top);
           padding-bottom: var(--main-padding-bottom);
           position: relative;
-          background-color: white;
+          background-color: #eef2f6;
         }
 
         /* Header Section - completely independent */
@@ -134,7 +134,7 @@ export default function FeaturesSection() {
 
         /* Features Grid Section */
         .features-grid {
-          padding: 40px 0;
+          // padding: 40px 0;
         }
 
         .features-grid .container {

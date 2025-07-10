@@ -100,7 +100,7 @@ const Brands = ({ backgroundColorComponent, brandsTwo }) => {
       style={{
         paddingTop: brandsTwo ? "3rem" : "5rem",
         paddingBottom: "3rem",
-        backgroundColor: backgroundColorComponent || "transparent",
+        backgroundColor: backgroundColorComponent || "#eef2f6",
       }}
     >
       <div style={containerStyle}>

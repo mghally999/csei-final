@@ -1,69 +1,10 @@
 const allPrograms = [
   {
     category: "information-technology",
-    level: "default",
-    title: "Information Technology Fundamentals Program",
-    imageSrc:
-      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    duration: "1 Academic Year",
-    qualificationStructure: "Modular Structure",
-    overview: [
-      "Our comprehensive IT program covers essential technologies, programming fundamentals, and systems administration to prepare students for entry-level tech roles.",
-      "Students gain hands-on experience with hardware, software, networking, and cybersecurity basics through practical lab sessions and real-world projects.",
-      "The curriculum is regularly updated to reflect current industry standards and emerging technologies in the fast-evolving IT sector.",
-    ],
-    whyCSEI: [
-      "Industry-aligned curriculum developed with input from IT professionals",
-      "State-of-the-art computer labs with the latest hardware and software",
-      "Experienced faculty with real-world IT implementation experience",
-      "Career support services including internship placements and job fairs",
-      "Flexible learning options with both day and evening classes available",
-    ],
-    entryRequirements: [
-      "High school diploma or equivalent qualification",
-      "Basic computer literacy and familiarity with common software",
-      "English language proficiency (IELTS 4.5 or equivalent for international students)",
-      "Strong problem-solving skills and logical thinking ability",
-      "Passion for technology and continuous learning",
-    ],
-    qualificationStructureText:
-      "The program consists of core modules covering fundamental IT concepts with optional specializations available in programming or networking.",
-    qualificationUnits: [
-      "Introduction to Computer Systems and Architecture",
-      "Fundamentals of Programming (Python/JavaScript)",
-      "Networking Essentials and Cybersecurity Basics",
-      "Database Concepts and SQL Fundamentals",
-      "Web Development Technologies (HTML, CSS, JavaScript)",
-      "IT Support Best Practices and Troubleshooting",
-    ],
-    assessmentVerification: [
-      "Continuous assessment through practical assignments and projects",
-      "Written examinations for theoretical knowledge evaluation",
-      "Final capstone project demonstrating comprehensive skills",
-      "External verification of assessment standards by industry partners",
-      "Regular progress reviews with academic advisors",
-    ],
-    careerOpportunities: [
-      "IT Support Specialist",
-      "Junior Software Developer",
-      "Network Technician",
-      "Systems Administrator Assistant",
-      "Help Desk Analyst",
-      "Database Entry Specialist",
-    ],
-    universityProgression: [
-      "Direct entry into second year of Bachelor's degrees in Computer Science or IT",
-      "Advanced diploma pathways in specialized IT fields",
-      "Credit transfer agreements with multiple universities worldwide",
-      "Eligibility for professional certification programs (CompTIA, Microsoft, Cisco)",
-    ],
-  },
-  {
-    category: "information-technology",
     level: "level-4",
+    professional: false,
     title: "OTHM Level 4 Diploma in Information Technology",
-    imageSrc:
-      "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageSrc: "/assets/img/coursesCards/information-technology-1.jpg",
     duration: "1 Academic Year",
     qualificationStructure: "120 credits | 6 Mandatory Units",
     overview: [
@@ -121,9 +62,9 @@ const allPrograms = [
   {
     category: "information-technology",
     level: "level-5",
+    professional: false,
     title: "OTHM Level 5 Diploma in Information Technology",
-    imageSrc:
-      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageSrc: "/assets/img/coursesCards/information-technology.png",
     duration: "1 Academic Year",
     qualificationStructure: "120 credits | 6 Mandatory Units",
     overview: [
@@ -181,9 +122,9 @@ const allPrograms = [
   {
     category: "health-social-care",
     level: "level-3",
+    professional: false,
     title: "Level 3 Diploma in Health and Social Care Management",
-    imageSrc:
-      "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    imageSrc: "/assets/img/coursesCards/health-science-1.png",
     duration: "1 Academic Year",
     qualificationStructure: "90 credits | 6 Core Units + 2 Optional",
     overview: [
@@ -242,6 +183,7 @@ const allPrograms = [
   {
     category: "health-social-care",
     level: "level-4",
+    professional: false,
     title: "OTHM Level 4 Diploma in Health and Social Care Management",
     imageSrc:
       "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -302,6 +244,7 @@ const allPrograms = [
   {
     category: "health-social-care",
     level: "level-5",
+    professional: false,
     title: "OTHM Level 5 Diploma in Health and Social Care Management",
     imageSrc:
       "https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -362,6 +305,7 @@ const allPrograms = [
   {
     category: "health-social-care",
     level: "professional-courses/health-social-care-management",
+    professional: true,
     title: "Professional Certificate in Health and Social Care Management",
     imageSrc:
       "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -420,6 +364,7 @@ const allPrograms = [
   {
     category: "tourism-hospitality",
     level: "level-4",
+    professional: false,
     title: "OTHM Level 4 Diploma in Tourism and Hospitality Management",
     imageSrc:
       "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -480,6 +425,7 @@ const allPrograms = [
   {
     category: "tourism-hospitality",
     level: "level-5",
+    professional: false,
     title: "OTHM Level 5 Diploma in Tourism and Hospitality Management",
     imageSrc:
       "https://images.unsplash.com/photo-1531058020387-3be344556be6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -540,6 +486,7 @@ const allPrograms = [
   {
     category: "tourism-hospitality",
     level: "level-6",
+    professional: false,
     title: "OTHM Level 6 Diploma in Tourism and Hospitality Management",
     imageSrc:
       "https://images.unsplash.com/photo-1470114716159-e389f8712fda?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -600,6 +547,7 @@ const allPrograms = [
   {
     category: "tourism-hospitality",
     level: "level-7",
+    professional: false,
     title:
       "OTHM Level 7 Diploma in Strategic Tourism and Hospitality Management",
     imageSrc:
@@ -661,6 +609,7 @@ const allPrograms = [
   {
     category: "tourism-hospitality",
     level: "professional-courses/culinary-arts",
+    professional: true,
     title: "Professional Certificate in Culinary Arts",
     imageSrc:
       "https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -719,6 +668,7 @@ const allPrograms = [
   {
     category: "tourism-hospitality",
     level: "professional-courses/housekeeping",
+    professional: true,
     title: "Professional Housekeeping Operations Certificate",
     imageSrc:
       "https://images.unsplash.com/photo-1583845112203-29329902330b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -776,6 +726,7 @@ const allPrograms = [
   {
     category: "tourism-hospitality",
     level: "professional-courses/hr-management",
+    professional: true,
     title: "Professional Certificate in Hospitality HR Management",
     imageSrc:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -834,6 +785,7 @@ const allPrograms = [
   {
     category: "tourism-hospitality",
     level: "professional-courses/food-safety",
+    professional: true,
     title: "Advanced Food Safety Certification",
     imageSrc:
       "https://images.unsplash.com/photo-1606787366850-de6330128bfc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -888,6 +840,7 @@ const allPrograms = [
   {
     category: "tourism-hospitality",
     level: "professional-courses/food-beverage",
+    professional: true,
     title: "Professional Food & Beverage Service Certificate",
     imageSrc:
       "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -945,6 +898,7 @@ const allPrograms = [
   {
     category: "tourism-hospitality",
     level: "professional-courses/front-desk-operations",
+    professional: true,
     title: "Professional Front Desk Operations Certificate",
     imageSrc:
       "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -1002,6 +956,7 @@ const allPrograms = [
   {
     category: "tourism-hospitality",
     level: "professional-courses/barista-basic-advance",
+    professional: true,
     title: "Professional Barista Training (Basic & Advanced)",
     imageSrc:
       "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -1061,6 +1016,7 @@ const allPrograms = [
   {
     category: "business-management",
     level: "level-3",
+    professional: false,
     title: "Level 3 Diploma in Business Management",
     imageSrc:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -1119,6 +1075,7 @@ const allPrograms = [
   {
     category: "business-management",
     level: "level-4",
+    professional: false,
     title: "OTHM Level 4 Diploma in Business Management",
     imageSrc:
       "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -1178,6 +1135,7 @@ const allPrograms = [
   {
     category: "business-management",
     level: "level-5",
+    professional: false,
     title: "OTHM Level 5 Diploma in Business Management",
     imageSrc:
       "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -1231,124 +1189,6 @@ const allPrograms = [
       "Final year entry to BA/BSc Business degrees",
       "MBA foundation programs",
       "Professional qualifications (CIM, CIMA)",
-      "Executive education programs",
-    ],
-  },
-  {
-    category: "accounting-finance",
-    level: "level-5",
-    title: "OTHM Level 5 Diploma in Accounting and Business",
-    imageSrc:
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    duration: "1 Academic Year",
-    qualificationStructure: "120 credits | 6 Core Units",
-    overview: [
-      "This specialized diploma integrates accounting principles with business management for finance professionals.",
-      "Covers financial reporting, taxation, audit, and management accounting for decision-making.",
-      "Students work with accounting software and real financial data sets.",
-      "Provides exemptions for professional accounting body examinations.",
-    ],
-    whyCSEI: [
-      "Qualified accountant tutors with industry experience",
-      "Hands-on training with Sage/QuickBooks",
-      "Financial modeling workshops",
-      "Guest lectures from audit partners",
-      "Career support for accounting roles",
-    ],
-    entryRequirements: [
-      "Level 4 qualification in business/accounting",
-      "Strong numerical and analytical skills",
-      "IELTS 5.5 or equivalent English level",
-      "Basic understanding of financial concepts",
-      "Commitment to intensive study",
-    ],
-    qualificationStructureText:
-      "Students complete 6 core accounting units (20 credits each) with practical applications.",
-    qualificationUnits: [
-      "Financial Reporting and Analysis (20 credits)",
-      "Management Accounting for Decision Making (20 credits)",
-      "Taxation Principles and Practice (20 credits)",
-      "Audit and Assurance (20 credits)",
-      "Business Law and Corporate Governance (20 credits)",
-      "Financial Management (20 credits)",
-    ],
-    assessmentVerification: [
-      "Financial statement preparation",
-      "Tax computation exercises",
-      "Management accounting reports",
-      "Audit case study analyses",
-      "External verification by OTHM",
-    ],
-    careerOpportunities: [
-      "Assistant Accountant",
-      "Financial Analyst",
-      "Tax Associate",
-      "Audit Junior",
-      "Management Accountant",
-    ],
-    universityProgression: [
-      "Final year of Accounting degrees",
-      "ACCA/CIMA exam exemptions",
-      "MSc Accounting and Finance",
-      "CPA qualification pathways",
-    ],
-  },
-  {
-    category: "strategic-management",
-    level: "level-7",
-    title: "OTHM Level 7 Diploma in Strategic Management and Leadership",
-    imageSrc:
-      "https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    duration: "1 Academic Year",
-    qualificationStructure: "120 credits | 6 Strategic Units",
-    overview: [
-      "This postgraduate-level qualification develops executive leadership capabilities for senior managers.",
-      "Focuses on corporate governance, organizational transformation, and global strategic challenges.",
-      "Students undertake applied research addressing complex business problems.",
-      "Aligns with Chartered Management Institute (CMI) leadership standards.",
-    ],
-    whyCSEI: [
-      "Taught by business school professors and CEOs",
-      "Boardroom simulation exercises",
-      "Global case studies from Fortune 500 companies",
-      "Executive coaching and peer learning",
-      "Alumni network of C-suite executives",
-    ],
-    entryRequirements: [
-      "Bachelor's degree or Level 6 qualification",
-      "Minimum 3 years managerial experience",
-      "IELTS 6.5 or equivalent English proficiency",
-      "Strategic thinking capability",
-      "Interview with program director",
-    ],
-    qualificationStructureText:
-      "The program comprises 6 strategic units (20 credits each) including major research project.",
-    qualificationUnits: [
-      "Strategic Leadership and Innovation (20 credits)",
-      "Corporate Governance and Ethics (20 credits)",
-      "Global Business Strategy (20 credits)",
-      "Strategic Financial Management (20 credits)",
-      "Organizational Change and Transformation (20 credits)",
-      "Strategic Research Project (20 credits)",
-    ],
-    assessmentVerification: [
-      "Corporate strategy analyses",
-      "Governance framework development",
-      "Change management proposals",
-      "25,000-word strategic research project",
-      "External examination by OTHM",
-    ],
-    careerOpportunities: [
-      "Chief Executive Officer",
-      "Strategic Director",
-      "Management Consultant",
-      "Corporate Board Member",
-      "Entrepreneur/Investor",
-    ],
-    universityProgression: [
-      "Direct entry to MBA programs",
-      "DBA/PhD in Management",
-      "Non-executive director qualifications",
       "Executive education programs",
     ],
   },

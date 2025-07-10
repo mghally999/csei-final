@@ -16,7 +16,8 @@ export default function Mission() {
       style={{
         paddingTop: "100px",
         paddingBottom: "100px",
-        background: "linear-gradient(145deg, #0f172a, #1e293b)",
+        background:
+          "linear-gradient(63deg, #ffffff 0%, #dbeafe 25%, #86b3f7 50%, #3a5acb 75%, #0f1d56 100%)",
         color: "#ffffff",
         position: "relative",
         overflow: "hidden",
@@ -78,7 +79,7 @@ export default function Mission() {
                 fontWeight: "800",
                 lineHeight: "1.3",
                 marginBottom: "35px",
-                color: "#f1f5f9",
+                color: "#000000",
               }}
             >
               Our Mission
@@ -88,7 +89,7 @@ export default function Mission() {
                 fontSize: "19px",
                 lineHeight: "1.9",
                 fontWeight: "500",
-                color: "#e2e8f0",
+                color: "#000000",
                 textAlign: "justify",
                 marginBottom: "20px",
               }}
@@ -102,7 +103,7 @@ export default function Mission() {
                 fontSize: "19px",
                 lineHeight: "1.9",
                 fontWeight: "500",
-                color: "#e2e8f0",
+                color: "#000000",
                 textAlign: "justify",
               }}
             >

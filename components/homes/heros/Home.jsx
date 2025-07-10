@@ -214,10 +214,28 @@ export default function HomeHeroSlider() {
       />
 
       {/* Navigation */}
-      <button className="hero-slider-prev" style={arrowStyle("left")}>
+      {/* Navigation Arrows */}
+      <button
+        className={`
+    hero-slider-prev absolute top-1/2 transform -translate-y-1/2 z-10
+    left-2 sm:left-6 w-[35px] h-[35px] sm:w-[45px] sm:h-[45px]
+    rounded-full bg-black/70 text-white border-none
+    flex items-center justify-center cursor-pointer
+    opacity-90 hover:opacity-100 transition-opacity duration-300
+  `}
+      >
         <i className="icon icon-arrow-left" />
       </button>
-      <button className="hero-slider-next" style={arrowStyle("right")}>
+
+      <button
+        className={`
+    hero-slider-next absolute top-1/2 transform -translate-y-1/2 z-10
+    right-2 sm:right-6 w-[35px] h-[35px] sm:w-[45px] sm:h-[45px]
+    rounded-full bg-black/70 text-white border-none
+    flex items-center justify-center cursor-pointer
+    opacity-90 hover:opacity-100 transition-opacity duration-300
+  `}
+      >
         <i className="icon icon-arrow-right" />
       </button>
 

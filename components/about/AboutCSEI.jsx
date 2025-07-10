@@ -10,7 +10,7 @@ export default function AboutCSEI() {
   }, []);
 
   return (
-    <section className="csei-section">
+    <section className="csei-section bg-custom-grey">
       <div className="container">
         <div className="row items-center">
           {/* LEFT SIDE - TEXT */}
