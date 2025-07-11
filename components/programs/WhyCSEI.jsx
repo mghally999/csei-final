@@ -6,7 +6,7 @@ export const WhyCSEI = ({ data }) => {
 
   return (
     <section
-      className="bg-white rounded-xl shadow-sm mb-15 custom-margin"
+      className="bg-white rounded-xl shadow-sm mb-15 custom-margin custom-linear-blue-top"
       style={{
         opacity: 1,
         border: "1px solid #ddd",
@@ -33,8 +33,6 @@ export const WhyCSEI = ({ data }) => {
               marginBottom: "1.5rem",
               padding: "20px",
               marginLeft: "1rem",
-              background:
-                "linear-gradient(135deg, rgb(255, 255, 255) 0%, rgb(219, 234, 254) 25%, rgb(134, 179, 247) 50%, rgba(58, 90, 203, 0.2) 75%, rgb(15 29 86 / 4%) 100%)",
             }}
           >
             {item}

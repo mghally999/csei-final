@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { FiArrowRight } from "react-icons/fi";
 
 export default function LifeIntro() {
   return (
@@ -41,11 +42,42 @@ export default function LifeIntro() {
               pathway for lifelong achievement and opportunity.
             </p>
 
+            {/* Updated Button */}
             <a
-              href="/life-with-csei"
-              className="inline-block px-6 py-3 bg-[#4b0082] text-black font-semibold rounded shadow hover:bg-[#3a0069] transition"
+              className="text-white"
+              href="/life-with-csei/campus-life"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "12px",
+                color: "#ffffff",
+                background: "linear-gradient(to right, #2563eb, #4338ca)",
+                padding: "16px 32px",
+                borderRadius: "12px",
+                fontSize: "18px",
+                fontWeight: 600,
+                textDecoration: "none",
+                border: "1px solid rgba(255, 255, 255, 0.3)",
+                boxShadow: "0 10px 25px rgba(0, 0, 0, 0.3)",
+                transition: "all 0.3s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background =
+                  "linear-gradient(to right, #1d4ed8, #3730a3)";
+                e.currentTarget.style.transform = "scale(1.05)";
+                e.currentTarget.style.boxShadow =
+                  "0 15px 35px rgba(67, 56, 202, 0.5)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background =
+                  "linear-gradient(to right, #2563eb, #4338ca)";
+                e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.boxShadow =
+                  "0 10px 25px rgba(0, 0, 0, 0.3)";
+              }}
             >
               Explore Student Life
+              <FiArrowRight style={{ fontSize: "24px" }} />
             </a>
           </div>
         </div>

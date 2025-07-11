@@ -9,17 +9,7 @@ import { AllUnits } from "@/components/programs/AllUnits";
 import { AssessmentVerification } from "@/components/programs/AssessmentVerification";
 import { CareerOpportunities } from "@/components/programs/CareerOpportunities";
 import { UniversityProgression } from "@/components/programs/UniversityProgression";
-
-const menuItems = [
-  { id: 1, text: "Overview" },
-  { id: 2, text: "Why CSEI?" },
-  { id: 3, text: "Entry Requirements" },
-  { id: 4, text: "Qualification Structure" },
-  { id: 5, text: "Qualification Units" },
-  { id: 6, text: "Assessment and Verification" },
-  { id: 7, text: "Career Opportunities" },
-  { id: 8, text: "University Progression" },
-];
+import SampleCertificate from "@/components/programs/SampleCertificate";
 
 export default function StickyTabsSection({ program }) {
   const [activeTab, setActiveTab] = useState(1);
@@ -31,22 +21,85 @@ export default function StickyTabsSection({ program }) {
   const sidebarRef = useRef(null);
   const lastSectionRef = useRef(null);
 
-  // Scrollspy (Tab highlight) fix
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: "-150px 0px -10% 0px", // let the last section trigger earlier
-      threshold: 0.25,
-    };
+  // Base menu
+  const baseMenuItems = [
+    { id: 1, text: "Overview" },
+    { id: 2, text: "Why CSEI?" },
+    { id: 3, text: "Entry Requirements" },
+    { id: 4, text: "Qualification Structure" },
+    { id: 5, text: "Qualification Units" },
+    { id: 6, text: "Assessment and Verification" },
+    { id: 7, text: "Career Opportunities" },
+  ];
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const id = Number(entry.target.getAttribute("data-section-id"));
-          setActiveTab(id);
-        }
-      });
-    }, options);
+  const menuItems = [...baseMenuItems];
+
+  // Add "Sample Certificate" and "University Progression" if NOT professional
+  if (!program.professional) {
+    menuItems.push({ id: 8, text: "Sample Certificate" });
+    menuItems.push({ id: 9, text: "University Progression" });
+  }
+
+  // Sections
+  const sections = [
+    { id: 1, Component: Overview, props: { data: program.overview } },
+    { id: 2, Component: WhyCSEI, props: { data: program.whyCSEI } },
+    {
+      id: 3,
+      Component: EntryRequirements,
+      props: { data: program.entryRequirements },
+    },
+    {
+      id: 4,
+      Component: QualificationStructure,
+      props: { data: program.qualificationStructureText },
+    },
+    { id: 5, Component: AllUnits, props: { data: program.qualificationUnits } },
+    {
+      id: 6,
+      Component: AssessmentVerification,
+      props: { data: program.assessmentVerification },
+    },
+    {
+      id: 7,
+      Component: CareerOpportunities,
+      props: { data: program.careerOpportunities },
+    },
+  ];
+
+  if (!program.professional) {
+    sections.push({
+      id: 8,
+      Component: SampleCertificate,
+      props: {},
+    });
+    sections.push({
+      id: 9,
+      Component: UniversityProgression,
+      props: {
+        data: [],
+        description: program.universityProgression,
+      },
+    });
+  }
+
+  // Scrollspy
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = Number(entry.target.getAttribute("data-section-id"));
+            setActiveTab(id);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "-150px 0px -10% 0px",
+        threshold: 0.25,
+      }
+    );
 
     sectionRefs.current.forEach((ref) => {
       if (ref) observer.observe(ref);
@@ -55,7 +108,7 @@ export default function StickyTabsSection({ program }) {
     return () => observer.disconnect();
   }, []);
 
-  // Sticky sidebar + stop before footer
+  // Sticky sidebar
   useEffect(() => {
     const handleScroll = () => {
       if (!wrapperRef.current || !sidebarRef.current || !lastSectionRef.current)
@@ -66,14 +119,13 @@ export default function StickyTabsSection({ program }) {
       const lastSectionRect = lastSectionRef.current.getBoundingClientRect();
 
       setIsSticky(wrapperRect.top <= 120);
-      setLimitReached(lastSectionRect.bottom <= sidebarHeight + 60);
+      setLimitReached(lastSectionRect.bottom <= sidebarHeight + 90);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Scroll to section on click
   const handleClick = (id) => {
     const el = sectionRefs.current[id - 1];
     if (el) {
@@ -82,33 +134,6 @@ export default function StickyTabsSection({ program }) {
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
-
-  const sections = [
-    { id: 1, Component: Overview, data: program.overview },
-    { id: 2, Component: WhyCSEI, data: program.whyCSEI },
-    { id: 3, Component: EntryRequirements, data: program.entryRequirements },
-    {
-      id: 4,
-      Component: QualificationStructure,
-      data: program.qualificationStructureText,
-    },
-    { id: 5, Component: AllUnits, data: program.qualificationUnits },
-    {
-      id: 6,
-      Component: AssessmentVerification,
-      data: program.assessmentVerification,
-    },
-    {
-      id: 7,
-      Component: CareerOpportunities,
-      data: program.careerOpportunities,
-    },
-    {
-      id: 8,
-      Component: UniversityProgression,
-      data: program.universityProgression,
-    },
-  ];
 
   return (
     <section className="sticky-section" ref={wrapperRef}>
@@ -135,17 +160,19 @@ export default function StickyTabsSection({ program }) {
 
         {/* Content */}
         <div className="content">
-          {sections.map(({ id, Component, data }) => (
+          {sections.map(({ id, Component, props }) => (
             <div
               key={id}
               ref={(el) => {
                 sectionRefs.current[id - 1] = el;
-                if (id === 8) lastSectionRef.current = el;
+                if (id === sections[sections.length - 1].id) {
+                  lastSectionRef.current = el;
+                }
               }}
               data-section-id={id}
               className="content-section"
             >
-              <Component data={data} />
+              <Component {...props} />
             </div>
           ))}
         </div>
@@ -181,7 +208,7 @@ export default function StickyTabsSection({ program }) {
 
         .sidebar.sticky {
           position: fixed;
-          top: 180px;
+          top: 170px;
           z-index: 20;
         }
 
@@ -233,14 +260,6 @@ export default function StickyTabsSection({ program }) {
           .sidebar-wrapper {
             display: none;
           }
-
-               .content-section {
-          scroll-margin-top: 140px;
-          margin-bottom: 5rem;
-        }
-
-        .content-section:last-child {
-          min-height: calc(100vh - 200px);
         }
       `}</style>
     </section>

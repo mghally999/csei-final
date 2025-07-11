@@ -18,7 +18,6 @@ export default function Page() {
     <div className="layout-pb-lg">
       <div className="main-content">
         <div className="content-wrapper js-content-wrapper overflow-hidden">
-          <ProgramSpecializations />
           <LifeIntro />
           <LifeBeyondClassroom />
           <CampusFacilities />

@@ -19,6 +19,7 @@ import {
   FaEnvelope,
 } from "react-icons/fa";
 
+import { motion, AnimatePresence } from "framer-motion";
 import Preloader from "@/components/common/Preloader";
 import Header from "@/components/layout/headers/Header";
 import FooterOne from "@/components/layout/footers/FooterOne";
@@ -28,6 +29,7 @@ config.autoAddCss = false;
 
 export default function RootLayout({ children }) {
   const [showModal, setShowModal] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   useEffect(() => {
     AOS.init({
@@ -70,7 +72,7 @@ export default function RootLayout({ children }) {
 
             <FooterOne />
 
-            {/* 🔹 Right Floating Social Icons */}
+            {/* 🔹 Floating Social Icons */}
             <div className="floating-social-icons">
               <div
                 onClick={() => window.open(whatsappLink, "_blank")}
@@ -112,21 +114,7 @@ export default function RootLayout({ children }) {
             {/* 🔹 Quick Enquiry Button */}
             <button
               onClick={() => setShowModal(true)}
-              style={{
-                position: "fixed",
-                top: "35%",
-                right: "20px",
-                zIndex: 9999,
-                backgroundColor: "#2563eb",
-                color: "white",
-                padding: "14px 20px",
-                borderRadius: "50px",
-                fontWeight: "600",
-                fontSize: "1rem",
-                border: "none",
-                cursor: "pointer",
-                animation: "floatY 3s ease-in-out infinite",
-              }}
+              className="quick-enquiry-btn"
             >
               Quick Enquiry
             </button>
@@ -136,6 +124,53 @@ export default function RootLayout({ children }) {
               isOpen={showModal}
               onClose={() => setShowModal(false)}
             />
+
+            {/* 🔹 AI Chatbot Widget */}
+            <div className="chatbot-container" data-aos="fade-up">
+              <AnimatePresence>
+                {!isChatOpen ? (
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="chatbot-toggle"
+                    onClick={() => setIsChatOpen(true)}
+                  >
+                    💬
+                  </motion.button>
+                ) : (
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 40 }}
+                    transition={{ duration: 0.4 }}
+                    className="chatbot-box"
+                  >
+                    <div className="chatbot-header">
+                      <span>Chat with us</span>
+                      <button
+                        className="chatbot-close"
+                        onClick={() => setIsChatOpen(false)}
+                      >
+                        ✖
+                      </button>
+                    </div>
+                    <div className="chatbot-body">
+                      <p>Hello 👋 I'm here to help. How can I assist you?</p>
+                      <ul>
+                        <li>📚 Tell me about programs</li>
+                        <li>💸 What’s the tuition fee?</li>
+                        <li>📅 Book a callback</li>
+                        <li>📝 I want to apply now</li>
+                      </ul>
+                    </div>
+                    <div className="chatbot-footer">
+                      <input type="text" placeholder="Type a message..." />
+                      <button>Send</button>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
             {/* 🔹 Global Styles */}
             <style jsx global>{`
@@ -162,14 +197,118 @@ export default function RootLayout({ children }) {
                 gap: 12px;
               }
 
+              .quick-enquiry-btn {
+                position: fixed;
+                top: 35%;
+                right: 20px;
+                z-index: 9999;
+                background-color: #2563eb;
+                color: white;
+                padding: 14px 20px;
+                border-radius: 50px;
+                font-weight: 600;
+                font-size: 1rem;
+                border: none;
+                cursor: pointer;
+                animation: floatY 3s ease-in-out infinite;
+              }
+
+              .chatbot-container {
+                position: fixed;
+                bottom: 20px;
+                right: 50px;
+                z-index: 99999;
+              }
+
+              .chatbot-toggle {
+                background: #0f172a;
+                color: #fff;
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+                border: none;
+                cursor: pointer;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+              }
+
+              .chatbot-box {
+                width: 300px;
+                background: #ffffff;
+                border-radius: 16px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                overflow: hidden;
+              }
+
+              .chatbot-header {
+                background: #0f172a;
+                color: #fff;
+                padding: 12px 16px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-weight: bold;
+              }
+
+              .chatbot-close {
+                background: transparent;
+                color: #fff;
+                border: none;
+                font-size: 16px;
+                cursor: pointer;
+              }
+
+              .chatbot-body {
+                padding: 16px;
+              }
+
+              .chatbot-body p {
+                margin-bottom: 10px;
+                color: #333;
+              }
+
+              .chatbot-body ul {
+                padding-left: 18px;
+                color: #555;
+              }
+
+              .chatbot-body li {
+                margin-bottom: 8px;
+              }
+
+              .chatbot-footer {
+                display: flex;
+                border-top: 1px solid #eee;
+              }
+
+              .chatbot-footer input {
+                flex: 1;
+                border: none;
+                padding: 12px;
+                font-size: 14px;
+              }
+
+              .chatbot-footer button {
+                background: #2563eb;
+                color: white;
+                padding: 0 16px;
+                border: none;
+                font-weight: bold;
+                cursor: pointer;
+              }
+
               @media (max-width: 768px) {
                 .floating-social-icons {
                   top: auto;
-                  bottom: 20px;
+                  bottom: 90px;
                   right: 50%;
                   transform: translateX(50%);
                   flex-direction: row;
-                  gap: 10px;
+                }
+                .quick-enquiry-btn {
+                  // bottom: 20px;
+                  // top: auto;
+                  // right: 20px;
                 }
               }
             `}</style>
@@ -180,7 +319,7 @@ export default function RootLayout({ children }) {
   );
 }
 
-// 🔹 Shared Icon Style
+// 🔹 Shared Style for Floating Icons
 const socialIconStyle = {
   backgroundColor: "#fff",
   color: "#e05500",

@@ -52,12 +52,7 @@ const allPrograms = [
       "IT Project Coordinator",
       "Systems Analyst",
     ],
-    universityProgression: [
-      "Entry to Year 2 of Computer Science/IT degrees",
-      "OTHM Level 5 Diploma in IT",
-      "Professional certifications (CCNA, MCSA)",
-      "Specialist diplomas in cybersecurity or cloud computing",
-    ],
+    universityProgression: `Successful completion of the Level 4 Diploma in Information Technology provides learners with the academic foundation to progress to the OTHM Level 5 Diploma in Information Technology. As this qualification is regulated by Ofqual (Office of the Qualifications and Examinations Regulation), learners may also be eligible for direct entry into the second year of a UK university Bachelor's degree in related disciplines such as Computing, Software Engineering, or IT Management. For more details, please visit the University Progressions page on this website.`,
   },
   {
     category: "information-technology",
@@ -112,12 +107,7 @@ const allPrograms = [
       "Data Analyst",
       "Systems Administrator",
     ],
-    universityProgression: [
-      "Final year entry to BSc (Hons) Computer Science degrees",
-      "MSc in Information Technology pathways",
-      "Professional certifications (AWS, Cisco, Microsoft)",
-      "Technical specialist roles in emerging technologies",
-    ],
+    universityProgression: `The Level 5 Diploma in Information Technology enables learners to advance to higher-level qualifications such as the OTHM Level 6 Diploma or progress to the final year of a three-year UK Bachelor’s degree in IT, Computer Science, or related fields, subject to university acceptance criteria. This qualification is approved and regulated by Ofqual (Office of the Qualifications and Examinations Regulation), ensuring strong academic recognition. For more information, please refer to the University Progressions section of this website.`,
   },
   {
     category: "health-social-care",
@@ -173,12 +163,7 @@ const allPrograms = [
       "Domiciliary Care Provider",
       "Special Educational Needs Assistant",
     ],
-    universityProgression: [
-      "Direct entry to Level 4 Diploma in Health and Social Care",
-      "Foundation year options for Nursing or Social Work degrees",
-      "Advanced Apprenticeships in Care Leadership",
-      "Specialist diplomas in Dementia Care or Learning Disabilities",
-    ],
+    universityProgression: `Successful completion of the Level 3 Diploma in Health and Social Care Management qualification provides learners the opportunity for a wide range of academic progressions including progression to relevant OTHM Level 4 Diplomas. As this qualification is approved and regulated by Ofqual (Office of the Qualifications and Examinations Regulation), learners are eligible to gain direct entry into Level 4 programmes in Health and Social Care or related fields. For more information visit University Progressions page in this website.`,
   },
   {
     category: "health-social-care",
@@ -233,12 +218,7 @@ const allPrograms = [
       "Health Promotion Specialist",
       "Social Care Assessor",
     ],
-    universityProgression: [
-      "Direct entry to Year 2 of Health and Social Care degrees",
-      "OTHM Level 5 Diploma in Health and Social Care Management",
-      "Nursing associate programs (with additional requirements)",
-      "Social Work foundation courses",
-    ],
+    universityProgression: `Successful completion of Level 4 Diploma in Health and Social Care Management qualification provides learners the opportunity for a wide range of academic progressions including progression to relevant OTHM Level 5 Diplomas. As this qualification is approved and regulated by Ofqual (Office of the Qualifications and Examinations Regulation), learners are eligible to gain direct entry into Year 2 of a three-year UK Bachelor’s degree programme. For more information visit University Progressions page in this website.`,
   },
   {
     category: "health-social-care",
@@ -293,12 +273,7 @@ const allPrograms = [
       "Commissioning Manager in CCGs",
       "Director of Adult Social Services",
     ],
-    universityProgression: [
-      "Final year entry to BSc (Hons) Health and Social Care degrees",
-      "Postgraduate diplomas in Health Management",
-      "Social Work qualifying programs",
-      "MBA in Healthcare Management pathways",
-    ],
+    universityProgression: `Successful completion of the OTHM Level 5 Diploma in Health and Social Care Management qualification provides learners the opportunity for a wide range of academic progressions including progression to relevant OTHM Level 6 Diplomas. The Level 5 Diploma in Health and Social Care Management has been developed with career progression and professional recognition in mind As this qualification is approved and regulated by Ofqual (Office of the Qualifications and Examinations Regulation), learners are eligible to gain direct entry into Final year of a three-year UK Bachelor’s degree.`,
   },
   {
     category: "health-social-care",
@@ -411,12 +386,7 @@ const allPrograms = [
       "Reservations Manager",
       "Cruise Ship Hospitality Staff",
     ],
-    universityProgression: [
-      "Entry to Year 2 of Tourism/Hospitality degrees",
-      "OTHM Level 5 Diploma in Tourism Management",
-      "Specialist courses in airline/hotel management",
-      "International internship programs",
-    ],
+    universityProgression: `Successful completion of Level 4 Diploma in Health and Social Care Management qualification provides learners the opportunity for a wide range of academic progressions including progression to relevant OTHM Level 5 Diplomas. As this qualification is approved and regulated by Ofqual (Office of the Qualifications and Examinations Regulation), learners are eligible to gain direct entry into Year 2 of a three-year UK Bachelor’s degree programme. For more information visit University Progressions page in this website.`,
   },
   {
     category: "tourism-hospitality",
@@ -1050,12 +1020,7 @@ const allPrograms = [
       "Office Manager",
       "Customer Service Team Leader",
     ],
-    universityProgression: [
-      "Level 4 Diplomas in Business Management",
-      "Foundation degrees in Business",
-      "Apprenticeships in Business Administration",
-      "Entrepreneurship programs",
-    ],
+    universityProgression: `Successful completion of the OTHM Level 3 Foundation Diploma in Business Management enables learners to progress to OTHM Level 4 Diplomas or equivalent qualifications in a variety of business-related areas. This foundation qualification supports access to higher-level study and opens academic opportunities in business, administration, and management. For more information, visit the University Progressions page on this website.`,
   },
   {
     category: "business-management",
@@ -1109,12 +1074,7 @@ const allPrograms = [
       "HR Administrator",
       "Operations Team Leader",
     ],
-    universityProgression: [
-      "Entry to Year 2 of Business degrees",
-      "OTHM Level 5 Diploma in Business",
-      "Specialist diplomas in Marketing/HR",
-      "International business programs",
-    ],
+    universityProgression: `Successful completion of the OTHM Level 4 Diploma in Business Management provides learners the opportunity for a wide range of academic progressions, including the OTHM Level 5 Extended Diploma in Business Management. As this qualification is approved and regulated by Ofqual (Office of the Qualifications and Examinations Regulation), learners are also eligible to gain direct entry into Year 2 of a three-year UK Bachelor’s degree programme.`,
   },
   {
     category: "business-management",
@@ -1169,12 +1129,7 @@ const allPrograms = [
       "Operations Director",
       "Entrepreneur/Business Owner",
     ],
-    universityProgression: [
-      "Final year entry to BA/BSc Business degrees",
-      "MBA foundation programs",
-      "Professional qualifications (CIM, CIMA)",
-      "Executive education programs",
-    ],
+    universityProgression: `Successful completion of the OTHM Level 5 Diploma in Business Management provides learners the opportunity for a wide range of academic progressions, including the OTHM Level 6 Diploma in Business Management. As this qualification is approved and regulated by Ofqual (Office of the Qualifications and Examinations Regulation), learners are eligible to gain direct entry into the final year of a three-year UK Bachelor’s degree programme.`,
   },
 ];
 

@@ -9,6 +9,16 @@ export default function HeroSliderModal({ isOpen, onClose }) {
     regularPrograms: [],
   });
 
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    course: "",
+  });
+
+  const [status, setStatus] = useState("");
+
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === "Escape") onClose();
@@ -25,6 +35,40 @@ export default function HeroSliderModal({ isOpen, onClose }) {
       window.removeEventListener("keydown", handleEsc);
     };
   }, [isOpen, onClose]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("Submitting...");
+
+    try {
+      const res = await fetch("/api/zoho", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setStatus("✅ Enquiry submitted successfully.");
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          course: "",
+        });
+        setTimeout(() => {
+          setStatus("");
+          onClose();
+        }, 3000);
+      } else {
+        setStatus("❌ Error: " + (data?.error || "Submission failed"));
+      }
+    } catch (err) {
+      setStatus("❌ Request failed: " + err.message);
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -47,17 +91,63 @@ export default function HeroSliderModal({ isOpen, onClose }) {
 
         <h2 className="hero-modal-title">Enquiry Form</h2>
 
-        <form className="hero-modal-form">
-          <input type="text" placeholder="First name *" required />
-          <input type="text" placeholder="Last name *" required />
-          <input type="email" placeholder="Email *" required />
-          <input type="tel" placeholder="Phone *" required />
+        <form className="hero-modal-form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="firstName"
+            placeholder="First name *"
+            required
+            value={formData.firstName}
+            onChange={(e) =>
+              setFormData({ ...formData, firstName: e.target.value })
+            }
+          />
 
-          <select required>
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Last name *"
+            required
+            value={formData.lastName}
+            onChange={(e) =>
+              setFormData({ ...formData, lastName: e.target.value })
+            }
+          />
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Email *"
+            required
+            value={formData.email}
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
+          />
+
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Phone *"
+            required
+            value={formData.phone}
+            onChange={(e) =>
+              setFormData({ ...formData, phone: e.target.value })
+            }
+          />
+
+          <select
+            name="course"
+            required
+            value={formData.course}
+            onChange={(e) =>
+              setFormData({ ...formData, course: e.target.value })
+            }
+          >
             <option value="">Select Course *</option>
 
             {regularPrograms.length > 0 && (
-              <optgroup label="Programs">
+              <optgroup label="University Progression">
                 {regularPrograms.map((program) => (
                   <option key={program.id} value={getLabel(program)}>
                     {getLabel(program)}
@@ -80,12 +170,24 @@ export default function HeroSliderModal({ isOpen, onClose }) {
           <button type="submit">Submit Enquiry</button>
         </form>
 
+        {status && (
+          <p
+            style={{
+              marginTop: "1rem",
+              fontSize: "0.95rem",
+              color: status.includes("✅") ? "green" : "red",
+              fontWeight: 500,
+            }}
+          >
+            {status}
+          </p>
+        )}
+
         <p className="hero-modal-disclaimer">
           We’ll never share your information with anyone else.
         </p>
       </div>
 
-      {/* Modal Styles */}
       <style jsx>{`
         .hero-slider-modal-overlay {
           position: fixed;

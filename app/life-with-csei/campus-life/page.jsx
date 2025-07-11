@@ -40,13 +40,6 @@ export default function LifeIntro() {
               Discover how life with CSEI Academy transforms education into a
               pathway for lifelong achievement and opportunity.
             </p>
-
-            <a
-              href="/life-with-csei"
-              className="inline-block px-6 py-3 bg-[#4b0082] text-black font-semibold rounded shadow hover:bg-[#3a0069] transition"
-            >
-              Explore Student Life
-            </a>
           </div>
         </div>
       </div>

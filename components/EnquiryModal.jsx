@@ -49,7 +49,7 @@ export default function EnquiryModal({ isOpen, onClose }) {
             <option value="">Select Course *</option>
 
             {regularPrograms.length > 0 && (
-              <optgroup label="Programs">
+              <optgroup label="University Progression">
                 {regularPrograms.map((program) => (
                   <option
                     key={program.id}

@@ -39,7 +39,7 @@ export default function Overview({ data }) {
       viewport={{ once: true, margin: "-50px" }}
       data-aos="fade-up"
       data-aos-delay="150"
-      className="bg-white rounded-xl shadow-sm mb-15 custom-margin"
+      className="bg-white rounded-xl shadow-sm mb-15 custom-margin custom-linear-blue-top"
       style={{
         opacity: 1,
         border: "1px solid #ddd",
@@ -75,8 +75,6 @@ export default function Overview({ data }) {
                 marginBottom: "1.5rem",
                 padding: "20px",
                 marginLeft: "1rem",
-                background:
-                  "linear-gradient(135deg, rgb(255, 255, 255) 0%, rgb(219, 234, 254) 25%, rgb(134, 179, 247) 50%, rgba(58, 90, 203, 0.2) 75%, rgb(15 29 86 / 4%) 100%)",
               }}
               data-aos="fade-up"
               data-aos-delay={index * 100}

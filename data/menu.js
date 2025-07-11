@@ -66,14 +66,14 @@ export const menuList = [
                 label: "Level 5",
                 href: "/programs/tourism-hospitality/level-5",
               },
-              {
-                label: "Level 6",
-                href: "/programs/tourism-hospitality/level-6",
-              },
-              {
-                label: "Level 7",
-                href: "/programs/tourism-hospitality/level-7",
-              },
+              // {
+              //   label: "Level 6",
+              //   href: "/programs/tourism-hospitality/level-6",
+              // },
+              // {
+              //   label: "Level 7",
+              //   href: "/programs/tourism-hospitality/level-7",
+              // },
             ],
           },
           {

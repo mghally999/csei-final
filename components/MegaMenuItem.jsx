@@ -85,7 +85,7 @@ export default function MegaMenuItem({ section, pathname, handleLinkClick }) {
             {section.title || section.label || "Untitled"}
           </a>
         ) : (
-          <span className="text-base font-bold text-black">
+          <span className="text-base font-400 text-black">
             {section.title || section.label || "Untitled"}
           </span>
         )}
