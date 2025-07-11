@@ -100,8 +100,8 @@ const Brands = ({ backgroundColorComponent, brandsTwo }) => {
       style={{
         paddingTop: brandsTwo ? "3rem" : "5rem",
         paddingBottom: "3rem",
-        backgroundColor: backgroundColorComponent || "#eef2f6",
       }}
+      className="custom-linear-blue-top"
     >
       <div style={containerStyle}>
         {/* Header */}

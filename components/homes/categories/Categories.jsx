@@ -4,7 +4,7 @@ import { topCategories } from "../../../data/topCategories";
 
 const CategoriesHomeOne = () => {
   return (
-    <section className="layout-pt-md layout-pb-md">
+    <section className="layout-pt-md layout-pb-md custom-linear-blue-top">
       <div className="container">
         <div className="row justify-center text-center">
           <div className="col-auto">
@@ -15,7 +15,7 @@ const CategoriesHomeOne = () => {
         </div>
 
         <div className="pt-50">
-          <div className="row justify-content-center g-4">
+          <div className="row x-gap-80 justify-content-center g-4">
             {topCategories.map((item, i) => (
               <div
                 key={i}

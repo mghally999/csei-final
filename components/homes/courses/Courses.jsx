@@ -74,14 +74,14 @@ export default function Courses() {
     program.credentialTitle || `${program.title} - ${program.level}`;
 
   return (
-    <section className="layout-pt-lg layout-pb-lg bg-custom-navyblue text-white">
+    <section className="layout-pt-lg layout-pb-lg custom-linear-white-top text-black">
       <div className="row justify-center text-center">
         <div className="col-auto">
           <div className="sectionTitle">
-            <h2 className="sectionTitle__title text-2xl sm:text-3xl md:text-4xl lg:text-[42px] text-white leading-tight">
+            <h2 className="sectionTitle__title text-2xl sm:text-3xl md:text-4xl lg:text-[42px] text-black leading-tight">
               Trending Programs for September Intake 2025
             </h2>
-            <p className="sectionTitle__text text-sm sm:text-base md:text-lg text-white mt-2 sm:mt-3 md:mt-4">
+            <p className="sectionTitle__text text-sm sm:text-base md:text-lg text-black mt-2 sm:mt-3 md:mt-4">
               Explore our most popular programs across various disciplines
             </p>
           </div>
@@ -92,8 +92,8 @@ export default function Courses() {
         {categories.map((cat, i) => (
           <div onClick={() => setCategory(cat)} key={i}>
             <button
-              className={`tabs__button px-15 py-8 rounded-8 js-tabs-button ${
-                category === cat ? "tabActive bg-white text-dark" : "text-white"
+              className={`tabs__button px-15 py-8 fw-600 rounded-8 js-tabs-button ${
+                category === cat ? "tabActive bg-white text-dark" : "text-black"
               }`}
               type="button"
             >
@@ -115,7 +115,7 @@ export default function Courses() {
 
           return (
             <div key={index} className="col-xl-3 col-lg-4 col-md-6">
-              <div className="coursesCard -type-1 text-white">
+              <div className="coursesCard -type-1 text-black">
                 <div className="relative">
                   <div className="coursesCard__image overflow-hidden rounded-8">
                     <Image
@@ -130,7 +130,7 @@ export default function Courses() {
                   {course.professional && (
                     <div className="d-flex justify-between py-10 px-10 absolute-full-center z-3">
                       <div className="px-15 rounded-200">
-                        <span className="enhanced-badge text-11 lh-1 uppercase fw-900 text-white">
+                        <span className="enhanced-badge text-11 lh-1 uppercase fw-900 text-black">
                           PROFESSIONAL
                         </span>
                       </div>
@@ -139,13 +139,13 @@ export default function Courses() {
                 </div>
 
                 <div className="h-100 pt-15">
-                  <div className="text-14 lh-1 fw-500 mb-10 text-white">
+                  <div className="text-14 lh-1 fw-600 mb-10 text-black">
                     {course.school}
                   </div>
 
-                  <div className="text-17 lh-15 fw-500 text-white">
+                  <div className="text-17 lh-15 fw-800 text-black">
                     <Link
-                      className="linkCustom text-white hover:underline"
+                      className="linkCustom text-black hover:underline"
                       href={course.href}
                     >
                       {displayTitle}
@@ -162,7 +162,7 @@ export default function Courses() {
                           src="/assets/img/coursesCards/icons/2.svg"
                           alt="duration"
                         />
-                        <div className="text-14 lh-1 text-white">
+                        <div className="text-14 lh-1 text-black fw-500">
                           {course.duration}
                         </div>
                       </div>
@@ -177,7 +177,7 @@ export default function Courses() {
                           src="/assets/img/coursesCards/icons/3.svg"
                           alt="level"
                         />
-                        <div className="text-14 lh-1 text-white">
+                        <div className="text-14 lh-1 text-black fw-500">
                           {levelLabel}
                         </div>
                       </div>

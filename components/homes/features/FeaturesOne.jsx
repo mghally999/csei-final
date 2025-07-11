@@ -23,7 +23,8 @@ export default function LearnNewSkill() {
           left: 0,
           width: "100%",
           height: "100%",
-          backgroundColor: "#04044e",
+          background:
+            "linear-gradient(359deg, #ffffff 0%, #dbeafe 25%, #86b3f7 50%, #3a5acb 75%, #0f1d56 100%)",
           zIndex: -1,
         }}
       />
@@ -34,7 +35,7 @@ export default function LearnNewSkill() {
           <div className="col-xl-5 col-lg-6 col-md-10 order-2 order-lg-1">
             <div className="about-content">
               <h2
-                className="about-content__title customSized text-white"
+                className="about-content__title customSized text-black"
                 data-aos="fade-up"
               >
                 Why <span className="text-custom-orange"> CSEI Academy </span>?
@@ -56,7 +57,7 @@ export default function LearnNewSkill() {
               <div className="d-inline-block mt-30">
                 <Link
                   href="/admission"
-                  className="button -md text-white fw-700 bg-custom-orange hover:bg-custom-orange-dark transition-all duration-300"
+                  className="button -md text-black fw-700 bg-custom-orange hover:bg-custom-orange-dark transition-all duration-300"
                 >
                   Apply Now
                 </Link>
@@ -78,6 +79,7 @@ export default function LearnNewSkill() {
                     height: "100%",
                     width: "100%",
                     objectFit: "cover",
+                    borderRadius: "10px",
                     // filter: "brightness(0.7)",
                   }}
                   src="/assets/img/about/1.jpg"
@@ -152,9 +154,9 @@ export default function LearnNewSkill() {
         }
 
         .feature-text {
-          color: white;
-          font-size: 15px;
-          font-weight: 500;
+          color: #000000;
+          font-size: 16px;
+          font-weight: bold;
           line-height: 1.5;
         }
 

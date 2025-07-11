@@ -43,7 +43,7 @@ export const QualificationStructure = ({ data }) => {
               lineHeight: 1.8,
               fontSize: "18px",
               fontWeight: 600,
-              color: "#3a3a55",
+              color: "#000000",
               background:
                 "linear-gradient(135deg, rgb(255, 255, 255) 0%, rgb(219, 234, 254) 25%, rgb(134, 179, 247) 50%, rgba(58, 90, 203, 0.2) 75%, rgb(15 29 86 / 4%) 100%)",
             }}

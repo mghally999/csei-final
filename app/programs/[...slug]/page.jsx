@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 
 import StickyTabsSection from "@/components/StickyTabsSection";
 import ModalVideoComponent from "@/components/common/ModalVideo";
+import ProgramHighlightsBox from "@/components/ProgramHighlightsBox";
 
 import allPrograms from "@/data/programs/allPrograms";
 
@@ -46,33 +47,15 @@ export default function Page() {
 
   return (
     <>
-      <section className="page-header -type-5 bg-dark-1 layout-pb-lg custom-padding">
+      {/* Header Section */}
+      <section className="page-header -type-5 bg-dark-1 layout-pb-lg custom-padding custom-linear-blue-top">
         <div className="container">
           <div className="row y-gap-30 justify-center align-center">
+            {/* Left Content */}
             <div className="col-xl-6 col-lg-6 d-flex flex-column justify-center">
-              <div className="d-flex x-gap-15 y-gap-10 pb-20">
-                <div>
-                  <div className="badge px-15 py-8 text-11 bg-black text-white fw-600">
-                    {pageItem.category.toUpperCase()}
-                  </div>
-                </div>
-                <div>
-                  <div className="badge px-15 py-8 text-11 bg-black text-white fw-600">
-                    {pageItem.level.toUpperCase().replaceAll("-", " ")}
-                  </div>
-                </div>
-              </div>
-
-              <h1 className="mb-10 text-30 lh-14 text-white pr-60 lg:pr-0">
+              <h1 className="mb-10 text-30 lh-14 text-white pr-60 lg:pr-0 text-black">
                 {pageItem.title}
               </h1>
-
-              <div className="badge px-15 py-8 text-11 bg-purple-1 text-white fw-600 qualification-badge mt-20 enhanced-badge">
-                Qualification Structure: {pageItem.qualificationStructure}
-              </div>
-              <div className="badge px-15 py-8 text-11 bg-purple-1 text-white fw-600 qualification-badge mt-20 enhanced-badge">
-                Duration: {pageItem.duration}
-              </div>
 
               {/* Accreditation Logos */}
               <div
@@ -83,11 +66,11 @@ export default function Page() {
                   maxWidth: "1000px",
                   gap: "20px",
                   borderRadius: "10px",
-                  marginTop: "50px",
+                  marginTop: "20px",
+                  flexWrap: "wrap",
                 }}
               >
                 {pageItem.professional ? (
-                  // Show only KHDA
                   <div
                     className="bg-white rounded-lg shadow-md"
                     style={{
@@ -105,11 +88,10 @@ export default function Page() {
                       alt="KHDA Accredited"
                       width={200}
                       height={100}
-                      style={{ objectFit: "cover", maxHeight: "100%" }}
+                      style={{ objectFit: "contain", maxHeight: "100%" }}
                     />
                   </div>
                 ) : (
-                  // Show both OTHM + KHDA
                   <>
                     <div
                       className="bg-white rounded-lg shadow-md"
@@ -128,7 +110,7 @@ export default function Page() {
                         alt="OTHM Accredited"
                         width={200}
                         height={100}
-                        style={{ objectFit: "cover", maxHeight: "100%" }}
+                        style={{ objectFit: "contain", maxHeight: "100%" }}
                       />
                     </div>
                     <div
@@ -148,7 +130,7 @@ export default function Page() {
                         alt="KHDA Accredited"
                         width={200}
                         height={100}
-                        style={{ objectFit: "cover", maxHeight: "100%" }}
+                        style={{ objectFit: "contain", maxHeight: "100%" }}
                       />
                     </div>
                   </>
@@ -156,25 +138,35 @@ export default function Page() {
               </div>
             </div>
 
+            {/* Right Image */}
             <div className="col-xl-5 col-lg-6">
               <div className="relative">
                 <Image
                   width={690}
-                  height={342}
-                  className="w-1/1 course-img"
+                  height={500}
+                  className="w-full course-img rounded-xl object-cover"
                   src={pageItem.imageSrc}
                   alt="Course Image"
                 />
               </div>
             </div>
           </div>
+
+          {/* FULL-WIDTH Highlights Box Under Logos + Image */}
+          <div className="row mt-5">
+            <div className="col-12">
+              <ProgramHighlightsBox data={pageItem} layout="horizontal" />
+            </div>
+          </div>
         </div>
       </section>
 
+      {/* Tabs Section */}
       <div className="container">
         <StickyTabsSection program={pageItem} />
       </div>
 
+      {/* Video Modal */}
       <ModalVideoComponent
         videoId="LlCwHnp3kL4"
         isOpen={isOpen}

@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 export default function AccreditationIntro() {
   return (
     <section
-      className="layout-pt-lg layout-pb-lg relative"
+      className="layout-pt-lg layout-pb-lg relative custom-linear-white-top"
       style={{
         background:
           "linear-gradient(359deg, #ffffff 0%, #dbeafe 25%, #86b3f7 50%, #3a5acb 75%, #0f1d56 100%)",

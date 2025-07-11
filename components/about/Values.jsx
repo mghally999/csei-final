@@ -94,16 +94,23 @@ const values = [
 
 export default function Values() {
   return (
-    <section style={{ padding: "80px 0", backgroundColor: "#04044e" }}>
+    <section style={{ padding: "80px 0" }} className="custom-linear-blue-top">
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 16px" }}>
         {/* Section Title */}
         <div style={{ textAlign: "center", marginBottom: "40px" }}>
           <h2
-            style={{ color: "white", fontSize: "32px", marginBottom: "20px" }}
+            style={{
+              fontSize: "42px",
+              fontWeight: 800,
+              lineHeight: 1.3,
+              marginBottom: "35px",
+              color: "rgb(0, 0, 0)",
+            }}
           >
             Our Core Values
           </h2>
-          <p style={{ color: "white", fontSize: "16px", lineHeight: "1.6" }}>
+
+          <p style={{ color: "#000000", fontSize: "16px", lineHeight: "1.6" }}>
             The principles that shape our culture, guide our mission, and define
             our identity.
           </p>

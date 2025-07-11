@@ -55,7 +55,7 @@ export default function LifeBeyondClassroom() {
               </li>
               <li>
                 <Link
-                  href="/about"
+                  href="/about/our-values"
                   className="fw-700 text-[#4b0082] underline hover:text-[#2a005c] transition"
                 >
                   Our Core Values

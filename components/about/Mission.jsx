@@ -12,12 +12,10 @@ export default function Mission() {
 
   return (
     <section
-      className="layout-pb-lg"
+      className="layout-pb-lg custom-linear-white-top"
       style={{
         paddingTop: "100px",
         paddingBottom: "100px",
-        background:
-          "linear-gradient(63deg, #ffffff 0%, #dbeafe 25%, #86b3f7 50%, #3a5acb 75%, #0f1d56 100%)",
         color: "#ffffff",
         position: "relative",
         overflow: "hidden",

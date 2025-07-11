@@ -26,11 +26,12 @@ export default function Brief() {
           background-image: url("https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
           background-size: cover;
           background-position: center;
-          padding: 100px 20px;
           display: flex;
           align-items: center;
           justify-content: center;
           min-height: 600px;
+          padding-top: 200px;
+          padding-bottom: 100px;
           text-align: center;
         }
 
@@ -47,31 +48,53 @@ export default function Brief() {
         .content-wrapper {
           position: relative;
           z-index: 2;
-          max-width: 900px;
-          margin-top: 100px !important;
+          max-width: 1000px;
+          padding: 20px;
+          margin: 0 auto;
         }
 
         .sectionTitle__title {
-          font-size: 42px;
+          font-size: 2.75rem;
           font-weight: 800;
           margin-bottom: 24px;
           color: white;
         }
 
         .brief-paragraph {
-          font-size: 18px;
+          font-size: 1.125rem;
           font-weight: 500;
           line-height: 1.8;
           color: white;
         }
 
+        @media (max-width: 1024px) {
+          .sectionTitle__title {
+            font-size: 2.25rem;
+          }
+          .brief-paragraph {
+            font-size: 1.05rem;
+          }
+        }
+
         @media (max-width: 768px) {
           .sectionTitle__title {
-            font-size: 30px;
+            font-size: 1.75rem;
           }
-
           .brief-paragraph {
-            font-size: 16px;
+            font-size: 1rem;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .brief-section {
+            padding: 40px 16px;
+          }
+          .sectionTitle__title {
+            font-size: 1.5rem;
+          }
+          .brief-paragraph {
+            font-size: 0.95rem;
+            line-height: 1.6;
           }
         }
       `}</style>

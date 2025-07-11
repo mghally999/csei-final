@@ -10,7 +10,7 @@ export default function AboutCSEI() {
   }, []);
 
   return (
-    <section className="csei-section bg-custom-grey">
+    <section className="csei-section custom-linear-blue-top">
       <div className="container">
         <div className="row items-center">
           {/* LEFT SIDE - TEXT */}
@@ -55,10 +55,11 @@ export default function AboutCSEI() {
         }
 
         .csei-heading {
-          font-size: 2.5rem;
-          font-weight: 700;
-          color: #2d3748;
-          margin-bottom: 1.5rem;
+          ont-size: 42px;
+          font-weight: 800;
+          line-height: 1.3;
+          margin-bottom: 35px;
+          color: rgb(0, 0, 0);
         }
 
         .sectionTitle__text {
@@ -68,7 +69,7 @@ export default function AboutCSEI() {
           line-height: 1.8;
           font-size: 18px;
           font-weight: 600;
-          color: #3a3a55;
+          color: #000000;
           margin-bottom: 1.5rem;
         }
 

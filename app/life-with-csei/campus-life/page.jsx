@@ -43,7 +43,7 @@ export default function LifeIntro() {
 
             <a
               href="/life-with-csei"
-              className="inline-block px-6 py-3 bg-[#4b0082] text-white font-semibold rounded shadow hover:bg-[#3a0069] transition"
+              className="inline-block px-6 py-3 bg-[#4b0082] text-black font-semibold rounded shadow hover:bg-[#3a0069] transition"
             >
               Explore Student Life
             </a>

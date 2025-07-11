@@ -13,12 +13,6 @@ export const topCategories = [
   },
   {
     id: 3,
-    iconSrc: "/assets/img/featureCards/3.svg",
-    title: "Bachelors",
-    text: "126+ Courses",
-  },
-  {
-    id: 4,
     iconSrc: "/assets/img/featureCards/4.svg",
     title: "Professional",
     text: "35+ Courses",

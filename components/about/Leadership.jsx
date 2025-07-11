@@ -30,7 +30,7 @@ const leadershipTeam = [
 
 export default function Leadership() {
   return (
-    <section className="layout-pt-md layout-pb-lg bg-custom-grey">
+    <section className="layout-pt-md layout-pb-lg custom-linear-blue-top">
       <div className="container">
         {/* Title Section */}
         <div className="row justify-center text-center">

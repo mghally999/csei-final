@@ -243,7 +243,7 @@ export default function CourseListOne() {
         </div>
       </section>
 
-      <section className="custom-layout-padding">
+      <section className="custom-layout-padding custom-linear-white-top">
         <div className="container">
           <div className="row y-gap-50">
             <div className="col-xl-3 col-lg-4 lg:d-none">
@@ -705,11 +705,11 @@ export default function CourseListOne() {
                         </div>
 
                         <div className="h-100 pt-15">
-                          <div className="text-14 lh-1 text-dark-1 fw-500 mb-10">
+                          <div className="text-14 lh-1 text-dark-1 fw-600 mb-10">
                             {elm.school}
                           </div>
                           <div className="text-17 lh-15 fw-500 text-dark-1">
-                            <Link className="linkCustom" href={elm.href}>
+                            <Link className="fw-800 linkCustom" href={elm.href}>
                               {elm.title} - {elm.level}
                             </Link>
                           </div>

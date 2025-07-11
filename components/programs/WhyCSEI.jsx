@@ -29,7 +29,7 @@ export const WhyCSEI = ({ data }) => {
               lineHeight: 1.8,
               fontSize: "18px",
               fontWeight: 600,
-              color: "#3a3a55",
+              color: "#000000",
               marginBottom: "1.5rem",
               padding: "20px",
               marginLeft: "1rem",

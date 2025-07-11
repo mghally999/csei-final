@@ -9,7 +9,7 @@ export default function FeaturesSection() {
       <div className="section-header">
         <div className="container mx-auto text-center px-4">
           <h2 className="title">Features</h2>
-          <p className="subtitle">Discover what makes us different</p>
+          <p className="subtitle">Discover What Makes Our Students Different</p>
         </div>
       </div>
 
@@ -36,7 +36,6 @@ export default function FeaturesSection() {
               experience and personalized support to build confidence and
               real-world skills for a successful future.
             </p>
-            <a href="#">More</a>
           </div>
 
           {/* Time Box */}
@@ -55,11 +54,10 @@ export default function FeaturesSection() {
               Celebrate your achievements with us! When you graduate from CSEI
               Academy, we are proud to support you every step of the way—from
               your first class to graduation day and beyond. With our pathways
-              to globally accepted bachelor’s degrees and strong industry
-              connections, you’ll be ready to take on new challenges and reach
+              to globally accepted bachelor's degrees and strong industry
+              connections, you'll be ready to take on new challenges and reach
               your goals.
             </p>
-            <a href="#">More</a>
           </div>
 
           {/* Passion Box */}
@@ -73,13 +71,12 @@ export default function FeaturesSection() {
                 decoding="async"
               />
             </div>
-            <h2>Work In Dubai</h2>
+            <h2>Work in Dubai</h2>
             <p>
-              Imagine building your career in one of the world’s most dynamic
-              cities. Dubai is full of opportunities, and we’ll help you make
+              Imagine building your career in one of the world's most dynamic
+              cities. Dubai is full of opportunities, and we'll help you make
               the most of them by leveraging your strengths and skills.
             </p>
-            <a href="#">More</a>
           </div>
         </div>
       </div>
@@ -87,10 +84,17 @@ export default function FeaturesSection() {
       <style jsx>{`
         /* Features Section */
         .features {
-          padding-top: var(--main-padding-top);
-          padding-bottom: var(--main-padding-bottom);
+          padding-top: 100px;
+          padding-bottom: 100px;
           position: relative;
-          background-color: #eef2f6;
+          background: linear-gradient(
+            180deg,
+            rgb(255, 255, 255) 0%,
+            rgb(240, 248, 255) 25%,
+            rgb(219, 234, 254) 50%,
+            rgb(180, 210, 255) 75%,
+            rgb(134, 179, 247) 100%
+          ) !important;
         }
 
         /* Header Section - completely independent */
@@ -149,13 +153,12 @@ export default function FeaturesSection() {
         /* Box Styles - with all original animations */
         .box {
           text-align: center;
-          border: 1px solid #e5e7eb;
+          border: 1px solid #000000;
           border-radius: 8px;
           overflow: hidden;
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
           transition: all 0.3s ease;
           padding: 30px;
-          height: 100%;
         }
 
         .box:hover {
@@ -167,7 +170,7 @@ export default function FeaturesSection() {
           position: relative;
           overflow: hidden;
           border-radius: 8px;
-          height: 200px;
+          height: 150px;
           margin-bottom: 20px;
         }
 
@@ -237,14 +240,14 @@ export default function FeaturesSection() {
         .box p {
           font-size: 16px;
           line-height: 1.6;
-          min-height: 250px;
           margin-bottom: 25px;
-          color: #666;
+          color: #000000;
           transition: all 0.3s ease;
+          font-weight: 800;
         }
 
         .box:hover p {
-          color: #555;
+          color: #ffffff;
         }
 
         .box a {

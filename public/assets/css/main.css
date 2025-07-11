@@ -4050,7 +4050,7 @@ h6 {
 
 .featureCard.-type-1 .featureCard__content {
   height: 100%;
-  background: var(--color-light-3);
+  /* background: var(--color-light-3); */
   border-radius: 8px;
   padding: 26px 45px;
   display: flex;
@@ -4374,6 +4374,28 @@ h6 {
 
 .bg-custom-navyblue {
   background-color: #04044e;
+}
+
+.custom-linear-blue-top {
+  background: linear-gradient(
+    360deg,
+    rgb(255, 255, 255) 0%,
+    rgb(240, 248, 255) 25%,
+    rgb(219, 234, 254) 50%,
+    rgb(180, 210, 255) 75%,
+    rgb(134, 179, 247) 100%
+  ) !important;
+}
+
+.custom-linear-white-top {
+  background: linear-gradient(
+    180deg,
+    rgb(255, 255, 255) 0%,
+    rgb(240, 248, 255) 25%,
+    rgb(219, 234, 254) 50%,
+    rgb(180, 210, 255) 75%,
+    rgb(134, 179, 247) 100%
+  ) !important;
 }
 
 .bg-custom-grey {
@@ -6793,7 +6815,7 @@ h6 {
 .tab-section-paragraph {
   font-size: 18px;
   font-weight: 500;
-  color: #3a3a55;
+  color: #000000;
   line-height: 1.8;
   text-align: center;
 }
@@ -6834,7 +6856,7 @@ h6 {
 .csei-paragraph {
   font-size: 18px;
   font-weight: 400;
-  color: #3a3a55;
+  color: #000000;
   line-height: 1.8;
   margin-bottom: 16px;
 }
@@ -6844,8 +6866,8 @@ h6 {
 }
 
 .csei-section {
-  padding-top: 80px;
-  padding-bottom: 60px;
+  padding-top: 100px;
+  padding-bottom: 100px;
   background-color: white;
 }
 

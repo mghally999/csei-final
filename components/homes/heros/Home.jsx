@@ -292,6 +292,7 @@ export default function HomeHeroSlider() {
         @media (max-width: 1024px) {
           .hero-content-container {
             padding: 30px !important;
+            top: 40% !important;
           }
 
           .responsive-logo-container {
@@ -316,7 +317,7 @@ export default function HomeHeroSlider() {
         /* Phone view: column layout */
         @media (max-width: 640px) {
           .hero-content-container {
-            top: 36% !important;
+            top: 38% !important;
             padding: 20px !important;
             backdrop-filter: blur(2px);
           }

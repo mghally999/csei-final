@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 export default function GetApp() {
   return (
-    <section className="layout-pt-lg layout-pb-lg bg-light-3">
+    <section className="layout-pt-lg layout-pb-lg">
       <div className="container">
         <div className="row y-gap-20 items-center">
           <div className="col-xl-7 col-lg-7">

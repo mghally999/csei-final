@@ -1,118 +1,52 @@
 export const testimonials = [
   {
-    id: 0,
-    imageSrc: "/assets/img/testimonials/1.png",
-    name: "Courtney Henry",
-    position: "Web Designer",
-    comment: "Great Work",
-    description: `I think CSEI is the best theme I ever seen this year.
-        Amazing design, easy to customize and a design quality
-        superlative account on its cloud platform for the
-        optimized performance`,
-  },
-  {
     id: 1,
-    imageSrc: "/assets/img/testimonials/2.png",
-    name: "Ronald Richards",
-    position: "President of Sales",
-    comment: "Great Work",
-    description: `I think CSEI is the best theme I ever seen this year.
-        Amazing design, easy to customize and a design quality
-        superlative account on its cloud platform for the
-        optimized performance`,
+    imageSrc:
+      "https://ui-avatars.com/api/?name=Smarika+Basnet&background=3B82F6&color=fff",
+    name: "Smarika Basnet",
+    position: "Student at CSEI Academy",
+    comment: "Truly enriching experience",
+    description:
+      "The college provides a supportive learning environment with knowledgeable faculty dedicated to student growth.",
   },
   {
     id: 2,
-    imageSrc: "/assets/img/testimonials/3.png",
-    name: "Annette Black",
-    position: "Nursing Assistant",
-    comment: "Great Work",
-    description: `I think CSEI is the best theme I ever seen this year.
-        Amazing design, easy to customize and a design quality
-        superlative account on its cloud platform for the
-        optimized performance`,
+    imageSrc:
+      "https://ui-avatars.com/api/?name=Urmila+Shrestha&background=475569&color=fff",
+    name: "Urmila Shrestha",
+    position: "Student at CSEI Academy",
+    comment: "High standards & strong support",
+    description:
+      "Extremely pleased with CSEI Academy’s professional development, student support, and high-quality education.",
   },
   {
     id: 3,
-    imageSrc: "/assets/img/testimonials/4.png",
-    name: "Courtney Henry",
-    position: "Web Designer",
-    comment: "Great Work",
-    description: `I think CSEI is the best theme I ever seen this year.
-        Amazing design, easy to customize and a design quality
-        superlative account on its cloud platform for the
-        optimized performance`,
-  },
-];
-
-export const testimonialsTwo = [
-  {
-    id: 1,
-    author: "Ali Tufan",
-    position: "Product Manager, Apple Inc",
-    text: "It is no exaggeration to say this CSEI experience was transformative–both professionally and personally. This workshop will long remain a high point of my life.",
-  },
-  {
-    id: 2,
-    author: "John Smith",
-    position: "Marketing Director, XYZ Company",
-    text: "CSEI has helped me acquire valuable skills that have greatly enhanced my career prospects. The courses are comprehensive and taught by industry experts.",
-  },
-  {
-    id: 3,
-    author: "Emily Johnson",
-    position: "Freelance Graphic Designer",
-    text: "I've been using CSEI for several months now, and I'm impressed by the quality of the courses. They cover a wide range of topics and are easy to follow.",
+    imageSrc:
+      "https://ui-avatars.com/api/?name=Shrejal+Magar&background=06B6D4&color=fff",
+    name: "Shrejal Magar",
+    position: "Nursing Graduate",
+    comment: "From student to DHA holder",
+    description:
+      "I had a great experience with CSEI Academy. I’m now a DHA holder nurse because of their guidance and support.",
   },
   {
     id: 4,
-    author: "David Brown",
-    position: "Software Engineer, ABC Corporation",
-    text: "I highly recommend CSEI for anyone looking to upskill or learn new technologies. The platform is user-friendly, and the instructors are knowledgeable.",
+    imageSrc:
+      "https://ui-avatars.com/api/?name=Sushmita+Budathoki&background=9333EA&color=fff",
+    name: "Sushmita Budathoki",
+    position: "Student at CSEI Academy",
+    comment: "Guided through every step",
+    description:
+      "CSEI guided me from the admission process to placement. The staff was very supportive. Highly recommended!",
   },
   {
     id: 5,
-    author: "Sarah Thompson",
-    position: "Digital Marketing Specialist",
-    text: "CSEI has been a game-changer for me. The courses are up-to-date and relevant, helping me stay ahead in the ever-changing field of digital marketing.",
-  },
-  // Add more testimonial objects as needed
-];
-
-export const paginationImages = [
-  "/assets/img/home-3/testimonials/1.png",
-  "/assets/img/home-3/testimonials/2.png",
-  "/assets/img/home-3/testimonials/3.png",
-  "/assets/img/home-3/testimonials/4.png",
-  "/assets/img/home-3/testimonials/5.png",
-];
-
-export const testimonialsTwoFour = [
-  {
-    id: 1,
-    image: "/assets/img/home-4/testimonials/1.png",
-    rating: 4.5,
-    numRatings: 1991,
-    text: "I think CSEI is the best theme I ever seen this year. Amazing design, easy to customize and a design.",
-    name: "Courtney Henry",
-    profession: "Web Designer",
-  },
-  {
-    id: 2,
-    image: "/assets/img/home-4/testimonials/2.png",
-    rating: 4.5,
-    numRatings: 1991,
-    text: "I think CSEI is the best theme I ever seen this year. Amazing design, easy to customize and a design.",
-    name: "Courtney Henry",
-    profession: "Web Designer",
-  },
-  {
-    id: 3,
-    image: "/assets/img/home-4/testimonials/3.png",
-    rating: 4.5,
-    numRatings: 1991,
-    text: "I think CSEI is the best theme I ever seen this year. Amazing design, easy to customize and a design.",
-    name: "Courtney Henry",
-    profession: "Web Designer",
+    imageSrc:
+      "https://ui-avatars.com/api/?name=Alka+Thulung&background=F97316&color=fff",
+    name: "Alka Thulung",
+    position: "Long-term Student",
+    comment: "Years of positive experience",
+    description:
+      "I’ve been with CSEI for years. The staff is cooperative and friendly. Best experience ever—I guarantee you won’t regret it!",
   },
 ];

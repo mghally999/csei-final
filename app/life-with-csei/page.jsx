@@ -11,7 +11,6 @@ import AcademicMentoring from "@/components/AcademicMentoring";
 import StudentPortal from "@/components/StudentPortal";
 import LMSOverview from "@/components/LMSOverview";
 import AlumniNetwork from "@/components/AlumniNetwork";
-import AccreditationIntro from "@/components/AccreditationIntro";
 import ProgramSpecializations from "@/components/ProgramSpecializations";
 
 export default function Page() {
@@ -19,7 +18,6 @@ export default function Page() {
     <div className="layout-pb-lg">
       <div className="main-content">
         <div className="content-wrapper js-content-wrapper overflow-hidden">
-          <AccreditationIntro />
           <ProgramSpecializations />
           <LifeIntro />
           <LifeBeyondClassroom />

@@ -70,46 +70,8 @@ export default function RootLayout({ children }) {
 
             <FooterOne />
 
-            {/* 🔹 Bottom Left WhatsApp Button */}
-            <Link
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                position: "fixed",
-                bottom: "65px",
-                left: "20px",
-                zIndex: 9999,
-                backgroundColor: "#25D366",
-                color: "white",
-                padding: "12px 18px",
-                borderRadius: "50px",
-                fontWeight: "600",
-                fontSize: "1rem",
-                border: "none",
-                boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-                textDecoration: "none",
-              }}
-            >
-              <FaWhatsapp size={30} />
-            </Link>
-
-            {/* 🔹 Right-Center Floating Social Bar */}
-            <div
-              style={{
-                position: "fixed",
-                top: "75%",
-                right: "20px",
-                transform: "translateY(-50%)",
-                zIndex: 9999,
-                display: "flex",
-                flexDirection: "column",
-                gap: "12px",
-              }}
-            >
+            {/* 🔹 Right Floating Social Icons */}
+            <div className="floating-social-icons">
               <div
                 onClick={() => window.open(whatsappLink, "_blank")}
                 style={socialIconStyle}
@@ -147,7 +109,7 @@ export default function RootLayout({ children }) {
               </div>
             </div>
 
-            {/* 🔹 Top Right Quick Enquiry Button */}
+            {/* 🔹 Quick Enquiry Button */}
             <button
               onClick={() => setShowModal(true)}
               style={{
@@ -175,7 +137,7 @@ export default function RootLayout({ children }) {
               onClose={() => setShowModal(false)}
             />
 
-            {/* 🔹 Global Animations */}
+            {/* 🔹 Global Styles */}
             <style jsx global>{`
               @keyframes floatY {
                 0% {
@@ -188,6 +150,28 @@ export default function RootLayout({ children }) {
                   transform: translateY(0);
                 }
               }
+
+              .floating-social-icons {
+                position: fixed;
+                top: 75%;
+                right: 20px;
+                transform: translateY(-50%);
+                z-index: 9999;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+              }
+
+              @media (max-width: 768px) {
+                .floating-social-icons {
+                  top: auto;
+                  bottom: 20px;
+                  right: 50%;
+                  transform: translateX(50%);
+                  flex-direction: row;
+                  gap: 10px;
+                }
+              }
             `}</style>
           </div>
         </Context>
@@ -196,7 +180,7 @@ export default function RootLayout({ children }) {
   );
 }
 
-// 🔹 Floating Icon Style
+// 🔹 Shared Icon Style
 const socialIconStyle = {
   backgroundColor: "#fff",
   color: "#e05500",

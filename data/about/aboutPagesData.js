@@ -18,18 +18,16 @@ const aboutPagesData = [
     image:
       "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=2070&q=80",
     content: [
-      `At CSEI Academy in Dubai, our mission is to ignite every student’s potential through
-affordable, internationally recognized education and inclusive campus environment. Our
-dedicated staff actively support, mentor, and inspire students from all backgrounds,
-ensuring every student feels valued and empowered throughout their journey. By blending
-hands-on learning with strong academic foundations and connecting students to real-
-world opportunities, we prepare future leaders to thrive and make a meaningful impact,
-both locally and globally.`,
+      `      Our dedicated staff support, mentor, and inspire learners from all
+              backgrounds, ensuring they feel valued and empowered. Through
+              hands-on experiences, strong academic foundations, and
+              industry-driven opportunities, we prepare future leaders to
+              succeed and impact the world — locally and globally.`,
     ],
   },
   {
-    slug: "message-from-director",
-    title: "Message from the Director",
+    slug: "our-leadership",
+    title: "Our Leadership",
     image:
       "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=2070&q=80",
     content: [

@@ -1,9 +1,6 @@
 "use client";
 import React from "react";
 
-// Preloader, Header, Footer, Page Links
-import FooterOne from "@/components/layout/footers/FooterOne";
-
 // About Us Sections
 import Brief from "@/components/about/Brief";
 import AboutCSEI from "@/components/about/AboutCSEI";
@@ -15,6 +12,7 @@ import Leadership from "@/components/about/Leadership";
 // Extra Sections
 import TestimonialsOne from "@/components/common/TestimonialsOne";
 import Brands from "@/components/common/Brands";
+import AccreditationIntro from "@/components/AccreditationIntro";
 
 export default function Page() {
   return (
@@ -26,6 +24,7 @@ export default function Page() {
         <Values />
         <OrganizationStructure />
         <Leadership />
+        <AccreditationIntro />
         <Brands />
       </div>
     </div>
