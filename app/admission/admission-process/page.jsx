@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { FiArrowRight } from "react-icons/fi";
 import { motion } from "framer-motion";
+import ApplicationFormModal from "@/components/ApplicationFormModal";
 
 const checkStyle = {
   width: "28px",
@@ -85,6 +86,16 @@ const StepCard = ({ title, children }) => (
 );
 
 export default function AdmissionProcess() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div>
       {/* Hero Banner */}
@@ -145,6 +156,7 @@ export default function AdmissionProcess() {
           style={{ marginTop: "40px" }}
         >
           <motion.button
+            onClick={() => setIsModalOpen(true)}
             whileHover={{
               scale: 1.05,
               backgroundColor: "#111111",
@@ -630,8 +642,44 @@ export default function AdmissionProcess() {
               ))}
             </div>
           </motion.div>
+
+          {/* CTA Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            style={{
+              textAlign: "center",
+              marginTop: "40px",
+            }}
+          >
+            <motion.button
+              onClick={() => setIsModalOpen(true)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              style={{
+                backgroundColor: "#000000",
+                color: "white",
+                padding: "16px 32px",
+                borderRadius: "10px",
+                border: "none",
+                fontSize: "18px",
+                fontWeight: "600",
+                cursor: "pointer",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "12px",
+              }}
+            >
+              Start Your Application{" "}
+              <FiArrowRight style={{ fontSize: "24px" }} />
+            </motion.button>
+          </motion.div>
         </div>
       </section>
+
+      {/* Application Form Modal */}
+      <ApplicationFormModal isOpen={isModalOpen} onClose={handleCloseModal} />
     </div>
   );
 }

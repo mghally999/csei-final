@@ -211,7 +211,7 @@ export default function AttestationGuidance() {
           transition={{ duration: 0.6 }}
         >
           <a
-            href="/contact"
+            href="/contact-us"
             className="button -md -dark-1 bg-blue-1 text-white"
             style={{
               display: "inline-flex",

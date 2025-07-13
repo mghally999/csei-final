@@ -10,36 +10,44 @@ export default function MobileMenu({ setActiveMobileMenu, activeMobileMenu }) {
   const pathname = usePathname();
   const [menuNesting, setMenuNesting] = useState([]);
   const [activeMenu, setActiveMenu] = useState("");
-  const [activeSubmenu, setActiveSubmenu] = useState("");
+  const [activeHref, setActiveHref] = useState("");
 
-  // ✅ Detect active item (any depth)
   useEffect(() => {
-    const findMatch = (items, topTitle = "", midTitle = "") => {
+    let bestMatchHref = "";
+    let bestMatchMenu = "";
+
+    const matchDeep = (items, parentTitle) => {
       for (const item of items) {
         if (item.href && pathname.startsWith(item.href)) {
-          setActiveMenu(topTitle || item.title || item.label);
-          setActiveSubmenu(midTitle || "");
+          if (item.href.length > bestMatchHref.length) {
+            bestMatchHref = item.href;
+            bestMatchMenu = parentTitle;
+          }
         }
-
-        if (item.links?.length) {
-          findMatch(
-            item.links,
-            topTitle || item.title || item.label,
-            item.title || item.label
-          );
+        if (item.links && item.links.length > 0) {
+          matchDeep(item.links, parentTitle);
         }
       }
     };
 
     menuList.forEach((menu) => {
+      const title = menu.title || menu.label || "Untitled";
+      const links = menu.links || menu.dropdown || [];
+
       if (menu.href && pathname.startsWith(menu.href)) {
-        setActiveMenu(menu.title);
-        setActiveSubmenu("");
+        if (menu.href.length > bestMatchHref.length) {
+          bestMatchHref = menu.href;
+          bestMatchMenu = title;
+        }
       }
-      if (menu.links?.length) {
-        findMatch(menu.links, menu.title);
+
+      if (links.length > 0) {
+        matchDeep(links, title);
       }
     });
+
+    setActiveMenu(bestMatchMenu);
+    setActiveHref(bestMatchHref);
   }, [pathname]);
 
   return (
@@ -49,144 +57,74 @@ export default function MobileMenu({ setActiveMobileMenu, activeMobileMenu }) {
       }`}
     >
       <div className="header-menu__content">
-        <div className="mobile-bg js-mobile-bg"></div>
-
-        <div className="d-none xl:d-flex items-center px-20 py-20 border-bottom-light">
-          <Link
-            href="/login"
-            className={`text-dark-1 ${
-              pathname === "/login" ? "activeMenu" : "inActiveMenu"
-            }`}
-          >
-            Log in
-          </Link>
-          <Link
-            href="/signup"
-            className={`text-dark-1 ml-30 ${
-              pathname === "/signup" ? "activeMenu" : "inActiveMenu"
-            }`}
-          >
-            Sign Up
-          </Link>
-        </div>
+        <div className="mobile-bg js-mobile-bg" />
 
         <div className="mobileMenu text-dark-1">
-          {menuList.map((menu, i) => (
-            <div key={i} className="submenuOne">
-              <div className="title flex items-center justify-between">
-                {menu.href ? (
-                  <Link
-                    href={menu.href}
-                    className={`w-full ${
-                      activeMenu === menu.title ? "activeMenu" : "inActiveMenu"
-                    }`}
-                    onClick={() => setActiveMobileMenu(false)}
-                  >
-                    {menu.title}
-                  </Link>
-                ) : (
-                  <span
-                    className={`w-full ${
-                      activeMenu === menu.title ? "activeMenu" : "inActiveMenu"
-                    }`}
-                    onClick={() =>
-                      setMenuNesting((prev) =>
-                        prev[0] === menu.title ? [] : [menu.title]
-                      )
-                    }
-                  >
-                    {menu.title}
-                  </span>
-                )}
+          {menuList.map((menu, i) => {
+            const title = menu.title || menu.label || "Untitled";
+            const links = menu.links || menu.dropdown || [];
+            const hasDropdown = links.length > 0;
 
-                {menu.links && (
-                  <i
-                    className={`icon-chevron-right text-13 ml-10 ${
-                      menuNesting[0] === menu.title ? "active" : ""
-                    }`}
-                    onClick={() =>
-                      setMenuNesting((prev) =>
-                        prev[0] === menu.title ? [] : [menu.title]
-                      )
-                    }
-                  ></i>
-                )}
-              </div>
+            return (
+              <div key={i} className="submenuOne">
+                <div className="title flex items-center justify-between">
+                  {menu.href ? (
+                    <Link
+                      href={menu.href}
+                      className={`w-full ${
+                        activeMenu === title ? "activeMenu" : "inActiveMenu"
+                      }`}
+                      onClick={() => setActiveMobileMenu(false)}
+                    >
+                      {title}
+                    </Link>
+                  ) : (
+                    <span
+                      className={`w-full ${
+                        activeMenu === title ? "activeMenu" : "inActiveMenu"
+                      }`}
+                      onClick={() =>
+                        setMenuNesting((prev) =>
+                          prev[0] === title ? [] : [title]
+                        )
+                      }
+                    >
+                      {title}
+                    </span>
+                  )}
 
-              {menu.links &&
-                menu.links.map((section, j) => (
+                  {hasDropdown && (
+                    <i
+                      className={`icon-chevron-right text-13 ml-10 ${
+                        menuNesting[0] === title ? "active" : ""
+                      }`}
+                      onClick={() =>
+                        setMenuNesting((prev) =>
+                          prev[0] === title ? [] : [title]
+                        )
+                      }
+                    />
+                  )}
+                </div>
+
+                {hasDropdown && (
                   <div
-                    key={j}
                     className={`toggle ${
-                      menuNesting[0] === menu.title ? "active" : ""
+                      menuNesting[0] === title ? "active" : ""
                     }`}
                   >
-                    {section.href && (
-                      <Link
-                        href={section.href}
-                        className={`link ${
-                          pathname.startsWith(section.href)
-                            ? "activeMenu"
-                            : "inActiveMenu"
-                        }`}
-                        onClick={() => setActiveMobileMenu(false)}
-                      >
-                        {section.label || section.title}
-                      </Link>
-                    )}
+                    {links.map((section, j) => {
+                      const hasSubLinks = section.links?.length > 0;
+                      const label = section.label || section.title || "Unnamed";
 
-                    {section.links && (
-                      <div className="submenuTwo">
-                        <div className="title flex items-center justify-between">
-                          <span
-                            className={`w-full ${
-                              activeSubmenu === section.title
-                                ? "activeMenu"
-                                : "inActiveMenu"
-                            }`}
-                            onClick={() =>
-                              setMenuNesting((prev) =>
-                                prev[1] === section.title
-                                  ? [prev[0]]
-                                  : [prev[0], section.title]
-                              )
-                            }
-                          >
-                            {section.title}
-                          </span>
-                          <i
-                            className={`icon-chevron-right text-13 ml-10 ${
-                              menuNesting[1] === section.title ? "active" : ""
-                            }`}
-                            onClick={() =>
-                              setMenuNesting((prev) =>
-                                prev[1] === section.title
-                                  ? [prev[0]]
-                                  : [prev[0], section.title]
-                              )
-                            }
-                          ></i>
-                        </div>
-
-                        <div
-                          className={`toggle ${
-                            menuNesting[1] === section.title ? "active" : ""
-                          }`}
-                        >
-                          {section.links.map((child, k) => {
-                            const href = child.href;
-                            const label =
-                              child.label || child.title || "Unnamed";
-
-                            // ✅ Skip if href is missing
-                            if (!href) return null;
-
-                            return (
+                      return (
+                        <div key={j} className="submenuTwo">
+                          <div className="title flex items-center justify-between">
+                            {section.href ? (
                               <Link
-                                key={k}
-                                href={href}
-                                className={`link ${
-                                  pathname.startsWith(href)
+                                href={section.href}
+                                className={`w-full ${
+                                  activeHref === section.href
                                     ? "activeMenu"
                                     : "inActiveMenu"
                                 }`}
@@ -194,15 +132,79 @@ export default function MobileMenu({ setActiveMobileMenu, activeMobileMenu }) {
                               >
                                 {label}
                               </Link>
-                            );
-                          })}
+                            ) : (
+                              <span
+                                className={`w-full ${
+                                  menuNesting[1] === label
+                                    ? "activeMenu"
+                                    : "inActiveMenu"
+                                }`}
+                                onClick={() =>
+                                  setMenuNesting((prev) =>
+                                    prev[1] === label
+                                      ? [prev[0]]
+                                      : [prev[0], label]
+                                  )
+                                }
+                              >
+                                {label}
+                              </span>
+                            )}
+
+                            {hasSubLinks && (
+                              <i
+                                className={`icon-chevron-right text-13 ml-10 ${
+                                  menuNesting[1] === label ? "active" : ""
+                                }`}
+                                onClick={() =>
+                                  setMenuNesting((prev) =>
+                                    prev[1] === label
+                                      ? [prev[0]]
+                                      : [prev[0], label]
+                                  )
+                                }
+                              />
+                            )}
+                          </div>
+
+                          {hasSubLinks && (
+                            <div
+                              className={`toggle ${
+                                menuNesting[1] === label ? "active" : ""
+                              }`}
+                            >
+                              {section.links.map((child, k) => {
+                                const href = child.href;
+                                const childLabel =
+                                  child.label || child.title || "Unnamed";
+
+                                if (!href) return null;
+
+                                return (
+                                  <Link
+                                    key={k}
+                                    href={href}
+                                    className={`link ${
+                                      pathname.startsWith(href)
+                                        ? "activeMenu"
+                                        : "inActiveMenu"
+                                    }`}
+                                    onClick={() => setActiveMobileMenu(false)}
+                                  >
+                                    {childLabel}
+                                  </Link>
+                                );
+                              })}
+                            </div>
+                          )}
                         </div>
-                      </div>
-                    )}
+                      );
+                    })}
                   </div>
-                ))}
-            </div>
-          ))}
+                )}
+              </div>
+            );
+          })}
         </div>
 
         <MobileFooter />
@@ -210,8 +212,8 @@ export default function MobileMenu({ setActiveMobileMenu, activeMobileMenu }) {
 
       <div
         className="header-menu-close"
-        onClick={() => setActiveMobileMenu(false)}
         data-el-toggle=".js-mobile-menu-toggle"
+        onClick={() => setActiveMobileMenu(false)}
       >
         <div className="size-40 d-flex items-center justify-center rounded-full bg-white">
           <div className="icon-close text-dark-1 text-16"></div>
@@ -221,7 +223,7 @@ export default function MobileMenu({ setActiveMobileMenu, activeMobileMenu }) {
       <div
         className="header-menu-bg"
         onClick={() => setActiveMobileMenu(false)}
-      ></div>
+      />
     </div>
   );
 }

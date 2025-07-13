@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
 import { motion } from "framer-motion";
+import ApplicationFormModal from "@/components/ApplicationFormModal";
 
 const checkStyle = {
   width: "28px",
@@ -154,6 +155,7 @@ const DocumentTable = ({ title, items }) => (
 );
 
 export default function ApplyNowGuide() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const allDocuments = [
     {
       document: "1. Passport Copy",
@@ -212,6 +214,14 @@ export default function ApplyNowGuide() {
       description: "If applying for licensing support through CSEI",
     },
   ];
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <div>
@@ -656,30 +666,33 @@ export default function ApplyNowGuide() {
               marginTop: "40px",
             }}
           >
-            <motion.a
-              href="/apply-now"
-              className="button -md -dark-1 bg-blue-1 text-white"
+            <motion.button
+              onClick={() => setIsModalOpen(true)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               style={{
+                backgroundColor: "#000000",
+                color: "white",
+                padding: "16px 32px",
+                borderRadius: "10px",
+                border: "none",
+                fontSize: "18px",
+                fontWeight: "600",
+                cursor: "pointer",
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "12px",
-                padding: "16px 32px",
-                backgroundColor: "#000000",
-                color: "white",
-                borderRadius: "10px",
-                textDecoration: "none",
-                fontSize: "18px",
-                fontWeight: "600",
               }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
             >
               Start Your Application{" "}
               <FiArrowRight style={{ fontSize: "24px" }} />
-            </motion.a>
+            </motion.button>
           </motion.div>
         </div>
       </section>
+
+      {/* Application Form Modal */}
+      <ApplicationFormModal isOpen={isModalOpen} onClose={handleCloseModal} />
     </div>
   );
 }

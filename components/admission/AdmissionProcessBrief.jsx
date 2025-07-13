@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { FiArrowRight } from "react-icons/fi";
 import { motion } from "framer-motion";
+import ApplicationFormModal from "@/components/ApplicationFormModal";
 
 const checkStyle = {
   width: "28px",
@@ -85,9 +86,18 @@ const StepCard = ({ title, children }) => (
 );
 
 export default function AdmissionProcess() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleApplyNowClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div>
-      {/* Hero Banner */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -145,6 +155,7 @@ export default function AdmissionProcess() {
           style={{ marginTop: "40px" }}
         >
           <motion.button
+            onClick={handleApplyNowClick}
             whileHover={{
               scale: 1.05,
               backgroundColor: "#111111",
@@ -181,7 +192,6 @@ export default function AdmissionProcess() {
         </motion.div>
       </motion.div>
 
-      {/* Scholarship Banner */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -200,7 +210,6 @@ export default function AdmissionProcess() {
         Scholarships valid until 31st July for September intake
       </motion.div>
 
-      {/* Main Content */}
       <section
         className="custom-linear-white-top"
         style={{
@@ -242,7 +251,6 @@ export default function AdmissionProcess() {
             />
           </motion.h2>
 
-          {/* Intro Paragraphs */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -276,7 +284,6 @@ export default function AdmissionProcess() {
             </p>
           </motion.div>
 
-          {/* Steps with Details */}
           <div style={{ marginBottom: "60px" }}>
             <motion.h3
               initial={{ opacity: 0 }}
@@ -293,7 +300,6 @@ export default function AdmissionProcess() {
               Admission Steps
             </motion.h3>
 
-            {/* Step 1 */}
             <StepCard title="Step 1: Submit Your Application online with required documents">
               <div
                 style={{
@@ -342,7 +348,6 @@ export default function AdmissionProcess() {
               </div>
             </StepCard>
 
-            {/* Step 2 */}
             <StepCard title="Step 2: Application Review & Virtual Interview">
               <p
                 style={{
@@ -357,7 +362,6 @@ export default function AdmissionProcess() {
               </p>
             </StepCard>
 
-            {/* Step 3 */}
             <StepCard title="Step 3: Receive Admission Offer Letter">
               <p
                 style={{
@@ -383,7 +387,6 @@ export default function AdmissionProcess() {
               </ul>
             </StepCard>
 
-            {/* Step 4 */}
             <StepCard title="Step 4: Accept Offer & Make Initial Payment">
               <p
                 style={{
@@ -416,7 +419,6 @@ export default function AdmissionProcess() {
               </p>
             </StepCard>
 
-            {/* Step 5 */}
             <StepCard title="Step 5: Final Enrollment & Orientation">
               <p
                 style={{
@@ -450,7 +452,6 @@ export default function AdmissionProcess() {
             </StepCard>
           </div>
 
-          {/* Additional Notes Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -567,7 +568,6 @@ export default function AdmissionProcess() {
             </div>
           </motion.div>
 
-          {/* Document Requirements Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -632,6 +632,8 @@ export default function AdmissionProcess() {
           </motion.div>
         </div>
       </section>
+
+      <ApplicationFormModal isOpen={isModalOpen} onClose={handleCloseModal} />
     </div>
   );
 }

@@ -1,12 +1,15 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation"; // App Router version
 import Image from "next/image";
 import Link from "next/link";
 import { FiArrowRight } from "react-icons/fi";
 import { motion } from "framer-motion";
 
 export default function ArrivalOrientationBrief() {
+  const router = useRouter();
+
   return (
     <section
       className="layout-pb-lg custom-padding custom-linear-white-top"
@@ -84,6 +87,7 @@ export default function ArrivalOrientationBrief() {
               style={{ marginTop: "40px" }}
             >
               <motion.button
+                onClick={() => router.push("/admission/arrival-support")}
                 whileHover={{
                   scale: 1.05,
                   backgroundColor: "#111111",

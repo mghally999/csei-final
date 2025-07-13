@@ -243,6 +243,10 @@ export const menuList = [
         href: "/admission/admission-process",
       },
       {
+        label: "Arrival Support",
+        href: "/admission/arrival-support",
+      },
+      {
         label: "International Students",
         href: "/admission/international-students",
       },

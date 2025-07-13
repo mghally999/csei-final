@@ -1,7 +1,8 @@
 "use client";
-import React from "react";
-import { FiDownload } from "react-icons/fi";
+import React, { useState } from "react";
+import { FiDownload, FiArrowRight } from "react-icons/fi";
 import { motion } from "framer-motion";
+import ApplicationFormModal from "@/components/ApplicationFormModal";
 
 const FeeCard = ({ title, children }) => (
   <motion.div
@@ -46,6 +47,11 @@ const FeeCard = ({ title, children }) => (
 );
 
 export default function TuitionFeesFull() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
+
   return (
     <div>
       {/* Scholarship Banner */}
@@ -473,6 +479,41 @@ export default function TuitionFeesFull() {
             </motion.a>
           </motion.div>
 
+          {/* Start Application Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            style={{
+              textAlign: "center",
+              marginTop: "40px",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <motion.button
+              onClick={handleOpenModal}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              style={{
+                backgroundColor: "#000000",
+                color: "white",
+                padding: "16px 32px",
+                borderRadius: "10px",
+                border: "none",
+                fontSize: "18px",
+                fontWeight: "600",
+                cursor: "pointer",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "12px",
+              }}
+            >
+              Start Your Application
+              <FiArrowRight style={{ fontSize: "24px" }} />
+            </motion.button>
+          </motion.div>
+
           {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -619,6 +660,9 @@ export default function TuitionFeesFull() {
           </motion.div>
         </div>
       </section>
+
+      {/* Modal Component */}
+      <ApplicationFormModal isOpen={isModalOpen} onClose={handleCloseModal} />
     </div>
   );
 }

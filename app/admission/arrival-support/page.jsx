@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import Image from "next/image";
 import { FiArrowRight } from "react-icons/fi";
+import { motion } from "framer-motion";
 import ApplicationFormModal from "@/components/ApplicationFormModal";
 
 const ListItem = ({ text }) => (
@@ -58,9 +59,9 @@ const Section = ({ title, children }) => (
       style={{
         fontSize: "26px",
         fontWeight: "700",
-        color: "#000",
+        color: "#0f1d56",
         marginBottom: "20px",
-        borderBottom: "2px solid #000",
+        borderBottom: "2px solid #0f1d56",
         paddingBottom: "10px",
       }}
     >
@@ -70,11 +71,16 @@ const Section = ({ title, children }) => (
   </motion.div>
 );
 
-export default function ScholarshipsPage() {
+export default function ArrivalOrientation() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleOpenModal = () => setIsModalOpen(true);
-  const handleCloseModal = () => setIsModalOpen(false);
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <section style={{ backgroundColor: "#f8f9fa" }} className="custom-padding">
@@ -91,50 +97,55 @@ export default function ScholarshipsPage() {
             color: "#0f1d56",
           }}
         >
-          Financial Aid & Scholarships
+          Arrival, Orientation & Student Support
         </motion.h2>
 
-        <Section title="Merit-Based Scholarships">
+        <Section title="Before You Arrive">
           <ul style={{ paddingLeft: 0, listStyle: "none" }}>
-            <ListItem text="Awarded based on academic excellence and past performance." />
-            <ListItem text="Available to both new and continuing students." />
-            <ListItem text="Minimum GPA or grade threshold may apply." />
+            <ListItem text="Receive your visa approval and prepare your travel documents." />
+            <ListItem text="Request airport pickup and accommodation assistance from CSEI." />
+            <ListItem text="Follow a pre-departure checklist (travel, insurance, housing)." />
           </ul>
         </Section>
 
-        <Section title="Need-Based Financial Support">
+        <Section title="Upon Arrival in Dubai">
           <ul style={{ paddingLeft: 0, listStyle: "none" }}>
-            <ListItem text="Designed for students from lower-income backgrounds." />
-            <ListItem text="Requires submission of income or financial documentation." />
-            <ListItem text="Subject to availability and budget allocation each semester." />
+            <ListItem text="Airport pickup and drop-off to accommodation (if arranged)." />
+            <ListItem text="Assistance with check-in and local transport guidance." />
+            <ListItem text="Medical test and Emirates ID support (for long-term visa holders)." />
           </ul>
         </Section>
 
-        <Section title="Alumni & Returning Student Grants">
+        <Section title="Student Orientation Program">
           <ul style={{ paddingLeft: 0, listStyle: "none" }}>
-            <ListItem text="Special tuition waivers for students who previously studied at CSEI." />
-            <ListItem text="Available for second diploma, professional courses, or skill programs." />
-            <ListItem text="Must apply through alumni portal or academic advisor." />
+            <ListItem text="Welcome session and campus/facility tour." />
+            <ListItem text="Academic schedule briefing and program introductions." />
+            <ListItem text="Explanation of UAE cultural norms, laws, and expectations." />
+            <ListItem text="Overview of visa rules, insurance, attendance policies." />
+            <ListItem text="Meet your faculty, student advisor, and program coordinator." />
           </ul>
         </Section>
 
-        <Section title="External Sponsorships & Partnerships">
+        <Section title="Ongoing Support Services">
           <ul style={{ paddingLeft: 0, listStyle: "none" }}>
-            <ListItem text="Students may apply through government or NGO sponsorship bodies." />
-            <ListItem text="Corporate or foundation scholarships available by nomination." />
-            <ListItem text="CSEI Academy will support documentation and verification." />
+            <ListItem text="Academic advisors and exam preparation resources." />
+            <ListItem text="Visa renewals, cancellations, and immigration guidance." />
+            <ListItem text="Accommodation and shared housing recommendations." />
+            <ListItem text="Emotional wellness, career coaching, and job fair access." />
+            <ListItem text="Student events, city tours, and volunteering opportunities." />
           </ul>
         </Section>
 
-        <Section title="Application & Deadlines">
+        <Section title="What to Bring With You">
           <ul style={{ paddingLeft: 0, listStyle: "none" }}>
-            <ListItem text="Scholarship applications must be submitted before semester start." />
-            <ListItem text="Late applications may not be considered for current intake." />
-            <ListItem text="Email financialaid@csei.ac.ae or speak to a counselor for help." />
-            <ListItem text="All scholarships are reviewed by the Financial Aid Committee." />
+            <ListItem text="Passport, visa copy, and attested academic documents." />
+            <ListItem text="Valid travel insurance (if not covered by CSEI)." />
+            <ListItem text="UAE-compatible debit/credit card or cash." />
+            <ListItem text="Light clothing, electronics, adapters, and essentials." />
           </ul>
         </Section>
 
+        {/* CTA Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -142,10 +153,6 @@ export default function ScholarshipsPage() {
           style={{
             textAlign: "center",
             marginTop: "40px",
-            display: "flex",
-            justifyContent: "center",
-            gap: "20px",
-            flexWrap: "wrap",
           }}
         >
           <motion.button
@@ -166,13 +173,12 @@ export default function ScholarshipsPage() {
               gap: "12px",
             }}
           >
-            Start Your Application
-            <FiArrowRight style={{ fontSize: "24px" }} />
+            Start Your Application <FiArrowRight style={{ fontSize: "24px" }} />
           </motion.button>
         </motion.div>
       </div>
 
-      {/* Modal Component */}
+      {/* Modal */}
       <ApplicationFormModal isOpen={isModalOpen} onClose={handleCloseModal} />
     </section>
   );

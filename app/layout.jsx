@@ -299,11 +299,11 @@ export default function RootLayout({ children }) {
 
               @media (max-width: 768px) {
                 .floating-social-icons {
-                  top: auto;
-                  bottom: 90px;
-                  right: 50%;
-                  transform: translateX(50%);
-                  flex-direction: row;
+                  // top: auto;
+                  // bottom: 90px;
+                  // right: 50%;
+                  // transform: translateX(50%);
+                  // flex-direction: row;
                 }
 
                 .quick-enquiry-btn {

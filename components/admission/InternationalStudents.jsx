@@ -1,11 +1,13 @@
 "use client";
-
 import React from "react";
+import { useRouter } from "next/navigation"; // Make sure this is at the top
 import Image from "next/image";
 import { FiArrowRight } from "react-icons/fi";
 import { motion } from "framer-motion";
 
 export default function InternationalStudentsBrief() {
+  const router = useRouter();
+
   return (
     <section
       className="layout-pb-lg custom-padding custom-linear-blue-top"
@@ -58,6 +60,7 @@ export default function InternationalStudentsBrief() {
               style={{ marginTop: "40px" }}
             >
               <motion.button
+                onClick={() => router.push("/admission/international-students")}
                 whileHover={{
                   scale: 1.05,
                   backgroundColor: "#111111",
