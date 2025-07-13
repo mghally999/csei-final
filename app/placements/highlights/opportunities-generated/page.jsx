@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function OpportunitiesGeneratedSection() {
   return (
     <div
-      className="layout-pb-lg"
+      className="layout-pb-lg custom-padding"
       style={{
         paddingTop: "80px",
         backgroundColor: "#f8f9fa",
@@ -20,7 +20,7 @@ export default function OpportunitiesGeneratedSection() {
             display: "flex",
             flexWrap: "wrap",
             margin: "-15px",
-            alignItems: "center",
+            alignItems: "stretch",
           }}
         >
           {/* Image Column */}
@@ -57,7 +57,7 @@ export default function OpportunitiesGeneratedSection() {
                   display: "block",
                   objectFit: "cover",
                 }}
-                src="/assets/images/opportunities.jpg"
+                src="https://images.unsplash.com/photo-1462536943532-57a629f6cc60?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Opportunities at CSEI Academy"
                 priority
               />

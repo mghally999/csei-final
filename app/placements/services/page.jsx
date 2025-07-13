@@ -1,74 +1,158 @@
 "use client";
 
-export default function ServicesPage() {
-  return (
-    <div className="main-content">
-      <div className="content-wrapper js-content-wrapper overflow-hidden">
-        <section className="layout-pt-lg layout-pb-md bg-[#F5F9FF] custom-padding">
-          <div className="container">
-            <div className="row y-gap-40 items-center">
-              {/* Left Column: Title + List */}
-              <div className="col-lg-6" data-aos="fade-up">
-                <h2
-                  style={{
-                    fontSize: "30px",
-                    fontWeight: "700",
-                    color: "#160643",
-                    marginBottom: "30px",
-                  }}
-                >
-                  Our Services
-                </h2>
-                <ul
-                  style={{
-                    listStyleType: "disc",
-                    paddingLeft: "1.5rem",
-                    fontSize: "16px",
-                    color: "#160643",
-                    lineHeight: "1.75rem",
-                  }}
-                >
-                  <li style={{ marginBottom: "22px" }}>
-                    <strong>Placement Training:</strong> Soft skills training,
-                    aptitude test preparation, resume writing workshops, mock
-                    interviews, and group discussion sessions to enhance
-                    employability.
-                  </li>
-                  <li style={{ marginBottom: "22px" }}>
-                    <strong>Internship Opportunities:</strong> Assistance in
-                    securing internships that provide practical exposure and
-                    build professional experience.
-                  </li>
-                  <li style={{ marginBottom: "22px" }}>
-                    <strong>Career Guidance Counselling:</strong> One-on-one or
-                    group counselling sessions to help students choose suitable
-                    career paths based on their strengths and interests.
-                  </li>
-                  <li style={{ marginBottom: "22px" }}>
-                    <strong>Alumni Network Support:</strong> Engagement with
-                    alumni for mentoring, networking, and job referrals.
-                  </li>
-                  <li>
-                    <strong>Corporate Tie-Ups:</strong> Building and maintaining
-                    relationships with various industries and organizations to
-                    create more placement opportunities.
-                  </li>
-                </ul>
-              </div>
+import React from "react";
+import Image from "next/image";
 
-              {/* Right Column: Image */}
-              <div className="col-lg-6" data-aos="fade-left">
-                <img
-                  src="https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="Services"
-                  className="rounded-16 w-full"
-                  width="520"
-                  height="480"
-                />
-              </div>
+export default function PlacementServices() {
+  return (
+    <div
+      className="layout-pb-lg custom-padding"
+      style={{
+        paddingTop: "80px",
+        backgroundColor: "#f8f9fa",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      <div className="container">
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            margin: "-15px",
+            alignItems: "center",
+          }}
+        >
+          {/* Left: Image */}
+          <div
+            style={{
+              flex: "0 0 50%",
+              maxWidth: "50%",
+              padding: "15px",
+            }}
+          >
+            <div
+              style={{
+                borderRadius: "12px",
+                overflow: "hidden",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+              }}
+            >
+              <Image
+                width={600}
+                height={420}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  display: "block",
+                  objectFit: "cover",
+                }}
+                src="https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop"
+                alt="CSEI Placement Services"
+                priority
+              />
             </div>
           </div>
-        </section>
+
+          {/* Right: Content */}
+          <div
+            style={{
+              flex: "0 0 50%",
+              maxWidth: "50%",
+              padding: "15px",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "36px",
+                fontWeight: 700,
+                lineHeight: "1.3",
+                color: "#2d3748",
+                marginBottom: "30px",
+                position: "relative",
+                paddingBottom: "15px",
+              }}
+            >
+              Our Services
+            </h2>
+
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "18px",
+                marginBottom: "10px",
+              }}
+            >
+              {[
+                {
+                  title: "Placement Training",
+                  desc: "Soft skills training, aptitude test preparation, resume writing workshops, mock interviews, and group discussion sessions to enhance employability.",
+                },
+                {
+                  title: "Internship Opportunities",
+                  desc: "Assistance in securing internships that provide practical exposure and build professional experience.",
+                },
+                {
+                  title: "Career Guidance Counselling",
+                  desc: "One-on-one or group counselling sessions to help students choose suitable career paths based on their strengths and interests.",
+                },
+                {
+                  title: "Alumni Network Support",
+                  desc: "Engagement with alumni for mentoring, networking, and job referrals.",
+                },
+                {
+                  title: "Corporate Tie-Ups",
+                  desc: "Building and maintaining relationships with various industries and organizations to create more placement opportunities.",
+                },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  style={{ display: "flex", alignItems: "flex-start" }}
+                >
+                  <div
+                    style={{
+                      marginRight: "15px",
+                      flexShrink: 0,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: "24px",
+                      height: "24px",
+                      backgroundColor: "#000000",
+                      borderRadius: "50%",
+                      color: "white",
+                      fontSize: "14px",
+                    }}
+                  >
+                    ✓
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <strong
+                      style={{
+                        fontSize: "16px",
+                        color: "#2d3748",
+                        fontWeight: 600,
+                      }}
+                    >
+                      {item.title}:
+                    </strong>{" "}
+                    <span
+                      style={{
+                        fontSize: "16px",
+                        lineHeight: "1.6",
+                        color: "#4a5568",
+                        fontWeight: 400,
+                      }}
+                    >
+                      {item.desc}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

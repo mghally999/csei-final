@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function StudentSatisfactionSection() {
   return (
     <div
-      className="layout-pb-lg"
+      className="layout-pb-lg custom-padding"
       style={{
         paddingTop: "80px",
         backgroundColor: "#f8f9fa",
@@ -20,7 +20,7 @@ export default function StudentSatisfactionSection() {
             display: "flex",
             flexWrap: "wrap",
             margin: "-15px",
-            alignItems: "center",
+            alignItems: "stretch",
           }}
         >
           {/* Image Column */}

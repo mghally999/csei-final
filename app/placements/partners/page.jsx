@@ -1,282 +1,183 @@
-// app/placements/[category]/partners/page.jsx
-
 "use client";
-
-import React from "react";
+import { useRef, useEffect } from "react";
 import Image from "next/image";
+import { brands } from "@/data/brands";
 
-export default function PartnersSection() {
+const containerStyle = {
+  maxWidth: "1200px",
+  margin: "0 auto",
+  padding: "0 1rem",
+};
+
+const headerStyle = {
+  textAlign: "center",
+  marginBottom: "2rem",
+};
+
+const titleStyle = {
+  fontSize: "2rem",
+  fontWeight: 700,
+  color: "#1f2937",
+};
+
+const subtitleStyle = {
+  fontSize: "1rem",
+  color: "#1f2937",
+  marginTop: "0.75rem",
+};
+
+const logosWrapperOuter = {
+  position: "relative",
+  paddingBottom: "2.5rem",
+};
+
+const logosWrapperStyle = {
+  display: "flex",
+  flexWrap: "nowrap",
+  gap: "1.5rem",
+  overflowX: "auto",
+  scrollBehavior: "smooth",
+  padding: "1.5rem 0",
+};
+
+const logoItemStyle = {
+  flexShrink: 0,
+  width: "180px",
+  height: "180px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "1rem",
+  backgroundColor: "#fff",
+  borderRadius: "0.5rem",
+  boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
+  transition: "box-shadow 0.3s ease",
+};
+
+const logoImageStyle = {
+  objectFit: "contain",
+  width: "100%",
+  height: "100%",
+  transition: "transform 0.3s ease",
+};
+
+const arrowStyle = {
+  position: "absolute",
+  bottom: "0",
+  zIndex: 10,
+  backgroundColor: "#000",
+  color: "#fff",
+  border: "none",
+  borderRadius: "50%",
+  width: "40px",
+  height: "40px",
+  cursor: "pointer",
+  display: "none", // only via media query
+  alignItems: "center",
+  justifyContent: "center",
+  fontSize: "1.25rem",
+  opacity: 0.85,
+};
+
+const Brands = ({ backgroundColorComponent, brandsTwo }) => {
+  const scrollRef = useRef(null);
+
+  // Auto-scroll to right initially (like peeking cards)
+  useEffect(() => {
+    if (scrollRef.current && window.innerWidth < 1024) {
+      scrollRef.current.scrollLeft = 100;
+    }
+  }, []);
+
+  const scroll = (direction) => {
+    if (!scrollRef.current) return;
+    const amount = direction === "left" ? -300 : 300;
+    scrollRef.current.scrollBy({ left: amount, behavior: "smooth" });
+  };
+
   return (
-    <div
-      className="layout-pb-lg"
-      style={{
-        paddingTop: "80px",
-        backgroundColor: "#f8f9fa",
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      <div className="container">
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            margin: "-15px",
-            alignItems: "center",
-          }}
-        >
-          {/* Content Column - Left Side */}
-          <div
-            style={{
-              flex: "0 0 50%",
-              maxWidth: "50%",
-              padding: "15px",
-              "@media (max-width: 992px)": {
-                flex: "0 0 100%",
-                maxWidth: "100%",
-              },
-            }}
+    <section className="custom-padding custom-linear-blue-top">
+      <div style={containerStyle}>
+        {/* Header */}
+        <div style={headerStyle}>
+          <h2 style={titleStyle}>Industrial Partners</h2>
+          <p style={subtitleStyle}>
+            CSEI Academy is proudly accredited by globally recognized
+            institutions.
+          </p>
+        </div>
+
+        {/* Scrollable Logos with Mobile Arrows */}
+        <div style={logosWrapperOuter}>
+          {/* Left arrow */}
+          <button
+            className="brand-arrow brand-arrow-left"
+            onClick={() => scroll("left")}
+            style={{ ...arrowStyle, left: "calc(50% - 60px)" }}
           >
-            <h2
-              style={{
-                fontSize: "36px",
-                fontWeight: 700,
-                lineHeight: "1.3",
-                color: "#2d3748",
-                marginBottom: "30px",
-                position: "relative",
-                paddingBottom: "15px",
-              }}
-            >
-              CSEI Industry Partners
-            </h2>
+            <i
+              className="icon icon-arrow-left"
+              style={{ fontSize: "16px" }}
+            ></i>
+          </button>
 
-            <p
-              style={{
-                fontSize: "18px",
-                lineHeight: "1.7",
-                color: "#4a5568",
-                marginBottom: "30px",
-                fontWeight: 400,
-              }}
-            >
-              Discover our network of 300+ premier corporate partners including
-              Fortune 500 companies that regularly recruit CSEI graduates across
-              all disciplines.
-            </p>
-
-            {/* Stats Badges */}
-            <div
-              style={{
-                display: "flex",
-                gap: "10px",
-                marginBottom: "30px",
-                flexWrap: "wrap",
-              }}
-            >
-              <span
-                style={{
-                  backgroundColor: "#f0f4ff",
-                  padding: "8px 16px",
-                  borderRadius: "20px",
-                  fontSize: "14px",
-                  fontWeight: 600,
-                }}
+          {/* Logos */}
+          <div
+            ref={scrollRef}
+            style={logosWrapperStyle}
+            data-aos="fade-up"
+            data-aos-duration={300}
+          >
+            {brands.map((logo, i) => (
+              <div
+                key={i}
+                style={logoItemStyle}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.firstChild.style.transform = "scale(1.05)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.firstChild.style.transform = "scale(1)")
+                }
               >
-                45 Fortune 500 companies
-              </span>
-              <span
-                style={{
-                  backgroundColor: "#f0f4ff",
-                  padding: "8px 16px",
-                  borderRadius: "20px",
-                  fontSize: "14px",
-                  fontWeight: 600,
-                }}
-              >
-                12 international recruiters
-              </span>
-              <span
-                style={{
-                  backgroundColor: "#f0f4ff",
-                  padding: "8px 16px",
-                  borderRadius: "20px",
-                  fontSize: "14px",
-                  fontWeight: 600,
-                }}
-              >
-                85% repeat recruiters
-              </span>
-            </div>
-
-            <h3
-              style={{
-                fontSize: "24px",
-                fontWeight: 600,
-                color: "#2d3748",
-                marginBottom: "20px",
-              }}
-            >
-              Why partner with CSEI Academy?
-            </h3>
-
-            <p
-              style={{
-                fontSize: "16px",
-                color: "#4a5568",
-                marginBottom: "30px",
-              }}
-            >
-              CSEI Academy is not just a training provider — it's a growth
-              partner. Partnering with CSEI institutes is more than just a
-              recruitment strategy, it's an investment in the future of your
-              company and the tech industry as a whole.
-            </p>
-
-            {/* Full Partner Benefits List */}
-            <div
-              style={{ display: "flex", flexDirection: "column", gap: "25px" }}
-            >
-              {[
-                {
-                  title: "Brand Visibility & Engagement",
-                  items: [
-                    "Employer branding on campus",
-                    "Guest lectures and webinars",
-                    "Early engagement through internships and events",
-                  ],
-                },
-                {
-                  title: "Tailored Recruitment Support",
-                  items: [
-                    "Role-specific candidate shortlisting",
-                    "Campus hiring drives",
-                    "Pre-assessed talent pools",
-                  ],
-                },
-                {
-                  title: "Strong Institutional Support",
-                  items: [
-                    "Continuous collaboration with our leadership and placement team",
-                    "Follow-up support for recruitment partnerships",
-                  ],
-                },
-                {
-                  title: "Commitment to Long-Term Collaboration",
-                  items: [
-                    "We view placements not as a transaction, but a strategic partnership",
-                    "Invested in delivering consistent value, quality candidates",
-                    "Open channel for future hiring needs",
-                  ],
-                },
-                {
-                  title: "Diversity & Inclusion",
-                  items: [
-                    "Diverse pools of candidates supporting company goals",
-                    "Access to talent from varied social, economic, and geographic backgrounds",
-                  ],
-                },
-                {
-                  title: "Faster Hiring Cycles",
-                  items: [
-                    "Structured and predictable campus placement seasons",
-                    "Reduces time-to-hire compared to open-market hiring",
-                  ],
-                },
-                {
-                  title: "Loyalty and Retention",
-                  items: [
-                    "Graduates show higher loyalty and longer tenure",
-                    "Especially effective when career development paths are clear",
-                  ],
-                },
-              ].map((benefit, index) => (
-                <div key={index}>
-                  <h4
-                    style={{
-                      fontSize: "18px",
-                      fontWeight: 600,
-                      color: "#2d3748",
-                      marginBottom: "10px",
-                    }}
-                  >
-                    {index + 1}. {benefit.title}
-                  </h4>
-                  <ul style={{ marginLeft: "20px" }}>
-                    {benefit.items.map((item, itemIndex) => (
-                      <li
-                        key={itemIndex}
-                        style={{
-                          position: "relative",
-                          paddingLeft: "25px",
-                          marginBottom: "8px",
-                          listStyleType: "none",
-                          fontSize: "16px",
-                          color: "#4a5568",
-                        }}
-                      >
-                        <span
-                          style={{
-                            position: "absolute",
-                            left: 0,
-                            color: "#663399",
-                            fontWeight: "bold",
-                          }}
-                        >
-                          •
-                        </span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
+                <Image
+                  src={logo}
+                  alt={`Accreditation logo ${i + 1}`}
+                  width={100}
+                  height={60}
+                  style={logoImageStyle}
+                />
+              </div>
+            ))}
           </div>
 
-          {/* Image Column - Right Side */}
-          <div
-            style={{
-              flex: "0 0 50%",
-              maxWidth: "50%",
-              padding: "15px",
-              position: "relative",
-              "@media (max-width: 992px)": {
-                flex: "0 0 100%",
-                maxWidth: "100%",
-                order: -1,
-              },
-            }}
+          {/* Right arrow */}
+          <button
+            className="brand-arrow brand-arrow-right"
+            onClick={() => scroll("right")}
+            style={{ ...arrowStyle, right: "calc(50% - 60px)" }}
           >
-            <div
-              style={{
-                position: "relative",
-                borderRadius: "12px",
-                overflow: "hidden",
-                boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
-                transition: "transform 0.3s ease",
-                ":hover": {
-                  transform: "translateY(-5px)",
-                },
-              }}
-            >
-              <Image
-                width={600}
-                height={400}
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  display: "block",
-                  objectFit: "cover",
-                }}
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
-                alt="Logos of top companies recruiting from CSEI"
-                priority
-              />
-            </div>
-          </div>
+            <i
+              className="icon icon-arrow-right"
+              style={{ fontSize: "16px" }}
+            ></i>
+          </button>
         </div>
       </div>
-    </div>
+
+      {/* Scrollbar and responsive arrow visibility */}
+      <style jsx>{`
+        div::-webkit-scrollbar {
+          display: none;
+        }
+
+        @media (max-width: 1024px) {
+          .brand-arrow {
+            display: flex !important;
+          }
+        }
+      `}</style>
+    </section>
   );
-}
+};
+
+export default Brands;

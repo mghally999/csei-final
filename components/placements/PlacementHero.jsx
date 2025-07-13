@@ -128,7 +128,7 @@ export default function PlacementHero() {
           boxShadow: "0 5px 15px rgba(0,0,0,0.2)",
         }}
       >
-        Current Placement Rate: 62.5% | Partner with us to hire top talent
+        Current Placement Rate: 85% | Partner with us to hire top talent
       </motion.div>
 
       <ApplicationFormModal isOpen={isModalOpen} onClose={handleCloseModal} />

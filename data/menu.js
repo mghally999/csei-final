@@ -324,7 +324,7 @@ export const menuList = [
       },
       {
         title: "Briefing",
-        href: "/placements/overview",
+        href: "/placements/briefing",
       },
       {
         title: "Why Recruit CSEI Students",
@@ -347,8 +347,8 @@ export const menuList = [
         href: "/placements/partners",
       },
       {
-        title: "Partner With Us / Book",
-        href: "/placements/book",
+        title: "Partner With Us",
+        href: "/placements/partner-with-us",
       },
     ],
   },
