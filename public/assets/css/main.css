@@ -8282,6 +8282,10 @@ h6 {
   padding-top: 200px !important;
 }
 
+.admission-padding {
+  padding-top: 50px !important;
+}
+
 .tabs.-side .tabs__controls .tabs__button::before {
   content: "";
   position: absolute;
@@ -16106,21 +16110,22 @@ table.table th {
   padding: 25px;
   font-size: 16px;
   line-height: 1;
-  color: var(--color-purple-1);
+  color: #ffffff;
+  background: black;
   font-weight: 500;
 }
 
 table.table th:first-child {
-  border-radius: 8px 0 0 8px;
+  /* border-radius: 8px 0 0 8px; */
 }
 
 table.table th:last-child {
-  border-radius: 0 8px 8px 0;
+  /* border-radius: 0 8px 8px 0; */
 }
 
 table.table td {
   padding: 25px;
-  border-bottom: 1px solid var(--color-light-5);
+  border: 1px solid #000000;
 }
 
 .tooltip {

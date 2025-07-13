@@ -305,6 +305,7 @@ export default function RootLayout({ children }) {
                   transform: translateX(50%);
                   flex-direction: row;
                 }
+
                 .quick-enquiry-btn {
                   // bottom: 20px;
                   // top: auto;

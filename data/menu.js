@@ -248,15 +248,11 @@ export const menuList = [
       },
       {
         label: "Tuition and Fees",
-        href: "/admission/tuition-and-fees",
+        href: "/admission/tuition-fees",
       },
       {
         label: "Financial Aid & Scholarships",
         href: "/admission/financial-aid-scholarships",
-      },
-      {
-        label: "Student Voice",
-        href: "/admission/student-voice",
       },
     ],
   },

@@ -1,0 +1,624 @@
+"use client";
+import React from "react";
+import { FiDownload } from "react-icons/fi";
+import { motion } from "framer-motion";
+
+const FeeCard = ({ title, children }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    whileHover={{ y: -5 }}
+    style={{
+      backgroundColor: "#fff",
+      padding: "30px",
+      borderRadius: "12px",
+      boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
+      marginBottom: "30px",
+      border: "1px solid rgba(0, 0, 0, 0.05)",
+    }}
+  >
+    <h4
+      style={{
+        fontSize: "22px",
+        fontWeight: "700",
+        color: "#000000",
+        marginBottom: "20px",
+        position: "relative",
+        paddingBottom: "10px",
+      }}
+    >
+      {title}
+      <span
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          width: "60px",
+          height: "4px",
+          backgroundColor: "#000000",
+          borderRadius: "2px",
+        }}
+      />
+    </h4>
+    {children}
+  </motion.div>
+);
+
+export default function TuitionFeesFull() {
+  return (
+    <div>
+      {/* Scholarship Banner */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        style={{
+          backgroundColor: "#000000",
+          color: "white",
+          padding: "25px 20px",
+          textAlign: "center",
+          fontSize: "20px",
+          fontWeight: "700",
+          width: "100%",
+          boxShadow: "0 5px 15px rgba(0,0,0,0.2)",
+        }}
+      >
+        Early payment discounts available until 31st July for September intake
+      </motion.div>
+
+      {/* Main Content */}
+      <section
+        style={{
+          backgroundColor: "#f8f9fa",
+          padding: "80px 20px",
+          position: "relative",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1200px",
+            margin: "0 auto",
+            position: "relative",
+            zIndex: 2,
+          }}
+        >
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            style={{
+              fontSize: "clamp(28px, 4vw, 42px)",
+              fontWeight: "800",
+              color: "#000000",
+              marginBottom: "60px",
+              textAlign: "center",
+              position: "relative",
+            }}
+          >
+            Full Tuition Fee Structure
+            <div
+              style={{
+                height: "4px",
+                width: "100px",
+                backgroundColor: "#000000",
+                margin: "20px auto 0",
+                borderRadius: "2px",
+              }}
+            />
+          </motion.h2>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            style={{
+              maxWidth: "800px",
+              margin: "0 auto 60px",
+              textAlign: "center",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "18px",
+                color: "#4a5568",
+                marginBottom: "20px",
+                lineHeight: "1.7",
+              }}
+            >
+              View the complete breakdown of tuition fees, visa costs, and
+              registration charges across all our programs.
+            </p>
+            <p
+              style={{
+                fontSize: "18px",
+                color: "#4a5568",
+                marginBottom: "0",
+                lineHeight: "1.7",
+              }}
+            >
+              All amounts are in UAE Dirhams (AED).
+            </p>
+          </motion.div>
+
+          {/* Fee Structure */}
+          <FeeCard title="Program Fee Breakdown">
+            <div
+              style={{
+                overflowX: "auto",
+                boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
+                borderRadius: "8px",
+              }}
+            >
+              <table
+                style={{
+                  width: "100%",
+                  borderCollapse: "collapse",
+                  backgroundColor: "white",
+                }}
+              >
+                <thead>
+                  <tr style={{ backgroundColor: "#f8f9fa" }}>
+                    <th
+                      style={{
+                        padding: "12px 15px",
+                        textAlign: "left",
+                        fontWeight: "600",
+                        borderBottom: "2px solid #e2e8f0",
+                      }}
+                    >
+                      Program
+                    </th>
+                    <th
+                      style={{
+                        padding: "12px 15px",
+                        textAlign: "left",
+                        fontWeight: "600",
+                        borderBottom: "2px solid #e2e8f0",
+                      }}
+                    >
+                      Tuition Fee
+                    </th>
+                    <th
+                      style={{
+                        padding: "12px 15px",
+                        textAlign: "left",
+                        fontWeight: "600",
+                        borderBottom: "2px solid #e2e8f0",
+                      }}
+                    >
+                      Visa Fee
+                    </th>
+                    <th
+                      style={{
+                        padding: "12px 15px",
+                        textAlign: "left",
+                        fontWeight: "600",
+                        borderBottom: "2px solid #e2e8f0",
+                      }}
+                    >
+                      Registration
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    {
+                      program: "Tourism and Hospitality Management",
+                      tuition: "12,500",
+                      visa: "3,500",
+                      registration: "1,000",
+                    },
+                    {
+                      program: "Health and Social Care",
+                      tuition: "12,500",
+                      visa: "3,500",
+                      registration: "1,000",
+                    },
+                    {
+                      program: "Business Management",
+                      tuition: "12,500",
+                      visa: "3,500",
+                      registration: "1,000",
+                    },
+                    {
+                      program: "DHA",
+                      tuition: "13,000",
+                      visa: "3,500",
+                      registration: "1,000",
+                    },
+                    {
+                      program: "Information Technology",
+                      tuition: "12,500",
+                      visa: "3,500",
+                      registration: "1,000",
+                    },
+                    {
+                      program: "Culinary Arts",
+                      tuition: "15,000",
+                      visa: "3,500",
+                      registration: "1,000",
+                    },
+                    {
+                      program: "Postgraduate Programs",
+                      tuition: "18,000",
+                      visa: "3,500",
+                      registration: "1,000",
+                      highlight: true,
+                    },
+                  ].map((item, index) => (
+                    <tr
+                      key={index}
+                      style={{
+                        borderBottom: "1px solid #e2e8f0",
+                        backgroundColor: item.highlight ? "#f0f9ff" : "white",
+                        fontWeight: item.highlight ? "600" : "400",
+                      }}
+                    >
+                      <td
+                        style={{
+                          padding: "12px 15px",
+                          verticalAlign: "top",
+                        }}
+                      >
+                        {item.program}
+                      </td>
+                      <td style={{ padding: "12px 15px" }}>{item.tuition}</td>
+                      <td style={{ padding: "12px 15px" }}>{item.visa}</td>
+                      <td style={{ padding: "12px 15px" }}>
+                        {item.registration}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </FeeCard>
+
+          {/* Additional Information */}
+          <FeeCard title="Payment Information">
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+                gap: "30px",
+              }}
+            >
+              <div>
+                <h5
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: "600",
+                    marginBottom: "15px",
+                  }}
+                >
+                  Payment Methods
+                </h5>
+                <ul style={{ listStyleType: "none", paddingLeft: "0" }}>
+                  {[
+                    "Bank Transfer (Details provided in offer letter)",
+                    "Credit/Debit Card (Visa/Mastercard)",
+                    "Cash Payment (On-campus only)",
+                    "Installment Plans (Available for select programs)",
+                  ].map((item, index) => (
+                    <li
+                      key={index}
+                      style={{
+                        marginBottom: "10px",
+                        display: "flex",
+                        alignItems: "flex-start",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: "24px",
+                          height: "24px",
+                          backgroundColor: "#000000",
+                          color: "white",
+                          borderRadius: "50%",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          marginRight: "12px",
+                          flexShrink: 0,
+                          fontSize: "12px",
+                        }}
+                      >
+                        {index + 1}
+                      </div>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h5
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: "600",
+                    marginBottom: "15px",
+                  }}
+                >
+                  Important Notes
+                </h5>
+                <ul style={{ listStyleType: "none", paddingLeft: "0" }}>
+                  {[
+                    "All fees are subject to change without prior notice",
+                    "Visa fees include medical insurance and processing",
+                    "Registration fee is non-refundable",
+                    "Additional charges may apply for late payments",
+                  ].map((item, index) => (
+                    <li
+                      key={index}
+                      style={{
+                        marginBottom: "10px",
+                        display: "flex",
+                        alignItems: "flex-start",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: "24px",
+                          height: "24px",
+                          backgroundColor: "#000000",
+                          color: "white",
+                          borderRadius: "50%",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          marginRight: "12px",
+                          flexShrink: 0,
+                          fontSize: "12px",
+                        }}
+                      >
+                        !
+                      </div>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </FeeCard>
+
+          {/* PDF Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            style={{
+              textAlign: "center",
+              marginTop: "40px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "20px",
+            }}
+          >
+            <motion.a
+              href="/pdfs/TuitionFeesBreakdown.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "12px",
+                padding: "16px 32px",
+                backgroundColor: "#1d4ed8",
+                color: "white",
+                borderRadius: "10px",
+                textDecoration: "none",
+                fontSize: "18px",
+                fontWeight: "600",
+                maxWidth: "400px",
+                width: "100%",
+                justifyContent: "center",
+              }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Download Full Fee Breakdown
+              <FiDownload style={{ fontSize: "20px" }} />
+            </motion.a>
+
+            <motion.a
+              href="/pdfs/PaymentProcedure.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "12px",
+                padding: "16px 32px",
+                backgroundColor: "#059669",
+                color: "white",
+                borderRadius: "10px",
+                textDecoration: "none",
+                fontSize: "18px",
+                fontWeight: "600",
+                maxWidth: "400px",
+                width: "100%",
+                justifyContent: "center",
+              }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              View Payment Schedule
+              <FiDownload style={{ fontSize: "20px" }} />
+            </motion.a>
+            <motion.a
+              href="/pdfs/RefundPolicy.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "12px",
+                padding: "16px 32px",
+                backgroundColor: "#dc2626",
+                color: "white",
+                borderRadius: "10px",
+                textDecoration: "none",
+                fontSize: "18px",
+                fontWeight: "600",
+                maxWidth: "400px",
+                width: "100%",
+                justifyContent: "center",
+              }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Download Refund Policy
+              <FiDownload style={{ fontSize: "20px" }} />
+            </motion.a>
+          </motion.div>
+
+          {/* Contact Information */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            style={{
+              backgroundColor: "#fff",
+              padding: "40px",
+              borderRadius: "12px",
+              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
+              marginTop: "60px",
+            }}
+          >
+            <h3
+              style={{
+                fontSize: "32px",
+                fontWeight: "700",
+                color: "#000000",
+                marginBottom: "30px",
+                textAlign: "center",
+              }}
+            >
+              Need Financial Guidance?
+            </h3>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+                gap: "40px",
+              }}
+            >
+              <div>
+                <p
+                  style={{
+                    fontSize: "18px",
+                    lineHeight: "1.7",
+                    color: "#4a5568",
+                    marginBottom: "20px",
+                  }}
+                >
+                  Our financial advisors are available to help you understand
+                  payment options, scholarships, and installment plans.
+                </p>
+              </div>
+
+              <div
+                style={{
+                  backgroundColor: "#f8f9fa",
+                  padding: "25px",
+                  borderRadius: "8px",
+                  borderLeft: "4px solid #000000",
+                }}
+              >
+                <h4
+                  style={{
+                    fontSize: "20px",
+                    fontWeight: "700",
+                    marginBottom: "15px",
+                    color: "#000000",
+                  }}
+                >
+                  Contact Finance Office
+                </h4>
+                <p
+                  style={{
+                    fontSize: "16px",
+                    marginBottom: "10px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <span
+                    style={{
+                      width: "24px",
+                      height: "24px",
+                      backgroundColor: "#000000",
+                      color: "white",
+                      borderRadius: "50%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginRight: "10px",
+                      fontSize: "12px",
+                    }}
+                  >
+                    C
+                  </span>
+                  <strong>Call:</strong> +971-45522469
+                </p>
+                <p
+                  style={{
+                    fontSize: "16px",
+                    marginBottom: "10px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <span
+                    style={{
+                      width: "24px",
+                      height: "24px",
+                      backgroundColor: "#000000",
+                      color: "white",
+                      borderRadius: "50%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginRight: "10px",
+                      fontSize: "12px",
+                    }}
+                  >
+                    E
+                  </span>
+                  <strong>Email:</strong> finance@cseiacademy.ae
+                </p>
+                <p
+                  style={{
+                    fontSize: "16px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <span
+                    style={{
+                      width: "24px",
+                      height: "24px",
+                      backgroundColor: "#000000",
+                      color: "white",
+                      borderRadius: "50%",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginRight: "10px",
+                      fontSize: "12px",
+                    }}
+                  >
+                    H
+                  </span>
+                  <strong>Hours:</strong> Sun-Thu, 9AM - 5PM
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+}
