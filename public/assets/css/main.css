@@ -1242,7 +1242,7 @@ img {
 }
 
 a {
-  color: #222222 !important;
+  /* color: #222222 !important; */
   font-size: inherit;
   line-height: inherit;
   font-weight: inherit;
@@ -4485,7 +4485,8 @@ h6 {
 
 .custom-li {
   border-bottom: 1px solid #ddd !important;
-  padding-bottom: 2px !important;
+  padding-bottom: 5px !important;
+  padding-top: 5px !important;
   font-weight: 500 !important;
   padding-right: 10px !important;
   padding-left: 10px !important;

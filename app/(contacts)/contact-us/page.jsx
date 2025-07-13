@@ -19,7 +19,7 @@ export default function ContactTwo() {
 
       <div className="content-wrapper js-content-wrapper overflow-hidden">
         {/* ✅ Hero */}
-        <section className="page-header -type-4 bg-beige-1 pt-60 pb-60">
+        <section className="page-header -type-4 bg-beige-1 pt-60 pb-60 custom-padding">
           <div className="container">
             <div className="page-header__content">
               <div className="row">

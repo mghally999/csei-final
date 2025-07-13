@@ -49,7 +49,7 @@ export default function TuitionFeesBrief() {
         </p>
 
         <a
-          href="/tuition-fees"
+          href="/admission/tuition-fees"
           style={{
             display: "inline-flex",
             alignItems: "center",

@@ -1,11 +1,18 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { FiArrowRight } from "react-icons/fi";
 import { motion } from "framer-motion";
 
 export default function ScholarshipsBrief() {
+  const router = useRouter();
+
+  const handleExploreClick = () => {
+    router.push("/admission/financial-aid-scholarships");
+  };
+
   return (
     <section
       className="layout-pb-lg custom-padding custom-linear-white-top"
@@ -84,6 +91,7 @@ export default function ScholarshipsBrief() {
               style={{ marginTop: "40px" }}
             >
               <motion.button
+                onClick={handleExploreClick}
                 whileHover={{
                   scale: 1.05,
                   backgroundColor: "#111111",
