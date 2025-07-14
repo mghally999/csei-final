@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -11,59 +12,83 @@ if (typeof window !== "undefined") {
 
 const blogPosts = [
   {
+    slug: "happy-holi",
     title: "Happy Holi: Celebrating the Vibrant Colors of Life",
-    image: "/assets/blogs/holi.png",
+    image:
+      "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
     description:
       "Holi, the festival of colors, is here! This joyous occasion is a time to celebrate the arrival of spring, the victory of good over evil...",
+    writer: "CSEI Academy",
     views: 10,
     date: "Mar 13",
     readTime: "2 min read",
+    likes: 0,
   },
   {
+    slug: "film-festival-abu-dhabi",
     title: "2nd Film Festival in Abu Dhabi: A Celebration of Cinema",
-    image: "/assets/blogs/film-festival.png",
+    image:
+      "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     description:
       "We are thrilled to announce that the 2nd Film Festival is coming to Abu Dhabi, UAE, on April 11-13! This highly anticipated event...",
+    writer: "CSEI Academy",
     views: 43,
     date: "Feb 22",
     readTime: "1 min read",
+    likes: 0,
   },
   {
+    slug: "uae-destinations",
     title: "Top Must-Visit Destinations in the UAE",
-    image: "/assets/blogs/uae-destinations.png",
+    image:
+      "https://images.unsplash.com/photo-1518684079-3c830dcef090?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80",
     description:
-      "Top Must-Visit Destinations in the UAE The United Arab Emirates (UAE) is known for its dazzling skyscrapers, opulent shopping malls, and...",
+      "The United Arab Emirates (UAE) is known for its dazzling skyscrapers, opulent shopping malls, and...",
+    writer: "CSEI Academy",
     views: 14,
     date: "Feb 9",
     readTime: "4 min read",
+    likes: 0,
   },
   {
-    title: '"UAE" Welcome 2025 with Record Breaking Firework and Drone Show',
-    image: "/assets/blogs/uae-fireworks.png",
+    slug: "uae-new-year-fireworks",
+    title: "UAE Welcome 2025 with Record Breaking Firework and Drone Show",
+    image:
+      "https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     description:
       "The first few minutes of New Year 2025 in the United Arab Emirates are being illuminated by fireworks from more than 60 locations...",
+    writer: "CSEI Academy",
     views: 8,
     date: "Jan 7",
     readTime: "1 min read",
+    likes: 0,
   },
   {
+    slug: "online-learning-strategies",
     title:
       "What are the Key Strategies for Success in Digital Age Online Learning?",
-    image: "/assets/blogs/online-learning.png",
+    image:
+      "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
     description:
-      "In today’s fast-paced educational world, online learning has become a game-changer. It opens up a wealth of opportunities, allowing...",
+      "In today's fast-paced educational world, online learning has become a game-changer. It opens up a wealth of opportunities, allowing...",
+    writer: "CSEI Academy",
     views: 7,
     date: "Dec 13, 2024",
     readTime: "4 min read",
+    likes: 0,
   },
   {
+    slug: "study-in-dubai",
     title: "Why Study in Dubai?",
-    image: "/assets/blogs/study-dubai.png",
+    image:
+      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     description:
       "Dubai, a vibrant metropolis known for its futuristic skyline, luxurious lifestyle, and thriving economy, is quickly becoming one of the...",
+    writer: "CSEI Academy",
     views: 12,
     date: "Dec 12, 2024",
     readTime: "4 min read",
+    likes: 1,
   },
 ];
 
@@ -160,51 +185,70 @@ export default function NewsCards() {
                 borderRadius: "16px",
                 overflow: "hidden",
                 boxShadow: "0 20px 40px rgba(0, 0, 0, 0.4)",
+                transition: "transform 0.3s ease",
               }}
+              className="hover:scale-[1.02]"
             >
-              <div style={{ position: "relative", height: "220px" }}>
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-              </div>
-              <div style={{ padding: "24px" }}>
-                <h3
-                  style={{
-                    fontSize: "1.4rem",
-                    fontWeight: 700,
-                    marginBottom: "12px",
-                    color: "#fff",
-                  }}
-                >
-                  {item.title}
-                </h3>
-                <p
-                  style={{
-                    fontSize: "0.95rem",
-                    color: "rgba(255,255,255,0.85)",
-                    lineHeight: "1.6",
-                    marginBottom: "16px",
-                  }}
-                >
-                  {item.description}
-                </p>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    fontSize: "0.85rem",
-                    color: "#ccc",
-                  }}
-                >
-                  <span>
-                    {item.date} • {item.readTime}
-                  </span>
-                  <span>{item.views} views</span>
+              <Link href={`/news/${item.slug}`} passHref>
+                <div style={{ cursor: "pointer" }}>
+                  <div style={{ position: "relative", height: "220px" }}>
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      style={{ objectFit: "cover" }}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  </div>
+                  <div style={{ padding: "24px" }}>
+                    <h3
+                      style={{
+                        fontSize: "1.4rem",
+                        fontWeight: 700,
+                        marginBottom: "12px",
+                        color: "#fff",
+                      }}
+                    >
+                      {item.title}
+                    </h3>
+                    <p
+                      style={{
+                        fontSize: "0.95rem",
+                        color: "rgba(255,255,255,0.85)",
+                        lineHeight: "1.6",
+                        marginBottom: "16px",
+                      }}
+                    >
+                      {item.description}
+                    </p>
+                    <div style={{ marginBottom: "16px" }}>
+                      <p style={{ fontSize: "0.9rem", color: "#aaa" }}>
+                        Writer: {item.writer}
+                      </p>
+                    </div>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        fontSize: "0.85rem",
+                        color: "#ccc",
+                      }}
+                    >
+                      <span>
+                        {item.date} • {item.readTime}
+                      </span>
+                      <span>{item.views} views</span>
+                    </div>
+                    <div style={{ marginTop: "12px" }}>
+                      <span style={{ fontSize: "0.85rem", color: "#ccc" }}>
+                        {item.likes > 0
+                          ? `${item.likes} like`
+                          : "Post not marked as liked"}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           ))}
         </div>
