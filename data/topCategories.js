@@ -3,19 +3,19 @@ export const topCategories = [
     id: 1,
     iconSrc: "/assets/img/featureCards/1.svg",
     title: "Certificates",
-    text: "573+ Courses",
+    text: "6+ Courses",
   },
   {
     id: 2,
     iconSrc: "/assets/img/featureCards/2.svg",
     title: "Diplomas",
-    text: "565+ Courses",
+    text: "8+ Courses",
   },
   {
     id: 3,
     iconSrc: "/assets/img/featureCards/4.svg",
     title: "Professional",
-    text: "35+ Courses",
+    text: "8+ Courses",
   },
 ];
 

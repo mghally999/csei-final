@@ -9,6 +9,9 @@ const CategoriesHomeOne = () => {
   const universityProgressionCount =
     professionalPrograms.length + regularPrograms.length;
 
+  const professionalProgramsCount =
+    professionalPrograms.length + regularPrograms.length;
+
   const updatedCategories = [
     ...topCategories,
     {

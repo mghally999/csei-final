@@ -247,7 +247,7 @@ export default function FeaturesSection() {
         }
 
         .box:hover p {
-          color: #ffffff;
+          color: #000000;
         }
 
         .box a {

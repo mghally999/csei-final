@@ -12,7 +12,7 @@ export default function ArrivalOrientationBrief() {
 
   return (
     <section
-      className="layout-pb-lg custom-padding custom-linear-white-top"
+      className="layout-pb-lg custom-linear-white-top"
       style={{ backgroundColor: "#f8f9fa", paddingTop: "80px" }}
     >
       <div className="container">

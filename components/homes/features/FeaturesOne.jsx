@@ -114,7 +114,7 @@ export default function WhyCSEIWithVideo() {
               playsInline
               style={{
                 width: "100%",
-                height: "400px",
+                height: "500px",
                 objectFit: "cover",
                 display: "block",
                 objectPosition: "center",
