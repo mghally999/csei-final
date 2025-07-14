@@ -28,7 +28,7 @@ export default function HomePage() {
       <FeaturesSection />
       <Categories />
       <Courses />
-      <TestimonialsOne />
+      {/* <TestimonialsOne /> */}
       <MilestoneGrid />
       <GetApp />
       <Brands />

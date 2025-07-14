@@ -172,7 +172,7 @@ export default function Header() {
         }`}
       >
         {/* Top Links Bar - Hidden on mobile/tablet */}
-        <div className="top-links-bar d-flex items-center py-2 bg-custom-navyblue">
+        <div className="top-links-bar d-flex items-center py-2 bg-black">
           <div className="container">
             <div className="row y-gap-5 justify-between items-center">
               <div className="col-auto">
@@ -215,81 +215,69 @@ export default function Header() {
 
         {/* Main Header Section */}
         <div className="container py-4">
-          <div className="row justify-center items-center flex-nowrap overflow-x-auto">
-            {/* Logo */}
-            <div className="col-auto flex items-center flex-nowrap">
-              <div className="header-left">
-                <div className="header__logo d-flex items-center">
-                  <Link href="/" className="d-flex items-center">
-                    <Image
-                      width={140}
-                      height={40}
-                      src="/assets/img/general/logo.png"
-                      alt="logo"
-                    />
-                    <span
-                      className="text-[24px] leading-none"
-                      style={{
-                        fontWeight: 900,
-                        color: "#E05500",
-                        textTransform: "uppercase",
-                        letterSpacing: "0.5px",
-                        fontSize: "20px",
-                        marginRight: "10px",
-                      }}
-                    >
-                      CSEI Academy
-                    </span>
-                  </Link>
-                </div>
-              </div>
-              {/* Orange Separator - Hidden on mobile/tablet */}
-              <div className="mx-10 h-32 w-1 bg-[#f60] rounded-full"></div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexWrap: "nowrap",
+            }}
+          >
+            {/* Left: Logo + Text */}
+            <div
+              style={{ display: "flex", alignItems: "center", flexShrink: 0 }}
+            >
+              <Link href="/" style={{ display: "flex", alignItems: "center" }}>
+                <Image
+                  width={140}
+                  height={40}
+                  src="/assets/img/general/logo.png"
+                  alt="logo"
+                  style={{ marginRight: "-20px" }} // Negative margin pulls text closer
+                />
+                <span
+                  style={{
+                    marginLeft: "2px", // Reduced to minimum
+                    fontWeight: 900,
+                    color: "#E05500",
+                    textTransform: "uppercase",
+                    fontSize: "20px",
+                    letterSpacing: "0.5px",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  CSEI Academy
+                </span>
+              </Link>
             </div>
 
-            {/* Right side (Menu) */}
-            <div className="col-auto flex items-center justify-end flex-nowrap">
-              <div className="header-right d-flex items-center gap-x-3">
-                <Menu
-                  allClasses={"desktop-menu menu__nav text-white -is-active"}
-                  setActiveMobileMenu={setActiveMobileMenu}
-                />
-                <MobileMenu
-                  activeMobileMenu={activeMobileMenu}
-                  setActiveMobileMenu={setActiveMobileMenu}
-                />
+            {/* Right: Menu + Mobile */}
+            <div
+              className="header-right"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-end",
+                gap: "20px",
+                flexGrow: 1,
+              }}
+            >
+              <Menu
+                allClasses={"desktop-menu menu__nav text-white -is-active"}
+                setActiveMobileMenu={setActiveMobileMenu}
+              />
+              <MobileMenu
+                activeMobileMenu={activeMobileMenu}
+                setActiveMobileMenu={setActiveMobileMenu}
+              />
 
-                {/* Enquire Now Button */}
-                {/* <button
-                  onClick={() => setShowModal(true)}
-                  className="enquire-button"
-                  style={{
-                    backgroundColor: "#04044e",
-                    color: "white",
-                    padding: "0.5rem 1.25rem",
-                    borderRadius: "8px",
-                    fontWeight: "800",
-                    transition: "background-color 0.3s ease",
-                    marginRight: "20px",
-                  }}
-                  onMouseEnter={(e) =>
-                    (e.target.style.backgroundColor = "#000030")
-                  }
-                  onMouseLeave={(e) =>
-                    (e.target.style.backgroundColor = "#04044e")
-                  }
+              <div className="mobile-menu-button d-none xl:d-block">
+                <button
+                  className="text-dark-1 items-center"
+                  onClick={() => setActiveMobileMenu(true)}
                 >
-                  Enquire Now
-                </button> */}
-
-                <div className="mobile-menu-button d-none xl:d-block">
-                  <button
-                    className="text-dark-1 items-center"
-                    onClick={() => setActiveMobileMenu(true)}
-                  >
-                    <i className="text-11 icon icon-mobile-menu"></i>
-                  </button>
-                </div>
+                  <i className="text-11 icon icon-mobile-menu"></i>
+                </button>
               </div>
             </div>
           </div>

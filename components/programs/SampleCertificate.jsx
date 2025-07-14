@@ -6,37 +6,54 @@ export default function SampleCertificate() {
   return (
     <section
       style={{
-        padding: "2rem 1rem",
+        backgroundColor: "#000000",
+        padding: "80px 20px",
+        borderRadius: "8px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
       }}
     >
+      {/* Section Title */}
       <h2
         style={{
-          fontSize: "2rem",
-          fontWeight: "600",
-          //   textAlign: "center",
-          color: "#1c144e",
-          marginBottom: "2rem",
+          fontSize: "40px",
+          fontWeight: "800",
+          color: "#ffffff",
+          marginBottom: "50px",
+          textAlign: "center",
+          position: "relative",
         }}
       >
         Sample Certificate
+        <span
+          style={{
+            position: "absolute",
+            bottom: "-16px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "100px",
+            height: "4px",
+            backgroundColor: "#ffffff",
+            borderRadius: "2px",
+          }}
+        />
       </h2>
 
+      {/* Image Container */}
       <div
         style={{
           width: "100%",
           maxWidth: "800px",
-          height: "500px", // You can adjust this height as needed
+          height: "500px",
           overflow: "hidden",
-          border: "1px solid #e5e7eb",
+          border: "1px solid #ffffff33",
           borderRadius: "12px",
-          boxShadow: "0 6px 20px rgba(0, 0, 0, 0.1)",
+          boxShadow: "0 10px 30px rgba(255, 255, 255, 0.1)",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "#fff",
+          backgroundColor: "#111111",
         }}
       >
         <img

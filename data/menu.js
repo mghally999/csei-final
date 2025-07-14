@@ -28,6 +28,10 @@ export const menuList = [
         href: "/about/our-leadership",
       },
       {
+        label: "Our Accreditation",
+        href: "/about/accreditation",
+      },
+      {
         label: "Our Objectives",
         href: "/about/our-objectives",
       },

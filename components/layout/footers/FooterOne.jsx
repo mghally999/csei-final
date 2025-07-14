@@ -41,48 +41,39 @@ export default function FooterOne() {
             <div className="col-auto">
               <div className="footer-logo-container">
                 <div className="footer-header__logo">
-                  <Link href="/" className="d-flex items-center">
-                    <Image
-                      width={140}
-                      height={40}
-                      src="/assets/img/general/logo.png"
-                      alt="logo"
-                    />
-                    <span
-                      className="text-[24px] leading-none"
-                      style={{
-                        fontWeight: 900,
-                        color: "#E05500",
-                        textTransform: "uppercase",
-                        letterSpacing: "0.5px",
-                        fontSize: "20px",
-                        marginRight: "10px",
-                      }}
+                  {/* Left: Logo + Text */}
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <Link
+                      href="/"
+                      style={{ display: "flex", alignItems: "center" }}
                     >
-                      CSEI Academy
-                    </span>
-                  </Link>
-                </div>
-
-                {/* Accreditation Logos - Updated with larger size and spacing */}
-                <div className="footer-accreditation-logos">
-                  <div className="footer-logo-item">
-                    <Image
-                      src="/assets/img/logos/OTHM-logo.png"
-                      alt="OTHM Accredited"
-                      width={180}
-                      height={90}
-                      className="footer-logo-img"
-                    />
-                  </div>
-                  <div className="footer-logo-item">
-                    <Image
-                      src="/assets/img/logos/KHDA-logo.png"
-                      alt="KHDA Accredited"
-                      width={180}
-                      height={90}
-                      className="footer-logo-img"
-                    />
+                      <Image
+                        width={140}
+                        height={40}
+                        src="/assets/img/general/logo.png"
+                        alt="logo"
+                        style={{ marginRight: "-20px" }} // Negative margin pulls text closer
+                      />
+                      <span
+                        style={{
+                          marginLeft: "2px", // Reduced to minimum
+                          fontWeight: 900,
+                          color: "#E05500",
+                          textTransform: "uppercase",
+                          fontSize: "20px",
+                          letterSpacing: "0.5px",
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        CSEI Academy
+                      </span>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -1,112 +1,105 @@
 "use client";
-import React, { useEffect } from "react";
-import { motion } from "framer-motion";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
-// Framer Motion variants
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
-};
+import React from "react";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Overview({ data }) {
-  useEffect(() => {
-    AOS.init({ duration: 800, once: true, easing: "ease-out" });
-  }, []);
-
   if (!data) return null;
 
+  const items = Array.isArray(data) ? data : [data];
+
   return (
-    <motion.section
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
-      data-aos="fade-up"
-      data-aos-delay="150"
-      className="bg-white rounded-xl shadow-sm mb-15 custom-margin custom-linear-blue-top"
+    <div
       style={{
-        opacity: 1,
-        border: "1px solid #ddd",
-        padding: "30px",
+        backgroundColor: "#000000",
+        padding: "80px 20px",
+        borderRadius: "8px",
       }}
     >
-      <motion.h3
-        variants={itemVariants}
-        className="text-2xl font-semibold text-gray-900 mb-10"
-      >
-        Overview
-      </motion.h3>
-
-      <motion.ul
-        variants={containerVariants}
-        className="space-y-10 list-disc list-inside"
-      >
-        {Array.isArray(data) ? (
-          data.map((item, index) => (
-            <motion.li
-              key={index}
-              variants={itemVariants}
-              className="rounded-xl shadow-sm hover:shadow-md transition-all duration-300"
-              style={{
-                listStyleType: "disc",
-                textAlign: "justify",
-                wordSpacing: "normal",
-                letterSpacing: "normal",
-                lineHeight: 1.8,
-                fontSize: "18px",
-                fontWeight: 600,
-                color: "#000000",
-                marginBottom: "1.5rem",
-                padding: "20px",
-                marginLeft: "1rem",
-              }}
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-            >
-              {item}
-            </motion.li>
-          ))
-        ) : (
-          <motion.li
-            variants={itemVariants}
-            className="rounded-xl shadow-sm hover:shadow-md transition-all duration-300"
+      <div style={{ maxWidth: "1240px", margin: "0 auto" }}>
+        {/* Section Title with half-white underline */}
+        <h2
+          style={{
+            fontSize: "40px",
+            fontWeight: "800",
+            color: "#ffffff",
+            marginBottom: "50px",
+            textAlign: "center",
+            position: "relative",
+          }}
+        >
+          Comprehensive Overview
+          <span
             style={{
-              listStyleType: "disc",
-              wordSpacing: "normal",
-              letterSpacing: "normal",
-              lineHeight: 1.8,
-              fontSize: "18px",
-              fontWeight: 600,
-              color: "#000000",
-              marginBottom: "1.5rem",
-              padding: "20px",
-              marginLeft: "1rem",
-              background:
-                "linear-gradient(135deg, rgb(255, 255, 255) 0%, rgb(219, 234, 254) 25%, rgb(134, 179, 247) 50%, rgba(58, 90, 203, 0.2) 75%, rgb(15 29 86 / 4%) 100%)",
+              position: "absolute",
+              bottom: "-16px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "100px",
+              height: "4px",
+              backgroundColor: "#ffffff",
+              borderRadius: "2px",
             }}
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            {data}
-          </motion.li>
-        )}
-      </motion.ul>
-    </motion.section>
+          />
+        </h2>
+
+        {/* Checkmark List Container */}
+        <div
+          style={{
+            borderRadius: "8px",
+            backgroundColor: "#000000",
+            padding: "40px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "24px",
+          }}
+        >
+          {items.map((text, i) => (
+            <div
+              key={i}
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+              }}
+            >
+              {/* Checkmark Icon */}
+              <div
+                style={{
+                  width: "28px",
+                  height: "28px",
+                  backgroundColor: "#ffffff",
+                  color: "#000000",
+                  borderRadius: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "14px",
+                  fontWeight: 700,
+                  marginRight: "18px",
+                  flexShrink: 0,
+                  marginTop: "2px",
+                  boxShadow: "0 4px 8px rgba(255, 255, 255, 0.15)",
+                }}
+              >
+                <FontAwesomeIcon icon={faCheck} />
+              </div>
+
+              {/* Text */}
+              <div
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "700",
+                  color: "#ffffff",
+                  lineHeight: "1.8",
+                }}
+              >
+                {text}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }

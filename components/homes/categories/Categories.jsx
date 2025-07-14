@@ -1,8 +1,23 @@
 "use client";
 import Image from "next/image";
 import { topCategories } from "../../../data/topCategories";
+import { getGroupedPrograms } from "@/utils/getProgramGroups";
 
 const CategoriesHomeOne = () => {
+  const { professionalPrograms, regularPrograms } = getGroupedPrograms();
+
+  const universityProgressionCount =
+    professionalPrograms.length + regularPrograms.length;
+
+  const updatedCategories = [
+    ...topCategories,
+    {
+      title: "University Progression",
+      text: `${universityProgressionCount}+ Programs`,
+      iconSrc: "/assets/img/featureCards/6.svg",
+    },
+  ];
+
   return (
     <section className="layout-pt-md layout-pb-md custom-linear-blue-top">
       <div className="container">
@@ -16,7 +31,7 @@ const CategoriesHomeOne = () => {
 
         <div className="pt-50">
           <div className="row x-gap-80 justify-content-center g-4">
-            {topCategories.map((item, i) => (
+            {updatedCategories.map((item, i) => (
               <div
                 key={i}
                 className="col-6 col-sm-4 col-md-3 col-lg-2 d-flex justify-content-center"
@@ -29,8 +44,8 @@ const CategoriesHomeOne = () => {
                   <div className="featureCard__content">
                     <div className="featureCard__icon">
                       <Image
-                        width={45}
-                        height={45}
+                        width={48}
+                        height={48}
                         src={item.iconSrc}
                         alt="icon"
                       />

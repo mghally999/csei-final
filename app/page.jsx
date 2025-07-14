@@ -15,7 +15,7 @@ export default function HomePage() {
       <FeaturesSection />
       <Categories />
       <Courses />
-      <TestimonialsOne />
+      {/* <TestimonialsOne /> */}
       <GetApp />
       <Brands />
     </>

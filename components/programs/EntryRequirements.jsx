@@ -1,5 +1,8 @@
 "use client";
+
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 
 export const EntryRequirements = ({ data }) => {
@@ -7,48 +10,97 @@ export const EntryRequirements = ({ data }) => {
 
   return (
     <motion.section
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true, margin: "-50px" }}
-      className="bg-white rounded-xl shadow-sm mb-15 custom-margin custom-linear-blue-top"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
       style={{
-        opacity: 1,
-        border: "1px solid #ddd",
-        padding: "30px",
+        backgroundColor: "#000000",
+        padding: "80px 20px",
+        borderRadius: "8px",
       }}
     >
-      <h3 className="text-2xl font-semibold text-gray-900 mb-10">
-        Entry Requirements
-      </h3>
-
-      <ul className="space-y-10 list-disc list-inside">
-        {data.map((item, index) => (
-          <motion.li
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: index * 0.1 }}
-            viewport={{ once: true }}
-            className="rounded-xl shadow-sm hover:shadow-md transition-all duration-300"
+      <div style={{ maxWidth: "1240px", margin: "0 auto" }}>
+        {/* Title with White Underline */}
+        <h2
+          style={{
+            fontSize: "40px",
+            fontWeight: "800",
+            color: "#ffffff",
+            marginBottom: "50px",
+            textAlign: "center",
+            position: "relative",
+          }}
+        >
+          Entry Requirements
+          <span
             style={{
-              listStyleType: "disc",
-              textAlign: "justify",
-              wordSpacing: "normal",
-              letterSpacing: "normal",
-              lineHeight: 1.8,
-              fontSize: "18px",
-              fontWeight: 600,
-              color: "#000000",
-              marginBottom: "1.5rem",
-              padding: "20px",
-              marginLeft: "1rem",
+              position: "absolute",
+              bottom: "-16px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "100px",
+              height: "4px",
+              backgroundColor: "#ffffff",
+              borderRadius: "2px",
             }}
-          >
-            {item}
-          </motion.li>
-        ))}
-      </ul>
+          />
+        </h2>
+
+        {/* List Items */}
+        <div
+          style={{
+            borderRadius: "8px",
+            backgroundColor: "#000000",
+            padding: "40px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "24px",
+          }}
+        >
+          {data.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              style={{ display: "flex", alignItems: "flex-start" }}
+            >
+              <div
+                style={{
+                  width: "28px",
+                  height: "28px",
+                  backgroundColor: "#ffffff",
+                  color: "#000000",
+                  borderRadius: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "14px",
+                  fontWeight: 700,
+                  marginRight: "18px",
+                  flexShrink: 0,
+                  marginTop: "2px",
+                  boxShadow: "0 4px 8px rgba(255, 255, 255, 0.15)",
+                }}
+              >
+                <FontAwesomeIcon icon={faCheck} />
+              </div>
+              <div
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "700",
+                  color: "#ffffff",
+                  lineHeight: "1.8",
+                }}
+              >
+                {item}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </motion.section>
   );
 };

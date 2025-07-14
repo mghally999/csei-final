@@ -41,7 +41,7 @@ const logosWrapperStyle = {
 };
 
 const logoItemStyle = {
-  flexShrink: 0,
+  // flexShrink: 0,
   width: "180px",
   height: "180px",
   display: "flex",
