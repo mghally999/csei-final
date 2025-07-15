@@ -36,6 +36,13 @@ export default function Header() {
           width: 100%;
         }
 
+        /* Prevent flex-wrap on mobile */
+        @media (max-width: 767px) {
+          .no-wrap-on-mobile {
+            flex-wrap: nowrap !important;
+          }
+        }
+
         @media (min-width: 1200px) and (max-width: 1400px) {
           .header-flex-wrapper {
             flex-wrap: nowrap !important;
@@ -192,12 +199,12 @@ export default function Header() {
           style={{ paddingTop: "1.2rem", paddingBottom: "1.2rem" }}
         >
           <div
-            className="header-flex-wrapper"
+            className="header-flex-wrapper no-wrap-on-mobile"
             style={{
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              flexWrap: "wrap",
+              flexWrap: "wrap", // will be overridden on mobile by class
               gap: "20px",
               minWidth: 0,
               width: "100%",

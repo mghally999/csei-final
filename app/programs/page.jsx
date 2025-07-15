@@ -8,18 +8,31 @@ import Link from "next/link";
 import { useContextElement } from "@/context/Context";
 import PaginationTwo from "../../components/common/PaginationTwo";
 import { programs } from "@/data/programs";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiCompass, FiAward, FiStar, FiLayers, FiFilter } from "react-icons/fi";
 
-export default function CourseListOne() {
+const categories = [
+  "All Categories",
+  "Health & Social Care",
+  "Business & Management",
+  "Travel & Tourism",
+  "Culinary Arts",
+  "Information Technology",
+];
+
+const CourseListOne = () => {
   const pathname = usePathname();
   const isProfessionalRoute = pathname.includes("/professional-courses");
 
-  // Enhance programs data with professional flag based on href
+  // Enhanced programs data
   const enhancedPrograms = programs.map((program) => ({
     ...program,
     professional: program.href.includes("/professional-courses/"),
+    duration: program.duration || "Duration not specified",
+    level: program.level || "Level not specified",
   }));
 
-  const [coursesData, setCoursesData] = useState(() => {
+  const [coursesData] = useState(() => {
     return enhancedPrograms.map((program) => ({
       id: program.id,
       title: program.credentialTitle || program.title,
@@ -39,37 +52,48 @@ export default function CourseListOne() {
     }));
   });
 
-  const [categoryOpen, setCategoryOpen] = useState(true);
-  const [professionalOpen, setProfessionalOpen] = useState(true);
-  const [filterOpen, setFilterOpen] = useState(false);
-  const { isAddedToCartCourses, addCourseToCart } = useContextElement();
-
+  // State management
+  const [activeFilter, setActiveFilter] = useState("all");
   const [filterCategories, setFilterCategories] = useState([]);
   const [filterPrice, setFilterPrice] = useState("All");
   const [filterLevels, setFilterLevels] = useState([]);
   const [filterProfessional, setFilterProfessional] =
     useState(isProfessionalRoute);
-
   const [currentSortingOption, setCurrentSortingOption] = useState("Default");
   const [filteredData, setFilteredData] = useState([]);
   const [sortedFilteredData, setSortedFilteredData] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
+  const [hoveredCourse, setHoveredCourse] = useState(null);
+  const [viewMode, setViewMode] = useState("grid");
+  const [activeCategory, setActiveCategory] = useState("All Categories");
 
   // Calculate professional count
   const professionalCount = enhancedPrograms.filter(
     (p) => p.professional
   ).length;
 
+  const getLevelLabel = (level) => {
+    switch (level) {
+      case "Level 3":
+        return "Beginner";
+      case "Level 4":
+        return "Intermediate";
+      case "Level 5":
+      case "Level 6":
+        return "Expert";
+      default:
+        return level;
+    }
+  };
+
+  // Filtering logic
   useEffect(() => {
-    const refItems = coursesData
+    let refItems = coursesData
       .filter((elm) => {
-        if (filterPrice == "All") {
-          return true;
-        } else if (filterPrice == "Free") {
-          return !elm.paid;
-        } else if (filterPrice == "Paid") {
-          return elm.paid;
-        }
+        if (filterPrice == "All") return true;
+        if (filterPrice == "Free") return !elm.paid;
+        if (filterPrice == "Paid") return elm.paid;
+        return true;
       })
       .filter((elm) => {
         if (isProfessionalRoute || filterProfessional) {
@@ -77,6 +101,33 @@ export default function CourseListOne() {
         }
         return true;
       });
+
+    // Apply category filter
+    if (activeCategory !== "All Categories") {
+      refItems = refItems.filter((program) => {
+        switch (activeCategory) {
+          case "Health & Social Care":
+            return program.school === "School of Health Science";
+          case "Business & Management":
+            return program.school === "School of Business";
+          case "Travel & Tourism":
+            return (
+              program.school === "School of Culinary Arts & Tourism" &&
+              (program.category?.includes("Tourism") ||
+                program.category?.includes("Hospitality"))
+            );
+          case "Culinary Arts":
+            return (
+              program.school === "School of Culinary Arts & Tourism" &&
+              program.category === "Professional Courses"
+            );
+          case "Information Technology":
+            return program.school === "School of Computing";
+          default:
+            return true;
+        }
+      });
+    }
 
     let filteredArrays = [];
 
@@ -86,13 +137,13 @@ export default function CourseListOne() {
           filterCategories.includes(elm.category) ||
           filterCategories.includes(elm.school)
       );
-      filteredArrays = [...filteredArrays, filtered];
+      filteredArrays.push(filtered);
     }
     if (filterLevels.length > 0) {
       const filtered = refItems.filter((elm) =>
         filterLevels.some((level) => elm.level.includes(level))
       );
-      filteredArrays = [...filteredArrays, filtered];
+      filteredArrays.push(filtered);
     }
 
     const commonItems =
@@ -111,64 +162,51 @@ export default function CourseListOne() {
     filterProfessional,
     coursesData,
     isProfessionalRoute,
+    activeCategory,
   ]);
 
+  // Sorting logic
   useEffect(() => {
-    if (currentSortingOption == "Default") {
-      setSortedFilteredData(filteredData);
-    } else if (currentSortingOption == "Rating (asc)") {
-      setSortedFilteredData(
-        [...filteredData].sort((a, b) => a.rating - b.rating)
-      );
-    } else if (currentSortingOption == "Rating (dsc)") {
-      setSortedFilteredData(
-        [...filteredData].sort((a, b) => b.rating - a.rating)
-      );
-    } else if (currentSortingOption == "Price (asc)") {
-      setSortedFilteredData(
-        [...filteredData].sort((a, b) => a.discountedPrice - b.discountedPrice)
-      );
-    } else if (currentSortingOption == "Price (dsc)") {
-      setSortedFilteredData(
-        [...filteredData].sort((a, b) => b.discountedPrice - a.discountedPrice)
-      );
-    } else if (currentSortingOption == "Duration (asc)") {
-      setSortedFilteredData(
-        [...filteredData].sort((a, b) => a.duration - b.duration)
-      );
-    } else if (currentSortingOption == "Duration (dsc)") {
-      setSortedFilteredData(
-        [...filteredData].sort((a, b) => b.duration - a.duration)
-      );
+    let sortedData = [...filteredData];
+
+    switch (currentSortingOption) {
+      case "Rating (asc)":
+        sortedData.sort((a, b) => a.rating - b.rating);
+        break;
+      case "Rating (dsc)":
+        sortedData.sort((a, b) => b.rating - a.rating);
+        break;
+      case "Price (asc)":
+        sortedData.sort((a, b) => a.discountedPrice - b.discountedPrice);
+        break;
+      case "Price (dsc)":
+        sortedData.sort((a, b) => b.discountedPrice - a.discountedPrice);
+        break;
+      case "Duration (asc)":
+        sortedData.sort((a, b) => a.duration - b.duration);
+        break;
+      case "Duration (dsc)":
+        sortedData.sort((a, b) => b.duration - a.duration);
+        break;
+      default:
+        // Default sorting (perhaps by popularity or newest)
+        break;
     }
+
+    setSortedFilteredData(sortedData);
   }, [currentSortingOption, filteredData]);
 
+  // Filter handlers
   const handleFilterCategories = (item) => {
     if (filterCategories.includes(item)) {
-      const filtered = filterCategories.filter((elm) => elm != item);
-      setFilterCategories([...filtered]);
+      setFilterCategories(filterCategories.filter((elm) => elm !== item));
     } else {
-      setFilterCategories((pre) => [...pre, item]);
-    }
-  };
-
-  const handleFilterPrice = (item) => {
-    setFilterPrice(item);
-  };
-
-  const handleFilterLevels = (item) => {
-    if (filterLevels.includes(item)) {
-      const filtered = filterLevels.filter((elm) => elm != item);
-      setFilterLevels([...filtered]);
-    } else {
-      setFilterLevels((pre) => [...pre, item]);
+      setFilterCategories([...filterCategories, item]);
     }
   };
 
   const handleFilterProfessional = () => {
-    if (isProfessionalRoute) {
-      setFilterProfessional(true);
-    } else {
+    if (!isProfessionalRoute) {
       setFilterProfessional(!filterProfessional);
     }
   };
@@ -186,670 +224,766 @@ export default function CourseListOne() {
     count: enhancedPrograms.filter((p) => p.level.includes(level)).length,
   }));
 
+  // Constellation view calculations
+  const constellationCourses = sortedFilteredData.slice(0, 12);
+  const constellationPositions = constellationCourses.map((_, i) => {
+    const angle = (i / constellationCourses.length) * Math.PI * 2;
+    const distance = 150 + Math.random() * 50;
+    return {
+      x: Math.cos(angle) * distance,
+      y: Math.sin(angle) * distance,
+      size:
+        8 +
+        (constellationCourses[i].popular ? 4 : 0) +
+        (constellationCourses[i].professional ? 4 : 0),
+    };
+  });
+
   return (
-    <>
-      <section className="page-header -type-1">
+    <div className="cosmic-explorer custom-padding">
+      {/* Animated cosmic background */}
+      <div className="cosmic-bg">
+        {[...Array(50)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="star"
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: [0, 0.8, 0],
+              scale: [1, 1.5, 1],
+            }}
+            transition={{
+              duration: 5 + Math.random() * 10,
+              repeat: Infinity,
+              delay: Math.random() * 5,
+            }}
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              width: `${1 + Math.random() * 3}px`,
+              height: `${1 + Math.random() * 3}px`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Header */}
+      <motion.header
+        className="cosmic-header"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="container">
-          <div className="page-header__content">
-            <div className="row">
-              <div className="col-auto">
-                <div>
-                  <h1 className="page-header__title">CSEI ACADEMY</h1>
-                </div>
-                <div className="d-flex flex-wrap x-gap-20 y-gap-10 pt-15 custom-flex-margin">
-                  {[
-                    "All",
-                    ...new Set(enhancedPrograms.map((p) => p.school)),
-                  ].map((item) => (
-                    <button
-                      key={item}
-                      className={`button px-15 py-5 rounded-200 ${
-                        filterCategories.includes(item) ||
-                        (item === "All" && filterCategories.length === 0)
-                          ? "bg-dark-1 text-white"
-                          : "bg-light-3"
-                      }`}
-                      onClick={() =>
-                        item === "All"
-                          ? setFilterCategories([])
-                          : handleFilterCategories(item)
-                      }
-                    >
-                      {item}
-                    </button>
-                  ))}
-                  <button
-                    className={`button px-15 py-5 rounded-200 ${
-                      filterProfessional || isProfessionalRoute
-                        ? "bg-dark-1 text-white"
-                        : "bg-light-3"
-                    }`}
-                    onClick={handleFilterProfessional}
-                  >
-                    Professional Courses ({professionalCount})
-                  </button>
-                  {isProfessionalRoute && (
-                    <Link
-                      href="/courses"
-                      className="button px-15 py-5 rounded-200 bg-light-3"
-                    >
-                      View All Courses
-                    </Link>
-                  )}
-                </div>
-              </div>
-            </div>
+          <motion.div className="title-wrapper" whileHover={{ scale: 1.02 }}>
+            <h1 className="cosmic-title">
+              <span className="title-gradient">Explore</span> Our Programs
+              Universe
+            </h1>
+            <p className="cosmic-subtitle">
+              Navigate through constellations of learning opportunities
+            </p>
+          </motion.div>
+
+          {/* Category tabs */}
+          <div className="tabs__controls flex-wrap pt-40 d-flex justify-center js-tabs-controls">
+            {categories.map((cat, i) => (
+              <motion.button
+                key={i}
+                onClick={() => {
+                  setActiveCategory(cat);
+                  setActiveFilter("all");
+                }}
+                className={`cosmic-tab-btn ${
+                  activeCategory === cat ? "active" : ""
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                type="button"
+              >
+                {cat}
+              </motion.button>
+            ))}
+          </div>
+
+          {/* Quick filters */}
+          <div className="cosmic-quick-filters">
+            <motion.button
+              className={`cosmic-filter-btn ${
+                activeFilter === "all" ? "active" : ""
+              }`}
+              onClick={() => {
+                setFilterCategories([]);
+                setFilterProfessional(false);
+                setFilterPrice("All");
+                setFilterLevels([]);
+                setActiveFilter("all");
+              }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FiCompass className="filter-icon" />
+              All Courses
+            </motion.button>
+
+            <motion.button
+              className={`cosmic-filter-btn ${
+                activeFilter === "professional" ? "active" : ""
+              }`}
+              onClick={() => {
+                setFilterProfessional(true);
+                setActiveFilter("professional");
+              }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FiAward className="filter-icon" />
+              Professional ({professionalCount})
+            </motion.button>
           </div>
         </div>
-      </section>
+      </motion.header>
 
-      <section className="custom-layout-padding custom-linear-white-top">
+      {/* Main content */}
+      <main className="cosmic-main">
         <div className="container">
-          <div className="row y-gap-50">
-            <div className="col-xl-3 col-lg-4 lg:d-none">
-              <div className="pr-30 lg:pr-0">
-                <div className="sidebar -courses">
-                  <div className="sidebar__item">
-                    <div className="accordion js-accordion">
-                      <div
-                        className={`accordion__item ${
-                          categoryOpen ? "is-active" : ""
-                        }`}
+          {/* Constellation View */}
+          {viewMode === "constellation" && (
+            <div className="constellation-view">
+              <div className="constellation-container">
+                {constellationCourses.map((course, i) => (
+                  <motion.div
+                    key={course.id}
+                    className="constellation-node"
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{
+                      opacity: 1,
+                      scale: 1,
+                      x: constellationPositions[i].x,
+                      y: constellationPositions[i].y,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 30,
+                      delay: i * 0.1,
+                    }}
+                    whileHover={{ scale: 1.2 }}
+                    onHoverStart={() => setHoveredCourse(course.id)}
+                    onHoverEnd={() => setHoveredCourse(null)}
+                    style={{
+                      width: `${constellationPositions[i].size}px`,
+                      height: `${constellationPositions[i].size}px`,
+                      background: course.professional
+                        ? "linear-gradient(135deg, #000000, #000000)"
+                        : "linear-gradient(135deg, #00BFFF, #1E90FF)",
+                    }}
+                  >
+                    {hoveredCourse === course.id && (
+                      <motion.div
+                        className="node-tooltip"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
                       >
-                        <div
-                          className="accordion__button items-center"
-                          onClick={() => setCategoryOpen(!categoryOpen)}
-                        >
-                          <h5 className="sidebar__title">Schools</h5>
-                          <div className="accordion__icon">
-                            <div className="icon icon-chevron-down"></div>
-                            <div className="icon icon-chevron-up"></div>
-                          </div>
-                        </div>
-                        <div
-                          className="accordion__content"
-                          style={categoryOpen ? { maxHeight: "350px" } : {}}
-                        >
-                          <div className="accordion__content__inner">
-                            <div className="sidebar-checkbox">
-                              <div
-                                className="sidebar-checkbox__item"
-                                onClick={() => setFilterCategories([])}
-                              >
-                                <div className="form-checkbox">
-                                  <input
-                                    type="checkbox"
-                                    readOnly
-                                    checked={filterCategories.length === 0}
-                                  />
-                                  <div className="form-checkbox__mark">
-                                    <div className="form-checkbox__icon icon-check"></div>
-                                  </div>
-                                </div>
-                                <div className="sidebar-checkbox__title">
-                                  All Schools
-                                </div>
-                                <div className="sidebar-checkbox__count">
-                                  (
-                                  {isProfessionalRoute || filterProfessional
-                                    ? professionalCount
-                                    : enhancedPrograms.length}
-                                  )
-                                </div>
-                              </div>
-                              {[
-                                ...new Set(
-                                  enhancedPrograms
-                                    .filter(
-                                      (p) =>
-                                        !isProfessionalRoute || p.professional
-                                    )
-                                    .map((p) => p.school)
-                                ),
-                              ].map((school, i) => {
-                                const count = enhancedPrograms.filter(
-                                  (p) =>
-                                    p.school === school &&
-                                    (!isProfessionalRoute || p.professional)
-                                ).length;
+                        <h4>{course.title}</h4>
+                        <p>{course.school}</p>
+                        <Link href={course.href} className="node-link">
+                          Explore →
+                        </Link>
+                      </motion.div>
+                    )}
+                  </motion.div>
+                ))}
 
-                                return (
-                                  <div
-                                    key={i}
-                                    className="sidebar-checkbox__item cursor"
-                                    onClick={() =>
-                                      handleFilterCategories(school)
-                                    }
-                                  >
-                                    <div className="form-checkbox">
-                                      <input
-                                        type="checkbox"
-                                        readOnly
-                                        checked={filterCategories.includes(
-                                          school
-                                        )}
-                                      />
-                                      <div className="form-checkbox__mark">
-                                        <div className="form-checkbox__icon icon-check"></div>
-                                      </div>
-                                    </div>
-                                    <div className="sidebar-checkbox__title">
-                                      {school}
-                                    </div>
-                                    <div className="sidebar-checkbox__count">
-                                      ({count})
-                                    </div>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="sidebar__item">
-                    <div className="accordion js-accordion">
-                      <div
-                        className={`accordion__item ${
-                          professionalOpen ? "is-active" : ""
-                        }`}
-                      >
-                        <div
-                          className="accordion__button items-center"
-                          onClick={() => setProfessionalOpen(!professionalOpen)}
-                        >
-                          <h5 className="sidebar__title">Course Type</h5>
-                          <div className="accordion__icon">
-                            <div className="icon icon-chevron-down"></div>
-                            <div className="icon icon-chevron-up"></div>
-                          </div>
-                        </div>
-                        <div
-                          className="accordion__content"
-                          style={professionalOpen ? { maxHeight: "200px" } : {}}
-                        >
-                          <div className="accordion__content__inner">
-                            <div className="sidebar-checkbox">
-                              <div
-                                className="sidebar-checkbox__item cursor"
-                                onClick={() =>
-                                  !isProfessionalRoute &&
-                                  handleFilterProfessional()
-                                }
-                              >
-                                <div className="form-checkbox">
-                                  <input
-                                    type="checkbox"
-                                    readOnly
-                                    checked={
-                                      filterProfessional || isProfessionalRoute
-                                    }
-                                    disabled={isProfessionalRoute}
-                                  />
-                                  <div className="form-checkbox__mark">
-                                    <div className="form-checkbox__icon icon-check"></div>
-                                  </div>
-                                </div>
-                                <div className="sidebar-checkbox__title">
-                                  Professional Courses
-                                </div>
-                                <div className="sidebar-checkbox__count">
-                                  ({professionalCount})
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                {/* Constellation lines */}
+                <svg className="constellation-lines" width="100%" height="100%">
+                  {constellationPositions.map((pos1, i) => {
+                    return constellationPositions
+                      .slice(i + 1)
+                      .map((pos2, j) => {
+                        if (Math.random() > 0.7) {
+                          // Only connect some nodes
+                          return (
+                            <line
+                              key={`${i}-${j + i + 1}`}
+                              x1={pos1.x + 150}
+                              y1={pos1.y + 150}
+                              x2={pos2.x + 150}
+                              y2={pos2.y + 150}
+                              stroke="rgba(138, 43, 226, 0.3)"
+                              strokeWidth="1"
+                            />
+                          );
+                        }
+                        return null;
+                      });
+                  })}
+                </svg>
               </div>
             </div>
+          )}
 
-            <div className="col-xl-9 col-lg-8">
-              <div className="accordion js-accordion">
-                <div
-                  className={`accordion__item ${filterOpen ? "is-active" : ""}`}
-                >
-                  <div className="row y-gap-20 items-center justify-between pb-30">
-                    <div className="col-auto">
-                      <div className="text-14 lh-12">
-                        Showing{" "}
-                        <span className="text-dark-1 fw-500">
-                          {filteredData.length}
-                        </span>{" "}
-                        total results
-                      </div>
-                    </div>
-                  </div>
-
-                  <div
-                    className="accordion__content d-none lg:d-block"
-                    style={filterOpen ? { maxHeight: "1800px" } : {}}
-                  >
-                    <div className="sidebar -courses px-30 py-30 rounded-8 bg-light-3 mb-50">
-                      <div className="row x-gap-60 y-gap-40">
-                        <div className="col-xl-3 col-lg-4 col-sm-6">
-                          <div className="sidebar__item">
-                            <h5 className="sidebar__title">Schools</h5>
-                            <div className="sidebar-checkbox">
-                              <div
-                                className="sidebar-checkbox__item"
-                                onClick={() => setFilterCategories([])}
-                              >
-                                <div className="form-checkbox">
-                                  <input
-                                    type="checkbox"
-                                    readOnly
-                                    checked={filterCategories.length === 0}
-                                  />
-                                  <div className="form-checkbox__mark">
-                                    <div className="form-checkbox__icon icon-check"></div>
-                                  </div>
-                                </div>
-                                <div className="sidebar-checkbox__title">
-                                  All Schools
-                                </div>
-                                <div className="sidebar-checkbox__count">
-                                  (
-                                  {isProfessionalRoute || filterProfessional
-                                    ? professionalCount
-                                    : enhancedPrograms.length}
-                                  )
-                                </div>
-                              </div>
-                              {[
-                                ...new Set(
-                                  enhancedPrograms
-                                    .filter(
-                                      (p) =>
-                                        !isProfessionalRoute || p.professional
-                                    )
-                                    .map((p) => p.school)
-                                ),
-                              ].map((school, i) => {
-                                const count = enhancedPrograms.filter(
-                                  (p) =>
-                                    p.school === school &&
-                                    (!isProfessionalRoute || p.professional)
-                                ).length;
-
-                                return (
-                                  <div
-                                    key={i}
-                                    className="sidebar-checkbox__item cursor"
-                                    onClick={() =>
-                                      handleFilterCategories(school)
-                                    }
-                                  >
-                                    <div className="form-checkbox">
-                                      <input
-                                        type="checkbox"
-                                        readOnly
-                                        checked={filterCategories.includes(
-                                          school
-                                        )}
-                                      />
-                                      <div className="form-checkbox__mark">
-                                        <div className="form-checkbox__icon icon-check"></div>
-                                      </div>
-                                    </div>
-                                    <div className="sidebar-checkbox__title">
-                                      {school}
-                                    </div>
-                                    <div className="sidebar-checkbox__count">
-                                      ({count})
-                                    </div>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="col-xl-3 col-lg-4 col-sm-6">
-                          <div className="sidebar__item">
-                            <h5 className="sidebar__title">Course Type</h5>
-                            <div className="sidebar-checkbox">
-                              <div
-                                className="sidebar-checkbox__item cursor"
-                                onClick={handleFilterProfessional}
-                              >
-                                <div className="form-checkbox">
-                                  <input
-                                    type="checkbox"
-                                    readOnly
-                                    checked={
-                                      filterProfessional || isProfessionalRoute
-                                    }
-                                    disabled={isProfessionalRoute}
-                                  />
-                                  <div className="form-checkbox__mark">
-                                    <div className="form-checkbox__icon icon-check"></div>
-                                  </div>
-                                </div>
-                                <div className="sidebar-checkbox__title">
-                                  Professional Courses
-                                </div>
-                                <div className="sidebar-checkbox__count">
-                                  ({professionalCount})
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="col-xl-3 col-lg-4 col-sm-6">
-                          <div className="sidebar__item">
-                            <h5 className="sidebar__title">Levels</h5>
-                            <div className="sidebar-checkbox">
-                              <div
-                                className="sidebar-checkbox__item"
-                                onClick={() => setFilterLevels([])}
-                              >
-                                <div className="form-checkbox">
-                                  <input
-                                    type="checkbox"
-                                    readOnly
-                                    checked={filterLevels.length === 0}
-                                  />
-                                  <div className="form-checkbox__mark">
-                                    <div className="form-checkbox__icon icon-check"></div>
-                                  </div>
-                                </div>
-                                <div className="sidebar-checkbox__title">
-                                  All Levels
-                                </div>
-                                <div className="sidebar-checkbox__count">
-                                  (
-                                  {isProfessionalRoute || filterProfessional
-                                    ? professionalCount
-                                    : enhancedPrograms.length}
-                                  )
-                                </div>
-                              </div>
-                              {programLevels.map((level, i) => {
-                                const count = enhancedPrograms.filter(
-                                  (p) =>
-                                    p.level.includes(level.title) &&
-                                    (!isProfessionalRoute || p.professional)
-                                ).length;
-
-                                if (count === 0) return null;
-
-                                return (
-                                  <div
-                                    key={i}
-                                    className="sidebar-checkbox__item cursor"
-                                    onClick={() =>
-                                      handleFilterLevels(level.title)
-                                    }
-                                  >
-                                    <div className="form-checkbox">
-                                      <input
-                                        type="checkbox"
-                                        readOnly
-                                        checked={filterLevels.includes(
-                                          level.title
-                                        )}
-                                      />
-                                      <div className="form-checkbox__mark">
-                                        <div className="form-checkbox__icon icon-check"></div>
-                                      </div>
-                                    </div>
-                                    <div className="sidebar-checkbox__title">
-                                      {level.title}
-                                    </div>
-                                    <div className="sidebar-checkbox__count">
-                                      ({count})
-                                    </div>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="col-xl-3 col-lg-4 col-sm-6">
-                          <div className="sidebar__item">
-                            <h5 className="sidebar__title">Price</h5>
-                            <div className="sidebar-checkbox">
-                              {prices.map((item, index) => {
-                                const count = enhancedPrograms.filter((p) => {
-                                  if (
-                                    (isProfessionalRoute ||
-                                      filterProfessional) &&
-                                    !p.professional
-                                  )
-                                    return false;
-                                  if (item.title === "All") return true;
-                                  if (item.title === "Free") return !p.paid;
-                                  if (item.title === "Paid") return p.paid;
-                                  return true;
-                                }).length;
-
-                                return (
-                                  <div
-                                    key={index}
-                                    className="sidebar-checkbox__item cursor"
-                                    onClick={() =>
-                                      handleFilterPrice(item.title)
-                                    }
-                                  >
-                                    <div className="form-radio mr-10">
-                                      <div className="radio">
-                                        <input
-                                          type="radio"
-                                          readOnly
-                                          checked={filterPrice === item.title}
-                                        />
-                                        <div className="radio__mark">
-                                          <div className="radio__icon"></div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className="sidebar-checkbox__title">
-                                      {item.title}
-                                    </div>
-                                    <div className="sidebar-checkbox__count">
-                                      ({count})
-                                    </div>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="row y-gap-30 side-content__wrap">
+          {/* Grid View */}
+          {viewMode === "grid" && (
+            <>
+              {/* Course grid */}
+              <div className="cosmic-grid">
                 {sortedFilteredData
                   .slice((pageNumber - 1) * 12, pageNumber * 12)
-                  .map((elm, i) => (
-                    <div
-                      key={i}
-                      className="side-content col-xl-4 col-lg-6 col-md-4 col-sm-6"
+                  .map((course, i) => (
+                    <motion.div
+                      key={course.id}
+                      className="cosmic-course-card"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: i * 0.05 }}
+                      whileHover={{
+                        y: -5,
+                        boxShadow: "0 15px 30px rgba(0,0,0,0.3)",
+                      }}
                     >
-                      <div className="coursesCard -type-1">
-                        <div className="relative">
-                          <div className="coursesCard__image overflow-hidden rounded-8">
-                            <Image
-                              width={530}
-                              height={370}
-                              className="w-1/1"
-                              src={elm.imageSrc}
-                              alt={elm.title}
-                            />
-                            <div className="coursesCard__image_overlay rounded-8"></div>
-                          </div>
-                          <div className="d-flex justify-between py-10 px-10 absolute-full-center z-3">
-                            {elm.popular && <div></div>}
-                            {(i % 4 === 0 || elm.popular) && <div></div>}
-                            {elm.professional && (
-                              <div>
-                                <div className="px-15 rounded-200 bg-custom-navyblue">
-                                  <span className="text-11 lh-1 uppercase fw-900 text-white">
-                                    PROFESSIONAL
-                                  </span>
-                                </div>
-                              </div>
-                            )}
-                          </div>
+                      <div className="course-card-inner">
+                        <div className="course-image-wrapper">
+                          <Image
+                            width={400}
+                            height={250}
+                            src={course.imageSrc}
+                            alt={course.title}
+                            className="course-image"
+                          />
+
+                          {course.professional && (
+                            <div className="professional-badge">
+                              <FiAward />
+                              Pro
+                            </div>
+                          )}
                         </div>
 
-                        <div className="h-100 pt-15">
-                          <div className="text-14 lh-1 text-dark-1 fw-600 mb-10">
-                            {elm.school}
+                        <div className="course-content">
+                          <div className="course-school">{course.school}</div>
+                          <h3 className="course-title">
+                            <Link href={course.href}>{course.title}</Link>
+                          </h3>
+                          <div className="course-meta">
+                            <span className="course-level">
+                              {getLevelLabel(course.level)}
+                            </span>
+                            <span className="course-duration">
+                              {course.duration}
+                            </span>
                           </div>
-                          <div className="text-17 lh-15 fw-500 text-dark-1">
-                            <Link className="fw-800 linkCustom" href={elm.href}>
-                              {elm.title} - {elm.level}
+
+                          <div className="course-footer">
+                            <Link href={course.href} className="explore-btn">
+                              Explore
                             </Link>
                           </div>
                         </div>
                       </div>
-
-                      <div className="side-content__item">
-                        <div className="px-30 pt-20 pb-30 bg-white rounded-8 border-light shadow-2">
-                          <div className="text-18 lh-16 text-dark-1">
-                            <Link href={elm.href}>{elm.title}</Link>
-                            <div className="text-14 text-gray-1 mt-5">
-                              {elm.school} • {elm.category}
-                              {elm.professional && (
-                                <span className="ml-10 px-10 py-2 rounded-200 bg-blue-1 text-white text-11">
-                                  Professional
-                                </span>
-                              )}
-                            </div>
-                          </div>
-
-                          <div className="row x-gap-10 y-gap-10 items-center pt-15">
-                            <div className="col-auto">
-                              <div className="d-flex items-center">
-                                <Image
-                                  width={16}
-                                  height={17}
-                                  className="mr-8"
-                                  src="/assets/img/coursesCards/icons/1.svg"
-                                  alt="icon"
-                                />
-                                <div className="text-14 lh-1">
-                                  {elm.lessonCount} lesson
-                                </div>
-                              </div>
-                            </div>
-
-                            <div className="col-auto">
-                              <div className="d-flex items-center">
-                                <Image
-                                  width={16}
-                                  height={17}
-                                  className="mr-8"
-                                  src="/assets/img/coursesCards/icons/2.svg"
-                                  alt="icon"
-                                />
-                                <div className="text-14 lh-1">
-                                  {`${Math.floor(
-                                    elm.duration / 60
-                                  )}h ${Math.floor(elm.duration % 60)}m`}
-                                </div>
-                              </div>
-                            </div>
-
-                            <div className="col-auto">
-                              <div className="d-flex items-center">
-                                <Image
-                                  width={16}
-                                  height={17}
-                                  className="mr-8"
-                                  src="/assets/img/coursesCards/icons/3.svg"
-                                  alt="icon"
-                                />
-                                <div className="text-14 lh-1">{elm.level}</div>
-                              </div>
-                            </div>
-                          </div>
-
-                          <p className="text-dark-1 mt-15">
-                            {elm.school}'s {elm.title} program provides
-                            comprehensive training in this field.
-                          </p>
-
-                          <div className="row y-gap-15 pt-15">
-                            <div className="col-12">
-                              <div className="d-flex items-center">
-                                <div className="size-20 d-flex items-center justify-center rounded-full border-light">
-                                  <div className="icon-check text-6"></div>
-                                </div>
-                                <div className="ml-10">
-                                  Comprehensive curriculum covering all key
-                                  aspects
-                                </div>
-                              </div>
-                            </div>
-
-                            <div className="col-12">
-                              <div className="d-flex items-center">
-                                <div className="size-20 d-flex items-center justify-center rounded-full border-light">
-                                  <div className="icon-check text-6"></div>
-                                </div>
-                                <div className="ml-10">
-                                  Comprehensive curriculum covering all key
-                                  aspects
-                                </div>
-                              </div>
-                            </div>
-
-                            <div className="col-12">
-                              <div className="d-flex items-center">
-                                <div className="size-20 d-flex items-center justify-center rounded-full border-light">
-                                  <div className="icon-check text-6"></div>
-                                </div>
-                                <div className="ml-10">
-                                  Hands-on practical training and exercises
-                                </div>
-                              </div>
-                            </div>
-
-                            <div className="col-12">
-                              <div className="d-flex items-center">
-                                <div className="size-20 d-flex items-center justify-center rounded-full border-light">
-                                  <div className="icon-check text-6"></div>
-                                </div>
-                                <div className="ml-10">
-                                  Industry-recognized certification upon
-                                  completion
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    </motion.div>
                   ))}
               </div>
+            </>
+          )}
 
-              <div className="row justify-center pt-90 lg:pt-50">
-                <div className="col-auto">
-                  <PaginationTwo
-                    pageNumber={pageNumber}
-                    setPageNumber={setPageNumber}
-                    data={sortedFilteredData}
-                    pageCapacity={12}
-                  />
-                </div>
-              </div>
+          {/* Pagination */}
+          {sortedFilteredData.length > 0 && (
+            <div className="cosmic-pagination">
+              <PaginationTwo
+                pageNumber={pageNumber}
+                setPageNumber={setPageNumber}
+                data={sortedFilteredData}
+                pageCapacity={12}
+              />
             </div>
-          </div>
+          )}
         </div>
-      </section>
-    </>
+      </main>
+
+      {/* Global styles */}
+      <style jsx global>{`
+        .cosmic-explorer {
+          position: relative;
+          min-height: 100vh;
+          background: linear-gradient(135deg, #000000 0%, #000000 100%);
+          color: #fff;
+          font-family: "Inter", sans-serif;
+          overflow-x: hidden;
+        }
+
+        .cosmic-bg {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 0;
+          overflow: hidden;
+        }
+
+        .star {
+          position: absolute;
+          background-color: #fff;
+          border-radius: 50%;
+          filter: blur(0.5px);
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+          position: relative;
+          z-index: 1;
+        }
+
+        .cosmic-header {
+          padding: 60px 0 40px;
+          text-align: center;
+          position: relative;
+        }
+
+        .title-wrapper {
+          display: inline-block;
+          margin-bottom: 30px;
+          cursor: default;
+        }
+
+        .cosmic-title {
+          font-size: clamp(2rem, 5vw, 3.5rem);
+          font-weight: 800;
+          margin-bottom: 10px;
+          line-height: 1.2;
+          background: linear-gradient(90deg, #8a2be2, #00bfff);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+
+        .title-gradient {
+          background: linear-gradient(90deg, #00bfff, #8a2be2);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+
+        .cosmic-subtitle {
+          font-size: 1.2rem;
+          opacity: 0.8;
+          margin: 0;
+        }
+
+        /* Tab buttons */
+        .tabs__controls {
+          margin-bottom: 30px;
+          gap: 15px;
+        }
+
+        .cosmic-tab-btn {
+          position: relative;
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          backdrop-filter: blur(8px);
+          padding: 12px 20px;
+          font-weight: 600;
+          color: white;
+          border-radius: 50px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          overflow: hidden;
+          z-index: 1;
+          font-size: 14px;
+        }
+
+        .cosmic-tab-btn::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 0;
+          background: linear-gradient(90deg, #8a2be2, #00bfff);
+          transition: width 0.4s ease;
+          z-index: -1;
+        }
+
+        .cosmic-tab-btn:hover::before {
+          width: 100%;
+        }
+
+        .cosmic-tab-btn:hover {
+          color: #fff;
+          border-color: transparent;
+        }
+
+        .cosmic-tab-btn.active {
+          background: linear-gradient(90deg, #8a2be2, #00bfff);
+          color: white;
+          border-color: transparent;
+          box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+        }
+
+        .cosmic-quick-filters {
+          display: flex;
+          justify-content: center;
+          gap: 15px;
+          flex-wrap: wrap;
+          margin-top: 30px;
+        }
+
+        .cosmic-filter-btn {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 12px 20px;
+          border-radius: 50px;
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          color: white;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          backdrop-filter: blur(5px);
+        }
+
+        .cosmic-filter-btn:hover {
+          background: rgba(255, 255, 255, 0.2);
+        }
+
+        .cosmic-filter-btn.active {
+          background: linear-gradient(90deg, #8a2be2, #00bfff);
+          border-color: transparent;
+          box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+        }
+
+        .filter-icon {
+          font-size: 1.1rem;
+        }
+
+        .cosmic-main {
+          padding: 40px 0 80px;
+        }
+
+        .view-mode-toggle {
+          display: flex;
+          justify-content: center;
+          gap: 15px;
+          margin-bottom: 40px;
+        }
+
+        .view-mode-btn {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 20px;
+          border-radius: 50px;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          color: white;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .view-mode-btn:hover {
+          background: rgba(255, 255, 255, 0.1);
+        }
+
+        .view-mode-btn.active {
+          background: linear-gradient(90deg, #8a2be2, #00bfff);
+          border-color: transparent;
+          box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+        }
+
+        /* Constellation View Styles */
+        .constellation-view {
+          margin: 60px 0;
+        }
+
+        .constellation-container {
+          position: relative;
+          width: 100%;
+          height: 400px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .constellation-node {
+          position: absolute;
+          border-radius: 50%;
+          cursor: pointer;
+          z-index: 2;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: all 0.3s ease;
+          box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+        }
+
+        .node-tooltip {
+          position: absolute;
+          bottom: calc(100% + 15px);
+          left: 50%;
+          transform: translateX(-50%);
+          background: rgba(15, 5, 36, 0.9);
+          padding: 15px;
+          border-radius: 10px;
+          width: 200px;
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+          z-index: 10;
+        }
+
+        .node-tooltip h4 {
+          margin: 0 0 8px;
+          font-size: 1rem;
+          color: #fff;
+        }
+
+        .node-tooltip p {
+          margin: 0 0 12px;
+          font-size: 0.9rem;
+          opacity: 0.8;
+        }
+
+        .node-link {
+          display: inline-block;
+          padding: 5px 10px;
+          background: rgba(138, 43, 226, 0.2);
+          border-radius: 5px;
+          color: #8a2be2;
+          font-weight: 600;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+        }
+
+        .node-link:hover {
+          background: rgba(138, 43, 226, 0.4);
+          color: #fff;
+        }
+
+        .constellation-lines {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+
+        /* Grid View Styles */
+        .cosmic-sorting {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          margin-bottom: 30px;
+          justify-content: flex-end;
+        }
+
+        .sorting-label {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          opacity: 0.8;
+        }
+
+        .cosmic-sort-select {
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          color: white;
+          padding: 8px 15px;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .cosmic-sort-select:hover {
+          background: rgba(255, 255, 255, 0.2);
+        }
+
+        .cosmic-sort-select:focus {
+          outline: none;
+          box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.5);
+        }
+
+        .cosmic-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          gap: 25px;
+        }
+
+        .cosmic-course-card {
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 15px;
+          overflow: hidden;
+          transition: all 0.3s ease;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(5px);
+        }
+
+        .course-card-inner {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .course-image-wrapper {
+          position: relative;
+          height: 180px;
+          overflow: hidden;
+        }
+
+        .course-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.5s ease;
+        }
+
+        .cosmic-course-card:hover .course-image {
+          transform: scale(1.05);
+        }
+
+        .popular-badge,
+        .professional-badge {
+          position: absolute;
+          top: 15px;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          padding: 5px 10px;
+          border-radius: 50px;
+          font-size: 0.8rem;
+          font-weight: 600;
+        }
+
+        .popular-badge {
+          left: 15px;
+          background: rgba(255, 215, 0, 0.2);
+          color: gold;
+          border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .professional-badge {
+          right: 15px;
+          background: rgba(138, 43, 226, 0.2);
+          color: #8a2be2;
+          border: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .course-content {
+          padding: 20px;
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .course-school {
+          font-size: 0.9rem;
+          color: #ffffff;
+          margin-bottom: 8px;
+          font-weight: 600;
+        }
+
+        .course-title {
+          font-size: 1.2rem;
+          margin: 0 0 15px;
+          line-height: 1.4;
+        }
+
+        .course-title a {
+          color: white;
+          text-decoration: none;
+          background: linear-gradient(90deg, white, white);
+          background-size: 0% 2px;
+          background-repeat: no-repeat;
+          background-position: left bottom;
+          transition: background-size 0.3s ease;
+        }
+
+        .course-title a:hover {
+          background-size: 100% 2px;
+        }
+
+        .course-meta {
+          display: flex;
+          gap: 15px;
+          margin-bottom: 20px;
+          font-size: 0.9rem;
+          opacity: 0.8;
+        }
+
+        .course-footer {
+          margin-top: auto;
+          margin-left: auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .course-price {
+          font-weight: 700;
+        }
+
+        .current-price {
+          color: #00bfff;
+        }
+
+        .original-price {
+          text-decoration: line-through;
+          opacity: 0.6;
+          margin-left: 8px;
+          font-size: 0.9rem;
+        }
+
+        .free-price {
+          color: #7cfc00;
+        }
+
+        .explore-btn {
+          padding: 8px 15px;
+          background: linear-gradient(90deg, #8a2be2, #00bfff);
+          border-radius: 8px;
+          color: white;
+          font-weight: 600;
+          text-decoration: none;
+          transition: all 0.3s ease;
+        }
+
+        .explore-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+        }
+
+        .cosmic-pagination {
+          margin-top: 50px;
+          display: flex;
+          justify-content: center;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+          .cosmic-quick-filters,
+          .tabs__controls {
+            gap: 10px;
+          }
+
+          .cosmic-filter-btn,
+          .cosmic-tab-btn {
+            padding: 10px 15px;
+            font-size: 0.9rem;
+          }
+
+          .cosmic-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .constellation-container {
+            height: 300px;
+          }
+        }
+      `}</style>
+    </div>
   );
-}
+};
+
+export default CourseListOne;

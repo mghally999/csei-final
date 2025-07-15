@@ -7,6 +7,7 @@ import {
   FaMapMarkerAlt,
   FaBookOpen,
 } from "react-icons/fa";
+import { motion } from "framer-motion";
 import { extractCreditsFromString } from "@/utils/extractCredits";
 
 export default function ProgramHighlightsBox({ data }) {
@@ -14,118 +15,111 @@ export default function ProgramHighlightsBox({ data }) {
 
   const highlightItems = [
     {
-      icon: <FaClock size={20} />,
+      icon: <FaClock size={16} />,
       label: "Duration",
-      value: data?.duration || "N/A",
+      value: data?.duration || "1 Academic Year",
     },
     {
-      icon: <FaGraduationCap size={20} />,
+      icon: <FaGraduationCap size={16} />,
       label: "Intake",
       value: "September and February",
     },
     {
-      icon: <FaMapMarkerAlt size={20} />,
+      icon: <FaMapMarkerAlt size={16} />,
       label: "Location",
       value: "Dubai",
     },
     {
-      icon: <FaBookOpen size={20} />,
+      icon: <FaBookOpen size={16} />,
       label: "Credits",
-      value: credits ? `${credits} Credits` : "N/A",
+      value: credits ? `${credits} Credits` : "120 Credits",
     },
   ];
 
   return (
-    <div className="program-box">
-      {highlightItems.map((item, index) => (
-        <div key={index} className="program-item">
-          <div className="program-icon">{item.icon}</div>
-          <div className="program-text">
-            <span className="program-label">{item.label}:</span>{" "}
-            <span className="program-value">{item.value}</span>
-          </div>
-        </div>
-      ))}
-
-      <style jsx>{`
-        .program-box {
-          background: linear-gradient(135deg, #dbeafe, #93c5fd);
-          padding: 30px;
-          border-radius: 16px;
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-          transition: all 0.4s ease;
-          transform-style: preserve-3d;
-        }
-
-        .program-box:hover {
-          transform: translateY(-5px) scale(1.01);
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .program-item {
-          display: flex;
-          align-items: center;
-          margin-bottom: 20px;
-          transition: all 0.3s ease;
-        }
-
-        .program-item:last-child {
-          margin-bottom: 0;
-        }
-
-        .program-icon {
-          width: 42px;
-          height: 42px;
-          background-color: #ffffff;
-          color: #1e3a8a;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 50%;
-          box-shadow: 0 6px 14px rgba(30, 58, 138, 0.25);
-          margin-right: 16px;
-          transition: all 0.3s ease;
-        }
-
-        .program-box:hover .program-icon {
-          background-color: #1e3a8a;
-          color: #ffffff;
-        }
-
-        .program-text {
-          font-size: 16px;
-          font-weight: 600;
-          color: #1e293b;
-        }
-
-        .program-label {
-          font-weight: 800;
-          color: #0f172a;
-        }
-
-        .program-value {
-          color: #1e3a8a;
-        }
-
-        @media (max-width: 600px) {
-          .program-box {
-            padding: 24px;
-          }
-
-          .program-item {
-            margin-bottom: 16px;
-          }
-
-          .program-icon {
-            width: 38px;
-            height: 38px;
-          }
-
-          .program-text {
-            font-size: 15px;
-          }
-        }
-      `}</style>
-    </div>
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      style={{
+        backgroundColor: "#fff",
+        marginTop: "30px",
+        padding: "40px",
+        borderRadius: "12px",
+        boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
+      }}
+    >
+      <h3
+        style={{
+          fontSize: "32px",
+          fontWeight: "700",
+          color: "#000000",
+          marginBottom: "30px",
+          textAlign: "center",
+        }}
+      >
+        Program Highlights
+      </h3>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+          gap: "20px",
+        }}
+      >
+        {highlightItems.map((item, idx) => (
+          <motion.div
+            key={idx}
+            whileHover={{ scale: 1.03 }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              backgroundColor: "#f8f9fa",
+              padding: "15px",
+              borderRadius: "8px",
+            }}
+          >
+            <div
+              style={{
+                width: "28px",
+                height: "28px",
+                backgroundColor: "#000000",
+                color: "white",
+                borderRadius: "50%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginRight: "12px",
+                fontSize: "14px",
+                flexShrink: 0,
+              }}
+            >
+              {item.icon}
+            </div>
+            <div>
+              <div
+                style={{
+                  fontSize: "14px",
+                  fontWeight: "600",
+                  color: "#555",
+                  marginBottom: "2px",
+                }}
+              >
+                {item.label}
+              </div>
+              <div
+                style={{
+                  fontSize: "16px",
+                  fontWeight: "700",
+                  color: "#000",
+                }}
+              >
+                {item.value}
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
   );
 }

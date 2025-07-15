@@ -8,19 +8,40 @@ const leadershipTeam = [
     id: 1,
     name: "Mr. Roshan Gautam",
     position: "General Manager",
-    bio: `Since 2018, CSEI Academy has created a legacy of safe and vibrant learning, academic innovation, and positive student experiences. We believe that each learner has the potential to thrive in a nurturing environment guided by our values and high standards. Our sustained success over the years is a direct result of our strategic vision and execution. I invite you to explore our programs and offerings to see how we can be part of your academic and personal growth journey.`,
+    image: "/assets/img/leadership/Mr-Roshan.jpeg",
+    bio: `Since 2018, CSEI Academy has created a legacy of safe and vibrant learning and ranks among educational institutions. Being a constant fixture in the list of educational institutions accredited by KHDA, we are proud to be a choice for all discerning individuals and parents.
+
+You can look forward to encouraging a highly intensive, challenging academic program that will ensure all students become critical thinkers, active problem-solvers, inquisitive readers, and diligent researchers.
+
+Each year we reflect on our achievements and rejoice at all that we have done in the past years. Though much has changed over the years, our promise remains the same. Our sustained success over the years is a direct result of our strategic vision and execution.`,
   },
   {
     id: 2,
     name: "Dr. Apollo Serafico",
     position: "Director of Academic Affairs",
-    bio: `CSEI Academy is an excellent place for students from diverse backgrounds to grow intellectually, emotionally, and socially. As the Director of Academic Affairs, I am committed to ensuring a high-quality, inclusive, and student-centered learning experience. We uphold academic integrity, curriculum relevance, and teaching excellence. Together, we can nurture a culture of excellence, resilience, and mutual respect.`,
+    image: "/assets/img/leadership/Dr-Apollo.jpeg",
+    bio: `CSEI Academy is an excellent place for students from diverse backgrounds to grow educationally, get involved professionally, and have a meaningful experience. We offer the best educational experience available today. More than qualifications, CSEI promotes strong values and global leadership to our student community.
+
+Our mission is to provide a transformative educational experience that not only equips students with knowledge and skills but also fosters critical thinking, creativity, and ethical values.
+
+I believe that education is a partnership between the Academy, individuals, parents, and the community. Together, we can nurture a culture of excellence, resilience, and mutual respect that prepares our students for academic success and beyond.
+
+Thank you for visiting our website. We invite you to explore more about our academic programs and the many opportunities available at CSEI Academy.`,
   },
   {
     id: 3,
     name: "Mr. Suhail Ahmed Mohammed",
     position: "Board Member",
-    bio: `It is with great pride that I extend a warm welcome to you on behalf of CSEI Academy. Our mission is to empower learners with the skills and knowledge they need to thrive in a competitive and ever-changing world. We are confident that every student at CSEI Academy will find the tools, encouragement, and guidance they need to reach their full potential.`,
+    image: "/assets/img/leadership/Mr-Suhail.jpeg",
+    bio: `It is with great pride that I extend a warm welcome to all students, parents, and visitors to the Academy on behalf of the CSEI Academy leadership team.
+
+As a Member of the Board of CSEI Academy, I am passionately committed to the pursuit of academic excellence, innovation, and integrity. Education today must go beyond the classroom; it must empower students to think independently, act responsibly, and contribute meaningfully to the world around them.
+
+This is made possible through the leading dedication of our faculty, the vision of our leadership, and the active partnership of our student community.
+
+We are confident that every student at CSEI Academy will find the tools, encouragement, and guidance they need to reach their full potential.
+
+Thank you for being a part of our journey.`,
   },
 ];
 
@@ -61,7 +82,6 @@ export default function Leadership() {
           />
         </h2>
 
-        {/* Alternating Layout */}
         {leadershipTeam.map((member, index) => (
           <div
             key={member.id}
@@ -71,39 +91,56 @@ export default function Leadership() {
               flexWrap: "wrap",
               gap: "40px",
               marginBottom: "80px",
-              alignItems: "center",
+              alignItems: "stretch",
+              justifyContent: "center",
             }}
           >
+            {/* IMAGE */}
             <motion.div
               initial={{ opacity: 0, x: index % 2 === 1 ? 30 : -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               style={{
-                flex: "0 0 500px",
+                flex: "1 1 400px",
                 borderRadius: "20px",
                 overflow: "hidden",
                 boxShadow: "0 30px 60px rgba(0, 0, 0, 0.15)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
               }}
             >
               <Image
-                src="/assets/img/leadership/Mr-Roshan.jpeg"
+                src={member.image}
                 alt={member.name}
-                width={500}
-                height={350}
+                width={600}
+                height={400}
                 style={{
                   width: "100%",
-                  height: "auto",
+                  height: "100%",
                   objectFit: "cover",
+                  objectPosition: "center",
+                  borderRadius: "20px",
                 }}
                 priority
               />
             </motion.div>
 
+            {/* TEXT */}
             <motion.div
               initial={{ opacity: 0, x: index % 2 === 1 ? -30 : 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              style={{ flex: "1", minWidth: "300px" }}
+              style={{
+                flex: "1 1 400px",
+                minWidth: "300px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                textAlign: "center",
+                padding: "20px",
+              }}
             >
               <h3
                 style={{
@@ -130,7 +167,9 @@ export default function Leadership() {
                   fontSize: "18px",
                   color: "#334155",
                   lineHeight: "1.8",
+                  maxWidth: "700px",
                   textAlign: "justify",
+                  whiteSpace: "pre-line",
                 }}
               >
                 {member.bio}
