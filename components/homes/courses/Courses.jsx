@@ -46,22 +46,22 @@ export default function Courses() {
       const filteredData = enhancedPrograms.filter((program) => {
         switch (category) {
           case "Health & Social Care":
-            return program.school === "School of Health Science";
+            return program.school === "Health Science Discipline";
           case "Business & Management":
-            return program.school === "School of Business";
+            return program.school === "Business Discipline";
           case "Travel & Tourism":
             return (
-              program.school === "School of Culinary Arts & Tourism" &&
+              program.school === "Culinary Arts & Tourism Discipline" &&
               (program.category?.includes("Tourism") ||
                 program.category?.includes("Hospitality"))
             );
           case "Culinary Arts":
             return (
-              program.school === "School of Culinary Arts & Tourism" &&
+              program.school === "Culinary Arts & Tourism Discipline" &&
               program.category === "Professional Courses"
             );
           case "Information Technology":
-            return program.school === "School of Computing";
+            return program.school === "Computing Discipline";
           default:
             return true;
         }

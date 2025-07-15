@@ -16,8 +16,8 @@ export const AssessmentVerification = ({ data }) => {
       viewport={{ once: true }}
       style={{
         backgroundColor: "#000000",
-        padding: "80px 20px",
-        borderRadius: "8px",
+        padding: "clamp(60px, 6vw, 100px) clamp(16px, 5vw, 40px)",
+        borderRadius: "16px",
       }}
     >
       <div style={{ maxWidth: "1240px", margin: "0 auto" }}>
@@ -50,9 +50,8 @@ export const AssessmentVerification = ({ data }) => {
         {/* Content List */}
         <div
           style={{
-            borderRadius: "8px",
+            borderRadius: "10px",
             backgroundColor: "#000000",
-            padding: "40px",
             display: "flex",
             flexDirection: "column",
             gap: "24px",

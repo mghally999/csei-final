@@ -57,7 +57,7 @@ export const menuList = [
         ],
       },
       {
-        title: "School of Culinary Arts & Tourism",
+        title: "Culinary Arts & Tourism Discipline",
         links: [
           {
             title: "Tourism & Hospitality",
@@ -116,7 +116,7 @@ export const menuList = [
         ],
       },
       {
-        title: "School of Health Science",
+        title: "Health Science Discipline",
         links: [
           {
             title: "Health & Social Care Management",
@@ -147,7 +147,7 @@ export const menuList = [
         ],
       },
       {
-        title: "School of Business",
+        title: "Business Discipline",
         links: [
           {
             title: "Business Management",
@@ -188,7 +188,7 @@ export const menuList = [
         ],
       },
       {
-        title: "School of Computing",
+        title: "Computing Discipline",
         links: [
           {
             title: "Information Technology",
@@ -213,11 +213,11 @@ export const menuList = [
   //   mega: false,
   //   links: [
   //     {
-  //       label: "School of Computing",
+  //       label: "Computing Discipline",
   //       href: "/academics/schools/computing",
   //     },
   //     {
-  //       label: "School of Health Sciences",
+  //       label: "Health Science Disciplines",
   //       href: "/academics/schools/health-sciences",
   //     },
   //     {
@@ -225,7 +225,7 @@ export const menuList = [
   //       href: "/academics/schools/culinary-arts",
   //     },
   //     {
-  //       label: "School of Business",
+  //       label: "Business Discipline",
   //       href: "/academics/schools/business",
   //     },
   //   ],

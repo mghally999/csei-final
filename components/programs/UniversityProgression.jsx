@@ -19,10 +19,8 @@ export const UniversityProgression = ({ data = [], description = "" }) => {
       viewport={{ once: true, margin: "-50px" }}
       style={{
         backgroundColor: "#000000",
-        padding: "80px 20px",
-        borderRadius: "8px",
-        position: "relative",
-        overflow: "hidden",
+        padding: "clamp(60px, 6vw, 100px) clamp(16px, 5vw, 40px)",
+        borderRadius: "16px",
       }}
     >
       <h2
@@ -62,11 +60,10 @@ export const UniversityProgression = ({ data = [], description = "" }) => {
               fontWeight: 600,
               color: "#ffffff",
               lineHeight: 1.8,
-              textAlign: "justify",
               marginBottom: "30px",
               padding: "20px",
               backgroundColor: "#111111",
-              borderRadius: "8px",
+              borderRadius: "10px",
             }}
           >
             {description}
@@ -97,7 +94,7 @@ export const UniversityProgression = ({ data = [], description = "" }) => {
                   alignItems: "flex-start",
                   backgroundColor: "#111111",
                   padding: "20px",
-                  borderRadius: "8px",
+                  borderRadius: "10px",
                 }}
               >
                 {/* Checkmark Icon */}

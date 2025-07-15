@@ -76,7 +76,7 @@ export const slidesData = [
   {
     id: 2,
     bgImage: "/assets/img/home/september-intake-2.png",
-    title: "Flexible Study Options for All Students",
+    title: "Flexible Study Options",
     subtitle: "Evening, Weekend & Online Classes Available",
     description:
       "Balance your career with personal growth through industry-aligned programs.",

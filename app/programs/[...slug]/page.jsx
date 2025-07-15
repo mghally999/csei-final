@@ -57,94 +57,52 @@ export default function Page() {
                 {pageItem.title}
               </h1>
 
-              {/* Accreditation Logos */}
-              <div
-                className="flex px-6"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  maxWidth: "1000px",
-                  gap: "20px",
-                  borderRadius: "10px",
-                  marginTop: "20px",
-                  flexWrap: "wrap",
-                }}
-              >
+              {/* Accreditation Logos - Responsive Container */}
+              <div className="logos-container">
                 {pageItem.professional ? (
-                  <div
-                    className="bg-white rounded-lg shadow-md"
-                    style={{
-                      width: "220px",
-                      height: "150px",
-                      padding: "20px",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      borderRadius: "10px",
-                    }}
-                  >
-                    <Image
-                      src="/assets/img/logos/KHDA-logo.png"
-                      alt="KHDA Accredited"
-                      width={200}
-                      height={100}
-                      style={{ objectFit: "contain", maxHeight: "100%" }}
-                    />
-                  </div>
-                ) : (
-                  <>
-                    <div
-                      className="bg-white rounded-lg shadow-md"
-                      style={{
-                        width: "220px",
-                        height: "150px",
-                        padding: "20px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        borderRadius: "10px",
-                      }}
-                    >
-                      <Image
-                        src="/assets/img/logos/OTHM-logo.png"
-                        alt="OTHM Accredited"
-                        width={200}
-                        height={100}
-                        style={{ objectFit: "contain", maxHeight: "100%" }}
-                      />
-                    </div>
-                    <div
-                      className="bg-white rounded-lg shadow-md"
-                      style={{
-                        width: "220px",
-                        height: "150px",
-                        padding: "20px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        borderRadius: "10px",
-                      }}
-                    >
+                  <div className="logo-wrapper single-logo">
+                    <div className="logo-box">
                       <Image
                         src="/assets/img/logos/KHDA-logo.png"
                         alt="KHDA Accredited"
                         width={200}
                         height={100}
-                        style={{ objectFit: "contain", maxHeight: "100%" }}
+                        className="logo-image"
                       />
                     </div>
-                  </>
+                  </div>
+                ) : (
+                  <div className="logo-wrapper multiple-logos">
+                    <div className="logo-box">
+                      <Image
+                        src="/assets/img/logos/OTHM-logo.png"
+                        alt="OTHM Accredited"
+                        width={200}
+                        height={100}
+                        className="logo-image"
+                      />
+                    </div>
+                    <div className="logo-box">
+                      <Image
+                        src="/assets/img/logos/KHDA-logo.png"
+                        alt="KHDA Accredited"
+                        width={200}
+                        height={100}
+                        className="logo-image"
+                      />
+                    </div>
+                  </div>
                 )}
               </div>
             </div>
 
             {/* Right Image */}
             <div className="col-xl-5 col-lg-6">
-              <div className="relative">
+              <div className="course-image-wrapper">
                 <Image
                   width={690}
                   height={500}
-                  className="w-full course-img rounded-xl object-cover"
+                  className="course-image"
                   src={pageItem.imageSrc}
                   alt="Course Image"
                 />
@@ -172,6 +130,109 @@ export default function Page() {
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       />
+
+      {/* CSS Styles with Media Queries */}
+      <style jsx>{`
+        /* Base Styles */
+        .logos-container {
+          display: flex;
+          justify-content: start;
+          align-items: center;
+          margin-top: 20px;
+          width: 100%;
+        }
+
+        .logo-wrapper {
+          display: flex;
+          gap: 20px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .logo-box {
+          background: white;
+          border-radius: 10px;
+          padding: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-image {
+          object-fit: contain;
+          max-height: 100%;
+          width: auto;
+          height: auto;
+        }
+
+        .course-image-wrapper {
+          position: relative;
+          width: 100%;
+        }
+
+        .course-image {
+          width: 100%;
+          height: auto;
+          border-radius: 12px;
+          object-fit: cover;
+        }
+
+        /* Mobile Styles (up to 767px) */
+        @media (max-width: 767px) {
+          .logo-wrapper {
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+          }
+
+          .logo-box {
+            width: 180px;
+            height: 120px;
+            padding: 15px;
+          }
+
+          .course-image-wrapper {
+            margin-top: 20px;
+          }
+        }
+
+        /* Tablet Styles (768px to 1023px) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .logo-wrapper {
+            flex-direction: row;
+            justify-content: center;
+            gap: 20px;
+          }
+
+          .logo-box {
+            width: 200px;
+            height: 130px;
+          }
+
+          .course-image-wrapper {
+            margin-top: 0;
+          }
+        }
+
+        /* Desktop Styles (1024px and up) */
+        @media (min-width: 1024px) {
+          .logo-wrapper {
+            flex-direction: row;
+            justify-content: flex-start;
+            gap: 20px;
+          }
+
+          .logo-box {
+            width: 220px;
+            height: 150px;
+          }
+
+          .single-logo {
+            justify-content: flex-start;
+          }
+        }
+      `}</style>
     </>
   );
 }

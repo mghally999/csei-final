@@ -18,8 +18,8 @@ export const QualificationStructure = ({ data }) => {
       viewport={{ once: true }}
       style={{
         backgroundColor: "#000000",
-        padding: "80px 20px",
-        borderRadius: "8px",
+        padding: "clamp(60px, 6vw, 100px) clamp(16px, 5vw, 40px)",
+        borderRadius: "16px",
       }}
     >
       <div style={{ maxWidth: "1240px", margin: "0 auto" }}>
@@ -53,8 +53,7 @@ export const QualificationStructure = ({ data }) => {
         <div
           style={{
             backgroundColor: "#000000",
-            borderRadius: "8px",
-            padding: "40px",
+            borderRadius: "10px",
             display: "flex",
             flexDirection: "column",
             gap: "24px",

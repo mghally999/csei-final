@@ -1,6 +1,6 @@
 export const academicCards = [
   {
-    title: "School of Computing",
+    title: "Computing Discipline",
     description:
       "Explore modern programs in computer science, software engineering, and emerging tech fields.",
     link: "/academics/schools/computing",
@@ -8,7 +8,7 @@ export const academicCards = [
       "https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=800&q=80",
   },
   {
-    title: "School of Health Sciences",
+    title: "Health Science Disciplines",
     description:
       "Train in healthcare, nursing, public health, and medical technology with hands-on experience.",
     link: "/academics/schools/health-sciences",
@@ -24,7 +24,7 @@ export const academicCards = [
       "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=800&q=80",
   },
   {
-    title: "School of Business",
+    title: "Business Discipline",
     description:
       "Master entrepreneurship, finance, and global strategy with real-world applications.",
     link: "/academics/schools/business",

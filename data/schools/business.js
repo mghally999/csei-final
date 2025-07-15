@@ -1,5 +1,5 @@
 export const businessData = {
-  title: "School of Business & Management | CSEI Academy",
+  title: "Business Discipline & Management | CSEI Academy",
   description:
     "ACBSP-accredited business programs developing future leaders through experiential learning, global perspectives, and industry connections.",
   features: [

@@ -46,6 +46,22 @@ const FeeCard = ({ title, children }) => (
   </motion.div>
 );
 
+const thStyle = {
+  padding: "12px 15px",
+  textAlign: "left",
+  fontWeight: "600",
+  borderBottom: "2px solid #e2e8f0",
+};
+
+const tdStyle = {
+  padding: "12px 15px",
+  verticalAlign: "top",
+};
+
+const rowStyle = {
+  borderBottom: "1px solid #e2e8f0",
+};
+
 export default function TuitionFeesFull() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -148,7 +164,7 @@ export default function TuitionFeesFull() {
           </motion.div>
 
           {/* Fee Structure */}
-          <FeeCard title="Program Fee Breakdown">
+          <FeeCard title="Programs For University Progression - Fee Structure">
             <div
               style={{
                 overflowX: "auto",
@@ -165,83 +181,63 @@ export default function TuitionFeesFull() {
               >
                 <thead>
                   <tr style={{ backgroundColor: "#f8f9fa" }}>
-                    <th
-                      style={{
-                        padding: "12px 15px",
-                        textAlign: "left",
-                        fontWeight: "600",
-                        borderBottom: "2px solid #e2e8f0",
-                      }}
-                    >
-                      Program
-                    </th>
-                    <th
-                      style={{
-                        padding: "12px 15px",
-                        textAlign: "left",
-                        fontWeight: "600",
-                        borderBottom: "2px solid #e2e8f0",
-                      }}
-                    >
-                      Tuition Fee
-                    </th>
-                    <th
-                      style={{
-                        padding: "12px 15px",
-                        textAlign: "left",
-                        fontWeight: "600",
-                        borderBottom: "2px solid #e2e8f0",
-                      }}
-                    >
-                      Visa Fee
-                    </th>
-                    <th
-                      style={{
-                        padding: "12px 15px",
-                        textAlign: "left",
-                        fontWeight: "600",
-                        borderBottom: "2px solid #e2e8f0",
-                      }}
-                    >
-                      Registration
-                    </th>
+                    <th style={thStyle}>Program</th>
+                    <th style={thStyle}>Tuition Fee</th>
+                    <th style={thStyle}>Visa Fee</th>
+                    <th style={thStyle}>Registration</th>
                   </tr>
                 </thead>
                 <tbody>
                   {[
                     {
-                      program: "Tourism and Hospitality Management",
+                      program:
+                        "OTHM Level 4 - Tourism and Hospitality Management",
                       tuition: "12,500",
                       visa: "3,500",
                       registration: "1,000",
                     },
                     {
-                      program: "Health and Social Care",
+                      program:
+                        "OTHM Level 5 - Tourism and Hospitality Management",
                       tuition: "12,500",
                       visa: "3,500",
                       registration: "1,000",
                     },
                     {
-                      program: "Business Management",
+                      program:
+                        "OTHM Level 4 - Health and Social Care Management",
                       tuition: "12,500",
                       visa: "3,500",
                       registration: "1,000",
                     },
                     {
-                      program: "DHA",
-                      tuition: "13,000",
-                      visa: "3,500",
-                      registration: "1,000",
-                    },
-                    {
-                      program: "Information Technology",
+                      program:
+                        "OTHM Level 5 - Health and Social Care Management",
                       tuition: "12,500",
                       visa: "3,500",
                       registration: "1,000",
                     },
                     {
-                      program: "Culinary Arts",
-                      tuition: "15,000",
+                      program: "OTHM Level 4 - Business Management",
+                      tuition: "12,500",
+                      visa: "3,500",
+                      registration: "1,000",
+                    },
+                    {
+                      program: "OTHM Level 5 - Business Management",
+                      tuition: "12,500",
+                      visa: "3,500",
+                      registration: "1,000",
+                    },
+                    {
+                      program: "OTHM Level 4 - Information Technology",
+                      tuition: "12,500",
+                      visa: "3,500",
+                      registration: "1,000",
+                    },
+                    {
+                      program: "OTHM Level 5 - Information Technology",
+                      tuition: "12,500",
                       visa: "3,500",
                       registration: "1,000",
                     },
@@ -261,19 +257,139 @@ export default function TuitionFeesFull() {
                         fontWeight: item.highlight ? "600" : "400",
                       }}
                     >
-                      <td
-                        style={{
-                          padding: "12px 15px",
-                          verticalAlign: "top",
-                        }}
-                      >
-                        {item.program}
-                      </td>
-                      <td style={{ padding: "12px 15px" }}>{item.tuition}</td>
-                      <td style={{ padding: "12px 15px" }}>{item.visa}</td>
-                      <td style={{ padding: "12px 15px" }}>
-                        {item.registration}
-                      </td>
+                      <td style={tdStyle}>{item.program}</td>
+                      <td style={tdStyle}>{item.tuition}</td>
+                      <td style={tdStyle}>{item.visa}</td>
+                      <td style={tdStyle}>{item.registration}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </FeeCard>
+
+          <FeeCard title="Professional Programs - Fee Structure">
+            <div
+              style={{
+                overflowX: "auto",
+                boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
+                borderRadius: "8px",
+              }}
+            >
+              <table
+                style={{
+                  width: "100%",
+                  borderCollapse: "collapse",
+                  backgroundColor: "white",
+                }}
+              >
+                <thead>
+                  <tr style={{ backgroundColor: "#f8f9fa" }}>
+                    <th style={thStyle}>Course</th>
+                    <th style={thStyle}>Duration</th>
+                    <th style={thStyle}>Fee (AED)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    {
+                      course: "Tourism & Hospitality Management - Level A",
+                      duration: "3 months",
+                      fee: "4000",
+                    },
+                    {
+                      course: "Tourism & Hospitality Management - Level B",
+                      duration: "6 months",
+                      fee: "6000",
+                    },
+
+                    {
+                      course: "Digital Marketing - Level A (Basic)",
+                      duration: "3 months",
+                      fee: "4000",
+                    },
+                    {
+                      course: "Digital Marketing - Level B (Advance)",
+                      duration: "6 months",
+                      fee: "6000",
+                    },
+
+                    {
+                      course: "Culinary Arts – Professional",
+                      duration: "6 months + Internship",
+                      fee: "15000",
+                    },
+
+                    {
+                      course: "Food & Beverages Service Training",
+                      duration: "1 month",
+                      fee: "3000",
+                    },
+
+                    {
+                      course: "Front Desk Operations",
+                      duration: "1 month",
+                      fee: "3000",
+                    },
+
+                    {
+                      course: "Business Management",
+                      duration: "3 months",
+                      fee: "6000",
+                    },
+
+                    {
+                      course:
+                        "Training Diploma in Housekeeping - Level A (Basic)",
+                      duration: "3 months",
+                      fee: "4000",
+                    },
+                    {
+                      course:
+                        "Training Diploma in Housekeeping - Level B (Advance)",
+                      duration: "6 months",
+                      fee: "6000",
+                    },
+
+                    {
+                      course:
+                        "HR Management in Tourism & Management - Level A (Basic)",
+                      duration: "3 months",
+                      fee: "4000",
+                    },
+                    {
+                      course:
+                        "HR Management in Tourism & Management - Level B (Advance)",
+                      duration: "6 months",
+                      fee: "6000",
+                    },
+
+                    {
+                      course: "Barista Training - Basic",
+                      duration: "10 days",
+                      fee: "1000",
+                    },
+                    {
+                      course: "Barista Training - Advance",
+                      duration: "20 days",
+                      fee: "1700",
+                    },
+                    {
+                      course: "Barista Training - Professional",
+                      duration: "40 days",
+                      fee: "2800",
+                    },
+
+                    {
+                      course: "Food Safety & Sanitation",
+                      duration: "1 day",
+                      fee: "500",
+                    },
+                  ].map((item, index) => (
+                    <tr key={index} style={rowStyle}>
+                      <td style={tdStyle}>{item.course}</td>
+                      <td style={tdStyle}>{item.duration}</td>
+                      <td style={tdStyle}>{item.fee}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -372,7 +488,7 @@ export default function TuitionFeesFull() {
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          marginRight: "12px",
+                          marginRight: "10px",
                           flexShrink: 0,
                           fontSize: "12px",
                         }}

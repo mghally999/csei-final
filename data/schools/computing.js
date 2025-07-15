@@ -1,5 +1,5 @@
 export const computingData = {
-  title: "School of Computing & IT | CSEI Academy",
+  title: "Computing Discipline & IT | CSEI Academy",
   description:
     "Cutting-edge IT education with industry-aligned programs in Computer Science, Cybersecurity, Data Science, and Software Engineering. Gain practical skills for the digital economy.",
   features: [

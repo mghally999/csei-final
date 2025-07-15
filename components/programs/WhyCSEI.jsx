@@ -51,7 +51,6 @@ export const WhyCSEI = ({ data }) => {
           style={{
             borderRadius: "8px",
             backgroundColor: "#000000",
-            padding: "40px",
             display: "flex",
             flexDirection: "column",
             gap: "24px",

@@ -10,18 +10,23 @@ export default function Overview({ data }) {
   const items = Array.isArray(data) ? data : [data];
 
   return (
-    <div
+    <section
       style={{
         backgroundColor: "#000000",
-        padding: "80px 20px",
-        borderRadius: "8px",
+        padding: "clamp(60px, 6vw, 100px) clamp(16px, 5vw, 40px)",
+        borderRadius: "16px",
       }}
     >
-      <div style={{ maxWidth: "1240px", margin: "0 auto" }}>
-        {/* Section Title with half-white underline */}
+      <div
+        style={{
+          maxWidth: "1240px",
+          margin: "0 auto",
+        }}
+      >
+        {/* Section Title */}
         <h2
           style={{
-            fontSize: "40px",
+            fontSize: "clamp(28px, 5vw, 42px)",
             fontWeight: "800",
             color: "#ffffff",
             marginBottom: "50px",
@@ -44,15 +49,14 @@ export default function Overview({ data }) {
           />
         </h2>
 
-        {/* Checkmark List Container */}
+        {/* List Container */}
         <div
           style={{
-            borderRadius: "8px",
-            backgroundColor: "#000000",
-            padding: "40px",
             display: "flex",
             flexDirection: "column",
-            gap: "24px",
+            gap: "clamp(20px, 2.5vw, 32px)",
+            backgroundColor: "#000000",
+            borderRadius: "12px",
           }}
         >
           {items.map((text, i) => (
@@ -61,13 +65,14 @@ export default function Overview({ data }) {
               style={{
                 display: "flex",
                 alignItems: "flex-start",
+                flexDirection: "row",
+                flexWrap: "nowrap",
               }}
             >
-              {/* Checkmark Icon */}
               <div
                 style={{
-                  width: "28px",
-                  height: "28px",
+                  width: "32px",
+                  height: "32px",
                   backgroundColor: "#ffffff",
                   color: "#000000",
                   borderRadius: "50%",
@@ -76,22 +81,22 @@ export default function Overview({ data }) {
                   justifyContent: "center",
                   fontSize: "14px",
                   fontWeight: 700,
-                  marginRight: "18px",
                   flexShrink: 0,
-                  marginTop: "2px",
-                  boxShadow: "0 4px 8px rgba(255, 255, 255, 0.15)",
+                  marginRight: "16px",
+                  boxShadow: "0 4px 12px rgba(255, 255, 255, 0.1)",
                 }}
               >
                 <FontAwesomeIcon icon={faCheck} />
               </div>
 
-              {/* Text */}
               <div
                 style={{
-                  fontSize: "20px",
-                  fontWeight: "700",
+                  fontSize: "clamp(16px, 1.5vw, 20px)",
+                  fontWeight: 600,
                   color: "#ffffff",
-                  lineHeight: "1.8",
+                  lineHeight: 1.8,
+                  flex: 1,
+                  wordBreak: "break-word",
                 }}
               >
                 {text}
@@ -100,6 +105,6 @@ export default function Overview({ data }) {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

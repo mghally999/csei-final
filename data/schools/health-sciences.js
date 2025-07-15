@@ -1,5 +1,5 @@
 export const healthSciencesData = {
-  title: "School of Health Sciences | CSEI Academy",
+  title: "Health Science Disciplines | CSEI Academy",
   description:
     "Accredited healthcare programs preparing students for careers in nursing, medical technology, and health management. Hands-on clinical training with hospital partners.",
   features: [

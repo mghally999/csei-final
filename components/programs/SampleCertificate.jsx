@@ -8,7 +8,7 @@ export default function SampleCertificate() {
       style={{
         backgroundColor: "#000000",
         padding: "80px 20px",
-        borderRadius: "8px",
+        borderRadius: "10px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
