@@ -16,10 +16,13 @@ const features = [
 export default function WhyCSEIWithVideo() {
   return (
     <section
-      style={{ backgroundColor: "#000", padding: "clamp(60px, 8vw, 100px) 0" }}
+      style={{
+        backgroundColor: "#000",
+        padding: "clamp(60px, 8vw, 100px) 0",
+      }}
     >
       <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "0 20px" }}>
-        {/* Title */}
+        {/* Section Title */}
         <h2
           style={{
             fontSize: "clamp(28px, 5vw, 42px)",
@@ -33,9 +36,8 @@ export default function WhyCSEIWithVideo() {
           Why CSEI Academy & Student Support
         </h2>
 
-        {/* Responsive Flex Wrapper */}
         <div className="why-csei-wrapper">
-          {/* Left: Text */}
+          {/* LEFT TEXT */}
           <div className="why-csei-text">
             <h3
               style={{
@@ -90,26 +92,28 @@ export default function WhyCSEIWithVideo() {
             ))}
           </div>
 
-          {/* Right: Video */}
+          {/* RIGHT VIDEO */}
           <div className="why-csei-video">
             <video
-              src="/videos/why-csei.mov"
               autoPlay
               loop
               muted
               playsInline
-              style={{
-                width: "100%",
-                height: "100%",
-                maxHeight: "500px",
-                objectFit: "cover",
-                objectPosition: "center",
+              preload="auto"
+              disableRemotePlayback
+              onCanPlayThrough={(e) => {
+                e.currentTarget.play().catch(() => {});
               }}
-            />
+              className="video-fill"
+            >
+              <source src="/videos/why-csei.mp4" type="video/mp4" />
+              <track kind="captions" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
 
-        {/* Responsive Styles */}
+        {/* CSS */}
         <style jsx>{`
           .why-csei-wrapper {
             display: flex;
@@ -127,7 +131,18 @@ export default function WhyCSEIWithVideo() {
 
           .why-csei-video {
             width: 100%;
-            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+          }
+
+          .video-fill {
+            width: 100%;
+            height: auto;
+            max-height: 550px;
+            object-fit: cover;
+            object-position: center;
           }
 
           @media (min-width: 768px) {
@@ -144,7 +159,6 @@ export default function WhyCSEIWithVideo() {
 
             .why-csei-video {
               width: 50%;
-              height: auto;
             }
           }
         `}</style>

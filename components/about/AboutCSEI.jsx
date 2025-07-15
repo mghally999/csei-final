@@ -15,7 +15,11 @@ export default function AboutCSEI() {
         <div className="row items-center">
           {/* LEFT SIDE - TEXT */}
           <div className="col-lg-6 pe-lg-10" data-aos="fade-right">
-            <h2 className="csei-heading">About CSEI Academy</h2>
+            <div className="section-header">
+              <h2 className="csei-heading">About CSEI Academy</h2>
+              <div className="header-underline"></div>
+            </div>
+
             <p className="sectionTitle__text">
               CSEI Academy is a dynamic and future-focused institution committed
               to delivering internationally recognized education and
@@ -54,23 +58,34 @@ export default function AboutCSEI() {
           background-color: #fff;
         }
 
+        .section-header {
+          margin-bottom: 32px;
+        }
+
         .csei-heading {
-          ont-size: 42px;
+          font-size: 2.75rem;
           font-weight: 800;
-          line-height: 1.3;
-          margin-bottom: 35px;
-          color: rgb(0, 0, 0);
+          line-height: 1.2;
+          margin: 0;
+          color: #001c48;
+        }
+
+        .header-underline {
+          width: 80px;
+          height: 5px;
+          background: linear-gradient(90deg, #3b82f6, #000000);
+          margin-top: 12px;
+          border-radius: 3px;
         }
 
         .sectionTitle__text {
-          text-align: justify !important;
-          word-spacing: normal;
-          letter-spacing: normal;
-          line-height: 1.8;
-          font-size: 18px;
-          font-weight: 600;
-          color: #000000;
+          text-align: justify;
+          line-height: 1.7;
+          font-size: 16.5px;
+          font-weight: 500;
+          color: #000;
           margin-bottom: 1.5rem;
+          font-size: 1.1rem;
         }
 
         .pe-lg-10 {
@@ -95,6 +110,20 @@ export default function AboutCSEI() {
           .ml-10 {
             margin-left: 0;
             margin-top: 3rem;
+          }
+
+          .csei-heading {
+            font-size: 2rem;
+            text-align: center;
+          }
+
+          .header-underline {
+            margin-left: auto;
+            margin-right: auto;
+          }
+
+          .sectionTitle__text {
+            font-size: 1rem;
           }
         }
       `}</style>

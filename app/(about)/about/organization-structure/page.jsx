@@ -1,23 +1,28 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const OrganizationStructure = () => {
+  useEffect(() => {
+    AOS.init({ duration: 800 });
+  }, []);
+
   return (
     <section className="layout-pb-lg custom-linear-white-top custom-padding">
       <div className="container">
-        <div className="row justify-center text-center mb-32">
-          <div className="col-auto">
-            <h1 className="text-30 md:text-40 font-bold text-dark-1">
-              Organization Structure
-            </h1>
-            <p className="text-16 md:text-18 text-gray-1 mt-8">
-              Clear hierarchy and reporting structure of our institution
-            </p>
-          </div>
+        {/* Section Heading */}
+        <div className="text-center mb-32" data-aos="fade-up">
+          <h2 className="org-heading">Organization Structure</h2>
+          <div className="header-underline mx-auto"></div>
+          <p className="section-subtext mt-4 max-w-2xl mx-auto">
+            Clear hierarchy and reporting structure of our institution
+          </p>
         </div>
 
+        {/* Org Chart */}
         <div className="org-chart-container">
-          {/* Board of Management - Top Level */}
+          {/* Board of Management - Top */}
           <div className="org-level">
             <div className="org-node main-node">
               <div className="org-position">Board of Management</div>
@@ -25,7 +30,7 @@ const OrganizationStructure = () => {
             </div>
           </div>
 
-          {/* Head of Academy and General Manager */}
+          {/* Head & GM */}
           <div className="org-level">
             <div className="org-node leadership-node">
               <div className="org-position">Head of Academy</div>
@@ -38,7 +43,7 @@ const OrganizationStructure = () => {
             </div>
           </div>
 
-          {/* Lead Internal Assurer and Finance */}
+          {/* Assurer + Finance */}
           <div className="org-level">
             <div className="org-node department-node">
               <div className="org-position">Lead Internal Assurer</div>
@@ -50,7 +55,7 @@ const OrganizationStructure = () => {
             </div>
           </div>
 
-          {/* Examination and Internal Auditor */}
+          {/* Examination + Auditor */}
           <div className="org-level">
             <div className="org-node department-node">
               <div className="org-position">Examination</div>
@@ -62,57 +67,70 @@ const OrganizationStructure = () => {
             </div>
           </div>
 
-          {/* Support Departments */}
+          {/* Support Teams */}
           <div className="org-level">
             <div className="org-node department-node">
               <div className="org-position">Academics</div>
               <div className="org-connector vertical-down"></div>
             </div>
             <div className="flex flex-col gap-10">
-              <div className="org-node admin-node">
-                <div className="org-position">Admission</div>
-                <div className="org-connector vertical-down"></div>
-              </div>
-              <div className="org-node admin-node">
-                <div className="org-position">Student Support</div>
-                <div className="org-connector vertical-down"></div>
-              </div>
-              <div className="org-node admin-node">
-                <div className="org-position">Human Resources</div>
-                <div className="org-connector vertical-down"></div>
-              </div>
-              <div className="org-node admin-node">
-                <div className="org-position">Information Technology</div>
-              </div>
+              {[
+                "Admission",
+                "Student Support",
+                "Human Resources",
+                "Information Technology",
+              ].map((title, idx) => (
+                <div key={idx} className="org-node admin-node">
+                  <div className="org-position">{title}</div>
+                  {idx < 3 && (
+                    <div className="org-connector vertical-down"></div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Faculties */}
           <div className="org-level">
             {[
-              { title: "Health Care Faculty/Assessor", type: "faculty" },
-              { title: "Computing Faculty/Assessor", type: "faculty" },
-              {
-                title: "Culinary Arts and Tourism Faculty/Assessor",
-                type: "faculty",
-              },
-              { title: "Business Faculty/Assessor", type: "faculty" },
-              { title: "Placement", type: "faculty" },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className={`org-node ${
-                  item.type === "admin" ? "admin-node" : "faculty-node"
-                }`}
-              >
-                <div className="org-position">{item.title}</div>
+              "Health Care Faculty/Assessor",
+              "Computing Faculty/Assessor",
+              "Culinary Arts and Tourism Faculty/Assessor",
+              "Business Faculty/Assessor",
+              "Placement",
+            ].map((title, i) => (
+              <div key={i} className="org-node faculty-node">
+                <div className="org-position">{title}</div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Slightly Compacted Styles */}
-        <style jsx global>{`
+        {/* Styles */}
+        <style jsx>{`
+          .org-heading {
+            font-size: 2.75rem;
+            font-weight: 800;
+            color: #001c48;
+            line-height: 1.2;
+            margin-bottom: 0;
+          }
+
+          .header-underline {
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, #3b82f6, #000000);
+            border-radius: 3px;
+            margin-top: 12px;
+          }
+
+          .section-subtext {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #000;
+            line-height: 1.7;
+          }
+
           .org-chart-container {
             width: 100%;
             overflow-x: auto;
@@ -123,9 +141,9 @@ const OrganizationStructure = () => {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 20px;
-            position: relative;
             gap: 20px;
+            margin-bottom: 24px;
+            position: relative;
           }
 
           .org-node {
@@ -172,13 +190,11 @@ const OrganizationStructure = () => {
             transform: translateX(-100%);
           }
 
-          /* Node colors */
+          /* Node types */
           .main-node {
             background: #f3f4f6;
             border-color: #d1d5db;
             font-weight: 600;
-            min-width: 200px;
-            max-width: 220px;
           }
 
           .leadership-node {
@@ -205,13 +221,20 @@ const OrganizationStructure = () => {
             font-weight: 600;
             color: #111827;
             font-size: 14px;
-            white-space: normal;
-            word-break: break-word;
             line-height: 1.4;
+            white-space: normal;
           }
 
-          /* Responsive adjustments */
+          /* Responsive */
           @media (max-width: 768px) {
+            .org-heading {
+              font-size: 2rem;
+            }
+
+            .section-subtext {
+              font-size: 1rem;
+            }
+
             .org-level {
               flex-direction: column;
               align-items: center;

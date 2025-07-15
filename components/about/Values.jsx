@@ -1,5 +1,7 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import {
   FaHandRock,
   FaUsers,
@@ -9,142 +11,171 @@ import {
   FaHandsHelping,
 } from "react-icons/fa";
 
-// Style objects
-const cardStyle = {
-  height: "150px",
-  background: "#000000",
-  padding: "24px",
-  border: "1px solid #BFDBFE", // tailwind: border-blue-200
-  borderRadius: "12px",
-  textAlign: "center",
-  boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-  backdropFilter: "blur(4px)",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
-};
-
-const iconWrapperStyle = {
-  width: "56px",
-  height: "56px",
-  borderRadius: "50%",
-  backgroundColor: "rgba(30, 58, 138, 0.4)", // tailwind: bg-blue-900/40
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  marginBottom: "16px",
-};
-
-const iconStyle = {
-  color: "#BFDBFE", // tailwind: text-blue-200
-  fontSize: "28px",
-};
-
-const titleStyle = {
-  color: "white",
-  fontSize: "18px",
-  fontWeight: "600",
-  marginBottom: "8px",
-};
-
-const descriptionStyle = {
-  color: "white",
-  fontSize: "14px",
-  lineHeight: "1.6",
-  padding: "0 12px",
-};
-
-// Values data
 const values = [
   {
     title: "Empowerment",
     description: "Ignite every student’s potential.",
-    icon: <FaHandRock style={iconStyle} />,
+    icon: <FaHandRock />,
   },
   {
     title: "Inclusivity",
     description: "Emphasis on diversity, belonging, and equal opportunity.",
-    icon: <FaUsers style={iconStyle} />,
+    icon: <FaUsers />,
   },
   {
     title: "Support & Mentorship",
     description:
       "Prioritizing personalized guidance and holistic student development.",
-    icon: <FaChalkboardTeacher style={iconStyle} />,
+    icon: <FaChalkboardTeacher />,
   },
   {
     title: "Excellence",
     description: "Dedication to novelty, quality and rigor.",
-    icon: <FaAward style={iconStyle} />,
+    icon: <FaAward />,
   },
   {
     title: "Leadership",
     description:
       "Focus on cultivating changemakers who drive positive change globally.",
-    icon: <FaCrown style={iconStyle} />,
+    icon: <FaCrown />,
   },
   {
     title: "Community & Collaboration",
     description:
       "Building a shared environment where growth is nurtured together.",
-    icon: <FaHandsHelping style={iconStyle} />,
+    icon: <FaHandsHelping />,
   },
 ];
 
-export default function Values() {
-  return (
-    <section style={{ padding: "80px 0" }} className="custom-linear-blue-top">
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 16px" }}>
-        {/* Section Title */}
-        <div style={{ textAlign: "center", marginBottom: "40px" }}>
-          <h2
-            style={{
-              fontSize: "42px",
-              fontWeight: 800,
-              lineHeight: 1.3,
-              marginBottom: "35px",
-              color: "rgb(0, 0, 0)",
-            }}
-          >
-            Our Core Values
-          </h2>
+export default function CoreValues() {
+  useEffect(() => {
+    AOS.init({ duration: 800 });
+  }, []);
 
-          <p style={{ color: "#000000", fontSize: "16px", lineHeight: "1.6" }}>
+  return (
+    <section className="core-values-section custom-linear-blue-top">
+      <div className="container">
+        <div className="section-header text-center" data-aos="fade-up">
+          <h2 className="csei-heading">Our Core Values</h2>
+          <div className="header-underline"></div>
+          <p className="sectionTitle__text mt-3 max-w-3xl mx-auto">
             The principles that shape our culture, guide our mission, and define
             our identity.
           </p>
         </div>
 
-        {/* Values Cards */}
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "24px",
-            justifyContent: "center",
-          }}
-        >
-          {values.map((item, index) => (
+        {/* Cards */}
+        <div className="row justify-center mt-5">
+          {values.map((value, index) => (
             <div
               key={index}
-              style={{
-                width: "100%",
-                maxWidth: "360px",
-                flex: "1 1 300px",
-              }}
+              className="col-lg-4 col-md-6 mb-4"
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
-              <div style={cardStyle}>
-                <div style={iconWrapperStyle}>{item.icon}</div>
-                <h4 style={titleStyle}>{item.title}</h4>
-                <p style={descriptionStyle}>{item.description}</p>
+              <div className="value-card">
+                <div className="icon-wrapper">{value.icon}</div>
+                <h4 className="value-title">{value.title}</h4>
+                <p className="value-desc">{value.description}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        .core-values-section {
+          padding: 80px 0;
+          background-color: #fff;
+        }
+
+        .csei-heading {
+          font-size: 2.75rem;
+          font-weight: 800;
+          line-height: 1.2;
+          margin: 0;
+          color: #001c48;
+        }
+
+        .header-underline {
+          width: 80px;
+          height: 5px;
+          background: linear-gradient(90deg, #3b82f6, #000000);
+          margin: 12px auto 0;
+          border-radius: 3px;
+        }
+
+        .sectionTitle__text {
+          text-align: center;
+          line-height: 1.7;
+          font-size: 1.1rem;
+          font-weight: 500;
+          color: #000;
+          margin-bottom: 50px;
+        }
+
+        .value-card {
+          background: #000000;
+          border: 1px solid #bfdbfe;
+          border-radius: 12px;
+          text-align: center;
+          padding: 30px 20px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .value-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .icon-wrapper {
+          width: 64px;
+          height: 64px;
+          background-color: rgba(30, 58, 138, 0.4);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          margin: 0 auto 16px;
+        }
+
+        .icon-wrapper :global(svg) {
+          font-size: 30px;
+          color: #bfdbfe;
+        }
+
+        .value-title {
+          color: #ffffff;
+          font-size: 20px;
+          font-weight: 600;
+          margin-bottom: 12px;
+        }
+
+        .value-desc {
+          color: #ffffff;
+          font-size: 15px;
+          line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+          .csei-heading {
+            font-size: 2rem;
+          }
+
+          .sectionTitle__text {
+            font-size: 1rem;
+          }
+
+          .value-title {
+            font-size: 18px;
+          }
+
+          .value-desc {
+            font-size: 14px;
+          }
+        }
+      `}</style>
     </section>
   );
 }

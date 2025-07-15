@@ -13,11 +13,7 @@ export default function Header() {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const position = window.scrollY;
-      setScrollPosition(position);
-    };
-
+    const handleScroll = () => setScrollPosition(window.scrollY);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -25,7 +21,6 @@ export default function Header() {
   return (
     <>
       <style jsx global>{`
-        /* Default styles for all devices */
         .header {
           position: fixed;
           top: 0;
@@ -35,124 +30,91 @@ export default function Header() {
           transition: all 0.3s ease;
         }
 
-        /* Mobile Phones (portrait and landscape) - up to 767px */
+        .header-container {
+          margin: 0 auto !important;
+          max-width: 100% !important;
+          width: 100%;
+        }
+
+        @media (min-width: 1200px) and (max-width: 1400px) {
+          .header-flex-wrapper {
+            flex-wrap: nowrap !important;
+          }
+
+          .header-logo-text {
+            font-size: 18px !important;
+            letter-spacing: 0.2px !important;
+          }
+        }
+
         @media (max-width: 767px) {
           .header {
-            /* Add your mobile-specific header styles here */
             padding: 0;
           }
 
           .header__logo span {
-            /* Hide "CSEI Academy" text on mobile */
             display: none;
           }
 
           .top-links-bar {
-            /* Hide top links bar on mobile */
             display: none;
             height: 100px !important;
           }
 
+          .desktop-menu {
+            display: none;
+          }
+
+          .mobile-menu-button {
+            display: block;
+          }
+
           .enquire-button {
-            /* Smaller button for mobile */
             display: block !important;
             margin: 0 auto !important;
             font-size: 12px !important;
             margin-right: 12px !important;
           }
-
-          .desktop-menu {
-            /* Hide desktop menu on mobile */
-            display: none;
-          }
-
-          .mobile-menu-button {
-            /* Show mobile menu button */
-            display: block;
-          }
         }
 
-        /* Tablets (portrait) - 768px to 991px */
         @media (min-width: 768px) and (max-width: 991px) {
-          .header {
-            /* Add your tablet portrait styles here */
-            // padding: 12px 0;
-          }
-
           .header__logo span {
-            /* Hide "CSEI Academy" text on tablet */
             display: none;
           }
 
           .top-links-bar {
-            /* Hide top links bar on tablet */
             display: none;
           }
 
           .desktop-menu {
-            /* Hide desktop menu on tablet */
             display: none;
           }
 
           .mobile-menu-button {
-            /* Show mobile menu button */
             display: block;
           }
         }
 
-        /* Tablets (landscape) and small laptops - 992px to 1199px */
         @media (min-width: 992px) and (max-width: 1199px) {
-          .header {
-            /* Add your tablet landscape/small laptop styles here */
-          }
-
           .header__logo span {
-            /* Show "CSEI Academy" text */
             display: inline;
           }
 
           .top-links-bar {
-            /* Show top links bar */
             display: block;
           }
 
           .mobile-menu-button {
-            /* Hide mobile menu button */
             display: none;
           }
         }
 
-        /* Desktops and laptops - 1200px and up */
         @media (min-width: 1200px) {
-          .header {
-            /* Add your desktop styles here */
-          }
-
           .mobile-menu-button {
-            /* Hide mobile menu button */
             display: none;
           }
         }
 
-        /* Special cases for very large screens */
-        @media (min-width: 1600px) {
-          .header {
-            /* Add your large desktop styles here */
-          }
-        }
-
-        /* High-density (Retina) displays */
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-          /* Add your retina display optimizations here */
-        }
-
-        /* Print styles */
-        @media print {
-          .header {
-            /* Add your print-specific styles here */
-            display: none;
-          }
-        }
         @media (max-width: 991px) {
           .header-right {
             width: 100%;
@@ -164,6 +126,17 @@ export default function Header() {
             margin-right: 50px !important;
           }
         }
+
+        @media (min-width: 1600px) {
+          .header {
+          }
+        }
+
+        @media print {
+          .header {
+            display: none;
+          }
+        }
       `}</style>
 
       <header
@@ -171,7 +144,7 @@ export default function Header() {
           scrollPosition > 40 ? "bg-dark-1" : ""
         }`}
       >
-        {/* Top Links Bar - Hidden on mobile/tablet */}
+        {/* Top Bar */}
         <div className="top-links-bar d-flex items-center py-2 bg-black">
           <div className="container">
             <div className="row y-gap-5 justify-between items-center">
@@ -210,20 +183,27 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Border Separator - Hidden on mobile/tablet */}
+        {/* Border */}
         <div className="border-b border-gray-300 w-full"></div>
 
-        {/* Main Header Section */}
-        <div className="container py-4">
+        {/* Main Header */}
+        <div
+          className="container py-4 header-container"
+          style={{ paddingTop: "1.2rem", paddingBottom: "1.2rem" }}
+        >
           <div
+            className="header-flex-wrapper"
             style={{
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              flexWrap: "nowrap",
+              flexWrap: "wrap",
+              gap: "20px",
+              minWidth: 0,
+              width: "100%",
             }}
           >
-            {/* Left: Logo + Text */}
+            {/* Logo */}
             <div
               style={{ display: "flex", alignItems: "center", flexShrink: 0 }}
             >
@@ -233,11 +213,12 @@ export default function Header() {
                   height={40}
                   src="/assets/img/general/logo.png"
                   alt="logo"
-                  style={{ marginRight: "-20px" }} // Negative margin pulls text closer
+                  style={{ marginRight: "-20px" }}
                 />
                 <span
+                  className="header-logo-text"
                   style={{
-                    marginLeft: "2px", // Reduced to minimum
+                    marginLeft: "2px",
                     fontWeight: 900,
                     color: "#E05500",
                     textTransform: "uppercase",
@@ -251,15 +232,17 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* Right: Menu + Mobile */}
+            {/* Menu */}
             <div
               className="header-right"
               style={{
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "flex-end",
-                gap: "20px",
                 flexGrow: 1,
+                flexWrap: "wrap",
+                minWidth: 0,
+                gap: "20px",
               }}
             >
               <Menu
@@ -270,7 +253,6 @@ export default function Header() {
                 activeMobileMenu={activeMobileMenu}
                 setActiveMobileMenu={setActiveMobileMenu}
               />
-
               <div className="mobile-menu-button d-none xl:d-block">
                 <button
                   className="text-dark-1 items-center"
