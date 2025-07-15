@@ -131,7 +131,7 @@ export default function NewsCards() {
       ref={sectionRef}
       style={{
         position: "relative",
-        padding: "100px 20px",
+        padding: "250px 20px",
         background:
           "linear-gradient(135deg, rgba(0,0,0,0.95), rgba(20,20,20,0.9))",
         color: "#fff",

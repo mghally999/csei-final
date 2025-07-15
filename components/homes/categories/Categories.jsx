@@ -27,7 +27,34 @@ const CategoriesHomeOne = () => {
         <div className="row justify-center text-center">
           <div className="col-auto">
             <div className="sectionTitle">
-              <h2 className="sectionTitle__title text-black">Top Categories</h2>
+              <h2
+                style={{
+                  fontSize: "clamp(2rem, 5vw, 3.5rem)",
+                  fontWeight: "800",
+                  textTransform: "uppercase",
+                  letterSpacing: "2px",
+                  background: "linear-gradient(90deg, #000, #2196f3, #000)",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  color: "transparent",
+                  position: "relative",
+                  paddingBottom: "20px",
+                }}
+              >
+                Top Categories
+                <span
+                  style={{
+                    position: "absolute",
+                    bottom: "0",
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    width: "80px",
+                    height: "4px",
+                    background: "linear-gradient(90deg, #3b82f6, #000000)",
+                    borderRadius: "2px",
+                  }}
+                />
+              </h2>
             </div>
           </div>
         </div>

@@ -78,28 +78,28 @@ export default function Courses() {
       <div className="row justify-center text-center">
         <div className="col-auto">
           <div className="sectionTitle">
-            <h2 className="sectionTitle__title text-2xl sm:text-3xl md:text-4xl lg:text-[42px] text-black leading-tight">
+            <h2 className="title">
               Trending Programs for September Intake 2025
             </h2>
-            <p className="sectionTitle__text text-sm sm:text-base md:text-lg text-black mt-2 sm:mt-3 md:mt-4">
+            <p className="subtitle">
               Explore our most popular programs across various disciplines
             </p>
           </div>
         </div>
       </div>
 
-      <div className="tabs__controls flex-wrap pt-50 d-flex justify-center x-gap-10 js-tabs-controls">
+      <div className="tabs__controls flex-wrap pt-50 d-flex justify-center  js-tabs-controls">
         {categories.map((cat, i) => (
-          <div onClick={() => setCategory(cat)} key={i}>
-            <button
-              className={`tabs__button px-15 py-8 fw-600 rounded-8 js-tabs-button ${
-                category === cat ? "tabActive bg-white text-dark" : "text-black"
-              }`}
-              type="button"
-            >
-              {cat}
-            </button>
-          </div>
+          <button
+            key={i}
+            onClick={() => setCategory(cat)}
+            className={`tab-btn ${
+              category === cat ? "active" : ""
+            } transition-all`}
+            type="button"
+          >
+            {cat}
+          </button>
         ))}
       </div>
 
@@ -130,7 +130,7 @@ export default function Courses() {
                   {course.professional && (
                     <div className="d-flex justify-between py-10 px-10 absolute-full-center z-3">
                       <div className="px-15 rounded-200">
-                        <span className="enhanced-badge text-11 lh-1 uppercase fw-900 text-black">
+                        <span className="enhanced-badge text-11 lh-1 uppercase fw-900 text-white">
                           PROFESSIONAL
                         </span>
                       </div>
@@ -189,6 +189,89 @@ export default function Courses() {
           );
         })}
       </div>
+
+      {/* Header + Tabs Styling */}
+      <style jsx>{`
+        .title {
+          font-size: clamp(2rem, 5vw, 3.5rem);
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          background: linear-gradient(90deg, #000, #2196f3, #000);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          position: relative;
+          padding-bottom: 20px;
+        }
+
+        .title::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 80px;
+          height: 4px;
+          background: linear-gradient(90deg, #3b82f6, #000000);
+          border-radius: 2px;
+        }
+
+        .subtitle {
+          font-size: 18px;
+          color: #666;
+          max-width: 600px;
+          margin: 30px auto;
+        }
+
+        .sectionTitle {
+          max-width: 800px;
+          margin: 0 auto;
+          padding-bottom: 40px;
+        }
+
+        .tab-btn {
+          position: relative;
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid #ccc;
+          backdrop-filter: blur(8px);
+          padding: 10px 20px;
+          font-weight: 600;
+          font-size: 14px;
+          color: #000;
+          border-radius: 999px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          overflow: hidden;
+          z-index: 1;
+        }
+
+        .tab-btn::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 0;
+          background: linear-gradient(90deg, #3b82f6, #000);
+          transition: width 0.4s ease;
+          z-index: -1;
+        }
+
+        .tab-btn:hover::before {
+          width: 100%;
+        }
+
+        .tab-btn:hover {
+          color: #fff;
+        }
+
+        .tab-btn.active {
+          background: linear-gradient(90deg, #3b82f6, #000);
+          color: white;
+          border-color: transparent;
+        }
+      `}</style>
     </section>
   );
 }

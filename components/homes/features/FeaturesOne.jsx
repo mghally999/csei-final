@@ -15,48 +15,33 @@ const features = [
 
 export default function WhyCSEIWithVideo() {
   return (
-    <section style={{ backgroundColor: "#000", padding: "80px 0" }}>
+    <section
+      style={{ backgroundColor: "#000", padding: "clamp(60px, 8vw, 100px) 0" }}
+    >
       <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "0 20px" }}>
-        {/* Section Title */}
+        {/* Title */}
         <h2
           style={{
-            fontSize: "36px",
+            fontSize: "clamp(28px, 5vw, 42px)",
             fontWeight: "800",
             color: "#ffffff",
-            marginBottom: "60px",
+            marginBottom: "clamp(40px, 6vw, 70px)",
             textAlign: "center",
+            lineHeight: "1.4",
           }}
         >
           Why CSEI Academy & Student Support
         </h2>
 
-        {/* Custom Grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 2fr",
-            gap: "0px",
-            backgroundColor: "#111",
-            borderRadius: "16px",
-            overflow: "hidden",
-            boxShadow: "0 12px 24px rgba(0,0,0,0.6)",
-          }}
-        >
-          {/* LEFT SIDE: Why CSEI Bullet Points */}
-          <div
-            style={{
-              padding: "40px",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              borderRight: "1px solid rgba(255,255,255,0.1)",
-            }}
-          >
+        {/* Responsive Flex Wrapper */}
+        <div className="why-csei-wrapper">
+          {/* Left: Text */}
+          <div className="why-csei-text">
             <h3
               style={{
-                fontSize: "24px",
-                fontWeight: "700",
-                marginBottom: "24px",
+                fontSize: "clamp(20px, 4vw, 28px)",
+                fontWeight: "800",
+                marginBottom: "30px",
                 color: "#ffffff",
               }}
             >
@@ -69,22 +54,23 @@ export default function WhyCSEIWithVideo() {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  marginBottom: "16px",
+                  marginBottom: "clamp(16px, 2vw, 24px)",
                 }}
               >
                 <div
                   style={{
-                    width: "26px",
-                    height: "26px",
+                    width: "clamp(26px, 5vw, 34px)",
+                    height: "clamp(26px, 5vw, 34px)",
                     backgroundColor: "#e05500",
                     color: "#fff",
                     borderRadius: "50%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    fontSize: "13px",
-                    marginRight: "12px",
-                    boxShadow: "0 4px 8px rgba(255, 85, 0, 0.3)",
+                    fontSize: "clamp(12px, 3vw, 16px)",
+                    fontWeight: "bold",
+                    marginRight: "clamp(10px, 3vw, 18px)",
+                    boxShadow: "0 4px 8px rgba(224, 85, 0, 0.4)",
                     flexShrink: 0,
                   }}
                 >
@@ -92,10 +78,10 @@ export default function WhyCSEIWithVideo() {
                 </div>
                 <div
                   style={{
-                    fontSize: "16px",
-                    lineHeight: "1.6",
+                    fontSize: "clamp(14px, 4vw, 18px)",
+                    fontWeight: "700",
                     color: "#f1f1f1",
-                    fontWeight: 500,
+                    lineHeight: "1.7",
                   }}
                 >
                   {text}
@@ -104,8 +90,8 @@ export default function WhyCSEIWithVideo() {
             ))}
           </div>
 
-          {/* RIGHT SIDE: Video Preview */}
-          <div style={{ position: "relative", minHeight: "100%" }}>
+          {/* Right: Video */}
+          <div className="why-csei-video">
             <video
               src="/videos/why-csei.mov"
               autoPlay
@@ -114,14 +100,54 @@ export default function WhyCSEIWithVideo() {
               playsInline
               style={{
                 width: "100%",
-                height: "500px",
+                height: "100%",
+                maxHeight: "500px",
                 objectFit: "cover",
-                display: "block",
                 objectPosition: "center",
               }}
             />
           </div>
         </div>
+
+        {/* Responsive Styles */}
+        <style jsx>{`
+          .why-csei-wrapper {
+            display: flex;
+            flex-direction: column;
+            background-color: #111;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+          }
+
+          .why-csei-text {
+            padding: clamp(30px, 5vw, 50px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          }
+
+          .why-csei-video {
+            width: 100%;
+            height: 300px;
+          }
+
+          @media (min-width: 768px) {
+            .why-csei-wrapper {
+              flex-direction: row;
+            }
+
+            .why-csei-text {
+              width: 50%;
+              padding: clamp(40px, 6vw, 60px);
+              border-bottom: none;
+              border-right: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .why-csei-video {
+              width: 50%;
+              height: auto;
+            }
+          }
+        `}</style>
       </div>
     </section>
   );

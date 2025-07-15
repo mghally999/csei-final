@@ -300,16 +300,17 @@ export default function RootLayout({ children }) {
               @media (max-width: 768px) {
                 .floating-social-icons {
                   top: auto;
-                  bottom: 90px;
+                  bottom: 70px;
                   right: 50%;
                   transform: translateX(50%);
                   flex-direction: row;
                 }
 
                 .quick-enquiry-btn {
-                  // bottom: 20px;
-                  // top: auto;
-                  // right: 20px;
+                  rotate: 90deg;
+                  z-index: 9999;
+                  right: -25px;
+                  top: 40%;
                 }
               }
             `}</style>

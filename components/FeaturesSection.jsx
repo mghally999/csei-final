@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function FeaturesSection() {
   return (
-    <div className="features" id="features">
+    <div className="features layout-pb-lg" id="features">
       {/* Independent header section */}
       <div className="section-header">
         <div className="container mx-auto text-center px-4">
@@ -84,7 +84,6 @@ export default function FeaturesSection() {
       <style jsx>{`
         /* Features Section */
         .features {
-          padding-top: 100px;
           padding-bottom: 100px;
           position: relative;
           background: linear-gradient(
@@ -99,7 +98,6 @@ export default function FeaturesSection() {
 
         /* Header Section - completely independent */
         .section-header {
-          padding: 80px 0;
           text-align: center;
           width: 100%;
         }
@@ -108,32 +106,36 @@ export default function FeaturesSection() {
           max-width: 800px;
           margin: 0 auto;
         }
-
         .title {
-          font-size: 42px;
-          font-weight: 700;
-          color: #000;
-          margin-bottom: 15px;
+          font-size: clamp(2rem, 5vw, 3.5rem);
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          background: linear-gradient(90deg, #000, #2196f3, #000);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
           position: relative;
-          display: inline-block;
+          padding-bottom: 20px;
         }
 
-        // .title::after {
-        //   content: "";
-        //   position: absolute;
-        //   bottom: -10px;
-        //   left: 50%;
-        //   transform: translateX(-50%);
-        //   width: 80px;
-        //   height: 4px;
-        //   background: #2196f3;
-        // }
+        .title::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 80px;
+          height: 4px;
+          background: linear-gradient(90deg, #3b82f6, #000000);
+          border-radius: 2px;
+        }
 
         .subtitle {
           font-size: 18px;
           color: #666;
           max-width: 600px;
-          margin: 0 auto;
+          margin: 30px auto;
         }
 
         /* Features Grid Section */

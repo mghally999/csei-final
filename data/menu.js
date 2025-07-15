@@ -28,7 +28,7 @@ export const menuList = [
         href: "/about/our-leadership",
       },
       {
-        label: "Our Accreditation",
+        label: "Our Accreditation & Recognitions",
         href: "/about/accreditation",
       },
       {
