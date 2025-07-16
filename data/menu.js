@@ -262,6 +262,10 @@ export const menuList = [
         label: "Financial Aid & Scholarships",
         href: "/admission/financial-aid-scholarships",
       },
+      {
+        label: "Student Voice",
+        href: "/admission/student-voice",
+      },
     ],
   },
   {
