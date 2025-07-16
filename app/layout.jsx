@@ -309,8 +309,12 @@ export default function RootLayout({ children }) {
                 .quick-enquiry-btn {
                   rotate: 90deg;
                   z-index: 9999;
-                  right: -25px;
+                  right: -15px; /* Reduced negative right position */
                   top: 40%;
+                  padding: 8px 12px; /* Adjust padding to make it smaller */
+                  font-size: 12px; /* Reduce font size if it has text */
+                  width: auto; /* Let it size to content */
+                  height: auto; /* Let it size to content */
                 }
               }
             `}</style>

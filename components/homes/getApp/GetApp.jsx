@@ -12,21 +12,7 @@ export default function GetApp() {
 
       <div className="container">
         <div className="content-wrapper">
-          {/* LEFT IMAGE */}
-          <div className="image-container">
-            <div className="glass-container">
-              <Image
-                width={600}
-                height={400}
-                src="/assets/img/app/website-mobile-app.png"
-                alt="App preview"
-                className="app-image"
-                priority
-              />
-            </div>
-          </div>
-
-          {/* RIGHT CONTENT */}
+          {/* TEXT SECTION FIRST ON MOBILE */}
           <div className="text-content">
             <h2 className="app-title">
               <span>Engage, </span>
@@ -58,6 +44,20 @@ export default function GetApp() {
                   className="store-button"
                 />
               </Link>
+            </div>
+          </div>
+
+          {/* IMAGE BELOW ON MOBILE, RIGHT SIDE ON DESKTOP */}
+          <div className="image-container">
+            <div className="glass-container">
+              <Image
+                width={600}
+                height={400}
+                src="/assets/img/app/website-mobile-app.png"
+                alt="App preview"
+                className="app-image"
+                priority
+              />
             </div>
           </div>
         </div>
