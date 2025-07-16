@@ -9,27 +9,29 @@ export const CareerOpportunities = ({ data }) => {
   if (!data || !Array.isArray(data)) return null;
 
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
+    <section
       style={{
-        backgroundColor: "#000000",
-        padding: "clamp(60px, 6vw, 100px) clamp(16px, 5vw, 40px)",
-        borderRadius: "16px",
+        background: "linear-gradient(135deg, #000C2D 0%, #001E6C 100%)",
+        padding: "clamp(60px, 8vw, 100px) clamp(20px, 5vw, 80px)",
+        borderTop: "6px solid #E05500",
+        borderBottom: "6px solid #E05500",
+        color: "#ffffff",
+        position: "relative",
       }}
     >
       <div style={{ maxWidth: "1240px", margin: "0 auto" }}>
         {/* Section Title */}
-        <h2
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
           style={{
-            fontSize: "40px",
+            fontSize: "clamp(32px, 5vw, 48px)",
             fontWeight: "800",
-            color: "#ffffff",
-            marginBottom: "50px",
+            marginBottom: "30px",
             textAlign: "center",
             position: "relative",
+            color: "#ffffff",
           }}
         >
           Career Opportunities
@@ -39,70 +41,72 @@ export const CareerOpportunities = ({ data }) => {
               bottom: "-16px",
               left: "50%",
               transform: "translateX(-50%)",
-              width: "100px",
+              width: "80px",
               height: "4px",
-              backgroundColor: "#ffffff",
+              backgroundColor: "#E05500",
               borderRadius: "2px",
             }}
           />
-        </h2>
+        </motion.h2>
 
-        {/* List Items */}
+        {/* Career Items List */}
         <div
           style={{
-            display: "flex",
-            flexDirection: "column",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
             gap: "24px",
+            marginTop: "60px",
           }}
         >
           {data.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
               style={{
+                background: "#FFFFFF10",
+                border: "1px solid #FFFFFF22",
+                borderRadius: "12px",
+                padding: "20px 24px",
                 display: "flex",
                 alignItems: "flex-start",
+                gap: "16px",
               }}
             >
               <div
                 style={{
                   width: "28px",
                   height: "28px",
-                  backgroundColor: "#ffffff",
-                  color: "#000000",
                   borderRadius: "50%",
+                  backgroundColor: "#E05500",
+                  color: "#ffffff",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   fontSize: "14px",
-                  fontWeight: 700,
-                  marginRight: "18px",
                   flexShrink: 0,
-                  marginTop: "2px",
-                  boxShadow: "0 4px 8px rgba(255, 255, 255, 0.15)",
+                  marginTop: "4px",
                 }}
               >
                 <FontAwesomeIcon icon={faCheck} />
               </div>
 
-              <div
+              <span
                 style={{
-                  fontSize: "20px",
-                  fontWeight: "700",
-                  color: "#ffffff",
-                  lineHeight: "1.8",
+                  fontSize: "18px",
+                  fontWeight: "600",
+                  lineHeight: "1.6",
+                  color: "#F5F5F5",
                 }}
               >
                 {item}
-              </div>
+              </span>
             </motion.div>
           ))}
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

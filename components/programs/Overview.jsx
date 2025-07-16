@@ -1,37 +1,33 @@
 "use client";
 
 import React from "react";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { FiCheckCircle } from "react-icons/fi";
 
-export default function Overview({ data }) {
-  if (!data) return null;
-
-  const items = Array.isArray(data) ? data : [data];
-
+export default function ProgramIntro() {
   return (
     <section
       style={{
-        backgroundColor: "#000000",
-        padding: "clamp(60px, 6vw, 100px) clamp(16px, 5vw, 40px)",
-        borderRadius: "16px",
+        background: "linear-gradient(135deg, #000C2D 0%, #001E6C 100%)",
+        padding: "clamp(60px, 8vw, 100px) clamp(20px, 5vw, 80px)",
+        color: "#FFFFFF",
+        borderBottom: "6px solid #E05500",
       }}
     >
-      <div
-        style={{
-          maxWidth: "1240px",
-          margin: "0 auto",
-        }}
-      >
+      <div style={{ maxWidth: "1240px", margin: "0 auto" }}>
         {/* Section Title */}
-        <h2
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
           style={{
-            fontSize: "clamp(28px, 5vw, 42px)",
+            fontSize: "clamp(32px, 5vw, 48px)",
             fontWeight: "800",
-            color: "#ffffff",
-            marginBottom: "50px",
+            marginBottom: "30px",
             textAlign: "center",
             position: "relative",
+            color: "#ffffff",
           }}
         >
           Comprehensive Overview
@@ -41,67 +37,73 @@ export default function Overview({ data }) {
               bottom: "-16px",
               left: "50%",
               transform: "translateX(-50%)",
-              width: "100px",
+              width: "80px",
               height: "4px",
-              backgroundColor: "#ffffff",
+              backgroundColor: "#E05500",
               borderRadius: "2px",
             }}
           />
-        </h2>
+        </motion.h2>
 
-        {/* List Container */}
-        <div
+        {/* Subtext */}
+        <p
           style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "clamp(20px, 2.5vw, 32px)",
-            backgroundColor: "#000000",
-            borderRadius: "12px",
+            fontSize: "clamp(16px, 2.2vw, 20px)",
+            textAlign: "center",
+            color: "#F5F5F5",
+            marginBottom: "60px",
+            maxWidth: "760px",
+            marginInline: "auto",
           }}
         >
-          {items.map((text, i) => (
-            <div
+          A modern learning hub in the heart of Dubai — offering internationally
+          accredited programs, expert faculty, and future-ready skills for the
+          next generation of leaders.
+        </p>
+
+        {/* Key Highlights */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+            gap: "32px",
+          }}
+        >
+          {[
+            "Internationally recognized qualifications",
+            "Expert industry-experienced faculty",
+            "Scholarships and flexible payment plans",
+            "Hands-on training + internships",
+            "Student accommodation available",
+            "Located in vibrant Dubai Academic City",
+          ].map((item, i) => (
+            <motion.div
               key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
               style={{
+                background: "#FFFFFF10",
+                border: "1px solid #FFFFFF22",
+                borderRadius: "12px",
+                padding: "24px",
                 display: "flex",
-                alignItems: "flex-start",
-                flexDirection: "row",
-                flexWrap: "nowrap",
+                alignItems: "center",
+                gap: "16px",
               }}
             >
-              <div
+              <FiCheckCircle size={24} color="#E05500" />
+              <span
                 style={{
-                  width: "32px",
-                  height: "32px",
-                  backgroundColor: "#ffffff",
-                  color: "#000000",
-                  borderRadius: "50%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "14px",
-                  fontWeight: 700,
-                  flexShrink: 0,
-                  marginRight: "16px",
-                  boxShadow: "0 4px 12px rgba(255, 255, 255, 0.1)",
+                  fontSize: "16px",
+                  fontWeight: "500",
+                  lineHeight: "1.5",
+                  color: "#F5F5F5",
                 }}
               >
-                <FontAwesomeIcon icon={faCheck} />
-              </div>
-
-              <div
-                style={{
-                  fontSize: "clamp(16px, 1.5vw, 20px)",
-                  fontWeight: 600,
-                  color: "#ffffff",
-                  lineHeight: 1.8,
-                  flex: 1,
-                  wordBreak: "break-word",
-                }}
-              >
-                {text}
-              </div>
-            </div>
+                {item}
+              </span>
+            </motion.div>
           ))}
         </div>
       </div>

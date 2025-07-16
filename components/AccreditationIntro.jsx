@@ -14,8 +14,8 @@ export default function AccreditationIntro() {
       }}
     >
       <div className="container">
-        <div className="row y-gap-40 items-center">
-          {/* Logos Section */}
+        <div className="row items-center">
+          {/* Logos Section - Vertical with KHDA on top */}
           <motion.div
             className="col-lg-6"
             data-aos="fade-right"
@@ -23,71 +23,74 @@ export default function AccreditationIntro() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "4rem",
+              opacity: 1,
+              transform: "none",
+              paddingRight: "4rem",
+            }}
           >
+            {/* KHDA Logo - Top */}
             <div
               style={{
+                backgroundColor: "#fff",
+                padding: "1.5rem", // Increased padding
+                borderRadius: "0.75rem",
+                border: "1px solid #eee",
+                boxShadow: "0 4px 10px rgba(0,0,0,0.06)",
+                width: "220px", // Slightly larger
+                height: "140px", // Slightly larger
                 display: "flex",
-                gap: "2rem",
-                justifyContent: "flex-start",
                 alignItems: "center",
-                marginLeft: "2rem", // <-- shifted right
+                justifyContent: "center",
+                marginLeft: "2rem",
               }}
             >
-              {/* Logo Card 1 */}
-              <div
+              <Image
+                src="/assets/img/logos/KHDA-logo.png"
+                alt="KHDA Accredited"
+                width={120}
+                height={60}
                 style={{
-                  backgroundColor: "#fff",
-                  padding: "0.75rem",
-                  borderRadius: "0.75rem",
-                  border: "1px solid #eee",
-                  boxShadow: "0 4px 10px rgba(0,0,0,0.06)",
-                  width: "200px",
-                  height: "120px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  objectFit: "contain",
+                  width: "100%",
+                  height: "auto",
                 }}
-              >
-                <Image
-                  src="/assets/img/logos/OTHM-logo.png"
-                  alt="OTHM Accredited"
-                  width={100}
-                  height={50}
-                  style={{
-                    objectFit: "contain",
-                    width: "100%",
-                    height: "auto",
-                  }}
-                />
-              </div>
+              />
+            </div>
 
-              {/* Logo Card 2 */}
-              <div
+            {/* OTHM Logo - Bottom */}
+            <div
+              style={{
+                backgroundColor: "#fff",
+                padding: "1.5rem", // Increased padding
+                borderRadius: "0.75rem",
+                border: "1px solid #eee",
+                boxShadow: "0 4px 10px rgba(0,0,0,0.06)",
+                width: "220px", // Slightly larger
+                height: "140px", // Slightly larger
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginLeft: "2rem",
+                marginTop: "2rem", // Additional space above OTHM
+              }}
+            >
+              <Image
+                src="/assets/img/logos/OTHM-logo.png"
+                alt="OTHM Accredited"
+                width={120}
+                height={60}
                 style={{
-                  backgroundColor: "#fff",
-                  padding: "0.75rem",
-                  borderRadius: "0.75rem",
-                  border: "1px solid #eee",
-                  boxShadow: "0 4px 10px rgba(0,0,0,0.06)",
-                  width: "200px",
-                  height: "120px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  objectFit: "contain",
+                  width: "100%",
+                  height: "auto",
                 }}
-              >
-                <Image
-                  src="/assets/img/logos/KHDA-logo.png"
-                  alt="KHDA Accredited"
-                  width={100}
-                  height={50}
-                  style={{
-                    objectFit: "contain",
-                    width: "100%",
-                    height: "auto",
-                  }}
-                />
-              </div>
+              />
             </div>
           </motion.div>
 
@@ -99,6 +102,10 @@ export default function AccreditationIntro() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            style={{
+              paddingLeft: "4rem", // Added gap between logos and text
+              borderLeft: "1px solid rgba(0,0,0,0.1)", // Visual separator
+            }}
           >
             <h2 className="text-30 fw-700 text-black mb-20 leading-snug">
               CSEI Academy – Where Your Performance Ignites with the Best
@@ -116,7 +123,7 @@ export default function AccreditationIntro() {
 
             <p className="text-16 text-black mb-20 leading-relaxed">
               Complementing this, CSEI Academy offers qualifications accredited
-              by the United Kingdom’s{" "}
+              by the United Kingdom's{" "}
               <strong>
                 Office of Qualifications and Examinations Regulation (Ofqual)
               </strong>{" "}

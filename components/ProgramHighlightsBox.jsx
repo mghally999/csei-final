@@ -13,7 +13,8 @@ import { extractCreditsFromString } from "@/utils/extractCredits";
 export default function ProgramHighlightsBox({ data }) {
   const credits = extractCreditsFromString(data?.qualificationStructure);
 
-  const highlightItems = [
+  // Define all items
+  let highlightItems = [
     {
       icon: <FaClock size={16} />,
       label: "Duration",
@@ -35,6 +36,11 @@ export default function ProgramHighlightsBox({ data }) {
       value: credits ? `${credits} Credits` : "120 Credits",
     },
   ];
+
+  // Remove Credits if professional
+  if (data?.professional) {
+    highlightItems = highlightItems.filter((item) => item.label !== "Credits");
+  }
 
   return (
     <motion.div
@@ -60,6 +66,7 @@ export default function ProgramHighlightsBox({ data }) {
       >
         Program Highlights
       </h3>
+
       <div
         style={{
           display: "grid",

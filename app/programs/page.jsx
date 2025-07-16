@@ -9,7 +9,14 @@ import { useContextElement } from "@/context/Context";
 import PaginationTwo from "../../components/common/PaginationTwo";
 import { programs } from "@/data/programs";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiCompass, FiAward, FiStar, FiLayers, FiFilter } from "react-icons/fi";
+import {
+  FiCompass,
+  FiAward,
+  FiStar,
+  FiLayers,
+  FiFilter,
+  FiCheckCircle,
+} from "react-icons/fi";
 
 const categories = [
   "All Categories",
@@ -19,6 +26,17 @@ const categories = [
   "Culinary Arts",
   "Information Technology",
 ];
+
+// Brand colors from reference
+const brandColors = {
+  primary: "#001E6C",
+  secondary: "#000C2D",
+  accent: "#E05500",
+  lightText: "#F5F5F5",
+  darkText: "#FFFFFF",
+  border: "#FFFFFF22",
+  highlight: "#0A1445",
+};
 
 const CourseListOne = () => {
   const pathname = usePathname();
@@ -374,8 +392,8 @@ const CourseListOne = () => {
                       width: `${constellationPositions[i].size}px`,
                       height: `${constellationPositions[i].size}px`,
                       background: course.professional
-                        ? "linear-gradient(135deg, #000000, #000000)"
-                        : "linear-gradient(135deg, #00BFFF, #1E90FF)",
+                        ? `linear-gradient(135deg, ${brandColors.accent}, ${brandColors.highlight})`
+                        : `linear-gradient(135deg, ${brandColors.primary}, ${brandColors.secondary})`,
                     }}
                   >
                     {hoveredCourse === course.id && (
@@ -409,7 +427,7 @@ const CourseListOne = () => {
                               y1={pos1.y + 150}
                               x2={pos2.x + 150}
                               y2={pos2.y + 150}
-                              stroke="rgba(138, 43, 226, 0.3)"
+                              stroke={`rgba(224, 85, 0, 0.3)`}
                               strokeWidth="1"
                             />
                           );
@@ -505,8 +523,12 @@ const CourseListOne = () => {
         .cosmic-explorer {
           position: relative;
           min-height: 100vh;
-          background: linear-gradient(135deg, #000000 0%, #000000 100%);
-          color: #fff;
+          background: linear-gradient(
+            135deg,
+            ${brandColors.secondary} 0%,
+            ${brandColors.primary} 100%
+          );
+          color: ${brandColors.lightText};
           font-family: "Inter", sans-serif;
           overflow-x: hidden;
         }
@@ -523,7 +545,7 @@ const CourseListOne = () => {
 
         .star {
           position: absolute;
-          background-color: #fff;
+          background-color: ${brandColors.lightText};
           border-radius: 50%;
           filter: blur(0.5px);
         }
@@ -553,14 +575,14 @@ const CourseListOne = () => {
           font-weight: 800;
           margin-bottom: 10px;
           line-height: 1.2;
-          background: linear-gradient(90deg, #8a2be2, #00bfff);
+          background: linear-gradient(90deg, ${brandColors.accent});
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
         }
 
         .title-gradient {
-          background: linear-gradient(90deg, #00bfff, #8a2be2);
+          background: linear-gradient(90deg, ${brandColors.accent});
           -webkit-background-clip: text;
           background-clip: text;
           color: transparent;
@@ -570,6 +592,7 @@ const CourseListOne = () => {
           font-size: 1.2rem;
           opacity: 0.8;
           margin: 0;
+          color: ${brandColors.lightText};
         }
 
         /* Tab buttons */
@@ -581,11 +604,11 @@ const CourseListOne = () => {
         .cosmic-tab-btn {
           position: relative;
           background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.2);
+          border: 1px solid ${brandColors.border};
           backdrop-filter: blur(8px);
           padding: 12px 20px;
           font-weight: 600;
-          color: white;
+          color: ${brandColors.lightText};
           border-radius: 50px;
           cursor: pointer;
           transition: all 0.3s ease;
@@ -601,7 +624,11 @@ const CourseListOne = () => {
           left: 0;
           height: 100%;
           width: 0;
-          background: linear-gradient(90deg, #8a2be2, #00bfff);
+          background: linear-gradient(
+            90deg,
+            ${brandColors.highlight},
+            ${brandColors.accent}
+          );
           transition: width 0.4s ease;
           z-index: -1;
         }
@@ -611,13 +638,17 @@ const CourseListOne = () => {
         }
 
         .cosmic-tab-btn:hover {
-          color: #fff;
+          color: ${brandColors.darkText};
           border-color: transparent;
         }
 
         .cosmic-tab-btn.active {
-          background: linear-gradient(90deg, #8a2be2, #00bfff);
-          color: white;
+          background: linear-gradient(
+            90deg,
+            ${brandColors.highlight},
+            ${brandColors.accent}
+          );
+          color: ${brandColors.darkText};
           border-color: transparent;
           box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
         }
@@ -637,8 +668,8 @@ const CourseListOne = () => {
           padding: 12px 20px;
           border-radius: 50px;
           background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          color: white;
+          border: 1px solid ${brandColors.border};
+          color: ${brandColors.lightText};
           font-weight: 600;
           cursor: pointer;
           transition: all 0.3s ease;
@@ -650,7 +681,11 @@ const CourseListOne = () => {
         }
 
         .cosmic-filter-btn.active {
-          background: linear-gradient(90deg, #8a2be2, #00bfff);
+          background: linear-gradient(
+            90deg,
+            ${brandColors.highlight},
+            ${brandColors.accent}
+          );
           border-color: transparent;
           box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
         }
@@ -678,7 +713,7 @@ const CourseListOne = () => {
           border-radius: 50px;
           background: rgba(255, 255, 255, 0.05);
           border: 1px solid rgba(255, 255, 255, 0.1);
-          color: white;
+          color: ${brandColors.lightText};
           font-weight: 500;
           cursor: pointer;
           transition: all 0.3s ease;
@@ -689,7 +724,11 @@ const CourseListOne = () => {
         }
 
         .view-mode-btn.active {
-          background: linear-gradient(90deg, #8a2be2, #00bfff);
+          background: linear-gradient(
+            90deg,
+            ${brandColors.highlight},
+            ${brandColors.accent}
+          );
           border-color: transparent;
           box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
         }
@@ -731,7 +770,7 @@ const CourseListOne = () => {
           border-radius: 10px;
           width: 200px;
           backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid ${brandColors.border};
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
           z-index: 10;
         }
@@ -739,29 +778,30 @@ const CourseListOne = () => {
         .node-tooltip h4 {
           margin: 0 0 8px;
           font-size: 1rem;
-          color: #fff;
+          color: ${brandColors.darkText};
         }
 
         .node-tooltip p {
           margin: 0 0 12px;
           font-size: 0.9rem;
           opacity: 0.8;
+          color: ${brandColors.lightText};
         }
 
         .node-link {
           display: inline-block;
           padding: 5px 10px;
-          background: rgba(138, 43, 226, 0.2);
+          background: rgba(224, 85, 0, 0.2);
           border-radius: 5px;
-          color: #8a2be2;
+          color: ${brandColors.accent};
           font-weight: 600;
           font-size: 0.9rem;
           transition: all 0.3s ease;
         }
 
         .node-link:hover {
-          background: rgba(138, 43, 226, 0.4);
-          color: #fff;
+          background: rgba(224, 85, 0, 0.4);
+          color: ${brandColors.darkText};
         }
 
         .constellation-lines {
@@ -788,8 +828,8 @@ const CourseListOne = () => {
 
         .cosmic-sort-select {
           background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          color: white;
+          border: 1px solid ${brandColors.border};
+          color: ${brandColors.lightText};
           padding: 8px 15px;
           border-radius: 8px;
           cursor: pointer;
@@ -802,7 +842,7 @@ const CourseListOne = () => {
 
         .cosmic-sort-select:focus {
           outline: none;
-          box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.5);
+          box-shadow: 0 0 0 2px rgba(224, 85, 0, 0.5);
         }
 
         .cosmic-grid {
@@ -816,7 +856,7 @@ const CourseListOne = () => {
           border-radius: 15px;
           overflow: hidden;
           transition: all 0.3s ease;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid ${brandColors.border};
           backdrop-filter: blur(5px);
         }
 
@@ -865,9 +905,9 @@ const CourseListOne = () => {
 
         .professional-badge {
           right: 15px;
-          background: rgba(138, 43, 226, 0.2);
-          color: #8a2be2;
-          border: 1px solid rgba(138, 43, 226, 0.3);
+          background: rgba(224, 85, 0, 0.2);
+          color: ${brandColors.accent};
+          border: 1px solid rgba(224, 85, 0, 0.3);
         }
 
         .course-content {
@@ -879,7 +919,7 @@ const CourseListOne = () => {
 
         .course-school {
           font-size: 0.9rem;
-          color: #ffffff;
+          color: ${brandColors.darkText};
           margin-bottom: 8px;
           font-weight: 600;
         }
@@ -891,9 +931,13 @@ const CourseListOne = () => {
         }
 
         .course-title a {
-          color: white;
+          color: ${brandColors.darkText};
           text-decoration: none;
-          background: linear-gradient(90deg, white, white);
+          background: linear-gradient(
+            90deg,
+            ${brandColors.darkText},
+            ${brandColors.darkText}
+          );
           background-size: 0% 2px;
           background-repeat: no-repeat;
           background-position: left bottom;
@@ -910,6 +954,7 @@ const CourseListOne = () => {
           margin-bottom: 20px;
           font-size: 0.9rem;
           opacity: 0.8;
+          color: ${brandColors.lightText};
         }
 
         .course-footer {
@@ -925,7 +970,7 @@ const CourseListOne = () => {
         }
 
         .current-price {
-          color: #00bfff;
+          color: ${brandColors.accent};
         }
 
         .original-price {
@@ -941,9 +986,13 @@ const CourseListOne = () => {
 
         .explore-btn {
           padding: 8px 15px;
-          background: linear-gradient(90deg, #8a2be2, #00bfff);
+          background: linear-gradient(
+            90deg,
+            ${brandColors.highlight},
+            ${brandColors.accent}
+          );
           border-radius: 8px;
-          color: white;
+          color: ${brandColors.darkText};
           font-weight: 600;
           text-decoration: none;
           transition: all 0.3s ease;
@@ -951,7 +1000,7 @@ const CourseListOne = () => {
 
         .explore-btn:hover {
           transform: translateY(-2px);
-          box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+          box-shadow: 0 5px 15px rgba(224, 85, 0, 0.4);
         }
 
         .cosmic-pagination {

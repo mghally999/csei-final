@@ -6,9 +6,11 @@ export default function SampleCertificate() {
   return (
     <section
       style={{
-        backgroundColor: "#000000",
-        padding: "80px 20px",
-        borderRadius: "10px",
+        background: "linear-gradient(135deg, #000C2D 0%, #001E6C 100%)",
+        padding: "clamp(60px, 8vw, 100px) clamp(20px, 5vw, 80px)",
+        borderTop: "6px solid #E05500",
+        borderBottom: "6px solid #E05500",
+        borderRadius: "0px", // matches other sections with no soft corner on full width
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -17,7 +19,7 @@ export default function SampleCertificate() {
       {/* Section Title */}
       <h2
         style={{
-          fontSize: "40px",
+          fontSize: "clamp(32px, 5vw, 48px)",
           fontWeight: "800",
           color: "#ffffff",
           marginBottom: "50px",
@@ -32,9 +34,9 @@ export default function SampleCertificate() {
             bottom: "-16px",
             left: "50%",
             transform: "translateX(-50%)",
-            width: "100px",
+            width: "80px",
             height: "4px",
-            backgroundColor: "#ffffff",
+            backgroundColor: "#E05500",
             borderRadius: "2px",
           }}
         />
@@ -47,13 +49,13 @@ export default function SampleCertificate() {
           maxWidth: "800px",
           height: "500px",
           overflow: "hidden",
-          border: "1px solid #ffffff33",
+          border: "1px solid #FFFFFF22",
           borderRadius: "12px",
-          boxShadow: "0 10px 30px rgba(255, 255, 255, 0.1)",
+          boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "#111111",
+          backgroundColor: "transparent",
         }}
       >
         <img

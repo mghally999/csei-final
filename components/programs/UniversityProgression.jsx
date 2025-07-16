@@ -18,14 +18,16 @@ export const UniversityProgression = ({ data = [], description = "" }) => {
       transition={{ duration: 0.5 }}
       viewport={{ once: true, margin: "-50px" }}
       style={{
-        backgroundColor: "#000000",
-        padding: "clamp(60px, 6vw, 100px) clamp(16px, 5vw, 40px)",
-        borderRadius: "16px",
+        background: "linear-gradient(135deg, #000C2D 0%, #001E6C 100%)",
+        padding: "clamp(60px, 8vw, 100px) clamp(20px, 5vw, 80px)",
+        borderTop: "6px solid #E05500",
+        borderBottom: "6px solid #E05500",
+        color: "#ffffff",
       }}
     >
       <h2
         style={{
-          fontSize: "40px",
+          fontSize: "clamp(32px, 5vw, 48px)",
           fontWeight: "800",
           color: "#ffffff",
           marginBottom: "50px",
@@ -40,9 +42,9 @@ export const UniversityProgression = ({ data = [], description = "" }) => {
             bottom: "-16px",
             left: "50%",
             transform: "translateX(-50%)",
-            width: "100px",
+            width: "80px",
             height: "4px",
-            backgroundColor: "#ffffff",
+            backgroundColor: "#E05500",
             borderRadius: "2px",
           }}
         />
@@ -58,12 +60,13 @@ export const UniversityProgression = ({ data = [], description = "" }) => {
             style={{
               fontSize: "18px",
               fontWeight: 600,
-              color: "#ffffff",
+              color: "#F5F5F5",
               lineHeight: 1.8,
               marginBottom: "30px",
-              padding: "20px",
-              backgroundColor: "#111111",
-              borderRadius: "10px",
+              padding: "24px",
+              background: "#FFFFFF10",
+              border: "1px solid #FFFFFF22",
+              borderRadius: "12px",
             }}
           >
             {description}
@@ -77,24 +80,27 @@ export const UniversityProgression = ({ data = [], description = "" }) => {
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
             style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "20px",
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: "24px",
+              marginTop: "30px",
             }}
           >
             {data.map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 style={{
                   display: "flex",
                   alignItems: "flex-start",
-                  backgroundColor: "#111111",
-                  padding: "20px",
-                  borderRadius: "10px",
+                  gap: "16px",
+                  background: "#FFFFFF10",
+                  border: "1px solid #FFFFFF22",
+                  padding: "20px 24px",
+                  borderRadius: "12px",
                 }}
               >
                 {/* Checkmark Icon */}
@@ -102,18 +108,15 @@ export const UniversityProgression = ({ data = [], description = "" }) => {
                   style={{
                     width: "28px",
                     height: "28px",
-                    backgroundColor: "#ffffff",
-                    color: "#000000",
+                    backgroundColor: "#E05500",
+                    color: "#ffffff",
                     borderRadius: "50%",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     fontSize: "14px",
-                    fontWeight: 700,
-                    marginRight: "18px",
                     flexShrink: 0,
                     marginTop: "4px",
-                    boxShadow: "0 4px 8px rgba(255, 255, 255, 0.15)",
                   }}
                 >
                   <FontAwesomeIcon icon={faCheck} />
@@ -124,8 +127,8 @@ export const UniversityProgression = ({ data = [], description = "" }) => {
                   style={{
                     fontSize: "18px",
                     fontWeight: 600,
-                    color: "#ffffff",
-                    lineHeight: 1.8,
+                    color: "#F5F5F5",
+                    lineHeight: 1.7,
                     textAlign: "justify",
                   }}
                 >
