@@ -2,47 +2,43 @@ export const footerLinks = [
   {
     title: "About",
     links: [
-      { href: "/about", label: "Why CSEI Academy" },
-      { href: "/about", label: "Leadership" },
-      { href: "/academics", label: "Academics" },
-      { href: "/about", label: "Accreditations" },
-      { href: "/about", label: "Industrial Partners" },
-      { href: "/placements/", label: "Partner With Us" },
+      { href: "/about/why-csei", label: "Why CSEI Academy" },
+      { href: "/about/our-leadership", label: "Leadership" },
+      { href: "/programs", label: "Programs" }, // Changed from /academics to /programs
+      { href: "/about/accreditation", label: "Accreditations" },
+      { href: "/placements/partners", label: "Industrial Partners" }, // Updated to correct path
+      { href: "/placements/partner-with-us", label: "Partner With Us" }, // Updated to correct path
     ],
   },
   {
     title: "Admission",
     links: [
-      { href: "/admission/online-application", label: "Online Application" },
+      { href: "/admission/apply-now", label: "Online Application" }, // Updated to correct path
       {
         href: "/admission/international-students",
         label: "International Students",
       },
-      { href: "/admission", label: "Visa Guidance" },
-      { href: "/admission/tuition-and-fees", label: "Tuition and Fees" },
-      { href: "/admission/admission-process", label: "Admission Policies" },
+      { href: "/admission/arrival-support", label: "Visa Guidance" }, // Updated to correct path
+      { href: "/admission/tuition-fees", label: "Tuition and Fees" }, // Updated to correct path
+      { href: "/admission/admission-process", label: "Admission Policies" }, // Updated to correct path
     ],
   },
   {
     title: "Academy Life",
     links: [
-      { href: "/dashboard", label: "LMS" },
-      // {
-      //   href: "/admission/financial-aid-scholarships",
-      //   label: "Student Policies",
-      // },
-      { href: "/life-with-csei", label: "Facilities" },
-      { href: "/dashboard", label: "Student Portal" },
+      { href: "/life-with-csei/lms", label: "LMS" }, // Updated to correct path
+      { href: "/life-with-csei/facilities", label: "Facilities" }, // Updated to correct path
+      { href: "/life-with-csei/student-portal", label: "Student Portal" }, // Updated to correct path
       { href: "/admission/student-voice", label: "Student Voice" },
-      { href: "/placements/partners", label: "Alumni" },
+      { href: "/life-with-csei/alumni", label: "Alumni" }, // Updated to correct path
     ],
   },
   {
     title: "Student Support",
     links: [
-      { href: "/contact-2", label: "Contact Us" },
-      { href: "/academics/support", label: "Academic Support" },
-      { href: "/placements/overview", label: "Placement Guide" },
+      { href: "/contact-us", label: "Contact Us" }, // Updated to correct path
+      { href: "/life-with-csei/academic-mentoring", label: "Academic Support" }, // Updated to correct path
+      { href: "/placements", label: "Placement Guide" }, // Updated to correct path
     ],
   },
 ];

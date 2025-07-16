@@ -28,7 +28,7 @@ export default function AccreditationIntro() {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              gap: "4rem",
+              gap: "2rem",
               opacity: 1,
               transform: "none",
               paddingRight: "4rem",
@@ -82,6 +82,36 @@ export default function AccreditationIntro() {
             >
               <Image
                 src="/assets/img/logos/OTHM-logo.png"
+                alt="OTHM Accredited"
+                width={120}
+                height={60}
+                style={{
+                  objectFit: "contain",
+                  width: "100%",
+                  height: "auto",
+                }}
+              />
+            </div>
+
+            {/* OTHM Logo - Bottom */}
+            <div
+              style={{
+                backgroundColor: "#fff",
+                padding: "1.5rem", // Increased padding
+                borderRadius: "0.75rem",
+                border: "1px solid #eee",
+                boxShadow: "0 4px 10px rgba(0,0,0,0.06)",
+                width: "220px", // Slightly larger
+                height: "140px", // Slightly larger
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginLeft: "2rem",
+                marginTop: "2rem", // Additional space above OTHM
+              }}
+            >
+              <Image
+                src="/assets/img/logos/CPD-logo.png"
                 alt="OTHM Accredited"
                 width={120}
                 height={60}

@@ -117,6 +117,7 @@ export default function CoreValues() {
         .value-card {
           background: #000000;
           border: 1px solid #bfdbfe;
+          height: 100%;
           border-radius: 12px;
           text-align: center;
           padding: 30px 20px;

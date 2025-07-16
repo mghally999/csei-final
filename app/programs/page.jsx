@@ -1,25 +1,15 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { prices } from "@/data/courses";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useContextElement } from "@/context/Context";
 import PaginationTwo from "../../components/common/PaginationTwo";
 import { programs } from "@/data/programs";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  FiCompass,
-  FiAward,
-  FiStar,
-  FiLayers,
-  FiFilter,
-  FiCheckCircle,
-} from "react-icons/fi";
+import { FiCompass, FiAward, FiSearch } from "react-icons/fi";
 
 const categories = [
-  "All Categories",
   "Health & Social Care",
   "Business & Management",
   "Travel & Tourism",
@@ -27,7 +17,6 @@ const categories = [
   "Information Technology",
 ];
 
-// Brand colors from reference
 const brandColors = {
   primary: "#001E6C",
   secondary: "#000C2D",
@@ -42,55 +31,155 @@ const CourseListOne = () => {
   const pathname = usePathname();
   const isProfessionalRoute = pathname.includes("/professional-courses");
 
-  // Enhanced programs data
-  const enhancedPrograms = programs.map((program) => ({
-    ...program,
-    professional: program.href.includes("/professional-courses/"),
-    duration: program.duration || "Duration not specified",
-    level: program.level || "Level not specified",
-  }));
-
-  const [coursesData] = useState(() => {
-    return enhancedPrograms.map((program) => ({
-      id: program.id,
-      title: program.credentialTitle || program.title,
-      href: program.href,
-      category: program.category || program.school,
-      authorName: program.authorName,
-      rating: program.rating,
-      paid: program.paid,
-      level: program.level,
-      duration: program.duration,
-      imageSrc: program.imageSrc,
-      discountedPrice: program.discountedPrice,
-      lessonCount: program.lessonCount,
-      popular: program.popular,
-      school: program.school,
-      professional: program.professional,
+  // Enhanced programs data with memoization
+  const enhancedPrograms = useMemo(() => {
+    return programs.map((program) => ({
+      ...program,
+      professional: program.href.includes("/professional-courses/"),
+      duration: program.duration || "Duration not specified",
+      level: program.level || "Level not specified",
+      searchText:
+        `${program.title} ${program.school} ${program.category} ${program.level}`.toLowerCase(),
     }));
-  });
+  }, []);
 
   // State management
-  const [activeFilter, setActiveFilter] = useState("all");
-  const [filterCategories, setFilterCategories] = useState([]);
-  const [filterPrice, setFilterPrice] = useState("All");
-  const [filterLevels, setFilterLevels] = useState([]);
-  const [filterProfessional, setFilterProfessional] =
-    useState(isProfessionalRoute);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeFilter, setActiveFilter] = useState(
+    isProfessionalRoute ? "professional" : "all"
+  );
   const [currentSortingOption, setCurrentSortingOption] = useState("Default");
-  const [filteredData, setFilteredData] = useState([]);
-  const [sortedFilteredData, setSortedFilteredData] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
   const [hoveredCourse, setHoveredCourse] = useState(null);
   const [viewMode, setViewMode] = useState("grid");
-  const [activeCategory, setActiveCategory] = useState("All Categories");
 
-  // Calculate professional count
-  const professionalCount = enhancedPrograms.filter(
-    (p) => p.professional
-  ).length;
+  // Filter and sort data with memoization
+  const { filteredData, professionalCount } = useMemo(() => {
+    let result = [...enhancedPrograms];
+    let professionalCount = 0;
 
-  const getLevelLabel = (level) => {
+    // First filter by professional if needed
+    if (activeFilter === "professional") {
+      result = result.filter((program) => program.professional);
+      professionalCount = result.length;
+    }
+    // Filter by category if a specific category is selected
+    else if (activeFilter !== "all") {
+      const categoryMap = {
+        "Health & Social Care": "Health Science Discipline",
+        "Business & Management": "Business Discipline",
+        "Travel & Tourism": ["Tourism", "Hospitality"],
+        "Culinary Arts": "Professional Courses",
+        "Information Technology": "Computing Discipline",
+      };
+
+      const filterValue = categoryMap[activeFilter];
+
+      if (Array.isArray(filterValue)) {
+        result = result.filter((program) =>
+          filterValue.some(
+            (val) =>
+              program.school.includes(val) || program.category.includes(val)
+          )
+        );
+      } else if (filterValue) {
+        result = result.filter(
+          (program) =>
+            program.school === filterValue || program.category === filterValue
+        );
+      }
+    } else {
+      professionalCount = enhancedPrograms.filter((p) => p.professional).length;
+    }
+
+    // Apply search filter if query exists
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase();
+      result = result.filter((program) => program.searchText.includes(query));
+    }
+
+    // Sort the results
+    switch (currentSortingOption) {
+      case "Rating (asc)":
+        result.sort((a, b) => a.rating - b.rating);
+        break;
+      case "Rating (dsc)":
+        result.sort((a, b) => b.rating - a.rating);
+        break;
+      case "Price (asc)":
+        result.sort(
+          (a, b) => (a.discountedPrice || 0) - (b.discountedPrice || 0)
+        );
+        break;
+      case "Price (dsc)":
+        result.sort(
+          (a, b) => (b.discountedPrice || 0) - (a.discountedPrice || 0)
+        );
+        break;
+      case "Duration (asc)":
+        result.sort((a, b) =>
+          (a.duration || "").localeCompare(b.duration || "")
+        );
+        break;
+      case "Duration (dsc)":
+        result.sort((a, b) =>
+          (b.duration || "").localeCompare(a.duration || "")
+        );
+        break;
+      default:
+        // Default sorting - you can add your preferred default here
+        break;
+    }
+
+    return { filteredData: result, professionalCount };
+  }, [enhancedPrograms, activeFilter, searchQuery, currentSortingOption]);
+
+  // Paginated data
+  const paginatedData = useMemo(() => {
+    return filteredData.slice((pageNumber - 1) * 12, pageNumber * 12);
+  }, [filteredData, pageNumber]);
+
+  // Constellation view calculations
+  const constellationCourses = useMemo(() => {
+    return filteredData.slice(0, 12).map((course, i) => {
+      const angle = (i / 12) * Math.PI * 2;
+      const distance = 150 + Math.random() * 50;
+      return {
+        ...course,
+        position: {
+          x: Math.cos(angle) * distance,
+          y: Math.sin(angle) * distance,
+          size: 8 + (course.popular ? 4 : 0) + (course.professional ? 4 : 0),
+        },
+      };
+    });
+  }, [filteredData]);
+
+  // Handlers with useCallback for performance
+  const handleCategoryClick = useCallback((category) => {
+    setActiveFilter(category);
+    setPageNumber(1);
+  }, []);
+
+  const handleFilterProfessional = useCallback(() => {
+    setActiveFilter((prev) =>
+      prev === "professional" ? "all" : "professional"
+    );
+    setPageNumber(1);
+  }, []);
+
+  const handleSearchChange = useCallback((e) => {
+    setSearchQuery(e.target.value);
+    setPageNumber(1);
+  }, []);
+
+  const handleAllCoursesClick = useCallback(() => {
+    setActiveFilter("all");
+    setSearchQuery("");
+    setPageNumber(1);
+  }, []);
+
+  const getLevelLabel = useCallback((level) => {
     switch (level) {
       case "Level 3":
         return "Beginner";
@@ -102,160 +191,7 @@ const CourseListOne = () => {
       default:
         return level;
     }
-  };
-
-  // Filtering logic
-  useEffect(() => {
-    let refItems = coursesData
-      .filter((elm) => {
-        if (filterPrice == "All") return true;
-        if (filterPrice == "Free") return !elm.paid;
-        if (filterPrice == "Paid") return elm.paid;
-        return true;
-      })
-      .filter((elm) => {
-        if (isProfessionalRoute || filterProfessional) {
-          return elm.professional === true;
-        }
-        return true;
-      });
-
-    // Apply category filter
-    if (activeCategory !== "All Categories") {
-      refItems = refItems.filter((program) => {
-        switch (activeCategory) {
-          case "Health & Social Care":
-            return program.school === "Health Science Discipline";
-          case "Business & Management":
-            return program.school === "Business Discipline";
-          case "Travel & Tourism":
-            return (
-              program.school === "Culinary Arts & Tourism Discipline" &&
-              (program.category?.includes("Tourism") ||
-                program.category?.includes("Hospitality"))
-            );
-          case "Culinary Arts":
-            return (
-              program.school === "Culinary Arts & Tourism Discipline" &&
-              program.category === "Professional Courses"
-            );
-          case "Information Technology":
-            return program.school === "Computing Discipline";
-          default:
-            return true;
-        }
-      });
-    }
-
-    let filteredArrays = [];
-
-    if (filterCategories.length > 0) {
-      const filtered = refItems.filter(
-        (elm) =>
-          filterCategories.includes(elm.category) ||
-          filterCategories.includes(elm.school)
-      );
-      filteredArrays.push(filtered);
-    }
-    if (filterLevels.length > 0) {
-      const filtered = refItems.filter((elm) =>
-        filterLevels.some((level) => elm.level.includes(level))
-      );
-      filteredArrays.push(filtered);
-    }
-
-    const commonItems =
-      filteredArrays.length > 0
-        ? refItems.filter((item) =>
-            filteredArrays.every((array) => array.includes(item))
-          )
-        : refItems;
-
-    setFilteredData(commonItems);
-    setPageNumber(1);
-  }, [
-    filterCategories,
-    filterPrice,
-    filterLevels,
-    filterProfessional,
-    coursesData,
-    isProfessionalRoute,
-    activeCategory,
-  ]);
-
-  // Sorting logic
-  useEffect(() => {
-    let sortedData = [...filteredData];
-
-    switch (currentSortingOption) {
-      case "Rating (asc)":
-        sortedData.sort((a, b) => a.rating - b.rating);
-        break;
-      case "Rating (dsc)":
-        sortedData.sort((a, b) => b.rating - a.rating);
-        break;
-      case "Price (asc)":
-        sortedData.sort((a, b) => a.discountedPrice - b.discountedPrice);
-        break;
-      case "Price (dsc)":
-        sortedData.sort((a, b) => b.discountedPrice - a.discountedPrice);
-        break;
-      case "Duration (asc)":
-        sortedData.sort((a, b) => a.duration - b.duration);
-        break;
-      case "Duration (dsc)":
-        sortedData.sort((a, b) => b.duration - a.duration);
-        break;
-      default:
-        // Default sorting (perhaps by popularity or newest)
-        break;
-    }
-
-    setSortedFilteredData(sortedData);
-  }, [currentSortingOption, filteredData]);
-
-  // Filter handlers
-  const handleFilterCategories = (item) => {
-    if (filterCategories.includes(item)) {
-      setFilterCategories(filterCategories.filter((elm) => elm !== item));
-    } else {
-      setFilterCategories([...filterCategories, item]);
-    }
-  };
-
-  const handleFilterProfessional = () => {
-    if (!isProfessionalRoute) {
-      setFilterProfessional(!filterProfessional);
-    }
-  };
-
-  const programLevels = [
-    ...new Set(
-      enhancedPrograms.map((p) =>
-        p.level.includes("Level")
-          ? p.level.split(" ")[0] + " " + p.level.split(" ")[1]
-          : p.level
-      )
-    ),
-  ].map((level) => ({
-    title: level,
-    count: enhancedPrograms.filter((p) => p.level.includes(level)).length,
-  }));
-
-  // Constellation view calculations
-  const constellationCourses = sortedFilteredData.slice(0, 12);
-  const constellationPositions = constellationCourses.map((_, i) => {
-    const angle = (i / constellationCourses.length) * Math.PI * 2;
-    const distance = 150 + Math.random() * 50;
-    return {
-      x: Math.cos(angle) * distance,
-      y: Math.sin(angle) * distance,
-      size:
-        8 +
-        (constellationCourses[i].popular ? 4 : 0) +
-        (constellationCourses[i].professional ? 4 : 0),
-    };
-  });
+  }, []);
 
   return (
     <div className="cosmic-explorer custom-padding">
@@ -303,17 +239,27 @@ const CourseListOne = () => {
             </p>
           </motion.div>
 
+          {/* Search bar */}
+          <div className="cosmic-search-container">
+            <div className="cosmic-search-input">
+              <FiSearch className="search-icon" />
+              <input
+                type="text"
+                placeholder="Search courses..."
+                value={searchQuery}
+                onChange={handleSearchChange}
+              />
+            </div>
+          </div>
+
           {/* Category tabs */}
           <div className="tabs__controls flex-wrap pt-40 d-flex justify-center js-tabs-controls">
             {categories.map((cat, i) => (
               <motion.button
                 key={i}
-                onClick={() => {
-                  setActiveCategory(cat);
-                  setActiveFilter("all");
-                }}
+                onClick={() => handleCategoryClick(cat)}
                 className={`cosmic-tab-btn ${
-                  activeCategory === cat ? "active" : ""
+                  activeFilter === cat ? "active" : ""
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -330,13 +276,7 @@ const CourseListOne = () => {
               className={`cosmic-filter-btn ${
                 activeFilter === "all" ? "active" : ""
               }`}
-              onClick={() => {
-                setFilterCategories([]);
-                setFilterProfessional(false);
-                setFilterPrice("All");
-                setFilterLevels([]);
-                setActiveFilter("all");
-              }}
+              onClick={handleAllCoursesClick}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -348,10 +288,7 @@ const CourseListOne = () => {
               className={`cosmic-filter-btn ${
                 activeFilter === "professional" ? "active" : ""
               }`}
-              onClick={() => {
-                setFilterProfessional(true);
-                setActiveFilter("professional");
-              }}
+              onClick={handleFilterProfessional}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -369,7 +306,7 @@ const CourseListOne = () => {
           {viewMode === "constellation" && (
             <div className="constellation-view">
               <div className="constellation-container">
-                {constellationCourses.map((course, i) => (
+                {constellationCourses.map((course) => (
                   <motion.div
                     key={course.id}
                     className="constellation-node"
@@ -377,20 +314,19 @@ const CourseListOne = () => {
                     animate={{
                       opacity: 1,
                       scale: 1,
-                      x: constellationPositions[i].x,
-                      y: constellationPositions[i].y,
+                      x: course.position.x,
+                      y: course.position.y,
                     }}
                     transition={{
                       type: "spring",
                       stiffness: 30,
-                      delay: i * 0.1,
                     }}
                     whileHover={{ scale: 1.2 }}
                     onHoverStart={() => setHoveredCourse(course.id)}
                     onHoverEnd={() => setHoveredCourse(null)}
                     style={{
-                      width: `${constellationPositions[i].size}px`,
-                      height: `${constellationPositions[i].size}px`,
+                      width: `${course.position.size}px`,
+                      height: `${course.position.size}px`,
                       background: course.professional
                         ? `linear-gradient(135deg, ${brandColors.accent}, ${brandColors.highlight})`
                         : `linear-gradient(135deg, ${brandColors.primary}, ${brandColors.secondary})`,
@@ -412,28 +348,24 @@ const CourseListOne = () => {
                   </motion.div>
                 ))}
 
-                {/* Constellation lines */}
                 <svg className="constellation-lines" width="100%" height="100%">
-                  {constellationPositions.map((pos1, i) => {
-                    return constellationPositions
-                      .slice(i + 1)
-                      .map((pos2, j) => {
-                        if (Math.random() > 0.7) {
-                          // Only connect some nodes
-                          return (
-                            <line
-                              key={`${i}-${j + i + 1}`}
-                              x1={pos1.x + 150}
-                              y1={pos1.y + 150}
-                              x2={pos2.x + 150}
-                              y2={pos2.y + 150}
-                              stroke={`rgba(224, 85, 0, 0.3)`}
-                              strokeWidth="1"
-                            />
-                          );
-                        }
-                        return null;
-                      });
+                  {constellationCourses.map((course1, i) => {
+                    return constellationCourses.slice(i + 1).map((course2) => {
+                      if (Math.random() > 0.7) {
+                        return (
+                          <line
+                            key={`${course1.id}-${course2.id}`}
+                            x1={course1.position.x + 150}
+                            y1={course1.position.y + 150}
+                            x2={course2.position.x + 150}
+                            y2={course2.position.y + 150}
+                            stroke={`rgba(224, 85, 0, 0.3)`}
+                            strokeWidth="1"
+                          />
+                        );
+                      }
+                      return null;
+                    });
                   })}
                 </svg>
               </div>
@@ -445,72 +377,70 @@ const CourseListOne = () => {
             <>
               {/* Course grid */}
               <div className="cosmic-grid">
-                {sortedFilteredData
-                  .slice((pageNumber - 1) * 12, pageNumber * 12)
-                  .map((course, i) => (
-                    <motion.div
-                      key={course.id}
-                      className="cosmic-course-card"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.05 }}
-                      whileHover={{
-                        y: -5,
-                        boxShadow: "0 15px 30px rgba(0,0,0,0.3)",
-                      }}
-                    >
-                      <div className="course-card-inner">
-                        <div className="course-image-wrapper">
-                          <Image
-                            width={400}
-                            height={250}
-                            src={course.imageSrc}
-                            alt={course.title}
-                            className="course-image"
-                          />
+                {paginatedData.map((course, i) => (
+                  <motion.div
+                    key={course.id}
+                    className="cosmic-course-card"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    whileHover={{
+                      y: -5,
+                      boxShadow: "0 15px 30px rgba(0,0,0,0.3)",
+                    }}
+                  >
+                    <div className="course-card-inner">
+                      <div className="course-image-wrapper">
+                        <Image
+                          width={400}
+                          height={250}
+                          src={course.imageSrc}
+                          alt={course.title}
+                          className="course-image"
+                        />
 
-                          {course.professional && (
-                            <div className="professional-badge">
-                              <FiAward />
-                              Pro
-                            </div>
-                          )}
+                        {course.professional && (
+                          <div className="professional-badge">
+                            <FiAward />
+                            Pro
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="course-content">
+                        <div className="course-school">{course.school}</div>
+                        <h3 className="course-title">
+                          <Link href={course.href}>{course.title}</Link>
+                        </h3>
+                        <div className="course-meta">
+                          <span className="course-level">
+                            {getLevelLabel(course.level)}
+                          </span>
+                          <span className="course-duration">
+                            {course.duration}
+                          </span>
                         </div>
 
-                        <div className="course-content">
-                          <div className="course-school">{course.school}</div>
-                          <h3 className="course-title">
-                            <Link href={course.href}>{course.title}</Link>
-                          </h3>
-                          <div className="course-meta">
-                            <span className="course-level">
-                              {getLevelLabel(course.level)}
-                            </span>
-                            <span className="course-duration">
-                              {course.duration}
-                            </span>
-                          </div>
-
-                          <div className="course-footer">
-                            <Link href={course.href} className="explore-btn">
-                              Explore
-                            </Link>
-                          </div>
+                        <div className="course-footer">
+                          <Link href={course.href} className="explore-btn">
+                            Explore
+                          </Link>
                         </div>
                       </div>
-                    </motion.div>
-                  ))}
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </>
           )}
 
           {/* Pagination */}
-          {sortedFilteredData.length > 0 && (
+          {filteredData.length > 0 && (
             <div className="cosmic-pagination">
               <PaginationTwo
                 pageNumber={pageNumber}
                 setPageNumber={setPageNumber}
-                data={sortedFilteredData}
+                data={filteredData}
                 pageCapacity={12}
               />
             </div>
@@ -593,6 +523,44 @@ const CourseListOne = () => {
           opacity: 0.8;
           margin: 0;
           color: ${brandColors.lightText};
+        }
+
+        /* Search styles */
+        .cosmic-search-container {
+          max-width: 600px;
+          margin: 0 auto 30px;
+        }
+
+        .cosmic-search-input {
+          position: relative;
+          width: 100%;
+        }
+
+        .cosmic-search-input input {
+          width: 100%;
+          padding: 12px 20px 12px 45px;
+          border-radius: 50px;
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid ${brandColors.border};
+          color: ${brandColors.lightText};
+          font-size: 1rem;
+          transition: all 0.3s ease;
+          backdrop-filter: blur(5px);
+        }
+
+        .cosmic-search-input input:focus {
+          outline: none;
+          box-shadow: 0 0 0 2px rgba(224, 85, 0, 0.3);
+          background: rgba(255, 255, 255, 0.15);
+        }
+
+        .search-icon {
+          position: absolute;
+          left: 15px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: ${brandColors.lightText};
+          opacity: 0.7;
         }
 
         /* Tab buttons */
@@ -698,41 +666,6 @@ const CourseListOne = () => {
           padding: 40px 0 80px;
         }
 
-        .view-mode-toggle {
-          display: flex;
-          justify-content: center;
-          gap: 15px;
-          margin-bottom: 40px;
-        }
-
-        .view-mode-btn {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          padding: 10px 20px;
-          border-radius: 50px;
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          color: ${brandColors.lightText};
-          font-weight: 500;
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
-
-        .view-mode-btn:hover {
-          background: rgba(255, 255, 255, 0.1);
-        }
-
-        .view-mode-btn.active {
-          background: linear-gradient(
-            90deg,
-            ${brandColors.highlight},
-            ${brandColors.accent}
-          );
-          border-color: transparent;
-          box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
-        }
-
         /* Constellation View Styles */
         .constellation-view {
           margin: 60px 0;
@@ -811,40 +744,6 @@ const CourseListOne = () => {
         }
 
         /* Grid View Styles */
-        .cosmic-sorting {
-          display: flex;
-          align-items: center;
-          gap: 15px;
-          margin-bottom: 30px;
-          justify-content: flex-end;
-        }
-
-        .sorting-label {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          opacity: 0.8;
-        }
-
-        .cosmic-sort-select {
-          background: rgba(255, 255, 255, 0.1);
-          border: 1px solid ${brandColors.border};
-          color: ${brandColors.lightText};
-          padding: 8px 15px;
-          border-radius: 8px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
-
-        .cosmic-sort-select:hover {
-          background: rgba(255, 255, 255, 0.2);
-        }
-
-        .cosmic-sort-select:focus {
-          outline: none;
-          box-shadow: 0 0 0 2px rgba(224, 85, 0, 0.5);
-        }
-
         .cosmic-grid {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -883,9 +782,9 @@ const CourseListOne = () => {
           transform: scale(1.05);
         }
 
-        .popular-badge,
         .professional-badge {
           position: absolute;
+          right: 15px;
           top: 15px;
           display: flex;
           align-items: center;
@@ -894,17 +793,6 @@ const CourseListOne = () => {
           border-radius: 50px;
           font-size: 0.8rem;
           font-weight: 600;
-        }
-
-        .popular-badge {
-          left: 15px;
-          background: rgba(255, 215, 0, 0.2);
-          color: gold;
-          border: 1px solid rgba(255, 215, 0, 0.3);
-        }
-
-        .professional-badge {
-          right: 15px;
           background: rgba(224, 85, 0, 0.2);
           color: ${brandColors.accent};
           border: 1px solid rgba(224, 85, 0, 0.3);
@@ -963,25 +851,6 @@ const CourseListOne = () => {
           display: flex;
           justify-content: space-between;
           align-items: center;
-        }
-
-        .course-price {
-          font-weight: 700;
-        }
-
-        .current-price {
-          color: ${brandColors.accent};
-        }
-
-        .original-price {
-          text-decoration: line-through;
-          opacity: 0.6;
-          margin-left: 8px;
-          font-size: 0.9rem;
-        }
-
-        .free-price {
-          color: #7cfc00;
         }
 
         .explore-btn {

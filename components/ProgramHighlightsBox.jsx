@@ -70,7 +70,8 @@ export default function ProgramHighlightsBox({ data }) {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+          gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", // ⬅️ fixed item width
+          justifyContent: "center", // ⬅️ this now works
           gap: "20px",
         }}
       >

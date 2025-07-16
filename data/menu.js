@@ -366,7 +366,7 @@ export const menuList = [
     href: "/contact-us",
   },
   {
-    title: "News",
-    href: "/news",
+    title: "Media & Blogs",
+    href: "/media-blogs",
   },
 ];

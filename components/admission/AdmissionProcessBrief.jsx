@@ -88,7 +88,7 @@ const StepCard = ({ title, children }) => (
 export default function AdmissionProcess() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleApplyNowClick = () => {
+  const handleOpenModal = () => {
     setIsModalOpen(true);
   };
 
@@ -98,6 +98,7 @@ export default function AdmissionProcess() {
 
   return (
     <div>
+      {/* Hero Banner */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -155,7 +156,7 @@ export default function AdmissionProcess() {
           style={{ marginTop: "40px" }}
         >
           <motion.button
-            onClick={handleApplyNowClick}
+            onClick={() => setIsModalOpen(true)}
             whileHover={{
               scale: 1.05,
               backgroundColor: "#111111",
@@ -192,6 +193,7 @@ export default function AdmissionProcess() {
         </motion.div>
       </motion.div>
 
+      {/* Scholarship Banner */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -210,6 +212,7 @@ export default function AdmissionProcess() {
         Scholarships valid until 31st July for September intake
       </motion.div>
 
+      {/* Main Content */}
       <section
         className="custom-linear-white-top"
         style={{
@@ -251,6 +254,7 @@ export default function AdmissionProcess() {
             />
           </motion.h2>
 
+          {/* Intro Paragraphs */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -284,6 +288,7 @@ export default function AdmissionProcess() {
             </p>
           </motion.div>
 
+          {/* Steps with Details */}
           <div style={{ marginBottom: "60px" }}>
             <motion.h3
               initial={{ opacity: 0 }}
@@ -300,6 +305,7 @@ export default function AdmissionProcess() {
               Admission Steps
             </motion.h3>
 
+            {/* Step 1 */}
             <StepCard title="Step 1: Submit Your Application online with required documents">
               <div
                 style={{
@@ -327,27 +333,16 @@ export default function AdmissionProcess() {
                       "Passport-sized Photograph",
                       "English Proficiency (if required)",
                       "Updated CV (for professional or postgraduate courses)",
+                      "Seek guidance by contacting counsellor for personalized assistance and support.",
                     ].map((item, index) => (
                       <ListItem key={index} text={item} />
                     ))}
                   </ul>
                 </div>
-                <div>
-                  <p
-                    style={{
-                      fontSize: "16px",
-                      lineHeight: "1.7",
-                      color: "#4a5568",
-                      marginBottom: "20px",
-                    }}
-                  >
-                    Seek guidance by contacting counsellor for personalized
-                    assistance and support.
-                  </p>
-                </div>
               </div>
             </StepCard>
 
+            {/* Step 2 */}
             <StepCard title="Step 2: Application Review & Virtual Interview">
               <p
                 style={{
@@ -362,6 +357,7 @@ export default function AdmissionProcess() {
               </p>
             </StepCard>
 
+            {/* Step 3 */}
             <StepCard title="Step 3: Receive Admission Offer Letter">
               <p
                 style={{
@@ -387,6 +383,7 @@ export default function AdmissionProcess() {
               </ul>
             </StepCard>
 
+            {/* Step 4 */}
             <StepCard title="Step 4: Accept Offer & Make Initial Payment">
               <p
                 style={{
@@ -419,6 +416,7 @@ export default function AdmissionProcess() {
               </p>
             </StepCard>
 
+            {/* Step 5 */}
             <StepCard title="Step 5: Final Enrollment & Orientation">
               <p
                 style={{
@@ -452,6 +450,7 @@ export default function AdmissionProcess() {
             </StepCard>
           </div>
 
+          {/* Additional Notes Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -568,6 +567,7 @@ export default function AdmissionProcess() {
             </div>
           </motion.div>
 
+          {/* Document Requirements Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -630,9 +630,43 @@ export default function AdmissionProcess() {
               ))}
             </div>
           </motion.div>
+
+          {/* CTA Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            style={{
+              textAlign: "center",
+              marginTop: "40px",
+            }}
+          >
+            <motion.button
+              onClick={() => setIsModalOpen(true)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              style={{
+                backgroundColor: "#000000",
+                color: "white",
+                padding: "16px 32px",
+                borderRadius: "10px",
+                border: "none",
+                fontSize: "18px",
+                fontWeight: "600",
+                cursor: "pointer",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "12px",
+              }}
+            >
+              Start Your Application{" "}
+              <FiArrowRight style={{ fontSize: "24px" }} />
+            </motion.button>
+          </motion.div>
         </div>
       </section>
 
+      {/* Application Form Modal */}
       <ApplicationFormModal isOpen={isModalOpen} onClose={handleCloseModal} />
     </div>
   );

@@ -825,7 +825,7 @@ export default function ApplicationFormModal({ isOpen, onClose }) {
         }
 
         .submit-button {
-          background: #2563eb;
+          background: #000000;
           color: white;
           padding: 0.85rem 1.5rem;
           border: none;
@@ -841,7 +841,7 @@ export default function ApplicationFormModal({ isOpen, onClose }) {
         }
 
         .submit-button:hover {
-          background: #1d4ed8;
+          background: #000000;
         }
 
         .submit-button:disabled {

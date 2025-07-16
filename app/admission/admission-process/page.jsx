@@ -333,23 +333,11 @@ export default function AdmissionProcess() {
                       "Passport-sized Photograph",
                       "English Proficiency (if required)",
                       "Updated CV (for professional or postgraduate courses)",
+                      "Seek guidance by contacting counsellor for personalized assistance and support.",
                     ].map((item, index) => (
                       <ListItem key={index} text={item} />
                     ))}
                   </ul>
-                </div>
-                <div>
-                  <p
-                    style={{
-                      fontSize: "16px",
-                      lineHeight: "1.7",
-                      color: "#4a5568",
-                      marginBottom: "20px",
-                    }}
-                  >
-                    Seek guidance by contacting counsellor for personalized
-                    assistance and support.
-                  </p>
                 </div>
               </div>
             </StepCard>

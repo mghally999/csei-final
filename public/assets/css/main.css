@@ -3082,7 +3082,7 @@ h6 {
   line-height: 1.2;
   font-weight: 700;
   margin: 0;
-  color: var(--color-dark-1);
+  /* color: var(--color-dark-1); */
 }
 
 .text-6 {
@@ -4155,7 +4155,7 @@ h6 {
 
 .footer.-type-1 .footer-columns {
   padding-top: 60px;
-  padding-bottom: 127px;
+  /* padding-bottom: 127px; */
 }
 
 @media (max-width: 767px) {

@@ -26,7 +26,7 @@ export default function Brands() {
         start: "top 85%",
       },
       x: -50,
-      opacity: 0,
+      // opacity: 0,
       duration: 1,
       ease: "power3.out",
     });
@@ -148,10 +148,11 @@ export default function Brands() {
           background: linear-gradient(90deg, #fff, #a7c3ff);
           -webkit-background-clip: text;
           background-clip: text;
-          color: transparent;
           margin-bottom: 20px;
           position: relative;
           padding-bottom: 20px;
+          color: #ffffff !important;
+          z-index: 9999;
         }
 
         .underline {
