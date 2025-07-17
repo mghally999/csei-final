@@ -633,7 +633,7 @@ const allPrograms = [
     professional: true,
     title: "Professional Housekeeping Operations Certificate",
     imageSrc: "/assets/img/coursesCards/culinary-arts-1.jpg",
-    duration: "3 Months",
+    duration: "6 Months",
     qualificationStructure: "4 Practical Modules",
     overview: [
       "This intensive program trains students in professional housekeeping standards for hotels, hospitals, and corporate facilities.",
@@ -748,7 +748,7 @@ const allPrograms = [
     professional: true,
     title: "Advanced Food Safety Certification",
     imageSrc: "/assets/img/coursesCards/culinary-arts-3.jpg",
-    duration: "1 Month",
+    duration: "1 day",
     qualificationStructure: "3 Intensive Modules",
     overview: [
       "This accredited program provides comprehensive food safety training meeting international HACCP standards.",
@@ -859,7 +859,7 @@ const allPrograms = [
     professional: true,
     title: "Professional Front Desk Operations Certificate",
     imageSrc: "/assets/img/coursesCards/culinary-arts-5.jpg",
-    duration: "3 Months",
+    duration: "1 Month",
     qualificationStructure: "4 Comprehensive Modules",
     overview: [
       "This intensive program trains students in all aspects of professional front office operations for hotels and resorts.",
@@ -916,7 +916,7 @@ const allPrograms = [
     professional: true,
     title: "Professional Barista Training (Basic & Advanced)",
     imageSrc: "/assets/img/coursesCards/culinary-arts-6.jpg",
-    duration: "1–2 Months",
+    duration: "10 - 40 Days",
     qualificationStructure: "2 Progressive Levels",
     overview: [
       "This comprehensive barista training covers everything from espresso fundamentals to advanced latte art techniques.",
