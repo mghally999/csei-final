@@ -10,6 +10,7 @@ export default function Links({ allClasses }) {
           className={`${allClasses ? allClasses : ""}`}
           key={index}
           href={link.href}
+          style={{ color: "#ffffff" }}
         >
           {link.label}
         </Link>
