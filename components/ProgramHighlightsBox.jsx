@@ -18,7 +18,7 @@ export default function ProgramHighlightsBox({ data }) {
     {
       icon: <FaClock size={16} />,
       label: "Duration",
-      value: data?.duration || "1 Academic Year",
+      value: data?.duration || "1 Year",
     },
     {
       icon: <FaGraduationCap size={16} />,

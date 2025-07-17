@@ -5,7 +5,7 @@ const allPrograms = [
     professional: false,
     title: "OTHM Level 4 Diploma in Information Technology",
     imageSrc: "/assets/img/coursesCards/information-technology-1.jpg",
-    duration: "1 Academic Year",
+    duration: "1 Year",
     qualificationStructure: "120 credits | 6 Mandatory Units",
     overview: [
       "This diploma provides intermediate technical skills and theoretical knowledge for IT professionals seeking career advancement.",
@@ -60,7 +60,7 @@ const allPrograms = [
     professional: false,
     title: "OTHM Level 5 Diploma in Information Technology",
     imageSrc: "/assets/img/coursesCards/information-technology.png",
-    duration: "1 Academic Year",
+    duration: "1 Year",
     qualificationStructure: "120 credits | 6 Mandatory Units",
     overview: [
       "This advanced diploma develops specialized technical skills and strategic thinking for senior IT roles.",
@@ -115,7 +115,7 @@ const allPrograms = [
     professional: false,
     title: "Level 3 Diploma in Health and Social Care Management",
     imageSrc: "/assets/img/coursesCards/health-science-1.png",
-    duration: "1 Academic Year",
+    duration: "1 Year",
     qualificationStructure: "90 credits | 6 Core Units + 2 Optional",
     overview: [
       "This foundational diploma provides essential knowledge and skills for those beginning careers in health and social care settings.",
@@ -171,7 +171,7 @@ const allPrograms = [
     professional: false,
     title: "OTHM Level 4 Diploma in Health and Social Care Management",
     imageSrc: "/assets/img/coursesCards/health-science-2.png",
-    duration: "1 Academic Year",
+    duration: "1 Year",
     qualificationStructure: "120 credits | 6 Mandatory Units",
     overview: [
       "The OTHM Level 4 Diploma provides comprehensive management training for health and social care professionals seeking supervisory roles.",
@@ -226,7 +226,7 @@ const allPrograms = [
     professional: false,
     title: "OTHM Level 5 Diploma in Health and Social Care Management",
     imageSrc: "/assets/img/coursesCards/health-science-3.jpg",
-    duration: "1 Academic Year",
+    duration: "1 Year",
     qualificationStructure: "120 credits | 6 Mandatory Units",
     overview: [
       "This advanced diploma prepares experienced care professionals for senior management roles in diverse health and social care settings.",
@@ -339,7 +339,7 @@ const allPrograms = [
     professional: false,
     title: "OTHM Level 4 Diploma in Tourism and Hospitality Management",
     imageSrc: "/assets/img/coursesCards/tourism-hospitality.jpg",
-    duration: "1 Academic Year",
+    duration: "1 Year",
     qualificationStructure: "120 credits | 6 Mandatory Units",
     overview: [
       "This comprehensive diploma provides foundational knowledge for careers in the dynamic tourism and hospitality industry.",
@@ -394,7 +394,7 @@ const allPrograms = [
     professional: false,
     title: "OTHM Level 5 Diploma in Tourism and Hospitality Management",
     imageSrc: "/assets/img/coursesCards/tourism-hospitality-1.jpg",
-    duration: "1 Academic Year",
+    duration: "1 Year",
     qualificationStructure: "120 credits | 6 Mandatory Units",
     overview: [
       "This advanced diploma develops strategic management skills for tourism and hospitality professionals.",
@@ -454,7 +454,7 @@ const allPrograms = [
     professional: false,
     title: "OTHM Level 6 Diploma in Tourism and Hospitality Management",
     imageSrc: "/assets/img/coursesCards/tourism-hospitality-2.jpg",
-    duration: "1 Academic Year",
+    duration: "1 Year",
     qualificationStructure: "120 credits | 6 Mandatory Units",
     overview: [
       "This graduate-level diploma prepares experienced professionals for executive roles in international tourism and hospitality.",
@@ -515,7 +515,7 @@ const allPrograms = [
     title:
       "OTHM Level 7 Diploma in Strategic Tourism and Hospitality Management",
     imageSrc: "/assets/img/coursesCards/tourism-hospitality-3.jpg",
-    duration: "1 Academic Year",
+    duration: "1 Year",
     qualificationStructure: "120 credits | 6 Mandatory Units",
     overview: [
       "This postgraduate-level qualification develops strategic leadership capabilities for senior tourism and hospitality executives.",
@@ -975,7 +975,7 @@ const allPrograms = [
     professional: false,
     title: "Level 3 Diploma in Business Management",
     imageSrc: "/assets/img/coursesCards/business-management.jpg",
-    duration: "1 Academic Year",
+    duration: "1 Year",
     qualificationStructure: "60 credits | 4 Core Units + 2 Optional",
     overview: [
       "This foundational diploma introduces key business concepts and practices for aspiring entrepreneurs and managers.",
@@ -1028,7 +1028,7 @@ const allPrograms = [
     professional: false,
     title: "OTHM Level 4 Diploma in Business Management",
     imageSrc: "/assets/img/coursesCards/business-management-1.jpg",
-    duration: "1 Academic Year",
+    duration: "1 Year",
     qualificationStructure: "120 credits | 6 Mandatory Units",
     overview: [
       "This comprehensive diploma develops core business competencies for supervisory and junior management roles.",
@@ -1083,7 +1083,7 @@ const allPrograms = [
     title: "OTHM Level 5 Diploma in Business Management",
     imageSrc:
       "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    duration: "1 Academic Year",
+    duration: "1 Year",
     qualificationStructure: "120 credits | 6 Mandatory Units",
     overview: [
       "This advanced diploma develops strategic management capabilities for middle management professionals.",

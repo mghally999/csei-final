@@ -11,21 +11,19 @@ const BrandColors = {
   border: "#FFFFFF22",
 };
 
-const formFields = [
-  "Full Name",
-  "Student ID / Identity Number",
-  "Contact Number",
-  "Email Address",
-  "Pick-up Location",
-  "Drop-off Location",
-  "Date of Travel",
-  "Time of Pick-up",
-  "Type of Transportation : One-way or Round-trip",
-  "Special Requirements",
-];
-
 export default function TransportationSection() {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    "Full Name": "",
+    "Student ID / Identity Number": "",
+    "Contact Number": "",
+    "Email Address": "",
+    "Pick-up Location": "",
+    "Drop-off Location": "",
+    "Date of Travel": "",
+    "Time of Pick-up": "",
+    "Type of Transportation": "One-way",
+    "Special Requirements": "",
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -52,6 +50,7 @@ export default function TransportationSection() {
         position: "relative",
         isolation: "isolate",
       }}
+      className="custom-padding"
     >
       <div style={{ maxWidth: "1300px", margin: "0 auto" }}>
         <h2
@@ -125,7 +124,7 @@ export default function TransportationSection() {
                 lineHeight: "1.8",
               }}
             >
-              CSEI Academy’s transport service simplifies your commute with
+              CSEI Academy's transport service simplifies your commute with
               access to public transportation, private partner rides, and Nol
               card assistance.
             </p>
@@ -136,7 +135,7 @@ export default function TransportationSection() {
                 lineHeight: "1.8",
               }}
             >
-              Whether it’s daily classes or weekend events, our transport
+              Whether it's daily classes or weekend events, our transport
               solutions are safe, budget-friendly, and personalized to your
               needs.
             </p>
@@ -157,39 +156,327 @@ export default function TransportationSection() {
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
             gap: "30px",
+            position: "relative",
           }}
         >
-          {formFields.map((field, index) => (
-            <div key={index}>
-              <label
-                htmlFor={`field-${index}`}
-                style={{
-                  fontWeight: 600,
-                  color: BrandColors.lightText,
-                  marginBottom: "8px",
-                  display: "block",
-                }}
-              >
-                {field}
-              </label>
-              <input
-                type="text"
-                name={field}
-                id={`field-${index}`}
-                onChange={handleChange}
-                required={index < 5}
-                style={{
-                  width: "100%",
-                  padding: "12px 16px",
-                  borderRadius: "12px",
-                  border: `1px solid ${BrandColors.border}`,
-                  fontSize: "16px",
-                  backgroundColor: "#111827",
-                  color: BrandColors.lightText,
-                }}
-              />
-            </div>
-          ))}
+          {/* Regular Fields */}
+          <div>
+            <label
+              htmlFor="Full Name"
+              style={{
+                fontWeight: 600,
+                color: BrandColors.lightText,
+                marginBottom: "8px",
+                display: "block",
+              }}
+            >
+              Full Name
+            </label>
+            <input
+              type="text"
+              name="Full Name"
+              id="Full Name"
+              value={formData["Full Name"]}
+              onChange={handleChange}
+              required
+              style={{
+                width: "100%",
+                padding: "12px 16px",
+                borderRadius: "12px",
+                border: `1px solid ${BrandColors.border}`,
+                fontSize: "16px",
+                backgroundColor: "#111827",
+                color: BrandColors.lightText,
+              }}
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="Student ID / Identity Number"
+              style={{
+                fontWeight: 600,
+                color: BrandColors.lightText,
+                marginBottom: "8px",
+                display: "block",
+              }}
+            >
+              Student ID / Identity Number
+            </label>
+            <input
+              type="text"
+              name="Student ID / Identity Number"
+              id="Student ID / Identity Number"
+              value={formData["Student ID / Identity Number"]}
+              onChange={handleChange}
+              required
+              style={{
+                width: "100%",
+                padding: "12px 16px",
+                borderRadius: "12px",
+                border: `1px solid ${BrandColors.border}`,
+                fontSize: "16px",
+                backgroundColor: "#111827",
+                color: BrandColors.lightText,
+              }}
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="Contact Number"
+              style={{
+                fontWeight: 600,
+                color: BrandColors.lightText,
+                marginBottom: "8px",
+                display: "block",
+              }}
+            >
+              Contact Number
+            </label>
+            <input
+              type="tel"
+              name="Contact Number"
+              id="Contact Number"
+              value={formData["Contact Number"]}
+              onChange={handleChange}
+              required
+              style={{
+                width: "100%",
+                padding: "12px 16px",
+                borderRadius: "12px",
+                border: `1px solid ${BrandColors.border}`,
+                fontSize: "16px",
+                backgroundColor: "#111827",
+                color: BrandColors.lightText,
+              }}
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="Email Address"
+              style={{
+                fontWeight: 600,
+                color: BrandColors.lightText,
+                marginBottom: "8px",
+                display: "block",
+              }}
+            >
+              Email Address
+            </label>
+            <input
+              type="email"
+              name="Email Address"
+              id="Email Address"
+              value={formData["Email Address"]}
+              onChange={handleChange}
+              required
+              style={{
+                width: "100%",
+                padding: "12px 16px",
+                borderRadius: "12px",
+                border: `1px solid ${BrandColors.border}`,
+                fontSize: "16px",
+                backgroundColor: "#111827",
+                color: BrandColors.lightText,
+              }}
+            />
+          </div>
+
+          {/* Location Fields */}
+          <div>
+            <label
+              htmlFor="Pick-up Location"
+              style={{
+                fontWeight: 600,
+                color: BrandColors.lightText,
+                marginBottom: "8px",
+                display: "block",
+              }}
+            >
+              Pick-up Location (Exact Address)
+            </label>
+            <input
+              type="text"
+              name="Pick-up Location"
+              id="Pick-up Location"
+              value={formData["Pick-up Location"]}
+              onChange={handleChange}
+              required
+              placeholder="Example: 123 Main Street, Dubai Marina, Dubai, UAE"
+              style={{
+                width: "100%",
+                padding: "12px 16px",
+                borderRadius: "12px",
+                border: `1px solid ${BrandColors.border}`,
+                fontSize: "16px",
+                backgroundColor: "#111827",
+                color: BrandColors.lightText,
+              }}
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="Drop-off Location"
+              style={{
+                fontWeight: 600,
+                color: BrandColors.lightText,
+                marginBottom: "8px",
+                display: "block",
+              }}
+            >
+              Drop-off Location (Exact Address)
+            </label>
+            <input
+              type="text"
+              name="Drop-off Location"
+              id="Drop-off Location"
+              value={formData["Drop-off Location"]}
+              onChange={handleChange}
+              required
+              placeholder="Example: CSEI Academy, Academic City, Dubai, UAE"
+              style={{
+                width: "100%",
+                padding: "12px 16px",
+                borderRadius: "12px",
+                border: `1px solid ${BrandColors.border}`,
+                fontSize: "16px",
+                backgroundColor: "#111827",
+                color: BrandColors.lightText,
+              }}
+            />
+          </div>
+
+          {/* Date and Time Fields */}
+          <div>
+            <label
+              htmlFor="Date of Travel"
+              style={{
+                fontWeight: 600,
+                color: BrandColors.lightText,
+                marginBottom: "8px",
+                display: "block",
+              }}
+            >
+              Date of Travel
+            </label>
+            <input
+              type="date"
+              name="Date of Travel"
+              id="Date of Travel"
+              value={formData["Date of Travel"]}
+              onChange={handleChange}
+              required
+              style={{
+                width: "100%",
+                padding: "12px 16px",
+                borderRadius: "12px",
+                border: `1px solid ${BrandColors.border}`,
+                fontSize: "16px",
+                backgroundColor: "#111827",
+                color: BrandColors.lightText,
+              }}
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="Time of Pick-up"
+              style={{
+                fontWeight: 600,
+                color: BrandColors.lightText,
+                marginBottom: "8px",
+                display: "block",
+              }}
+            >
+              Time of Pick-up
+            </label>
+            <input
+              type="time"
+              name="Time of Pick-up"
+              id="Time of Pick-up"
+              value={formData["Time of Pick-up"]}
+              onChange={handleChange}
+              required
+              style={{
+                width: "100%",
+                padding: "12px 16px",
+                borderRadius: "12px",
+                border: `1px solid ${BrandColors.border}`,
+                fontSize: "16px",
+                backgroundColor: "#111827",
+                color: BrandColors.lightText,
+              }}
+            />
+          </div>
+
+          {/* Transportation Type */}
+          <div>
+            <label
+              htmlFor="Type of Transportation"
+              style={{
+                fontWeight: 600,
+                color: BrandColors.lightText,
+                marginBottom: "8px",
+                display: "block",
+              }}
+            >
+              Type of Transportation
+            </label>
+            <select
+              name="Type of Transportation"
+              id="Type of Transportation"
+              value={formData["Type of Transportation"]}
+              onChange={handleChange}
+              style={{
+                width: "100%",
+                padding: "12px 16px",
+                borderRadius: "12px",
+                border: `1px solid ${BrandColors.border}`,
+                fontSize: "16px",
+                backgroundColor: "#111827",
+                color: BrandColors.lightText,
+              }}
+            >
+              <option value="One-way">One-way</option>
+              <option value="Round-trip">Round-trip</option>
+            </select>
+          </div>
+
+          {/* Special Requirements */}
+          <div style={{ gridColumn: "1 / -1" }}>
+            <label
+              htmlFor="Special Requirements"
+              style={{
+                fontWeight: 600,
+                color: BrandColors.lightText,
+                marginBottom: "8px",
+                display: "block",
+              }}
+            >
+              Special Requirements
+            </label>
+            <textarea
+              name="Special Requirements"
+              id="Special Requirements"
+              value={formData["Special Requirements"]}
+              onChange={handleChange}
+              style={{
+                width: "100%",
+                padding: "12px 16px",
+                borderRadius: "12px",
+                border: `1px solid ${BrandColors.border}`,
+                fontSize: "16px",
+                backgroundColor: "#111827",
+                color: BrandColors.lightText,
+                minHeight: "100px",
+              }}
+            />
+          </div>
+
+          {/* Submit Button */}
           <div
             style={{
               gridColumn: "1 / -1",
@@ -209,6 +496,15 @@ export default function TransportationSection() {
                 border: "none",
                 cursor: "pointer",
                 boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+                transition: "all 0.3s ease",
+              }}
+              onMouseOver={(e) => {
+                e.target.style.transform = "translateY(-2px)";
+                e.target.style.boxShadow = "0 12px 35px rgba(0,0,0,0.4)";
+              }}
+              onMouseOut={(e) => {
+                e.target.style.transform = "translateY(0)";
+                e.target.style.boxShadow = "0 10px 30px rgba(0,0,0,0.3)";
               }}
             >
               Submit Transportation Form

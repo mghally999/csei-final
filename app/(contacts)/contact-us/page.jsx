@@ -12,6 +12,12 @@ export default function ContactTwo() {
     e.preventDefault();
   };
 
+  // Function to generate Google Maps embed URL
+  const generateMapUrl = (address) => {
+    const encodedAddress = encodeURIComponent(address);
+    return `https://www.google.com/maps?q=${encodedAddress}&output=embed`;
+  };
+
   return (
     <div className="main-content">
       <Preloader />
@@ -137,35 +143,35 @@ export default function ContactTwo() {
                       </div>
                     </div>
 
-                    {/* ✅ Office Locations + Map */}
+                    {/* ✅ Office + Map */}
                     <div className="col-xl-5 col-lg-6">
-                      <h3 className="text-24 fw-500">Our Offices</h3>
+                      <h3 className="text-24 fw-500">Our Office</h3>
                       <div className="row y-gap-40 pt-40">
-                        {locationData.map((elm, i) => (
-                          <div key={i} className="col-12 mb-40">
+                        {locationData.map((office) => (
+                          <div key={office.id} className="col-12">
                             <div className="text-20 fw-500 text-dark-1">
-                              {elm.location}
+                              {office.location}
                             </div>
                             <div className="y-gap-10 pt-15 mb-10">
-                              <p className="d-block">{elm.address}</p>
+                              <p>{office.address}</p>
                               <a
-                                href={`tel:${elm.phoneNumber}`}
+                                href={`tel:${office.phoneNumber}`}
                                 className="d-block"
                               >
-                                {elm.phoneNumber}
+                                {office.phoneNumber}
                               </a>
                               <a
-                                href={`mailto:${elm.email}`}
+                                href={`mailto:${office.email}`}
                                 className="d-block"
                               >
-                                {elm.email}
+                                {office.email}
                               </a>
                             </div>
 
-                            {/* ✅ Embedded Google Map */}
+                            {/* ✅ Google Maps Embed */}
                             <div className="overflow-hidden rounded-8 border-light">
                               <iframe
-                                src={elm.googleMapsUrl}
+                                src={generateMapUrl(office.address)}
                                 width="100%"
                                 height="220"
                                 style={{
@@ -173,7 +179,7 @@ export default function ContactTwo() {
                                   borderRadius: "8px",
                                   width: "100%",
                                 }}
-                                allowFullScreen=""
+                                allowFullScreen
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"
                               ></iframe>
@@ -182,7 +188,7 @@ export default function ContactTwo() {
                         ))}
                       </div>
                     </div>
-                    {/* End Office Block */}
+                    {/* End office map */}
                   </div>
                 </div>
               </div>

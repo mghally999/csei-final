@@ -18,11 +18,7 @@ const aboutPagesData = [
     image:
       "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=2070&q=80",
     content: [
-      `      Our dedicated staff support, mentor, and inspire learners from all
-              backgrounds, ensuring they feel valued and empowered. Through
-              hands-on experiences, strong academic foundations, and
-              industry-driven opportunities, we prepare future leaders to
-              succeed and impact the world — locally and globally.`,
+      `At CSEI Academy, we ignite potential through accessible education and an inclusive environment that celebrates diversity. Our dedicated mentors provide personalized support to learners from all backgrounds. Through hands-on experiences and industry partnerships, we bridge academia and real-world success. We cultivate global citizens equipped to lead and innovate in an evolving world.`,
     ],
   },
   {
