@@ -9,32 +9,45 @@ const leadershipTeam = [
     name: "Mr. Roshan Gautam",
     position: "General Manager",
     image: "/assets/img/leadership/Mr-Roshan.jpeg",
-    bio: `Since 2018, CSEI Academy has created a legacy of safe and vibrant learning, academic innovation, and positive student experiences. We believe that each learner has the potential to thrive in a nurturing environment guided by our values and high standards...`,
+    bio: `Since 2018, CSEI Academy has created a legacy of safe and vibrant learning and ranks among educational institutions. Being constant fixture in the list of educational institution accrediated by KHDA, we are proud to be a choice for all discerning individuals and parents.
+
+You can look forward to encouraging a highly intensive challenging academic program that will ensure all students become critical thinkers, active problem-solvers, inquisitive readers, diligent researchers.
+
+Each year we reflect on our achievements and rejoice at all that we have done in the past years. Though much has changed over the years, our promise remains the same. Our sustained success over the years is a direct result of our strategic vision and execution.`,
   },
   {
     id: 2,
     name: "Dr. Apollo Serafico",
     position: "Director of Academic Affairs",
-    image: "/assets/img/leadership/Dr-Apollo.jpeg",
-    bio: `CSEI Academy is an excellent place for students from diverse backgrounds to grow intellectually, emotionally, and socially...`,
+    image: "/assets/img/leadership/Mr-Apolo.jpeg",
+    bio: `CSEI Academy is an excellent place for students from diverse background to grow educationally, get involved professionally and have a meaningful experience. We offer the best educational experience available today. More than qualifications, the CSEI promotes strong values and global leadership to our student community.
+
+Our Mission is to provide a transformative educational experience that not only equips students with knowledge and skills but also fosters critical thinking, creativity and ethical values.
+
+I believe that education is a partnership between the Academy, Individual, parents, and the community. Together, we can nurture a culture of excellence, resilience, and mutual respect that prepares our students for academic success and beyond.
+
+Thank you for visiting our website. We invite you to explore more about our academic programs and the many opportunities available at CSEI Academy.`,
   },
   {
     id: 3,
     name: "Mr. Suhail Ahmed Mohammed",
     position: "Board Member",
     image: "/assets/img/leadership/Mr-Suhail.jpeg",
-    bio: `It is with great pride that I extend a warm welcome to you on behalf of CSEI Academy...`,
+    bio: `It is with great pride that I extend a warm welcome to all students, parents and visitors to the academy on behalf of the CSEI Academy leadership team.
+
+As a Member of the Board of CSEI Academy, I am passionately committed to the pursuit of academic excellence, innovation and integrity. Education today must go beyond the classroom, it must empower students to think independently, act responsibly, and contribute meaningfully to the world around them.
+
+This is made possible through the leading dedication of our faculty, the vision of our leadership, and the active partnership of our student community.
+
+We are confident that every student at CSEI Academy will find the tools, encouragement, and guidance they need to reach their full potential.
+
+Thank you for being a part of our journey.`,
   },
 ];
 
 export default function Leadership() {
   return (
-    <section
-      className="custom-padding"
-      style={{
-        backgroundColor: "#f8f9fc",
-      }}
-    >
+    <section className="custom-padding" style={{ backgroundColor: "#f8f9fc" }}>
       <div style={{ maxWidth: "1300px", margin: "0 auto" }}>
         <h2
           style={{
@@ -73,7 +86,7 @@ export default function Leadership() {
               flexWrap: "wrap",
               gap: "40px",
               marginBottom: "80px",
-              alignItems: "stretch", // ✅ Stretch both sides to equal height
+              alignItems: "stretch",
               justifyContent: "center",
             }}
           >
@@ -101,7 +114,7 @@ export default function Leadership() {
                   width: "100%",
                   height: "100%",
                   objectFit: "cover",
-                  objectPosition: "center", // ✅ Perfectly center subject
+                  objectPosition: "center",
                   borderRadius: "20px",
                 }}
                 priority
@@ -151,6 +164,7 @@ export default function Leadership() {
                   lineHeight: "1.8",
                   maxWidth: "700px",
                   textAlign: "justify",
+                  whiteSpace: "pre-line", // ✅ Allows \n to break into new lines
                 }}
               >
                 {member.bio}
