@@ -124,7 +124,6 @@ export default function FooterOne() {
                         href="https://www.facebook.com/studyindubaidegree"
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{ color: "#000000", fontSize: "20px" }}
                       >
                         <FaFacebookF />
                       </Link>
