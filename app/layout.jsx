@@ -174,7 +174,6 @@ export default function RootLayout({ children }) {
               </AnimatePresence>
             </div>
 
-            {/* 🔹 Ultimate Creative Cookie Banner */}
             {/* {showCookieBanner && (
               <div className="cookie-overlay">
                 <motion.div

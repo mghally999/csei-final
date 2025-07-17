@@ -152,7 +152,7 @@ export default function Courses() {
                 margin: "1rem 0 0 0",
                 lineHeight: 1.6,
                 maxWidth: "700px",
-                textAlign: "center",
+                textAlign: "end",
               }}
             >
               Explore our most popular programs across various disciplines
