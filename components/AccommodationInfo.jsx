@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -10,33 +9,6 @@ import { motion } from "framer-motion";
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
-
-const accommodations = [
-  {
-    title: "Premium Student Suites",
-    image:
-      "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=2070&auto=format&fit=crop",
-    description:
-      "Private rooms with ensuite bathrooms, study areas, and premium amenities in our newest residence hall.",
-    price: "$1,200/month",
-  },
-  {
-    title: "Shared Apartments",
-    image:
-      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=2070&auto=format&fit=crop",
-    description:
-      "Economical living with shared kitchen and lounge, ideal for community-oriented students.",
-    price: "$750/month",
-  },
-  {
-    title: "Off-Campus Residences",
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop",
-    description:
-      "Independent housing options close to campus, providing flexibility and privacy.",
-    price: "$950/month",
-  },
-];
 
 const checkStyle = {
   width: "28px",
@@ -118,33 +90,66 @@ export default function AccommodationCards() {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleFileChange = (e) => {
+    const { name, files } = e.target;
+    setFormData({ ...formData, [name]: files[0] });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     alert("Form submitted successfully!");
   };
 
+  const rules = [
+    "Rooms are assigned on a shared basis. Unauthorized switching is not allowed.",
+    "Married couples may be assigned separate rooms with proper documentation.",
+    "Hostel premises are secured with access cards/keys for authorized individuals only.",
+    "Proof of marriage/legal partnership required for couple accommodation.",
+    "Staying outside overnight without informing is strictly prohibited.",
+    "Maintain quiet environment, especially during designated quiet hours.",
+    "Visitors have restrictions and are not allowed in rooms or overnight stays.",
+    "Keep rooms and common areas clean. Periodic inspections may occur.",
+    "Prohibited items: drugs, alcohol, weapons, or hazardous materials.",
+    "Students are responsible for any damage to hostel property.",
+    "Compliance with fire safety regulations is mandatory.",
+    "Must follow UAE laws and campus regulations.",
+    "Residents must behave responsibly and respectfully.",
+    "Inform accommodation in-charge 15 days to 1 month before leaving.",
+    "Complete accommodation shifting procedure before leaving.",
+    "Timely payment of room rent is required.",
+    "Late payments subject to penalties as per hostel rules.",
+  ];
+
   const formFields = [
-    "Full Name",
-    "Student ID",
-    "Contact Number",
-    "Email Address",
-    "Accommodation Type",
-    "Preferred Features",
-    "Special Requirements",
-    "Move-in Date",
-    "Length of Stay",
-    "Passport Copy URL",
-    "Enrollment Confirmation",
-    "Visa Copy",
-    "Photograph URL",
-    "Emergency Contact Name",
-    "Relationship",
-    "Emergency Contact Number",
-    "Payment Method",
-    "Deposit Confirmation",
-    "Policy Acknowledgement",
-    "Consent to Data Processing",
-    "Additional Notes",
+    { name: "Full Name", type: "text", required: true },
+    { name: "Student ID", type: "text", required: true },
+    { name: "Contact Number", type: "tel", required: true },
+    { name: "Email Address", type: "email", required: true },
+    {
+      name: "Accommodation Type",
+      type: "select",
+      options: ["Shared Room", "Private Room", "Married Couple"],
+      required: true,
+    },
+    { name: "Move-in Date", type: "date", required: true },
+    { name: "Move-out Date", type: "date", required: false },
+    { name: "Length of Stay", type: "text", required: true },
+    { name: "Passport Copy", type: "file", required: true },
+    { name: "Enrollment Confirmation", type: "file", required: true },
+    { name: "Visa Copy", type: "file", required: true },
+    { name: "Photograph", type: "file", required: true },
+    { name: "Emergency Contact Name", type: "text", required: true },
+    { name: "Emergency Contact Relationship", type: "text", required: true },
+    { name: "Emergency Contact Number", type: "tel", required: true },
+    {
+      name: "Payment Method",
+      type: "select",
+      options: ["Credit Card", "Bank Transfer", "Cash"],
+      required: true,
+    },
+    { name: "Payment Receipt", type: "file", required: true },
+    { name: "Special Requirements", type: "textarea", required: false },
+    { name: "Additional Notes", type: "textarea", required: false },
   ];
 
   return (
@@ -211,7 +216,7 @@ export default function AccommodationCards() {
             position: "relative",
           }}
         >
-          Accommodation Plans
+          Accommodation Rules & Application
           <span
             style={{
               position: "absolute",
@@ -226,119 +231,124 @@ export default function AccommodationCards() {
           />
         </h2>
 
-        {/* Accommodation Cards Grid */}
+        {/* Rules and Regulations Section */}
         <div
+          ref={(el) => (cardsRef.current[0] = el)}
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-            gap: "30px",
-            marginTop: "60px",
-            marginBottom: "80px",
+            backdropFilter: "blur(10px)",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            backgroundColor: "rgba(255, 255, 255, 0.05)",
+            borderRadius: "16px",
+            overflow: "hidden",
+            boxShadow: "0 20px 40px rgba(0, 0, 0, 0.4)",
+            padding: "30px",
+            marginBottom: "40px",
           }}
         >
-          {accommodations.map((item, index) => (
-            <div
-              key={index}
-              ref={(el) => (cardsRef.current[index] = el)}
-              style={{
-                backdropFilter: "blur(10px)",
-                border: "1px solid rgba(255, 255, 255, 0.1)",
-                backgroundColor: "rgba(255, 255, 255, 0.05)",
-                borderRadius: "16px",
-                overflow: "hidden",
-                boxShadow: "0 20px 40px rgba(0, 0, 0, 0.4)",
-                transition: "transform 0.3s ease",
-              }}
-            >
-              <div style={{ position: "relative", height: "220px" }}>
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-              </div>
-              <div style={{ padding: "24px" }}>
-                <h3
-                  style={{
-                    fontSize: "1.5rem",
-                    fontWeight: 700,
-                    marginBottom: "12px",
-                    color: "#fff",
-                  }}
-                >
-                  {item.title}
-                </h3>
-                <p
-                  style={{
-                    fontSize: "1rem",
-                    color: "rgba(255,255,255,0.85)",
-                    lineHeight: "1.6",
-                    marginBottom: "16px",
-                  }}
-                >
-                  {item.description}
-                </p>
+          <h3
+            style={{
+              fontSize: "1.8rem",
+              fontWeight: "700",
+              marginBottom: "20px",
+              color: "#ffffff",
+              textAlign: "center",
+            }}
+          >
+            Campus Accommodation Rules and Guidelines
+          </h3>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+              gap: "20px",
+            }}
+          >
+            {rules.map((rule, index) => (
+              <div key={index} style={{ display: "flex" }}>
                 <div
                   style={{
-                    fontWeight: "600",
-                    color: "#ccc",
-                    fontSize: "1rem",
-                    marginTop: "8px",
-                    letterSpacing: "0.5px",
+                    ...checkStyle,
+                    backgroundColor: "#4a4a4a",
+                    marginRight: "10px",
+                    flexShrink: 0,
                   }}
                 >
-                  Starting from{" "}
-                  <span style={{ color: "#fff" }}>{item.price}</span>
+                  {index + 1}
                 </div>
+                <p
+                  style={{
+                    color: "#ddd",
+                    lineHeight: "1.6",
+                    fontSize: "15px",
+                  }}
+                >
+                  {rule}
+                </p>
               </div>
+            ))}
+          </div>
+
+          <div
+            style={{
+              marginTop: "30px",
+              paddingTop: "20px",
+              borderTop: "1px solid rgba(255,255,255,0.1)",
+              textAlign: "center",
+            }}
+          >
+            <p style={{ color: "#aaa", fontStyle: "italic" }}>
+              For any questions or clarifications, please contact the
+              accommodation office.
+            </p>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                gap: "20px",
+                marginTop: "15px",
+              }}
+            >
+              <a
+                href="tel:+97143368064"
+                style={{ color: "#fff", textDecoration: "none" }}
+              >
+                +971 43368064
+              </a>
+              <a
+                href="mailto:admission@csei.academy"
+                style={{ color: "#fff", textDecoration: "none" }}
+              >
+                admission@csei.academy
+              </a>
             </div>
-          ))}
+          </div>
         </div>
 
-        {/* Injected Section: Residential Info, Form, Final Note */}
-        <div style={{ marginTop: "60px" }}>
+        {/* Application Form Section */}
+        <div
+          ref={(el) => (cardsRef.current[1] = el)}
+          style={{
+            backdropFilter: "blur(10px)",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            backgroundColor: "rgba(255, 255, 255, 0.05)",
+            borderRadius: "16px",
+            overflow: "hidden",
+            boxShadow: "0 20px 40px rgba(0, 0, 0, 0.4)",
+            padding: "40px",
+            marginBottom: "40px",
+          }}
+        >
           <h3
             style={{
               fontSize: "1.8rem",
               fontWeight: "700",
-              marginBottom: "20px",
+              marginBottom: "30px",
               color: "#ffffff",
+              textAlign: "center",
             }}
           >
-            4. Residential Experience
-          </h3>
-          <p style={{ marginBottom: "40px", color: "#ddd" }}>
-            Residential facilities at CSEI Academy offer students the
-            convenience and community of living near the library, dining
-            facilities, and sports amenities.
-          </p>
-
-          <h3
-            style={{
-              fontSize: "1.8rem",
-              fontWeight: "700",
-              marginBottom: "20px",
-              color: "#ffffff",
-            }}
-          >
-            5. Student Services Support
-          </h3>
-          {[
-            "Know about on-campus living...",
-            "Application process...",
-            "Proof of Residence...",
-          ].map((item, index) => listItem(item, index))}
-
-          <h3
-            style={{
-              fontSize: "1.8rem",
-              fontWeight: "700",
-              margin: "60px 0 20px",
-              color: "#ffffff",
-            }}
-          >
-            6. Book Your Accommodation Plan
+            Accommodation Application Form
           </h3>
 
           <motion.form
@@ -347,14 +357,9 @@ export default function AccommodationCards() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             style={{
-              background: "rgba(255,255,255,0.05)",
-              padding: "40px",
-              borderRadius: "16px",
-              boxShadow: "0 15px 40px rgba(0,0,0,0.3)",
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
               gap: "20px",
-              marginBottom: "40px",
             }}
           >
             {formFields.map((field, index) => (
@@ -367,25 +372,139 @@ export default function AccommodationCards() {
                     display: "block",
                   }}
                 >
-                  {field}
+                  {field.name}{" "}
+                  {field.required && <span style={{ color: "red" }}>*</span>}
                 </label>
-                <input
-                  type="text"
-                  name={field}
-                  onChange={handleChange}
-                  required={index < 10}
-                  style={{
-                    width: "100%",
-                    padding: "10px 14px",
-                    borderRadius: "8px",
-                    border: "1px solid #666",
-                    fontSize: "15px",
-                    backgroundColor: "#111",
-                    color: "#fff",
-                  }}
-                />
+
+                {field.type === "select" ? (
+                  <select
+                    name={field.name}
+                    onChange={handleChange}
+                    required={field.required}
+                    style={{
+                      width: "100%",
+                      padding: "10px 14px",
+                      borderRadius: "8px",
+                      border: "1px solid #666",
+                      fontSize: "15px",
+                      backgroundColor: "#111",
+                      color: "#fff",
+                    }}
+                  >
+                    <option value="">Select {field.name}</option>
+                    {field.options.map((option, i) => (
+                      <option key={i} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                ) : field.type === "textarea" ? (
+                  <textarea
+                    name={field.name}
+                    onChange={handleChange}
+                    required={field.required}
+                    style={{
+                      width: "100%",
+                      padding: "10px 14px",
+                      borderRadius: "8px",
+                      border: "1px solid #666",
+                      fontSize: "15px",
+                      backgroundColor: "#111",
+                      color: "#fff",
+                      minHeight: "100px",
+                    }}
+                  />
+                ) : field.type === "file" ? (
+                  <div>
+                    <input
+                      type="file"
+                      name={field.name}
+                      onChange={handleFileChange}
+                      required={field.required}
+                      style={{
+                        width: "100%",
+                        padding: "10px 0",
+                        fontSize: "15px",
+                        color: "#fff",
+                      }}
+                    />
+                    <small
+                      style={{
+                        color: "#aaa",
+                        display: "block",
+                        marginTop: "5px",
+                      }}
+                    >
+                      Accepted formats: PDF, JPG, PNG (Max 5MB)
+                    </small>
+                  </div>
+                ) : field.type === "date" ? (
+                  <input
+                    type="date"
+                    name={field.name}
+                    onChange={handleChange}
+                    required={field.required}
+                    style={{
+                      width: "100%",
+                      padding: "10px 14px",
+                      borderRadius: "8px",
+                      border: "1px solid #666",
+                      fontSize: "15px",
+                      backgroundColor: "#111",
+                      color: "#fff",
+                    }}
+                  />
+                ) : (
+                  <input
+                    type={field.type}
+                    name={field.name}
+                    onChange={handleChange}
+                    required={field.required}
+                    style={{
+                      width: "100%",
+                      padding: "10px 14px",
+                      borderRadius: "8px",
+                      border: "1px solid #666",
+                      fontSize: "15px",
+                      backgroundColor: "#111",
+                      color: "#fff",
+                    }}
+                  />
+                )}
               </div>
             ))}
+
+            <div
+              style={{
+                gridColumn: "1/-1",
+                marginTop: "20px",
+                padding: "20px",
+                backgroundColor: "rgba(0,0,0,0.3)",
+                borderRadius: "8px",
+                border: "1px solid #333",
+              }}
+            >
+              <label
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  cursor: "pointer",
+                }}
+              >
+                <input
+                  type="checkbox"
+                  name="policyAgreement"
+                  required
+                  style={{ marginRight: "10px" }}
+                />
+                <span style={{ color: "#ddd" }}>
+                  I acknowledge that I have read and agree to the Accommodation
+                  Rules and Guidelines above. I understand that violation of
+                  these rules may result in disciplinary action.
+                </span>
+              </label>
+            </div>
+
             <div
               style={{
                 gridColumn: "1/-1",
@@ -404,27 +523,89 @@ export default function AccommodationCards() {
                   borderRadius: "8px",
                   border: "1px solid #fff",
                   cursor: "pointer",
+                  transition: "all 0.3s ease",
+                }}
+                onMouseOver={(e) => {
+                  e.target.style.backgroundColor = "#ffffff30";
+                  e.target.style.transform = "translateY(-2px)";
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.backgroundColor = "#ffffff10";
+                  e.target.style.transform = "translateY(0)";
                 }}
               >
                 Submit Application
               </button>
             </div>
           </motion.form>
+        </div>
 
+        {/* Additional Information Section */}
+        <div
+          ref={(el) => (cardsRef.current[2] = el)}
+          style={{
+            backdropFilter: "blur(10px)",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            backgroundColor: "rgba(255, 255, 255, 0.05)",
+            borderRadius: "16px",
+            overflow: "hidden",
+            boxShadow: "0 20px 40px rgba(0, 0, 0, 0.4)",
+            padding: "30px",
+          }}
+        >
           <h3
             style={{
               fontSize: "1.8rem",
               fontWeight: "700",
               marginBottom: "20px",
               color: "#ffffff",
+              textAlign: "center",
             }}
           >
-            7. Final Note
+            Additional Information
           </h3>
-          {[
-            "Support for housing questions",
-            "Photos, policies, schedules on request",
-          ].map((item, index) => listItem(item, index))}
+
+          <div style={{ color: "#ddd", lineHeight: "1.7" }}>
+            <p style={{ marginBottom: "20px" }}>
+              The residential facilities at CSEI Academy offer students the
+              convenience and community of living near campus facilities. Our
+              accommodation services team is available to assist with any
+              questions regarding on-campus living.
+            </p>
+
+            <div style={{ marginBottom: "20px" }}>
+              <h4 style={{ color: "#fff", marginBottom: "10px" }}>
+                Important Notes:
+              </h4>
+              <ul style={{ paddingLeft: "20px" }}>
+                <li style={{ marginBottom: "8px" }}>
+                  Applications are processed in the order they are received
+                </li>
+                <li style={{ marginBottom: "8px" }}>
+                  Confirmation will be sent via email within 5 business days
+                </li>
+                <li style={{ marginBottom: "8px" }}>
+                  Payment must be completed within 48 hours of approval
+                </li>
+                <li>
+                  Room assignments are final unless approved by management
+                </li>
+              </ul>
+            </div>
+
+            <p>
+              For urgent accommodation inquiries, please contact the
+              accommodation office directly at{" "}
+              <a href="tel:+971522175877" style={{ color: "#fff" }}>
+                +971 522175877
+              </a>{" "}
+              or visit our website at{" "}
+              <a href="http://www.csei.academy" style={{ color: "#fff" }}>
+                www.csei.academy
+              </a>
+              .
+            </p>
+          </div>
         </div>
       </div>
 
@@ -441,6 +622,24 @@ export default function AccommodationCards() {
             transform: translate(20px, -20px);
             opacity: 0;
           }
+        }
+
+        select option {
+          background: #333;
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+          filter: invert(1);
+        }
+
+        input[type="file"]::file-selector-button {
+          background: #333;
+          color: white;
+          border: 1px solid #666;
+          padding: 8px 12px;
+          border-radius: 4px;
+          margin-right: 10px;
+          cursor: pointer;
         }
       `}</style>
     </section>

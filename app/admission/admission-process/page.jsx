@@ -164,7 +164,7 @@ export default function AdmissionProcess() {
             }}
             whileTap={{ scale: 0.95 }}
             style={{
-              backgroundColor: "#000000",
+              backgroundColor: "#04044e",
               color: "white",
               padding: "18px 48px",
               fontSize: "18px",

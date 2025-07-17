@@ -518,32 +518,6 @@ export default function TuitionFeesFull() {
             }}
           >
             <motion.a
-              href="/pdfs/TuitionFeesBreakdown.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "12px",
-                padding: "16px 32px",
-                backgroundColor: "#1d4ed8",
-                color: "white",
-                borderRadius: "10px",
-                textDecoration: "none",
-                fontSize: "18px",
-                fontWeight: "600",
-                maxWidth: "400px",
-                width: "100%",
-                justifyContent: "center",
-              }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Download Full Fee Breakdown
-              <FiDownload style={{ fontSize: "20px" }} />
-            </motion.a>
-
-            <motion.a
               href="/pdfs/PaymentProcedure.pdf"
               target="_blank"
               rel="noopener noreferrer"

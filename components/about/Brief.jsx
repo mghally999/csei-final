@@ -34,15 +34,12 @@ export default function Brief() {
         </div>
 
         <p className="brief-paragraph">
-          At CSEI Academy, we are proud to offer UK Ofqual-recognized and
-          KHDA-approved programs with hands-on learning to help you thrive in
-          IT, Healthcare, Tourism, Culinary Arts, and Business. <br /> Our
-          flexible courses are designed around your life, supporting working
-          professionals and students seeking placements. With strong industry
-          connections and direct pathways to UK Bachelor's degrees, we open
-          doors to global opportunities. <br /> Join a community where your
-          success comes first, and let us help you build the confidence, skills,
-          and experience for a bright tomorrow.
+          At CSEI Academy, we take pride in delivering Dubai Government's
+          Knowledge and Human Development Authority (KHDA) approved and
+          UK-accredited programmes, distinguished by immersive, hands-on
+          learning experiences. Our curriculum is expertly designed to empower
+          you with the practical skills and knowledge needed to excel in IT,
+          Healthcare, Tourism, Culinary Arts, and Business.
         </p>
 
         <div className="cta-buttons">

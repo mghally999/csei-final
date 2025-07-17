@@ -3,6 +3,14 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+const BrandColors = {
+  primaryDark: "#000C2D",
+  primaryBlue: "#001E6C",
+  accent: "#E05500",
+  lightText: "#F5F5F5",
+  border: "#FFFFFF22",
+};
+
 const formFields = [
   "Full Name",
   "Student ID / Identity Number",
@@ -33,14 +41,14 @@ export default function TransportationSection() {
     <section
       style={{
         background: `
-          linear-gradient(135deg, rgba(15, 15, 35, 0.95) 0%, rgba(30, 0, 60, 0.9) 100%),
+          linear-gradient(135deg, ${BrandColors.primaryDark} 0%, ${BrandColors.primaryBlue} 100%),
           url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop')
         `,
         backgroundSize: "cover",
         backgroundAttachment: "fixed",
         backgroundPosition: "center",
         padding: "120px 20px",
-        color: "white",
+        color: BrandColors.lightText,
         position: "relative",
         isolation: "isolate",
       }}
@@ -52,30 +60,27 @@ export default function TransportationSection() {
             fontWeight: 800,
             marginBottom: "80px",
             textAlign: "center",
-            background: "linear-gradient(90deg, #ffffff, #ffccff)",
-            WebkitBackgroundClip: "text",
-            backgroundClip: "text",
-            color: "transparent",
+            color: BrandColors.lightText,
             textTransform: "uppercase",
             position: "relative",
           }}
         >
-          Get On Board
+          Transportation
           <span
             style={{
               position: "absolute",
-              bottom: "-10px",
+              bottom: "-12px",
               left: "50%",
               transform: "translateX(-50%)",
               width: "100px",
               height: "4px",
-              background: "linear-gradient(to right, #ffffff, #ffccff)",
+              background: BrandColors.accent,
               borderRadius: "2px",
             }}
           />
         </h2>
 
-        {/* Top visual: image + message */}
+        {/* Visual Section */}
         <div
           style={{
             display: "flex",
@@ -115,7 +120,7 @@ export default function TransportationSection() {
             <p
               style={{
                 fontSize: "18px",
-                color: "#ddd",
+                color: BrandColors.lightText,
                 marginBottom: "20px",
                 lineHeight: "1.8",
               }}
@@ -124,7 +129,13 @@ export default function TransportationSection() {
               access to public transportation, private partner rides, and Nol
               card assistance.
             </p>
-            <p style={{ fontSize: "18px", color: "#ccc", lineHeight: "1.8" }}>
+            <p
+              style={{
+                fontSize: "18px",
+                color: "#ccc",
+                lineHeight: "1.8",
+              }}
+            >
               Whether it’s daily classes or weekend events, our transport
               solutions are safe, budget-friendly, and personalized to your
               needs.
@@ -132,14 +143,14 @@ export default function TransportationSection() {
           </motion.div>
         </div>
 
-        {/* Stunning Form Layout */}
+        {/* Form */}
         <motion.form
           onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           style={{
-            background: "rgba(255, 255, 255, 0.05)",
+            background: "rgba(255, 255, 255, 0.04)",
             padding: "50px",
             borderRadius: "20px",
             boxShadow: "0 20px 60px rgba(0, 0, 0, 0.3)",
@@ -154,7 +165,7 @@ export default function TransportationSection() {
                 htmlFor={`field-${index}`}
                 style={{
                   fontWeight: 600,
-                  color: "#fff",
+                  color: BrandColors.lightText,
                   marginBottom: "8px",
                   display: "block",
                 }}
@@ -171,10 +182,10 @@ export default function TransportationSection() {
                   width: "100%",
                   padding: "12px 16px",
                   borderRadius: "12px",
-                  border: "1px solid #999",
+                  border: `1px solid ${BrandColors.border}`,
                   fontSize: "16px",
                   backgroundColor: "#111827",
-                  color: "white",
+                  color: BrandColors.lightText,
                 }}
               />
             </div>
@@ -189,15 +200,15 @@ export default function TransportationSection() {
             <button
               type="submit"
               style={{
-                background: "linear-gradient(90deg, #4f46e5, #9333ea)",
+                backgroundColor: BrandColors.accent,
                 color: "white",
                 padding: "16px 40px",
-                fontSize: "16px",
-                fontWeight: "bold",
-                borderRadius: "999px",
+                fontSize: "18px",
+                fontWeight: "600",
+                borderRadius: "10px",
                 border: "none",
                 cursor: "pointer",
-                boxShadow: "0 10px 20px rgba(147, 51, 234, 0.3)",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
               }}
             >
               Submit Transportation Form

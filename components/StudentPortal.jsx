@@ -5,169 +5,92 @@ import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { FiArrowRight } from "react-icons/fi";
 
-// Register GSAP plugins
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-export default function StudentPortalSection() {
+export default function StudentPortalShowcase() {
   const sectionRef = useRef(null);
-  const headingRef = useRef(null);
-  const cardRefs = useRef([]);
-  const contentRefs = useRef([]);
-  const listItemRefs = useRef([]);
+  const imageRef = useRef(null);
+  const contentRef = useRef(null);
+  const featuresRef = useRef([]);
+  const ctaRef = useRef(null);
 
   useEffect(() => {
-    // Parallax effect for the section background
-    gsap.to(sectionRef.current, {
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-      },
-      backgroundPosition: "50% 20%",
-      ease: "none",
-    });
+    gsap.fromTo(
+      imageRef.current,
+      { y: 100, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      }
+    );
 
-    // Animate the main heading
-    gsap.from(headingRef.current, {
-      scrollTrigger: {
-        trigger: headingRef.current,
-        start: "top 80%",
-        toggleActions: "play none none none",
-      },
-      y: 50,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out",
-    });
+    gsap.fromTo(
+      contentRef.current,
+      { x: 50, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 1,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+        },
+      }
+    );
 
-    // Animate cards
-    if (cardRefs.current.length > 0) {
-      cardRefs.current.forEach((card, index) => {
-        gsap.from(card, {
-          scrollTrigger: {
-            trigger: card,
-            start: "top 75%",
-            toggleActions: "play none none none",
-          },
-          y: 60,
-          opacity: 0,
-          duration: 0.8,
-          delay: index * 0.1,
-          ease: "back.out(1.2)",
-        });
-      });
-    }
-
-    // Animate content sections
-    if (contentRefs.current.length > 0) {
-      contentRefs.current.forEach((content, index) => {
-        gsap.from(content, {
-          scrollTrigger: {
-            trigger: content,
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
-          y: 40,
-          opacity: 0,
+    featuresRef.current.forEach((el, i) => {
+      gsap.fromTo(
+        el,
+        { x: -20, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
           duration: 0.6,
-          delay: index * 0.15,
-          ease: "power2.out",
-        });
-      });
-    }
-
-    // Animate list items
-    if (listItemRefs.current.length > 0) {
-      listItemRefs.current.forEach((item, index) => {
-        gsap.from(item, {
+          delay: i * 0.15,
           scrollTrigger: {
-            trigger: item,
-            start: "top 85%",
-            toggleActions: "play none none none",
+            trigger: el,
+            start: "top 90%",
           },
-          x: index % 2 === 0 ? -20 : 20,
-          opacity: 0,
-          duration: 0.5,
-          delay: index * 0.05,
-          ease: "power2.out",
-        });
-      });
-    }
+        }
+      );
+    });
 
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
+    gsap.to(ctaRef.current, {
+      y: 10,
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
   }, []);
 
-  const ListItem = ({ text, index }) => (
-    <div
-      ref={(el) => (listItemRefs.current[index] = el)}
-      style={{
-        display: "flex",
-        alignItems: "flex-start",
-        marginBottom: "16px",
-      }}
-    >
-      <div
-        style={{
-          width: "28px",
-          height: "28px",
-          background: "linear-gradient(135deg, #3b82f6, #8b5cf6)",
-          color: "white",
-          borderRadius: "50%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: "16px",
-          fontWeight: "bold",
-          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.3)",
-          marginRight: "12px",
-          flexShrink: 0,
-        }}
-      >
-        ✓
-      </div>
-      <div
-        style={{
-          fontSize: "16px",
-          lineHeight: "1.6",
-          color: "rgba(255, 255, 255, 0.9)",
-          fontWeight: 500,
-        }}
-      >
-        {text}
-      </div>
-    </div>
-  );
+  const features = [
+    "Academic Dashboard: Grades, schedules, and notifications",
+    "Course Enrollment: Register and track academic sessions",
+    "Finance: View invoices, scholarships, and payment status",
+    "Digital ID: Access services with QR-based student ID",
+    "Support: Raise tickets or reach helpdesk directly",
+  ];
 
   return (
     <section
       ref={sectionRef}
-      className="student-portal-section"
       style={{
+        background: "linear-gradient(135deg, #001E6C 0%, #000C2D 100%)",
         position: "relative",
-        padding: "120px 20px",
         overflow: "hidden",
-        background: `
-          linear-gradient(
-            135deg,
-            rgba(8, 28, 64, 0.95) 0%,
-            rgba(15, 82, 186, 0.9) 100%
-          ),
-          url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')
-        `,
-        backgroundSize: "cover",
-        backgroundAttachment: "fixed",
-        backgroundPosition: "50% 50%",
-        color: "white",
-        isolation: "isolate",
       }}
+      className="layout-pb-lg"
     >
-      {/* Animated background elements */}
       <div
         style={{
           position: "absolute",
@@ -175,350 +98,141 @@ export default function StudentPortalSection() {
           left: 0,
           width: "100%",
           height: "100%",
-          overflow: "hidden",
-          zIndex: -1,
+          zIndex: 0,
         }}
       >
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            style={{
-              position: "absolute",
-              background: "rgba(255, 255, 255, 0.1)",
-              borderRadius: "50%",
-              width: `${Math.random() * 300 + 100}px`,
-              height: `${Math.random() * 300 + 100}px`,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              filter: "blur(40px)",
-              opacity: 0,
-              animation: `float ${
-                Math.random() * 20 + 10
-              }s infinite alternate ease-in-out`,
-              animationDelay: `${Math.random() * 5}s`,
-            }}
-          />
-        ))}
+        <div
+          style={{
+            position: "absolute",
+            top: "20%",
+            left: "10%",
+            width: "300px",
+            height: "300px",
+            background: "#E05500",
+            borderRadius: "50%",
+            filter: "blur(80px)",
+            opacity: 0.1,
+          }}
+        />
       </div>
 
       <div
-        style={{ maxWidth: "1400px", margin: "0 auto", position: "relative" }}
+        style={{
+          maxWidth: "1400px",
+          margin: "0 auto",
+          position: "relative",
+          zIndex: 1,
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "40px",
+          alignItems: "center",
+        }}
       >
-        {/* Section Title */}
-        <h2
-          ref={headingRef}
-          style={{
-            fontSize: "clamp(2rem, 5vw, 3.5rem)",
-            fontWeight: "800",
-            marginBottom: "80px",
-            textAlign: "center",
-            textTransform: "uppercase",
-            letterSpacing: "2px",
-            background: "linear-gradient(90deg, #fff, #a7c3ff)",
-            WebkitBackgroundClip: "text",
-            backgroundClip: "text",
-            color: "transparent",
-            position: "relative",
-            paddingBottom: "20px",
-          }}
-        >
-          Student Portal at CSEI Academy
-          <span
+        {/* Left Image */}
+        <div ref={imageRef} style={{ flex: "1", minWidth: "300px" }}>
+          <Image
+            src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=2070"
+            width={600}
+            height={400}
+            alt="Student Portal"
             style={{
-              position: "absolute",
-              bottom: "0",
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "80px",
-              height: "4px",
-              background: "linear-gradient(90deg, #3b82f6, #000000)",
-              borderRadius: "2px",
+              borderRadius: "24px",
+              boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
+              width: "100%",
+              height: "auto",
             }}
           />
-        </h2>
-
-        {/* Cards Grid */}
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "30px",
-            justifyContent: "center",
-            marginBottom: "80px",
-          }}
-        >
-          {[
-            {
-              title: "1. Academic Dashboard",
-              image:
-                "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=2070&auto=format&fit=crop",
-            },
-            {
-              title: "2. Registration & Enrollment",
-              image:
-                "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=2070&auto=format&fit=crop",
-            },
-            {
-              title: "3. Financial Information",
-              image:
-                "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=2070&auto=format&fit=crop",
-            },
-          ].map((item, index) => (
-            <Link
-              href="#"
-              key={index}
-              ref={(el) => (cardRefs.current[index] = el)}
-              style={{
-                textDecoration: "none",
-                color: "inherit",
-                maxWidth: "300px",
-                width: "100%",
-              }}
-            >
-              <div
-                style={{
-                  position: "relative",
-                  borderRadius: "16px",
-                  overflow: "hidden",
-                  boxShadow: "0 30px 50px rgba(0, 0, 0, 0.3)",
-                  transform: "translateY(0)",
-                  transition: "transform 0.4s ease, box-shadow 0.4s ease",
-                  willChange: "transform",
-                  background: "rgba(255, 255, 255, 0.1)",
-                  backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
-                }}
-                onMouseEnter={(e) => {
-                  gsap.to(e.currentTarget, {
-                    y: -10,
-                    boxShadow: "0 40px 60px rgba(0, 0, 0, 0.4)",
-                    duration: 0.3,
-                  });
-                }}
-                onMouseLeave={(e) => {
-                  gsap.to(e.currentTarget, {
-                    y: 0,
-                    boxShadow: "0 30px 50px rgba(0, 0, 0, 0.3)",
-                    duration: 0.3,
-                  });
-                }}
-              >
-                <div
-                  style={{
-                    position: "relative",
-                    height: "200px",
-                    overflow: "hidden",
-                  }}
-                >
-                  <Image
-                    src={item.image}
-                    fill
-                    alt={item.title}
-                    style={{
-                      objectFit: "cover",
-                      transition: "transform 0.5s ease",
-                    }}
-                    className="hover:scale-105"
-                  />
-                </div>
-                <div
-                  style={{
-                    padding: "20px",
-                    textAlign: "center",
-                    fontWeight: "600",
-                    color: "white",
-                  }}
-                >
-                  {item.title}
-                </div>
-              </div>
-            </Link>
-          ))}
         </div>
 
-        {/* Content Sections */}
+        {/* Right Content */}
         <div
+          ref={contentRef}
           style={{
-            maxWidth: "900px",
-            margin: "0 auto",
-            background: "rgba(255, 255, 255, 0.05)",
+            flex: "1",
+            minWidth: "300px",
+            background: "rgba(255,255,255,0.05)",
             backdropFilter: "blur(10px)",
-            borderRadius: "16px",
+            borderRadius: "20px",
             padding: "40px",
-            border: "1px solid rgba(255, 255, 255, 0.1)",
-            boxShadow: "0 20px 40px rgba(0, 0, 0, 0.2)",
+            boxShadow: "0 20px 40px rgba(0,0,0,0.2)",
+            color: "#fff",
           }}
         >
-          {/* Key Services */}
-          <div ref={(el) => (contentRefs.current[0] = el)}>
-            <h3
-              style={{
-                fontWeight: "700",
-                fontSize: "1.5rem",
-                marginBottom: "20px",
-                color: "white",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <span
-                style={{
-                  display: "inline-block",
-                  width: "30px",
-                  height: "30px",
-                  background: "linear-gradient(135deg, #3b82f6, #8b5cf6)",
-                  borderRadius: "8px",
-                  marginRight: "15px",
-                  color: "white",
-                  textAlign: "center",
-                  lineHeight: "30px",
-                  fontWeight: "800",
-                  fontSize: "0.9rem",
-                }}
-              >
-                4
-              </span>
-              Key Services in the Portal
-            </h3>
-            {[
-              "Communication Tools to connect with faculty and classmates.",
-              "Event Calendar for all academic and extracurricular schedules.",
-              "Student Support Services: request academic or technical help.",
-              "Profile Management: update emergency contacts and details.",
-              "Mobile Application Access: log in on the go, any time, any device.",
-              "Secure login and privacy compliance for all user data.",
-            ].map((text, idx) => (
-              <ListItem key={idx} text={text} index={idx} />
-            ))}
-          </div>
-
-          {/* Get Started */}
-          <div
-            ref={(el) => (contentRefs.current[1] = el)}
-            style={{ marginTop: "40px" }}
-          >
-            <h3
-              style={{
-                fontWeight: "700",
-                fontSize: "1.5rem",
-                marginBottom: "20px",
-                color: "white",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <span
-                style={{
-                  display: "inline-block",
-                  width: "30px",
-                  height: "30px",
-                  background: "linear-gradient(135deg, #3b82f6, #8b5cf6)",
-                  borderRadius: "8px",
-                  marginRight: "15px",
-                  color: "white",
-                  textAlign: "center",
-                  lineHeight: "30px",
-                  fontWeight: "800",
-                  fontSize: "0.9rem",
-                }}
-              >
-                5
-              </span>
-              Get Started
-            </h3>
-            {[
-              "Visit studentportal.csei.ac.ae or download from App Store / Play Store.",
-              "Log in using your student credentials (ID & password).",
-              "Explore all features, notifications, and updates in one place.",
-            ].map((text, idx) => (
-              <ListItem key={idx + 6} text={text} index={idx + 6} />
-            ))}
-          </div>
-
-          {/* Portal Access Button */}
-          <div
+          <h2
             style={{
-              marginTop: "40px",
-              display: "flex",
-              justifyContent: "center",
+              fontSize: "36px",
+              fontWeight: 800,
+              marginBottom: "20px",
+              textTransform: "uppercase",
+              color: "#F5F5F5",
             }}
           >
+            Student Portal
+          </h2>
+          <p
+            style={{ fontSize: "18px", marginBottom: "30px", lineHeight: 1.8 }}
+          >
+            Access personalized academic services, monitor your progress, and
+            manage university life—all in one place.
+          </p>
+
+          <ul style={{ padding: 0, listStyle: "none", margin: 0 }}>
+            {features.map((feature, idx) => (
+              <li
+                key={idx}
+                ref={(el) => (featuresRef.current[idx] = el)}
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  marginBottom: "20px",
+                }}
+              >
+                <div
+                  style={{
+                    width: "28px",
+                    height: "28px",
+                    background: "#E05500",
+                    borderRadius: "50%",
+                    color: "white",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontWeight: "bold",
+                    marginRight: "12px",
+                  }}
+                >
+                  ✓
+                </div>
+                <div style={{ fontSize: "16px", lineHeight: 1.6 }}>
+                  {feature}
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <div style={{ marginTop: "40px" }}>
             <Link
-              href="#"
+              href="https://canvas.instructure.com/login/canvas"
+              target="_blank"
+              ref={ctaRef}
               style={{
-                display: "inline-block",
-                padding: "14px 32px",
-                background: "linear-gradient(90deg, #3b82f6, #000000)",
+                display: "inline-flex",
+                alignItems: "center",
+                background: "#E05500",
                 color: "white",
+                padding: "16px 32px",
                 borderRadius: "50px",
+                fontSize: "18px",
+                fontWeight: 600,
                 textDecoration: "none",
-                fontWeight: "600",
-                fontSize: "16px",
-                transition: "all 0.3s ease",
-                boxShadow: "0 4px 15px rgba(59, 130, 246, 0.4)",
-                position: "relative",
-                overflow: "hidden",
-              }}
-              onMouseEnter={(e) => {
-                gsap.to(e.currentTarget, {
-                  boxShadow: "0 6px 20px rgba(59, 130, 246, 0.6)",
-                  y: -2,
-                  duration: 0.2,
-                });
-              }}
-              onMouseLeave={(e) => {
-                gsap.to(e.currentTarget, {
-                  boxShadow: "0 4px 15px rgba(59, 130, 246, 0.4)",
-                  y: 0,
-                  duration: 0.2,
-                });
+                boxShadow: "0 8px 20px rgba(224,85,0,0.4)",
               }}
             >
-              Access Student Portal
-              <span
-                style={{
-                  position: "absolute",
-                  top: "-50%",
-                  left: "-60%",
-                  width: "200%",
-                  height: "200%",
-                  background:
-                    "linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%)",
-                  transform: "rotate(30deg)",
-                  transition: "all 0.6s ease",
-                  opacity: 0,
-                }}
-                className="hover:opacity-100 hover:left-100%"
-              />
+              Access Portal <FiArrowRight style={{ marginLeft: "10px" }} />
             </Link>
           </div>
         </div>
       </div>
-
-      {/* Global styles for this component */}
-      <style jsx global>{`
-        @keyframes float {
-          0% {
-            transform: translate(0, 0) rotate(0deg);
-            opacity: 0;
-          }
-          50% {
-            opacity: 0.3;
-          }
-          100% {
-            transform: translate(20px, -20px) rotate(5deg);
-            opacity: 0;
-          }
-        }
-
-        .student-portal-section img {
-          transition: transform 0.5s ease !important;
-        }
-
-        .student-portal-section img:hover {
-          transform: scale(1.05) !important;
-        }
-      `}</style>
     </section>
   );
 }

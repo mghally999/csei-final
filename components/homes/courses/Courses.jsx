@@ -78,10 +78,10 @@ export default function Courses() {
     <section
       style={{
         padding: "6rem 0",
-        background: "linear-gradient(to bottom, #f8fafc, #ffffff)",
         position: "relative",
         overflow: "hidden",
       }}
+      className="custom-linear-white-top"
     >
       {/* Animated background elements */}
       <div
@@ -152,6 +152,7 @@ export default function Courses() {
                 margin: "1rem 0 0 0",
                 lineHeight: 1.6,
                 maxWidth: "700px",
+                textAlign: "center",
               }}
             >
               Explore our most popular programs across various disciplines

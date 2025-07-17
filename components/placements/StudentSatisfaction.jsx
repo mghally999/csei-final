@@ -215,7 +215,6 @@ export default function StudentSatisfaction() {
           >
             {[
               { value: "85%", label: "Current Employability Ratio" },
-              { value: "25", label: "Students Employed" },
               { value: "40", label: "Eligible Students" },
             ].map((stat, index) => (
               <div key={index} style={{ textAlign: "center" }}>

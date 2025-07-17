@@ -109,28 +109,6 @@ export default function TestimonialsOne() {
             </div>
           </div>
         </div>
-
-        <div className="row y-gap-30 counter__row">
-          {counters.map((elm, i) => (
-            <div
-              key={i}
-              className="col-lg-3 col-sm-6"
-              data-aos="fade-left"
-              data-aos-duration={(i + 1) * 350}
-            >
-              <Link href="/placements" className="block cursor-pointer group">
-                <div className="counter -type-1 transition duration-300 group-hover:scale-[1.03]">
-                  <div className="counter__number text-white group-hover:text-yellow-300 text-black">
-                    {elm.number}
-                  </div>
-                  <div className="counter__title text-white group-hover:text-yellow-300 text-black">
-                    {elm.title}
-                  </div>
-                </div>
-              </Link>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );

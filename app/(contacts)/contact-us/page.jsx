@@ -61,6 +61,7 @@ export default function ContactTwo() {
               <div className="tabs__content pt-20 js-tabs-content">
                 <div className="tabs__pane is-active">
                   <div className="row y-gap-40 justify-between">
+                    {/* ✅ Contact Form */}
                     <div className="col-lg-6">
                       <div className="px-30 py-30 bg-white border-light shadow-1 rounded-8">
                         <h3 className="text-20 fw-500 mb-5">
@@ -136,29 +137,52 @@ export default function ContactTwo() {
                       </div>
                     </div>
 
+                    {/* ✅ Office Locations + Map */}
                     <div className="col-xl-5 col-lg-6">
-                      <h3 className="text-24 fw-500">Our offices</h3>
-                      <div className="row y-gap-30 pt-40">
+                      <h3 className="text-24 fw-500">Our Offices</h3>
+                      <div className="row y-gap-40 pt-40">
                         {locationData.map((elm, i) => (
-                          <div key={i} className="col-sm-6">
+                          <div key={i} className="col-12 mb-40">
                             <div className="text-20 fw-500 text-dark-1">
                               {elm.location}
                             </div>
-                            <div className="y-gap-10 pt-15">
-                              <a href="#" className="d-block">
-                                {elm.address}
-                              </a>
-                              <a href="#" className="d-block">
+                            <div className="y-gap-10 pt-15 mb-10">
+                              <p className="d-block">{elm.address}</p>
+                              <a
+                                href={`tel:${elm.phoneNumber}`}
+                                className="d-block"
+                              >
                                 {elm.phoneNumber}
                               </a>
-                              <a href="#" className="d-block">
+                              <a
+                                href={`mailto:${elm.email}`}
+                                className="d-block"
+                              >
                                 {elm.email}
                               </a>
+                            </div>
+
+                            {/* ✅ Embedded Google Map */}
+                            <div className="overflow-hidden rounded-8 border-light">
+                              <iframe
+                                src={elm.googleMapsUrl}
+                                width="100%"
+                                height="220"
+                                style={{
+                                  border: 0,
+                                  borderRadius: "8px",
+                                  width: "100%",
+                                }}
+                                allowFullScreen=""
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                              ></iframe>
                             </div>
                           </div>
                         ))}
                       </div>
                     </div>
+                    {/* End Office Block */}
                   </div>
                 </div>
               </div>
