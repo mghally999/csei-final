@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useRouter } from "next/navigation"; // Make sure this is at the top
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { FiArrowRight } from "react-icons/fi";
 import { motion } from "framer-motion";
@@ -11,7 +11,11 @@ export default function InternationalStudentsBrief() {
   return (
     <section
       className="layout-pb-lg custom-padding custom-linear-blue-top"
-      style={{ backgroundColor: "#f9fafb", paddingTop: "80px" }}
+      style={{
+        backgroundColor: "#f9fafb",
+        paddingTop: "80px",
+        paddingBottom: "80px",
+      }}
     >
       <div className="container">
         <div
@@ -86,10 +90,7 @@ export default function InternationalStudentsBrief() {
                 Explore Visa & Admission Info
                 <motion.span
                   animate={{ x: [0, 5, 0] }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
                 >
                   <FiArrowRight style={{ fontSize: "20px" }} />
                 </motion.span>
@@ -97,12 +98,17 @@ export default function InternationalStudentsBrief() {
             </motion.div>
           </div>
 
-          {/* Image Right */}
+          {/* Image Right - Positioned Bottom Center */}
           <div
             style={{
               flex: "0 0 50%",
               maxWidth: "50%",
               padding: "15px",
+              position: "relative",
+              height: "500px",
+              display: "flex",
+              alignItems: "flex-end",
+              justifyContent: "center",
             }}
           >
             <div
@@ -110,14 +116,20 @@ export default function InternationalStudentsBrief() {
                 borderRadius: "12px",
                 overflow: "hidden",
                 boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+                width: "80%",
+                height: "80%",
+                position: "relative",
               }}
             >
               <Image
-                width={600}
-                height={400}
-                style={{ width: "100%", height: "auto", objectFit: "cover" }}
-                src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=2070&auto=format&fit=crop"
+                src="/assets/img/admission/international-student.png"
                 alt="International Students"
+                fill
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "50% 15%",
+                }}
+                priority
               />
             </div>
           </div>

@@ -567,43 +567,8 @@ export default function AccommodationCards() {
 
           <div style={{ color: "#ddd", lineHeight: "1.7" }}>
             <p style={{ marginBottom: "20px" }}>
-              The residential facilities at CSEI Academy offer students the
-              convenience and community of living near campus facilities. Our
-              accommodation services team is available to assist with any
-              questions regarding on-campus living.
-            </p>
-
-            <div style={{ marginBottom: "20px" }}>
-              <h4 style={{ color: "#fff", marginBottom: "10px" }}>
-                Important Notes:
-              </h4>
-              <ul style={{ paddingLeft: "20px" }}>
-                <li style={{ marginBottom: "8px" }}>
-                  Applications are processed in the order they are received
-                </li>
-                <li style={{ marginBottom: "8px" }}>
-                  Confirmation will be sent via email within 5 business days
-                </li>
-                <li style={{ marginBottom: "8px" }}>
-                  Payment must be completed within 48 hours of approval
-                </li>
-                <li>
-                  Room assignments are final unless approved by management
-                </li>
-              </ul>
-            </div>
-
-            <p>
-              For urgent accommodation inquiries, please contact the
-              accommodation office directly at{" "}
-              <a href="tel:+971522175877" style={{ color: "#fff" }}>
-                +971 522175877
-              </a>{" "}
-              or visit our website at{" "}
-              <a href="http://www.csei.academy" style={{ color: "#fff" }}>
-                www.csei.academy
-              </a>
-              .
+              For more information or personalized assistance, please contact
+              our student support services.
             </p>
           </div>
         </div>

@@ -10,7 +10,7 @@ export default function LifeIntro() {
           {/* Left Side Image */}
           <div className="col-lg-6" data-aos="fade-right">
             <Image
-              src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b"
+              src="assets/img/life-with-csei/banner.png"
               alt="Life at CSEI"
               width={520}
               height={400}

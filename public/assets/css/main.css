@@ -14452,6 +14452,11 @@ h6 {
   padding-bottom: 50px !important;
 }
 
+.custom-padding-2 {
+  padding-top: 150px !important;
+  padding-bottom: 50px !important;
+}
+
 .layout-pt-xl {
   padding-top: 140px;
 }

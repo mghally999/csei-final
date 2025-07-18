@@ -203,7 +203,7 @@ export default function AcademicMentoringSection() {
                   display: "block",
                   objectFit: "cover",
                 }}
-                src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=2070&auto=format&fit=crop"
+                src="assets/img/life-with-csei/academic-mentoring.png"
                 alt="Academic Mentoring"
                 priority
               />

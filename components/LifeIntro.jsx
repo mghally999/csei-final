@@ -20,19 +20,19 @@ export default function LifeHero() {
     <div>
       {/* ✅ Hero Section */}
       <motion.div
+        className="custom-padding-2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         style={{
           backgroundImage:
-            "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b')",
-          backgroundSize: "cover",
+            "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)), url('assets/img/life-with-csei/banner.png')",
           backgroundPosition: "center",
-          height: "81vh",
-          minHeight: "700px",
+          height: "100vh",
+          minHeight: "1000px",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
+          justifyContent: "start",
           alignItems: "center",
           textAlign: "center",
           color: "white",
