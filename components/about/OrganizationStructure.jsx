@@ -22,20 +22,22 @@ const OrganizationStructure = () => {
 
         {/* Org Chart */}
         <div className="org-chart-container">
-          {/* Board of Management - Top */}
+          {/* Level 1 */}
           <div className="org-level">
             <div className="org-node main-node">
-              <div className="org-position">Board of Management</div>
+              <div className="org-position">Board of Trustees</div>
               <div className="org-connector vertical"></div>
             </div>
           </div>
 
-          {/* Head & GM */}
+          {/* Level 2 */}
           <div className="org-level">
+            <div className="org-node admin-node">
+              <div className="org-position">Legal & Compliance</div>
+            </div>
             <div className="org-node leadership-node">
               <div className="org-position">Head of Academy</div>
               <div className="org-connector vertical-down"></div>
-              <div className="org-connector horizontal-left"></div>
             </div>
             <div className="org-node leadership-node">
               <div className="org-position">General Manager</div>
@@ -43,7 +45,7 @@ const OrganizationStructure = () => {
             </div>
           </div>
 
-          {/* Assurer + Finance */}
+          {/* Level 3 */}
           <div className="org-level">
             <div className="org-node department-node">
               <div className="org-position">Lead Internal Assurer</div>
@@ -51,11 +53,10 @@ const OrganizationStructure = () => {
             </div>
             <div className="org-node admin-node">
               <div className="org-position">Finance</div>
-              <div className="org-connector vertical-down"></div>
             </div>
           </div>
 
-          {/* Examination + Auditor */}
+          {/* Level 4 */}
           <div className="org-level">
             <div className="org-node department-node">
               <div className="org-position">Examination</div>
@@ -63,50 +64,50 @@ const OrganizationStructure = () => {
             </div>
             <div className="org-node admin-node">
               <div className="org-position">Internal Auditor</div>
-              <div className="org-connector vertical-down"></div>
             </div>
           </div>
 
-          {/* Support Teams */}
+          {/* Level 5 */}
           <div className="org-level">
             <div className="org-node department-node">
               <div className="org-position">Academics</div>
+              <ul className="org-sublist">
+                <li>HSCM</li>
+                <li>Com</li>
+                <li>Tourism</li>
+                <li>Business</li>
+              </ul>
               <div className="org-connector vertical-down"></div>
             </div>
-            <div className="flex flex-col gap-10">
-              {[
-                "Admission",
-                "Student Support",
-                "Human Resources",
-                "Information Technology",
-              ].map((title, idx) => (
-                <div key={idx} className="org-node admin-node">
-                  <div className="org-position">{title}</div>
-                  {idx < 3 && (
-                    <div className="org-connector vertical-down"></div>
-                  )}
-                </div>
-              ))}
+
+            <div className="flex flex-col gap-4">
+              {["Admissions", "Student Support", "HR", "IT"].map(
+                (title, idx) => (
+                  <div key={idx} className="org-node admin-node">
+                    <div className="org-position">{title}</div>
+                  </div>
+                )
+              )}
             </div>
           </div>
 
-          {/* Faculties */}
+          {/* Level 6 */}
           <div className="org-level">
-            {[
-              "Health Care Faculty/Assessor",
-              "Computing Faculty/Assessor",
-              "Culinary Arts and Tourism Faculty/Assessor",
-              "Business Faculty/Assessor",
-              "Placement",
-            ].map((title, i) => (
-              <div key={i} className="org-node faculty-node">
-                <div className="org-position">{title}</div>
-              </div>
-            ))}
+            <div className="org-node leadership-node">
+              <div className="org-position">Academic Coordinator</div>
+              <div className="org-connector vertical-down"></div>
+            </div>
+          </div>
+
+          {/* Level 7 */}
+          <div className="org-level">
+            <div className="org-node faculty-node">
+              <div className="org-position">Placement Officer</div>
+            </div>
           </div>
         </div>
 
-        {/* Styles */}
+        {/* STYLES */}
         <style jsx>{`
           .org-heading {
             font-size: 2.75rem;
@@ -142,7 +143,7 @@ const OrganizationStructure = () => {
             justify-content: center;
             flex-wrap: wrap;
             gap: 20px;
-            margin-bottom: 24px;
+            margin-bottom: 32px;
             position: relative;
           }
 
@@ -150,16 +151,41 @@ const OrganizationStructure = () => {
             background: white;
             border: 1px solid #e5e7eb;
             border-radius: 8px;
-            padding: 14px;
+            padding: 7px;
             text-align: center;
             min-width: 180px;
-            max-width: 200px;
+            max-width: 220px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             position: relative;
             z-index: 2;
           }
 
-          /* Connector styles */
+          .org-position {
+            font-weight: 700;
+            color: #111827;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 4px;
+          }
+
+          .org-sublist {
+            margin-top: 14px;
+            padding-left: 0;
+            list-style: none;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #111827;
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-align: center;
+          }
+
+          .org-sublist li {
+            font-weight: 600;
+          }
+
           .org-connector {
             position: absolute;
             background: #d1d5db;
@@ -182,19 +208,9 @@ const OrganizationStructure = () => {
             transform: translateX(-50%);
           }
 
-          .horizontal-left {
-            width: calc(50% - 10px);
-            height: 2px;
-            left: 50%;
-            bottom: -20px;
-            transform: translateX(-100%);
-          }
-
-          /* Node types */
           .main-node {
             background: #f3f4f6;
             border-color: #d1d5db;
-            font-weight: 600;
           }
 
           .leadership-node {
@@ -203,8 +219,8 @@ const OrganizationStructure = () => {
           }
 
           .department-node {
-            background: #f0fdf4;
-            border-color: #bbf7d0;
+            background: #ecfdf5;
+            border-color: #34d399;
           }
 
           .faculty-node {
@@ -217,15 +233,6 @@ const OrganizationStructure = () => {
             border-color: #d1d5db;
           }
 
-          .org-position {
-            font-weight: 600;
-            color: #111827;
-            font-size: 14px;
-            line-height: 1.4;
-            white-space: normal;
-          }
-
-          /* Responsive */
           @media (max-width: 768px) {
             .org-heading {
               font-size: 2rem;
@@ -238,23 +245,25 @@ const OrganizationStructure = () => {
             .org-level {
               flex-direction: column;
               align-items: center;
-              gap: 14px;
-              margin-bottom: 14px;
+              gap: 16px;
+              margin-bottom: 20px;
             }
 
             .org-node {
-              min-width: calc(100% - 28px);
+              min-width: 100%;
               max-width: 100%;
               margin-bottom: 0;
             }
 
-            .org-connector.vertical-down,
-            .org-connector.horizontal-left {
-              display: none;
+            .org-sublist {
+              padding-left: 0;
+              text-align: center;
+              gap: 4px;
             }
 
-            .flex-col.gap-10 {
-              gap: 14px;
+            .org-connector.vertical,
+            .org-connector.vertical-down {
+              display: none;
             }
           }
         `}</style>

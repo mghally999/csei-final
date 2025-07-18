@@ -5,30 +5,6 @@ import { motion } from "framer-motion";
 
 const leadershipTeam = [
   {
-    id: 1,
-    name: "Mr. Roshan Gautam",
-    position: "General Manager",
-    image: "/assets/img/leadership/Mr-Roshan.png",
-    bio: `Since 2018, CSEI Academy has created a legacy of safe and vibrant learning and ranks among educational institutions. Being constant fixture in the list of educational institution accrediated by KHDA, we are proud to be a choice for all discerning individuals and parents.
-
-You can look forward to encouraging a highly intensive challenging academic program that will ensure all students become critical thinkers, active problem-solvers, inquisitive readers, diligent researchers.
-
-Each year we reflect on our achievements and rejoice at all that we have done in the past years. Though much has changed over the years, our promise remains the same. Our sustained success over the years is a direct result of our strategic vision and execution.`,
-  },
-  {
-    id: 2,
-    name: "Dr. Apollo Serafico",
-    position: "Director of Academic Affairs",
-    image: "/assets/img/leadership/Mr-Apolo.png",
-    bio: `CSEI Academy is an excellent place for students from diverse background to grow educationally, get involved professionally and have a meaningful experience. We offer the best educational experience available today. More than qualifications, the CSEI promotes strong values and global leadership to our student community.
-
-Our Mission is to provide a transformative educational experience that not only equips students with knowledge and skills but also fosters critical thinking, creativity and ethical values.
-
-I believe that education is a partnership between the Academy, Individual, parents, and the community. Together, we can nurture a culture of excellence, resilience, and mutual respect that prepares our students for academic success and beyond.
-
-Thank you for visiting our website. We invite you to explore more about our academic programs and the many opportunities available at CSEI Academy.`,
-  },
-  {
     id: 3,
     name: "Mr. Suhail Ahmed Mohammed",
     position: "Board Member",
@@ -43,12 +19,37 @@ We are confident that every student at CSEI Academy will find the tools, encoura
 
 Thank you for being a part of our journey.`,
   },
+  {
+    id: 1,
+    name: "Mr. Roshan Gautam",
+    position: "General Manager",
+    image: "/assets/img/leadership/Mr-Roshan.png",
+    bio: `Since 2018, CSEI Academy has created a legacy of safe and vibrant learning and ranks among educational institutions. Being constant fixture in the list of educational institution accredited by KHDA, we are proud to be a choice for all discerning individuals and parents.
+
+You can look forward to encouraging a highly intensive challenging academic program that will ensure all students become critical thinkers, active problem-solvers, inquisitive readers, diligent researchers.
+
+Each year we reflect on our achievements and rejoice at all that we have done in the past years. Though much has changed over the years, our promise remains the same. Our sustained success over the years is a direct result of our strategic vision and execution.`,
+  },
+  {
+    id: 2,
+    name: "Dr. Apollo Serafico",
+    position: "Head of Academics",
+    image: "/assets/img/leadership/Mr-Apolo.png",
+    bio: `CSEI Academy is an excellent place for students from diverse backgrounds to grow educationally, get involved professionally and have a meaningful experience. We offer the best educational experience available today. More than qualifications, the CSEI promotes strong values and global leadership to our student community.
+
+Our Mission is to provide a transformative educational experience that not only equips students with knowledge and skills but also fosters critical thinking, creativity and ethical values.
+
+I believe that education is a partnership between the Academy, Individual, parents, and the community. Together, we can nurture a culture of excellence, resilience, and mutual respect that prepares our students for academic success and beyond.
+
+Thank you for visiting our website. We invite you to explore more about our academic programs and the many opportunities available at CSEI Academy.`,
+  },
 ];
 
 export default function Leadership() {
   return (
     <section className="layout-pb-lg" style={{ backgroundColor: "#f8f9fc" }}>
-      <div style={{ maxWidth: "1300px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "1300px", margin: "0 auto", padding: "0 16px" }}>
+        {/* Heading */}
         <h2
           style={{
             fontSize: "clamp(2.2rem, 6vw, 3.5rem)",
@@ -77,6 +78,7 @@ export default function Leadership() {
           />
         </h2>
 
+        {/* Team Members */}
         {leadershipTeam.map((member, index) => (
           <div
             key={member.id}
@@ -86,20 +88,21 @@ export default function Leadership() {
               flexWrap: "wrap",
               gap: "40px",
               marginBottom: "80px",
-              alignItems: "stretch",
+              alignItems: "center",
               justifyContent: "center",
             }}
           >
-            {/* IMAGE */}
+            {/* Image */}
             <motion.div
               initial={{ opacity: 0, x: index % 2 === 1 ? 30 : -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               style={{
-                flex: "1 1 400px",
+                flex: "1 1 450px",
+                maxWidth: "500px",
                 borderRadius: "20px",
                 overflow: "hidden",
-                boxShadow: "0 30px 60px rgba(0, 0, 0, 0.15)",
+                boxShadow: "0 30px 60px rgba(0, 0, 0, 0.1)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -108,26 +111,25 @@ export default function Leadership() {
               <Image
                 src={member.image}
                 alt={member.name}
-                width={600}
-                height={400}
+                width={500}
+                height={500}
                 style={{
                   width: "100%",
                   height: "100%",
                   objectFit: "cover",
-                  objectPosition: "center",
                   borderRadius: "20px",
                 }}
                 priority
               />
             </motion.div>
 
-            {/* TEXT */}
+            {/* Text */}
             <motion.div
               initial={{ opacity: 0, x: index % 2 === 1 ? -30 : 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               style={{
-                flex: "1 1 400px",
+                flex: "1 1 450px",
                 minWidth: "300px",
                 display: "flex",
                 flexDirection: "column",
@@ -164,7 +166,7 @@ export default function Leadership() {
                   lineHeight: "1.8",
                   maxWidth: "700px",
                   textAlign: "justify",
-                  whiteSpace: "pre-line", // ✅ Allows \n to break into new lines
+                  whiteSpace: "pre-line",
                 }}
               >
                 {member.bio}
