@@ -1,52 +1,56 @@
 export const testimonials = [
   {
+    id: 6,
+    imageSrc: "/assets/img/testimonials/Sushmita.jpeg",
+    name: "Sushmita Budathoki",
+    position: "Graduate from CSEI",
+    comment: "Guided from A to Z",
+    description:
+      "CSEI Academy gave me proper guidance from the admission process to my placement. The staff was very helpful and supported me a lot. Highly recommended!",
+  },
+  {
     id: 1,
-    imageSrc:
-      "https://ui-avatars.com/api/?name=Smarika+Basnet&background=3B82F6&color=fff",
+    imageSrc: "/assets/img/testimonials/Alka-Thulung.jpg",
+    name: "Alka Thulung",
+    position: "Long-term Student",
+    comment: "Years of positive experience",
+    description:
+      "It has been more than years that I have been connected with CSEI and I had the best experience ever. Everyone there is cooperative and friendly. I guarantee you will not regret it!",
+  },
+  {
+    id: 3,
+    imageSrc: "/assets/img/testimonials/Pujan-Yugi.jpeg",
+    name: "Pujan Yogikarki",
+    position: "Student at CSEI Academy",
+    comment: "Living the dream",
+    description:
+      "Thank you so much for this opportunity to study my dream subject in Dubai. Best staff, best teachers—overall no complaints. Thank you, CSEI Academy family!",
+  },
+  {
+    id: 5,
+    imageSrc: "/assets/img/testimonials/Srijana-Khadka.jpg",
+    name: "Srijana Khadka",
+    position: "Student at CSEI Academy",
+    comment: "Glad to be a part",
+    description:
+      "With supportive environment and quality of education, I’m glad to be a part of this college. Thank you for all of this, CSEI Academy.",
+  },
+  {
+    id: 2,
+    imageSrc: "/assets/img/testimonials/Dipana-Khatri.jpg",
+    name: "Dipana Khatri",
+    position: "Student at CSEI Academy",
+    comment: "Grateful for CSEI support",
+    description:
+      "Very good college, with cooperative staff and well-educated instructors. Thank you for all of this, CSEI Academy.",
+  },
+  {
+    id: 4,
+    imageSrc: "/assets/img/testimonials/Smarika-Basnet.jpeg",
     name: "Smarika Basnet",
     position: "Student at CSEI Academy",
     comment: "Truly enriching experience",
     description:
       "The college provides a supportive learning environment with knowledgeable faculty dedicated to student growth.",
-  },
-  {
-    id: 2,
-    imageSrc:
-      "https://ui-avatars.com/api/?name=Urmila+Shrestha&background=475569&color=fff",
-    name: "Urmila Shrestha",
-    position: "Student at CSEI Academy",
-    comment: "High standards & strong support",
-    description:
-      "Extremely pleased with CSEI Academy’s professional development, student support, and high-quality education.",
-  },
-  {
-    id: 3,
-    imageSrc:
-      "https://ui-avatars.com/api/?name=Shrejal+Magar&background=06B6D4&color=fff",
-    name: "Shrejal Magar",
-    position: "Nursing Graduate",
-    comment: "From student to DHA holder",
-    description:
-      "I had a great experience with CSEI Academy. I’m now a DHA holder nurse because of their guidance and support.",
-  },
-  {
-    id: 4,
-    imageSrc:
-      "https://ui-avatars.com/api/?name=Sushmita+Budathoki&background=9333EA&color=fff",
-    name: "Sushmita Budathoki",
-    position: "Student at CSEI Academy",
-    comment: "Guided through every step",
-    description:
-      "CSEI guided me from the admission process to placement. The staff was very supportive. Highly recommended!",
-  },
-  {
-    id: 5,
-    imageSrc:
-      "https://ui-avatars.com/api/?name=Alka+Thulung&background=F97316&color=fff",
-    name: "Alka Thulung",
-    position: "Long-term Student",
-    comment: "Years of positive experience",
-    description:
-      "I’ve been with CSEI for years. The staff is cooperative and friendly. Best experience ever—I guarantee you won’t regret it!",
   },
 ];

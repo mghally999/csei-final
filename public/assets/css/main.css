@@ -6683,7 +6683,7 @@ h6 {
   padding: 30px;
   padding-bottom: 20px;
   color: #ffffff;
-  height: 300px !important;
+  height: 100% !important;
 }
 
 .testimonials.-type-1 .testimonials__title {

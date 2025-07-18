@@ -3,13 +3,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { FiArrowRight } from "react-icons/fi";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCheck,
-  faPhoneAlt,
-  faEnvelope,
-} from "@fortawesome/free-solid-svg-icons";
 import ApplicationFormModal from "@/components/ApplicationFormModal";
 
 const BrandColors = {
@@ -20,42 +13,72 @@ const BrandColors = {
   border: "#FFFFFF22",
 };
 
-const ListItem = ({ text }) => (
-  <motion.li
-    initial={{ opacity: 0, x: -10 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.3 }}
-    style={{
-      display: "flex",
-      alignItems: "flex-start",
-      marginBottom: "12px",
-      fontSize: "16px",
-      lineHeight: "1.6",
-      color: BrandColors.lightText,
-      fontWeight: 500,
-    }}
-  >
-    <span
+// ✅ Enhanced ListItem
+const ListItem = ({ text }) => {
+  const rawText = typeof text === "string" ? text : text?.text || "";
+  const isHTML = typeof text === "object" && text.isHTML;
+
+  const isDotItem =
+    rawText.startsWith("Begin your admission process") ||
+    rawText.startsWith("Once your application is reviewed") ||
+    rawText.startsWith(
+      "CSEI Academy provides complete assistance for international students"
+    );
+
+  const isSectionTitle =
+    rawText === "1. Personal Documents" ||
+    rawText === "2. Academic Documents" ||
+    rawText === "3. Payment & Fees" ||
+    rawText === "4. Parents Name";
+
+  const showIcon = !isDotItem && !isSectionTitle;
+
+  return (
+    <motion.li
+      initial={{ opacity: 0, x: -10 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.3 }}
       style={{
-        width: "24px",
-        height: "24px",
-        backgroundColor: BrandColors.accent,
-        color: "#fff",
-        borderRadius: "50%",
-        display: "inline-flex",
-        justifyContent: "center",
-        alignItems: "center",
-        fontSize: "14px",
-        marginRight: "10px",
-        flexShrink: 0,
+        display: "flex",
+        alignItems: "flex-start",
+        marginBottom: "12px",
+        fontSize: isSectionTitle ? "18px" : "16px",
+        lineHeight: "1.6",
+        color: BrandColors.lightText,
+        fontWeight: isSectionTitle ? 700 : 500,
+        whiteSpace: "pre-line",
       }}
     >
-      ✓
-    </span>
-    {text}
-  </motion.li>
-);
+      {showIcon && (
+        <span
+          style={{
+            width: "24px",
+            height: "24px",
+            backgroundColor: isDotItem ? "transparent" : BrandColors.accent,
+            color: isDotItem ? BrandColors.accent : "#fff",
+            borderRadius: "50%",
+            display: "inline-flex",
+            justifyContent: "center",
+            alignItems: "center",
+            fontSize: isDotItem ? "22px" : "14px",
+            marginRight: "10px",
+            flexShrink: 0,
+          }}
+        >
+          {isDotItem ? "•" : "✓"}
+        </span>
+      )}
 
+      {isHTML ? (
+        <span dangerouslySetInnerHTML={{ __html: rawText }} />
+      ) : (
+        rawText
+      )}
+    </motion.li>
+  );
+};
+
+// ✅ Section Wrapper
 const Section = ({ title, children }) => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
@@ -90,7 +113,9 @@ export default function InternationalStudentsGuide() {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const fullParagraph = `Begin your admission process by completing and submitting the official application form online or via email. Make sure to provide all required personal and academic information accurately.\n\nOnce your application is reviewed, you may receive a conditional or official offer letter if you meet the CSEI Academy eligibility criteria. This offer letter confirms your selection for further admission steps and outlines any additional requirements or next actions.`;
+  const fullParagraph1 = `Begin your admission process by completing and submitting the official application form online or via email. Make sure to provide all required personal and academic information accurately.`;
+
+  const fullParagraph2 = `Once your application is reviewed, you may receive a conditional or official offer letter if you meet the CSEI Academy eligibility criteria. This offer letter confirms your selection for further admission steps and outlines any additional requirements or next actions.`;
 
   const footerNote = `\n\nPlease note that visa charges are set by Government Authorities and may be subject to change. All charges are inclusive of VAT. Fees are subject to change dependent on the exchange rate at the time of payment.`;
 
@@ -100,7 +125,8 @@ export default function InternationalStudentsGuide() {
     {
       title: "Admission Requirements for International Applicants",
       points: [
-        fullParagraph,
+        fullParagraph1,
+        fullParagraph2,
         "Complete the online application.",
         "Upload all supporting documents (Transcripts, certificates, and proof of English proficiency)",
         "Applications are assessed based on academic qualifications and program capacity.",
@@ -109,13 +135,16 @@ export default function InternationalStudentsGuide() {
       ],
     },
     {
-      title: "CSEI Support for Students",
+      title: "CSEI Academy Support for Students",
       points: [
         "Guidance on required documents",
         "Support through visa and admission consultants",
         "Reference to trusted attestation & translation agencies",
         "Help with MOFA attestation in the UAE",
-        "If you need support during the application process, please contact the counsellors through the website or email at admission@cseiacademy.ae for personalized assistance and guidance.",
+        {
+          isHTML: true,
+          text: `If you need support during the application process, please contact the counsellors through the website or email at <strong>admission@cseiacademy.ae</strong> for personalized assistance and guidance.`,
+        },
       ],
     },
     {
@@ -130,7 +159,7 @@ export default function InternationalStudentsGuide() {
     {
       title: "Visa Types Available",
       points: [
-        "Short-Term Student Visa (up to 90 days)\nIdeal for short courses like:\n• DHA / MOH / HAAD licensing programs\n• Crash courses, language training, or certifications",
+        "Short-Term Student Visa\nIdeal for short courses like:\n• DHA / MOH / HAAD licensing programs\n• Crash courses, language training, or certifications",
         "Long-Term Student Visa (1 year)\nSuitable for:\n• Diploma, Advanced Diploma, or Degree programs",
       ],
     },
@@ -157,13 +186,16 @@ export default function InternationalStudentsGuide() {
         "Admission/Offer Letter from CSEI Academy",
         "3. Payment & Fees",
         "Visa processing fee (paid to CSEI Academy)",
+        "4. Parents Name",
+        "Passport copies of both parents",
+        "Valid Emirates ID if available",
       ],
     },
     {
       title: "Visa Processing Time",
       points: [
         "Short-term visa: 7–10 working days",
-        "Long-term visa: 10–14 working days (after medical & ID processing)",
+        "Long-term visa: 10–15 working days (after medical & ID processing)",
       ],
     },
     {
@@ -195,16 +227,13 @@ export default function InternationalStudentsGuide() {
         "The process takes approximately 15–20 days and student presence will be required during the entire renewal process.",
         "If the student visa is not being renewed then after expiry of the visa, it needs to be cancelled and the cancellation charges for cancellation of the visa will have to be paid by the student.",
         "A Visa renewal form needs to be filled along with signing the visa terms and conditions and student undertaking forms",
-        "The Student Visa Renewal fees of AED 3,500 is inclusive of: Visa renewal fees, Medical fees, Emirates ID and Medical Insurance",
+        "The Student Visa Renewal fees of AED 5,000 is inclusive of: Visa renewal fees, Medical fees and Emirates ID",
       ],
     },
     {
       title: "Visa Cancellation Charges (AED & USD)",
       points: [
-        "• Entry Permit Cancellation – 1200 AED, 330 USD.",
-        "• Residence Visa Cancellation – if in country – 1500 AED, 410 USD.",
-        "• Residence Visa Cancellation – Out of UAE with Passport – 2000 AED, 550 USD.",
-        "• Residence Visa Cancellation – Out of UAE without Passport – 4400 AED, 1200 USD.",
+        "• Visa Cancellation and Immigration Status Print - 816 AED",
         footerNote,
       ],
     },

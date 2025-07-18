@@ -8,7 +8,7 @@ const leadershipTeam = [
     id: 1,
     name: "Mr. Roshan Gautam",
     position: "General Manager",
-    image: "/assets/img/leadership/Mr-Roshan.jpeg",
+    image: "/assets/img/leadership/Mr-Roshan.png",
     bio: `Since 2018, CSEI Academy has created a legacy of safe and vibrant learning and ranks among educational institutions. Being constant fixture in the list of educational institution accrediated by KHDA, we are proud to be a choice for all discerning individuals and parents.
 
 You can look forward to encouraging a highly intensive challenging academic program that will ensure all students become critical thinkers, active problem-solvers, inquisitive readers, diligent researchers.
@@ -19,7 +19,7 @@ Each year we reflect on our achievements and rejoice at all that we have done in
     id: 2,
     name: "Dr. Apollo Serafico",
     position: "Director of Academic Affairs",
-    image: "/assets/img/leadership/Mr-Apolo.jpeg",
+    image: "/assets/img/leadership/Mr-Apolo.png",
     bio: `CSEI Academy is an excellent place for students from diverse background to grow educationally, get involved professionally and have a meaningful experience. We offer the best educational experience available today. More than qualifications, the CSEI promotes strong values and global leadership to our student community.
 
 Our Mission is to provide a transformative educational experience that not only equips students with knowledge and skills but also fosters critical thinking, creativity and ethical values.
@@ -32,7 +32,7 @@ Thank you for visiting our website. We invite you to explore more about our acad
     id: 3,
     name: "Mr. Suhail Ahmed Mohammed",
     position: "Board Member",
-    image: "/assets/img/leadership/Mr-Suhail.jpeg",
+    image: "/assets/img/leadership/Mr-Suhail.png",
     bio: `It is with great pride that I extend a warm welcome to all students, parents and visitors to the academy on behalf of the CSEI Academy leadership team.
 
 As a Member of the Board of CSEI Academy, I am passionately committed to the pursuit of academic excellence, innovation and integrity. Education today must go beyond the classroom, it must empower students to think independently, act responsibly, and contribute meaningfully to the world around them.
@@ -47,7 +47,7 @@ Thank you for being a part of our journey.`,
 
 export default function Leadership() {
   return (
-    <section className="custom-padding" style={{ backgroundColor: "#f8f9fc" }}>
+    <section className="layout-pb-lg" style={{ backgroundColor: "#f8f9fc" }}>
       <div style={{ maxWidth: "1300px", margin: "0 auto" }}>
         <h2
           style={{

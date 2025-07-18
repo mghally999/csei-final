@@ -137,7 +137,7 @@ export default function Mission() {
                   <div className="point">
                     <div className="point-number">01</div>
                     <div className="point-text">
-                      Our dedicated mentors provide{" "}
+                      Our dedicated mentors provide
                       <strong>personalized support</strong> to learners from all
                       backgrounds.
                     </div>
@@ -160,13 +160,6 @@ export default function Mission() {
                     </div>
                   </div>
                 </div>
-
-                <button className="cta-button">
-                  <span>Apply Now</span>
-                  <svg viewBox="0 0 24 24" className="arrow-icon">
-                    <path d="M5 12H19M19 12L12 5M19 12L12 19" />
-                  </svg>
-                </button>
               </div>
             </div>
           </div>
