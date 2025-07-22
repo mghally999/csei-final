@@ -12,8 +12,7 @@ import { FiCompass, FiAward, FiSearch } from "react-icons/fi";
 const categories = [
   "Health & Social Care",
   "Business & Management",
-  "Travel & Tourism",
-  "Culinary Arts",
+  "Culinary Arts & Tourism",
   "Information Technology",
 ];
 
@@ -68,8 +67,11 @@ const CourseListOne = () => {
       const categoryMap = {
         "Health & Social Care": "Health Science Discipline",
         "Business & Management": "Business Discipline",
-        "Travel & Tourism": ["Tourism", "Hospitality"],
-        "Culinary Arts": "Professional Courses",
+        "Culinary Arts & Tourism": [
+          "Tourism",
+          "Hospitality",
+          "Professional Courses",
+        ],
         "Information Technology": "Computing Discipline",
       };
 

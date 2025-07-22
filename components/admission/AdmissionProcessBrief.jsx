@@ -94,7 +94,7 @@ export default function AdmissionGuide() {
 
   const sections = [
     {
-      title: "Admission Steps",
+      title: "Steps For Applying Your Qualification",
       points: [
         "Step 1: Submit application form with required documents",
         "Step 2: Application review and virtual interview",

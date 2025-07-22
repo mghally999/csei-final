@@ -82,15 +82,6 @@ export default function Page() {
                         className="logo-image"
                       />
                     </div>
-                    <div className="logo-box">
-                      <Image
-                        src="/assets/img/logos/KHDA-logo.png"
-                        alt="KHDA Accredited"
-                        width={200}
-                        height={100}
-                        className="logo-image"
-                      />
-                    </div>
                   </div>
                 )}
               </div>

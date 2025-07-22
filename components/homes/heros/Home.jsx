@@ -178,16 +178,6 @@ export default function HomeHeroSlider() {
                           priority
                         />
                       </div>
-                      <div className="responsive-logo-container">
-                        <Image
-                          src="/assets/img/logos/KHDA-logo.png"
-                          alt="KHDA Accredited"
-                          width={120}
-                          height={50}
-                          className="responsive-logo-img"
-                          priority
-                        />
-                      </div>
                     </div>
                   </>
                 )}

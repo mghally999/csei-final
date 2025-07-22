@@ -150,7 +150,7 @@ export default function PlacementProcess() {
         </motion.div>
 
         <div style={{ marginBottom: "60px" }}>
-          <StepCard title="Career-Ready Graduates">
+          <StepCard title=" Career Ready Professionals">
             <p
               style={{
                 fontSize: "16px",

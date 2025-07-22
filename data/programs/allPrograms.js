@@ -24,7 +24,7 @@ const allPrograms = [
       "Level 3 IT qualification or equivalent experience",
       "Basic programming knowledge (Python/JavaScript)",
       "Understanding of computer networks fundamentals",
-      "English language proficiency (IELTS 5.5 or equivalent)",
+      // "English language proficiency (IELTS 5.5 or equivalent)",
       "Strong analytical and problem-solving skills",
     ],
     qualificationStructureText:
@@ -52,6 +52,12 @@ const allPrograms = [
       "IT Project Coordinator",
       "Systems Analyst",
     ],
+    fees: {
+      tuition: 12500,
+      visa: 3500,
+      registration: 1000,
+      currency: "AED",
+    },
     universityProgression: `Successful completion of the Level 4 Diploma in Information Technology provides learners with the academic foundation to progress to the OTHM Level 5 Diploma in Information Technology. As this qualification is regulated by Ofqual (Office of the Qualifications and Examinations Regulation), learners may also be eligible for direct entry into the second year of a UK university Bachelor's degree in related disciplines such as Computing, Software Engineering, or IT Management. For more details, please visit the University Progressions page on this website.`,
   },
   {
@@ -79,7 +85,7 @@ const allPrograms = [
       "OTHM Level 4 Diploma in IT or equivalent",
       "Proficiency in at least one programming language",
       "Understanding of database and network concepts",
-      "English language proficiency (IELTS 6.0 or equivalent)",
+      // "English language proficiency (IELTS 6.0 or equivalent)",
       "Minimum 6 months IT work experience recommended",
     ],
     qualificationStructureText:
@@ -107,6 +113,12 @@ const allPrograms = [
       "Data Analyst",
       "Systems Administrator",
     ],
+    fees: {
+      tuition: 12500,
+      visa: 3500,
+      registration: 1000,
+      currency: "AED",
+    },
     universityProgression: `The Level 5 Diploma in Information Technology enables learners to advance to higher-level qualifications such as the OTHM Level 6 Diploma or progress to the final year of a three-year UK Bachelor’s degree in IT, Computer Science, or related fields, subject to university acceptance criteria. This qualification is approved and regulated by Ofqual (Office of the Qualifications and Examinations Regulation), ensuring strong academic recognition. For more information, please refer to the University Progressions section of this website.`,
   },
   {
@@ -163,6 +175,12 @@ const allPrograms = [
       "Domiciliary Care Provider",
       "Special Educational Needs Assistant",
     ],
+    fees: {
+      tuition: 12500,
+      visa: 3500,
+      registration: 1000,
+      currency: "AED",
+    },
     universityProgression: `Successful completion of the Level 3 Diploma in Health and Social Care Management qualification provides learners the opportunity for a wide range of academic progressions including progression to relevant OTHM Level 4 Diplomas. As this qualification is approved and regulated by Ofqual (Office of the Qualifications and Examinations Regulation), learners are eligible to gain direct entry into Level 4 programmes in Health and Social Care or related fields. For more information visit University Progressions page in this website.`,
   },
   {
@@ -189,7 +207,7 @@ const allPrograms = [
     entryRequirements: [
       "Level 3 qualification in Health and Social Care or related field",
       "Minimum 6 months experience in care role (paid or voluntary)",
-      "IELTS 5.5 or equivalent for non-native English speakers",
+      // "IELTS 5.5 or equivalent for non-native English speakers",
       "Current DBS check for placement components",
       "Commitment to 100 hours of work-based learning",
     ],
@@ -218,6 +236,12 @@ const allPrograms = [
       "Health Promotion Specialist",
       "Social Care Assessor",
     ],
+    fees: {
+      tuition: 12500,
+      visa: 3500,
+      registration: 1000,
+      currency: "AED",
+    },
     universityProgression: `Successful completion of Level 4 Diploma in Health and Social Care Management qualification provides learners the opportunity for a wide range of academic progressions including progression to relevant OTHM Level 5 Diplomas. As this qualification is approved and regulated by Ofqual (Office of the Qualifications and Examinations Regulation), learners are eligible to gain direct entry into Year 2 of a three-year UK Bachelor’s degree programme. For more information visit University Progressions page in this website.`,
   },
   {
@@ -273,6 +297,12 @@ const allPrograms = [
       "Commissioning Manager in CCGs",
       "Director of Adult Social Services",
     ],
+    fees: {
+      tuition: 12500,
+      visa: 3500,
+      registration: 1000,
+      currency: "AED",
+    },
     universityProgression: `Successful completion of the OTHM Level 5 Diploma in Health and Social Care Management qualification provides learners the opportunity for a wide range of academic progressions including progression to relevant OTHM Level 6 Diplomas. The Level 5 Diploma in Health and Social Care Management has been developed with career progression and professional recognition in mind As this qualification is approved and regulated by Ofqual (Office of the Qualifications and Examinations Regulation), learners are eligible to gain direct entry into Final year of a three-year UK Bachelor’s degree.`,
   },
   {
@@ -341,6 +371,12 @@ const allPrograms = [
     imageSrc: "/assets/img/coursesCards/tourism-hospitality.jpg",
     duration: "1 Year",
     qualificationStructure: "120 credits | 6 Mandatory Units",
+    fees: {
+      tuition: 12500,
+      visa: 3500,
+      registration: 1000,
+      currency: "AED",
+    },
     overview: [
       "This comprehensive diploma provides foundational knowledge for careers in the dynamic tourism and hospitality industry.",
       "Students gain practical skills in customer service, operations management, and tourism marketing through real-world projects.",
@@ -356,7 +392,7 @@ const allPrograms = [
     ],
     entryRequirements: [
       "Level 3 qualification or equivalent work experience",
-      "IELTS 5.5 or equivalent English proficiency",
+      // "IELTS 5.5 or equivalent English proficiency",
       "Passion for customer service and travel industry",
       "Basic computer literacy for reservation systems",
       "Flexibility for shift work and placements",
@@ -441,6 +477,12 @@ const allPrograms = [
       "Corporate Travel Manager",
       "Cruise Director",
     ],
+    fees: {
+      tuition: 12500,
+      visa: 3500,
+      registration: 1000,
+      currency: "AED",
+    },
     universityProgression: [
       "Final year entry to BA/BSc Tourism degrees",
       "MBA in Hospitality Management pathways",
@@ -1020,6 +1062,12 @@ const allPrograms = [
       "Office Manager",
       "Customer Service Team Leader",
     ],
+    fees: {
+      tuition: 12500,
+      visa: 3500,
+      registration: 1000,
+      currency: "AED",
+    },
     universityProgression: `Successful completion of the OTHM Level 3 Foundation Diploma in Business Management enables learners to progress to OTHM Level 4 Diplomas or equivalent qualifications in a variety of business-related areas. This foundation qualification supports access to higher-level study and opens academic opportunities in business, administration, and management. For more information, visit the University Progressions page on this website.`,
   },
   {
@@ -1045,7 +1093,7 @@ const allPrograms = [
     ],
     entryRequirements: [
       "Level 3 qualification or relevant work experience",
-      "IELTS 5.5 or equivalent English proficiency",
+      // "IELTS 5.5 or equivalent English proficiency",
       "Basic understanding of business concepts",
       "Strong numeracy and literacy skills",
       "Commitment to 15 hours weekly study",
@@ -1074,6 +1122,12 @@ const allPrograms = [
       "HR Administrator",
       "Operations Team Leader",
     ],
+    fees: {
+      tuition: 12500,
+      visa: 3500,
+      registration: 1000,
+      currency: "AED",
+    },
     universityProgression: `Successful completion of the OTHM Level 4 Diploma in Business Management provides learners the opportunity for a wide range of academic progressions, including the OTHM Level 5 Extended Diploma in Business Management. As this qualification is approved and regulated by Ofqual (Office of the Qualifications and Examinations Regulation), learners are also eligible to gain direct entry into Year 2 of a three-year UK Bachelor’s degree programme.`,
   },
   {
@@ -1129,6 +1183,12 @@ const allPrograms = [
       "Operations Director",
       "Entrepreneur/Business Owner",
     ],
+    fees: {
+      tuition: 12500,
+      visa: 3500,
+      registration: 1000,
+      currency: "AED",
+    },
     universityProgression: `Successful completion of the OTHM Level 5 Diploma in Business Management provides learners the opportunity for a wide range of academic progressions, including the OTHM Level 6 Diploma in Business Management. As this qualification is approved and regulated by Ofqual (Office of the Qualifications and Examinations Regulation), learners are eligible to gain direct entry into the final year of a three-year UK Bachelor’s degree programme.`,
   },
 ];

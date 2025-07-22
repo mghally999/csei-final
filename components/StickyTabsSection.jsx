@@ -10,6 +10,7 @@ import { AssessmentVerification } from "@/components/programs/AssessmentVerifica
 import { CareerOpportunities } from "@/components/programs/CareerOpportunities";
 import { UniversityProgression } from "@/components/programs/UniversityProgression";
 import SampleCertificate from "@/components/programs/SampleCertificate";
+import { TuitionFees } from "@/components/programs/TuitionFees";
 
 export default function StickyTabsSection({ program }) {
   const [activeTab, setActiveTab] = useState(1);
@@ -21,7 +22,7 @@ export default function StickyTabsSection({ program }) {
   const sidebarRef = useRef(null);
   const lastSectionRef = useRef(null);
 
-  // Base menu
+  // Base menu with Tuition Fees added
   const baseMenuItems = [
     { id: 1, text: "Overview" },
     { id: 2, text: "Why CSEI?" },
@@ -30,6 +31,7 @@ export default function StickyTabsSection({ program }) {
     { id: 5, text: "Qualification Units" },
     { id: 6, text: "Assessment and Verification" },
     { id: 7, text: "Career Opportunities" },
+    { id: 10, text: "Tuition Fees" },
   ];
 
   const menuItems = [...baseMenuItems];
@@ -40,7 +42,7 @@ export default function StickyTabsSection({ program }) {
     menuItems.push({ id: 9, text: "University Progression" });
   }
 
-  // Sections
+  // Sections with Tuition Fees component
   const sections = [
     { id: 1, Component: Overview, props: { data: program.overview } },
     { id: 2, Component: WhyCSEI, props: { data: program.whyCSEI } },
@@ -65,6 +67,13 @@ export default function StickyTabsSection({ program }) {
       Component: CareerOpportunities,
       props: { data: program.careerOpportunities },
     },
+    {
+      id: 10,
+      Component: TuitionFees,
+      props: {
+        program, // Pass full program object
+      },
+    },
   ];
 
   if (!program.professional) {
@@ -82,6 +91,9 @@ export default function StickyTabsSection({ program }) {
       },
     });
   }
+
+  // Sort sections to maintain correct order
+  sections.sort((a, b) => a.id - b.id);
 
   // Scrollspy
   useEffect(() => {
@@ -208,7 +220,7 @@ export default function StickyTabsSection({ program }) {
 
         .sidebar.sticky {
           position: fixed;
-          top: 170px;
+          top: 167px;
           z-index: 20;
         }
 
@@ -223,7 +235,7 @@ export default function StickyTabsSection({ program }) {
           width: 100%;
           padding: 0.75rem 1rem;
           text-align: left;
-          margin-bottom: 1rem;
+          margin-bottom: 10px;
           background: #f9fafb;
           color: #1f2937;
           border-radius: 6px;

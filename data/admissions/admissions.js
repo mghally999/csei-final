@@ -172,7 +172,7 @@ export const admissionRequirements = {
         title: "Application Requirements",
         items: [
           "Academic transcripts (evaluated)",
-          "English proficiency (IELTS/TOEFL)",
+          "English proficiency (TOEFL)",
           "Financial documentation",
           "Passport copy",
         ],

@@ -302,7 +302,7 @@ export default function AdmissionProcess() {
                 textAlign: "center",
               }}
             >
-              Admission Steps
+              Steps For Applying Your Qualification
             </motion.h3>
 
             {/* Step 1 */}

@@ -183,8 +183,7 @@ export default function ApplyNowGuide() {
     },
     {
       document: "7. English Language Test (if applicable)",
-      description:
-        "IELTS / TOEFL / PTE score (optional for some nationalities)",
+      description: "TOEFL / PTE score (optional for some nationalities)",
     },
     {
       document: "8. Experience Letter (if applicable)",

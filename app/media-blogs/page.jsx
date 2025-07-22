@@ -14,8 +14,7 @@ const blogPosts = [
   {
     slug: "happy-holi",
     title: "Happy Holi: Celebrating the Vibrant Colors of Life",
-    image:
-      "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
+    image: "assets/img/media-blogs/happy-holi.jpeg",
     description:
       "Holi, the festival of colors, is here! This joyous occasion is a time to celebrate the arrival of spring, the victory of good over evil...",
     writer: "CSEI Academy",

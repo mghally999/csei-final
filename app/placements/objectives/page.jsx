@@ -89,7 +89,7 @@ export default function PlacementObjectivesPage() {
                 paddingBottom: "15px",
               }}
             >
-              Foster Career-Ready Graduates
+              Career Ready Professionals
             </h2>
 
             <p

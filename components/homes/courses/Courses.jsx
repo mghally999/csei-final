@@ -9,8 +9,7 @@ const categories = [
   "All Categories",
   "Health & Social Care",
   "Business & Management",
-  "Travel & Tourism",
-  "Culinary Arts",
+  "Culinary Arts & Tourism",
   "Information Technology",
 ];
 
@@ -50,17 +49,8 @@ export default function Courses() {
             return program.school === "Health Science Discipline";
           case "Business & Management":
             return program.school === "Business Discipline";
-          case "Travel & Tourism":
-            return (
-              program.school === "Culinary Arts & Tourism Discipline" &&
-              (program.category?.includes("Tourism") ||
-                program.category?.includes("Hospitality"))
-            );
-          case "Culinary Arts":
-            return (
-              program.school === "Culinary Arts & Tourism Discipline" &&
-              program.category === "Professional Courses"
-            );
+          case "Culinary Arts & Tourism":
+            return program.school === "Culinary Arts & Tourism Discipline";
           case "Information Technology":
             return program.school === "Computing Discipline";
           default:
