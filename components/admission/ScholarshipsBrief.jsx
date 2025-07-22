@@ -46,7 +46,7 @@ export default function ScholarshipsBrief() {
                 width={600}
                 height={400}
                 style={{ width: "100%", height: "auto", objectFit: "cover" }}
-                src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=2070&auto=format&fit=crop"
+                src="assets/img/life/scholarship.png"
                 alt="Scholarships and Financial Aid"
               />
             </div>

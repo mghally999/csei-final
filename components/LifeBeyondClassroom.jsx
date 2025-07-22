@@ -15,7 +15,7 @@ const LifeBeyondClassroom = () => {
       title: "Cultural Vibrancy",
       description:
         "Our campus comes alive with celebrations that honor diversity through festivals, talent shows, and art exhibitions that showcase our students' rich backgrounds.",
-      image: "assets/img/life-with-csei/life-beyond-classroom.jpg",
+      image: "assets/img/life/life-beyond-classroom.jpg",
       highlights: [
         "Annual international culture festival",
         "Student-led art exhibitions",
@@ -27,8 +27,7 @@ const LifeBeyondClassroom = () => {
       title: "Athletic Excellence",
       description:
         "State-of-the-art facilities and competitive programs foster teamwork, discipline, and healthy lifestyles through both recreational and varsity sports.",
-      image:
-        "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1000&auto=format&fit=crop",
+      image: "assets/img/life/athletic.png",
       highlights: [
         "Intramural sports leagues",
         "Fitness and wellness programs",

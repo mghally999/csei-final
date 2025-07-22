@@ -42,8 +42,8 @@ export default function ArrivalOrientationBrief() {
               <Image
                 width={600}
                 height={400}
-                style={{ width: "100%", height: "auto", objectFit: "cover" }}
-                src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?q=80&w=2070&auto=format&fit=crop"
+                style={{ width: "100%", height: "500px", objectFit: "cover" }}
+                src="assets/img/life/arrival-support.png"
                 alt="Arrival Orientation Support"
               />
             </div>

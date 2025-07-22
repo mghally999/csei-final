@@ -187,6 +187,7 @@ export default function StudentSatisfaction() {
 
         {/* Stats Section */}
         <div
+          className="custom-linear-blue-top"
           style={{
             backgroundColor: "#ffffff",
             borderRadius: "12px",
@@ -213,31 +214,30 @@ export default function StudentSatisfaction() {
               gap: "20px",
             }}
           >
-            {[
-              { value: "85%", label: "Current Employability Ratio" },
-              { value: "40", label: "Eligible Students" },
-            ].map((stat, index) => (
-              <div key={index} style={{ textAlign: "center" }}>
-                <div
-                  style={{
-                    fontSize: "28px",
-                    fontWeight: "700",
-                    color: "#000000",
-                    marginBottom: "8px",
-                  }}
-                >
-                  {stat.value}
+            {[{ value: "85%", label: "Current Employability Ratio" }].map(
+              (stat, index) => (
+                <div key={index} style={{ textAlign: "center" }}>
+                  <div
+                    style={{
+                      fontSize: "28px",
+                      fontWeight: "700",
+                      color: "#000000",
+                      marginBottom: "8px",
+                    }}
+                  >
+                    {stat.value}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "16px",
+                      color: "#4a5568",
+                    }}
+                  >
+                    {stat.label}
+                  </div>
                 </div>
-                <div
-                  style={{
-                    fontSize: "16px",
-                    color: "#4a5568",
-                  }}
-                >
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+              )
+            )}
           </div>
         </div>
 

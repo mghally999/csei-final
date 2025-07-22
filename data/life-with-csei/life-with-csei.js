@@ -1,4 +1,4 @@
-// data/life-with-csei.js
+// data/life.js
 
 export const lifeWithCSEIIntro = {
   title: "Life with CSEI Academy",
@@ -9,7 +9,7 @@ export const lifeWithCSEIIntro = {
   ],
   cta: {
     text: "Explore Student Life",
-    href: "/life-with-csei/overview",
+    href: "/life/overview",
   },
 };
 
@@ -23,7 +23,7 @@ export const lifeBeyondClassroom = {
     "Photos of sports meets, student events, and wellness sessions",
   cta: {
     text: "Our Core Values",
-    href: "/life-with-csei/core-values",
+    href: "/life/core-values",
   },
 };
 

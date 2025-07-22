@@ -312,32 +312,32 @@ export default function TuitionFeesFull() {
                 </thead>
                 <tbody>
                   {[
-                    {
-                      course: "Tourism & Hospitality Management - Level A",
-                      duration: "3 months",
-                      fee: "4000",
-                    },
-                    {
-                      course: "Tourism & Hospitality Management - Level B",
-                      duration: "6 months",
-                      fee: "6000",
-                    },
+                    // {
+                    //   course: "Tourism & Hospitality Management - Level A",
+                    //   duration: "3 months",
+                    //   fee: "4000",
+                    // },
+                    // {
+                    //   course: "Tourism & Hospitality Management - Level B",
+                    //   duration: "6 months",
+                    //   fee: "6000",
+                    // },
 
-                    {
-                      course: "Digital Marketing - Level A (Basic)",
-                      duration: "3 months",
-                      fee: "4000",
-                    },
-                    {
-                      course: "Digital Marketing - Level B (Advance)",
-                      duration: "6 months",
-                      fee: "6000",
-                    },
+                    // {
+                    //   course: "Digital Marketing - Level A (Basic)",
+                    //   duration: "3 months",
+                    //   fee: "4000",
+                    // },
+                    // {
+                    //   course: "Digital Marketing - Level B (Advance)",
+                    //   duration: "6 months",
+                    //   fee: "6000",
+                    // },
 
                     {
                       course: "Culinary Arts – Professional",
                       duration: "6 months + Internship",
-                      fee: "15000",
+                      fee: "15,000",
                     },
 
                     {
@@ -355,21 +355,20 @@ export default function TuitionFeesFull() {
                     {
                       course: "Business Management",
                       duration: "3 months",
-                      fee: "6000",
+                      fee: "4000",
                     },
 
                     {
-                      course:
-                        "Training Diploma in Housekeeping - Level A (Basic)",
+                      course: "Training Diploma in Housekeeping",
                       duration: "3 months",
                       fee: "4000",
                     },
-                    {
-                      course:
-                        "Training Diploma in Housekeeping - Level B (Advance)",
-                      duration: "6 months",
-                      fee: "6000",
-                    },
+                    // {
+                    //   course:
+                    //     "Training Diploma in Housekeeping - Level B (Advance)",
+                    //   duration: "6 months",
+                    //   fee: "6000",
+                    // },
 
                     {
                       course:
@@ -377,12 +376,12 @@ export default function TuitionFeesFull() {
                       duration: "3 months",
                       fee: "4000",
                     },
-                    {
-                      course:
-                        "HR Management in Tourism & Management - Level B (Advance)",
-                      duration: "6 months",
-                      fee: "6000",
-                    },
+                    // {
+                    //   course:
+                    //     "HR Management in Tourism & Management - Level B (Advance)",
+                    //   duration: "6 months",
+                    //   fee: "6000",
+                    // },
 
                     {
                       course: "Barista Training - Basic",

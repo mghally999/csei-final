@@ -15,11 +15,11 @@ export default function PlacementsPage() {
       {/* Hero Section */}
       <PlacementHero />
 
-      {/* Step-by-step Process Section */}
-      <PlacementProcess />
-
       {/* Placement Services Section */}
       <PlacementServices />
+
+      {/* Step-by-step Process Section */}
+      <PlacementProcess />
 
       {/* Student Feedback / Satisfaction Section */}
       <StudentSatisfaction />

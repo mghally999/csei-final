@@ -95,7 +95,7 @@ export default function PlacementServices() {
             }}
           >
             <Image
-              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
+              src="assets/img/life/placement-services.png"
               alt="Placement Services"
               width={500}
               height={350}

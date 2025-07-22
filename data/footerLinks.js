@@ -26,18 +26,18 @@ export const footerLinks = [
   {
     title: "Academy Life",
     links: [
-      { href: "/life-with-csei/lms", label: "LMS" }, // Updated to correct path
-      { href: "/life-with-csei/facilities", label: "Facilities" }, // Updated to correct path
-      { href: "/life-with-csei/student-portal", label: "Student Portal" }, // Updated to correct path
+      { href: "/life/lms", label: "LMS" }, // Updated to correct path
+      { href: "/life/facilities", label: "Facilities" }, // Updated to correct path
+      { href: "/life/student-portal", label: "Student Portal" }, // Updated to correct path
       { href: "/admission/student-voice", label: "Student Voice" },
-      { href: "/life-with-csei/alumni", label: "Alumni" }, // Updated to correct path
+      { href: "/life/alumni", label: "Alumni" }, // Updated to correct path
     ],
   },
   {
     title: "Student Support",
     links: [
       { href: "/contact-us", label: "Contact Us" }, // Updated to correct path
-      { href: "/life-with-csei/academic-mentoring", label: "Academic Support" }, // Updated to correct path
+      { href: "/life/academic-mentoring", label: "Academic Support" }, // Updated to correct path
       { href: "/placements", label: "Placement Guide" }, // Updated to correct path
     ],
   },

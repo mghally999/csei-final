@@ -10,36 +10,37 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const checkStyle = {
-  width: "28px",
-  height: "28px",
-  backgroundColor: "#000000",
-  color: "white",
-  borderRadius: "50%",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  fontSize: "16px",
-  fontWeight: "bold",
-  boxShadow: "0 4px 6px rgba(102, 51, 153, 0.3)",
-  marginRight: "12px",
-  flexShrink: 0,
-};
-
-const listItem = (text, index) => (
+const CheckItem = ({ text }) => (
   <motion.div
     initial={{ opacity: 0, x: -10 }}
     whileInView={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.3, delay: index * 0.05 }}
-    key={index}
+    transition={{ duration: 0.3 }}
     style={{ display: "flex", alignItems: "flex-start", marginBottom: "12px" }}
   >
-    <div style={checkStyle}>✓</div>
+    <div
+      style={{
+        width: "28px",
+        height: "28px",
+        backgroundColor: "#000000",
+        color: "white",
+        borderRadius: "50%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontSize: "16px",
+        fontWeight: "bold",
+        boxShadow: "0 4px 6px rgba(102, 51, 153, 0.3)",
+        marginRight: "12px",
+        flexShrink: 0,
+      }}
+    >
+      ✓
+    </div>
     <div
       style={{
         fontSize: "16px",
         lineHeight: "1.6",
-        color: "#fff",
+        color: "#ffffff",
         fontWeight: 500,
       }}
     >
@@ -55,18 +56,20 @@ export default function AccommodationCards() {
 
   useEffect(() => {
     cardsRef.current.forEach((card, index) => {
-      gsap.from(card, {
-        scrollTrigger: {
-          trigger: card,
-          start: "top 85%",
-          toggleActions: "play none none none",
-        },
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        delay: index * 0.1,
-        ease: "power3.out",
-      });
+      if (card) {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+          y: 60,
+          opacity: 0,
+          duration: 0.8,
+          delay: index * 0.1,
+          ease: "power3.out",
+        });
+      }
     });
 
     gsap.to(sectionRef.current, {
@@ -121,35 +124,92 @@ export default function AccommodationCards() {
   ];
 
   const formFields = [
-    { name: "Full Name", type: "text", required: true },
-    { name: "Student ID", type: "text", required: true },
-    { name: "Contact Number", type: "tel", required: true },
-    { name: "Email Address", type: "email", required: true },
+    { name: "fullName", label: "Full Name", type: "text", required: true },
+    { name: "studentId", label: "Student ID", type: "text", required: true },
     {
-      name: "Accommodation Type",
+      name: "contactNumber",
+      label: "Contact Number",
+      type: "tel",
+      required: true,
+    },
+    { name: "email", label: "Email Address", type: "email", required: true },
+    {
+      name: "accommodationType",
+      label: "Accommodation Type",
       type: "select",
       options: ["Shared Room", "Private Room", "Married Couple"],
       required: true,
     },
-    { name: "Move-in Date", type: "date", required: true },
-    { name: "Move-out Date", type: "date", required: false },
-    { name: "Length of Stay", type: "text", required: true },
-    { name: "Passport Copy", type: "file", required: true },
-    { name: "Enrollment Confirmation", type: "file", required: true },
-    { name: "Visa Copy", type: "file", required: true },
-    { name: "Photograph", type: "file", required: true },
-    { name: "Emergency Contact Name", type: "text", required: true },
-    { name: "Emergency Contact Relationship", type: "text", required: true },
-    { name: "Emergency Contact Number", type: "tel", required: true },
+    { name: "moveInDate", label: "Move-in Date", type: "date", required: true },
     {
-      name: "Payment Method",
+      name: "moveOutDate",
+      label: "Move-out Date",
+      type: "date",
+      required: false,
+    },
+    {
+      name: "lengthOfStay",
+      label: "Length of Stay",
+      type: "text",
+      required: true,
+    },
+    {
+      name: "passportCopy",
+      label: "Passport Copy",
+      type: "file",
+      required: true,
+    },
+    {
+      name: "enrollmentConfirmation",
+      label: "Enrollment Confirmation",
+      type: "file",
+      required: true,
+    },
+    { name: "visaCopy", label: "Visa Copy", type: "file", required: true },
+    { name: "photograph", label: "Photograph", type: "file", required: true },
+    {
+      name: "emergencyContactName",
+      label: "Emergency Contact Name",
+      type: "text",
+      required: true,
+    },
+    {
+      name: "emergencyContactRelationship",
+      label: "Emergency Contact Relationship",
+      type: "text",
+      required: true,
+    },
+    {
+      name: "emergencyContactNumber",
+      label: "Emergency Contact Number",
+      type: "tel",
+      required: true,
+    },
+    {
+      name: "paymentMethod",
+      label: "Payment Method",
       type: "select",
       options: ["Credit Card", "Bank Transfer", "Cash"],
       required: true,
     },
-    { name: "Payment Receipt", type: "file", required: true },
-    { name: "Special Requirements", type: "textarea", required: false },
-    { name: "Additional Notes", type: "textarea", required: false },
+    {
+      name: "paymentReceipt",
+      label: "Payment Receipt",
+      type: "file",
+      required: true,
+    },
+    {
+      name: "specialRequirements",
+      label: "Special Requirements",
+      type: "textarea",
+      required: false,
+    },
+    {
+      name: "additionalNotes",
+      label: "Additional Notes",
+      type: "textarea",
+      required: false,
+    },
   ];
 
   return (
@@ -216,7 +276,7 @@ export default function AccommodationCards() {
             position: "relative",
           }}
         >
-          Accommodation Rules & Application
+          Accommodation
           <span
             style={{
               position: "absolute",
@@ -230,6 +290,48 @@ export default function AccommodationCards() {
             }}
           />
         </h2>
+
+        {/* Additional Information Section */}
+        <div
+          ref={(el) => (cardsRef.current[2] = el)}
+          style={{
+            backdropFilter: "blur(10px)",
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            backgroundColor: "rgba(255, 255, 255, 0.05)",
+            borderRadius: "16px",
+            overflow: "hidden",
+            boxShadow: "0 20px 40px rgba(0, 0, 0, 0.4)",
+            padding: "30px",
+            marginBottom: "40px",
+          }}
+        >
+          <div style={{ color: "#ddd", lineHeight: "1.7" }}>
+            <p style={{ marginBottom: "20px" }}>
+              Residential facilities at CSEI Academy offers students the
+              convenience and community, the library, dining facilities, and
+              sports amenities. Living at the heart of Dubai means you can fully
+              immerse yourself in student life while working, participate in a
+              variety of active and make the most of your university experience.
+            </p>
+
+            <CheckItem
+              text="Know about on-campus living, available activities, room types, and
+              facilities"
+            />
+            <CheckItem
+              text="Application process to reserve, cancel, or change
+              your housing assignment"
+            />
+            <CheckItem
+              text="Application process to reserve, cancel, or change
+              your housing assignment"
+            />
+            <CheckItem
+              text="Providing official Proof of Residence
+              letters for any administrative or visa requirements"
+            />
+          </div>
+        </div>
 
         {/* Rules and Regulations Section */}
         <div
@@ -268,9 +370,17 @@ export default function AccommodationCards() {
               <div key={index} style={{ display: "flex" }}>
                 <div
                   style={{
-                    ...checkStyle,
+                    width: "28px",
+                    height: "28px",
                     backgroundColor: "#4a4a4a",
-                    marginRight: "10px",
+                    color: "white",
+                    borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "14px",
+                    fontWeight: "bold",
+                    marginRight: "12px",
                     flexShrink: 0,
                   }}
                 >
@@ -372,7 +482,7 @@ export default function AccommodationCards() {
                     display: "block",
                   }}
                 >
-                  {field.name}{" "}
+                  {field.label}{" "}
                   {field.required && <span style={{ color: "red" }}>*</span>}
                 </label>
 
@@ -391,7 +501,7 @@ export default function AccommodationCards() {
                       color: "#fff",
                     }}
                   >
-                    <option value="">Select {field.name}</option>
+                    <option value="">Select {field.label}</option>
                     {field.options.map((option, i) => (
                       <option key={i} value={option}>
                         {option}
@@ -542,7 +652,7 @@ export default function AccommodationCards() {
 
         {/* Additional Information Section */}
         <div
-          ref={(el) => (cardsRef.current[2] = el)}
+          ref={(el) => (cardsRef.current[3] = el)}
           style={{
             backdropFilter: "blur(10px)",
             border: "1px solid rgba(255, 255, 255, 0.1)",
@@ -567,43 +677,8 @@ export default function AccommodationCards() {
 
           <div style={{ color: "#ddd", lineHeight: "1.7" }}>
             <p style={{ marginBottom: "20px" }}>
-              The residential facilities at CSEI Academy offer students the
-              convenience and community of living near campus facilities. Our
-              accommodation services team is available to assist with any
-              questions regarding on-campus living.
-            </p>
-
-            <div style={{ marginBottom: "20px" }}>
-              <h4 style={{ color: "#fff", marginBottom: "10px" }}>
-                Important Notes:
-              </h4>
-              <ul style={{ paddingLeft: "20px" }}>
-                <li style={{ marginBottom: "8px" }}>
-                  Applications are processed in the order they are received
-                </li>
-                <li style={{ marginBottom: "8px" }}>
-                  Confirmation will be sent via email within 5 business days
-                </li>
-                <li style={{ marginBottom: "8px" }}>
-                  Payment must be completed within 48 hours of approval
-                </li>
-                <li>
-                  Room assignments are final unless approved by management
-                </li>
-              </ul>
-            </div>
-
-            <p>
-              For urgent accommodation inquiries, please contact the
-              accommodation office directly at{" "}
-              <a href="tel:+971522175877" style={{ color: "#fff" }}>
-                +971 522175877
-              </a>{" "}
-              or visit our website at{" "}
-              <a href="http://www.csei.academy" style={{ color: "#fff" }}>
-                www.csei.academy
-              </a>
-              .
+              For more information or personalized assistance, please contact
+              our student support services.
             </p>
           </div>
         </div>

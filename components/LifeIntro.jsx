@@ -26,7 +26,7 @@ export default function LifeHero() {
         transition={{ duration: 0.8 }}
         style={{
           backgroundImage:
-            "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)), url('assets/img/life-with-csei/banner.png')",
+            "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)), url('assets/img/life/banner.png')",
           backgroundPosition: "center",
           height: "100vh",
           minHeight: "1000px",

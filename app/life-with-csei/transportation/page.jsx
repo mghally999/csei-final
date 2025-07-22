@@ -101,7 +101,7 @@ export default function TransportationSection() {
             }}
           >
             <Image
-              src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=2070&auto=format&fit=crop"
+              src="assets/img/life/transport.png"
               alt="Transportation"
               width={500}
               height={350}
