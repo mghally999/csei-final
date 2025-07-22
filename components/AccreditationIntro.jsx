@@ -4,10 +4,39 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+const LogoCard = ({ src, alt }) => (
+  <div
+    style={{
+      backgroundColor: "#fff",
+      padding: "1.5rem",
+      borderRadius: "0.75rem",
+      border: "1px solid #eee",
+      boxShadow: "0 4px 10px rgba(0,0,0,0.06)",
+      width: "200px",
+      height: "100%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    }}
+  >
+    <Image
+      src={src}
+      alt={alt}
+      width={120}
+      height={60}
+      style={{
+        objectFit: "contain",
+        width: "100%",
+        height: "auto",
+      }}
+    />
+  </div>
+);
+
 export default function AccreditationIntro() {
   return (
     <section
-      className="layout-pt-lg layout-pb-lg relative custom-linear-white-top"
+      className="layout-pb-lg relative custom-linear-white-top"
       style={{
         background:
           "linear-gradient(359deg, #ffffff 0%, #dbeafe 25%, #86b3f7 50%, #3a5acb 75%, #0f1d56 100%)",
@@ -15,126 +44,57 @@ export default function AccreditationIntro() {
     >
       <div className="container">
         <div className="row items-center">
-          {/* Logos Section - Vertical with KHDA on top */}
+          {/* Logos - Left side (2 rows × 2 columns) */}
           <motion.div
-            className="col-lg-6"
+            className="col-lg-8"
             data-aos="fade-right"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: "2rem",
-              opacity: 1,
-              transform: "none",
-              paddingRight: "4rem",
-            }}
           >
-            {/* KHDA Logo - Top */}
             <div
+              className="grid"
               style={{
-                backgroundColor: "#fff",
-                padding: "1.5rem", // Increased padding
-                borderRadius: "0.75rem",
-                border: "1px solid #eee",
-                boxShadow: "0 4px 10px rgba(0,0,0,0.06)",
-                width: "220px", // Slightly larger
-                height: "140px", // Slightly larger
-                display: "flex",
+                display: "grid",
+                gridTemplateColumns: "0.5fr 1fr",
+                rowGap: "2rem",
+                columnGap: "0rem",
+                justifyItems: "center",
                 alignItems: "center",
-                justifyContent: "center",
-                marginLeft: "2rem",
               }}
             >
-              <Image
+              <LogoCard
                 src="/assets/img/logos/KHDA-logo.png"
                 alt="KHDA Accredited"
-                width={120}
-                height={60}
-                style={{
-                  objectFit: "contain",
-                  width: "100%",
-                  height: "auto",
-                }}
               />
-            </div>
-
-            {/* OTHM Logo - Bottom */}
-            <div
-              style={{
-                backgroundColor: "#fff",
-                padding: "1.5rem", // Increased padding
-                borderRadius: "0.75rem",
-                border: "1px solid #eee",
-                boxShadow: "0 4px 10px rgba(0,0,0,0.06)",
-                width: "220px", // Slightly larger
-                height: "140px", // Slightly larger
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginLeft: "2rem",
-                marginTop: "2rem", // Additional space above OTHM
-              }}
-            >
-              <Image
+              <LogoCard
                 src="/assets/img/logos/OTHM-logo.png"
                 alt="OTHM Accredited"
-                width={120}
-                height={60}
-                style={{
-                  objectFit: "contain",
-                  width: "100%",
-                  height: "auto",
-                }}
               />
-            </div>
-
-            {/* OTHM Logo - Bottom */}
-            <div
-              style={{
-                backgroundColor: "#fff",
-                padding: "1.5rem", // Increased padding
-                borderRadius: "0.75rem",
-                border: "1px solid #eee",
-                boxShadow: "0 4px 10px rgba(0,0,0,0.06)",
-                width: "220px", // Slightly larger
-                height: "140px", // Slightly larger
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginLeft: "2rem",
-                marginTop: "2rem", // Additional space above OTHM
-              }}
-            >
-              <Image
-                src="/assets/img/logos/CPD-logo.png"
-                alt="OTHM Accredited"
-                width={120}
-                height={60}
-                style={{
-                  objectFit: "contain",
-                  width: "100%",
-                  height: "auto",
-                }}
+              <LogoCard
+                src="/assets/img/logos/university-bolton.png"
+                alt="University of Bolton"
+              />
+              <LogoCard
+                src="/assets/img/logos/medical-college.png"
+                alt="Medical College"
               />
             </div>
           </motion.div>
 
-          {/* Text Content */}
+          {/* Text Column */}
           <motion.div
-            className="col-lg-6"
+            className="col-lg-4"
             data-aos="fade-left"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             style={{
-              paddingLeft: "4rem", // Added gap between logos and text
-              borderLeft: "1px solid rgba(0,0,0,0.1)", // Visual separator
+              paddingLeft: "3rem",
+              marginTop: "2rem",
+              borderLeft: "1px solid rgba(0,0,0,0.1)",
             }}
           >
             <h2 className="text-30 fw-700 text-black mb-20 leading-snug">
@@ -153,7 +113,7 @@ export default function AccreditationIntro() {
 
             <p className="text-16 text-black mb-20 leading-relaxed">
               Complementing this, CSEI Academy offers qualifications accredited
-              by the United Kingdom's{" "}
+              by the United Kingdom’s{" "}
               <strong>
                 Office of Qualifications and Examinations Regulation (Ofqual)
               </strong>{" "}
