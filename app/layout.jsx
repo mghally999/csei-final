@@ -564,10 +564,20 @@ export default function RootLayout({ children }) {
               @media (max-width: 768px) {
                 .floating-social-icons {
                   top: auto;
-                  bottom: 70px;
-                  right: 50%;
-                  transform: translateX(50%);
-                  flex-direction: row;
+                  bottom: 35px;
+                  right: 8%;
+                  -webkit-transform: translatex(50%);
+                  -moz-transform: translatex(50%);
+                  -ms-transform: translatex(50%);
+                  -o-transform: translatex(50%);
+                  transform: translatex(50%);
+                  -webkit-box-orient: horizontal;
+                  -webkit-box-direction: normal;
+                  -webkit-flex-direction: row;
+                  -moz-box-orient: horizontal;
+                  -moz-box-direction: normal;
+                  -ms-flex-direction: row;
+                  flex-direction: column;
                 }
 
                 .quick-enquiry-btn {

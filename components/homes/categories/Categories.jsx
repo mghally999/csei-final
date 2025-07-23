@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import { topCategories } from "../../../data/topCategories";
 import { getGroupedPrograms } from "@/utils/getProgramGroups";
@@ -9,15 +10,12 @@ const CategoriesHomeOne = () => {
   const universityProgressionCount =
     professionalPrograms.length + regularPrograms.length;
 
-  const professionalProgramsCount =
-    professionalPrograms.length + regularPrograms.length;
-
   const updatedCategories = [
     ...topCategories,
     {
       title: "University Progression",
       text: `${universityProgressionCount}+ Programs`,
-      iconSrc: "/assets/img/featureCards/6.svg",
+      iconSrc: "/assets/img/featureCards/3.svg",
     },
   ];
 
@@ -77,12 +75,12 @@ const CategoriesHomeOne = () => {
                         width={48}
                         height={48}
                         src={item.iconSrc}
-                        alt="icon"
+                        alt={item.title}
                       />
                     </div>
                     <div className="featureCard__title">
                       {item.title.split(" ")[0]} <br />
-                      {item.title.split(" ")[1] || ""}
+                      {item.title.split(" ").slice(1).join(" ")}
                     </div>
                     <div className="featureCard__text">{item.text}</div>
                   </div>

@@ -167,7 +167,7 @@ export default function HomeHeroSlider() {
                     </Link>
 
                     {/* Accreditation Logos */}
-                    <div className="responsive-logo-wrapper">
+                    {/* <div className="responsive-logo-wrapper">
                       <div className="responsive-logo-container">
                         <Image
                           src="/assets/img/logos/OTHM-logo.png"
@@ -178,7 +178,7 @@ export default function HomeHeroSlider() {
                           priority
                         />
                       </div>
-                    </div>
+                    </div> */}
                   </>
                 )}
               </div>

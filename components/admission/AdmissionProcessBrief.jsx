@@ -94,7 +94,7 @@ export default function AdmissionGuide() {
 
   const sections = [
     {
-      title: "Steps For Applying Your Qualification",
+      title: "Steps for Applying Your Qualification",
       points: [
         "Step 1: Submit application form with required documents",
         "Step 2: Application review and virtual interview",
@@ -126,7 +126,7 @@ export default function AdmissionGuide() {
     },
     {
       title: "Need Assistance?",
-      points: ["📞 +971-45522469", "📧 studentsupport@cseiacademy.ae"],
+      points: ["+971-45522469", "studentsupport@cseiacademy.ae"],
     },
   ];
 

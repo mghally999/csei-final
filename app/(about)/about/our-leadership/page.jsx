@@ -7,7 +7,7 @@ const leadershipTeam = [
   {
     id: 3,
     name: "Mr. Suhail Ahmed Mohammed",
-    position: "Board Member",
+    position: "Board of Directors",
     image: "/assets/img/leadership/Mr-Suhail.png",
     bio: `It is with great pride that I extend a warm welcome to all students, parents and visitors to the academy on behalf of the CSEI Academy leadership team.
 

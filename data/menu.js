@@ -31,10 +31,10 @@ export const menuList = [
         label: "Our Accreditation & Recognitions",
         href: "/about/accreditation",
       },
-      {
-        label: "Our Objectives",
-        href: "/about/our-objectives",
-      },
+      // {
+      //   label: "Our Objectives",
+      //   href: "/about/our-objectives",
+      // },
 
       {
         label: "Why CSEI?",
@@ -187,24 +187,24 @@ export const menuList = [
           // },
         ],
       },
-      {
-        title: "Computing Discipline",
-        links: [
-          {
-            title: "Information Technology",
-            links: [
-              {
-                label: "Level 4",
-                href: "/programs/information-technology/level-4",
-              },
-              {
-                label: "Level 5",
-                href: "/programs/information-technology/level-5",
-              },
-            ],
-          },
-        ],
-      },
+      // {
+      //   title: "Computing Discipline",
+      //   links: [
+      //     {
+      //       title: "Information Technology",
+      //       links: [
+      //         {
+      //           label: "Level 4",
+      //           href: "/programs/information-technology/level-4",
+      //         },
+      //         {
+      //           label: "Level 5",
+      //           href: "/programs/information-technology/level-5",
+      //         },
+      //       ],
+      //     },
+      //   ],
+      // },
     ],
   },
   // {

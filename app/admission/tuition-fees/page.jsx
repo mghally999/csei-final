@@ -371,8 +371,7 @@ export default function TuitionFeesFull() {
                     // },
 
                     {
-                      course:
-                        "HR Management in Tourism & Management - Level A (Basic)",
+                      course: "HR Management in Tourism & Management",
                       duration: "3 months",
                       fee: "4000",
                     },

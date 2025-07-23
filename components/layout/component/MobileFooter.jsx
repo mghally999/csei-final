@@ -6,45 +6,16 @@ export default function MobileFooter() {
       <div className="mobile-footer px-20 py-20 border-top-light js-mobile-footer">
         <div className="mobile-footer__number">
           <div className="text-17 fw-500 text-dark-1">Call us</div>
-          <div className="text-17 fw-500 text-purple-1">800 388 80 90</div>
+          <div className="text-17 fw-500 text-purple-1">+(971)543185454</div>
         </div>
 
         <div className="lh-2 mt-10">
           <div>
-            329 Queensberry Street,
-            <br /> North Melbourne VIC 3051, Australia.
+            <strong> Corporate Office: </strong> <br /> Al Manama St - Academic
+            City - Dubai Outsource City - Dubai Building 4 - Campus No. 205
+            <br /> Dubai, United Arab Emirates.
           </div>
-          <div>hi@CSEI.com</div>
-        </div>
-
-        <div className="mobile-socials mt-10">
-          <Link
-            href="#"
-            className="d-flex items-center justify-center rounded-full size-40"
-          >
-            <i className="fa fa-facebook"></i>
-          </Link>
-
-          <Link
-            href="#"
-            className="d-flex items-center justify-center rounded-full size-40"
-          >
-            <i className="fa fa-twitter"></i>
-          </Link>
-
-          <Link
-            href="#"
-            className="d-flex items-center justify-center rounded-full size-40"
-          >
-            <i className="fa fa-instagram"></i>
-          </Link>
-
-          <Link
-            href="#"
-            className="d-flex items-center justify-center rounded-full size-40"
-          >
-            <i className="fa fa-linkedin"></i>
-          </Link>
+          <div>admission@cseiacademy.ae</div>
         </div>
       </div>
     </>
