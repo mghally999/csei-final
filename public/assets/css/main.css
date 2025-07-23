@@ -1102,9 +1102,9 @@ section.mainSlider,
   overflow-x: hidden;
 }
 
-.swiper-slide {
+/* .swiper-slide {
   width: 100% !important;
-}
+} */
 
 html {
   -webkit-font-smoothing: antialiased;

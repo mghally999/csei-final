@@ -122,10 +122,6 @@ export const menuList = [
             title: "Health & Social Care Management",
             links: [
               {
-                label: "Level 3",
-                href: "/programs/health-social-care/level-3",
-              },
-              {
                 label: "Level 4",
                 href: "/programs/health-social-care/level-4",
               },
@@ -152,10 +148,6 @@ export const menuList = [
           {
             title: "Business Management",
             links: [
-              {
-                label: "Level 3",
-                href: "/programs/business-management/level-3",
-              },
               {
                 label: "Level 4",
                 href: "/programs/business-management/level-4",

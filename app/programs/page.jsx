@@ -13,7 +13,6 @@ const categories = [
   "Health & Social Care",
   "Business & Management",
   "Culinary Arts & Tourism",
-  // "Information Technology",
 ];
 
 const brandColors = {
@@ -72,7 +71,6 @@ const CourseListOne = () => {
           "Hospitality",
           "Professional Courses",
         ],
-        // "Information Technology": "Computing Discipline",
       };
 
       const filterValue = categoryMap[activeFilter];
@@ -192,6 +190,14 @@ const CourseListOne = () => {
         return "Expert";
       default:
         return level;
+    }
+  }, []);
+
+  const renderCourseTitle = useCallback((course) => {
+    if (course.professional) {
+      return course.title;
+    } else {
+      return `${course.title} – ${course.level}`;
     }
   }, []);
 
@@ -340,7 +346,7 @@ const CourseListOne = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                       >
-                        <h4>{course.title}</h4>
+                        <h4>{renderCourseTitle(course)}</h4>
                         <p>{course.school}</p>
                         <Link href={course.href} className="node-link">
                           Explore →
@@ -412,12 +418,16 @@ const CourseListOne = () => {
                       <div className="course-content">
                         <div className="course-school">{course.school}</div>
                         <h3 className="course-title">
-                          <Link href={course.href}>{course.title}</Link>
+                          <Link href={course.href}>
+                            {renderCourseTitle(course)}
+                          </Link>
                         </h3>
                         <div className="course-meta">
-                          <span className="course-level">
-                            {getLevelLabel(course.level)}
-                          </span>
+                          {!course.professional && (
+                            <span className="course-level">
+                              {getLevelLabel(course.level)}
+                            </span>
+                          )}
                           <span className="course-duration">
                             {course.duration}
                           </span>
