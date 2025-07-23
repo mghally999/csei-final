@@ -31,7 +31,7 @@ export default function PartnerWithUs() {
       </section>
 
       {/* ✅ Form Section */}
-      <section className="layout-pt-md layout-pb-lg">
+      <section className="">
         <div className="container">
           <div className="row y-gap-40 justify-between">
             {/* ✅ Partnership Form */}

@@ -214,7 +214,7 @@ export default function StickyTabsSection({ program }) {
 
         .sidebar.stopped {
           position: absolute;
-          top: auto;
+          // top: auto;
           bottom: 0;
         }
 
