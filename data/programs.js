@@ -201,17 +201,17 @@ export const programs = [
   },
 
   // Business Discipline
-  {
-    id: 18,
-    title: "Business Management",
-    href: "/programs/business-management/level-3",
-    school: "Business Discipline",
-    category: "Business Management",
-    level: "Level 3",
-    duration: 120,
-    imageSrc: "/assets/img/coursesCards/business-management.jpg",
-    professional: false,
-  },
+  // {
+  //   id: 18,
+  //   title: "Business Management",
+  //   href: "/programs/business-management/level-3",
+  //   school: "Business Discipline",
+  //   category: "Business Management",
+  //   level: "Level 3",
+  //   duration: 120,
+  //   imageSrc: "/assets/img/coursesCards/business-management.jpg",
+  //   professional: false,
+  // },
   {
     id: 19,
     title: "Business Management",

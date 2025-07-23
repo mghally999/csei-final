@@ -189,13 +189,13 @@ export default function TuitionFeesFull() {
                 </thead>
                 <tbody>
                   {[
-                    {
-                      program:
-                        "OTHM Level 3 - Tourism and Hospitality Management",
-                      tuition: "12,500",
-                      visa: "3,500",
-                      registration: "1,000",
-                    },
+                    // {
+                    //   program:
+                    //     "OTHM Level 3 - Tourism and Hospitality Management",
+                    //   tuition: "12,500",
+                    //   visa: "3,500",
+                    //   registration: "1,000",
+                    // },
                     {
                       program:
                         "OTHM Level 4 - Tourism and Hospitality Management",
@@ -210,13 +210,13 @@ export default function TuitionFeesFull() {
                       visa: "3,500",
                       registration: "1,000",
                     },
-                    {
-                      program:
-                        "OTHM Level 3 - Health and Social Care Management",
-                      tuition: "12,500",
-                      visa: "3,500",
-                      registration: "1,000",
-                    },
+                    // {
+                    //   program:
+                    //     "OTHM Level 3 - Health and Social Care Management",
+                    //   tuition: "12,500",
+                    //   visa: "3,500",
+                    //   registration: "1,000",
+                    // },
                     {
                       program:
                         "OTHM Level 4 - Health and Social Care Management",
