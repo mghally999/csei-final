@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -25,6 +25,23 @@ export default function TransportationSection() {
     "Special Requirements": "",
   });
 
+  const [isMobile, setIsMobile] = useState(false);
+  const resizeTimeout = useRef(null);
+
+  useEffect(() => {
+    const checkScreen = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+
+    checkScreen();
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimeout.current);
+      resizeTimeout.current = setTimeout(checkScreen, 100);
+    });
+
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -47,10 +64,7 @@ export default function TransportationSection() {
         backgroundPosition: "center",
         padding: "120px 20px",
         color: BrandColors.lightText,
-        position: "relative",
-        isolation: "isolate",
       }}
-      className="custom-padding"
     >
       <div style={{ maxWidth: "1300px", margin: "0 auto" }}>
         <h2
@@ -79,16 +93,17 @@ export default function TransportationSection() {
           />
         </h2>
 
-        {/* Visual Section */}
+        {/* Responsive Visual Section */}
         <div
           style={{
             display: "flex",
-            flexWrap: "wrap",
+            flexDirection: isMobile ? "column" : "row",
             gap: "40px",
             marginBottom: "60px",
             alignItems: "center",
           }}
         >
+          {/* Image */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -98,6 +113,9 @@ export default function TransportationSection() {
               borderRadius: "20px",
               overflow: "hidden",
               boxShadow: "0 30px 60px rgba(0, 0, 0, 0.5)",
+              width: isMobile ? "100%" : "500px",
+              margin: isMobile ? "0 auto" : "unset",
+              height: "auto",
             }}
           >
             <Image
@@ -110,11 +128,16 @@ export default function TransportationSection() {
             />
           </motion.div>
 
+          {/* Text */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            style={{ flex: "1", minWidth: "300px" }}
+            style={{
+              flex: "1",
+              minWidth: "300px",
+              textAlign: isMobile ? "center" : "left",
+            }}
           >
             <p
               style={{
@@ -156,327 +179,100 @@ export default function TransportationSection() {
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
             gap: "30px",
-            position: "relative",
           }}
         >
-          {/* Regular Fields */}
-          <div>
-            <label
-              htmlFor="Full Name"
-              style={{
-                fontWeight: 600,
-                color: BrandColors.lightText,
-                marginBottom: "8px",
-                display: "block",
-              }}
-            >
-              Full Name
-            </label>
-            <input
-              type="text"
-              name="Full Name"
-              id="Full Name"
-              value={formData["Full Name"]}
-              onChange={handleChange}
-              required
-              style={{
-                width: "100%",
-                padding: "12px 16px",
-                borderRadius: "12px",
-                border: `1px solid ${BrandColors.border}`,
-                fontSize: "16px",
-                backgroundColor: "#111827",
-                color: BrandColors.lightText,
-              }}
-            />
-          </div>
+          {Object.entries(formData).map(([key, value]) => {
+            const isTextArea = key === "Special Requirements";
+            const isSelect = key === "Type of Transportation";
 
-          <div>
-            <label
-              htmlFor="Student ID / Identity Number"
-              style={{
-                fontWeight: 600,
-                color: BrandColors.lightText,
-                marginBottom: "8px",
-                display: "block",
-              }}
-            >
-              Student ID / Identity Number
-            </label>
-            <input
-              type="text"
-              name="Student ID / Identity Number"
-              id="Student ID / Identity Number"
-              value={formData["Student ID / Identity Number"]}
-              onChange={handleChange}
-              required
-              style={{
-                width: "100%",
-                padding: "12px 16px",
-                borderRadius: "12px",
-                border: `1px solid ${BrandColors.border}`,
-                fontSize: "16px",
-                backgroundColor: "#111827",
-                color: BrandColors.lightText,
-              }}
-            />
-          </div>
+            return (
+              <div key={key} style={isTextArea ? { gridColumn: "1 / -1" } : {}}>
+                <label
+                  htmlFor={key}
+                  style={{
+                    fontWeight: 600,
+                    color: BrandColors.lightText,
+                    marginBottom: "8px",
+                    display: "block",
+                  }}
+                >
+                  {key}
+                </label>
 
-          <div>
-            <label
-              htmlFor="Contact Number"
-              style={{
-                fontWeight: 600,
-                color: BrandColors.lightText,
-                marginBottom: "8px",
-                display: "block",
-              }}
-            >
-              Contact Number
-            </label>
-            <input
-              type="tel"
-              name="Contact Number"
-              id="Contact Number"
-              value={formData["Contact Number"]}
-              onChange={handleChange}
-              required
-              style={{
-                width: "100%",
-                padding: "12px 16px",
-                borderRadius: "12px",
-                border: `1px solid ${BrandColors.border}`,
-                fontSize: "16px",
-                backgroundColor: "#111827",
-                color: BrandColors.lightText,
-              }}
-            />
-          </div>
+                {isTextArea ? (
+                  <textarea
+                    name={key}
+                    id={key}
+                    value={value}
+                    onChange={handleChange}
+                    style={{
+                      width: "100%",
+                      padding: "12px 16px",
+                      borderRadius: "12px",
+                      border: `1px solid ${BrandColors.border}`,
+                      fontSize: "16px",
+                      backgroundColor: "#111827",
+                      color: BrandColors.lightText,
+                      minHeight: "100px",
+                    }}
+                  />
+                ) : isSelect ? (
+                  <select
+                    name={key}
+                    id={key}
+                    value={value}
+                    onChange={handleChange}
+                    style={{
+                      width: "100%",
+                      padding: "12px 16px",
+                      borderRadius: "12px",
+                      border: `1px solid ${BrandColors.border}`,
+                      fontSize: "16px",
+                      backgroundColor: "#111827",
+                      color: BrandColors.lightText,
+                    }}
+                  >
+                    <option value="One-way">One-way</option>
+                    <option value="Round-trip">Round-trip</option>
+                  </select>
+                ) : (
+                  <input
+                    type={
+                      key.includes("Email")
+                        ? "email"
+                        : key.includes("Contact") || key.includes("Number")
+                        ? "tel"
+                        : key.includes("Date")
+                        ? "date"
+                        : key.includes("Time")
+                        ? "time"
+                        : "text"
+                    }
+                    name={key}
+                    id={key}
+                    value={value}
+                    onChange={handleChange}
+                    required
+                    placeholder={
+                      key.includes("Pick-up") || key.includes("Drop-off")
+                        ? "Example: CSEI Academy, Academic City, Dubai"
+                        : ""
+                    }
+                    style={{
+                      width: "100%",
+                      padding: "12px 16px",
+                      borderRadius: "12px",
+                      border: `1px solid ${BrandColors.border}`,
+                      fontSize: "16px",
+                      backgroundColor: "#111827",
+                      color: BrandColors.lightText,
+                    }}
+                  />
+                )}
+              </div>
+            );
+          })}
 
-          <div>
-            <label
-              htmlFor="Email Address"
-              style={{
-                fontWeight: 600,
-                color: BrandColors.lightText,
-                marginBottom: "8px",
-                display: "block",
-              }}
-            >
-              Email Address
-            </label>
-            <input
-              type="email"
-              name="Email Address"
-              id="Email Address"
-              value={formData["Email Address"]}
-              onChange={handleChange}
-              required
-              style={{
-                width: "100%",
-                padding: "12px 16px",
-                borderRadius: "12px",
-                border: `1px solid ${BrandColors.border}`,
-                fontSize: "16px",
-                backgroundColor: "#111827",
-                color: BrandColors.lightText,
-              }}
-            />
-          </div>
-
-          {/* Location Fields */}
-          <div>
-            <label
-              htmlFor="Pick-up Location"
-              style={{
-                fontWeight: 600,
-                color: BrandColors.lightText,
-                marginBottom: "8px",
-                display: "block",
-              }}
-            >
-              Pick-up Location (Exact Address)
-            </label>
-            <input
-              type="text"
-              name="Pick-up Location"
-              id="Pick-up Location"
-              value={formData["Pick-up Location"]}
-              onChange={handleChange}
-              required
-              placeholder="Example: 123 Main Street, Dubai Marina, Dubai, UAE"
-              style={{
-                width: "100%",
-                padding: "12px 16px",
-                borderRadius: "12px",
-                border: `1px solid ${BrandColors.border}`,
-                fontSize: "16px",
-                backgroundColor: "#111827",
-                color: BrandColors.lightText,
-              }}
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="Drop-off Location"
-              style={{
-                fontWeight: 600,
-                color: BrandColors.lightText,
-                marginBottom: "8px",
-                display: "block",
-              }}
-            >
-              Drop-off Location (Exact Address)
-            </label>
-            <input
-              type="text"
-              name="Drop-off Location"
-              id="Drop-off Location"
-              value={formData["Drop-off Location"]}
-              onChange={handleChange}
-              required
-              placeholder="Example: CSEI Academy, Academic City, Dubai, UAE"
-              style={{
-                width: "100%",
-                padding: "12px 16px",
-                borderRadius: "12px",
-                border: `1px solid ${BrandColors.border}`,
-                fontSize: "16px",
-                backgroundColor: "#111827",
-                color: BrandColors.lightText,
-              }}
-            />
-          </div>
-
-          {/* Date and Time Fields */}
-          <div>
-            <label
-              htmlFor="Date of Travel"
-              style={{
-                fontWeight: 600,
-                color: BrandColors.lightText,
-                marginBottom: "8px",
-                display: "block",
-              }}
-            >
-              Date of Travel
-            </label>
-            <input
-              type="date"
-              name="Date of Travel"
-              id="Date of Travel"
-              value={formData["Date of Travel"]}
-              onChange={handleChange}
-              required
-              style={{
-                width: "100%",
-                padding: "12px 16px",
-                borderRadius: "12px",
-                border: `1px solid ${BrandColors.border}`,
-                fontSize: "16px",
-                backgroundColor: "#111827",
-                color: BrandColors.lightText,
-              }}
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="Time of Pick-up"
-              style={{
-                fontWeight: 600,
-                color: BrandColors.lightText,
-                marginBottom: "8px",
-                display: "block",
-              }}
-            >
-              Time of Pick-up
-            </label>
-            <input
-              type="time"
-              name="Time of Pick-up"
-              id="Time of Pick-up"
-              value={formData["Time of Pick-up"]}
-              onChange={handleChange}
-              required
-              style={{
-                width: "100%",
-                padding: "12px 16px",
-                borderRadius: "12px",
-                border: `1px solid ${BrandColors.border}`,
-                fontSize: "16px",
-                backgroundColor: "#111827",
-                color: BrandColors.lightText,
-              }}
-            />
-          </div>
-
-          {/* Transportation Type */}
-          <div>
-            <label
-              htmlFor="Type of Transportation"
-              style={{
-                fontWeight: 600,
-                color: BrandColors.lightText,
-                marginBottom: "8px",
-                display: "block",
-              }}
-            >
-              Type of Transportation
-            </label>
-            <select
-              name="Type of Transportation"
-              id="Type of Transportation"
-              value={formData["Type of Transportation"]}
-              onChange={handleChange}
-              style={{
-                width: "100%",
-                padding: "12px 16px",
-                borderRadius: "12px",
-                border: `1px solid ${BrandColors.border}`,
-                fontSize: "16px",
-                backgroundColor: "#111827",
-                color: BrandColors.lightText,
-              }}
-            >
-              <option value="One-way">One-way</option>
-              <option value="Round-trip">Round-trip</option>
-            </select>
-          </div>
-
-          {/* Special Requirements */}
-          <div style={{ gridColumn: "1 / -1" }}>
-            <label
-              htmlFor="Special Requirements"
-              style={{
-                fontWeight: 600,
-                color: BrandColors.lightText,
-                marginBottom: "8px",
-                display: "block",
-              }}
-            >
-              Special Requirements
-            </label>
-            <textarea
-              name="Special Requirements"
-              id="Special Requirements"
-              value={formData["Special Requirements"]}
-              onChange={handleChange}
-              style={{
-                width: "100%",
-                padding: "12px 16px",
-                borderRadius: "12px",
-                border: `1px solid ${BrandColors.border}`,
-                fontSize: "16px",
-                backgroundColor: "#111827",
-                color: BrandColors.lightText,
-                minHeight: "100px",
-              }}
-            />
-          </div>
-
-          {/* Submit Button */}
           <div
             style={{
               gridColumn: "1 / -1",
