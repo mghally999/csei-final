@@ -22,18 +22,33 @@ export default function FooterOne() {
         }
 
         .footer-container {
-          max-width: 100%;
           width: 100%;
+          max-width: 1440px;
           margin: 0 auto;
-          padding-left: 15px;
-          padding-right: 15px;
+          padding: 0 15px;
         }
 
-        @media (min-width: 1200px) {
-          .footer-container {
-            padding-left: 30px;
-            padding-right: 30px;
-          }
+        .footer-columns .row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 30px;
+        }
+
+        .footer-columns-form input {
+          padding: 12px;
+          width: 100%;
+          border-radius: 8px;
+          border: 1px solid #ccc;
+          margin-bottom: 10px;
+        }
+
+        .footer-columns-form button {
+          padding: 12px 20px;
+          background-color: #000;
+          color: #fff;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
         }
 
         .social-section {
@@ -42,6 +57,7 @@ export default function FooterOne() {
           align-items: center;
           width: 100%;
           padding: 20px 0;
+          text-align: center;
         }
 
         .social-section__title {
@@ -53,27 +69,103 @@ export default function FooterOne() {
         .social-links-container {
           display: flex;
           gap: 20px;
+          justify-content: center;
+          flex-wrap: wrap;
         }
 
+        /* === LOGO GRID === */
         .logo-box-container {
           display: flex;
           justify-content: center;
           align-items: center;
-          gap: 40px;
+          flex-wrap: wrap;
+          gap: 20px;
           margin: 20px 0;
+          flex-direction: row; /* Default for desktop */
         }
 
         .logo-box {
           background-color: #fff;
           padding: 10px;
-          border-radius: 0.75rem;
+          border-radius: 12px;
           border: 1px solid #eee;
           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-          width: 180px;
-          height: 100px;
+          width: 160px;
+          height: 90px;
           display: flex;
           align-items: center;
           justify-content: center;
+        }
+
+        @media (max-width: 1374px) {
+          .logo-box-container {
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .logo-box {
+            width: 80%;
+            max-width: 300px;
+          }
+        }
+
+        @media (max-width: 576px) {
+          .logo-box {
+            height: 70px;
+          }
+        }
+
+        @media (min-width: 992px) {
+          .logo-box {
+            width: 180px;
+            height: 100px;
+          }
+        }
+
+        @media (min-width: 1200px) {
+          .footer-container {
+            padding-left: 30px;
+            padding-right: 30px;
+          }
+        }
+
+        .footer-header .row,
+        .footer-bottom .row {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 20px;
+        }
+
+        .footer-header .col-12 {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 30px;
+        }
+
+        .footer-bottom .col-auto {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          width: 100%;
+        }
+
+        @media (min-width: 576px) {
+          .footer-header .col-12,
+          .footer-bottom .col-auto {
+            flex-direction: row;
+            justify-content: space-between;
+            text-align: left;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .footer-columns .row {
+            justify-content: space-between;
+          }
         }
       `}</style>
 
@@ -106,9 +198,8 @@ export default function FooterOne() {
         <div className="full-width-footer">
           <div className="footer-container">
             <div className="footer-header mt-40">
-              <div className="row justify-between items-center y-gap-20">
-                <div className="col-12 d-flex justify-between align-items-center flex-wrap gap-4">
-                  {/* Left: CSEI Academy Logo */}
+              <div className="row y-gap-20">
+                <div className="col-12">
                   <div className="d-flex align-items-center gap-2">
                     <Link
                       href="/"
@@ -137,85 +228,36 @@ export default function FooterOne() {
                     </Link>
                   </div>
 
-                  {/* Center: KHDA + OTHM Logos */}
                   <div className="logo-box-container">
-                    <div className="logo-box">
-                      <Image
-                        src="/assets/img/logos/KHDA-logo.png"
-                        alt="KHDA Logo"
-                        width={140}
-                        height={70}
-                        style={{
-                          objectFit: "contain",
-                          width: "100%",
-                          height: "100%",
-                        }}
-                      />
-                    </div>
-
-                    <div className="logo-box">
-                      <Image
-                        src="/assets/img/logos/OTHM-logo.png"
-                        alt="OTHM Logo"
-                        width={140}
-                        height={70}
-                        style={{
-                          objectFit: "contain",
-                          width: "100%",
-                          height: "100%",
-                        }}
-                      />
-                    </div>
-                    <div className="logo-box">
-                      <Image
-                        src="/assets/img/logos/medical-college.png"
-                        alt="OTHM Logo"
-                        width={140}
-                        height={70}
-                        style={{
-                          objectFit: "contain",
-                          width: "100%",
-                          height: "100%",
-                        }}
-                      />
-                    </div>
-                    <div className="logo-box">
-                      <Image
-                        src="/assets/img/logos/university-bolton.png"
-                        alt="OTHM Logo"
-                        width={140}
-                        height={70}
-                        style={{
-                          objectFit: "contain",
-                          width: "100%",
-                          height: "100%",
-                        }}
-                      />
-                    </div>
-                    <div className="logo-box">
-                      <Image
-                        src="/assets/img/logos/northwood-university.jpeg"
-                        alt="OTHM Logo"
-                        width={140}
-                        height={70}
-                        style={{
-                          objectFit: "contain",
-                          width: "100%",
-                          height: "100%",
-                        }}
-                      />
-                    </div>
+                    {[
+                      "KHDA-logo.png",
+                      "OTHM-logo.png",
+                      "medical-college.png",
+                      "university-bolton.png",
+                      "northwood-university.jpeg",
+                    ].map((logo, i) => (
+                      <div className="logo-box" key={i}>
+                        <Image
+                          src={`/assets/img/logos/${logo}`}
+                          alt={logo.replace(".png", "").replace("-", " ")}
+                          width={140}
+                          height={70}
+                          style={{
+                            objectFit: "contain",
+                            width: "100%",
+                            height: "100%",
+                          }}
+                        />
+                      </div>
+                    ))}
                   </div>
-
-                  {/* Empty div to maintain layout */}
-                  <div style={{ width: "140px" }}></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Social Links Section - Centered at Bottom */}
+        {/* 3. Social Links */}
         <div
           className="full-width-footer"
           style={{ backgroundColor: "#f8f8f8" }}
@@ -254,11 +296,14 @@ export default function FooterOne() {
           </div>
         </div>
 
-        {/* 3. Footer Bottom */}
-        <div className="full-width-footer" style={{ backgroundColor: "#000" }}>
+        {/* 4. Footer Bottom */}
+        <div
+          className="full-width-footer footer-bottom"
+          style={{ backgroundColor: "#000" }}
+        >
           <div className="footer-container">
             <div className="py-30">
-              <div className="row justify-between items-center y-gap-20">
+              <div className="row y-gap-20">
                 <div className="col-auto">
                   <div className="d-flex items-center h-100 text-white">
                     © {new Date().getFullYear()} CSEI. All Right Reserved.
@@ -266,10 +311,8 @@ export default function FooterOne() {
                 </div>
                 <div className="col-auto">
                   <div className="d-flex x-gap-20 y-gap-20 items-center flex-wrap">
-                    <div>
-                      <div className="d-flex x-gap-15 text-white">
-                        <Links />
-                      </div>
+                    <div className="d-flex x-gap-15 text-white">
+                      <Links />
                     </div>
                   </div>
                 </div>

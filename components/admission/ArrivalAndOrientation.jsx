@@ -1,9 +1,8 @@
 "use client";
 
 import React from "react";
-import { useRouter } from "next/navigation"; // App Router version
+import { useRouter } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
 import { FiArrowRight } from "react-icons/fi";
 import { motion } from "framer-motion";
 
@@ -13,7 +12,11 @@ export default function ArrivalOrientationBrief() {
   return (
     <section
       className="layout-pb-lg custom-linear-white-top"
-      style={{ backgroundColor: "#f8f9fa", paddingTop: "80px" }}
+      style={{
+        backgroundColor: "#f8f9fa",
+        paddingTop: "80px",
+        paddingBottom: "80px",
+      }}
     >
       <div className="container">
         <div
@@ -27,10 +30,11 @@ export default function ArrivalOrientationBrief() {
           {/* Image */}
           <div
             style={{
-              flex: "0 0 50%",
-              maxWidth: "50%",
+              flex: "1 1 100%",
+              maxWidth: "100%",
               padding: "15px",
             }}
+            className="responsive-half"
           >
             <div
               style={{
@@ -42,8 +46,12 @@ export default function ArrivalOrientationBrief() {
               <Image
                 width={600}
                 height={400}
-                style={{ width: "100%", height: "500px", objectFit: "cover" }}
-                src="assets/img/life/arrival-support.png"
+                style={{
+                  width: "100%",
+                  height: "500px",
+                  objectFit: "cover",
+                }}
+                src="/assets/img/life/arrival-support.png"
                 alt="Arrival Orientation Support"
               />
             </div>
@@ -52,10 +60,11 @@ export default function ArrivalOrientationBrief() {
           {/* Content */}
           <div
             style={{
-              flex: "0 0 50%",
-              maxWidth: "50%",
+              flex: "1 1 100%",
+              maxWidth: "100%",
               padding: "15px",
             }}
+            className="responsive-half"
           >
             <h2
               style={{
@@ -125,6 +134,16 @@ export default function ArrivalOrientationBrief() {
           </div>
         </div>
       </div>
+
+      {/* 💡 Responsive Fixes using CSS-in-JS */}
+      <style jsx>{`
+        @media (min-width: 1024px) {
+          .responsive-half {
+            flex: 0 0 50% !important;
+            max-width: 50% !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

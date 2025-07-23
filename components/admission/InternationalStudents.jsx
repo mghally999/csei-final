@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -26,13 +27,44 @@ export default function InternationalStudentsBrief() {
             alignItems: "center",
           }}
         >
-          {/* Text Left */}
+          {/* Image */}
           <div
             style={{
-              flex: "0 0 50%",
-              maxWidth: "50%",
+              flex: "1 1 100%",
+              maxWidth: "100%",
               padding: "15px",
             }}
+            className="responsive-half"
+          >
+            <div
+              style={{
+                borderRadius: "12px",
+                overflow: "hidden",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+              }}
+            >
+              <Image
+                width={600}
+                height={400}
+                style={{
+                  width: "100%",
+                  height: "500px",
+                  objectFit: "cover",
+                }}
+                src="/assets/img/admission/international-student.png"
+                alt="International Students"
+              />
+            </div>
+          </div>
+
+          {/* Text */}
+          <div
+            style={{
+              flex: "1 1 100%",
+              maxWidth: "100%",
+              padding: "15px",
+            }}
+            className="responsive-half"
           >
             <h2
               style={{
@@ -97,44 +129,18 @@ export default function InternationalStudentsBrief() {
               </motion.button>
             </motion.div>
           </div>
-
-          {/* Image Right - Positioned Bottom Center */}
-          <div
-            style={{
-              flex: "0 0 50%",
-              maxWidth: "50%",
-              padding: "15px",
-              position: "relative",
-              height: "500px",
-              display: "flex",
-              alignItems: "flex-end",
-              justifyContent: "center",
-            }}
-          >
-            <div
-              style={{
-                borderRadius: "12px",
-                overflow: "hidden",
-                boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
-                width: "80%",
-                height: "80%",
-                position: "relative",
-              }}
-            >
-              <Image
-                src="/assets/img/admission/international-student.png"
-                alt="International Students"
-                fill
-                style={{
-                  objectFit: "cover",
-                  objectPosition: "50% 15%",
-                }}
-                priority
-              />
-            </div>
-          </div>
         </div>
       </div>
+
+      {/* 💡 Responsive Fixes using CSS-in-JS */}
+      <style jsx>{`
+        @media (min-width: 1024px) {
+          .responsive-half {
+            flex: 0 0 50% !important;
+            max-width: 50% !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

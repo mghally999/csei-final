@@ -16,50 +16,39 @@ export default function ScholarshipsBrief() {
   return (
     <section
       className="layout-pb-lg custom-linear-white-top"
-      style={{ backgroundColor: "#f8f9fa", paddingTop: "80px" }}
+      style={{
+        backgroundColor: "#f8f9fa",
+        paddingTop: "80px",
+        paddingBottom: "80px",
+      }}
     >
       <div className="container">
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            margin: "-15px",
-            alignItems: "center",
-          }}
-        >
+        <div className="responsive-flex-wrap">
           {/* Image */}
-          <div
-            style={{
-              flex: "0 0 50%",
-              maxWidth: "50%",
-              padding: "15px",
-            }}
-          >
+          <div className="responsive-half image-wrapper">
             <div
               style={{
                 borderRadius: "12px",
                 overflow: "hidden",
                 boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+                width: "100%",
+                height: "100%",
+                position: "relative",
               }}
             >
               <Image
                 width={600}
                 height={400}
                 style={{ width: "100%", height: "auto", objectFit: "cover" }}
-                src="assets/img/life/scholarship.png"
+                src="/assets/img/life/scholarship.png"
                 alt="Scholarships and Financial Aid"
+                priority
               />
             </div>
           </div>
 
           {/* Content */}
-          <div
-            style={{
-              flex: "0 0 50%",
-              maxWidth: "50%",
-              padding: "15px",
-            }}
-          >
+          <div className="responsive-half" style={{ padding: "15px" }}>
             <h2
               style={{
                 fontSize: "36px",
@@ -129,6 +118,44 @@ export default function ScholarshipsBrief() {
           </div>
         </div>
       </div>
+
+      {/* ✅ Responsive Styles */}
+      <style jsx>{`
+        .responsive-flex-wrap {
+          display: flex;
+          flex-wrap: wrap;
+          margin: -15px;
+          align-items: center;
+          flex-direction: row;
+        }
+
+        .responsive-half {
+          flex: 0 0 50%;
+          max-width: 50%;
+          padding: 15px;
+        }
+
+        .image-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        @media (max-width: 1024px) {
+          .responsive-flex-wrap {
+            flex-direction: column;
+          }
+
+          .responsive-half {
+            flex: 0 0 100% !important;
+            max-width: 100% !important;
+          }
+
+          .image-wrapper {
+            margin-bottom: 30px;
+          }
+        }
+      `}</style>
     </section>
   );
 }
