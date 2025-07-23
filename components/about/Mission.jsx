@@ -16,16 +16,18 @@ export default function Mission() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
+    // Initialize floating particles
     particlesRef.current = Array.from({ length: 20 }, (_, i) => {
-      const p = document.createElement("div");
-      p.className = "floating-particle";
-      p.style.setProperty("--i", i);
-      sectionRef.current.appendChild(p);
-      return p;
+      const particle = document.createElement("div");
+      particle.className = "floating-particle";
+      particle.style.setProperty("--i", i);
+      sectionRef.current.appendChild(particle);
+      return particle;
     });
 
-    particlesRef.current.forEach((p, i) => {
-      gsap.to(p, {
+    // Animate particles
+    particlesRef.current.forEach((particle, i) => {
+      gsap.to(particle, {
         x: gsap.utils.random(-80, 80),
         y: gsap.utils.random(-80, 80),
         duration: gsap.utils.random(5, 10),
@@ -36,10 +38,12 @@ export default function Mission() {
       });
     });
 
+    // Heading animation
     gsap.from(headingRef.current, {
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top bottom",
+        toggleActions: "play none none none",
       },
       y: 80,
       opacity: 0,
@@ -47,10 +51,12 @@ export default function Mission() {
       ease: "power3.out",
     });
 
+    // Image and text stagger
     gsap.from([imageRef.current, textRef.current], {
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top 80%",
+        toggleActions: "play none none none",
       },
       y: 60,
       opacity: 0,
@@ -59,6 +65,7 @@ export default function Mission() {
       ease: "back.out(1.2)",
     });
 
+    // Continuous rotation for decorative elements
     gsap.to(".decorative-circle", {
       rotation: 360,
       duration: 120,
@@ -67,13 +74,14 @@ export default function Mission() {
     });
 
     return () => {
-      particlesRef.current.forEach((p) => p.remove());
-      ScrollTrigger.getAll().forEach((s) => s.kill());
+      particlesRef.current.forEach((particle) => particle.remove());
+      ScrollTrigger.getAll().forEach((instance) => instance.kill());
     };
   }, []);
 
   return (
     <section className="mission-section" ref={sectionRef}>
+      {/* Decorative background elements */}
       <div className="decorative-circle large" />
       <div className="decorative-circle medium" />
       <div className="decorative-circle small" />
@@ -91,12 +99,16 @@ export default function Mission() {
               <div className="image-inner">
                 <Image
                   src="/assets/img/about/mission/mission.jpg"
-                  alt="Empowering Future Leaders"
+                  alt="Diverse team collaborating"
                   width={800}
                   height={600}
                   priority
                   className="mission-image"
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
                 />
               </div>
               <div className="image-overlay" />
@@ -108,40 +120,72 @@ export default function Mission() {
 
           <div className="mission-text-container" ref={textRef}>
             <div className="text-background">
-              <p className="mission-statement">
-                At <span className="highlight">CSEI Academy</span>, we{" "}
-                <span className="bold-italic">ignite</span> potential through{" "}
-                <span className="underline-accent">accessible education</span>{" "}
-                and an{" "}
-                <span className="underline-accent">inclusive environment</span>{" "}
-                that celebrates diversity.
-              </p>
+              <div className="text-content">
+                <p className="mission-statement">
+                  At <span className="highlight">CSEI Academy</span>, we{" "}
+                  <span className="bold-italic">ignite</span> potential through{" "}
+                  <span className="underline-accent">accessible education</span>{" "}
+                  and an{" "}
+                  <span className="underline-accent">
+                    inclusive environment
+                  </span>{" "}
+                  that celebrates diversity.
+                </p>
 
-              <div className="mission-points">
-                {[
-                  "Our dedicated mentors provide personalized support to learners from all backgrounds.",
-                  "Through hands-on experiences and industry partnerships, we bridge academia and real-world success.",
-                  "We cultivate global citizens equipped to lead and innovate in an evolving world.",
-                ].map((text, index) => (
-                  <div className="point" key={index}>
+                <div className="mission-points">
+                  <div className="point">
                     <div className="point-check">
-                      <svg viewBox="0 0 24 24" width="20" height="20">
+                      <svg viewBox="0 0 24 24" width="24" height="24">
                         <path
                           fill="currentColor"
                           d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
                         />
                       </svg>
                     </div>
-                    <div className="point-text">{text}</div>
+                    <div className="point-text">
+                      Our dedicated mentors provide
+                      <strong> personalized support</strong> to learners from
+                      all backgrounds.
+                    </div>
                   </div>
-                ))}
+
+                  <div className="point">
+                    <div className="point-check">
+                      <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path
+                          fill="currentColor"
+                          d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+                        />
+                      </svg>
+                    </div>
+                    <div className="point-text">
+                      Through <strong>hands-on experiences</strong> and{" "}
+                      <strong>industry partnerships</strong>, we bridge academia
+                      and real-world success.
+                    </div>
+                  </div>
+
+                  <div className="point">
+                    <div className="point-check">
+                      <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path
+                          fill="currentColor"
+                          d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+                        />
+                      </svg>
+                    </div>
+                    <div className="point-text">
+                      We cultivate <strong>global citizens</strong> equipped to
+                      lead and innovate in an evolving world.
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Global particles animation */}
       <style jsx global>{`
         @keyframes particle-float {
           0%,
@@ -152,7 +196,6 @@ export default function Mission() {
             transform: translate(15px, -15px);
           }
         }
-
         .floating-particle {
           position: absolute;
           width: 5px;
@@ -168,21 +211,22 @@ export default function Mission() {
         }
       `}</style>
 
-      {/* Component Styles */}
       <style jsx>{`
         .mission-section {
-          padding: clamp(60px, 8vw, 120px) 5vw;
           position: relative;
+          padding: 120px 20px;
+          overflow: hidden;
           background: linear-gradient(135deg, #0a0e23, #1a1f3a);
           color: white;
-          overflow: hidden;
         }
 
         .container {
           max-width: 1200px;
           margin: 0 auto;
+          position: relative;
         }
 
+        /* Decorative elements */
         .decorative-circle {
           position: absolute;
           border-radius: 50%;
@@ -190,24 +234,21 @@ export default function Mission() {
           opacity: 0.15;
           z-index: 0;
         }
-
-        .large {
+        .decorative-circle.large {
           width: 500px;
           height: 500px;
           background: radial-gradient(circle, #e05500, transparent 70%);
           top: -250px;
           right: -250px;
         }
-
-        .medium {
+        .decorative-circle.medium {
           width: 300px;
           height: 300px;
           background: radial-gradient(circle, #0070f3, transparent 70%);
           bottom: -150px;
           left: -150px;
         }
-
-        .small {
+        .decorative-circle.small {
           width: 200px;
           height: 200px;
           background: radial-gradient(circle, #7928ca, transparent 70%);
@@ -215,21 +256,25 @@ export default function Mission() {
           left: 10%;
         }
 
+        /* Heading */
         .mission-heading {
           position: relative;
+          margin: 0 auto 60px;
           text-align: center;
+          font-family: "Montserrat", sans-serif;
           font-weight: 900;
           font-size: clamp(2.5rem, 6vw, 5rem);
           text-transform: uppercase;
+          letter-spacing: 1px;
           color: transparent;
           -webkit-text-stroke: 2px white;
+          line-height: 1.1;
         }
-
         .heading-main {
           position: relative;
+          display: block;
           z-index: 2;
         }
-
         .heading-shadow {
           position: absolute;
           top: 6px;
@@ -239,7 +284,6 @@ export default function Mission() {
           -webkit-text-stroke: 2px rgba(255, 255, 255, 0.2);
           z-index: 1;
         }
-
         .heading-underline {
           display: block;
           width: 100px;
@@ -247,153 +291,218 @@ export default function Mission() {
           margin: 20px auto 0;
           background: linear-gradient(90deg, #e05500, #0070f3);
           border-radius: 3px;
+          box-shadow: 0 0 15px rgba(224, 85, 0, 0.4);
         }
 
+        /* Content layout */
         .mission-content {
           display: flex;
           flex-wrap: wrap;
           gap: 40px;
           align-items: center;
-          margin-top: 40px;
-          flex-direction: row;
         }
 
-        .mission-image-container,
-        .mission-text-container {
-          flex: 1 1 45%;
+        /* Image container */
+        .mission-image-container {
+          flex: 1 1 50%;
           min-width: 300px;
+          position: relative;
+          aspect-ratio: 4/3;
         }
-
         .image-frame {
           position: relative;
           border-radius: 16px;
           overflow: hidden;
           height: 100%;
           box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.05),
-            0 20px 40px rgba(0, 0, 0, 0.4);
+            0 0 0 16px rgba(255, 255, 255, 0.03), 0 20px 40px rgba(0, 0, 0, 0.4);
+          transition: transform 0.3s ease;
         }
-
-        .image-caption {
-          position: absolute;
-          bottom: 0;
+        .mission-image-container:hover .image-frame {
+          transform: scale(1.01);
+        }
+        .image-inner {
+          position: relative;
+          overflow: hidden;
+          border-radius: 8px;
+          height: 100%;
           width: 100%;
-          text-align: center;
-          padding: 1rem;
-          background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-          opacity: 0;
-          transition: all 0.4s ease;
         }
-
-        .mission-image-container:hover .image-caption {
-          opacity: 1;
-        }
-
         .image-overlay {
           position: absolute;
-          inset: 0;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
           background: linear-gradient(
             45deg,
-            rgba(224, 85, 0, 0.1),
-            rgba(0, 112, 243, 0.1)
+            rgba(224, 85, 0, 0.1) 0%,
+            rgba(0, 112, 243, 0.1) 100%
           );
           mix-blend-mode: overlay;
         }
+        .image-caption {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          padding: 16px;
+          background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+          font-weight: 600;
+          text-align: center;
+          opacity: 0;
+          transform: translateY(15px);
+          transition: all 0.4s ease;
+        }
+        .mission-image-container:hover .image-caption {
+          opacity: 1;
+          transform: translateY(0);
+        }
 
+        /* Text container */
+        .mission-text-container {
+          flex: 1 1 40%;
+          min-width: 300px;
+        }
         .text-background {
+          position: relative;
+          padding: 40px;
           background: rgba(255, 255, 255, 0.05);
           backdrop-filter: blur(12px);
           border-radius: 16px;
           border: 1px solid rgba(255, 255, 255, 0.1);
-          padding: 40px;
+          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+        .text-background::before {
+          content: "";
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: radial-gradient(
+            circle at center,
+            rgba(224, 85, 0, 0.1) 0%,
+            transparent 70%
+          );
+          z-index: -1;
         }
 
+        /* Mission statement */
         .mission-statement {
-          font-size: 1.2rem;
-          line-height: 1.6;
+          font-size: 1.25rem;
+          line-height: 1.5;
           margin-bottom: 30px;
+          padding-left: 20px;
           border-left: 3px solid #e05500;
-          padding-left: 1rem;
         }
-
-        .highlight {
+        .mission-statement .highlight {
           color: #e05500;
           font-weight: 700;
         }
-
-        .bold-italic {
+        .mission-statement .bold-italic {
           font-weight: 700;
           font-style: italic;
+          color: #fff;
         }
-
-        .underline-accent {
+        .mission-statement .underline-accent {
           position: relative;
         }
-
-        .underline-accent::after {
+        .mission-statement .underline-accent::after {
           content: "";
           position: absolute;
-          left: 0;
           bottom: -2px;
-          height: 2px;
+          left: 0;
           width: 100%;
+          height: 2px;
           background: linear-gradient(90deg, #e05500, #0070f3);
         }
 
-        .mission-points .point {
+        /* Mission points */
+        .mission-points {
+          margin-bottom: 30px;
+        }
+        .point {
           display: flex;
           gap: 16px;
-          margin-bottom: 1rem;
+          margin-bottom: 20px;
           align-items: flex-start;
         }
-
         .point-check {
           width: 24px;
           height: 24px;
-          background: #e05500;
+          background-color: #e05500;
           color: white;
           border-radius: 50%;
           display: flex;
-          justify-content: center;
           align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
         }
-
+        .point-check svg {
+          width: 14px;
+          height: 14px;
+        }
         .point-text {
           font-size: 1rem;
           line-height: 1.6;
+          color: rgba(255, 255, 255, 0.9);
+        }
+        .point-text strong {
+          color: white;
+          font-weight: 600;
         }
 
-        /* ✅ Mobile & Tablet layout */
+        /* Responsive adjustments */
         @media (max-width: 992px) {
+          .mission-section {
+            padding: 100px 20px;
+          }
           .mission-content {
             flex-direction: column;
-            gap: 60px;
           }
-
+          .mission-heading {
+            margin-bottom: 50px;
+          }
           .mission-image-container {
-            width: 100%;
-            aspect-ratio: 16 / 9;
+            aspect-ratio: 16/9;
           }
+        }
 
-          .mission-text-container {
-            width: 100%;
+        @media (max-width: 768px) {
+          .mission-section {
+            padding: 80px 15px;
           }
-
           .text-background {
-            padding: 24px;
+            padding: 30px;
           }
-
           .mission-statement {
-            font-size: 1rem;
+            font-size: 1.1rem;
+            padding-left: 15px;
           }
-
-          .point-text {
-            font-size: 0.95rem;
+          .point {
+            flex-direction: row;
+            gap: 12px;
+            margin-bottom: 16px;
           }
         }
 
         @media (max-width: 480px) {
-          .mission-section {
-            padding: 40px 20px;
+          .mission-heading {
+            -webkit-text-stroke: 1px white;
+          }
+          .heading-shadow {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+          }
+          .text-background {
+            padding: 25px 20px;
+          }
+          .mission-statement {
+            font-size: 1rem;
+          }
+          .point-text {
+            font-size: 0.95rem;
           }
         }
       `}</style>

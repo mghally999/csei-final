@@ -181,6 +181,19 @@ export default function FooterOne() {
                     </div>
                     <div className="logo-box">
                       <Image
+                        src="/assets/img/logos/university-bolton.png"
+                        alt="OTHM Logo"
+                        width={140}
+                        height={70}
+                        style={{
+                          objectFit: "contain",
+                          width: "100%",
+                          height: "100%",
+                        }}
+                      />
+                    </div>
+                    <div className="logo-box">
+                      <Image
                         src="/assets/img/logos/northwood-university.jpeg"
                         alt="OTHM Logo"
                         width={140}
