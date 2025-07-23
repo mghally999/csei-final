@@ -1106,6 +1106,12 @@ section.mainSlider,
   width: 100% !important;
 } */
 
+html,
+body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+}
+
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
