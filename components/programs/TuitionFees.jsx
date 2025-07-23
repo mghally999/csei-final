@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -6,7 +8,15 @@ export const TuitionFees = ({ program }) => {
 
   const {
     title,
-    fees: { tuition, visa, registration, fee, duration, currency = "AED" },
+    fees: {
+      tuition,
+      visa,
+      registration,
+      fee,
+      duration,
+      currency = "AED",
+      levels,
+    },
     professional = false,
   } = program;
 
@@ -43,29 +53,30 @@ export const TuitionFees = ({ program }) => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>{title}</td>
-              {professional ? (
-                <>
-                  <td>{duration}</td>
+            {professional ? (
+              levels?.map((level, idx) => (
+                <tr key={idx}>
+                  <td>{level.name}</td>
+                  <td>{level.duration}</td>
                   <td>
-                    {fee?.toLocaleString()} {currency}
+                    {level.fee?.toLocaleString()} {currency}
                   </td>
-                </>
-              ) : (
-                <>
-                  <td>
-                    {tuition?.toLocaleString()} {currency}
-                  </td>
-                  <td>
-                    {visa?.toLocaleString()} {currency}
-                  </td>
-                  <td>
-                    {registration?.toLocaleString()} {currency}
-                  </td>
-                </>
-              )}
-            </tr>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td>{title}</td>
+                <td>
+                  {tuition?.toLocaleString()} {currency}
+                </td>
+                <td>
+                  {visa?.toLocaleString()} {currency}
+                </td>
+                <td>
+                  {registration?.toLocaleString()} {currency}
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
@@ -119,16 +130,6 @@ export const TuitionFees = ({ program }) => {
 
         tr:last-child td {
           border-bottom: none;
-        }
-
-        .highlight-row {
-          background-color: #f0fdf4;
-          font-weight: 500;
-        }
-
-        .highlight-row td {
-          border-top: 2px solid #86efac;
-          border-bottom: 2px solid #86efac;
         }
 
         @media (max-width: 768px) {

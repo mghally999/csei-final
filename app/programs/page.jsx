@@ -13,7 +13,7 @@ const categories = [
   "Health & Social Care",
   "Business & Management",
   "Culinary Arts & Tourism",
-  "Information Technology",
+  // "Information Technology",
 ];
 
 const brandColors = {
@@ -72,7 +72,7 @@ const CourseListOne = () => {
           "Hospitality",
           "Professional Courses",
         ],
-        "Information Technology": "Computing Discipline",
+        // "Information Technology": "Computing Discipline",
       };
 
       const filterValue = categoryMap[activeFilter];

@@ -23,7 +23,12 @@ export default function HomeHeroSlider() {
         position: "relative",
         height: "100vh",
         minHeight: "600px",
+        width: "100vw",
         overflow: "hidden",
+        left: "50%",
+        right: "50%",
+        marginLeft: "-50vw",
+        marginRight: "-50vw",
       }}
     >
       <Swiper
@@ -42,7 +47,13 @@ export default function HomeHeroSlider() {
             return `<span class="${className}"></span>`;
           },
         }}
-        style={{ width: "100%", height: "100%" }}
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "absolute",
+          left: 0,
+          top: 0,
+        }}
       >
         {slidesData.map((item, i) => (
           <SwiperSlide key={i}>
@@ -165,20 +176,6 @@ export default function HomeHeroSlider() {
                     >
                       {item.ctaText}
                     </Link>
-
-                    {/* Accreditation Logos */}
-                    {/* <div className="responsive-logo-wrapper">
-                      <div className="responsive-logo-container">
-                        <Image
-                          src="/assets/img/logos/OTHM-logo.png"
-                          alt="OTHM Accredited"
-                          width={120}
-                          height={50}
-                          className="responsive-logo-img"
-                          priority
-                        />
-                      </div>
-                    </div> */}
                   </>
                 )}
               </div>
@@ -204,7 +201,6 @@ export default function HomeHeroSlider() {
       />
 
       {/* Navigation */}
-      {/* Navigation Arrows */}
       <button
         className={`
     hero-slider-prev absolute top-1/2 transform -translate-y-1/2 z-10
@@ -234,6 +230,12 @@ export default function HomeHeroSlider() {
 
       {/* GLOBAL STYLES */}
       <style jsx global>{`
+        html,
+        body {
+          overflow-x: hidden;
+          width: 100%;
+        }
+
         .custom-bullet {
           width: 12px;
           height: 12px;
@@ -354,31 +356,3 @@ export default function HomeHeroSlider() {
     </section>
   );
 }
-
-const arrowStyle = (side) => ({
-  position: "absolute",
-  top: "50%",
-  [side]: "10px",
-  transform: "translateY(-50%)",
-  zIndex: 10,
-  width: "clamp(40px, 8vw, 50px)",
-  height: "clamp(40px, 8vw, 50px)",
-  borderRadius: "50%",
-  backgroundColor: "rgba(0,0,0,0.7)",
-  color: "white",
-  border: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  cursor: "pointer",
-  opacity: "0.9",
-  transition: "opacity 0.3s ease",
-  "@media (max-width: 640px)": {
-    width: "35px",
-    height: "35px",
-    opacity: "0.8",
-  },
-  "&:hover": {
-    opacity: "1",
-  },
-});

@@ -20,17 +20,6 @@ We are confident that every student at CSEI Academy will find the tools, encoura
 Thank you for being a part of our journey.`,
   },
   {
-    id: 1,
-    name: "Mr. Roshan Gautam",
-    position: "General Manager",
-    image: "/assets/img/leadership/Mr-Roshan.png",
-    bio: `Since 2018, CSEI Academy has created a legacy of safe and vibrant learning and ranks among educational institutions. Being constant fixture in the list of educational institution accredited by KHDA, we are proud to be a choice for all discerning individuals and parents.
-
-You can look forward to encouraging a highly intensive challenging academic program that will ensure all students become critical thinkers, active problem-solvers, inquisitive readers, diligent researchers.
-
-Each year we reflect on our achievements and rejoice at all that we have done in the past years. Though much has changed over the years, our promise remains the same. Our sustained success over the years is a direct result of our strategic vision and execution.`,
-  },
-  {
     id: 2,
     name: "Dr. Apollo Serafico",
     position: "Head of Academics",
@@ -42,6 +31,17 @@ Our Mission is to provide a transformative educational experience that not only 
 I believe that education is a partnership between the Academy, Individual, parents, and the community. Together, we can nurture a culture of excellence, resilience, and mutual respect that prepares our students for academic success and beyond.
 
 Thank you for visiting our website. We invite you to explore more about our academic programs and the many opportunities available at CSEI Academy.`,
+  },
+  {
+    id: 1,
+    name: "Mr. Roshan Gautam",
+    position: "General Manager",
+    image: "/assets/img/leadership/Mr-Roshan.png",
+    bio: `Since 2018, CSEI Academy has created a legacy of safe and vibrant learning and ranks among educational institutions. Being constant fixture in the list of educational institution accredited by KHDA, we are proud to be a choice for all discerning individuals and parents.
+
+You can look forward to encouraging a highly intensive challenging academic program that will ensure all students become critical thinkers, active problem-solvers, inquisitive readers, diligent researchers.
+
+Each year we reflect on our achievements and rejoice at all that we have done in the past years. Though much has changed over the years, our promise remains the same. Our sustained success over the years is a direct result of our strategic vision and execution.`,
   },
 ];
 

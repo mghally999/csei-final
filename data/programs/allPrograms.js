@@ -356,6 +356,11 @@ const allPrograms = [
       "Quality Assurance Officer",
       "Service Supervisor in healthcare",
     ],
+    fees: {
+      duration: "6 months",
+      fee: "6000",
+      currency: "AED",
+    },
     universityProgression: [
       "Credit towards OTHM Level 4/5 Diplomas",
       "Foundation for nursing associate roles",
@@ -662,6 +667,11 @@ const allPrograms = [
       "Food Stylist Assistant",
       "Cruise Ship Galley Staff",
     ],
+    fees: {
+      duration: "6 months + Internship",
+      fee: "15,000",
+      currency: "AED",
+    },
     universityProgression: [
       "Advanced Diplomas in Culinary Arts",
       "Specialist pastry/baking programs",
@@ -719,6 +729,11 @@ const allPrograms = [
       "Executive Housekeeper Assistant",
       "Facilities Cleaning Supervisor",
     ],
+    fees: {
+      duration: "3 months",
+      fee: "4000",
+      currency: "AED",
+    },
     universityProgression: [
       "Hospitality operations diplomas",
       "Facilities management certificates",
@@ -777,6 +792,11 @@ const allPrograms = [
       "Employee Relations Officer",
       "HR Administrator in food service",
     ],
+    fees: {
+      duration: "3 months",
+      fee: "4000",
+      currency: "AED",
+    },
     universityProgression: [
       "CIPD qualification pathways",
       "Hospitality management degrees",
@@ -831,6 +851,11 @@ const allPrograms = [
       "Catering Supervisor",
       "Restaurant Compliance Manager",
     ],
+    fees: {
+      duration: "1 Day",
+      fee: "500",
+      currency: "AED",
+    },
     universityProgression: [
       "Diplomas in food technology",
       "Environmental health degrees",
@@ -888,6 +913,11 @@ const allPrograms = [
       "Banquet Service Staff",
       "Restaurant Supervisor",
     ],
+    fees: {
+      duration: "1 Month",
+      fee: "3000",
+      currency: "AED",
+    },
     universityProgression: [
       "Advanced wine certification programs",
       "Hospitality management diplomas",
@@ -945,6 +975,11 @@ const allPrograms = [
       "Concierge",
       "Night Auditor",
     ],
+    fees: {
+      duration: "1 Month",
+      fee: "3000",
+      currency: "AED",
+    },
     universityProgression: [
       "Hospitality management diplomas",
       "Revenue management courses",
@@ -1004,6 +1039,26 @@ const allPrograms = [
       "Roastery Quality Control",
       "Coffee Equipment Technician",
     ],
+    fees: {
+      currency: "AED",
+      levels: [
+        {
+          name: "Barista Training - Basic",
+          duration: "10 days",
+          fee: 1000,
+        },
+        {
+          name: "Barista Training - Advance",
+          duration: "20 days",
+          fee: 1700,
+        },
+        {
+          name: "Barista Training - Professional",
+          duration: "40 days",
+          fee: 2800,
+        },
+      ],
+    },
     universityProgression: [
       "SCA professional certification pathways",
       "Coffee roasting science programs",

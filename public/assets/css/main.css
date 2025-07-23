@@ -1075,6 +1075,36 @@
   -webkit-animation-delay: 2s;
   animation-delay: 2s;
 }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff;
+  color: #111;
+}
+
+/* Utility: Force all components to respect container bounds */
+.container,
+.swiper,
+.swiper-slide,
+section,
+div,
+header,
+footer {
+  max-width: 100vw !important;
+  overflow-x: hidden;
+}
 
 html {
   -webkit-font-smoothing: antialiased;

@@ -22,7 +22,7 @@ const cardStyle = {
 const programs = [
   "Tourism and Culinary Arts",
   "Health & Social Care",
-  "Information Technology",
+  // "Information Technology",
   "Business Management",
 ];
 

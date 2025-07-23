@@ -249,18 +249,18 @@ export default function TuitionFeesFull() {
                       visa: "3,500",
                       registration: "1,000",
                     },
-                    {
-                      program: "OTHM Level 4 - Information Technology",
-                      tuition: "12,500",
-                      visa: "3,500",
-                      registration: "1,000",
-                    },
-                    {
-                      program: "OTHM Level 5 - Information Technology",
-                      tuition: "12,500",
-                      visa: "3,500",
-                      registration: "1,000",
-                    },
+                    // {
+                    //   program: "OTHM Level 4 - Information Technology",
+                    //   tuition: "12,500",
+                    //   visa: "3,500",
+                    //   registration: "1,000",
+                    // },
+                    // {
+                    //   program: "OTHM Level 5 - Information Technology",
+                    //   tuition: "12,500",
+                    //   visa: "3,500",
+                    //   registration: "1,000",
+                    // },
                     {
                       program: "Postgraduate Programs",
                       tuition: "18,000",
@@ -333,6 +333,13 @@ export default function TuitionFeesFull() {
                     //   duration: "6 months",
                     //   fee: "6000",
                     // },
+
+                    {
+                      course:
+                        "Health and Social Care Management - Professional",
+                      duration: "6 months",
+                      fee: "6000",
+                    },
 
                     {
                       course: "Culinary Arts – Professional",

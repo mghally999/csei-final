@@ -10,7 +10,7 @@ const categories = [
   "Health & Social Care",
   "Business & Management",
   "Culinary Arts & Tourism",
-  "Information Technology",
+  // "Information Technology",
 ];
 
 const getLevelLabel = (level) => {
@@ -51,8 +51,8 @@ export default function Courses() {
             return program.school === "Business Discipline";
           case "Culinary Arts & Tourism":
             return program.school === "Culinary Arts & Tourism Discipline";
-          case "Information Technology":
-            return program.school === "Computing Discipline";
+          // case "Information Technology":
+          //   return program.school === "Computing Discipline";
           default:
             return true;
         }

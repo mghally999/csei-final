@@ -22,8 +22,8 @@ export default function StickyTabsSection({ program }) {
   const sidebarRef = useRef(null);
   const lastSectionRef = useRef(null);
 
-  // Base menu with Tuition Fees added
-  const baseMenuItems = [
+  // Sidebar menu items
+  const menuItems = [
     { id: 1, text: "Overview" },
     { id: 2, text: "Why CSEI?" },
     { id: 3, text: "Entry Requirements" },
@@ -32,17 +32,15 @@ export default function StickyTabsSection({ program }) {
     { id: 6, text: "Assessment and Verification" },
     { id: 7, text: "Career Opportunities" },
     { id: 10, text: "Tuition Fees" },
+    ...(!program.professional
+      ? [
+          { id: 8, text: "Sample Certificate" },
+          { id: 9, text: "University Progression" },
+        ]
+      : []),
   ];
 
-  const menuItems = [...baseMenuItems];
-
-  // Add "Sample Certificate" and "University Progression" if NOT professional
-  if (!program.professional) {
-    menuItems.push({ id: 8, text: "Sample Certificate" });
-    menuItems.push({ id: 9, text: "University Progression" });
-  }
-
-  // Sections with Tuition Fees component
+  // Section components in desired order
   const sections = [
     { id: 1, Component: Overview, props: { data: program.overview } },
     { id: 2, Component: WhyCSEI, props: { data: program.whyCSEI } },
@@ -67,33 +65,18 @@ export default function StickyTabsSection({ program }) {
       Component: CareerOpportunities,
       props: { data: program.careerOpportunities },
     },
-    {
-      id: 10,
-      Component: TuitionFees,
-      props: {
-        program, // Pass full program object
-      },
-    },
+    { id: 10, Component: TuitionFees, props: { program } },
+    ...(!program.professional
+      ? [
+          { id: 8, Component: SampleCertificate, props: {} },
+          {
+            id: 9,
+            Component: UniversityProgression,
+            props: { data: [], description: program.universityProgression },
+          },
+        ]
+      : []),
   ];
-
-  if (!program.professional) {
-    sections.push({
-      id: 8,
-      Component: SampleCertificate,
-      props: {},
-    });
-    sections.push({
-      id: 9,
-      Component: UniversityProgression,
-      props: {
-        data: [],
-        description: program.universityProgression,
-      },
-    });
-  }
-
-  // Sort sections to maintain correct order
-  sections.sort((a, b) => a.id - b.id);
 
   // Scrollspy
   useEffect(() => {
@@ -120,7 +103,7 @@ export default function StickyTabsSection({ program }) {
     return () => observer.disconnect();
   }, []);
 
-  // Sticky sidebar
+  // Sticky sidebar end logic
   useEffect(() => {
     const handleScroll = () => {
       if (!wrapperRef.current || !sidebarRef.current || !lastSectionRef.current)
@@ -128,6 +111,7 @@ export default function StickyTabsSection({ program }) {
 
       const wrapperRect = wrapperRef.current.getBoundingClientRect();
       const sidebarHeight = sidebarRef.current.offsetHeight;
+
       const lastSectionRect = lastSectionRef.current.getBoundingClientRect();
 
       setIsSticky(wrapperRect.top <= 120);
@@ -139,7 +123,9 @@ export default function StickyTabsSection({ program }) {
   }, []);
 
   const handleClick = (id) => {
-    const el = sectionRefs.current[id - 1];
+    const el = sectionRefs.current.find(
+      (ref) => ref?.getAttribute("data-section-id") === String(id)
+    );
     if (el) {
       const offset = 180;
       const y = el.getBoundingClientRect().top + window.scrollY - offset;
@@ -176,8 +162,9 @@ export default function StickyTabsSection({ program }) {
             <div
               key={id}
               ref={(el) => {
-                sectionRefs.current[id - 1] = el;
-                if (id === sections[sections.length - 1].id) {
+                sectionRefs.current.push(el);
+                // Stop at University Progression or Tuition Fees fallback
+                if (id === 9 || (program.professional && id === 10)) {
                   lastSectionRef.current = el;
                 }
               }}
@@ -190,6 +177,7 @@ export default function StickyTabsSection({ program }) {
         </div>
       </div>
 
+      {/* Styles */}
       <style jsx>{`
         .sticky-section {
           padding: 4rem 1rem;
