@@ -210,7 +210,7 @@ export default function FooterOne() {
                         alt="CSEI Academy"
                         width={140}
                         height={40}
-                        style={{ objectFit: "cover" }}
+                        style={{ objectFit: "cover", marginRight: "-20px" }}
                       />
                       <span
                         style={{

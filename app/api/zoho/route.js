@@ -24,35 +24,51 @@ export async function POST(req) {
       }),
     });
 
-    const tokenData = await tokenRes.json();
-    const accessToken = tokenData.access_token;
-
-    if (!accessToken) {
+    const tokenText = await tokenRes.text();
+    let tokenData;
+    try {
+      tokenData = JSON.parse(tokenText);
+    } catch (err) {
       return new Response(
-        JSON.stringify({ error: "Failed to retrieve token" }),
-        {
-          status: 401,
-        }
+        JSON.stringify({
+          error: "Zoho token response not valid JSON",
+          response: tokenText,
+        }),
+        { status: 500 }
       );
     }
 
-    // Step 2: Send lead to Zoho
+    const accessToken = tokenData.access_token;
+    if (!accessToken) {
+      return new Response(
+        JSON.stringify({
+          error: "Access token missing",
+          tokenData,
+        }),
+        { status: 401 }
+      );
+    }
+
+    // Step 2: Prepare CRM payload
+    const leadData = {
+      First_Name: firstName,
+      Last_Name: lastName,
+      Email: email,
+      Phone: phone,
+      Company: "Website Visitor",
+      Lead_Source: "Website Enquiry",
+      Description: course ? `Course Enquiry: ${course}` : undefined,
+    };
+
+    // Optional custom field
+    if (course) leadData.Course = course;
+
     const payload = {
-      data: [
-        {
-          First_Name: firstName,
-          Last_Name: lastName,
-          Email: email,
-          Phone: phone,
-          Company: "Website Visitor",
-          Lead_Source: "Website Enquiry",
-          Description: `Course Enquiry: ${course}`,
-          Course: course, // Only if CRM has custom field `Course`
-        },
-      ],
+      data: [leadData],
       trigger: ["workflow"],
     };
 
+    // Step 3: Send to Zoho CRM
     const crmRes = await fetch(`${ZOHO_API_DOMAIN}/crm/v2/Leads`, {
       method: "POST",
       headers: {
@@ -67,13 +83,22 @@ export async function POST(req) {
     if (crmRes.ok && result.data?.[0]?.code === "SUCCESS") {
       return new Response(JSON.stringify({ success: true }), { status: 200 });
     } else {
-      return new Response(JSON.stringify({ error: "Zoho CRM error", result }), {
-        status: 500,
-      });
+      return new Response(
+        JSON.stringify({
+          error: "Zoho CRM error",
+          status: crmRes.status,
+          result,
+        }),
+        { status: 500 }
+      );
     }
   } catch (err) {
-    return new Response(JSON.stringify({ error: err.message }), {
-      status: 500,
-    });
+    return new Response(
+      JSON.stringify({
+        error: "Unhandled error",
+        message: err.message,
+      }),
+      { status: 500 }
+    );
   }
 }
