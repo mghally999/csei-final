@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -52,7 +52,14 @@ const CheckItem = ({ text }) => (
 export default function AccommodationCards() {
   const sectionRef = useRef(null);
   const cardsRef = useRef([]);
+  const formRef = useRef(null);
   const [formData, setFormData] = useState({});
+  const [submissionState, setSubmissionState] = useState({
+    isSubmitting: false,
+    isSuccess: false,
+    isError: false,
+    message: "",
+  });
 
   useEffect(() => {
     cardsRef.current.forEach((card, index) => {
@@ -98,9 +105,57 @@ export default function AccommodationCards() {
     setFormData({ ...formData, [name]: files[0] });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Form submitted successfully!");
+    setSubmissionState({
+      isSubmitting: true,
+      isSuccess: false,
+      isError: false,
+      message: "Submitting your application...",
+    });
+
+    try {
+      const formDataToSend = new FormData();
+
+      // Append all fields
+      Object.entries(formData).forEach(([key, value]) => {
+        if (value instanceof File) {
+          formDataToSend.append(key, value, value.name);
+        } else if (value !== undefined && value !== null) {
+          formDataToSend.append(key, value);
+        }
+      });
+
+      const response = await fetch("/api/accommodation", {
+        method: "POST",
+        body: formDataToSend, // No headers needed for FormData
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Submission failed");
+      }
+
+      setSubmissionState({
+        isSubmitting: false,
+        isSuccess: true,
+        isError: false,
+        message: result.message || "Application submitted successfully!",
+      });
+
+      // Reset form
+      if (formRef.current) formRef.current.reset();
+      setFormData({});
+    } catch (error) {
+      setSubmissionState({
+        isSubmitting: false,
+        isSuccess: false,
+        isError: true,
+        message:
+          error.message || "Failed to submit application. Please try again.",
+      });
+    }
   };
 
   const rules = [
@@ -461,7 +516,100 @@ export default function AccommodationCards() {
             Accommodation Application Form
           </h3>
 
+          <AnimatePresence>
+            {(submissionState.isSubmitting || submissionState.message) && (
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  marginBottom: "30px",
+                  padding: "20px",
+                  borderRadius: "8px",
+                  backgroundColor: submissionState.isSubmitting
+                    ? "rgba(255, 255, 0, 0.1)"
+                    : submissionState.isSuccess
+                    ? "rgba(0, 255, 0, 0.1)"
+                    : "rgba(255, 0, 0, 0.1)",
+                  border: `1px solid ${
+                    submissionState.isSubmitting
+                      ? "rgba(255, 255, 0, 0.5)"
+                      : submissionState.isSuccess
+                      ? "rgba(0, 255, 0, 0.5)"
+                      : "rgba(255, 0, 0, 0.5)"
+                  }`,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "10px",
+                }}
+              >
+                {submissionState.isSubmitting ? (
+                  <>
+                    <div
+                      style={{
+                        width: "24px",
+                        height: "24px",
+                        border: "3px solid rgba(255, 255, 0, 0.3)",
+                        borderTopColor: "yellow",
+                        borderRadius: "50%",
+                        animation: "spin 1s linear infinite",
+                      }}
+                    />
+                    <span style={{ color: "#fff" }}>
+                      {submissionState.message}
+                    </span>
+                  </>
+                ) : submissionState.isSuccess ? (
+                  <>
+                    <div
+                      style={{
+                        width: "24px",
+                        height: "24px",
+                        backgroundColor: "green",
+                        borderRadius: "50%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "white",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      ✓
+                    </div>
+                    <span style={{ color: "#fff" }}>
+                      {submissionState.message}
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <div
+                      style={{
+                        width: "24px",
+                        height: "24px",
+                        backgroundColor: "red",
+                        borderRadius: "50%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "white",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      !
+                    </div>
+                    <span style={{ color: "#fff" }}>
+                      {submissionState.message}
+                    </span>
+                  </>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           <motion.form
+            ref={formRef}
             onSubmit={handleSubmit}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -624,27 +772,67 @@ export default function AccommodationCards() {
             >
               <button
                 type="submit"
+                disabled={submissionState.isSubmitting}
                 style={{
-                  backgroundColor: "#ffffff10",
+                  backgroundColor: submissionState.isSubmitting
+                    ? "#ffffff30"
+                    : "#ffffff10",
                   color: "white",
                   padding: "14px 28px",
                   fontSize: "16px",
                   fontWeight: "600",
                   borderRadius: "8px",
                   border: "1px solid #fff",
-                  cursor: "pointer",
+                  cursor: submissionState.isSubmitting
+                    ? "not-allowed"
+                    : "pointer",
                   transition: "all 0.3s ease",
+                  position: "relative",
+                  overflow: "hidden",
                 }}
                 onMouseOver={(e) => {
-                  e.target.style.backgroundColor = "#ffffff30";
-                  e.target.style.transform = "translateY(-2px)";
+                  if (!submissionState.isSubmitting) {
+                    e.target.style.backgroundColor = "#ffffff30";
+                    e.target.style.transform = "translateY(-2px)";
+                  }
                 }}
                 onMouseOut={(e) => {
-                  e.target.style.backgroundColor = "#ffffff10";
+                  e.target.style.backgroundColor = submissionState.isSubmitting
+                    ? "#ffffff30"
+                    : "#ffffff10";
                   e.target.style.transform = "translateY(0)";
                 }}
               >
-                Submit Application
+                {submissionState.isSubmitting ? (
+                  <>
+                    <span style={{ opacity: 0 }}>Submit Application</span>
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: "16px",
+                          height: "16px",
+                          border: "2px solid rgba(255, 255, 255, 0.3)",
+                          borderTopColor: "white",
+                          borderRadius: "50%",
+                          animation: "spin 1s linear infinite",
+                        }}
+                      />
+                      <span>Submitting...</span>
+                    </div>
+                  </>
+                ) : (
+                  "Submit Application"
+                )}
               </button>
             </div>
           </motion.form>
@@ -696,6 +884,12 @@ export default function AccommodationCards() {
           100% {
             transform: translate(20px, -20px);
             opacity: 0;
+          }
+        }
+
+        @keyframes spin {
+          to {
+            transform: rotate(360deg);
           }
         }
 
