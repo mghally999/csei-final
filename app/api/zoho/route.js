@@ -12,7 +12,7 @@ export async function POST(req) {
       ZOHO_API_DOMAIN,
     } = process.env;
 
-    // Step 1: Get access token
+    // Step 1: Get access token using refresh token
     const tokenRes = await fetch(`${ZOHO_API_DOMAIN}/oauth/v2/token`, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -24,32 +24,18 @@ export async function POST(req) {
       }),
     });
 
-    const tokenText = await tokenRes.text();
-    let tokenData;
-    try {
-      tokenData = JSON.parse(tokenText);
-    } catch (err) {
+    const tokenData = await tokenRes.json();
+
+    if (!tokenData.access_token) {
       return new Response(
-        JSON.stringify({
-          error: "Zoho token response not valid JSON",
-          response: tokenText,
-        }),
-        { status: 500 }
+        JSON.stringify({ error: "Failed to get access token", tokenData }),
+        {
+          status: 401,
+        }
       );
     }
 
-    const accessToken = tokenData.access_token;
-    if (!accessToken) {
-      return new Response(
-        JSON.stringify({
-          error: "Access token missing",
-          tokenData,
-        }),
-        { status: 401 }
-      );
-    }
-
-    // Step 2: Prepare CRM payload
+    // Step 2: Prepare Zoho CRM lead data
     const leadData = {
       First_Name: firstName,
       Last_Name: lastName,
@@ -60,7 +46,6 @@ export async function POST(req) {
       Description: course ? `Course Enquiry: ${course}` : undefined,
     };
 
-    // Optional custom field
     if (course) leadData.Course = course;
 
     const payload = {
@@ -68,11 +53,11 @@ export async function POST(req) {
       trigger: ["workflow"],
     };
 
-    // Step 3: Send to Zoho CRM
+    // Step 3: Submit to Zoho CRM
     const crmRes = await fetch(`${ZOHO_API_DOMAIN}/crm/v2/Leads`, {
       method: "POST",
       headers: {
-        Authorization: `Zoho-oauthtoken ${accessToken}`,
+        Authorization: `Zoho-oauthtoken ${tokenData.access_token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(payload),
@@ -80,25 +65,19 @@ export async function POST(req) {
 
     const result = await crmRes.json();
 
-    if (crmRes.ok && result.data?.[0]?.code === "SUCCESS") {
+    if (crmRes.ok && result?.data?.[0]?.code === "SUCCESS") {
       return new Response(JSON.stringify({ success: true }), { status: 200 });
     } else {
-      return new Response(
-        JSON.stringify({
-          error: "Zoho CRM error",
-          status: crmRes.status,
-          result,
-        }),
-        { status: 500 }
-      );
+      return new Response(JSON.stringify({ error: "Zoho CRM error", result }), {
+        status: 500,
+      });
     }
   } catch (err) {
     return new Response(
-      JSON.stringify({
-        error: "Unhandled error",
-        message: err.message,
-      }),
-      { status: 500 }
+      JSON.stringify({ error: "Unhandled error", message: err.message }),
+      {
+        status: 500,
+      }
     );
   }
 }
