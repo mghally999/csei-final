@@ -9,11 +9,18 @@ export async function POST(req) {
       ZOHO_CLIENT_ID,
       ZOHO_CLIENT_SECRET,
       ZOHO_REFRESH_TOKEN,
-      ZOHO_API_DOMAIN,
+      ZOHO_API_DOMAIN = "https://www.zohoapis.com",
     } = process.env;
 
-    // Step 1: Get access token using refresh token
-    const tokenRes = await fetch(`${ZOHO_API_DOMAIN}/oauth/v2/token`, {
+    if (!ZOHO_CLIENT_ID || !ZOHO_CLIENT_SECRET || !ZOHO_REFRESH_TOKEN) {
+      return new Response(
+        JSON.stringify({ error: "Missing Zoho credentials in environment" }),
+        { status: 500 }
+      );
+    }
+
+    // 🔑 Step 1: Get Access Token from Refresh Token
+    const tokenRes = await fetch(`https://accounts.zoho.com/oauth/v2/token`, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams({
@@ -26,58 +33,60 @@ export async function POST(req) {
 
     const tokenData = await tokenRes.json();
 
-    if (!tokenData.access_token) {
+    if (!tokenRes.ok || !tokenData.access_token) {
+      console.error("❌ Failed to get access token", tokenData);
       return new Response(
-        JSON.stringify({ error: "Failed to get access token", tokenData }),
-        {
-          status: 401,
-        }
+        JSON.stringify({ error: "Invalid access token", details: tokenData }),
+        { status: 401 }
       );
     }
 
-    // Step 2: Prepare Zoho CRM lead data
+    // 📤 Step 2: Submit lead to Zoho CRM
     const leadData = {
-      First_Name: firstName,
-      Last_Name: lastName,
-      Email: email,
-      Phone: phone,
-      Company: "Website Visitor",
-      Lead_Source: "Website Enquiry",
-      Description: course ? `Course Enquiry: ${course}` : undefined,
-    };
-
-    if (course) leadData.Course = course;
-
-    const payload = {
-      data: [leadData],
+      data: [
+        {
+          First_Name: firstName,
+          Last_Name: lastName,
+          Email: email,
+          Phone: phone,
+          Company: "Website Visitor",
+          Lead_Source: "Website Enquiry",
+          Description: course ? `Course Enquiry: ${course}` : undefined,
+          Program_of_Interest: course || undefined, // ✅ This is the key fix!
+        },
+      ],
       trigger: ["workflow"],
     };
 
-    // Step 3: Submit to Zoho CRM
     const crmRes = await fetch(`${ZOHO_API_DOMAIN}/crm/v2/Leads`, {
       method: "POST",
       headers: {
         Authorization: `Zoho-oauthtoken ${tokenData.access_token}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(leadData),
     });
 
-    const result = await crmRes.json();
+    const crmResult = await crmRes.json();
 
-    if (crmRes.ok && result?.data?.[0]?.code === "SUCCESS") {
+    if (crmRes.ok && crmResult?.data?.[0]?.code === "SUCCESS") {
       return new Response(JSON.stringify({ success: true }), { status: 200 });
     } else {
-      return new Response(JSON.stringify({ error: "Zoho CRM error", result }), {
-        status: 500,
-      });
+      console.error("❌ Zoho CRM submission failed:", crmResult);
+      return new Response(
+        JSON.stringify({ error: "Zoho CRM error", details: crmResult }),
+        { status: 500 }
+      );
     }
   } catch (err) {
+    console.error("❌ Zoho API Unexpected Error:", err);
     return new Response(
-      JSON.stringify({ error: "Unhandled error", message: err.message }),
-      {
-        status: 500,
-      }
+      JSON.stringify({
+        error: "Unhandled exception",
+        message: err.message,
+        stack: err.stack,
+      }),
+      { status: 500 }
     );
   }
 }

@@ -223,4 +223,15 @@ export const programs = [
     imageSrc: "/assets/img/coursesCards/business-management-1.jpg",
     professional: false,
   },
+  {
+    id: 19,
+    title: "Business Management",
+    href: "/programs/business-management/level-4",
+    school: "Business Discipline",
+    category: "Business Management",
+    level: "Level 5",
+    duration: 120,
+    imageSrc: "/assets/img/coursesCards/business-management-1.jpg",
+    professional: false,
+  },
 ];
