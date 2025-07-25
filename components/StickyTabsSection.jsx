@@ -208,7 +208,7 @@ export default function StickyTabsSection({ program }) {
 
         .sidebar.sticky {
           position: fixed;
-          top: 167px;
+          top: 160px;
           z-index: 20;
         }
 
@@ -221,7 +221,7 @@ export default function StickyTabsSection({ program }) {
         .tab-button {
           display: block;
           width: 100%;
-          padding: 0.75rem 1rem;
+          padding: 0.5rem 1rem;
           text-align: left;
           margin-bottom: 10px;
           background: #f9fafb;

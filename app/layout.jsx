@@ -132,7 +132,7 @@ export default function RootLayout({ children }) {
             />
 
             {/* 🔹 AI Chatbot Widget */}
-            <div className="chatbot-container" data-aos="fade-up">
+            {/* <div className="chatbot-container" data-aos="fade-up">
               <AnimatePresence>
                 {!isChatOpen ? (
                   <motion.button
@@ -176,7 +176,7 @@ export default function RootLayout({ children }) {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div>
+            </div> */}
 
             {/* {showCookieBanner && (
               <div className="cookie-overlay">

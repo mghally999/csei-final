@@ -101,7 +101,7 @@ export default function TransportationSection() {
             }}
           >
             <Image
-              src="assets/img/life/transport.png"
+              src="/assets/img/life/transport.png"
               alt="Transportation"
               width={500}
               height={350}

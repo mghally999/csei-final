@@ -126,7 +126,7 @@ export default function AdmissionGuide() {
     },
     {
       title: "Need Assistance?",
-      points: ["+971-45522469", "studentsupport@cseiacademy.ae"],
+      points: ["+971-45522469", "admission@cseiacademy.ae"],
     },
   ];
 

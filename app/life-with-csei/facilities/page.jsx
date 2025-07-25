@@ -14,7 +14,7 @@ if (typeof window !== "undefined") {
 const facilities = [
   {
     title: "Career Center",
-    image: "assets/img/life/career-center.jpg",
+    image: "/assets/img/life/career-center.jpg",
     description:
       "Comprehensive career services including resume building, interview preparation, and job placement assistance.",
   },

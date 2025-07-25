@@ -136,7 +136,7 @@ export const programs = [
     category: "Professional Courses",
     level: "Level 4",
     duration: 120,
-    imageSrc: "/assets/img/coursesCards/culinary-arts-1.jpg",
+    imageSrc: "/assets/img/coursesCards/housekeeping.jpg",
     professional: true,
   },
   {
@@ -148,7 +148,7 @@ export const programs = [
     category: "Professional Courses",
     level: "Level 4",
     duration: 120,
-    imageSrc: "/assets/img/coursesCards/culinary-arts-2.jpg",
+    imageSrc: "/assets/img/coursesCards/hr-management.png",
     professional: true,
   },
   {

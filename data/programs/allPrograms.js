@@ -684,7 +684,7 @@ const allPrograms = [
     level: "professional-courses/housekeeping",
     professional: true,
     title: "Professional Housekeeping Operations Certificate",
-    imageSrc: "/assets/img/coursesCards/culinary-arts-1.jpg",
+    imageSrc: "/assets/img/coursesCards/housekeeping.jpg",
     duration: "6 Months",
     qualificationStructure: "4 Practical Modules",
     overview: [
@@ -746,7 +746,7 @@ const allPrograms = [
     level: "professional-courses/hr-management",
     professional: true,
     title: "Professional Certificate in Hospitality HR Management",
-    imageSrc: "/assets/img/coursesCards/culinary-arts-2.jpg",
+    imageSrc: "/assets/img/coursesCards/hr-management.png",
     duration: "6 Months",
     qualificationStructure: "5 Specialized Modules",
     overview: [
