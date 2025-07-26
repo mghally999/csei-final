@@ -69,7 +69,7 @@ export const placementCards = [
       alt: "Career guidance at CSEI",
     },
     description: [
-      "<strong>Placement Training:</strong> Soft skills training, aptitude test preparation, resume writing workshops, mock interviews, and group discussion sessions to enhance employability.",
+      `<strong>Placement Training:</strong> Soft skills training, aptitude test preparation, resume writing workshops, mock interviews, and group discussion sessions to enhance employability.`,
       "<strong>Internship Opportunities:</strong> Assisting students in securing internships that provide practical exposure and build professional experience.",
       "<strong>Career Guidance Counselling:</strong> One-on-one or group counselling sessions to help students choose suitable career paths based on their strengths and interests.",
       "<strong>Alumni Network Support:</strong> Engagement with alumni for mentoring, networking, and job referrals.",

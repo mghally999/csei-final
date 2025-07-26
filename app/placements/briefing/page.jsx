@@ -51,7 +51,7 @@ export default function PlacementBriefingPage() {
                   display: "block",
                   objectFit: "cover",
                 }}
-                src="https://media.istockphoto.com/id/1988188005/photo/university-student-woman-and-outdoor-for-graduation-with-memory-smile-or-thinking-or.jpg?s=1024x1024&w=is&k=20&c=4_8qd8f_qlUMfQrvK7I0it--5L605_SgHPmeBS6k6c0="
+                src="/assets/img/placements/briefing.png"
                 alt="CSEI Briefing"
                 priority
               />

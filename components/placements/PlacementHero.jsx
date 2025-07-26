@@ -25,7 +25,7 @@ export default function PlacementHero() {
         transition={{ duration: 0.8 }}
         style={{
           backgroundImage:
-            "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2069&auto=format&fit=crop')",
+            "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url('/assets/img/placements/placements-main.jpeg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           height: "81vh",

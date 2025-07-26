@@ -47,11 +47,11 @@ export default function WhyCSEI() {
                 height={400}
                 style={{
                   width: "100%",
-                  height: "auto",
+                  height: "500px",
                   display: "block",
                   objectFit: "cover",
                 }}
-                src="https://images.unsplash.com/photo-1605379399642-870262d3d051?q=80&w=2070&auto=format&fit=crop"
+                src="/assets/img/placements/why-recruit.png"
                 alt="Why Recruit CSEI Students"
                 priority
               />

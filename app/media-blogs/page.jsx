@@ -12,6 +12,18 @@ if (typeof window !== "undefined") {
 
 const blogPosts = [
   {
+    slug: "hilton-experiential-learning",
+    title: "Experiential Learning with Canopy by Hilton Dubai Al Seef",
+    image: "/assets/img/media-blogs/hilton.png",
+    description:
+      "Our recent visit to Canopy by Hilton Dubai Al Seef brought classroom theory to life through hands-on hospitality experience...",
+    writer: "Placement Department",
+    views: 0,
+    date: "Jul 24",
+    readTime: "3 min read",
+    likes: 0,
+  },
+  {
     slug: "happy-holi",
     title: "Happy Holi: Celebrating the Vibrant Colors of Life",
     image: "assets/img/media-blogs/happy-holi.jpeg",
@@ -188,7 +200,7 @@ export default function NewsCards() {
               }}
               className="hover:scale-[1.02]"
             >
-              <Link href={`/news/${item.slug}`} passHref>
+              <Link href={`/media-blogs/${item.slug}`} passHref>
                 <div style={{ cursor: "pointer" }}>
                   <div style={{ position: "relative", height: "220px" }}>
                     <Image
