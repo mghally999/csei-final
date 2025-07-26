@@ -1,224 +1,385 @@
 "use client";
 
 import React, { useState } from "react";
-import Preloader from "@/components/common/Preloader";
-import Header from "@/components/layout/headers/Header";
+import { locationData } from "@/data/officeLocation";
 
-export default function ContactTwo() {
+export default function ContactPage() {
   const [activeTab, setActiveTab] = useState(1);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Submit logic
   };
 
   return (
-    <div className="main-content">
-      <Preloader />
-      <Header />
+    <div className="content-wrapper js-content-wrapper overflow-hidden">
+      {/* ✅ Hero Section */}
+      <section
+        style={{
+          position: "relative",
+          width: "100%",
+          height: "100vh",
+          backgroundImage: "url('/assets/img/contact/csei-building.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0,0,0,0.5)",
+            zIndex: 1,
+          }}
+        />
+        <div
+          style={{
+            position: "relative",
+            zIndex: 2,
+            color: "white",
+            textAlign: "center",
+            padding: "20px",
+          }}
+        >
+          <h1
+            style={{
+              fontSize: "42px",
+              fontWeight: "bold",
+              marginBottom: "10px",
+            }}
+          >
+            Contact Us
+          </h1>
+          <p style={{ fontSize: "18px", maxWidth: "700px", margin: "0 auto" }}>
+            Get in touch with CSEI Academy. We're here to answer your questions
+            and help you with your educational journey.
+          </p>
+        </div>
+      </section>
 
-      <div className="content-wrapper js-content-wrapper overflow-hidden">
-        {/* ✅ Hero */}
-        <section className="page-header -type-4 bg-beige-1 pt-60 pb-60 custom-padding">
-          <div className="container">
-            <div className="page-header__content">
-              <div className="row">
-                <div className="col-auto">
-                  <h1 className="page-header__title">Contact Us</h1>
-                  <p className="page-header__text mt-10">
-                    We're on a mission to deliver engaging, curated
-                    <br /> courses at a reasonable price.
-                  </p>
-                </div>
-              </div>
-            </div>
+      {/* ✅ Tabs Section */}
+      <section style={{ padding: "60px 20px 0", backgroundColor: "#f8f9fa" }}>
+        <div
+          style={{
+            maxWidth: "1200px",
+            margin: "0 auto",
+            textAlign: "center",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "30px",
+              marginBottom: "40px",
+            }}
+          >
+            <button
+              onClick={() => setActiveTab(1)}
+              style={{
+                padding: "12px 24px",
+                backgroundColor: activeTab === 1 ? "#000" : "transparent",
+                color: activeTab === 1 ? "#fff" : "#000",
+                border: "1px solid #000",
+                borderRadius: "6px",
+                fontWeight: 600,
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+              }}
+            >
+              Student Form
+            </button>
+            <button
+              onClick={() => setActiveTab(2)}
+              style={{
+                padding: "12px 24px",
+                backgroundColor: activeTab === 2 ? "#000" : "transparent",
+                color: activeTab === 2 ? "#fff" : "#000",
+                border: "1px solid #000",
+                borderRadius: "6px",
+                fontWeight: 600,
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+              }}
+            >
+              Partner With Us
+            </button>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ✅ Tabs */}
-        <section className="layout-pt-md">
-          <div className="container">
-            <div className="tabs -active-purple-2 js-tabs">
-              <div className="tabs__controls d-flex js-tabs-controls justify-center mb-30">
-                <button
-                  onClick={() => setActiveTab(1)}
-                  className={`tabs__button js-tabs-button ${
-                    activeTab === 1 ? "is-active" : ""
-                  }`}
-                >
-                  Student Form
-                </button>
-                <button
-                  onClick={() => setActiveTab(2)}
-                  className={`tabs__button js-tabs-button ml-30 ${
-                    activeTab === 2 ? "is-active" : ""
-                  }`}
-                >
-                  Partner With Us
-                </button>
+      {/* ✅ Form & Office Info */}
+      <section style={{ padding: "0 20px 80px", backgroundColor: "#f8f9fa" }}>
+        <div
+          className="container"
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+            gap: "40px",
+            maxWidth: "1200px",
+            margin: "0 auto",
+          }}
+        >
+          {/* ✅ Contact Form */}
+          <div
+            style={{
+              flex: "1 1 400px",
+              backgroundColor: "#fff",
+              padding: "30px",
+              borderRadius: "12px",
+              boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
+            }}
+          >
+            <h3
+              style={{
+                fontSize: "20px",
+                fontWeight: 500,
+                marginBottom: "20px",
+              }}
+            >
+              {activeTab === 1 ? "Student Contact" : "Partnership Inquiry"}
+            </h3>
+            <form
+              onSubmit={handleSubmit}
+              style={{ display: "flex", flexDirection: "column", gap: "20px" }}
+            >
+              <div>
+                <label style={labelStyle}>Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  placeholder="Full name"
+                  style={inputStyle}
+                />
               </div>
 
-              <div className="tabs__content pt-20 js-tabs-content">
-                <div className="tabs__pane is-active">
-                  <div className="row y-gap-40 justify-between">
-                    {/* ✅ Contact Form */}
-                    <div className="col-lg-6">
-                      <div className="px-30 py-30 bg-white border-light shadow-1 rounded-8">
-                        <h3 className="text-20 fw-500 mb-5">
-                          {activeTab === 1
-                            ? "Student Contact"
-                            : "Partnership Inquiry"}
-                        </h3>
-                        <form
-                          className="contact-form row y-gap-20 pt-16"
-                          onSubmit={handleSubmit}
-                        >
-                          <div className="col-12">
-                            <label className="text-14 fw-500 mb-5">Name</label>
-                            <input
-                              type="text"
-                              required
-                              name="name"
-                              placeholder="Full name"
-                            />
-                          </div>
+              {activeTab === 2 && (
+                <div>
+                  <label style={labelStyle}>Company</label>
+                  <input
+                    type="text"
+                    name="company"
+                    required
+                    placeholder="Company name"
+                    style={inputStyle}
+                  />
+                </div>
+              )}
 
-                          {activeTab === 2 && (
-                            <div className="col-12">
-                              <label className="text-14 fw-500 mb-5">
-                                Company
-                              </label>
-                              <input
-                                type="text"
-                                required
-                                name="company"
-                                placeholder="Company name"
-                              />
-                            </div>
-                          )}
+              <div>
+                <label style={labelStyle}>Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="Email address"
+                  style={inputStyle}
+                />
+              </div>
 
-                          <div className="col-12">
-                            <label className="text-14 fw-500 mb-5">Email</label>
-                            <input
-                              type="email"
-                              required
-                              name="email"
-                              placeholder="Email address"
-                            />
-                          </div>
+              {activeTab === 1 && (
+                <>
+                  <div>
+                    <label style={labelStyle}>Phone</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      placeholder="Phone number"
+                      style={inputStyle}
+                    />
+                  </div>
+                  <div>
+                    <label style={labelStyle}>Subject</label>
+                    <select name="subject" style={inputStyle}>
+                      <option value="general">General Inquiry</option>
+                      <option value="admissions">Admissions</option>
+                      <option value="courses">Course Information</option>
+                      <option value="feedback">Feedback</option>
+                    </select>
+                  </div>
+                </>
+              )}
 
-                          <div className="col-12">
-                            <label className="text-14 fw-500 mb-5">
-                              {activeTab === 1 ? "Message" : "Proposal"}
-                            </label>
-                            <textarea
-                              name={activeTab === 1 ? "message" : "proposal"}
-                              rows="3"
-                              placeholder={
-                                activeTab === 1
-                                  ? "Write your message..."
-                                  : "Tell us about your idea"
-                              }
-                              required
-                            ></textarea>
-                          </div>
+              <div>
+                <label style={labelStyle}>
+                  {activeTab === 1 ? "Message" : "Proposal"}
+                </label>
+                <textarea
+                  name={activeTab === 1 ? "message" : "proposal"}
+                  rows="4"
+                  required
+                  placeholder={
+                    activeTab === 1
+                      ? "How can we help you?"
+                      : "Tell us about your idea"
+                  }
+                  style={textareaStyle}
+                ></textarea>
+              </div>
 
-                          <div className="col-12">
-                            <button
-                              type="submit"
-                              className="button -sm bg-black text-white w-100"
-                            >
-                              {activeTab === 1
-                                ? "Send Message"
-                                : "Request Partnership"}
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
+              <button
+                type="submit"
+                style={{
+                  padding: "12px",
+                  backgroundColor: "#000000",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "6px",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                }}
+              >
+                {activeTab === 1 ? "Send Message" : "Request Partnership"}
+              </button>
+            </form>
+          </div>
 
-                    {/* ✅ Office Info with Location */}
-                    <div className="col-xl-5 col-lg-6">
-                      <h3 className="text-24 fw-500 mb-20">Our Office</h3>
-
-                      <div className="row y-gap-30 mb-40">
-                        <div className="col-12">
-                          <div className="text-20 fw-500 text-dark-1 mb-10">
-                            CSEI Academy Main Campus
-                          </div>
-                          <p className="mb-5">
-                            Al Manama St - Academic City - DOC-Dubai Building 4
-                            <br />
-                            Campus No: 205, 104, 105 - Dubai
-                          </p>
-                          <a href="tel:045522469" className="d-block">
-                            04 552 2469
-                          </a>
-                          <a
-                            href="mailto:admission@cseiacademy.ae"
-                            className="d-block"
-                          >
-                            admission@cseiacademy.ae
-                          </a>
-                        </div>
-                      </div>
-
-                      {/* ✅ Office Email Grid */}
-                      <div className="row y-gap-20">
-                        {[
-                          {
-                            title: "Registration Office",
-                            email: "info@cseiacademy.ae",
-                          },
-                          {
-                            title: "Admission Office",
-                            email: "admission@cseiacademy.ae",
-                          },
-                          {
-                            title: "Financial Aid Office",
-                            email: "accounts@cseiacademy.ae",
-                          },
-                          {
-                            title: "International Students Office",
-                            email: "internationaladmission@cseiacademy.ae",
-                          },
-                        ].map((office, i) => (
-                          <div className="col-sm-6" key={i}>
-                            <h5 className="fw-600 text-16 text-dark-1 mb-5">
-                              {office.title}
-                            </h5>
-                            <a
-                              href={`mailto:${office.email}`}
-                              className="text-red-1 text-14"
-                            >
-                              {office.email}
-                            </a>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* ✅ Google Map */}
-                      <div className="overflow-hidden rounded-8 border-light mt-40">
-                        <iframe
-                          src="https://www.google.com/maps?q=Al%20Manama%20St%20Academic%20City%20DOC-Dubai%20Building%204%20Campus%20No%20205,104,105%20Dubai&output=embed"
-                          width="100%"
-                          height="220"
-                          style={{
-                            border: 0,
-                            borderRadius: "8px",
-                          }}
-                          allowFullScreen
-                          loading="lazy"
-                          referrerPolicy="no-referrer-when-downgrade"
-                        ></iframe>
-                      </div>
-                    </div>
+          {/* ✅ Office Details (Map + Full Info) */}
+          <div style={{ flex: "1 1 400px" }}>
+            <h3
+              style={{
+                fontSize: "24px",
+                fontWeight: 600,
+                marginBottom: "20px",
+              }}
+            >
+              Our Campus
+            </h3>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "30px" }}>
+              {locationData.map((elm, i) => (
+                <div key={i} style={{ flex: "1 1 200px" }}>
+                  <div
+                    style={{
+                      fontSize: "20px",
+                      fontWeight: 600,
+                      color: "#2d3748",
+                      marginBottom: "10px",
+                    }}
+                  >
+                    {elm.location}
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "6px",
+                    }}
+                  >
+                    <span style={infoStyle}>{elm.address}</span>
+                    <span style={infoStyle}>{elm.phoneNumber}</span>
+                    <span style={infoStyle}>
+                      <a
+                        href={`mailto:${elm.email}`}
+                        style={{ color: "red", textDecoration: "underline" }}
+                      >
+                        {elm.email}
+                      </a>
+                    </span>
                   </div>
                 </div>
-              </div>
+              ))}
+            </div>
+
+            {/* ✅ Google Map */}
+            <div
+              style={{
+                marginTop: "40px",
+                borderRadius: "8px",
+                overflow: "hidden",
+              }}
+            >
+              <iframe
+                src="https://www.google.com/maps?q=Al%20Manama%20St%20Academic%20City%20DOC-Dubai%20Building%204%20Campus%20No%20205,104,105%20Dubai&output=embed"
+                width="100%"
+                height="250"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      {/* ✅ Office Emails */}
+      <section style={{ backgroundColor: "#fff", padding: "60px 20px" }}>
+        <div
+          style={{
+            maxWidth: "1000px",
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+            gap: "40px",
+            textAlign: "left",
+          }}
+        >
+          {locationData.map((item, idx) => (
+            <div key={idx}>
+              <div
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "bold",
+                  color: "#153d59",
+                  marginBottom: "8px",
+                }}
+              >
+                {item.location}
+              </div>
+              <a
+                href={`mailto:${item.email}`}
+                style={{
+                  color: "red",
+                  textDecoration: "underline",
+                  fontSize: "16px",
+                  fontWeight: "500",
+                }}
+              >
+                {item.email}
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
+
+// ✅ Reusable Styles
+const labelStyle = {
+  fontSize: "14px",
+  fontWeight: 500,
+  marginBottom: "6px",
+  display: "block",
+  color: "#2d3748",
+};
+
+const inputStyle = {
+  width: "100%",
+  padding: "10px 14px",
+  border: "1px solid #e2e8f0",
+  borderRadius: "6px",
+  fontSize: "16px",
+};
+
+const textareaStyle = {
+  width: "100%",
+  padding: "10px 14px",
+  border: "1px solid #e2e8f0",
+  borderRadius: "6px",
+  fontSize: "16px",
+  resize: "vertical",
+};
+
+const infoStyle = {
+  fontSize: "16px",
+  color: "#4a5568",
+};

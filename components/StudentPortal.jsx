@@ -131,7 +131,7 @@ export default function StudentPortalShowcase() {
         {/* Left Image */}
         <div ref={imageRef} style={{ flex: "1", minWidth: "300px" }}>
           <Image
-            src="assets/img/life/student-portal.jpeg"
+            src="/assets/img/life/student-portal.jpeg"
             width={600}
             height={400}
             alt="Student Portal"
