@@ -110,7 +110,7 @@ export default function BlogDetailsPage({ params }) {
         }
 
         .hero-image {
-          height: 80vh;
+          height: 100vh;
           background-size: cover;
           background-position: center;
           display: flex;
