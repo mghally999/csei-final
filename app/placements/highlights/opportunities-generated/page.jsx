@@ -15,27 +15,9 @@ export default function OpportunitiesGeneratedSection() {
       }}
     >
       <div className="container">
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            margin: "-15px",
-            alignItems: "stretch",
-          }}
-        >
+        <div className="wrapper">
           {/* Image Column */}
-          <div
-            style={{
-              flex: "0 0 50%",
-              maxWidth: "50%",
-              padding: "15px",
-              position: "relative",
-              "@media (max-width: 992px)": {
-                flex: "0 0 100%",
-                maxWidth: "100%",
-              },
-            }}
-          >
+          <div className="col image-col">
             <div
               style={{
                 position: "relative",
@@ -43,9 +25,6 @@ export default function OpportunitiesGeneratedSection() {
                 overflow: "hidden",
                 boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
                 transition: "transform 0.3s ease",
-                ":hover": {
-                  transform: "translateY(-5px)",
-                },
               }}
             >
               <Image
@@ -57,7 +36,7 @@ export default function OpportunitiesGeneratedSection() {
                   display: "block",
                   objectFit: "cover",
                 }}
-                src="https://images.unsplash.com/photo-1462536943532-57a629f6cc60?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="/assets/img/placements/opportunities.png"
                 alt="Opportunities at CSEI Academy"
                 priority
               />
@@ -65,17 +44,7 @@ export default function OpportunitiesGeneratedSection() {
           </div>
 
           {/* Content Column */}
-          <div
-            style={{
-              flex: "0 0 50%",
-              maxWidth: "50%",
-              padding: "15px",
-              "@media (max-width: 992px)": {
-                flex: "0 0 100%",
-                maxWidth: "100%",
-              },
-            }}
-          >
+          <div className="col text-col">
             <h2
               style={{
                 fontSize: "36px",
@@ -83,7 +52,6 @@ export default function OpportunitiesGeneratedSection() {
                 lineHeight: "1.3",
                 color: "#2d3748",
                 marginBottom: "30px",
-                position: "relative",
                 paddingBottom: "15px",
               }}
             >
@@ -157,6 +125,48 @@ export default function OpportunitiesGeneratedSection() {
           </div>
         </div>
       </div>
+
+      {/* Responsive CSS */}
+      <style jsx>{`
+        .wrapper {
+          display: flex;
+          flex-wrap: wrap;
+          margin: -15px;
+          align-items: stretch;
+        }
+
+        .col {
+          flex: 0 0 50%;
+          max-width: 50%;
+          padding: 15px;
+        }
+
+        @media (max-width: 992px) {
+          .col {
+            flex: 0 0 100% !important;
+            max-width: 100% !important;
+          }
+
+          .text-col {
+            text-align: center;
+          }
+
+          h2 {
+            font-size: 28px !important;
+          }
+
+          p {
+            font-size: 16px !important;
+          }
+        }
+
+        @media (max-width: 576px) {
+          .text-col div,
+          .text-col p {
+            font-size: 15px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

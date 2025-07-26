@@ -15,22 +15,9 @@ export default function PlacementServices() {
       }}
     >
       <div className="container">
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            margin: "-15px",
-            alignItems: "center",
-          }}
-        >
+        <div className="flex-wrapper">
           {/* Left: Image */}
-          <div
-            style={{
-              flex: "0 0 50%",
-              maxWidth: "50%",
-              padding: "15px",
-            }}
-          >
+          <div className="image-col">
             <div
               style={{
                 borderRadius: "12px",
@@ -55,13 +42,7 @@ export default function PlacementServices() {
           </div>
 
           {/* Right: Content */}
-          <div
-            style={{
-              flex: "0 0 50%",
-              maxWidth: "50%",
-              padding: "15px",
-            }}
-          >
+          <div className="text-col">
             <h2
               style={{
                 fontSize: "36px",
@@ -154,6 +135,55 @@ export default function PlacementServices() {
           </div>
         </div>
       </div>
+
+      {/* Responsive Styles */}
+      <style jsx>{`
+        .flex-wrapper {
+          display: flex;
+          flex-wrap: wrap;
+          margin: -15px;
+          align-items: center;
+        }
+
+        .image-col,
+        .text-col {
+          flex: 0 0 50%;
+          max-width: 50%;
+          padding: 15px;
+        }
+
+        @media (max-width: 992px) {
+          .image-col,
+          .text-col {
+            flex: 0 0 100% !important;
+            max-width: 100% !important;
+          }
+
+          h2 {
+            font-size: 28px !important;
+            text-align: center;
+          }
+
+          .text-col {
+            text-align: center;
+          }
+
+          .text-col strong {
+            display: block;
+            margin-bottom: 4px;
+          }
+        }
+
+        @media (max-width: 576px) {
+          .text-col strong {
+            font-size: 15px;
+          }
+
+          .text-col span {
+            font-size: 15px;
+          }
+        }
+      `}</style>
     </div>
   );
 }

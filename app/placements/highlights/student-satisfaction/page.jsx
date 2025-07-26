@@ -15,27 +15,9 @@ export default function StudentSatisfactionSection() {
       }}
     >
       <div className="container">
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            margin: "-15px",
-            alignItems: "stretch",
-          }}
-        >
+        <div className="wrapper">
           {/* Image Column */}
-          <div
-            style={{
-              flex: "0 0 50%",
-              maxWidth: "50%",
-              padding: "15px",
-              position: "relative",
-              "@media (max-width: 992px)": {
-                flex: "0 0 100%",
-                maxWidth: "100%",
-              },
-            }}
-          >
+          <div className="col image-col">
             <div
               style={{
                 position: "relative",
@@ -43,9 +25,6 @@ export default function StudentSatisfactionSection() {
                 overflow: "hidden",
                 boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
                 transition: "transform 0.3s ease",
-                ":hover": {
-                  transform: "translateY(-5px)",
-                },
               }}
             >
               <Image
@@ -65,17 +44,7 @@ export default function StudentSatisfactionSection() {
           </div>
 
           {/* Content Column */}
-          <div
-            style={{
-              flex: "0 0 50%",
-              maxWidth: "50%",
-              padding: "15px",
-              "@media (max-width: 992px)": {
-                flex: "0 0 100%",
-                maxWidth: "100%",
-              },
-            }}
-          >
+          <div className="col text-col">
             <h2
               style={{
                 fontSize: "36px",
@@ -234,6 +203,56 @@ export default function StudentSatisfactionSection() {
           </div>
         </div>
       </div>
+
+      {/* Custom Responsive Styles */}
+      <style jsx>{`
+        .wrapper {
+          display: flex;
+          flex-wrap: wrap;
+          margin: -15px;
+          align-items: stretch;
+        }
+
+        .col {
+          flex: 0 0 50%;
+          max-width: 50%;
+          padding: 15px;
+        }
+
+        @media (max-width: 992px) {
+          .col {
+            flex: 0 0 100% !important;
+            max-width: 100% !important;
+          }
+
+          h2 {
+            font-size: 28px !important;
+            text-align: center;
+          }
+
+          h3 {
+            font-size: 20px !important;
+            text-align: center;
+          }
+
+          .text-col {
+            text-align: center;
+          }
+
+          .text-col strong {
+            display: block;
+            margin-bottom: 5px;
+          }
+        }
+
+        @media (max-width: 576px) {
+          .text-col strong,
+          .text-col span,
+          .text-col div {
+            font-size: 15px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

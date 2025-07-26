@@ -2,125 +2,296 @@
 
 import React from "react";
 import { locationData } from "@/data/officeLocation";
-import Preloader from "@/components/common/Preloader";
-import Header from "@/components/layout/headers/Header";
 
 export default function PartnerWithUs() {
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle partnership form submission here
+    // Submit logic
   };
 
   return (
     <div className="content-wrapper js-content-wrapper overflow-hidden">
-      {/* ✅ Hero */}
-      <section className="page-header -type-4 bg-beige-1 pt-60 pb-60 custom-padding custom-linear-blue-top">
-        <div className="container">
-          <div className="page-header__content">
-            <div className="row">
-              <div className="col-auto">
-                <h1 className="page-header__title">Partner With Us</h1>
-                <p className="page-header__text mt-10">
-                  Collaborate with CSEI Academy and become part of a
-                  transformative education network.
-                </p>
+      {/* ✅ Hero Section */}
+      <section
+        style={{
+          position: "relative",
+          width: "100%",
+          height: "100vh",
+          backgroundImage: "url('/assets/img/placements/partner-with-us.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0,0,0,0.5)",
+            zIndex: 1,
+          }}
+        />
+        <div
+          style={{
+            position: "relative",
+            zIndex: 2,
+            color: "white",
+            textAlign: "center",
+            padding: "20px",
+          }}
+        >
+          <h1
+            style={{
+              fontSize: "42px",
+              fontWeight: "bold",
+              marginBottom: "10px",
+            }}
+          >
+            Partner With Us
+          </h1>
+          <p style={{ fontSize: "18px", maxWidth: "700px", margin: "0 auto" }}>
+            Collaborate with CSEI Academy and become part of a transformative
+            education network.
+          </p>
+        </div>
+      </section>
+
+      {/* ✅ Form & Office Info */}
+      <section style={{ padding: "80px 20px", backgroundColor: "#f8f9fa" }}>
+        <div
+          className="container"
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+            gap: "40px",
+            maxWidth: "1200px",
+            margin: "0 auto",
+          }}
+        >
+          {/* ✅ Partnership Form */}
+          <div
+            style={{
+              flex: "1 1 400px",
+              backgroundColor: "#fff",
+              padding: "30px",
+              borderRadius: "12px",
+              boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
+            }}
+          >
+            <h3
+              style={{
+                fontSize: "20px",
+                fontWeight: 500,
+                marginBottom: "20px",
+              }}
+            >
+              Partnership Inquiry
+            </h3>
+            <form
+              onSubmit={handleSubmit}
+              style={{ display: "flex", flexDirection: "column", gap: "20px" }}
+            >
+              <div>
+                <label style={labelStyle}>Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  placeholder="Full name"
+                  style={inputStyle}
+                />
               </div>
+              <div>
+                <label style={labelStyle}>Company</label>
+                <input
+                  type="text"
+                  name="company"
+                  required
+                  placeholder="Company name"
+                  style={inputStyle}
+                />
+              </div>
+              <div>
+                <label style={labelStyle}>Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="Email address"
+                  style={inputStyle}
+                />
+              </div>
+              <div>
+                <label style={labelStyle}>Proposal</label>
+                <textarea
+                  name="proposal"
+                  rows="4"
+                  required
+                  placeholder="Tell us about your idea"
+                  style={textareaStyle}
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                style={{
+                  padding: "12px",
+                  backgroundColor: "#000000",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "6px",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                }}
+              >
+                Request Partnership
+              </button>
+            </form>
+          </div>
+
+          {/* ✅ Office Details (Map + Full Info) */}
+          <div style={{ flex: "1 1 400px" }}>
+            <h3
+              style={{
+                fontSize: "24px",
+                fontWeight: 600,
+                marginBottom: "20px",
+              }}
+            >
+              Our Campus
+            </h3>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "30px" }}>
+              {locationData.map((elm, i) => (
+                <div key={i} style={{ flex: "1 1 200px" }}>
+                  <div
+                    style={{
+                      fontSize: "20px",
+                      fontWeight: 600,
+                      color: "#2d3748",
+                      marginBottom: "10px",
+                    }}
+                  >
+                    {elm.location}
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "6px",
+                    }}
+                  >
+                    <span style={infoStyle}>{elm.address}</span>
+                    <span style={infoStyle}>{elm.phoneNumber}</span>
+                    <span style={infoStyle}>
+                      <a
+                        href={`mailto:${elm.email}`}
+                        style={{ color: "red", textDecoration: "underline" }}
+                      >
+                        {elm.email}
+                      </a>
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* ✅ Google Map */}
+            <div
+              style={{
+                marginTop: "40px",
+                borderRadius: "8px",
+                overflow: "hidden",
+              }}
+            >
+              <iframe
+                src="https://www.google.com/maps?q=Al%20Manama%20St%20Academic%20City%20DOC-Dubai%20Building%204%20Campus%20No%20205,104,105%20Dubai&output=embed"
+                width="100%"
+                height="250"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ✅ Form Section */}
-      <section className="">
-        <div className="container">
-          <div className="row y-gap-40 justify-between">
-            {/* ✅ Partnership Form */}
-            <div className="col-lg-6">
-              <div className="px-30 py-30 bg-white border-light shadow-1 rounded-8">
-                <h3 className="text-20 fw-500 mb-5">Partnership Inquiry</h3>
-                <form
-                  className="contact-form row y-gap-20 pt-16"
-                  onSubmit={handleSubmit}
-                >
-                  <div className="col-12">
-                    <label className="text-14 fw-500 mb-5">Name</label>
-                    <input
-                      type="text"
-                      required
-                      name="name"
-                      placeholder="Full name"
-                    />
-                  </div>
-
-                  <div className="col-12">
-                    <label className="text-14 fw-500 mb-5">Company</label>
-                    <input
-                      type="text"
-                      required
-                      name="company"
-                      placeholder="Company name"
-                    />
-                  </div>
-
-                  <div className="col-12">
-                    <label className="text-14 fw-500 mb-5">Email</label>
-                    <input
-                      type="email"
-                      required
-                      name="email"
-                      placeholder="Email address"
-                    />
-                  </div>
-
-                  <div className="col-12">
-                    <label className="text-14 fw-500 mb-5">Proposal</label>
-                    <textarea
-                      name="proposal"
-                      rows="4"
-                      required
-                      placeholder="Tell us about your idea"
-                    ></textarea>
-                  </div>
-
-                  <div className="col-12">
-                    <button
-                      type="submit"
-                      className="button -sm bg-black text-white w-100"
-                    >
-                      Request Partnership
-                    </button>
-                  </div>
-                </form>
+      {/* ✅ Office Emails (Simple 2-column style like contact page) */}
+      <section style={{ backgroundColor: "#fff", padding: "60px 20px" }}>
+        <div
+          style={{
+            maxWidth: "1000px",
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+            gap: "40px",
+            textAlign: "left",
+          }}
+        >
+          {locationData.map((item, idx) => (
+            <div key={idx}>
+              <div
+                style={{
+                  fontSize: "20px",
+                  fontWeight: "bold",
+                  color: "#153d59",
+                  marginBottom: "8px",
+                }}
+              >
+                {item.location}
               </div>
+              <a
+                href={`mailto:${item.email}`}
+                style={{
+                  color: "red",
+                  textDecoration: "underline",
+                  fontSize: "16px",
+                  fontWeight: "500",
+                }}
+              >
+                {item.email}
+              </a>
             </div>
-
-            {/* ✅ Office Info */}
-            <div className="col-xl-5 col-lg-6">
-              <h3 className="text-24 fw-500">Our Offices</h3>
-              <div className="row y-gap-30 pt-40">
-                {locationData.map((elm, i) => (
-                  <div key={i} className="col-sm-6">
-                    <div className="text-20 fw-500 text-dark-1">
-                      {elm.location}
-                    </div>
-                    <div className="y-gap-10 pt-15">
-                      <a href="#" className="d-block">
-                        {elm.address}
-                      </a>
-                      <a href="#" className="d-block">
-                        {elm.phoneNumber}
-                      </a>
-                      <a href="#" className="d-block">
-                        {elm.email}
-                      </a>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
     </div>
   );
 }
+
+// ✅ Reusable Styles
+const labelStyle = {
+  fontSize: "14px",
+  fontWeight: 500,
+  marginBottom: "6px",
+  display: "block",
+  color: "#2d3748",
+};
+
+const inputStyle = {
+  width: "100%",
+  padding: "10px 14px",
+  border: "1px solid #e2e8f0",
+  borderRadius: "6px",
+  fontSize: "16px",
+};
+
+const textareaStyle = {
+  width: "100%",
+  padding: "10px 14px",
+  border: "1px solid #e2e8f0",
+  borderRadius: "6px",
+  fontSize: "16px",
+  resize: "vertical",
+};
+
+const infoStyle = {
+  fontSize: "16px",
+  color: "#4a5568",
+};

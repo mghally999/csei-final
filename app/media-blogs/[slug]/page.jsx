@@ -50,7 +50,7 @@ const blogPagesData = [
     ],
   },
   {
-    slug: "hilton-experiential-learning",
+    slug: "hilton-experimental-learning",
     image: "/assets/img/media-blogs/hilton.png",
     title: "Experiential Learning with Canopy by Hilton Dubai Al Seef",
     content: [

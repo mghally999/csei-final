@@ -33,7 +33,7 @@ export default function ContactTwo() {
         <div className="container">
           <div className="row y-gap-50 justify-between">
             <div className="col-xl-5 col-lg-6">
-              <h3 className="text-24 lh-1 fw-500">Our offices</h3>
+              <h3 className="text-24 lh-1 fw-500">Our Campus</h3>
               <div className="row y-gap-30 pt-40">
                 {locationData.map((elm, i) => (
                   <div key={i} className="col-sm-6">

@@ -2,7 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-import { FiArrowRight } from "react-icons/fi";
 
 export default function PlacementBriefingPage() {
   return (
@@ -20,8 +19,9 @@ export default function PlacementBriefingPage() {
           style={{
             display: "flex",
             flexWrap: "wrap",
+            flexDirection: "row",
             margin: "-15px",
-            alignItems: "start",
+            alignItems: "flex-start",
           }}
         >
           {/* Image Column */}
@@ -32,6 +32,7 @@ export default function PlacementBriefingPage() {
               padding: "15px",
               position: "relative",
             }}
+            className="image-col"
           >
             <div
               style={{
@@ -77,6 +78,7 @@ export default function PlacementBriefingPage() {
               padding: "15px",
               position: "relative",
             }}
+            className="text-col"
           >
             <h2
               style={{
@@ -85,7 +87,6 @@ export default function PlacementBriefingPage() {
                 lineHeight: "1.3",
                 color: "#0f1d56",
                 marginBottom: "30px",
-                position: "relative",
                 paddingBottom: "15px",
               }}
             >
@@ -148,7 +149,7 @@ export default function PlacementBriefingPage() {
           </div>
         </div>
 
-        {/* CTA */}
+        {/* CTA if needed */}
         <div
           style={{
             marginTop: "60px",
@@ -157,6 +158,26 @@ export default function PlacementBriefingPage() {
           }}
         ></div>
       </div>
+
+      {/* Responsive Styles */}
+      <style jsx>{`
+        @media (max-width: 992px) {
+          .image-col,
+          .text-col {
+            flex: 0 0 100% !important;
+            max-width: 100% !important;
+            text-align: center;
+          }
+
+          .text-col h2 {
+            font-size: 28px !important;
+          }
+
+          .text-col p {
+            font-size: 16px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

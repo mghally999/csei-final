@@ -2,7 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-import { FiArrowRight } from "react-icons/fi";
 
 export default function WhyCSEI() {
   return (
@@ -17,15 +16,17 @@ export default function WhyCSEI() {
     >
       <div className="container">
         <div
+          className="responsive-flex"
           style={{
             display: "flex",
             flexWrap: "wrap",
             margin: "-15px",
-            alignItems: "start",
+            alignItems: "flex-start",
           }}
         >
           {/* Left Image */}
           <div
+            className="image-col"
             style={{
               flex: "0 0 50%",
               maxWidth: "50%",
@@ -71,6 +72,7 @@ export default function WhyCSEI() {
 
           {/* Right Content */}
           <div
+            className="text-col"
             style={{
               flex: "0 0 50%",
               maxWidth: "50%",
@@ -161,7 +163,7 @@ export default function WhyCSEI() {
           </div>
         </div>
 
-        {/* CTA Section */}
+        {/* CTA Section (optional) */}
         <div
           style={{
             marginTop: "60px",
@@ -170,6 +172,30 @@ export default function WhyCSEI() {
           }}
         ></div>
       </div>
+
+      {/* RESPONSIVE STYLES */}
+      <style jsx>{`
+        @media (max-width: 992px) {
+          .image-col,
+          .text-col {
+            flex: 0 0 100% !important;
+            max-width: 100% !important;
+            text-align: center;
+          }
+
+          .text-col h2 {
+            font-size: 28px !important;
+          }
+
+          .text-col p {
+            font-size: 16px !important;
+          }
+
+          .image-col img {
+            height: auto !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

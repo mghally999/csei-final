@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { locationData } from "@/data/officeLocation";
 import Preloader from "@/components/common/Preloader";
 import Header from "@/components/layout/headers/Header";
 
@@ -10,12 +9,6 @@ export default function ContactTwo() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  };
-
-  // Function to generate Google Maps embed URL
-  const generateMapUrl = (address) => {
-    const encodedAddress = encodeURIComponent(address);
-    return `https://www.google.com/maps?q=${encodedAddress}&output=embed`;
   };
 
   return (
@@ -45,7 +38,7 @@ export default function ContactTwo() {
         <section className="layout-pt-md">
           <div className="container">
             <div className="tabs -active-purple-2 js-tabs">
-              <div className="tabs__controls d-flex js-tabs-controls justify-center">
+              <div className="tabs__controls d-flex js-tabs-controls justify-center mb-30">
                 <button
                   onClick={() => setActiveTab(1)}
                   className={`tabs__button js-tabs-button ${
@@ -143,52 +136,82 @@ export default function ContactTwo() {
                       </div>
                     </div>
 
-                    {/* ✅ Office + Map */}
+                    {/* ✅ Office Info with Location */}
                     <div className="col-xl-5 col-lg-6">
-                      <h3 className="text-24 fw-500">Our Office</h3>
-                      <div className="row y-gap-40 pt-40">
-                        {locationData.map((office) => (
-                          <div key={office.id} className="col-12">
-                            <div className="text-20 fw-500 text-dark-1">
-                              {office.location}
-                            </div>
-                            <div className="y-gap-10 pt-15 mb-10">
-                              <p>{office.address}</p>
-                              <a
-                                href={`tel:${office.phoneNumber}`}
-                                className="d-block"
-                              >
-                                {office.phoneNumber}
-                              </a>
-                              <a
-                                href={`mailto:${office.email}`}
-                                className="d-block"
-                              >
-                                {office.email}
-                              </a>
-                            </div>
+                      <h3 className="text-24 fw-500 mb-20">Our Office</h3>
 
-                            {/* ✅ Google Maps Embed */}
-                            <div className="overflow-hidden rounded-8 border-light">
-                              <iframe
-                                src={generateMapUrl(office.address)}
-                                width="100%"
-                                height="220"
-                                style={{
-                                  border: 0,
-                                  borderRadius: "8px",
-                                  width: "100%",
-                                }}
-                                allowFullScreen
-                                loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
-                              ></iframe>
-                            </div>
+                      <div className="row y-gap-30 mb-40">
+                        <div className="col-12">
+                          <div className="text-20 fw-500 text-dark-1 mb-10">
+                            CSEI Academy Main Campus
+                          </div>
+                          <p className="mb-5">
+                            Al Manama St - Academic City - DOC-Dubai Building 4
+                            <br />
+                            Campus No: 205, 104, 105 - Dubai
+                          </p>
+                          <a href="tel:045522469" className="d-block">
+                            04 552 2469
+                          </a>
+                          <a
+                            href="mailto:admission@cseiacademy.ae"
+                            className="d-block"
+                          >
+                            admission@cseiacademy.ae
+                          </a>
+                        </div>
+                      </div>
+
+                      {/* ✅ Office Email Grid */}
+                      <div className="row y-gap-20">
+                        {[
+                          {
+                            title: "Registration Office",
+                            email: "info@cseiacademy.ae",
+                          },
+                          {
+                            title: "Admission Office",
+                            email: "admission@cseiacademy.ae",
+                          },
+                          {
+                            title: "Financial Aid Office",
+                            email: "accounts@cseiacademy.ae",
+                          },
+                          {
+                            title: "International Students Office",
+                            email: "internationaladmission@cseiacademy.ae",
+                          },
+                        ].map((office, i) => (
+                          <div className="col-sm-6" key={i}>
+                            <h5 className="fw-600 text-16 text-dark-1 mb-5">
+                              {office.title}
+                            </h5>
+                            <a
+                              href={`mailto:${office.email}`}
+                              className="text-red-1 text-14"
+                            >
+                              {office.email}
+                            </a>
                           </div>
                         ))}
                       </div>
+
+                      {/* ✅ Google Map */}
+                      <div className="overflow-hidden rounded-8 border-light mt-40">
+                        <iframe
+                          src="https://www.google.com/maps?q=Al%20Manama%20St%20Academic%20City%20DOC-Dubai%20Building%204%20Campus%20No%20205,104,105%20Dubai&output=embed"
+                          width="100%"
+                          height="220"
+                          style={{
+                            border: 0,
+                            borderRadius: "8px",
+                          }}
+                          allowFullScreen
+                          loading="lazy"
+                          referrerPolicy="no-referrer-when-downgrade"
+                        ></iframe>
+                      </div>
                     </div>
-                    {/* End office map */}
                   </div>
                 </div>
               </div>

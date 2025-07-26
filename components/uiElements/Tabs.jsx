@@ -203,7 +203,7 @@ export default function ContactTwo() {
                     marginBottom: "30px",
                   }}
                 >
-                  Our offices
+                  Our Campus
                 </h3>
                 <div
                   className="row y-gap-30 pt-40"
