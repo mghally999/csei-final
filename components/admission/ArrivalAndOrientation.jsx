@@ -1,356 +1,133 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React from "react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { FiArrowRight } from "react-icons/fi";
 import { motion } from "framer-motion";
 
-if (typeof window !== "undefined") gsap.registerPlugin(ScrollTrigger);
+export default function ArrivalOrientationBrief() {
+  const router = useRouter();
 
-const CheckItem = ({ text }) => (
-  <motion.div
-    initial={{ opacity: 0, x: -10 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.3 }}
-    style={{ display: "flex", alignItems: "flex-start", marginBottom: "12px" }}
-  >
-    <div
-      style={{
-        width: "28px",
-        height: "28px",
-        backgroundColor: "#000",
-        color: "#fff",
-        borderRadius: "50%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontSize: "16px",
-        fontWeight: "bold",
-        marginRight: "12px",
-        flexShrink: 0,
-      }}
-    >
-      ✓
-    </div>
-    <div style={{ fontSize: "16px", color: "#fff" }}>{text}</div>
-  </motion.div>
-);
-
-const AccommodationCards = () => {
-  const sectionRef = useRef(null);
-  const cardsRef = useRef([]);
-  const [formData, setFormData] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
-
-  useEffect(() => {
-    cardsRef.current.forEach((card, i) => {
-      if (card) {
-        gsap.from(card, {
-          scrollTrigger: {
-            trigger: card,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
-          y: 60,
-          opacity: 0,
-          duration: 0.8,
-          delay: i * 0.1,
-          ease: "power3.out",
-        });
-      }
-    });
-
-    gsap.to(sectionRef.current, {
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-      },
-      backgroundPosition: "50% 30%",
-      ease: "none",
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
-  }, []);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+  const handleNavigate = () => {
+    router.push("admission/arrival-support");
   };
-
-  const handleFileChange = (e) => {
-    const { name, files } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: files[0] }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setSuccessMessage("");
-
-    const form = new FormData();
-    for (const key in formData) {
-      form.append(key, formData[key]);
-    }
-
-    try {
-      const res = await fetch("/api/accommodation", {
-        method: "POST",
-        body: form,
-      });
-
-      if (res.ok) {
-        setSuccessMessage(
-          "✅ Your application has been submitted. We will get back to you shortly."
-        );
-        setFormData({});
-        e.target.reset(); // clear form
-      } else {
-        setSuccessMessage("❌ Submission failed. Please try again.");
-      }
-    } catch (err) {
-      console.error(err);
-      setSuccessMessage(
-        "❌ Error occurred. Please check your inputs and try again."
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const fields = [
-    { name: "fullName", label: "Full Name", type: "text", required: true },
-    { name: "studentId", label: "Student ID", type: "text", required: true },
-    {
-      name: "contactNumber",
-      label: "Contact Number",
-      type: "tel",
-      required: true,
-    },
-    { name: "email", label: "Email Address", type: "email", required: true },
-    {
-      name: "accommodationType",
-      label: "Accommodation Type",
-      type: "select",
-      options: ["Shared Room", "Private Room", "Married Couple"],
-      required: true,
-    },
-    { name: "moveInDate", label: "Move-in Date", type: "date", required: true },
-    {
-      name: "moveOutDate",
-      label: "Move-out Date",
-      type: "date",
-      required: false,
-    },
-    {
-      name: "lengthOfStay",
-      label: "Length of Stay",
-      type: "text",
-      required: true,
-    },
-    {
-      name: "passportCopy",
-      label: "Passport Copy",
-      type: "file",
-      required: true,
-    },
-    {
-      name: "enrollmentConfirmation",
-      label: "Enrollment Confirmation",
-      type: "file",
-      required: true,
-    },
-    { name: "visaCopy", label: "Visa Copy", type: "file", required: true },
-    { name: "photograph", label: "Photograph", type: "file", required: true },
-    {
-      name: "emergencyContactName",
-      label: "Emergency Contact Name",
-      type: "text",
-      required: true,
-    },
-    {
-      name: "emergencyContactRelationship",
-      label: "Emergency Contact Relationship",
-      type: "text",
-      required: true,
-    },
-    {
-      name: "emergencyContactNumber",
-      label: "Emergency Contact Number",
-      type: "tel",
-      required: true,
-    },
-    {
-      name: "paymentMethod",
-      label: "Payment Method",
-      type: "select",
-      options: ["Credit Card", "Bank Transfer", "Cash"],
-      required: true,
-    },
-    {
-      name: "paymentReceipt",
-      label: "Payment Receipt",
-      type: "file",
-      required: true,
-    },
-    {
-      name: "specialRequirements",
-      label: "Special Requirements",
-      type: "textarea",
-      required: false,
-    },
-    {
-      name: "additionalNotes",
-      label: "Additional Notes",
-      type: "textarea",
-      required: false,
-    },
-  ];
 
   return (
     <section
-      ref={sectionRef}
-      style={{ padding: "60px 20px", background: "#111", color: "#fff" }}
+      className="layout-pb-lg custom-padding custom-linear-white-top"
+      style={{ backgroundColor: "#f8f9fa", paddingTop: "80px" }}
     >
-      <h2
-        style={{ textAlign: "center", fontSize: "2rem", marginBottom: "30px" }}
-      >
-        Accommodation Application Form
-      </h2>
-
-      <motion.form
-        onSubmit={handleSubmit}
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        style={{
-          maxWidth: "900px",
-          margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: "20px",
-        }}
-      >
-        {fields.map((field, i) => (
-          <div key={i}>
-            <label
-              style={{ color: "#fff", display: "block", marginBottom: "6px" }}
-            >
-              {field.label}{" "}
-              {field.required && <span style={{ color: "red" }}>*</span>}
-            </label>
-
-            {field.type === "select" ? (
-              <select
-                name={field.name}
-                onChange={handleChange}
-                required={field.required}
-                style={{
-                  padding: "10px",
-                  width: "100%",
-                  background: "#222",
-                  color: "#fff",
-                }}
-              >
-                <option value="">Select {field.label}</option>
-                {field.options.map((opt, j) => (
-                  <option key={j} value={opt}>
-                    {opt}
-                  </option>
-                ))}
-              </select>
-            ) : field.type === "textarea" ? (
-              <textarea
-                name={field.name}
-                onChange={handleChange}
-                required={field.required}
-                style={{
-                  padding: "10px",
-                  width: "100%",
-                  background: "#222",
-                  color: "#fff",
-                  minHeight: "80px",
-                }}
-              />
-            ) : field.type === "file" ? (
-              <input
-                type="file"
-                name={field.name}
-                onChange={handleFileChange}
-                required={field.required}
-                style={{ color: "#fff", width: "100%" }}
-              />
-            ) : (
-              <input
-                type={field.type}
-                name={field.name}
-                onChange={handleChange}
-                required={field.required}
-                style={{
-                  padding: "10px",
-                  width: "100%",
-                  background: "#222",
-                  color: "#fff",
-                }}
-              />
-            )}
-          </div>
-        ))}
-
-        <div style={{ gridColumn: "1 / -1" }}>
-          <label
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              fontSize: "14px",
-            }}
-          >
-            <input type="checkbox" required />I agree to the rules and
-            guidelines of CSEI Hostel
-          </label>
-        </div>
-
+      <div className="container">
         <div
           style={{
-            gridColumn: "1 / -1",
-            textAlign: "center",
-            marginTop: "20px",
+            display: "flex",
+            flexWrap: "wrap",
+            margin: "-15px",
+            alignItems: "center",
           }}
         >
-          <button
-            type="submit"
-            disabled={loading}
+          {/* Image */}
+          <div
             style={{
-              padding: "12px 30px",
-              backgroundColor: "#0f0",
-              color: "#000",
-              fontWeight: "bold",
-              borderRadius: "6px",
-              cursor: loading ? "not-allowed" : "pointer",
+              flex: "0 0 50%",
+              maxWidth: "50%",
+              padding: "15px",
             }}
           >
-            {loading ? "Submitting..." : "Submit Application"}
-          </button>
-
-          {successMessage && (
-            <p
+            <div
               style={{
-                marginTop: "20px",
-                color: successMessage.startsWith("✅") ? "#0f0" : "red",
+                borderRadius: "12px",
+                overflow: "hidden",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
               }}
             >
-              {successMessage}
+              <Image
+                width={600}
+                height={400}
+                style={{ width: "100%", height: "auto", objectFit: "cover" }}
+                src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?q=80&w=2070&auto=format&fit=crop"
+                alt="Arrival Orientation Support"
+              />
+            </div>
+          </div>
+
+          {/* Content */}
+          <div
+            style={{
+              flex: "0 0 50%",
+              maxWidth: "50%",
+              padding: "15px",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "36px",
+                fontWeight: 700,
+                color: "#0f1d56",
+                marginBottom: "30px",
+              }}
+            >
+              Arrival, Orientation & Support
+            </h2>
+            <p
+              style={{
+                fontSize: "18px",
+                color: "#4a5568",
+                lineHeight: "1.7",
+                marginBottom: "32px",
+              }}
+            >
+              We ensure a smooth landing in Dubai with pickup, housing support,
+              orientation events, visa guidance, and personalized academic &
+              emotional support services for all students.
             </p>
-          )}
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.8, duration: 0.5 }}
+              style={{ marginTop: "40px" }}
+            >
+              <motion.button
+                onClick={handleNavigate}
+                whileHover={{
+                  scale: 1.05,
+                  backgroundColor: "#111111",
+                  boxShadow: "0 8px 25px rgba(0, 0, 0, 0.6)",
+                }}
+                whileTap={{ scale: 0.95 }}
+                style={{
+                  backgroundColor: "#000000",
+                  color: "white",
+                  padding: "18px 48px",
+                  fontSize: "18px",
+                  fontWeight: "600",
+                  borderRadius: "10px",
+                  border: "none",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  boxShadow: "0 6px 20px rgba(0, 0, 0, 0.5)",
+                  transition: "all 0.3s ease",
+                }}
+              >
+                Explore Full Support Guide
+                <motion.span
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                  }}
+                >
+                  <FiArrowRight style={{ fontSize: "20px" }} />
+                </motion.span>
+              </motion.button>
+            </motion.div>
+          </div>
         </div>
-      </motion.form>
+      </div>
     </section>
   );
-};
-
-export default AccommodationCards;
+}
