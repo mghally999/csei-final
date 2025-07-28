@@ -2,8 +2,7 @@ const aboutPagesData = [
   {
     slug: "who-we-are",
     title: "Who We Are",
-    image:
-      "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=2070&q=80",
+    image: "/assets/img/about/who-we-are.png",
     content: [
       "At CSEI Academy, we are proud to offer UK Ofqual-recognized and KHDA-approved programs with hands-on learning to help you thrive in IT, Healthcare, Tourism, Culinary Arts, and Business.",
       "Our flexible courses are designed around your life, supporting working professionals and students seeking placements. With strong industry connections and direct pathways to UK Bachelor’s degrees",
@@ -61,8 +60,7 @@ const aboutPagesData = [
   {
     slug: "why-csei",
     title: "Why Choose CSEI?",
-    image:
-      "https://images.unsplash.com/photo-1584697964273-bd91fd5ad3bd?auto=format&fit=crop&w=2070&q=80",
+    image: "/assets/img/about/why-csei.png",
     list: [
       "UK Ofqual-regulated and KHDA-approved qualifications",
       "Globally accepted diplomas with progression to UK Bachelor’s degrees",

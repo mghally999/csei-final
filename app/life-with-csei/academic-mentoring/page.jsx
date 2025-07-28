@@ -203,7 +203,7 @@ export default function AcademicMentoringSection() {
                   display: "block",
                   objectFit: "cover",
                 }}
-                src="assets/img/life/academic-mentoring.png"
+                src="/assets/img/life/academic-mentoring.png"
                 alt="Academic Mentoring"
                 priority
               />

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const BrandColors = {
   primaryDark: "#000C2D",
@@ -25,8 +25,16 @@ export default function TransportationSection() {
     "Special Requirements": "",
   });
 
+  const formRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
   const resizeTimeout = useRef(null);
+
+  const [submissionState, setSubmissionState] = useState({
+    isSubmitting: false,
+    isSuccess: false,
+    isError: false,
+    message: "",
+  });
 
   useEffect(() => {
     const checkScreen = () => {
@@ -47,9 +55,60 @@ export default function TransportationSection() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Transportation request submitted!");
+    setSubmissionState({
+      isSubmitting: true,
+      isSuccess: false,
+      isError: false,
+      message: "Submitting your request...",
+    });
+
+    try {
+      const formDataToSend = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        formDataToSend.append(key, value);
+      });
+
+      const response = await fetch("/api/transportation", {
+        method: "POST",
+        body: formDataToSend,
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Submission failed");
+      }
+
+      setSubmissionState({
+        isSubmitting: false,
+        isSuccess: true,
+        isError: false,
+        message: result.message || "Request submitted successfully!",
+      });
+
+      formRef.current?.reset();
+      setFormData({
+        "Full Name": "",
+        "Student ID / Identity Number": "",
+        "Contact Number": "",
+        "Email Address": "",
+        "Pick-up Location": "",
+        "Drop-off Location": "",
+        "Date of Travel": "",
+        "Time of Pick-up": "",
+        "Type of Transportation": "One-way",
+        "Special Requirements": "",
+      });
+    } catch (error) {
+      setSubmissionState({
+        isSubmitting: false,
+        isSuccess: false,
+        isError: true,
+        message: error.message || "Failed to submit request. Please try again.",
+      });
+    }
   };
 
   return (
@@ -73,7 +132,6 @@ export default function TransportationSection() {
             fontWeight: 800,
             marginBottom: "80px",
             textAlign: "center",
-            color: BrandColors.lightText,
             textTransform: "uppercase",
             position: "relative",
           }}
@@ -93,7 +151,7 @@ export default function TransportationSection() {
           />
         </h2>
 
-        {/* Responsive Visual Section */}
+        {/* Visual Section */}
         <div
           style={{
             display: "flex",
@@ -103,7 +161,6 @@ export default function TransportationSection() {
             alignItems: "center",
           }}
         >
-          {/* Image */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -128,7 +185,6 @@ export default function TransportationSection() {
             />
           </motion.div>
 
-          {/* Text */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -142,7 +198,6 @@ export default function TransportationSection() {
             <p
               style={{
                 fontSize: "18px",
-                color: BrandColors.lightText,
                 marginBottom: "20px",
                 lineHeight: "1.8",
               }}
@@ -151,13 +206,7 @@ export default function TransportationSection() {
               access to public transportation, private partner rides, and Nol
               card assistance.
             </p>
-            <p
-              style={{
-                fontSize: "18px",
-                color: "#ccc",
-                lineHeight: "1.8",
-              }}
-            >
+            <p style={{ fontSize: "18px", color: "#ccc", lineHeight: "1.8" }}>
               Whether it's daily classes or weekend events, our transport
               solutions are safe, budget-friendly, and personalized to your
               needs.
@@ -165,8 +214,44 @@ export default function TransportationSection() {
           </motion.div>
         </div>
 
+        {/* Live Submission Feedback */}
+        <AnimatePresence>
+          {(submissionState.isSubmitting || submissionState.message) && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              style={{
+                marginBottom: "30px",
+                padding: "20px",
+                borderRadius: "8px",
+                backgroundColor: submissionState.isSubmitting
+                  ? "rgba(255, 255, 0, 0.1)"
+                  : submissionState.isSuccess
+                  ? "rgba(0, 255, 0, 0.1)"
+                  : "rgba(255, 0, 0, 0.1)",
+                border: `1px solid ${
+                  submissionState.isSubmitting
+                    ? "rgba(255, 255, 0, 0.5)"
+                    : submissionState.isSuccess
+                    ? "rgba(0, 255, 0, 0.5)"
+                    : "rgba(255, 0, 0, 0.5)"
+                }`,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "10px",
+              }}
+            >
+              <span>{submissionState.message}</span>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         {/* Form */}
         <motion.form
+          ref={formRef}
           onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -253,11 +338,6 @@ export default function TransportationSection() {
                     value={value}
                     onChange={handleChange}
                     required
-                    placeholder={
-                      key.includes("Pick-up") || key.includes("Drop-off")
-                        ? "Example: CSEI Academy, Academic City, Dubai"
-                        : ""
-                    }
                     style={{
                       width: "100%",
                       padding: "12px 16px",
@@ -282,6 +362,7 @@ export default function TransportationSection() {
           >
             <button
               type="submit"
+              disabled={submissionState.isSubmitting}
               style={{
                 backgroundColor: BrandColors.accent,
                 color: "white",
@@ -290,20 +371,16 @@ export default function TransportationSection() {
                 fontWeight: "600",
                 borderRadius: "10px",
                 border: "none",
-                cursor: "pointer",
+                cursor: submissionState.isSubmitting
+                  ? "not-allowed"
+                  : "pointer",
                 boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
                 transition: "all 0.3s ease",
               }}
-              onMouseOver={(e) => {
-                e.target.style.transform = "translateY(-2px)";
-                e.target.style.boxShadow = "0 12px 35px rgba(0,0,0,0.4)";
-              }}
-              onMouseOut={(e) => {
-                e.target.style.transform = "translateY(0)";
-                e.target.style.boxShadow = "0 10px 30px rgba(0,0,0,0.3)";
-              }}
             >
-              Submit Transportation Form
+              {submissionState.isSubmitting
+                ? "Submitting..."
+                : "Submit Transportation Form"}
             </button>
           </div>
         </motion.form>
