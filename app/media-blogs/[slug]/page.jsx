@@ -133,6 +133,7 @@ export default function BlogDetailsPage({ params }) {
           font-weight: 800;
           text-align: center;
           padding: 0 20px;
+          margin-top: 200px;
         }
 
         .content-wrapper {
