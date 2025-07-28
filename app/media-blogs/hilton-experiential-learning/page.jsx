@@ -11,7 +11,7 @@ export default function HiltonExperience() {
       {/* Hero */}
       <div
         className="hero-image"
-        style={{ backgroundImage: `url(/assets/img/media-blogs/hilton.png)` }}
+        style={{ backgroundImage: `url(/assets/img/media-blogs/2.png)` }}
       >
         <div className="overlay" />
         <h1 className="hero-title">

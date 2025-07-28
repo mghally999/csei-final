@@ -14,7 +14,7 @@ const blogPosts = [
   {
     slug: "hilton-experiential-learning",
     title: "Experiential Learning with Canopy by Hilton Dubai Al Seef",
-    image: "/assets/img/media-blogs/hilton.png",
+    image: "/assets/img/media-blogs/2.png",
     description:
       "Our recent visit to Canopy by Hilton Dubai Al Seef brought classroom theory to life through hands-on hospitality experience...",
     writer: "Placement Department",
