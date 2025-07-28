@@ -89,7 +89,7 @@ export default function PlacementObjectivesPage() {
                 paddingBottom: "15px",
               }}
             >
-              Career Ready Professionals
+              Foster Career-Ready Graduates
             </h2>
 
             <p
@@ -108,7 +108,22 @@ export default function PlacementObjectivesPage() {
               encouraging diverse career interests across industries and roles.
             </p>
 
-            {/* Decorative Element */}
+            <p
+              style={{
+                fontSize: "18px",
+                lineHeight: "1.7",
+                color: "#4a5568",
+                fontWeight: 400,
+              }}
+            >
+              CSEI Institutes is a centre for academic excellence, committed to
+              empowering individuals through quality education and skill
+              development. Established with the vision to nurture talent and
+              inspire lifelong learning, CSEI offers a diverse range of programs
+              designed to meet the evolving needs of students, professionals,
+              and industries.
+            </p>
+
             <div
               style={{
                 position: "absolute",
@@ -132,7 +147,9 @@ export default function PlacementObjectivesPage() {
             display: "flex",
             justifyContent: "center",
           }}
-        ></div>
+        >
+          {/* Optional CTA can go here */}
+        </div>
       </div>
     </div>
   );

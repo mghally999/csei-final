@@ -67,24 +67,24 @@ export default function PlacementServices() {
             >
               {[
                 {
-                  title: "Placement Training",
-                  desc: "Soft skills training, aptitude test preparation, resume writing workshops, mock interviews, and group discussion sessions to enhance employability.",
+                  title: "Industry-Relevant Training",
+                  desc: "Workshops and sessions that focus on practical industry exposure, soft skills, communication, and mock interviews to prepare students for real work environments.",
                 },
                 {
-                  title: "Internship Opportunities",
-                  desc: "Assistance in securing internships that provide practical exposure and build professional experience.",
+                  title: "Internships & Real-World Projects",
+                  desc: "Facilitated internships and live project work that bridge academic learning with hands-on practical experience.",
                 },
                 {
-                  title: "Career Guidance Counselling",
-                  desc: "One-on-one or group counselling sessions to help students choose suitable career paths based on their strengths and interests.",
+                  title: "Placement Drives & Job Fairs",
+                  desc: "Organized on-campus placement drives, tie-ups with hiring partners, and exclusive job fairs to connect students with top employers.",
                 },
                 {
-                  title: "Alumni Network Support",
-                  desc: "Engagement with alumni for mentoring, networking, and job referrals.",
+                  title: "Career Counselling & Guidance",
+                  desc: "Expert-led career guidance, CV building workshops, and mentorship to help students navigate job options and future growth paths.",
                 },
                 {
-                  title: "Corporate Tie-Ups",
-                  desc: "Building and maintaining relationships with various industries and organizations to create more placement opportunities.",
+                  title: "Alumni & Industry Network",
+                  desc: "Leverage our strong alumni base and employer network for mentorship, referrals, and career growth opportunities.",
                 },
               ].map((item, idx) => (
                 <div

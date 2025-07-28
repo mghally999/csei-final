@@ -24,7 +24,6 @@ export default function OpportunitiesGeneratedSection() {
                 borderRadius: "12px",
                 overflow: "hidden",
                 boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
-                transition: "transform 0.3s ease",
               }}
             >
               <Image
@@ -64,12 +63,12 @@ export default function OpportunitiesGeneratedSection() {
                 lineHeight: "1.7",
                 color: "#4a5568",
                 marginBottom: "40px",
-                fontWeight: 400,
               }}
             >
-              We provide comprehensive programs and support systems designed to
-              maximize student potential and employability through targeted
-              skill development and industry-aligned training.
+              Our placement department works tirelessly to generate diverse
+              career opportunities tailored to student strengths. Through
+              structured programs, partnerships, and training, we aim to
+              maximize every learner’s career success.
             </p>
 
             <div
@@ -80,10 +79,10 @@ export default function OpportunitiesGeneratedSection() {
               }}
             >
               {[
-                "Skill Development Programs: Offer workshops and certifications in trending domains (e.g: Health and social care, Culinary arts, Tourism and hospitality and Digital Marketing, etc.) to improve student employability.",
-                "Customized Placement Support: Provide targeted training and job opportunities based on different departments or student interests.",
-                "Data-Driven Decision Making: Use feedback and placement statistics to improve strategies and align with industry trends.",
-                "Soft Skills & Personality Development: Introduce communication, interview prep, and confidence-building sessions to enhance readiness.",
+                "Skill Development Workshops: Training in key sectors such as Health & Social Care, Culinary Arts, Tourism, and Digital Marketing to enhance employability.",
+                "Personalized Placement Support: Career pathways and job openings based on each student’s department, interest, and background.",
+                "Industry-Aligned Strategies: Regular evaluation of student feedback and job market trends to refine our placement initiatives.",
+                "Soft Skills Training: Confidence-building sessions in communication, interview handling, and presentation to ensure job-readiness.",
               ].map((item, index) => (
                 <div
                   key={index}

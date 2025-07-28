@@ -24,7 +24,6 @@ export default function StudentSatisfactionSection() {
                 borderRadius: "12px",
                 overflow: "hidden",
                 boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
-                transition: "transform 0.3s ease",
               }}
             >
               <Image
@@ -32,7 +31,7 @@ export default function StudentSatisfactionSection() {
                 height={400}
                 style={{
                   width: "100%",
-                  height: "auto",
+                  height: "550px",
                   display: "block",
                   objectFit: "cover",
                 }}
@@ -52,7 +51,6 @@ export default function StudentSatisfactionSection() {
                 lineHeight: "1.3",
                 color: "#2d3748",
                 marginBottom: "30px",
-                position: "relative",
                 paddingBottom: "15px",
               }}
             >
@@ -65,14 +63,14 @@ export default function StudentSatisfactionSection() {
                 lineHeight: "1.7",
                 color: "#4a5568",
                 marginBottom: "30px",
-                fontWeight: 400,
               }}
             >
-              A recent analysis of student feedback reveals that{" "}
-              <strong>80% of students</strong> are satisfied with the placement
-              services provided by CSEI Placement Team. This includes
-              satisfaction with the quality of job offers, the recruitment
-              process, and the support provided by the placement team.
+              Based on internal feedback reports and student surveys, over{" "}
+              <strong>80% of students</strong> expressed high satisfaction with
+              the placement experience at CSEI Academy. They highlighted smooth
+              communication with the placement team, the relevance of job
+              opportunities provided, and professional development support as
+              key strengths of the process.
             </p>
 
             <h3
@@ -83,7 +81,7 @@ export default function StudentSatisfactionSection() {
                 marginBottom: "20px",
               }}
             >
-              Common Satisfaction Factors:
+              Positive Satisfaction Drivers:
             </h3>
 
             <div
@@ -95,16 +93,14 @@ export default function StudentSatisfactionSection() {
               }}
             >
               {[
-                "Good support from the placement Team",
-                "Availability of reputed recruiters",
-                "Adequate training and preparation sessions",
+                "Helpful communication and support from the placement team",
+                "Timely updates about placement drives and company visits",
+                "Skill development workshops and training sessions",
+                "Access to internship and job opportunities with real employers",
               ].map((item, index) => (
                 <div
                   key={`positive-${index}`}
-                  style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                  }}
+                  style={{ display: "flex", alignItems: "flex-start" }}
                 >
                   <div
                     style={{
@@ -147,7 +143,7 @@ export default function StudentSatisfactionSection() {
                 fontStyle: "italic",
               }}
             >
-              Based on feedback from the remaining 20%:
+              Suggested Improvements from the Remaining 20%:
             </h3>
 
             <div
@@ -158,16 +154,13 @@ export default function StudentSatisfactionSection() {
               }}
             >
               {[
-                "Limited job role variety in certain departments",
-                "Expectations of higher salary packages",
-                "Desire for more industry-specific placement opportunities",
+                "Desire for more industry-specific placement sessions",
+                "More personalized career guidance for niche fields",
+                "Higher frequency of recruiter interactions and job drives",
               ].map((item, index) => (
                 <div
                   key={`negative-${index}`}
-                  style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                  }}
+                  style={{ display: "flex", alignItems: "flex-start" }}
                 >
                   <div
                     style={{
@@ -204,7 +197,7 @@ export default function StudentSatisfactionSection() {
         </div>
       </div>
 
-      {/* Custom Responsive Styles */}
+      {/* Responsive Styles */}
       <style jsx>{`
         .wrapper {
           display: flex;

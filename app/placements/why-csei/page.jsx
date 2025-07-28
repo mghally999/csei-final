@@ -48,7 +48,7 @@ export default function WhyCSEI() {
                 height={400}
                 style={{
                   width: "100%",
-                  height: "500px",
+                  height: "550px",
                   display: "block",
                   objectFit: "cover",
                 }}
@@ -102,9 +102,10 @@ export default function WhyCSEI() {
                 marginBottom: "20px",
               }}
             >
-              CSEI students represent a blend of academic excellence, practical
-              experience, vocational theory classes and a positive attitude
-              towards learning and growth.
+              CSEI students represent a unique blend of academic rigor, hands-on
+              training, and a growth mindset. They are groomed with the
+              technical knowledge and practical skills required to succeed in
+              dynamic workplaces.
             </p>
 
             <p
@@ -115,9 +116,10 @@ export default function WhyCSEI() {
                 marginBottom: "20px",
               }}
             >
-              They undergo precise coursework and continuous assessments that
-              ensure they are not only theoretically trained but also capable of
-              solving real-world problems.
+              Our programs are curated in collaboration with industry experts to
+              ensure that every graduate is workplace-ready from day one. This
+              includes vocational theory, real-world simulations, and case-based
+              learning that enhances their problem-solving abilities.
             </p>
 
             <p
@@ -128,9 +130,10 @@ export default function WhyCSEI() {
                 marginBottom: "20px",
               }}
             >
-              In addition to expertise, our students are trained in soft skills
-              such as communication, teamwork, and adaptability, preparing them
-              to contribute effectively in a professional environment.
+              Beyond academics, we place a strong emphasis on personality
+              development, communication skills, teamwork, and
+              adaptability—ensuring that our students can lead, collaborate, and
+              innovate effectively.
             </p>
 
             <p
@@ -140,10 +143,9 @@ export default function WhyCSEI() {
                 color: "#4a5568",
               }}
             >
-              We at CSEI follow a culture that encourages innovation, critical
-              thinking, and ethical responsibility. Our students bring fresh
-              perspectives, a strong work ethic, and the potential to grow
-              within your organization.
+              When you hire a CSEI graduate, you're investing in a professional
+              who is eager to contribute, quick to learn, and aligned with the
+              values of integrity, excellence, and innovation.
             </p>
 
             {/* Background Bubble */}

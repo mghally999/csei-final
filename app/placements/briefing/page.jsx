@@ -48,7 +48,7 @@ export default function PlacementBriefingPage() {
                 height={400}
                 style={{
                   width: "100%",
-                  height: "auto",
+                  height: "550px",
                   display: "block",
                   objectFit: "cover",
                 }}
@@ -90,7 +90,7 @@ export default function PlacementBriefingPage() {
                 paddingBottom: "15px",
               }}
             >
-              Shaping Versatile Careers with CSEI Academy
+              CSEI Institute – Empowering Lifelong Learning
             </h2>
 
             <p
@@ -104,7 +104,10 @@ export default function PlacementBriefingPage() {
             >
               CSEI Institutes is a centre for academic excellence, committed to
               empowering individuals through quality education and skill
-              development.
+              development. Established with the vision to nurture talent and
+              inspire lifelong learning, CSEI offers a diverse range of programs
+              designed to meet the evolving needs of students, professionals,
+              and industries.
             </p>
 
             <p
@@ -115,9 +118,9 @@ export default function PlacementBriefingPage() {
                 marginBottom: "30px",
               }}
             >
-              Established with the vision to nurture talent and inspire lifelong
-              learning, CSEI offers a diverse range of programs designed to meet
-              the evolving needs of students, professionals, and industries.
+              Our experienced faculty, modern infrastructure, and
+              industry-relevant curriculum ensure that every learner receives a
+              well-rounded education that opens doors to global opportunities.
             </p>
 
             <p
@@ -127,9 +130,10 @@ export default function PlacementBriefingPage() {
                 color: "#4a5568",
               }}
             >
-              Our experienced faculty, modern infrastructure, and
-              industry-relevant curriculum ensure that every learner receives a
-              well-rounded education that opens doors to global opportunities.
+              With a strong focus on industry collaboration and career
+              readiness, CSEI continues to empower students to achieve academic
+              excellence and become professionals who thrive in dynamic global
+              environments.
             </p>
 
             {/* Decorative Element */}
