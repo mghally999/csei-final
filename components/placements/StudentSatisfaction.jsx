@@ -60,7 +60,7 @@ export default function StudentSatisfaction() {
   return (
     <section
       style={{ backgroundColor: "#f8f9fa" }}
-      className="custom-padding custom-linear-white-top"
+      className="custom-linear-white-top"
     >
       <div style={{ maxWidth: "1140px", margin: "0 auto", padding: "0 16px" }}>
         <motion.h2

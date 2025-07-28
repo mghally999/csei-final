@@ -1,6 +1,16 @@
 export const slidesData = [
   {
     id: 1,
+    bgImage: "/assets/img/home/september-intake-3.jpg",
+    title: "Life at CSEI Academy",
+    subtitle: "World-Class Campus & Community",
+    description:
+      "Experience vibrant student life with academic and personal development support.",
+    ctaText: "Take a Campus Tour",
+    ctaLink: "/campus-tour",
+  },
+  {
+    id: 2,
     bgImage: "/assets/img/home/september-intake-1.png",
     title: "September Intake 2025",
     subtitle: (
@@ -74,7 +84,7 @@ export const slidesData = [
     ctaLink: "/programs",
   },
   {
-    id: 2,
+    id: 3,
     bgImage: "/assets/img/home/september-intake-2.png",
     title: "Flexible Study Options",
     subtitle: "Evening, Weekend & Online Classes Available",
@@ -82,15 +92,5 @@ export const slidesData = [
       "Balance your career with personal growth through industry-aligned programs.",
     ctaText: "Apply Now",
     ctaLink: "/admissions",
-  },
-  {
-    id: 3,
-    bgImage: "/assets/img/home/september-intake-3.jpg",
-    title: "Life at CSEI Academy",
-    subtitle: "World-Class Campus & Community",
-    description:
-      "Experience vibrant student life with academic and personal development support.",
-    ctaText: "Take a Campus Tour",
-    ctaLink: "/campus-tour",
   },
 ];

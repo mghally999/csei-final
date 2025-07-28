@@ -31,10 +31,16 @@ export default function AboutSubPage({ params }) {
           fill
           className="hero-image"
           priority
+          style={{
+            top: "100px",
+            objectFit: "cover",
+            objectPosition: "center",
+            zIndex: 0,
+          }}
         />
         <motion.div className="overlay" style={{ opacity: opacityBg }} />
         <motion.h1
-          className="hero-title"
+          className="hero-title bottom-aligned"
           style={{
             scale: scaleTitle,
             y: yTitle,
@@ -220,7 +226,10 @@ export default function AboutSubPage({ params }) {
         }
 
         .hero-title {
-          position: relative;
+          position: absolute;
+          bottom: 60px;
+          left: 50%;
+          transform: translateX(-50%);
           z-index: 2;
           color: white;
           font-size: clamp(2.5rem, 8vw, 5rem);
@@ -231,6 +240,7 @@ export default function AboutSubPage({ params }) {
           max-width: 90%;
           will-change: transform;
           display: inline-block;
+          padding: 0 20px;
         }
 
         .content-wrapper {

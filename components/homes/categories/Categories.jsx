@@ -1,21 +1,41 @@
 "use client";
 
 import Image from "next/image";
-import { topCategories } from "../../../data/topCategories";
-import { getGroupedPrograms } from "@/utils/getProgramGroups";
 
 const CategoriesHomeOne = () => {
-  const { professionalPrograms, regularPrograms } = getGroupedPrograms();
-
-  const universityProgressionCount =
-    professionalPrograms.length + regularPrograms.length;
-
-  const updatedCategories = [
-    ...topCategories,
+  // Categories data with high-quality descriptive Unsplash images (200x200)
+  const categories = [
+    {
+      title: "Certificates",
+      subtitle: "Certificates",
+      text: "6+ Courses",
+      iconSrc:
+        "https://images.unsplash.com/photo-1589330694653-ded6df03f754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400&q=80",
+      description: "Official certificate being awarded to graduate",
+    },
+    {
+      title: "Diplomas",
+      subtitle: "Diplomas",
+      text: "8+ Courses",
+      iconSrc:
+        "https://plus.unsplash.com/premium_photo-1682974403236-5c3f97d854d1?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZGlwbG9tYXxlbnwwfHwwfHx8MA%3D%3D",
+      description: "Graduate holding diploma with pride",
+    },
+    {
+      title: "Professional",
+      subtitle: "Professional",
+      text: "8+ Courses",
+      iconSrc:
+        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400&q=80",
+      description: "Business professionals in a meeting",
+    },
     {
       title: "University Progression",
-      text: `${universityProgressionCount}+ Programs`,
-      iconSrc: "/assets/img/featureCards/3.svg",
+      subtitle: "University Progression",
+      text: "14+ Programs",
+      iconSrc:
+        "https://plus.unsplash.com/premium_photo-1713296255442-e9338f42aad8?q=80&w=844&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      description: "Students walking on university campus",
     },
   ];
 
@@ -39,7 +59,7 @@ const CategoriesHomeOne = () => {
                   paddingBottom: "20px",
                 }}
               >
-                Top Categories
+                Program Types
                 <span
                   style={{
                     position: "absolute",
@@ -58,31 +78,85 @@ const CategoriesHomeOne = () => {
         </div>
 
         <div className="pt-50">
-          <div className="row x-gap-80 justify-content-center g-4">
-            {updatedCategories.map((item, i) => (
+          <div
+            className="row justify-content-center"
+            style={{
+              gap: "2rem",
+              padding: "0 1rem",
+            }}
+          >
+            {categories.map((item, i) => (
               <div
                 key={i}
-                className="col-6 col-sm-4 col-md-3 col-lg-2 d-flex justify-content-center"
+                className="col-auto"
+                style={{
+                  flex: "1 1 200px",
+                  maxWidth: "250px",
+                  minWidth: "200px",
+                }}
               >
                 <div
                   className="featureCard -type-1 -featureCard-hover text-center"
                   data-aos="fade-left"
                   data-aos-duration={(i + 1) * 350}
+                  style={{
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
                 >
-                  <div className="featureCard__content">
-                    <div className="featureCard__icon">
+                  <div
+                    className="featureCard__content"
+                    style={{
+                      padding: "1.5rem",
+                      display: "flex",
+                      flexDirection: "column",
+                      flexGrow: 1,
+                    }}
+                  >
+                    <div
+                      className="featureCard__icon"
+                      style={{
+                        borderRadius: "12px",
+                        overflow: "hidden",
+                        width: "200px",
+                        height: "200px",
+                        margin: "0 auto 15px",
+                        boxShadow: "0 6px 18px rgba(0,0,0,0.2)",
+                      }}
+                    >
                       <Image
-                        width={48}
-                        height={48}
+                        width={200}
+                        height={200}
                         src={item.iconSrc}
-                        alt={item.title}
+                        alt={item.description}
+                        style={{
+                          objectFit: "cover",
+                          width: "100%",
+                          height: "100%",
+                        }}
+                        priority={i < 2}
                       />
                     </div>
-                    <div className="featureCard__title">
-                      {item.title.split(" ")[0]} <br />
-                      {item.title.split(" ").slice(1).join(" ")}
+                    <div
+                      className="featureCard__title"
+                      style={{
+                        fontWeight: 600,
+                        marginBottom: "0.5rem",
+                        lineHeight: "1.3",
+                      }}
+                    >
+                      {item.title}
                     </div>
-                    <div className="featureCard__text">{item.text}</div>
+                    <div
+                      className="featureCard__text"
+                      style={{
+                        marginTop: "auto",
+                        paddingTop: "0.5rem",
+                      }}
+                    >
+                      {item.text}
+                    </div>
                   </div>
                 </div>
               </div>

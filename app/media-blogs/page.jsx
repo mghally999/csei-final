@@ -12,7 +12,7 @@ if (typeof window !== "undefined") {
 
 const blogPosts = [
   {
-    slug: "hilton-experimental-learning",
+    slug: "hilton-experiential-learning",
     title: "Experiential Learning with Canopy by Hilton Dubai Al Seef",
     image: "/assets/img/media-blogs/hilton.png",
     description:

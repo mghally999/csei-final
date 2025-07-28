@@ -15361,13 +15361,13 @@ h6 {
   transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-.-featureCard-hover:hover .featureCard__content {
+/* .-featureCard-hover:hover .featureCard__content {
   background-color: #04044e !important;
-}
+} */
 
 .-featureCard-hover:hover .featureCard__title,
 .-featureCard-hover:hover .featureCard__text {
-  color: white !important;
+  color: #000000 !important;
 }
 
 .-featureCard-hover-3 .featureCard__content,

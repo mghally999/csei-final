@@ -386,6 +386,46 @@ export default function AccommodationCards() {
               letters for any administrative or visa requirements"
             />
           </div>
+          <div style={{ color: "#ddd", lineHeight: "1.7" }}>
+            <p style={{ marginBottom: "20px" }}>
+              For more information or personalized assistance, please contact
+              our student support services.
+            </p>
+          </div>
+          <div
+            style={{
+              marginTop: "30px",
+              paddingTop: "20px",
+              borderTop: "1px solid rgba(255,255,255,0.1)",
+              textAlign: "center",
+            }}
+          >
+            <p style={{ color: "#aaa", fontStyle: "italic" }}>
+              For any questions or clarifications, please contact the
+              accommodation office.
+            </p>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                gap: "20px",
+                marginTop: "15px",
+              }}
+            >
+              <a
+                href="tel:+97143368064"
+                style={{ color: "#fff", textDecoration: "none" }}
+              >
+                +971 43368064
+              </a>
+              <a
+                href="mailto:admission@csei.academy"
+                style={{ color: "#fff", textDecoration: "none" }}
+              >
+                admission@csei.academy
+              </a>
+            </div>
+          </div>
         </div>
 
         {/* Rules and Regulations Section */}
@@ -452,41 +492,6 @@ export default function AccommodationCards() {
                 </p>
               </div>
             ))}
-          </div>
-
-          <div
-            style={{
-              marginTop: "30px",
-              paddingTop: "20px",
-              borderTop: "1px solid rgba(255,255,255,0.1)",
-              textAlign: "center",
-            }}
-          >
-            <p style={{ color: "#aaa", fontStyle: "italic" }}>
-              For any questions or clarifications, please contact the
-              accommodation office.
-            </p>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                gap: "20px",
-                marginTop: "15px",
-              }}
-            >
-              <a
-                href="tel:+97143368064"
-                style={{ color: "#fff", textDecoration: "none" }}
-              >
-                +971 43368064
-              </a>
-              <a
-                href="mailto:admission@csei.academy"
-                style={{ color: "#fff", textDecoration: "none" }}
-              >
-                admission@csei.academy
-              </a>
-            </div>
           </div>
         </div>
 
@@ -836,39 +841,6 @@ export default function AccommodationCards() {
               </button>
             </div>
           </motion.form>
-        </div>
-
-        {/* Additional Information Section */}
-        <div
-          ref={(el) => (cardsRef.current[3] = el)}
-          style={{
-            backdropFilter: "blur(10px)",
-            border: "1px solid rgba(255, 255, 255, 0.1)",
-            backgroundColor: "rgba(255, 255, 255, 0.05)",
-            borderRadius: "16px",
-            overflow: "hidden",
-            boxShadow: "0 20px 40px rgba(0, 0, 0, 0.4)",
-            padding: "30px",
-          }}
-        >
-          <h3
-            style={{
-              fontSize: "1.8rem",
-              fontWeight: "700",
-              marginBottom: "20px",
-              color: "#ffffff",
-              textAlign: "center",
-            }}
-          >
-            Additional Information
-          </h3>
-
-          <div style={{ color: "#ddd", lineHeight: "1.7" }}>
-            <p style={{ marginBottom: "20px" }}>
-              For more information or personalized assistance, please contact
-              our student support services.
-            </p>
-          </div>
         </div>
       </div>
 

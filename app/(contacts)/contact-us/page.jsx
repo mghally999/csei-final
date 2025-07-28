@@ -309,46 +309,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      {/* ✅ Office Emails */}
-      <section style={{ backgroundColor: "#fff", padding: "60px 20px" }}>
-        <div
-          style={{
-            maxWidth: "1000px",
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-            gap: "40px",
-            textAlign: "left",
-          }}
-        >
-          {locationData.map((item, idx) => (
-            <div key={idx}>
-              <div
-                style={{
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                  color: "#153d59",
-                  marginBottom: "8px",
-                }}
-              >
-                {item.location}
-              </div>
-              <a
-                href={`mailto:${item.email}`}
-                style={{
-                  color: "red",
-                  textDecoration: "underline",
-                  fontSize: "16px",
-                  fontWeight: "500",
-                }}
-              >
-                {item.email}
-              </a>
-            </div>
-          ))}
-        </div>
-      </section>
     </div>
   );
 }

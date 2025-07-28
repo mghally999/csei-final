@@ -115,12 +115,12 @@ export default function AdmissionGuide() {
       ],
     },
     {
-      title: "Additional Notes",
+      title: "Start your academic journey at CSEI Academy, Dubai!",
       points: [
         "Scholarships available for eligible students",
         "Career, visa, and academic counseling provided",
         "Accommodation support available upon request",
-        "Apply at least 1 month before course starts",
+        "Apply at least 2 months before course starts",
         "Visa approval is subject to UAE Immigration rules",
       ],
     },
