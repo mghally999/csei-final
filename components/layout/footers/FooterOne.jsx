@@ -51,29 +51,6 @@ export default function FooterOne() {
           cursor: pointer;
         }
 
-        .social-section {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          width: 100%;
-          padding: 20px 0;
-          text-align: center;
-        }
-
-        .social-section__title {
-          margin-bottom: 15px;
-          color: #000;
-          font-weight: 500;
-        }
-
-        .social-links-container {
-          display: flex;
-          gap: 20px;
-          justify-content: center;
-          flex-wrap: wrap;
-        }
-
-        /* === LOGO GRID === */
         .logo-box-container {
           display: flex;
           justify-content: center;
@@ -81,7 +58,6 @@ export default function FooterOne() {
           flex-wrap: wrap;
           gap: 20px;
           margin: 20px 0;
-          flex-direction: row; /* Default for desktop */
         }
 
         .logo-box {
@@ -98,11 +74,6 @@ export default function FooterOne() {
         }
 
         @media (max-width: 1374px) {
-          .logo-box-container {
-            flex-direction: column;
-            align-items: center;
-          }
-
           .logo-box {
             width: 80%;
             max-width: 300px;
@@ -150,7 +121,8 @@ export default function FooterOne() {
           align-items: center;
           justify-content: center;
           text-align: center;
-          width: 100%;
+          flex-wrap: wrap;
+          gap: 20px;
         }
 
         @media (min-width: 576px) {
@@ -170,7 +142,6 @@ export default function FooterOne() {
       `}</style>
 
       <footer className="footer -type-1 -green-links full-width-footer">
-        {/* 1. Footer Columns */}
         <div className="full-width-footer">
           <div className="footer-container">
             <div className="footer-columns">
@@ -194,7 +165,6 @@ export default function FooterOne() {
           </div>
         </div>
 
-        {/* 2. Footer Header with Logos */}
         <div className="full-width-footer">
           <div className="footer-container">
             <div className="footer-header mt-40">
@@ -257,63 +227,69 @@ export default function FooterOne() {
           </div>
         </div>
 
-        {/* 3. Social Links */}
-        <div
-          className="full-width-footer"
-          style={{ backgroundColor: "#f8f8f8" }}
-        >
-          <div className="footer-container">
-            <div className="social-section">
-              <div className="social-section__title">
-                Follow us on social media
-              </div>
-              <div className="social-links-container">
-                <Link
-                  href="https://www.facebook.com/studyindubaidegree"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaFacebookF style={{ color: "#000000", fontSize: "20px" }} />
-                </Link>
-                <Link
-                  href="https://www.instagram.com/cseiacademydubaifz/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaInstagram style={{ color: "#000000", fontSize: "20px" }} />
-                </Link>
-                <Link
-                  href="https://www.linkedin.com/in/csei-academy-04701a370/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaLinkedinIn
-                    style={{ color: "#000000", fontSize: "20px" }}
-                  />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* 4. Footer Bottom */}
         <div
           className="full-width-footer footer-bottom"
           style={{ backgroundColor: "#000" }}
         >
           <div className="footer-container">
             <div className="py-30">
-              <div className="row y-gap-20">
+              <div className="row y-gap-20 justify-between items-center flex-wrap">
                 <div className="col-auto">
-                  <div className="d-flex items-center h-100 text-white">
-                    © {new Date().getFullYear()} CSEI. All Right Reserved.
+                  <div className="d-flex items-center h-100 text-white text-14 md:text-16">
+                    © {new Date().getFullYear()} CSEI. All Rights Reserved.
                   </div>
                 </div>
+
                 <div className="col-auto">
-                  <div className="d-flex x-gap-20 y-gap-20 items-center flex-wrap">
-                    <div className="d-flex x-gap-15 text-white">
-                      <Links />
+                  <div className="d-flex x-gap-20 items-center">
+                    <Link
+                      href="https://www.facebook.com/studyindubaidegree"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaFacebookF
+                        style={{ color: "#ffffff", fontSize: "18px" }}
+                      />
+                    </Link>
+                    <Link
+                      href="https://www.instagram.com/cseiacademydubaifz/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaInstagram
+                        style={{ color: "#ffffff", fontSize: "18px" }}
+                      />
+                    </Link>
+                    <Link
+                      href="https://www.linkedin.com/in/csei-academy-04701a370/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaLinkedinIn
+                        style={{ color: "#ffffff", fontSize: "18px" }}
+                      />
+                    </Link>
+                    <div
+                      style={{
+                        color: "#ffffff",
+                        fontSize: "14px",
+                        marginLeft: "15px",
+                      }}
+                    >
+                      📞 04 552 2469 | 📧{" "}
+                      <a
+                        href="mailto:admission@cseiacademy.ae"
+                        style={{ color: "#ffffff" }}
+                      >
+                        admission@cseiacademy.ae
+                      </a>
                     </div>
+                  </div>
+                </div>
+
+                <div className="col-auto">
+                  <div className="d-flex x-gap-15 text-white">
+                    <Links />
                   </div>
                 </div>
               </div>
