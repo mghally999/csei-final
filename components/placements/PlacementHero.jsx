@@ -1,4 +1,3 @@
-// components/placement/PlacementHero.jsx
 "use client";
 
 import React, { useState } from "react";
@@ -19,26 +18,31 @@ export default function PlacementHero() {
 
   return (
     <div>
+      {/* ✅ Hero Section with title way down */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         style={{
           backgroundImage:
-            "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url('/assets/img/placements/placements-main.jpeg')",
+            "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)), url('/assets/img/placements/placements-main.jpeg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          height: "81vh",
-          minHeight: "700px",
+          height: "100vh",
+          minHeight: "100px",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
+          justifyContent: "flex-start",
           alignItems: "center",
           textAlign: "center",
           color: "white",
           padding: "20px",
+          position: "relative",
         }}
       >
+        {/* Spacer to push content down */}
+        <div style={{ flexGrow: 1 }}></div>
+
         <motion.h1
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -61,9 +65,10 @@ export default function PlacementHero() {
           style={{
             fontSize: "clamp(20px, 2.5vw, 28px)",
             fontWeight: "600",
-            marginTop: "20px",
+            marginTop: "10px",
             maxWidth: "800px",
             textShadow: "0 1px 5px rgba(0,0,0,0.3)",
+            marginBottom: "30px",
           }}
         >
           Bridging academic excellence with industry opportunities
@@ -73,7 +78,7 @@ export default function PlacementHero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.8, duration: 0.5 }}
-          style={{ marginTop: "40px" }}
+          style={{ marginBottom: "60px" }}
         >
           <motion.button
             onClick={handleApplyNowClick}
@@ -113,6 +118,7 @@ export default function PlacementHero() {
         </motion.div>
       </motion.div>
 
+      {/* ✅ Placement Status Bar */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -131,6 +137,7 @@ export default function PlacementHero() {
         Current Placement Rate: 85% | Partner with us to hire top talent
       </motion.div>
 
+      {/* ✅ Modal */}
       <ApplicationFormModal isOpen={isModalOpen} onClose={handleCloseModal} />
     </div>
   );

@@ -20,15 +20,13 @@ const facilities = [
   },
   {
     title: "Academics",
-    image:
-      "https://images.unsplash.com/photo-1558021212-51b6ecfa0db9?q=80&w=2070&auto=format&fit=crop",
+    image: "/assets/img/life/academics.png",
     description:
       "State-of-the-art learning facilities with modern classrooms, labs, and research centers.",
   },
   {
     title: "Quality Assurance",
-    image:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop",
+    image: "/assets/img/life/quality-assurance.png",
     description:
       "Dedicated unit ensuring the highest standards of education through continuous evaluation.",
   },

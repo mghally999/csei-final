@@ -1,52 +1,68 @@
 "use client";
 import Image from "next/image";
-
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// import 'swiper/swiper.min.css';
 import { testimonials } from "../../data/tesimonials";
-import { counters } from "../../data/count";
 import Link from "next/link";
-// SwiperCore.use([Pagination]);
 
 export default function TestimonialsOne() {
   return (
     <section className="layout-pb-lg custom-linear-blue-top">
-      <div className="container ">
-        <div className="row justify-center text-center">
-          <div className="col-auto">
-            <div className="sectionTitle ">
-              <h2 className="sectionTitle__title text-black">
-                What Students Say
-              </h2>
-            </div>
-          </div>
+      <div className="container">
+        {/* ✅ Custom Gradient Heading */}
+        <div
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto 2rem",
+            padding: "0 1rem",
+          }}
+        >
+          <h2
+            style={{
+              fontSize: "clamp(1.75rem, 5vw, 3.5rem)",
+              fontWeight: 800,
+              textTransform: "uppercase",
+              letterSpacing: "1px",
+              background: "linear-gradient(90deg, #000, #3b82f6, #000)",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              color: "transparent",
+              position: "relative",
+              paddingBottom: "1.5rem",
+              margin: "0 0 0.5rem 0",
+              lineHeight: 1.2,
+              textShadow: "0 2px 4px rgba(0,0,0,0.1)",
+              textAlign: "center",
+            }}
+          >
+            What Students Say
+          </h2>
         </div>
 
+        {/* ✅ Testimonials Swiper */}
         <div className="js-section-slider pt-50">
           <Swiper
             className="overflow-visible"
-            // {...setting}
-            modules={[Navigation, Pagination]}
+            modules={[Navigation, Pagination, Autoplay]}
             navigation={{
               nextEl: ".icon-arrow-right",
               prevEl: ".icon-arrow-left",
+            }}
+            autoplay={{
+              delay: 3000, // 3 seconds
+              disableOnInteraction: false, // keep autoplay after user interacts
             }}
             loop={true}
             spaceBetween={30}
             slidesPerView={1}
             breakpoints={{
-              // when window width is >= 576px
               450: {
                 slidesPerView: 1,
               },
-              // when window width is >= 768px
               768: {
                 slidesPerView: 2,
               },
               1200: {
-                // when window width is >= 992px
                 slidesPerView: 3,
               },
             }}
@@ -73,7 +89,6 @@ export default function TestimonialsOne() {
                           alt="image"
                         />
                       </div>
-
                       <div className="testimonials-footer__content">
                         <div className="testimonials-footer__title">
                           {elm.name}
@@ -89,6 +104,7 @@ export default function TestimonialsOne() {
             ))}
           </Swiper>
 
+          {/* ✅ Navigation Buttons */}
           <div className="d-flex x-gap-20 items-center justify-end pt-60 lg:pt-40">
             <div className="col-auto">
               <button
@@ -104,7 +120,6 @@ export default function TestimonialsOne() {
                 style={{ backgroundColor: "#000000" }}
               >
                 <i className="icon icon-arrow-right text-24"></i>
-                {/* button content here */}
               </button>
             </div>
           </div>

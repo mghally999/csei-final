@@ -2,7 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-import { FiArrowRight } from "react-icons/fi";
 
 export default function PlacementObjectivesPage() {
   return (
@@ -20,8 +19,9 @@ export default function PlacementObjectivesPage() {
           style={{
             display: "flex",
             flexWrap: "wrap",
+            flexDirection: "row",
             margin: "-15px",
-            alignItems: "start",
+            alignItems: "flex-start",
           }}
         >
           {/* Image Column */}
@@ -32,6 +32,7 @@ export default function PlacementObjectivesPage() {
               padding: "15px",
               position: "relative",
             }}
+            className="image-col"
           >
             <div
               style={{
@@ -47,11 +48,11 @@ export default function PlacementObjectivesPage() {
                 height={400}
                 style={{
                   width: "100%",
-                  height: "auto",
+                  height: "550px",
                   display: "block",
                   objectFit: "cover",
                 }}
-                src="https://images.unsplash.com/photo-1581090700227-1e37b190418e?q=80&w=2070&auto=format&fit=crop"
+                src="/assets/img/placements/objectives.png"
                 alt="Career Development"
                 priority
               />
@@ -69,7 +70,7 @@ export default function PlacementObjectivesPage() {
             </div>
           </div>
 
-          {/* Content Column */}
+          {/* Text Column */}
           <div
             style={{
               flex: "0 0 50%",
@@ -77,6 +78,7 @@ export default function PlacementObjectivesPage() {
               padding: "15px",
               position: "relative",
             }}
+            className="text-col"
           >
             <h2
               style={{
@@ -85,7 +87,6 @@ export default function PlacementObjectivesPage() {
                 lineHeight: "1.3",
                 color: "#0f1d56",
                 marginBottom: "30px",
-                position: "relative",
                 paddingBottom: "15px",
               }}
             >
@@ -97,7 +98,7 @@ export default function PlacementObjectivesPage() {
                 fontSize: "18px",
                 lineHeight: "1.7",
                 color: "#4a5568",
-                marginBottom: "40px",
+                marginBottom: "30px",
                 fontWeight: 400,
               }}
             >
@@ -113,7 +114,6 @@ export default function PlacementObjectivesPage() {
                 fontSize: "18px",
                 lineHeight: "1.7",
                 color: "#4a5568",
-                fontWeight: 400,
               }}
             >
               CSEI Institutes is a centre for academic excellence, committed to
@@ -124,6 +124,7 @@ export default function PlacementObjectivesPage() {
               and industries.
             </p>
 
+            {/* Decorative Element */}
             <div
               style={{
                 position: "absolute",
@@ -140,17 +141,35 @@ export default function PlacementObjectivesPage() {
           </div>
         </div>
 
-        {/* CTA */}
+        {/* CTA if needed */}
         <div
           style={{
             marginTop: "60px",
             display: "flex",
             justifyContent: "center",
           }}
-        >
-          {/* Optional CTA can go here */}
-        </div>
+        ></div>
       </div>
+
+      {/* Responsive Styling */}
+      <style jsx>{`
+        @media (max-width: 992px) {
+          .image-col,
+          .text-col {
+            flex: 0 0 100% !important;
+            max-width: 100% !important;
+            text-align: center;
+          }
+
+          .text-col h2 {
+            font-size: 28px !important;
+          }
+
+          .text-col p {
+            font-size: 16px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

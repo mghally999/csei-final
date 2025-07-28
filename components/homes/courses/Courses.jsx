@@ -91,7 +91,6 @@ export default function Courses() {
       <div
         style={{
           width: "100%",
-          // maxWidth: "1400px",
           margin: "0 auto",
           padding: "0 1.5rem",
           position: "relative",
