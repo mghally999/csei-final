@@ -9,14 +9,14 @@ import { motion } from "framer-motion";
 export default function ArrivalOrientationBrief() {
   const router = useRouter();
 
-  const handleNavigate = () => {
-    router.push("admission/arrival-support");
-  };
-
   return (
     <section
       className="layout-pb-lg custom-padding custom-linear-white-top"
-      style={{ backgroundColor: "#f8f9fa", paddingTop: "80px" }}
+      style={{
+        backgroundColor: "#f8f9fa",
+        paddingTop: "80px",
+        paddingBottom: "80px",
+      }}
     >
       <div className="container">
         <div
@@ -29,9 +29,10 @@ export default function ArrivalOrientationBrief() {
         >
           {/* Image */}
           <div
+            className="responsive-half"
             style={{
-              flex: "0 0 50%",
-              maxWidth: "50%",
+              flex: "1 1 100%",
+              maxWidth: "100%",
               padding: "15px",
             }}
           >
@@ -52,11 +53,12 @@ export default function ArrivalOrientationBrief() {
             </div>
           </div>
 
-          {/* Content */}
+          {/* Text */}
           <div
+            className="responsive-half"
             style={{
-              flex: "0 0 50%",
-              maxWidth: "50%",
+              flex: "1 1 100%",
+              maxWidth: "100%",
               padding: "15px",
             }}
           >
@@ -90,7 +92,7 @@ export default function ArrivalOrientationBrief() {
               style={{ marginTop: "40px" }}
             >
               <motion.button
-                onClick={handleNavigate}
+                onClick={() => router.push("/admission/arrival-support")}
                 whileHover={{
                   scale: 1.05,
                   backgroundColor: "#111111",
@@ -116,10 +118,7 @@ export default function ArrivalOrientationBrief() {
                 Explore Full Support Guide
                 <motion.span
                   animate={{ x: [0, 5, 0] }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
                 >
                   <FiArrowRight style={{ fontSize: "20px" }} />
                 </motion.span>
@@ -128,6 +127,16 @@ export default function ArrivalOrientationBrief() {
           </div>
         </div>
       </div>
+
+      {/* ✅ Responsive Flex Fixes */}
+      <style jsx>{`
+        @media (min-width: 1024px) {
+          .responsive-half {
+            flex: 0 0 50% !important;
+            max-width: 50% !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
