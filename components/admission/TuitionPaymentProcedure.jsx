@@ -16,7 +16,7 @@ export default function TuitionFeesBrief() {
       {/* Background Image with subtle dark overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=2070&auto=format&fit=crop"
+          src="/assets/img/about/csei-building4.jpeg"
           alt="Tuition Background"
           fill
           priority
