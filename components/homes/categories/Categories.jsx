@@ -3,7 +3,6 @@
 import Image from "next/image";
 
 const CategoriesHomeOne = () => {
-  // Categories data with high-quality descriptive Unsplash images (200x200)
   const categories = [
     {
       title: "Certificates",
@@ -40,129 +39,139 @@ const CategoriesHomeOne = () => {
   ];
 
   return (
-    <section className="layout-pt-md layout-pb-md custom-linear-blue-top">
-      <div className="container">
-        <div className="row justify-center text-center">
-          <div className="col-auto">
-            <div className="sectionTitle">
-              <h2
-                style={{
-                  fontSize: "clamp(2rem, 5vw, 3.5rem)",
-                  fontWeight: "800",
-                  textTransform: "uppercase",
-                  letterSpacing: "2px",
-                  background: "linear-gradient(90deg, #000, #2196f3, #000)",
-                  WebkitBackgroundClip: "text",
-                  backgroundClip: "text",
-                  color: "transparent",
-                  position: "relative",
-                  paddingBottom: "20px",
-                }}
-              >
-                Program Types
-                <span
-                  style={{
-                    position: "absolute",
-                    bottom: "0",
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    width: "80px",
-                    height: "4px",
-                    background: "linear-gradient(90deg, #3b82f6, #000000)",
-                    borderRadius: "2px",
-                  }}
-                />
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        <div className="pt-50">
-          <div
-            className="row justify-content-center"
+    <section
+      className="layout-pt-md layout-pb-md custom-linear-blue-top"
+      style={{
+        width: "100%",
+        padding: "60px 5vw",
+      }}
+    >
+      {/* Header Title */}
+      <div style={{ textAlign: "center", marginBottom: "50px" }}>
+        <h2
+          style={{
+            fontSize: "clamp(2rem, 5vw, 3.5rem)",
+            fontWeight: "800",
+            textTransform: "uppercase",
+            letterSpacing: "2px",
+            background: "linear-gradient(90deg, #000, #2196f3, #000)",
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+            color: "transparent",
+            position: "relative",
+            paddingBottom: "20px",
+            margin: 0,
+          }}
+        >
+          Program Types
+          <span
             style={{
-              gap: "2rem",
-              padding: "0 1rem",
+              position: "absolute",
+              bottom: "0",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "80px",
+              height: "4px",
+              background: "linear-gradient(90deg, #3b82f6, #000000)",
+              borderRadius: "2px",
+            }}
+          />
+        </h2>
+      </div>
+
+      {/* Cards Grid */}
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: "2.5rem",
+          width: "100%",
+        }}
+      >
+        {categories.map((item, i) => (
+          <div
+            key={i}
+            style={{
+              flex: "1 1 220px",
+              maxWidth: "260px",
+              minWidth: "200px",
             }}
           >
-            {categories.map((item, i) => (
+            <div
+              className="featureCard -type-1 -featureCard-hover text-center"
+              data-aos="fade-left"
+              data-aos-duration={(i + 1) * 350}
+              style={{
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                background: "#fff",
+                borderRadius: "12px",
+                boxShadow: "0 6px 18px rgba(0,0,0,0.06)",
+              }}
+            >
               <div
-                key={i}
-                className="col-auto"
+                className="featureCard__content"
                 style={{
-                  flex: "1 1 200px",
-                  maxWidth: "250px",
-                  minWidth: "200px",
+                  padding: "1.5rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  flexGrow: 1,
                 }}
               >
                 <div
-                  className="featureCard -type-1 -featureCard-hover text-center"
-                  data-aos="fade-left"
-                  data-aos-duration={(i + 1) * 350}
+                  className="featureCard__icon"
                   style={{
-                    height: "100%",
-                    display: "flex",
-                    flexDirection: "column",
+                    borderRadius: "12px",
+                    overflow: "hidden",
+                    width: "200px",
+                    height: "200px",
+                    margin: "0 auto 15px",
+                    boxShadow: "0 6px 18px rgba(0,0,0,0.2)",
                   }}
                 >
-                  <div
-                    className="featureCard__content"
+                  <Image
+                    width={200}
+                    height={200}
+                    src={item.iconSrc}
+                    alt={item.description}
                     style={{
-                      padding: "1.5rem",
-                      display: "flex",
-                      flexDirection: "column",
-                      flexGrow: 1,
+                      objectFit: "cover",
+                      width: "100%",
+                      height: "100%",
                     }}
-                  >
-                    <div
-                      className="featureCard__icon"
-                      style={{
-                        borderRadius: "12px",
-                        overflow: "hidden",
-                        width: "200px",
-                        height: "200px",
-                        margin: "0 auto 15px",
-                        boxShadow: "0 6px 18px rgba(0,0,0,0.2)",
-                      }}
-                    >
-                      <Image
-                        width={200}
-                        height={200}
-                        src={item.iconSrc}
-                        alt={item.description}
-                        style={{
-                          objectFit: "cover",
-                          width: "100%",
-                          height: "100%",
-                        }}
-                        priority={i < 2}
-                      />
-                    </div>
-                    <div
-                      className="featureCard__title"
-                      style={{
-                        fontWeight: 600,
-                        marginBottom: "0.5rem",
-                        lineHeight: "1.3",
-                      }}
-                    >
-                      {item.title}
-                    </div>
-                    <div
-                      className="featureCard__text"
-                      style={{
-                        marginTop: "auto",
-                        paddingTop: "0.5rem",
-                      }}
-                    >
-                      {item.text}
-                    </div>
-                  </div>
+                    priority={i < 2}
+                  />
+                </div>
+
+                <div
+                  className="featureCard__title"
+                  style={{
+                    fontWeight: 600,
+                    marginBottom: "0.5rem",
+                    fontSize: "1.1rem",
+                  }}
+                >
+                  {item.title}
+                </div>
+
+                <div
+                  className="featureCard__text"
+                  style={{
+                    marginTop: "auto",
+                    paddingTop: "0.5rem",
+                    fontSize: "0.95rem",
+                    color: "#444",
+                    fontWeight: 500,
+                  }}
+                >
+                  {item.text}
                 </div>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </section>
   );

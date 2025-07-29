@@ -7,77 +7,73 @@ export default function FeaturesSection() {
     <div className="features layout-pb-lg" id="features">
       {/* Independent header section */}
       <div className="section-header">
-        <div className="container mx-auto text-center px-4">
-          <h2 className="title">Features</h2>
-          <p className="subtitle">Discover What Makes Our Students Different</p>
-        </div>
+        <h2 className="title">Features</h2>
+        <p className="subtitle">Discover What Makes Our Students Different</p>
       </div>
 
       {/* Features grid - completely separate */}
       <div className="features-grid">
-        <div className="container">
-          {/* Quality Box */}
-          <div className="box quality">
-            <div className="img-holder">
-              <Image
-                src="https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Quality Education"
-                width={500}
-                height={300}
-                decoding="async"
-              />
-            </div>
-            <h2>Learn</h2>
-            <p>
-              CSEI Academy offers UK Ofqual-recognized and KHDA-approved courses
-              in IT, healthcare, tourism, and more—delivered through blended and
-              in-person classes in Dubai. This approach allows you to balance
-              your studies with your placement while gaining practical
-              experience and personalized support to build confidence and
-              real-world skills for a successful future.
-            </p>
+        {/* Quality Box */}
+        <div className="box quality">
+          <div className="img-holder">
+            <Image
+              src="https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Quality Education"
+              width={500}
+              height={300}
+              decoding="async"
+            />
           </div>
+          <h2>Learn</h2>
+          <p>
+            CSEI Academy offers UK Ofqual-recognized and KHDA-approved courses
+            in IT, healthcare, tourism, and more—delivered through blended and
+            in-person classes in Dubai. This approach allows you to balance your
+            studies with your placement while gaining practical experience and
+            personalized support to build confidence and real-world skills for a
+            successful future.
+          </p>
+        </div>
 
-          {/* Time Box */}
-          <div className="box time">
-            <div className="img-holder">
-              <Image
-                src="https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Flexible Timing"
-                width={500}
-                height={300}
-                decoding="async"
-              />
-            </div>
-            <h2>Be Qualified</h2>
-            <p>
-              Celebrate your achievements with us! When you graduate from CSEI
-              Academy, we are proud to support you every step of the way—from
-              your first class to graduation day and beyond. With our pathways
-              to globally accepted bachelor's degrees and strong industry
-              connections, you'll be ready to take on new challenges and reach
-              your goals.
-            </p>
+        {/* Time Box */}
+        <div className="box time">
+          <div className="img-holder">
+            <Image
+              src="https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Flexible Timing"
+              width={500}
+              height={300}
+              decoding="async"
+            />
           </div>
+          <h2>Be Qualified</h2>
+          <p>
+            Celebrate your achievements with us! When you graduate from CSEI
+            Academy, we are proud to support you every step of the way—from your
+            first class to graduation day and beyond. With our pathways to
+            globally accepted bachelor's degrees and strong industry
+            connections, you'll be ready to take on new challenges and reach
+            your goals.
+          </p>
+        </div>
 
-          {/* Passion Box */}
-          <div className="box passion">
-            <div className="img-holder">
-              <Image
-                src="https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="Passionate Teaching"
-                width={500}
-                height={300}
-                decoding="async"
-              />
-            </div>
-            <h2>Work in Dubai</h2>
-            <p>
-              Imagine building your career in one of the world's most dynamic
-              cities. Dubai is full of opportunities, and we'll help you make
-              the most of them by leveraging your strengths and skills.
-            </p>
+        {/* Passion Box */}
+        <div className="box passion">
+          <div className="img-holder">
+            <Image
+              src="https://plus.unsplash.com/premium_photo-1682787494977-d013bb5a8773?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Passionate Teaching"
+              width={500}
+              height={300}
+              decoding="async"
+            />
           </div>
+          <h2>Work in Dubai</h2>
+          <p>
+            Imagine building your career in one of the world's most dynamic
+            cities. Dubai is full of opportunities, and we'll help you make the
+            most of them by leveraging your strengths and skills.
+          </p>
         </div>
       </div>
 
@@ -96,16 +92,11 @@ export default function FeaturesSection() {
           ) !important;
         }
 
-        /* Header Section - completely independent */
         .section-header {
           text-align: center;
           width: 100%;
         }
 
-        .section-header .container {
-          max-width: 800px;
-          margin: 0 auto;
-        }
         .title {
           font-size: clamp(2rem, 5vw, 3.5rem);
           font-weight: 800;
@@ -138,21 +129,15 @@ export default function FeaturesSection() {
           margin: 30px auto;
         }
 
-        /* Features Grid Section */
         .features-grid {
-          // padding: 40px 0;
-        }
-
-        .features-grid .container {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          grid-template-columns: 1fr 1fr 1fr;
           gap: 40px;
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 20px;
+          width: 100%;
+          padding-left: 5vw;
+          padding-right: 5vw;
         }
 
-        /* Box Styles - with all original animations */
         .box {
           text-align: center;
           border: 1px solid #000000;
@@ -252,33 +237,12 @@ export default function FeaturesSection() {
           color: #000000;
         }
 
-        .box a {
-          display: inline-block;
-          padding: 10px 25px;
-          border-radius: 6px;
-          font-weight: 600;
-          transition: all 0.3s ease;
-          position: relative;
-          overflow: hidden;
-        }
-
         /* Quality Box */
         .quality .img-holder::before {
           background-color: rgb(244 64 54 / 60%);
         }
         .quality h2::after {
           background-color: #f44036;
-        }
-        .quality a {
-          color: #f44036;
-          border: 2px solid #f44036;
-          background: linear-gradient(to right, #f44036 50%, white 50%);
-          background-size: 200% 100%;
-          background-position: right bottom;
-        }
-        .quality a:hover {
-          background-position: left bottom;
-          color: white;
         }
 
         /* Time Box */
@@ -288,17 +252,6 @@ export default function FeaturesSection() {
         .time h2::after {
           background-color: #009688;
         }
-        .time a {
-          color: #009688;
-          border: 2px solid #009688;
-          background: linear-gradient(to right, #009688 50%, white 50%);
-          background-size: 200% 100%;
-          background-position: right bottom;
-        }
-        .time a:hover {
-          background-position: left bottom;
-          color: white;
-        }
 
         /* Passion Box */
         .passion .img-holder::before {
@@ -307,24 +260,9 @@ export default function FeaturesSection() {
         .passion h2::after {
           background-color: #03a9f4;
         }
-        .passion a {
-          color: #03a9f4;
-          border: 2px solid #03a9f4;
-          background: linear-gradient(to right, #03a9f4 50%, white 50%);
-          background-size: 200% 100%;
-          background-position: right bottom;
-        }
-        .passion a:hover {
-          background-position: left bottom;
-          color: white;
-        }
 
-        /* CSS Variables */
         :root {
-          --main-color: #2196f3;
           --main-transition: 0.3s;
-          --main-padding-top: 100px;
-          --main-padding-bottom: 100px;
         }
       `}</style>
     </div>

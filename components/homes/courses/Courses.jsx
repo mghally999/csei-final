@@ -224,12 +224,14 @@ export default function Courses() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+            gridTemplateColumns: "1fr 1fr 1fr 1fr",
             gap: "2rem",
             padding: "1rem 0",
             margin: "0 auto",
             position: "relative",
             zIndex: 1,
+            paddingLeft: "5vw",
+            paddingRight: "5vw",
           }}
         >
           {filtered.map((course, index) => {

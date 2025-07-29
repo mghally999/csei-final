@@ -86,102 +86,83 @@ export default function Mission() {
       <div className="decorative-circle medium" />
       <div className="decorative-circle small" />
 
-      <div className="container">
-        <h2 className="mission-heading" ref={headingRef}>
-          <span className="heading-main">OUR MISSION</span>
-          <span className="heading-shadow">OUR MISSION</span>
-          <span className="heading-underline" />
-        </h2>
+      <h2 className="mission-heading" ref={headingRef}>
+        <span className="heading-main">OUR MISSION</span>
+        <span className="heading-shadow">OUR MISSION</span>
+        <span className="heading-underline" />
+      </h2>
 
-        <div className="mission-content">
-          <div className="mission-image-container" ref={imageRef}>
-            <div className="image-frame">
-              <div className="image-inner">
-                <Image
-                  src="/assets/img/about/mission/mission.jpg"
-                  alt="Diverse team collaborating"
-                  width={800}
-                  height={600}
-                  priority
-                  className="mission-image"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                  }}
-                />
+      <div className="mission-content">
+        <div className="mission-text-container" ref={textRef}>
+          <p className="mission-statement">
+            At <span className="highlight">CSEI Academy</span>, we{" "}
+            <span className="bold-italic">ignite</span> potential through{" "}
+            <span className="underline-accent">accessible education</span> and
+            an <span className="underline-accent">inclusive environment</span>{" "}
+            that celebrates diversity.
+          </p>
+
+          <div className="mission-points">
+            <div className="point">
+              <div className="point-check">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                  <path
+                    fill="currentColor"
+                    d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+                  />
+                </svg>
               </div>
-              <div className="image-overlay" />
-              <div className="image-caption">
-                <span>Empowering Future Leaders</span>
+              <div className="point-text">
+                Our dedicated mentors provide
+                <strong> personalized support</strong> to learners from all
+                backgrounds.
+              </div>
+            </div>
+
+            <div className="point">
+              <div className="point-check">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                  <path
+                    fill="currentColor"
+                    d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+                  />
+                </svg>
+              </div>
+              <div className="point-text">
+                Through <strong>hands-on experiences</strong> and{" "}
+                <strong>industry partnerships</strong>, we bridge academia and
+                real-world success.
+              </div>
+            </div>
+
+            <div className="point">
+              <div className="point-check">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                  <path
+                    fill="currentColor"
+                    d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+                  />
+                </svg>
+              </div>
+              <div className="point-text">
+                We cultivate <strong>global citizens</strong> equipped to lead
+                and innovate in an evolving world.
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="mission-text-container" ref={textRef}>
-            <div className="text-background">
-              <div className="text-content">
-                <p className="mission-statement">
-                  At <span className="highlight">CSEI Academy</span>, we{" "}
-                  <span className="bold-italic">ignite</span> potential through{" "}
-                  <span className="underline-accent">accessible education</span>{" "}
-                  and an{" "}
-                  <span className="underline-accent">
-                    inclusive environment
-                  </span>{" "}
-                  that celebrates diversity.
-                </p>
-
-                <div className="mission-points">
-                  <div className="point">
-                    <div className="point-check">
-                      <svg viewBox="0 0 24 24" width="24" height="24">
-                        <path
-                          fill="currentColor"
-                          d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
-                        />
-                      </svg>
-                    </div>
-                    <div className="point-text">
-                      Our dedicated mentors provide
-                      <strong> personalized support</strong> to learners from
-                      all backgrounds.
-                    </div>
-                  </div>
-
-                  <div className="point">
-                    <div className="point-check">
-                      <svg viewBox="0 0 24 24" width="24" height="24">
-                        <path
-                          fill="currentColor"
-                          d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
-                        />
-                      </svg>
-                    </div>
-                    <div className="point-text">
-                      Through <strong>hands-on experiences</strong> and{" "}
-                      <strong>industry partnerships</strong>, we bridge academia
-                      and real-world success.
-                    </div>
-                  </div>
-
-                  <div className="point">
-                    <div className="point-check">
-                      <svg viewBox="0 0 24 24" width="24" height="24">
-                        <path
-                          fill="currentColor"
-                          d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
-                        />
-                      </svg>
-                    </div>
-                    <div className="point-text">
-                      We cultivate <strong>global citizens</strong> equipped to
-                      lead and innovate in an evolving world.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div className="mission-image-container" ref={imageRef}>
+          <Image
+            src="/assets/img/about/mission/mission.jpg"
+            alt="Diverse team collaborating"
+            width={1000}
+            height={750}
+            priority
+            className="mission-image"
+          />
+          <div className="image-caption">
+            <span>Empowering Future Leaders</span>
           </div>
         </div>
       </div>
@@ -214,16 +195,10 @@ export default function Mission() {
       <style jsx>{`
         .mission-section {
           position: relative;
-          padding: 120px 20px;
+          padding: 100px 5vw;
           overflow: hidden;
           background: linear-gradient(135deg, #0a0e23, #1a1f3a);
           color: white;
-        }
-
-        .container {
-          max-width: 1200px;
-          margin: 0 auto;
-          position: relative;
         }
 
         /* Decorative elements */
@@ -269,6 +244,7 @@ export default function Mission() {
           color: transparent;
           -webkit-text-stroke: 2px white;
           line-height: 1.1;
+          max-width: 1200px;
         }
         .heading-main {
           position: relative;
@@ -297,38 +273,60 @@ export default function Mission() {
         /* Content layout */
         .mission-content {
           display: flex;
-          flex-wrap: wrap;
-          gap: 40px;
-          align-items: center;
+          gap: 5vw;
+          max-width: 1400px;
+          margin: 0 auto;
+        }
+
+        /* Text container */
+        .mission-text-container {
+          flex: 1;
+          min-width: 40%;
+          background: rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(12px);
+          border-radius: 16px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+          padding: 5vw;
+          position: relative;
+        }
+        .mission-text-container::before {
+          content: "";
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: radial-gradient(
+            circle at center,
+            rgba(224, 85, 0, 0.1) 0%,
+            transparent 70%
+          );
+          z-index: -1;
         }
 
         /* Image container */
         .mission-image-container {
-          flex: 1 1 50%;
-          min-width: 300px;
-          position: relative;
-          aspect-ratio: 4/3;
-        }
-        .image-frame {
+          flex: 1;
+          min-width: 50%;
           position: relative;
           border-radius: 16px;
           overflow: hidden;
-          height: 100%;
+          aspect-ratio: 4/3;
           box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.05),
             0 0 0 16px rgba(255, 255, 255, 0.03), 0 20px 40px rgba(0, 0, 0, 0.4);
           transition: transform 0.3s ease;
         }
-        .mission-image-container:hover .image-frame {
+        .mission-image-container:hover {
           transform: scale(1.01);
         }
-        .image-inner {
-          position: relative;
-          overflow: hidden;
-          border-radius: 8px;
-          height: 100%;
+        .mission-image {
           width: 100%;
+          height: 100%;
+          object-fit: cover;
         }
-        .image-overlay {
+        .mission-image-container::after {
+          content: "";
           position: absolute;
           top: 0;
           left: 0;
@@ -359,38 +357,9 @@ export default function Mission() {
           transform: translateY(0);
         }
 
-        /* Text container */
-        .mission-text-container {
-          flex: 1 1 40%;
-          min-width: 300px;
-        }
-        .text-background {
-          position: relative;
-          padding: 40px;
-          background: rgba(255, 255, 255, 0.05);
-          backdrop-filter: blur(12px);
-          border-radius: 16px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-        }
-        .text-background::before {
-          content: "";
-          position: absolute;
-          top: -50%;
-          left: -50%;
-          width: 200%;
-          height: 200%;
-          background: radial-gradient(
-            circle at center,
-            rgba(224, 85, 0, 0.1) 0%,
-            transparent 70%
-          );
-          z-index: -1;
-        }
-
         /* Mission statement */
         .mission-statement {
-          font-size: 1.25rem;
+          font-size: clamp(1rem, 1.5vw, 1.5rem);
           line-height: 1.5;
           margin-bottom: 30px;
           padding-left: 20px;
@@ -445,7 +414,7 @@ export default function Mission() {
           height: 14px;
         }
         .point-text {
-          font-size: 1rem;
+          font-size: clamp(0.9rem, 1.2vw, 1.1rem);
           line-height: 1.6;
           color: rgba(255, 255, 255, 0.9);
         }
@@ -457,32 +426,28 @@ export default function Mission() {
         /* Responsive adjustments */
         @media (max-width: 992px) {
           .mission-section {
-            padding: 100px 20px;
+            padding: 80px 5vw;
           }
           .mission-content {
             flex-direction: column;
+            gap: 40px;
           }
           .mission-heading {
-            margin-bottom: 50px;
-          }
-          .mission-image-container {
-            aspect-ratio: 16/9;
+            margin-bottom: 40px;
           }
         }
 
         @media (max-width: 768px) {
           .mission-section {
-            padding: 80px 15px;
+            padding: 60px 5vw;
           }
-          .text-background {
+          .mission-text-container {
             padding: 30px;
           }
           .mission-statement {
-            font-size: 1.1rem;
             padding-left: 15px;
           }
           .point {
-            flex-direction: row;
             gap: 12px;
             margin-bottom: 16px;
           }
@@ -495,14 +460,8 @@ export default function Mission() {
           .heading-shadow {
             -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
           }
-          .text-background {
+          .mission-text-container {
             padding: 25px 20px;
-          }
-          .mission-statement {
-            font-size: 1rem;
-          }
-          .point-text {
-            font-size: 0.95rem;
           }
         }
       `}</style>

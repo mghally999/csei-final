@@ -236,228 +236,224 @@ const CourseListOne = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="container">
-          <motion.div className="title-wrapper" whileHover={{ scale: 1.02 }}>
-            <h1 className="cosmic-title">
-              <span className="title-gradient">Explore</span> Our Programs
-              Universe
-            </h1>
-            <p className="cosmic-subtitle">
-              Navigate through constellations of learning opportunities
-            </p>
-          </motion.div>
+        <motion.div className="title-wrapper" whileHover={{ scale: 1.02 }}>
+          <h1 className="cosmic-title">
+            <span className="title-gradient">Explore</span> Our Programs
+            Universe
+          </h1>
+          <p className="cosmic-subtitle">
+            Navigate through constellations of learning opportunities
+          </p>
+        </motion.div>
 
-          {/* Search bar */}
-          <div className="cosmic-search-container">
-            <div className="cosmic-search-input">
-              <FiSearch className="search-icon" />
-              <input
-                type="text"
-                placeholder="Search courses..."
-                value={searchQuery}
-                onChange={handleSearchChange}
-              />
-            </div>
+        {/* Search bar */}
+        <div className="cosmic-search-container">
+          <div className="cosmic-search-input">
+            <FiSearch className="search-icon" />
+            <input
+              type="text"
+              placeholder="Search courses..."
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
           </div>
+        </div>
 
-          {/* Category tabs */}
-          <div className="tabs__controls flex-wrap pt-40 d-flex justify-center js-tabs-controls">
-            {categories.map((cat, i) => (
-              <motion.button
-                key={i}
-                onClick={() => handleCategoryClick(cat)}
-                className={`cosmic-tab-btn ${
-                  activeFilter === cat ? "active" : ""
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                type="button"
-              >
-                {cat}
-              </motion.button>
-            ))}
-          </div>
-
-          {/* Quick filters */}
-          <div className="cosmic-quick-filters">
+        {/* Category tabs */}
+        <div className="tabs__controls flex-wrap pt-40 d-flex justify-center js-tabs-controls">
+          {categories.map((cat, i) => (
             <motion.button
-              className={`cosmic-filter-btn ${
-                activeFilter === "all" ? "active" : ""
+              key={i}
+              onClick={() => handleCategoryClick(cat)}
+              className={`cosmic-tab-btn ${
+                activeFilter === cat ? "active" : ""
               }`}
-              onClick={handleAllCoursesClick}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              type="button"
             >
-              <FiCompass className="filter-icon" />
-              All Courses
+              {cat}
             </motion.button>
+          ))}
+        </div>
 
-            <motion.button
-              className={`cosmic-filter-btn ${
-                activeFilter === "professional" ? "active" : ""
-              }`}
-              onClick={handleFilterProfessional}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FiAward className="filter-icon" />
-              Professional ({professionalCount})
-            </motion.button>
-          </div>
+        {/* Quick filters */}
+        <div className="cosmic-quick-filters">
+          <motion.button
+            className={`cosmic-filter-btn ${
+              activeFilter === "all" ? "active" : ""
+            }`}
+            onClick={handleAllCoursesClick}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <FiCompass className="filter-icon" />
+            All Courses
+          </motion.button>
+
+          <motion.button
+            className={`cosmic-filter-btn ${
+              activeFilter === "professional" ? "active" : ""
+            }`}
+            onClick={handleFilterProfessional}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <FiAward className="filter-icon" />
+            Professional ({professionalCount})
+          </motion.button>
         </div>
       </motion.header>
 
       {/* Main content */}
       <main className="cosmic-main">
-        <div className="container">
-          {/* Constellation View */}
-          {viewMode === "constellation" && (
-            <div className="constellation-view">
-              <div className="constellation-container">
-                {constellationCourses.map((course) => (
-                  <motion.div
-                    key={course.id}
-                    className="constellation-node"
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{
-                      opacity: 1,
-                      scale: 1,
-                      x: course.position.x,
-                      y: course.position.y,
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 30,
-                    }}
-                    whileHover={{ scale: 1.2 }}
-                    onHoverStart={() => setHoveredCourse(course.id)}
-                    onHoverEnd={() => setHoveredCourse(null)}
-                    style={{
-                      width: `${course.position.size}px`,
-                      height: `${course.position.size}px`,
-                      background: course.professional
-                        ? `linear-gradient(135deg, ${brandColors.accent}, ${brandColors.highlight})`
-                        : `linear-gradient(135deg, ${brandColors.primary}, ${brandColors.secondary})`,
-                    }}
-                  >
-                    {hoveredCourse === course.id && (
-                      <motion.div
-                        className="node-tooltip"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                      >
-                        <h4>{renderCourseTitle(course)}</h4>
-                        <p>{course.school}</p>
-                        <Link href={course.href} className="node-link">
-                          Explore →
-                        </Link>
-                      </motion.div>
-                    )}
-                  </motion.div>
-                ))}
+        {/* Constellation View */}
+        {viewMode === "constellation" && (
+          <div className="constellation-view">
+            <div className="constellation-container">
+              {constellationCourses.map((course) => (
+                <motion.div
+                  key={course.id}
+                  className="constellation-node"
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                    x: course.position.x,
+                    y: course.position.y,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 30,
+                  }}
+                  whileHover={{ scale: 1.2 }}
+                  onHoverStart={() => setHoveredCourse(course.id)}
+                  onHoverEnd={() => setHoveredCourse(null)}
+                  style={{
+                    width: `${course.position.size}px`,
+                    height: `${course.position.size}px`,
+                    background: course.professional
+                      ? `linear-gradient(135deg, ${brandColors.accent}, ${brandColors.highlight})`
+                      : `linear-gradient(135deg, ${brandColors.primary}, ${brandColors.secondary})`,
+                  }}
+                >
+                  {hoveredCourse === course.id && (
+                    <motion.div
+                      className="node-tooltip"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                    >
+                      <h4>{renderCourseTitle(course)}</h4>
+                      <p>{course.school}</p>
+                      <Link href={course.href} className="node-link">
+                        Explore →
+                      </Link>
+                    </motion.div>
+                  )}
+                </motion.div>
+              ))}
 
-                <svg className="constellation-lines" width="100%" height="100%">
-                  {constellationCourses.map((course1, i) => {
-                    return constellationCourses.slice(i + 1).map((course2) => {
-                      if (Math.random() > 0.7) {
-                        return (
-                          <line
-                            key={`${course1.id}-${course2.id}`}
-                            x1={course1.position.x + 150}
-                            y1={course1.position.y + 150}
-                            x2={course2.position.x + 150}
-                            y2={course2.position.y + 150}
-                            stroke={`rgba(224, 85, 0, 0.3)`}
-                            strokeWidth="1"
-                          />
-                        );
-                      }
-                      return null;
-                    });
-                  })}
-                </svg>
-              </div>
-            </div>
-          )}
-
-          {/* Grid View */}
-          {viewMode === "grid" && (
-            <>
-              {/* Course grid */}
-              <div className="cosmic-grid">
-                {paginatedData.map((course, i) => (
-                  <motion.div
-                    key={course.id}
-                    className="cosmic-course-card"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.05 }}
-                    whileHover={{
-                      y: -5,
-                      boxShadow: "0 15px 30px rgba(0,0,0,0.3)",
-                    }}
-                  >
-                    <div className="course-card-inner">
-                      <div className="course-image-wrapper">
-                        <Image
-                          width={400}
-                          height={250}
-                          src={course.imageSrc}
-                          alt={course.title}
-                          className="course-image"
+              <svg className="constellation-lines" width="100%" height="100%">
+                {constellationCourses.map((course1, i) => {
+                  return constellationCourses.slice(i + 1).map((course2) => {
+                    if (Math.random() > 0.7) {
+                      return (
+                        <line
+                          key={`${course1.id}-${course2.id}`}
+                          x1={course1.position.x + 150}
+                          y1={course1.position.y + 150}
+                          x2={course2.position.x + 150}
+                          y2={course2.position.y + 150}
+                          stroke={`rgba(224, 85, 0, 0.3)`}
+                          strokeWidth="1"
                         />
+                      );
+                    }
+                    return null;
+                  });
+                })}
+              </svg>
+            </div>
+          </div>
+        )}
 
-                        {course.professional && (
-                          <div className="professional-badge">
-                            <FiAward />
-                            Pro
-                          </div>
+        {/* Grid View */}
+        {viewMode === "grid" && (
+          <>
+            {/* Course grid */}
+            <div className="cosmic-grid">
+              {paginatedData.map((course, i) => (
+                <motion.div
+                  key={course.id}
+                  className="cosmic-course-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  whileHover={{
+                    y: -5,
+                    boxShadow: "0 15px 30px rgba(0,0,0,0.3)",
+                  }}
+                >
+                  <div className="course-card-inner">
+                    <div className="course-image-wrapper">
+                      <Image
+                        width={400}
+                        height={250}
+                        src={course.imageSrc}
+                        alt={course.title}
+                        className="course-image"
+                      />
+
+                      {course.professional && (
+                        <div className="professional-badge">
+                          <FiAward />
+                          Pro
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="course-content">
+                      <div className="course-school">{course.school}</div>
+                      <h3 className="course-title">
+                        <Link href={course.href}>
+                          {renderCourseTitle(course)}
+                        </Link>
+                      </h3>
+                      <div className="course-meta">
+                        {!course.professional && (
+                          <span className="course-level">
+                            {getLevelLabel(course.level)}
+                          </span>
                         )}
+                        <span className="course-duration">
+                          {course.duration}
+                        </span>
                       </div>
 
-                      <div className="course-content">
-                        <div className="course-school">{course.school}</div>
-                        <h3 className="course-title">
-                          <Link href={course.href}>
-                            {renderCourseTitle(course)}
-                          </Link>
-                        </h3>
-                        <div className="course-meta">
-                          {!course.professional && (
-                            <span className="course-level">
-                              {getLevelLabel(course.level)}
-                            </span>
-                          )}
-                          <span className="course-duration">
-                            {course.duration}
-                          </span>
-                        </div>
-
-                        <div className="course-footer">
-                          <Link href={course.href} className="explore-btn">
-                            Explore
-                          </Link>
-                        </div>
+                      <div className="course-footer">
+                        <Link href={course.href} className="explore-btn">
+                          Explore
+                        </Link>
                       </div>
                     </div>
-                  </motion.div>
-                ))}
-              </div>
-            </>
-          )}
-
-          {/* Pagination */}
-          {filteredData.length > 0 && (
-            <div className="cosmic-pagination">
-              <PaginationTwo
-                pageNumber={pageNumber}
-                setPageNumber={setPageNumber}
-                data={filteredData}
-                pageCapacity={12}
-              />
+                  </div>
+                </motion.div>
+              ))}
             </div>
-          )}
-        </div>
+          </>
+        )}
+
+        {/* Pagination */}
+        {filteredData.length > 0 && (
+          <div className="cosmic-pagination">
+            <PaginationTwo
+              pageNumber={pageNumber}
+              setPageNumber={setPageNumber}
+              data={filteredData}
+              pageCapacity={12}
+            />
+          </div>
+        )}
       </main>
 
       {/* Global styles */}
@@ -758,8 +754,10 @@ const CourseListOne = () => {
         /* Grid View Styles */
         .cosmic-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          grid-template-columns: 1fr 1fr 1fr 1fr;
           gap: 25px;
+          padding-left: 5vw;
+          padding-right: 5vw;
         }
 
         .cosmic-course-card {

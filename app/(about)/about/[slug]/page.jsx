@@ -245,7 +245,7 @@ export default function AboutSubPage({ params }) {
 
         .content-wrapper {
           position: relative;
-          max-width: 1200px;
+          // max-width: 1200px;
           margin: 0 auto;
           padding: 100px 40px;
           border-radius: 40px 40px 0 0;

@@ -54,7 +54,7 @@ export default function OurValuesPage({ params }) {
   if (!pageData) return notFound();
 
   return (
-    <section className="about-subpage layout-pb-lg">
+    <section className="custom-padding">
       {/* Cards Section */}
       <div className="cards-wrapper">
         <h2 className="values-title">Our Core Values</h2>

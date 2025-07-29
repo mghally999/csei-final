@@ -243,7 +243,7 @@ export default function ContactPage() {
           </div>
 
           {/* ✅ Office Details (Map + Full Info) */}
-          <div style={{ flex: "1 1 400px" }}>
+          <div style={{ flex: "1 1 400px", padding: "20px" }}>
             <h3
               style={{
                 fontSize: "24px",
