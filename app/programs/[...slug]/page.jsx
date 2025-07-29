@@ -1,229 +1,319 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { notFound } from "next/navigation";
 import Image from "next/image";
-import { useParams } from "next/navigation";
+import { motion } from "framer-motion";
 
-import StickyTabsSection from "@/components/StickyTabsSection";
-import ModalVideoComponent from "@/components/common/ModalVideo";
-import ProgramHighlightsBox from "@/components/ProgramHighlightsBox";
+const checkStyle = {
+  width: "32px",
+  height: "32px",
+  backgroundColor: "#000000",
+  color: "white",
+  borderRadius: "50%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontSize: "18px",
+  fontWeight: "bold",
+  boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
+  marginRight: "16px",
+  flexShrink: 0,
+};
 
-import allPrograms from "@/data/programs/allPrograms";
+const blogPagesData = [
+  // ... (your existing blog data remains the same)
+];
 
-export default function Page() {
-  const { slug } = useParams();
-  const [pageItem, setPageItem] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
+const SectionHeader = ({ children }) => (
+  <motion.h2
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+    viewport={{ once: true }}
+    style={{
+      fontSize: "clamp(1.8rem, 4vw, 2.5rem)",
+      fontWeight: 800,
+      textTransform: "uppercase",
+      letterSpacing: "1px",
+      background: "linear-gradient(90deg, #000, #2196f3, #000)",
+      WebkitBackgroundClip: "text",
+      backgroundClip: "text",
+      color: "transparent",
+      position: "relative",
+      paddingBottom: "20px",
+      margin: "60px 0 40px",
+      textAlign: "center",
+      width: "100%",
+    }}
+  >
+    {children}
+    <span
+      style={{
+        position: "absolute",
+        bottom: 0,
+        left: "50%",
+        transform: "translateX(-50%)",
+        width: "80px",
+        height: "4px",
+        background: "linear-gradient(90deg, #3b82f6, #000000)",
+        borderRadius: "2px",
+      }}
+    />
+  </motion.h2>
+);
 
-  useEffect(() => {
-    if (slug && Array.isArray(slug)) {
-      const category = slug[0];
-      const levelSlug =
-        slug.length === 3 ? `${slug[1]}/${slug[2]}` : slug[1] || "default";
-
-      const program = allPrograms.find((item) => {
-        const normalizedItemLevel = item.level
-          ?.toLowerCase()
-          .replace(/\s+/g, "-");
-        const normalizedSlugLevel = levelSlug.toLowerCase();
-
-        return (
-          item.category.toLowerCase() === category.toLowerCase() &&
-          normalizedItemLevel === normalizedSlugLevel
-        );
-      });
-
-      setPageItem(program || null);
-    }
-  }, [slug]);
-
-  if (!pageItem) {
-    return (
-      <div className="min-h-screen flex items-center justify-center text-red-600 text-lg font-semibold">
-        Program not found.
-      </div>
-    );
-  }
+export default function BlogDetailsPage({ params }) {
+  const pageData = blogPagesData.find((page) => page.slug === params.slug);
+  if (!pageData) return notFound();
 
   return (
-    <>
-      {/* Header Section */}
-      <section className="page-header -type-5 bg-dark-1 layout-pb-lg custom-padding custom-linear-blue-top">
-        <div className="container">
-          <div className="row y-gap-30 justify-center align-center">
-            {/* Left Content */}
-            <div className="col-xl-6 col-lg-6 d-flex flex-column justify-center">
-              <h1 className="mb-10 text-30 lh-14 text-white pr-60 lg:pr-0 text-black">
-                {pageItem.title}
-              </h1>
+    <div style={{ width: "100%", overflowX: "hidden" }}>
+      {/* Hero Section */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        style={{
+          position: "relative",
+          width: "100vw",
+          height: "100vh",
+          minHeight: "700px",
+          marginLeft: "calc(-50vw + 50%)",
+        }}
+      >
+        <Image
+          src={pageData.image}
+          alt={pageData.title}
+          fill
+          style={{
+            objectFit: "cover",
+            objectPosition: "center",
+            zIndex: 1,
+          }}
+          priority
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%)",
+            zIndex: 2,
+          }}
+        />
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          style={{
+            position: "relative",
+            zIndex: 3,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100%",
+            padding: "0 5vw",
+            textAlign: "center",
+          }}
+        >
+          <h1
+            style={{
+              fontSize: "clamp(2rem, 6vw, 4rem)",
+              fontWeight: 900,
+              color: "white",
+              marginBottom: "2rem",
+              lineHeight: 1.2,
+              textShadow: "0 4px 12px rgba(0,0,0,0.5)",
+              letterSpacing: "1px",
+            }}
+          >
+            {pageData.title}
+          </h1>
+          <div
+            style={{
+              width: "100px",
+              height: "5px",
+              background: "linear-gradient(90deg, #3b82f6, #ffffff)",
+              borderRadius: "5px",
+              marginBottom: "2rem",
+            }}
+          />
+        </motion.div>
+      </motion.div>
 
-              {/* Accreditation Logos - Responsive Container */}
-              <div className="logos-container">
-                {pageItem.professional ? (
-                  <div className="logo-wrapper single-logo">
-                    <div className="logo-box">
-                      <Image
-                        src="/assets/img/logos/KHDA-logo.png"
-                        alt="KHDA Accredited"
-                        width={200}
-                        height={100}
-                        className="logo-image"
-                      />
-                    </div>
+      {/* Content Section */}
+      <div
+        style={{
+          maxWidth: "900px",
+          margin: "0 auto",
+          padding: "80px 5vw",
+          position: "relative",
+        }}
+      >
+        {/* Main Content */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          {pageData.content?.map((paragraph, idx) => {
+            // Check if paragraph looks like a heading
+            const isHeading = paragraph.match(/^[A-Z][a-zA-Z ,:]+$/);
+
+            return isHeading ? (
+              <SectionHeader key={idx}>{paragraph}</SectionHeader>
+            ) : (
+              <motion.p
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                viewport={{ once: true }}
+                style={{
+                  fontSize: "1.1rem",
+                  lineHeight: 1.8,
+                  marginBottom: "2rem",
+                  color: "#333",
+                  fontWeight: 400,
+                }}
+              >
+                {paragraph}
+              </motion.p>
+            );
+          })}
+        </motion.div>
+
+        {/* List Section */}
+        {pageData.list && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            style={{ margin: "60px 0" }}
+          >
+            <SectionHeader>Key Highlights</SectionHeader>
+            <ul style={{ listStyle: "none", paddingLeft: 0 }}>
+              {pageData.list.map((item, idx) => (
+                <motion.li
+                  key={idx}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  viewport={{ once: true }}
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    marginBottom: "1.5rem",
+                    padding: "1.5rem",
+                    backgroundColor: idx % 2 === 0 ? "#f8f9fa" : "white",
+                    borderRadius: "12px",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
+                  }}
+                >
+                  <div style={checkStyle}>{idx + 1}</div>
+                  <div
+                    style={{
+                      fontSize: "1.1rem",
+                      lineHeight: 1.6,
+                      color: "#2d3748",
+                      fontWeight: 500,
+                      flex: 1,
+                    }}
+                  >
+                    {item}
                   </div>
-                ) : (
-                  <div className="logo-wrapper multiple-logos">
-                    <div className="logo-box">
-                      <Image
-                        src="/assets/img/logos/OTHM-logo.png"
-                        alt="OTHM Accredited"
-                        width={200}
-                        height={100}
-                        className="logo-image"
-                      />
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
 
-            {/* Right Image */}
-            <div className="col-xl-5 col-lg-6">
-              <div className="course-image-wrapper">
-                <Image
-                  width={690}
-                  height={500}
-                  className="course-image"
-                  src={pageItem.imageSrc}
-                  alt="Course Image"
-                />
-              </div>
-            </div>
-          </div>
+        {/* More Content */}
+        {pageData.moreContent && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            {pageData.moreContent.map((paragraph, idx) => {
+              const isHeading = paragraph.match(/^[A-Z][a-zA-Z ,:!]+$/);
 
-          {/* FULL-WIDTH Highlights Box Under Logos + Image */}
-          <div className="row mt-5">
-            <div className="col-12">
-              <ProgramHighlightsBox data={pageItem} layout="horizontal" />
-            </div>
-          </div>
-        </div>
-      </section>
+              return isHeading ? (
+                <SectionHeader key={idx}>{paragraph}</SectionHeader>
+              ) : (
+                <motion.p
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  viewport={{ once: true }}
+                  style={{
+                    fontSize: "1.1rem",
+                    lineHeight: 1.8,
+                    marginBottom: "2rem",
+                    color: "#333",
+                    fontWeight: 400,
+                  }}
+                >
+                  {paragraph}
+                </motion.p>
+              );
+            })}
+          </motion.div>
+        )}
 
-      {/* Tabs Section */}
-      <div className="container">
-        <StickyTabsSection program={pageItem} />
+        {/* Closing CTA */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          style={{
+            textAlign: "center",
+            marginTop: "80px",
+            padding: "40px",
+            backgroundColor: "#f8f9fa",
+            borderRadius: "16px",
+          }}
+        >
+          <SectionHeader>Enjoyed This Article?</SectionHeader>
+          <p
+            style={{
+              fontSize: "1.2rem",
+              lineHeight: 1.7,
+              color: "#4a5568",
+              marginBottom: "2rem",
+              maxWidth: "700px",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            Share your thoughts with us and explore more exciting content on our
+            blog!
+          </p>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            style={{
+              backgroundColor: "#000000",
+              color: "white",
+              padding: "1rem 2.5rem",
+              fontSize: "1.1rem",
+              fontWeight: 600,
+              borderRadius: "8px",
+              border: "none",
+              cursor: "pointer",
+              boxShadow: "0 6px 20px rgba(0,0,0,0.1)",
+            }}
+          >
+            Explore More Articles
+          </motion.button>
+        </motion.div>
       </div>
-
-      {/* Video Modal */}
-      <ModalVideoComponent
-        videoId="LlCwHnp3kL4"
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-      />
-
-      {/* CSS Styles with Media Queries */}
-      <style jsx>{`
-        /* Base Styles */
-        .logos-container {
-          display: flex;
-          justify-content: start;
-          align-items: center;
-          margin-top: 20px;
-          width: 100%;
-        }
-
-        .logo-wrapper {
-          display: flex;
-          gap: 20px;
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-
-        .logo-box {
-          background: white;
-          border-radius: 10px;
-          padding: 20px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo-image {
-          object-fit: contain;
-          max-height: 100%;
-          width: auto;
-          height: auto;
-        }
-
-        .course-image-wrapper {
-          position: relative;
-          width: 100%;
-        }
-
-        .course-image {
-          width: 100%;
-          height: auto;
-          border-radius: 12px;
-          object-fit: cover;
-        }
-
-        /* Mobile Styles (up to 767px) */
-        @media (max-width: 767px) {
-          .logo-wrapper {
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-          }
-
-          .logo-box {
-            width: 180px;
-            height: 120px;
-            padding: 15px;
-          }
-
-          .course-image-wrapper {
-            margin-top: 20px;
-          }
-        }
-
-        /* Tablet Styles (768px to 1023px) */
-        @media (min-width: 768px) and (max-width: 1023px) {
-          .logo-wrapper {
-            flex-direction: row;
-            justify-content: center;
-            gap: 20px;
-          }
-
-          .logo-box {
-            width: 200px;
-            height: 130px;
-          }
-
-          .course-image-wrapper {
-            margin-top: 0;
-          }
-        }
-
-        /* Desktop Styles (1024px and up) */
-        @media (min-width: 1024px) {
-          .logo-wrapper {
-            flex-direction: row;
-            justify-content: flex-start;
-            gap: 20px;
-          }
-
-          .logo-box {
-            width: 220px;
-            height: 150px;
-          }
-
-          .single-logo {
-            justify-content: flex-start;
-          }
-        }
-      `}</style>
-    </>
+    </div>
   );
 }
