@@ -1,319 +1,236 @@
 "use client";
 
-import { notFound } from "next/navigation";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { useParams } from "next/navigation";
+import { FiArrowRight } from "react-icons/fi";
 import { motion } from "framer-motion";
 
-const checkStyle = {
-  width: "32px",
-  height: "32px",
-  backgroundColor: "#000000",
-  color: "white",
-  borderRadius: "50%",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  fontSize: "18px",
-  fontWeight: "bold",
-  boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
-  marginRight: "16px",
-  flexShrink: 0,
-};
+import StickyTabsSection from "@/components/StickyTabsSection";
+import ModalVideoComponent from "@/components/common/ModalVideo";
+import ProgramHighlightsBox from "@/components/ProgramHighlightsBox";
+import ApplicationFormModal from "@/components/ApplicationFormModal";
 
-const blogPagesData = [
-  // ... (your existing blog data remains the same)
-];
+import allPrograms from "@/data/programs/allPrograms";
 
-const SectionHeader = ({ children }) => (
-  <motion.h2
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6 }}
-    viewport={{ once: true }}
-    style={{
-      fontSize: "clamp(1.8rem, 4vw, 2.5rem)",
-      fontWeight: 800,
-      textTransform: "uppercase",
-      letterSpacing: "1px",
-      background: "linear-gradient(90deg, #000, #2196f3, #000)",
-      WebkitBackgroundClip: "text",
-      backgroundClip: "text",
-      color: "transparent",
-      position: "relative",
-      paddingBottom: "20px",
-      margin: "60px 0 40px",
-      textAlign: "center",
-      width: "100%",
-    }}
-  >
-    {children}
-    <span
-      style={{
-        position: "absolute",
-        bottom: 0,
-        left: "50%",
-        transform: "translateX(-50%)",
-        width: "80px",
-        height: "4px",
-        background: "linear-gradient(90deg, #3b82f6, #000000)",
-        borderRadius: "2px",
-      }}
-    />
-  </motion.h2>
-);
+export default function Page() {
+  const { slug } = useParams();
+  const [pageItem, setPageItem] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-export default function BlogDetailsPage({ params }) {
-  const pageData = blogPagesData.find((page) => page.slug === params.slug);
-  if (!pageData) return notFound();
+  useEffect(() => {
+    if (slug && Array.isArray(slug)) {
+      const category = slug[0];
+      const levelSlug =
+        slug.length === 3 ? `${slug[1]}/${slug[2]}` : slug[1] || "default";
+
+      const program = allPrograms.find((item) => {
+        const normalizedItemLevel = item.level
+          ?.toLowerCase()
+          .replace(/\s+/g, "-");
+        const normalizedSlugLevel = levelSlug.toLowerCase();
+
+        return (
+          item.category.toLowerCase() === category.toLowerCase() &&
+          normalizedItemLevel === normalizedSlugLevel
+        );
+      });
+
+      setPageItem(program || null);
+    }
+  }, [slug]);
+
+  if (!pageItem) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-red-600 text-lg font-semibold">
+        Program not found.
+      </div>
+    );
+  }
 
   return (
-    <div style={{ width: "100%", overflowX: "hidden" }}>
-      {/* Hero Section */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
+    <>
+      {/* Header Section */}
+      <section
+        className="page-header -type-5 bg-dark-1 layout-pb-lg custom-padding custom-linear-blue-top"
         style={{
+          width: "100%",
+          padding: "60px 5vw",
+          background: "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7))",
           position: "relative",
-          width: "100vw",
-          height: "100vh",
-          minHeight: "700px",
-          marginLeft: "calc(-50vw + 50%)",
         }}
       >
-        <Image
-          src={pageData.image}
-          alt={pageData.title}
-          fill
-          style={{
-            objectFit: "cover",
-            objectPosition: "center",
-            zIndex: 1,
-          }}
-          priority
-        />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%)",
-            zIndex: 2,
-          }}
-        />
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          style={{
-            position: "relative",
-            zIndex: 3,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100%",
-            padding: "0 5vw",
-            textAlign: "center",
-          }}
-        >
-          <h1
-            style={{
-              fontSize: "clamp(2rem, 6vw, 4rem)",
-              fontWeight: 900,
-              color: "white",
-              marginBottom: "2rem",
-              lineHeight: 1.2,
-              textShadow: "0 4px 12px rgba(0,0,0,0.5)",
-              letterSpacing: "1px",
-            }}
-          >
-            {pageData.title}
-          </h1>
+        <div style={{ width: "100%", maxWidth: "1200px", margin: "0 auto" }}>
           <div
             style={{
-              width: "100px",
-              height: "5px",
-              background: "linear-gradient(90deg, #3b82f6, #ffffff)",
-              borderRadius: "5px",
-              marginBottom: "2rem",
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "2rem",
+              justifyContent: "space-between",
+              alignItems: "center",
             }}
-          />
-        </motion.div>
-      </motion.div>
-
-      {/* Content Section */}
-      <div
-        style={{
-          maxWidth: "900px",
-          margin: "0 auto",
-          padding: "80px 5vw",
-          position: "relative",
-        }}
-      >
-        {/* Main Content */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          {pageData.content?.map((paragraph, idx) => {
-            // Check if paragraph looks like a heading
-            const isHeading = paragraph.match(/^[A-Z][a-zA-Z ,:]+$/);
-
-            return isHeading ? (
-              <SectionHeader key={idx}>{paragraph}</SectionHeader>
-            ) : (
-              <motion.p
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                viewport={{ once: true }}
+          >
+            {/* Left Content */}
+            <div style={{ flex: "1 1 50%", minWidth: "300px" }}>
+              <h1
                 style={{
-                  fontSize: "1.1rem",
-                  lineHeight: 1.8,
-                  marginBottom: "2rem",
-                  color: "#333",
-                  fontWeight: 400,
+                  fontSize: "clamp(1.5rem, 4vw, 2.5rem)",
+                  fontWeight: 800,
+                  color: "#ffffff",
+                  marginBottom: "1rem",
+                  lineHeight: 1.3,
                 }}
               >
-                {paragraph}
-              </motion.p>
-            );
-          })}
-        </motion.div>
+                {pageItem.title}
+              </h1>
 
-        {/* List Section */}
-        {pageData.list && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            style={{ margin: "60px 0" }}
-          >
-            <SectionHeader>Key Highlights</SectionHeader>
-            <ul style={{ listStyle: "none", paddingLeft: 0 }}>
-              {pageData.list.map((item, idx) => (
-                <motion.li
-                  key={idx}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  viewport={{ once: true }}
-                  style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    marginBottom: "1.5rem",
-                    padding: "1.5rem",
-                    backgroundColor: idx % 2 === 0 ? "#f8f9fa" : "white",
-                    borderRadius: "12px",
-                    boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
-                  }}
-                >
-                  <div style={checkStyle}>{idx + 1}</div>
+              {/* Accreditation Logos */}
+              <div
+                style={{
+                  display: "flex",
+                  gap: "1rem",
+                  flexWrap: "wrap",
+                  marginTop: "2rem",
+                }}
+              >
+                {pageItem.professional ? (
                   <div
                     style={{
-                      fontSize: "1.1rem",
-                      lineHeight: 1.6,
-                      color: "#2d3748",
-                      fontWeight: 500,
-                      flex: 1,
+                      background: "white",
+                      borderRadius: "10px",
+                      padding: "1rem",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                      width: "200px",
+                      height: "100px",
                     }}
                   >
-                    {item}
+                    <Image
+                      src="/assets/img/logos/KHDA-logo.png"
+                      alt="KHDA Accredited"
+                      width={180}
+                      height={80}
+                      style={{ objectFit: "contain" }}
+                    />
                   </div>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
+                ) : (
+                  <div
+                    style={{
+                      background: "white",
+                      borderRadius: "10px",
+                      padding: "1rem",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+                      width: "200px",
+                      height: "100px",
+                    }}
+                  >
+                    <Image
+                      src="/assets/img/logos/OTHM-logo.png"
+                      alt="OTHM Accredited"
+                      width={180}
+                      height={80}
+                      style={{ objectFit: "contain" }}
+                    />
+                  </div>
+                )}
+              </div>
 
-        {/* More Content */}
-        {pageData.moreContent && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            {pageData.moreContent.map((paragraph, idx) => {
-              const isHeading = paragraph.match(/^[A-Z][a-zA-Z ,:!]+$/);
-
-              return isHeading ? (
-                <SectionHeader key={idx}>{paragraph}</SectionHeader>
-              ) : (
-                <motion.p
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  viewport={{ once: true }}
+              {/* Apply Now Button */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.8, duration: 0.5 }}
+                style={{ marginTop: "2.5rem" }}
+              >
+                <motion.button
+                  onClick={() => setIsModalOpen(true)}
+                  whileHover={{
+                    scale: 1.05,
+                    backgroundColor: "#111111",
+                    boxShadow: "0 8px 25px rgba(0, 0, 0, 0.6)",
+                  }}
+                  whileTap={{ scale: 0.95 }}
                   style={{
+                    backgroundColor: "#04044e",
+                    color: "white",
+                    padding: "1rem 2.5rem",
                     fontSize: "1.1rem",
-                    lineHeight: 1.8,
-                    marginBottom: "2rem",
-                    color: "#333",
-                    fontWeight: 400,
+                    fontWeight: 600,
+                    borderRadius: "10px",
+                    border: "none",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.75rem",
+                    boxShadow: "0 6px 20px rgba(0, 0, 0, 0.5)",
+                    transition: "all 0.3s ease",
                   }}
                 >
-                  {paragraph}
-                </motion.p>
-              );
-            })}
-          </motion.div>
-        )}
+                  Apply Now
+                  <motion.span
+                    animate={{ x: [0, 5, 0] }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                    }}
+                  >
+                    <FiArrowRight style={{ fontSize: "1.25rem" }} />
+                  </motion.span>
+                </motion.button>
+              </motion.div>
+            </div>
 
-        {/* Closing CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          style={{
-            textAlign: "center",
-            marginTop: "80px",
-            padding: "40px",
-            backgroundColor: "#f8f9fa",
-            borderRadius: "16px",
-          }}
-        >
-          <SectionHeader>Enjoyed This Article?</SectionHeader>
-          <p
-            style={{
-              fontSize: "1.2rem",
-              lineHeight: 1.7,
-              color: "#4a5568",
-              marginBottom: "2rem",
-              maxWidth: "700px",
-              marginLeft: "auto",
-              marginRight: "auto",
-            }}
-          >
-            Share your thoughts with us and explore more exciting content on our
-            blog!
-          </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            style={{
-              backgroundColor: "#000000",
-              color: "white",
-              padding: "1rem 2.5rem",
-              fontSize: "1.1rem",
-              fontWeight: 600,
-              borderRadius: "8px",
-              border: "none",
-              cursor: "pointer",
-              boxShadow: "0 6px 20px rgba(0,0,0,0.1)",
-            }}
-          >
-            Explore More Articles
-          </motion.button>
-        </motion.div>
+            {/* Right Image */}
+            <div
+              style={{
+                flex: "1 1 45%",
+                minWidth: "300px",
+                position: "relative",
+                aspectRatio: "16/9",
+                borderRadius: "12px",
+                overflow: "hidden",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+              }}
+            >
+              <Image
+                fill
+                src={pageItem.imageSrc}
+                alt="Course Image"
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+          </div>
+
+          {/* FULL-WIDTH Highlights Box */}
+          <div style={{ width: "100%", marginTop: "3rem" }}>
+            <ProgramHighlightsBox data={pageItem} layout="horizontal" />
+          </div>
+        </div>
+      </section>
+
+      {/* Tabs Section */}
+      <div style={{ width: "100%", padding: "0 5vw" }}>
+        <StickyTabsSection program={pageItem} />
       </div>
-    </div>
+
+      {/* Video Modal */}
+      <ModalVideoComponent
+        videoId="LlCwHnp3kL4"
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+      />
+
+      {/* Application Form Modal */}
+      <ApplicationFormModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+    </>
   );
 }

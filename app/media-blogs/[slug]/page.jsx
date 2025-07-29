@@ -269,9 +269,9 @@ export default function BlogDetailsPage({ params }) {
 
       if (isTitle) {
         return (
-          <h3 key={idx} className="section-title">
+          <h2 key={idx} className="section-title">
             {text}
-          </h3>
+          </h2>
         );
       }
 
@@ -309,7 +309,7 @@ export default function BlogDetailsPage({ params }) {
             {pageData.list.map((item, idx) => (
               <li key={idx}>
                 <span style={checkStyle}>✓</span>
-                {item}
+                <strong>{item}</strong>
               </li>
             ))}
           </ul>
@@ -374,7 +374,9 @@ export default function BlogDetailsPage({ params }) {
           margin-top: 40px;
         }
 
-        .content-text {
+        .content-text,
+        .more-content p,
+        .must-do {
           font-size: 18px;
           line-height: 1.85;
           margin-bottom: 24px;
@@ -393,10 +395,8 @@ export default function BlogDetailsPage({ params }) {
 
         .must-do {
           background-color: #e6f4ea;
-          color: #155724;
           border-left: 4px solid #28a745;
           padding: 14px 18px;
-          margin: 20px 0;
           font-weight: 500;
           border-radius: 6px;
         }
