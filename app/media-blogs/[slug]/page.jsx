@@ -19,9 +19,6 @@ const checkStyle = {
   flexShrink: 0,
 };
 
-// Your blog data (make sure it's included above this component)
-import { blogPagesData } from "./yourDataFile"; // or wherever it's stored
-
 export default function BlogDetailsPage({ params }) {
   const pageData = blogPagesData.find((page) => page.slug === params.slug);
   if (!pageData) return notFound();
