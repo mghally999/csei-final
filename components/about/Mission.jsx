@@ -188,7 +188,7 @@ export default function Mission() {
           left: calc(var(--i) * 5%);
           opacity: calc(var(--i) * 0.03);
           animation: particle-float 5s infinite ease-in-out;
-          animation-delay: calc(var(--i) * 0.2s);
+          animation-delay: calc(var(--i) * 0.2s;
         }
       `}</style>
 
@@ -273,6 +273,7 @@ export default function Mission() {
         /* Content layout */
         .mission-content {
           display: flex;
+          align-items: flex-start; /* Changed to align items at the top */
           gap: 5vw;
           max-width: 1400px;
           margin: 0 auto;
@@ -289,6 +290,7 @@ export default function Mission() {
           box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
           padding: 5vw;
           position: relative;
+          margin-top: 0; /* Ensure no top margin */
         }
         .mission-text-container::before {
           content: "";
@@ -316,6 +318,7 @@ export default function Mission() {
           box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.05),
             0 0 0 16px rgba(255, 255, 255, 0.03), 0 20px 40px rgba(0, 0, 0, 0.4);
           transition: transform 0.3s ease;
+          margin-top: 0; /* Ensure no top margin */
         }
         .mission-image-container:hover {
           transform: scale(1.01);
@@ -438,9 +441,6 @@ export default function Mission() {
         }
 
         @media (max-width: 768px) {
-          // .mission-section {
-          //   padding: 60px 5vw;
-          // }
           .mission-text-container {
             padding: 30px;
           }

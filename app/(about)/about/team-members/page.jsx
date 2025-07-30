@@ -24,8 +24,7 @@ const Administration = () => {
     "Leadership Team",
     "Admissions",
     "Student Support",
-    "Software",
-    "Finance",
+    "IT & Software",
     "Human Resources",
     "Support Services",
   ];
@@ -134,14 +133,7 @@ const Administration = () => {
     ],
     "Student Support": studentSupportTeam,
     Software: softwareTeam,
-    Finance: [
-      {
-        name: "Srikrishna Rao",
-        role: "Finance & Projects",
-        email: "srikrishna.rao@manipaidubai.com",
-        image: "",
-      },
-    ],
+
     "Human Resources": [
       {
         name: "Merlyn Francis",
@@ -478,7 +470,7 @@ const Administration = () => {
         }
 
         .line-clamp-1 {
-          display: -webkit-box;
+          display: flex;
           -webkit-line-clamp: 1;
           -webkit-box-orient: vertical;
           overflow: hidden;

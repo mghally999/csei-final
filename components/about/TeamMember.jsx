@@ -24,7 +24,7 @@ const TeamMembers = () => {
     "Leadership Team",
     "Admissions",
     "Student Support",
-    "Software",
+    "IT & Software",
     "Finance",
     "Human Resources",
     "Support Services",
@@ -393,7 +393,7 @@ const TeamMembers = () => {
         }
 
         .line-clamp-1 {
-          display: -webkit-box;
+          display: flex;
           -webkit-line-clamp: 1;
           -webkit-box-orient: vertical;
           overflow: hidden;
