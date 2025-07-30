@@ -13,6 +13,7 @@ import Leadership from "@/components/about/Leadership";
 import TestimonialsOne from "@/components/common/TestimonialsOne";
 import Brands from "@/components/common/Brands";
 import AccreditationIntro from "@/components/AccreditationIntro";
+import TeamMembers from "@/components/about/TeamMember";
 
 export default function Page() {
   return (
@@ -24,6 +25,7 @@ export default function Page() {
         <Values />
         <OrganizationStructure />
         <Leadership />
+        <TeamMembers />
         <AccreditationIntro />
         <Brands />
       </div>
