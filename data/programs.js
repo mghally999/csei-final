@@ -160,7 +160,7 @@ export const programs = [
     category: "Professional Courses",
     level: "Level 4",
     duration: 120,
-    imageSrc: "/assets/img/coursesCards/culinary-arts-3.jpg",
+    imageSrc: "/assets/img/coursesCards/food-safety.png",
     professional: true,
   },
   {
@@ -172,7 +172,7 @@ export const programs = [
     category: "Professional Courses",
     level: "Level 4",
     duration: 120,
-    imageSrc: "/assets/img/coursesCards/culinary-arts-3.jpg",
+    imageSrc: "/assets/img/coursesCards/food-safety.png",
     professional: true,
   },
   {

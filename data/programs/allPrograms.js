@@ -882,7 +882,7 @@ const allPrograms = [
     level: "professional-courses/food-beverage",
     professional: true,
     title: "Food and Beverage Service Training",
-    imageSrc: "/assets/img/coursesCards/culinary-arts-3.jpg",
+    imageSrc: "/assets/img/coursesCards/food-safety.png",
     duration: "96 Hours",
     qualificationStructure: "7 Modules | 96 Hours",
     fees: {
