@@ -6,6 +6,7 @@ import { WhyCSEI } from "@/components/programs/WhyCSEI";
 import { EntryRequirements } from "@/components/programs/EntryRequirements";
 import { QualificationStructure } from "@/components/programs/QualificationStructure";
 import { AllUnits } from "@/components/programs/AllUnits";
+import CourseObjectives from "@/components/programs/CourseObjectives";
 import { AssessmentVerification } from "@/components/programs/AssessmentVerification";
 import { CareerOpportunities } from "@/components/programs/CareerOpportunities";
 import { UniversityProgression } from "@/components/programs/UniversityProgression";
@@ -22,13 +23,13 @@ export default function StickyTabsSection({ program }) {
   const sidebarRef = useRef(null);
   const lastSectionRef = useRef(null);
 
-  // Sidebar menu items
   const menuItems = [
     { id: 1, text: "Overview" },
     { id: 2, text: "Why CSEI?" },
     { id: 3, text: "Entry Requirements" },
     { id: 4, text: "Qualification Structure" },
     { id: 5, text: "Qualification Units" },
+    { id: 11, text: "Course Objectives" }, // 👈 NEW
     { id: 6, text: "Assessment and Verification" },
     { id: 7, text: "Career Opportunities" },
     { id: 10, text: "Tuition Fees" },
@@ -40,7 +41,6 @@ export default function StickyTabsSection({ program }) {
       : []),
   ];
 
-  // Section components in desired order
   const sections = [
     { id: 1, Component: Overview, props: { data: program.overview } },
     { id: 2, Component: WhyCSEI, props: { data: program.whyCSEI } },
@@ -55,6 +55,11 @@ export default function StickyTabsSection({ program }) {
       props: { data: program.qualificationStructureText },
     },
     { id: 5, Component: AllUnits, props: { data: program.qualificationUnits } },
+    {
+      id: 11,
+      Component: CourseObjectives,
+      props: { data: program.courseObjectives },
+    }, // 👈 NEW
     {
       id: 6,
       Component: AssessmentVerification,
@@ -78,7 +83,6 @@ export default function StickyTabsSection({ program }) {
       : []),
   ];
 
-  // Scrollspy
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -89,11 +93,7 @@ export default function StickyTabsSection({ program }) {
           }
         });
       },
-      {
-        root: null,
-        rootMargin: "-150px 0px -10% 0px",
-        threshold: 0.25,
-      }
+      { root: null, rootMargin: "-150px 0px -10% 0px", threshold: 0.25 }
     );
 
     sectionRefs.current.forEach((ref) => {
@@ -103,7 +103,6 @@ export default function StickyTabsSection({ program }) {
     return () => observer.disconnect();
   }, []);
 
-  // Sticky sidebar end logic
   useEffect(() => {
     const handleScroll = () => {
       if (!wrapperRef.current || !sidebarRef.current || !lastSectionRef.current)
@@ -111,7 +110,6 @@ export default function StickyTabsSection({ program }) {
 
       const wrapperRect = wrapperRef.current.getBoundingClientRect();
       const sidebarHeight = sidebarRef.current.offsetHeight;
-
       const lastSectionRect = lastSectionRef.current.getBoundingClientRect();
 
       setIsSticky(wrapperRect.top <= 120);
@@ -136,7 +134,6 @@ export default function StickyTabsSection({ program }) {
   return (
     <section className="sticky-section" ref={wrapperRef}>
       <div className="container-layout">
-        {/* Sidebar */}
         <div className="sidebar-wrapper">
           <aside
             ref={sidebarRef}
@@ -156,14 +153,12 @@ export default function StickyTabsSection({ program }) {
           </aside>
         </div>
 
-        {/* Content */}
         <div className="content">
           {sections.map(({ id, Component, props }) => (
             <div
               key={id}
               ref={(el) => {
                 sectionRefs.current.push(el);
-                // Stop at University Progression or Tuition Fees fallback
                 if (id === 9 || (program.professional && id === 10)) {
                   lastSectionRef.current = el;
                 }
@@ -177,24 +172,20 @@ export default function StickyTabsSection({ program }) {
         </div>
       </div>
 
-      {/* Styles */}
       <style jsx>{`
         .sticky-section {
           padding: 4rem 1rem;
         }
-
         .container-layout {
           display: flex;
           max-width: 1280px;
           margin: 0 auto;
           gap: 2rem;
         }
-
         .sidebar-wrapper {
           width: 260px;
           flex-shrink: 0;
         }
-
         .sidebar {
           width: 260px;
           padding: 1rem;
@@ -205,19 +196,15 @@ export default function StickyTabsSection({ program }) {
           transition: all 0.3s ease;
           height: max-content;
         }
-
         .sidebar.sticky {
           position: fixed;
           top: 160px;
           z-index: 20;
         }
-
         .sidebar.stopped {
           position: absolute;
-          // top: auto;
           bottom: 0;
         }
-
         .tab-button {
           display: block;
           width: 100%;
@@ -232,31 +219,25 @@ export default function StickyTabsSection({ program }) {
           cursor: pointer;
           transition: 0.2s ease;
         }
-
         .tab-button:hover {
           background: #e5e7eb;
         }
-
         .tab-button.active {
           background: #000;
           color: #fff;
         }
-
         .content {
           flex: 1;
         }
-
         .content-section {
           scroll-margin-top: 140px;
           margin-bottom: 5rem;
           min-height: 400px;
         }
-
         @media (max-width: 1024px) {
           .container-layout {
             flex-direction: column;
           }
-
           .sidebar-wrapper {
             display: none;
           }
