@@ -274,13 +274,23 @@ export default function ApplicationFormModal({ isOpen, onClose }) {
 
     try {
       const formDataToSend = new FormData();
-      for (const key in formData) {
-        if (formData[key] !== null && formData[key] !== "") {
-          formDataToSend.append(key, formData[key]);
-        }
-      }
 
-      const res = await fetch("/api/zoho", {
+      // Append all form fields
+      Object.keys(formData).forEach((key) => {
+        if (formData[key] !== null && formData[key] !== "") {
+          if (key.endsWith("File") || key === "healthcareLicense") {
+            // Handle files
+            if (formData[key]) {
+              formDataToSend.append(key, formData[key]);
+            }
+          } else {
+            // Handle regular fields
+            formDataToSend.append(key, formData[key]);
+          }
+        }
+      });
+
+      const res = await fetch("/api/application-email", {
         method: "POST",
         body: formDataToSend,
       });
@@ -318,10 +328,10 @@ export default function ApplicationFormModal({ isOpen, onClose }) {
           onClose();
         }, 3000);
       } else {
-        setStatus("❌ Error: " + (data?.error || "Submission failed"));
+        setStatus(`❌ Error: ${data.message || "Submission failed"}`);
       }
     } catch (err) {
-      setStatus("❌ Request failed: " + err.message);
+      setStatus("❌ Request failed: " + (err.message || "Network error"));
     } finally {
       setIsSubmitting(false);
     }
@@ -337,7 +347,6 @@ export default function ApplicationFormModal({ isOpen, onClose }) {
   return (
     <div className="modal-overlay">
       <div className="modal-background" onClick={onClose} />
-
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <button className="modal-close" onClick={onClose}>
           <svg
@@ -368,6 +377,7 @@ export default function ApplicationFormModal({ isOpen, onClose }) {
 
         <form className="modal-form" onSubmit={handleSubmit}>
           <div className="form-grid">
+            {/* Personal Information Fields */}
             <div className="form-group">
               <input
                 type="text"
@@ -547,7 +557,7 @@ export default function ApplicationFormModal({ isOpen, onClose }) {
             </div>
           </div>
 
-          {/* File uploads in 2x2 grid */}
+          {/* File Uploads */}
           <div className="file-uploads-grid">
             <div className="form-group file-upload">
               <label>Academic File *</label>
