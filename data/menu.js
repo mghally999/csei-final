@@ -352,13 +352,12 @@ export const menuList = [
       },
     ],
   },
-
-  {
-    title: "Contact Us",
-    href: "/contact-us",
-  },
   {
     title: "Media & Blogs",
     href: "/media-blogs",
+  },
+  {
+    title: "Contact Us",
+    href: "/contact-us",
   },
 ];

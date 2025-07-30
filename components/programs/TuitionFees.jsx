@@ -8,6 +8,7 @@ export const TuitionFees = ({ program }) => {
 
   const {
     title,
+    professional = false,
     fees: {
       tuition,
       visa,
@@ -17,8 +18,13 @@ export const TuitionFees = ({ program }) => {
       currency = "AED",
       levels,
     },
-    professional = false,
   } = program;
+
+  const formatNumber = (value) => {
+    if (!value) return "N/A";
+    const num = Number(value.toString().replace(/,/g, ""));
+    return isNaN(num) ? "N/A" : num.toLocaleString();
+  };
 
   return (
     <motion.div
@@ -54,26 +60,36 @@ export const TuitionFees = ({ program }) => {
           </thead>
           <tbody>
             {professional ? (
-              levels?.map((level, idx) => (
-                <tr key={idx}>
-                  <td>{level.name}</td>
-                  <td>{level.duration}</td>
+              Array.isArray(levels) && levels.length > 0 ? (
+                levels.map((level, idx) => (
+                  <tr key={idx}>
+                    <td>{level.name || "N/A"}</td>
+                    <td>{level.duration || duration || "N/A"}</td>
+                    <td>
+                      {formatNumber(level.fee)} {currency}
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td>{title}</td>
+                  <td>{duration || "N/A"}</td>
                   <td>
-                    {level.fee?.toLocaleString()} {currency}
+                    {formatNumber(fee)} {currency}
                   </td>
                 </tr>
-              ))
+              )
             ) : (
               <tr>
                 <td>{title}</td>
                 <td>
-                  {tuition?.toLocaleString()} {currency}
+                  {formatNumber(tuition)} {currency}
                 </td>
                 <td>
-                  {visa?.toLocaleString()} {currency}
+                  {formatNumber(visa)} {currency}
                 </td>
                 <td>
-                  {registration?.toLocaleString()} {currency}
+                  {formatNumber(registration)} {currency}
                 </td>
               </tr>
             )}

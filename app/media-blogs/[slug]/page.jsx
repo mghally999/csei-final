@@ -82,11 +82,12 @@ const blogPagesData = [
     image: "/assets/img/media-blogs/hilton.png",
     title: "Experiential Learning with Canopy by Hilton Dubai Al Seef",
     content: [
+      "Experiential Learning with Canopy by Hilton Dubai Al Seef",
       "Our recent visit to Canopy by Hilton Dubai Al Seef truly brought our classroom lessons to life. The experience blended what we have been learning in theory with the real-world atmosphere of Canopy by Hilton, helping our students see how their studies connect to hospitality.",
       "Right from the start, the HR team, especially Ms. Aisha Moustafa, welcomed us warmly and made us feel part of the Hilton family. This genuine hospitality stayed with us throughout the day, as every member of the team from front desk to top, shared their expertise and showed us what professionalism and passion look like in action.",
-      "Stepping into one of the world’s most renowned names in hospitality, we experienced firsthand the professionalism, precision, and passion that drive the industry. From front desk operations to behind-the-scenes management, every detail reflected a commitment to excellence. We had the privilege to explore the elegance and efficiency of hotel operations, and more excitingly, to take part in interactive bakery and pastry sessions that showcased creativity, precision, and culinary excellence. The experience was further enriched with a hands-on mocktail-making session, where we learned the art of blending flavours with flair and professionalism. One of the highlights of the visit was exploring the housekeeping department, where we gained insights into the amazing standards, organization, and attention to detail that ensure guest satisfaction and uphold the Hilton brand.",
-      "We extend our heartfelt gratitude to the HR department of Canopy by Hilton, especially to Ms. Aisha Moustafa, for her warm welcome, exceptional guidance, and generous support throughout the visit. Her dedication to nurturing young talent and sharing real-world knowledge made this visit truly impactful. We are grateful for the opportunity and look forward to applying what we’ve learned as we step confidently toward our future careers.",
-      "Learning beyond the classroom – our visit to Hilton ignited passion, sharpened skills, and reminded us that greatness begins with curiosity and the courage to explore.",
+      "Stepping into one of the world's most renowned names in hospitality, we experienced firsthand the professionalism, precision, and passion that drive the industry. From front desk operations to behind-the-scenes management, every detail reflected a commitment to excellence. We had the privilege to explore the elegance and efficiency of hotel operations, and more excitingly, to take part in interactive bakery and pastry sessions that showcased creativity, precision, and culinary excellence. The experience was further enriched with a hands-on mocktail-making session, where we learned the art of blending flavours with flair and professionalism. One of the highlights of the visit was exploring the housekeeping department, where we gained insights into the amazing standards, organization, and attention to detail that ensure guest satisfaction and uphold the Hilton brand.",
+      "We extend our heartfelt gratitude to the HR department of Canopy by Hilton, especially to Ms. Aisha Moustafa, for her warm welcome, exceptional guidance, and generous support throughout the visit. Her dedication to nurturing young talent and sharing real-world knowledge made this visit truly impactful. We are grateful for the opportunity and look forward to applying what we've learned as we step confidently toward our future careers.",
+      "Learning beyond the classroom - our visit to Hilton ignited passion, sharpened skills, and reminded us that greatness begins with curiosity and the courage to explore.",
       "24th July 2025",
       "Placement Department",
     ],
@@ -97,20 +98,20 @@ const blogPagesData = [
       "https://images.unsplash.com/photo-1518684079-3c830dcef090?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1587&q=80",
     title: "Top Must-Visit Destinations in the UAE",
     content: [
-      "The United Arab Emirates (UAE) is known for its dazzling skyscrapers, opulent shopping malls, and vibrant culture. But beyond the glitz and glamour, there are plenty of unique and beautiful destinations that attract travelers from all over the world. Whether you’re drawn to futuristic architecture, rich history, or breathtaking desert landscapes, here are some of the top must-visit destinations in the UAE.",
+      "The United Arab Emirates (UAE) is known for its dazzling skyscrapers, opulent shopping malls, and vibrant culture. But beyond the glitz and glamour, there are plenty of unique and beautiful destinations that attract travelers from all over the world. Whether you're drawn to futuristic architecture, rich history, or breathtaking desert landscapes, here are some of the top must-visit destinations in the UAE.",
     ],
     list: [
       "1. Burj Khalifa, Dubai",
-      "No visit to the UAE would be complete without seeing the iconic Burj Khalifa. As the tallest building in the world, standing at a staggering 828 meters, the Burj Khalifa offers breathtaking views of Dubai's skyline from its observation decks. It’s also home to luxurious dining, shopping, and the nearby Dubai Fountain, which puts on a mesmerizing water and light show every evening.",
+      "No visit to the UAE would be complete without seeing the iconic Burj Khalifa. As the tallest building in the world, standing at a staggering 828 meters, the Burj Khalifa offers breathtaking views of Dubai's skyline from its observation decks. It's also home to luxurious dining, shopping, and the nearby Dubai Fountain, which puts on a mesmerizing water and light show every evening.",
       "Must-Do: Visit the 148th-floor observation deck for the ultimate panoramic view of Dubai.",
 
       "2. The Palm Jumeirah, Dubai",
-      "A man-made wonder, The Palm Jumeirah is a remarkable palm-shaped island that offers luxurious resorts, world-class dining, and stunning beaches. You can also visit the Atlantis The Palm resort, known for its water parks, aquariums, and celebrity chef restaurants. Whether you’re looking to relax on the beach or explore the many attractions, this is a must-see destination.",
+      "A man-made wonder, The Palm Jumeirah is a remarkable palm-shaped island that offers luxurious resorts, world-class dining, and stunning beaches. You can also visit the Atlantis The Palm resort, known for its water parks, aquariums, and celebrity chef restaurants. Whether you're looking to relax on the beach or explore the many attractions, this is a must-see destination.",
       "Must-Do: Take a monorail ride along the Palm Jumeirah for incredible views of the island and the coast.",
 
       "3. Sheikh Zayed Grand Mosque, Abu Dhabi",
       "Located in the capital city of Abu Dhabi, the Sheikh Zayed Grand Mosque is one of the largest mosques in the world. With its majestic white marble architecture, intricate designs, and stunning chandeliers, it is a masterpiece of modern Islamic architecture. The mosque is open to tourists and is a serene place to reflect and admire the beauty of Islamic craftsmanship.",
-      "Must-Do: Take a guided tour to learn more about the mosque’s history and significance.",
+      "Must-Do: Take a guided tour to learn more about the mosque's history and significance.",
 
       "4. Dubai Desert Safari",
       "For those seeking adventure, a Dubai Desert Safari is a thrilling experience. Ride over the dunes in a 4x4, try sandboarding, and experience traditional Bedouin-style hospitality with a BBQ dinner, live entertainment, and stargazing. The vast golden desert landscape offers a serene and exciting contrast to the bustling city life.",
@@ -121,19 +122,19 @@ const blogPagesData = [
       "Must-Do: Explore the Dubai Museum housed in the Al Fahidi Fort and wander through the Dubai Creek.",
 
       "6. Fujairah's Beaches and Mountains",
-      "Fujairah, located on the east coast of the UAE, offers beautiful beaches, crystal-clear waters, and mountainous terrain. It’s a great destination for those looking to escape the urban hustle and enjoy nature. The Hajar Mountains are perfect for hiking, while the beaches offer diving, snorkeling, and relaxing seaside views. The Fujairah Fort and Al Bidya Mosque (the oldest mosque in the UAE) are also worth a visit.",
+      "Fujairah, located on the east coast of the UAE, offers beautiful beaches, crystal-clear waters, and mountainous terrain. It's a great destination for those looking to escape the urban hustle and enjoy nature. The Hajar Mountains are perfect for hiking, while the beaches offer diving, snorkeling, and relaxing seaside views. The Fujairah Fort and Al Bidya Mosque (the oldest mosque in the UAE) are also worth a visit.",
       "Must-Do: Go snorkeling or diving in the Indian Ocean and explore the local seafood restaurants.",
 
       "7. Louvre Abu Dhabi, Abu Dhabi",
-      "A cultural gem, Louvre Abu Dhabi is a branch of the famous French museum and offers a stunning collection of art from around the world. Its modern architecture and design are as captivating as the artworks inside. The museum’s dome, with its intricate latticework, creates a “rain of light” effect, making the museum a visual masterpiece.",
-      "Must-Do: Explore the museum’s art exhibitions and take a stroll around the waterfront promenade.",
+      "A cultural gem, Louvre Abu Dhabi is a branch of the famous French museum and offers a stunning collection of art from around the world. Its modern architecture and design are as captivating as the artworks inside. The museum's dome, with its intricate latticework, creates a 'rain of light' effect, making the museum a visual masterpiece.",
+      "Must-Do: Explore the museum's art exhibitions and take a stroll around the waterfront promenade.",
 
       "8. Jebel Jais, Ras Al Khaimah",
-      "For thrill-seekers, Jebel Jais in Ras Al Khaimah is home to the world’s longest zipline. The Jebel Jais Flight stretches over 2.8 kilometers and allows visitors to soar across the stunning mountain landscape at speeds of up to 150 km/h. The area also offers hiking trails and breathtaking views of the Hajar Mountains.",
+      "For thrill-seekers, Jebel Jais in Ras Al Khaimah is home to the world's longest zipline. The Jebel Jais Flight stretches over 2.8 kilometers and allows visitors to soar across the stunning mountain landscape at speeds of up to 150 km/h. The area also offers hiking trails and breathtaking views of the Hajar Mountains.",
       "Must-Do: Try the Jebel Jais Zipline and enjoy the panoramic views of the rugged mountains.",
 
       "9. Global Village, Dubai",
-      "Global Village is a cultural and entertainment destination that brings the world’s best experiences together in one place. From international pavilions showcasing food, culture, and crafts to thrilling rides and live performances, Global Village is an exciting place for families and tourists of all ages. It opens annually during the cooler months and is a great place to explore international cultures in one location.",
+      "Global Village is a cultural and entertainment destination that brings the world's best experiences together in one place. From international pavilions showcasing food, culture, and crafts to thrilling rides and live performances, Global Village is an exciting place for families and tourists of all ages. It opens annually during the cooler months and is a great place to explore international cultures in one location.",
       "Must-Do: Stroll through the pavilions, shop for unique souvenirs, and enjoy the multicultural shows and performances.",
 
       "10. Sharjah Arts Museum, Sharjah",

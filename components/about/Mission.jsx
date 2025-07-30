@@ -438,9 +438,9 @@ export default function Mission() {
         }
 
         @media (max-width: 768px) {
-          .mission-section {
-            padding: 60px 5vw;
-          }
+          // .mission-section {
+          //   padding: 60px 5vw;
+          // }
           .mission-text-container {
             padding: 30px;
           }

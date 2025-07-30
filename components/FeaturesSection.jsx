@@ -264,6 +264,103 @@ export default function FeaturesSection() {
         :root {
           --main-transition: 0.3s;
         }
+        @media (max-width: 1024px) {
+          .features-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+          }
+
+          .box {
+            padding: 25px 20px;
+          }
+
+          .img-holder {
+            height: 140px;
+          }
+
+          .box h2 {
+            font-size: 24px;
+          }
+
+          .box p {
+            font-size: 15px;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .features-grid {
+            grid-template-columns: 1fr;
+            padding-left: 4vw;
+            padding-right: 4vw;
+          }
+
+          .section-header .title {
+            font-size: 28px;
+          }
+
+          .subtitle {
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+          }
+
+          .box {
+            padding: 20px 15px;
+          }
+
+          .box h2 {
+            font-size: 22px;
+          }
+
+          .box p {
+            font-size: 14.5px;
+            line-height: 1.5;
+          }
+
+          .img-holder {
+            height: 130px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .section-header .title {
+            font-size: 22px;
+            padding-bottom: 10px;
+          }
+
+          .title::after {
+            width: 50px;
+            height: 3px;
+          }
+
+          .subtitle {
+            font-size: 14px;
+          }
+
+          .features-grid {
+            gap: 20px;
+            padding-left: 3vw;
+            padding-right: 3vw;
+          }
+
+          .box {
+            padding: 18px 12px;
+          }
+
+          .box h2 {
+            font-size: 20px;
+            margin-bottom: 12px;
+          }
+
+          .box p {
+            font-size: 13.5px;
+            font-weight: 600;
+          }
+
+          .img-holder {
+            height: 120px;
+          }
+        }
       `}</style>
     </div>
   );
