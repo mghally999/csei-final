@@ -77,6 +77,7 @@ const CategoriesHomeOne = () => {
 
       {/* Cards Grid - Full Width */}
       <div
+        className="responsive-grid"
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr 1fr 1fr",
@@ -153,6 +154,51 @@ const CategoriesHomeOne = () => {
           </div>
         ))}
       </div>
+
+      {/* Responsive Media Queries */}
+      <style jsx>{`
+        @media (max-width: 1024px) {
+          .responsive-grid {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 2rem !important;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .responsive-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
+          }
+
+          h2 {
+            font-size: 1.8rem !important;
+            padding-bottom: 16px !important;
+          }
+
+          h3 {
+            font-size: 1rem !important;
+          }
+
+          p {
+            font-size: 0.9rem !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          h2 {
+            font-size: 1.5rem !important;
+            letter-spacing: 1px !important;
+          }
+
+          h3 {
+            font-size: 0.95rem !important;
+          }
+
+          p {
+            font-size: 0.85rem !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };

@@ -31,6 +31,20 @@ export default function Courses() {
   const [filtered, setFiltered] = useState([]);
   const [category, setCategory] = useState("All Categories");
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    // Set initial width
+    setWindowWidth(window.innerWidth);
+
+    // Handle window resize
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const enhancedPrograms = programs.map((program) => ({
     ...program,
@@ -64,10 +78,18 @@ export default function Courses() {
   const getDisplayTitle = (program) =>
     program.credentialTitle || `${program.title} - ${program.level}`;
 
+  // Determine grid columns based on screen width
+  const getGridColumns = () => {
+    if (windowWidth < 640) return "1fr";
+    if (windowWidth < 768) return "1fr 1fr";
+    if (windowWidth < 1024) return "1fr 1fr 1fr";
+    return "1fr 1fr 1fr 1fr";
+  };
+
   return (
     <section
       style={{
-        padding: "6rem 0",
+        padding: windowWidth < 768 ? "3rem 0" : "6rem 0",
         position: "relative",
         overflow: "hidden",
       }}
@@ -104,20 +126,26 @@ export default function Courses() {
             flexDirection: "column",
             alignItems: "center",
             textAlign: "center",
-            marginBottom: "3rem",
+            marginBottom: windowWidth < 768 ? "1.5rem" : "3rem",
             position: "relative",
           }}
         >
           <div
             style={{
               maxWidth: "900px",
-              margin: "0 auto 2rem",
+              margin: "0 auto",
               padding: "0 1rem",
+              marginBottom: windowWidth < 768 ? "1rem" : "2rem",
             }}
           >
             <h2
               style={{
-                fontSize: "clamp(1.75rem, 5vw, 3.5rem)",
+                fontSize:
+                  windowWidth < 640
+                    ? "1.75rem"
+                    : windowWidth < 768
+                    ? "2rem"
+                    : "clamp(1.75rem, 5vw, 3.5rem)",
                 fontWeight: 800,
                 textTransform: "uppercase",
                 letterSpacing: "1px",
@@ -126,7 +154,7 @@ export default function Courses() {
                 backgroundClip: "text",
                 color: "transparent",
                 position: "relative",
-                paddingBottom: "1.5rem",
+                paddingBottom: windowWidth < 768 ? "1rem" : "1.5rem",
                 margin: "0 0 0.5rem 0",
                 lineHeight: 1.2,
                 textShadow: "0 2px 4px rgba(0,0,0,0.1)",
@@ -136,12 +164,17 @@ export default function Courses() {
             </h2>
             <p
               style={{
-                fontSize: "clamp(1rem, 2vw, 1.25rem)",
+                fontSize:
+                  windowWidth < 640
+                    ? "0.875rem"
+                    : windowWidth < 768
+                    ? "1rem"
+                    : "clamp(1rem, 2vw, 1.25rem)",
                 color: "#64748b",
-                margin: "1rem 0 0 0",
+                margin: windowWidth < 768 ? "0.5rem 0 0 0" : "1rem 0 0 0",
                 lineHeight: 1.6,
                 maxWidth: "700px",
-                textAlign: "end",
+                textAlign: windowWidth < 640 ? "center" : "end",
               }}
             >
               Explore our most popular programs across various disciplines
@@ -154,9 +187,9 @@ export default function Courses() {
           style={{
             display: "flex",
             flexWrap: "wrap",
-            justifyContent: "center",
+            justifyContent: windowWidth < 640 ? "center" : "center",
             gap: "0.75rem",
-            padding: "1rem 0 3rem 0",
+            padding: windowWidth < 768 ? "0.5rem 0 1.5rem 0" : "1rem 0 3rem 0",
             margin: "0 auto",
             maxWidth: "100%",
             position: "relative",
@@ -175,9 +208,12 @@ export default function Courses() {
                     : "rgba(255, 255, 255, 0.9)",
                 border: category === cat ? "none" : "1px solid #e2e8f0",
                 backdropFilter: "blur(8px)",
-                padding: "0.75rem 1.5rem",
+                padding: windowWidth < 640 ? "0.5rem 1rem" : "0.75rem 1.5rem",
                 fontWeight: 600,
-                fontSize: "clamp(0.75rem, 2vw, 0.875rem)",
+                fontSize:
+                  windowWidth < 640
+                    ? "0.7rem"
+                    : "clamp(0.75rem, 2vw, 0.875rem)",
                 color: category === cat ? "#fff" : "#1e293b",
                 borderRadius: "50px",
                 cursor: "pointer",
@@ -224,14 +260,21 @@ export default function Courses() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr 1fr",
-            gap: "2rem",
+            gridTemplateColumns:
+              windowWidth < 640
+                ? "1fr"
+                : windowWidth < 768
+                ? "1fr 1fr"
+                : windowWidth < 1024
+                ? "1fr 1fr 1fr"
+                : "1fr 1fr 1fr 1fr",
+            gap: windowWidth < 640 ? "1.5rem" : "2rem",
             padding: "1rem 0",
             margin: "0 auto",
             position: "relative",
             zIndex: 1,
-            paddingLeft: "5vw",
-            paddingRight: "5vw",
+            paddingLeft: windowWidth < 640 ? "0" : "5vw",
+            paddingRight: windowWidth < 640 ? "0" : "5vw",
           }}
         >
           {filtered.map((course, index) => {
@@ -277,7 +320,7 @@ export default function Courses() {
                   <div
                     style={{
                       position: "relative",
-                      height: "220px",
+                      height: windowWidth < 640 ? "180px" : "220px",
                       overflow: "hidden",
                     }}
                   >
@@ -307,7 +350,7 @@ export default function Courses() {
                       }}
                       src={course.imageSrc}
                       alt={course.title}
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                     />
 
                     {/* Professional Badge */}
@@ -373,7 +416,7 @@ export default function Courses() {
                   {/* Card Content */}
                   <div
                     style={{
-                      padding: "1.5rem",
+                      padding: windowWidth < 640 ? "1rem" : "1.5rem",
                       display: "flex",
                       flexDirection: "column",
                       flexGrow: 1,
@@ -386,7 +429,7 @@ export default function Courses() {
                         fontSize: "0.875rem",
                         lineHeight: 1,
                         fontWeight: 600,
-                        marginBottom: "0.75rem",
+                        marginBottom: windowWidth < 640 ? "0.5rem" : "0.75rem",
                         color: "#3b82f6",
                         letterSpacing: "0.5px",
                         transition: "all 0.3s ease",
@@ -402,7 +445,7 @@ export default function Courses() {
                     {/* Course Title */}
                     <h3
                       style={{
-                        fontSize: "1rem",
+                        fontSize: windowWidth < 640 ? "0.9375rem" : "1rem",
                         lineHeight: 1.4,
                         fontWeight: 800,
                         margin: "0 0 1rem 0",
@@ -423,7 +466,7 @@ export default function Courses() {
                       style={{
                         display: "flex",
                         flexWrap: "wrap",
-                        gap: "1rem",
+                        gap: windowWidth < 640 ? "0.75rem" : "1rem",
                         alignItems: "center",
                         paddingTop: "0.75rem",
                         borderTop: "1px solid rgba(226, 232, 240, 0.7)",
@@ -433,7 +476,8 @@ export default function Courses() {
                         style={{
                           display: "flex",
                           alignItems: "center",
-                          fontSize: "0.875rem",
+                          fontSize:
+                            windowWidth < 640 ? "0.8125rem" : "0.875rem",
                           lineHeight: 1,
                           fontWeight: 500,
                           color: "#64748b",
@@ -462,7 +506,8 @@ export default function Courses() {
                         style={{
                           display: "flex",
                           alignItems: "center",
-                          fontSize: "0.875rem",
+                          fontSize:
+                            windowWidth < 640 ? "0.8125rem" : "0.875rem",
                           lineHeight: 1,
                           fontWeight: 500,
                           color: "#64748b",
@@ -492,8 +537,8 @@ export default function Courses() {
                     <div
                       style={{
                         position: "absolute",
-                        right: "1.5rem",
-                        bottom: "1.5rem",
+                        right: windowWidth < 640 ? "1rem" : "1.5rem",
+                        bottom: windowWidth < 640 ? "1rem" : "1.5rem",
                         width: "24px",
                         height: "24px",
                         display: "flex",
