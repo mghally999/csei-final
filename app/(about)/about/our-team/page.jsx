@@ -24,7 +24,7 @@ const Administration = () => {
     "Leadership Team",
     "Admissions",
     "Student Support",
-    "IT & Software",
+    "Software",
     "Human Resources",
     "Support Services",
   ];

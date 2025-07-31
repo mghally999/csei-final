@@ -12,10 +12,6 @@ export const menuList = [
         href: "/about/who-we-are",
       },
       {
-        label: "Team Members",
-        href: "/about/team-members",
-      },
-      {
         label: "Our Mission",
         href: "/about/our-mission",
       },
@@ -30,6 +26,10 @@ export const menuList = [
       {
         label: "Our Leadership",
         href: "/about/our-leadership",
+      },
+      {
+        label: "Our Team",
+        href: "/about/our-team",
       },
       {
         label: "Our Accreditation & Recognitions",

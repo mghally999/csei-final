@@ -24,8 +24,7 @@ const TeamMembers = () => {
     "Leadership Team",
     "Admissions",
     "Student Support",
-    "IT & Software",
-    "Finance",
+    "Software",
     "Human Resources",
     "Support Services",
   ];
@@ -99,7 +98,7 @@ const TeamMembers = () => {
         image: "/assets/img/about/team/who-we-are.png",
       },
       {
-        name: "Ms Gayani Arumapperuma",
+        name: "Bishakha Madai",
         role: "Internal Verifier",
         image: "/assets/img/about/team/gayani-arumapperuma.png",
       },
@@ -134,14 +133,6 @@ const TeamMembers = () => {
     ],
     "Student Support": studentSupportTeam,
     Software: softwareTeam,
-    Finance: [
-      {
-        name: "Srikrishna Rao",
-        role: "Finance & Projects",
-        email: "srikrishna.rao@manipaidubai.com",
-        image: "",
-      },
-    ],
     "Human Resources": [
       {
         name: "Merlyn Francis",
