@@ -4,10 +4,9 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const TeamMembers = () => {
+const Administration = () => {
   const [activeTab, setActiveTab] = useState("All");
 
-  // Brand colors
   const brandColors = {
     primary: "#001E6C",
     secondary: "#000C2D",
@@ -18,18 +17,17 @@ const TeamMembers = () => {
     highlight: "#0A1445",
   };
 
-  // Departments
   const departments = [
     "All",
     "Leadership Team",
     "Admissions",
     "Student Support",
-    "Software",
-    "Human Resources",
+    "IT & Software",
+    "Human Resources / Placements",
+    "Academics",
     "Support Services",
   ];
 
-  // Leadership Team
   const leadershipTeam = [
     {
       name: "Mr. Suhail Ahmed Mohammed",
@@ -37,14 +35,14 @@ const TeamMembers = () => {
       image: "/assets/img/about/team/Mr-Suhail.png",
     },
     {
-      name: "Dr. Apollo Serafico",
-      role: "Head of Academics",
-      image: "/assets/img/about/team/Mr-Apolo.png",
-    },
-    {
       name: "Mr. Roshan Gautam",
       role: "General Manager",
       image: "/assets/img/about/team/Mr-Roshan.png",
+    },
+    {
+      name: "Dr. Apollo Serafico",
+      role: "Head of Academics",
+      image: "/assets/img/about/team/Mr-Apolo.png",
     },
     {
       name: "Dr. Khaled Anwar",
@@ -53,105 +51,106 @@ const TeamMembers = () => {
     },
   ];
 
-  // Software Team
-  const softwareTeam = [
+  const admissionsTeam = [
     {
-      name: "Mohammed Ghally",
-      role: "Software Engineer",
-      image: "/assets/img/about/team/mohammed-ghally.png",
+      name: "Ms. Mehvish Shahzad",
+      role: "Admission Manager",
+      image: "/assets/img/about/team/mehvish-shahzad.png",
+    },
+    {
+      name: "Ms. Binisha Sapkota",
+      role: "Admission Counsellor",
+      image: "/assets/img/about/team/binisha-sapkota.png",
+    },
+    {
+      name: "Ms. Bishakha Madai",
+      role: "International Admission Officer",
+      image: "/assets/img/about/team/who-we-are.png",
+    },
+    {
+      name: "Ms. Puja Jaiswal",
+      role: "Admissions Admin",
+      image: "/assets/img/about/team/who-we-are.png",
     },
   ];
 
-  // Student Support Team
   const studentSupportTeam = [
     {
-      name: "Kaleem Ullah",
-      role: "Public Relationship Officer / Student Support",
+      name: "Mr. Kaleem Ullah",
+      role: "Student Support / PRO",
       image: "/assets/img/about/team/kaleem-ullah.png",
     },
   ];
 
-  // All Team Members
+  const itSoftwareTeam = [
+    {
+      name: "Mr. Mohammed Ghally",
+      role: "Software Engineer",
+      image: "/assets/img/about/team/mohammed-ghally.png",
+    },
+    {
+      name: "Mr. Sajin Rethnamani",
+      role: "Digital Marketing Executive",
+      image: "/assets/img/about/team/shajin-rethnamani.jpeg",
+    },
+  ];
+
+  const hrPlacementsTeam = [
+    {
+      name: "Ms. Merlyn Francis",
+      role: "HR & Placements Officer",
+      image: "/assets/img/about/team/merlyn-francis.png",
+    },
+  ];
+
+  const academicTeam = [
+    {
+      name: "Ms. Gayani Arumapperuma",
+      role: "Business Faculty",
+      image: "/assets/img/about/team/gayani-arumapperuma.png",
+    },
+    {
+      name: "Mr. Omar Tariq",
+      role: "Tourism & Culinary Art Faculty",
+      image: "/assets/img/about/team/omar-tariq.png",
+    },
+    {
+      name: "Mr. Hailur Rehman",
+      role: "IT Faculty",
+      image: "/assets/img/about/team/hailur-rehman.jpeg",
+    },
+    {
+      name: "Dr. Tayyaba",
+      role: "Health Faculty",
+      image: "/assets/img/about/team/dr-tayyaba.jpeg",
+    },
+  ];
+
+  const supportTeam = [
+    {
+      name: "Mr. Shajin Rethnamani",
+      role: "Social Media Executive",
+      image: "/assets/img/about/team/shajin-rethnamani.jpeg",
+    },
+  ];
+
   const allTeamMembers = {
     All: [
       ...leadershipTeam,
-      ...softwareTeam,
+      ...admissionsTeam,
       ...studentSupportTeam,
-      {
-        name: "Shajin Rethnamani",
-        role: "Social Media Executive",
-        image: "/assets/img/about/team/shajin-rethnamani.jpeg",
-      },
-      {
-        name: "Binisha Sapkota",
-        role: "Admission Counsellor",
-        image: "/assets/img/about/team/binisha-sapkota.png",
-      },
-      {
-        name: "Mehvish Shahzad",
-        role: "Admission Manager",
-        image: "/assets/img/about/team/mehvish-shahzad.png",
-      },
-      {
-        name: "Bishakha Madai",
-        role: "International Admission Officer",
-        image: "/assets/img/about/team/who-we-are.png",
-      },
-      {
-        name: "Bishakha Madai",
-        role: "Internal Verifier",
-        image: "/assets/img/about/team/gayani-arumapperuma.png",
-      },
-      {
-        name: "Merlyn Francis",
-        role: "HR / Placements Officer",
-        image: "/assets/img/about/team/merlyn-francis.png",
-      },
-      {
-        name: "Puja Jaiswal",
-        role: "Admin",
-        image: "/assets/img/about/team/who-we-are.png",
-      },
+      ...itSoftwareTeam,
+      ...hrPlacementsTeam,
+      ...academicTeam,
+      ...supportTeam,
     ],
     "Leadership Team": leadershipTeam,
-    Admissions: [
-      {
-        name: "Binisha Sapkota",
-        role: "Admission Counsellor",
-        image: "/assets/img/about/team/binisha-sapkota.png",
-      },
-      {
-        name: "Mehvish Shahzad",
-        role: "Admission Manager",
-        image: "/assets/img/about/team/mehvish-shahzad.png",
-      },
-      {
-        name: "Bishakha Madai",
-        role: "International Admission Officer",
-        image: "/assets/img/about/team/who-we-are.png",
-      },
-    ],
+    Admissions: admissionsTeam,
     "Student Support": studentSupportTeam,
-    Software: softwareTeam,
-    "Human Resources": [
-      {
-        name: "Merlyn Francis",
-        role: "HR / Placements Officer",
-        image: "/assets/img/about/team/merlyn-francis.png",
-      },
-    ],
-    "Support Services": [
-      {
-        name: "Shajin Rethnamani",
-        role: "Social Media Executive",
-        image: "/assets/img/about/team/shajin-rethnamani.jpeg",
-      },
-      {
-        name: "Puja Jaiswal",
-        role: "Admin",
-        image: "/assets/img/about/team/who-we-are.png",
-      },
-    ],
+    "IT & Software": itSoftwareTeam,
+    "Human Resources / Placements": hrPlacementsTeam,
+    Academics: academicTeam,
+    "Support Services": supportTeam,
   };
 
   return (
@@ -339,7 +338,7 @@ const TeamMembers = () => {
         .profileCard_imgWrapper__pAPFB {
           position: relative;
           width: 100%;
-          padding-top: 70%;
+          padding-top: 100%;
           overflow: hidden;
         }
 
