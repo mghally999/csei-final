@@ -25,7 +25,6 @@ export default function Administration() {
     "IT & Software",
     "Human Resources / Placements",
     "Academics",
-    "Support Services",
   ];
 
   const leadershipTeam = [
@@ -150,7 +149,6 @@ export default function Administration() {
     "IT & Software": itSoftwareTeam,
     "Human Resources / Placements": hrPlacementsTeam,
     Academics: academicTeam,
-    "Support Services": supportTeam,
   };
 
   return (
