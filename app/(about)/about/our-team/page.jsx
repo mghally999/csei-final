@@ -120,7 +120,7 @@ const Administration = () => {
       image: "/assets/img/about/team/hailur-rehman.jpeg",
     },
     {
-      name: "Dr. Tayyaba",
+      name: "Dr. Tayyaba Munir",
       role: "Health Faculty",
       image: "/assets/img/about/team/dr-tayyaba.jpeg",
     },
