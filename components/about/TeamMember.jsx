@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const Administration = () => {
+export default function Administration() {
   const [activeTab, setActiveTab] = useState("All");
 
   const brandColors = {
@@ -528,6 +528,4 @@ const Administration = () => {
       `}</style>
     </div>
   );
-};
-
-export default TeamMembers;
+}
