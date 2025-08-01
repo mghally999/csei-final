@@ -189,13 +189,6 @@ export default function TuitionFeesFull() {
                 </thead>
                 <tbody>
                   {[
-                    // {
-                    //   program:
-                    //     "OTHM Level 3 - Tourism and Hospitality Management",
-                    //   tuition: "12,500",
-                    //   visa: "3,500",
-                    //   registration: "1,000",
-                    // },
                     {
                       program:
                         "OTHM Level 4 - Tourism and Hospitality Management",
@@ -210,13 +203,6 @@ export default function TuitionFeesFull() {
                       visa: "3,500",
                       registration: "1,000",
                     },
-                    // {
-                    //   program:
-                    //     "OTHM Level 3 - Health and Social Care Management",
-                    //   tuition: "12,500",
-                    //   visa: "3,500",
-                    //   registration: "1,000",
-                    // },
                     {
                       program:
                         "OTHM Level 4 - Health and Social Care Management",
@@ -249,18 +235,6 @@ export default function TuitionFeesFull() {
                       visa: "3,500",
                       registration: "1,000",
                     },
-                    // {
-                    //   program: "OTHM Level 4 - Information Technology",
-                    //   tuition: "12,500",
-                    //   visa: "3,500",
-                    //   registration: "1,000",
-                    // },
-                    // {
-                    //   program: "OTHM Level 5 - Information Technology",
-                    //   tuition: "12,500",
-                    //   visa: "3,500",
-                    //   registration: "1,000",
-                    // },
                     {
                       program: "Postgraduate Programs",
                       tuition: "18,000",
@@ -312,83 +286,42 @@ export default function TuitionFeesFull() {
                 </thead>
                 <tbody>
                   {[
-                    // {
-                    //   course: "Tourism & Hospitality Management - Level A",
-                    //   duration: "3 months",
-                    //   fee: "4000",
-                    // },
-                    // {
-                    //   course: "Tourism & Hospitality Management - Level B",
-                    //   duration: "6 months",
-                    //   fee: "6000",
-                    // },
-
-                    // {
-                    //   course: "Digital Marketing - Level A (Basic)",
-                    //   duration: "3 months",
-                    //   fee: "4000",
-                    // },
-                    // {
-                    //   course: "Digital Marketing - Level B (Advance)",
-                    //   duration: "6 months",
-                    //   fee: "6000",
-                    // },
-
                     {
                       course:
                         "Health and Social Care Management - Professional",
                       duration: "6 months",
                       fee: "6000",
                     },
-
                     {
                       course: "Culinary Arts – Professional",
                       duration: "6 months + Internship",
                       fee: "15,000",
                     },
-
                     {
                       course: "Food & Beverages Service Training",
                       duration: "1 month",
                       fee: "3000",
                     },
-
                     {
                       course: "Front Desk Operations",
                       duration: "1 month",
                       fee: "3000",
                     },
-
                     {
                       course: "Business Management",
                       duration: "3 months",
                       fee: "4000",
                     },
-
                     {
                       course: "Training Diploma in Housekeeping",
                       duration: "3 months",
                       fee: "4000",
                     },
-                    // {
-                    //   course:
-                    //     "Training Diploma in Housekeeping - Level B (Advance)",
-                    //   duration: "6 months",
-                    //   fee: "6000",
-                    // },
-
                     {
                       course: "HR Management in Tourism & Management",
                       duration: "3 months",
                       fee: "4000",
                     },
-                    // {
-                    //   course:
-                    //     "HR Management in Tourism & Management - Level B (Advance)",
-                    //   duration: "6 months",
-                    //   fee: "6000",
-                    // },
-
                     {
                       course: "Barista Training - Basic",
                       duration: "10 days",
@@ -404,7 +337,6 @@ export default function TuitionFeesFull() {
                       duration: "40 days",
                       fee: "2800",
                     },
-
                     {
                       course: "Food Safety & Sanitation",
                       duration: "1 day",
@@ -549,19 +481,21 @@ export default function TuitionFeesFull() {
               style={{
                 display: "inline-flex",
                 alignItems: "center",
+                justifyContent: "center",
                 gap: "12px",
                 padding: "16px 32px",
-                backgroundColor: "#059669",
-                color: "white",
+                backgroundColor: "#F0F9FF",
+                color: "#000000",
                 borderRadius: "10px",
                 textDecoration: "none",
                 fontSize: "18px",
                 fontWeight: "600",
                 maxWidth: "400px",
                 width: "100%",
-                justifyContent: "center",
+                border: "2px solid #000000",
+                boxSizing: "border-box",
               }}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, backgroundColor: "#E0F2FE" }}
               whileTap={{ scale: 0.95 }}
             >
               View Payment Schedule
@@ -576,8 +510,8 @@ export default function TuitionFeesFull() {
                 alignItems: "center",
                 gap: "12px",
                 padding: "16px 32px",
-                backgroundColor: "#dc2626",
-                color: "white",
+                backgroundColor: "#FEF2F2",
+                color: "#000000",
                 borderRadius: "10px",
                 textDecoration: "none",
                 fontSize: "18px",
@@ -585,8 +519,13 @@ export default function TuitionFeesFull() {
                 maxWidth: "400px",
                 width: "100%",
                 justifyContent: "center",
+                border: "2px solid #000000",
+                borderTop: "2px solid #000000",
+                borderRight: "2px solid #000000",
+                borderBottom: "2px solid #000000",
+                borderLeft: "2px solid #000000",
               }}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, backgroundColor: "#FEE2E2" }}
               whileTap={{ scale: 0.95 }}
             >
               Download Refund Policy

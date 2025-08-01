@@ -21,9 +21,9 @@ export default function page() {
 
       <Header />
       <div className="content-wrapper js-content-wrapper overflow-hidden">
-        <HelpCenter />
+        {/* <HelpCenter /> */}
         <Faq />
-        <FooterOne />
+        {/* <FooterOne /> */}
       </div>
     </div>
   );

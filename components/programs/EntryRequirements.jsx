@@ -6,7 +6,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 
 export const EntryRequirements = ({ data }) => {
-  if (!data || !Array.isArray(data)) return null;
+  if (!data || (!data.description && !Array.isArray(data.points))) return null;
 
   return (
     <motion.section
@@ -24,7 +24,7 @@ export const EntryRequirements = ({ data }) => {
       }}
     >
       <div style={{ maxWidth: "1240px", margin: "0 auto" }}>
-        {/* Title with Orange Underline */}
+        {/* Title */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -53,62 +53,80 @@ export const EntryRequirements = ({ data }) => {
           />
         </motion.h2>
 
-        {/* Requirements List */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "24px",
-            marginTop: "20px",
-          }}
-        >
-          {data.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              style={{
-                background: "#FFFFFF10",
-                border: "1px solid #FFFFFF22",
-                borderRadius: "12px",
-                padding: "20px 24px",
-                display: "flex",
-                alignItems: "flex-start",
-                gap: "16px",
-              }}
-            >
-              <div
+        {/* Description */}
+        {data.description && (
+          <p
+            style={{
+              textAlign: "center",
+              color: "#F5F5F5",
+              fontSize: "18px",
+              maxWidth: "800px",
+              margin: "0 auto 40px",
+              lineHeight: "1.7",
+            }}
+          >
+            {data.description}
+          </p>
+        )}
+
+        {/* Points */}
+        {Array.isArray(data.points) && data.points.length > 0 && (
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: "24px",
+              marginTop: "20px",
+            }}
+          >
+            {data.points.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
                 style={{
-                  width: "28px",
-                  height: "28px",
-                  borderRadius: "50%",
-                  backgroundColor: "#E05500",
-                  color: "#ffffff",
+                  background: "#FFFFFF10",
+                  border: "1px solid #FFFFFF22",
+                  borderRadius: "12px",
+                  padding: "20px 24px",
                   display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "14px",
-                  flexShrink: 0,
-                  marginTop: "4px",
+                  alignItems: "flex-start",
+                  gap: "16px",
                 }}
               >
-                <FontAwesomeIcon icon={faCheck} />
-              </div>
-              <span
-                style={{
-                  fontSize: "18px",
-                  fontWeight: "500",
-                  lineHeight: "1.6",
-                  color: "#F5F5F5",
-                }}
-              >
-                {item}
-              </span>
-            </motion.div>
-          ))}
-        </div>
+                <div
+                  style={{
+                    width: "28px",
+                    height: "28px",
+                    borderRadius: "50%",
+                    backgroundColor: "#E05500",
+                    color: "#ffffff",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "14px",
+                    flexShrink: 0,
+                    marginTop: "4px",
+                  }}
+                >
+                  <FontAwesomeIcon icon={faCheck} />
+                </div>
+                <span
+                  style={{
+                    fontSize: "18px",
+                    fontWeight: "500",
+                    lineHeight: "1.6",
+                    color: "#F5F5F5",
+                  }}
+                >
+                  {item}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
     </motion.section>
   );

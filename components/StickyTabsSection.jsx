@@ -29,17 +29,26 @@ export default function StickyTabsSection({ program }) {
     { id: 3, text: "Entry Requirements" },
     { id: 4, text: "Qualification Structure" },
     { id: 5, text: "Qualification Units" },
-    { id: 11, text: "Course Objectives" }, // 👈 NEW
-    { id: 6, text: "Assessment and Verification" },
-    { id: 7, text: "Career Opportunities" },
-    { id: 10, text: "Tuition Fees" },
+    ...(program.professional ? [{ id: 6, text: "Course Objectives" }] : []),
+    { id: 7, text: "Assessment and Verification" },
+    { id: 8, text: "Career Opportunities" },
+    { id: 9, text: "Tuition Fees" },
     ...(!program.professional
       ? [
-          { id: 8, text: "Sample Certificate" },
-          { id: 9, text: "University Progression" },
+          { id: 10, text: "Sample Certificate" },
+          { id: 11, text: "University Progression" },
         ]
       : []),
   ];
+
+  const fallbackEntryRequirements = {
+    description: "Open entry requirements. No prior qualifications needed.",
+    points: [
+      "Minimum 18 years of age",
+      "Good understanding of English language",
+      "Access to computer and internet",
+    ],
+  };
 
   const sections = [
     { id: 1, Component: Overview, props: { data: program.overview } },
@@ -47,7 +56,13 @@ export default function StickyTabsSection({ program }) {
     {
       id: 3,
       Component: EntryRequirements,
-      props: { data: program.entryRequirements },
+      props: {
+        data:
+          program.entryRequirements &&
+          Object.keys(program.entryRequirements).length
+            ? program.entryRequirements
+            : fallbackEntryRequirements,
+      },
     },
     {
       id: 4,
@@ -55,27 +70,31 @@ export default function StickyTabsSection({ program }) {
       props: { data: program.qualificationStructureText },
     },
     { id: 5, Component: AllUnits, props: { data: program.qualificationUnits } },
+    ...(program.professional
+      ? [
+          {
+            id: 6,
+            Component: CourseObjectives,
+            props: { data: program.courseObjectives },
+          },
+        ]
+      : []),
     {
-      id: 11,
-      Component: CourseObjectives,
-      props: { data: program.courseObjectives },
-    }, // 👈 NEW
-    {
-      id: 6,
+      id: 7,
       Component: AssessmentVerification,
       props: { data: program.assessmentVerification },
     },
     {
-      id: 7,
+      id: 8,
       Component: CareerOpportunities,
       props: { data: program.careerOpportunities },
     },
-    { id: 10, Component: TuitionFees, props: { program } },
+    { id: 9, Component: TuitionFees, props: { program } },
     ...(!program.professional
       ? [
-          { id: 8, Component: SampleCertificate, props: {} },
+          { id: 10, Component: SampleCertificate, props: {} },
           {
-            id: 9,
+            id: 11,
             Component: UniversityProgression,
             props: { data: [], description: program.universityProgression },
           },
@@ -154,21 +173,24 @@ export default function StickyTabsSection({ program }) {
         </div>
 
         <div className="content">
-          {sections.map(({ id, Component, props }) => (
-            <div
-              key={id}
-              ref={(el) => {
-                sectionRefs.current.push(el);
-                if (id === 9 || (program.professional && id === 10)) {
-                  lastSectionRef.current = el;
-                }
-              }}
-              data-section-id={id}
-              className="content-section"
-            >
-              <Component {...props} />
-            </div>
-          ))}
+          {(() => {
+            sectionRefs.current = []; // ✅ Reset before assigning
+            return sections.map(({ id, Component, props }, index) => (
+              <div
+                key={id}
+                ref={(el) => {
+                  sectionRefs.current[index] = el;
+                  if (id === 11 || (program.professional && id === 9)) {
+                    lastSectionRef.current = el;
+                  }
+                }}
+                data-section-id={id}
+                className="content-section"
+              >
+                <Component {...props} />
+              </div>
+            ));
+          })()}
         </div>
       </div>
 

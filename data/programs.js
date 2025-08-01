@@ -172,7 +172,7 @@ export const programs = [
     category: "Professional Courses",
     level: "Level 4",
     duration: 120,
-    imageSrc: "/assets/img/coursesCards/food-safety.png",
+    imageSrc: "/assets/img/coursesCards/food-beverage.png",
     professional: true,
   },
   {
