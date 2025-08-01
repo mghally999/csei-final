@@ -5,10 +5,47 @@ import { locationData } from "@/data/officeLocation";
 
 export default function ContactPage() {
   const [activeTab, setActiveTab] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [messageSent, setMessageSent] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Submit logic
+    setMessageSent(false);
+    const form = e.target;
+    const formData = new FormData(form);
+
+    const payload = {
+      formType: activeTab === 1 ? "student" : "partner",
+      name: formData.get("name"),
+      email: formData.get("email"),
+    };
+
+    if (activeTab === 1) {
+      payload.phone = formData.get("phone");
+      payload.subject = formData.get("subject");
+      payload.message = formData.get("message");
+    } else {
+      payload.company = formData.get("company");
+      payload.proposal = formData.get("proposal");
+    }
+
+    try {
+      setLoading(true);
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.ok) {
+        form.reset();
+        setMessageSent(true);
+      }
+    } catch (err) {
+      console.error("Form error:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -66,11 +103,7 @@ export default function ContactPage() {
       {/* ✅ Tabs Section */}
       <section style={{ padding: "60px 20px 0", backgroundColor: "#f8f9fa" }}>
         <div
-          style={{
-            maxWidth: "1200px",
-            margin: "0 auto",
-            textAlign: "center",
-          }}
+          style={{ maxWidth: "1200px", margin: "0 auto", textAlign: "center" }}
         >
           <div
             style={{
@@ -227,22 +260,35 @@ export default function ContactPage() {
 
               <button
                 type="submit"
+                disabled={loading}
                 style={{
                   padding: "12px",
-                  backgroundColor: "#000000",
+                  backgroundColor: loading ? "#999" : "#000000",
                   color: "#fff",
                   border: "none",
                   borderRadius: "6px",
                   fontWeight: 600,
-                  cursor: "pointer",
+                  cursor: loading ? "not-allowed" : "pointer",
                 }}
               >
-                {activeTab === 1 ? "Send Message" : "Request Partnership"}
+                {loading
+                  ? "Sending..."
+                  : activeTab === 1
+                  ? "Send Message"
+                  : "Request Partnership"}
               </button>
+
+              {messageSent && (
+                <p
+                  style={{ marginTop: "10px", color: "green", fontWeight: 500 }}
+                >
+                  ✅ Your message has been sent!
+                </p>
+              )}
             </form>
           </div>
 
-          {/* ✅ Office Details (Map + Full Info) */}
+          {/* ✅ Office Info */}
           <div style={{ flex: "1 1 400px", padding: "20px" }}>
             <h3
               style={{
@@ -288,7 +334,6 @@ export default function ContactPage() {
               ))}
             </div>
 
-            {/* ✅ Google Map */}
             <div
               style={{
                 marginTop: "40px",

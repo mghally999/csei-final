@@ -1,12 +1,43 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { locationData } from "@/data/officeLocation";
 
 export default function PartnerWithUs() {
-  const handleSubmit = (e) => {
+  const [loading, setLoading] = useState(false);
+  const [messageSent, setMessageSent] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Submit logic
+    setMessageSent(false);
+    const form = e.target;
+    const formData = new FormData(form);
+
+    const payload = {
+      formType: "partner",
+      name: formData.get("name"),
+      email: formData.get("email"),
+      company: formData.get("company"),
+      proposal: formData.get("proposal"),
+    };
+
+    try {
+      setLoading(true);
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.ok) {
+        form.reset();
+        setMessageSent(true);
+      }
+    } catch (err) {
+      console.error("Partnership form error:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -139,22 +170,31 @@ export default function PartnerWithUs() {
               </div>
               <button
                 type="submit"
+                disabled={loading}
                 style={{
                   padding: "12px",
-                  backgroundColor: "#000000",
+                  backgroundColor: loading ? "#999" : "#000000",
                   color: "#fff",
                   border: "none",
                   borderRadius: "6px",
                   fontWeight: 600,
-                  cursor: "pointer",
+                  cursor: loading ? "not-allowed" : "pointer",
                 }}
               >
-                Request Partnership
+                {loading ? "Sending..." : "Request Partnership"}
               </button>
+
+              {messageSent && (
+                <p
+                  style={{ marginTop: "10px", color: "green", fontWeight: 500 }}
+                >
+                  ✅ Your request has been sent!
+                </p>
+              )}
             </form>
           </div>
 
-          {/* ✅ Office Details (Map + Full Info) */}
+          {/* ✅ Office Details */}
           <div style={{ flex: "1 1 400px" }}>
             <h3
               style={{
@@ -200,7 +240,6 @@ export default function PartnerWithUs() {
               ))}
             </div>
 
-            {/* ✅ Google Map */}
             <div
               style={{
                 marginTop: "40px",
@@ -222,7 +261,7 @@ export default function PartnerWithUs() {
         </div>
       </section>
 
-      {/* ✅ Office Emails (Simple 2-column style like contact page) */}
+      {/* ✅ Office Emails */}
       <section style={{ backgroundColor: "#fff", padding: "60px 20px" }}>
         <div
           style={{

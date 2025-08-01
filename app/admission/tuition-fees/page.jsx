@@ -460,18 +460,18 @@ export default function TuitionFeesFull() {
             </div>
           </FeeCard>
 
-          {/* PDF Links */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             style={{
-              textAlign: "center",
-              marginTop: "40px",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               gap: "20px",
+              marginTop: "40px",
+              width: "100%",
+              padding: "0 16px",
             }}
           >
             <motion.a
@@ -479,21 +479,21 @@ export default function TuitionFeesFull() {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                display: "inline-flex",
+                display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 gap: "12px",
                 padding: "16px 32px",
-                backgroundColor: "#F0F9FF",
-                color: "#000000",
+                backgroundColor: "#000000",
+                color: "#ffffff",
                 borderRadius: "10px",
                 textDecoration: "none",
                 fontSize: "18px",
                 fontWeight: "600",
-                maxWidth: "400px",
                 width: "100%",
-                border: "2px solid #000000",
+                maxWidth: "500px",
                 boxSizing: "border-box",
+                transition: "all 0.2s ease",
               }}
               whileHover={{ scale: 1.05, backgroundColor: "#E0F2FE" }}
               whileTap={{ scale: 0.95 }}
@@ -501,29 +501,27 @@ export default function TuitionFeesFull() {
               View Payment Schedule
               <FiDownload style={{ fontSize: "20px" }} />
             </motion.a>
+
             <motion.a
               href="/pdfs/RefundPolicy.pdf"
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                display: "inline-flex",
+                display: "flex",
                 alignItems: "center",
+                justifyContent: "center",
                 gap: "12px",
                 padding: "16px 32px",
-                backgroundColor: "#FEF2F2",
-                color: "#000000",
+                backgroundColor: "#000000",
+                color: "#ffffff",
                 borderRadius: "10px",
                 textDecoration: "none",
                 fontSize: "18px",
                 fontWeight: "600",
-                maxWidth: "400px",
                 width: "100%",
-                justifyContent: "center",
-                border: "2px solid #000000",
-                borderTop: "2px solid #000000",
-                borderRight: "2px solid #000000",
-                borderBottom: "2px solid #000000",
-                borderLeft: "2px solid #000000",
+                maxWidth: "500px",
+                boxSizing: "border-box",
+                transition: "all 0.2s ease",
               }}
               whileHover={{ scale: 1.05, backgroundColor: "#FEE2E2" }}
               whileTap={{ scale: 0.95 }}
