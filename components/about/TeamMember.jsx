@@ -65,7 +65,7 @@ const Administration = () => {
     {
       name: "Ms. Bishakha Madai",
       role: "International Admission Officer",
-      image: "/assets/img/about/team/who-we-are.png",
+      image: "/assets/img/about/team/bishaka-madai.jpg",
     },
     {
       name: "Ms. Puja Jaiswal",
@@ -77,7 +77,7 @@ const Administration = () => {
   const studentSupportTeam = [
     {
       name: "Mr. Kaleem Ullah",
-      role: "Student Support / PRO",
+      role: "Public Relationship Officer / Student Support Services",
       image: "/assets/img/about/team/kaleem-ullah.png",
     },
   ];
