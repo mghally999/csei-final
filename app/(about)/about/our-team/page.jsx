@@ -70,7 +70,7 @@ const Administration = () => {
     {
       name: "Ms. Puja Jaiswal",
       role: "Admissions Admin",
-      image: "/assets/img/about/team/who-we-are.png",
+      image: "/assets/img/about/team/puja-jaiswal.png",
     },
   ];
 
